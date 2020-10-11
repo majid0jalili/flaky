@@ -1,0 +1,11 @@
+commit b8af5d124827b0530bbe47f62e8272f49aa27d8b
+Author: Daniel Reiter Horn <danielrh@dropbox.com>
+Date:   Thu Oct 29 19:02:42 2015 -0700
+
+    remov xz and brotli
+
+commit 4a05c1190b39badd8c98b8af9dc587c8cafd31e0
+Author: Daniel Reiter Horn <danielrh@users.sourceforge.net>
+Date:   Thu Oct 1 01:13:49 2015 -0700
+
+    added xz-5.2.2 directly to dependencies

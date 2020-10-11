@@ -1,0 +1,29 @@
+commit 6700f41c4b699b0e31ab2bf90036c04273784fd8
+Author: Thomas Van Lenten <thomasvl@google.com>
+Date:   Tue Nov 14 23:00:02 2017 -0500
+
+    Travis config cleanups and move ObjC to Xcode 9.1.
+    
+    Stop having travis build the test matrix and make it explicit so extra
+    settings are only on the test that need the, this helps make the travis
+    UI a little cleaner (linux hosted stuff doesn't list an Xcode version),
+    as well as avoid unneeded requirements limiting the travis pool something
+    can run on.
+    
+    Small improvements to objectivec/DevTools/full_mac_build.sh to avoid some
+    repeated scripting and hopefully make things more reliable work with Xcode
+    9.x.
+    
+    Don't mark the iOS tests as able to fail, hopefully with the new settings
+    they are stable and won't give false signals.
+    
+    Simplify the case for xcode versions and fixup xcode 9.[0-1].
+
+commit 8d47d7873e7cf332d30e7a661a4ec9cc4d794ad8
+Author: Thomas Van Lenten <thomasvl@google.com>
+Date:   Tue Mar 29 09:21:50 2016 -0400
+
+    Mark iOS tests as able to fail.
+    
+    Travis updated their images to include an xctool that can randomly kill
+    tests, so mark them as flaky to avoid turning things red.

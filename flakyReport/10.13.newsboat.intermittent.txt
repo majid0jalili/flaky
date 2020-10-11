@@ -1,0 +1,15 @@
+commit 047cc64dd57b63919d31b9180ea525cd4516ceaa
+Author: Alexander Batischev <eual.jp@gmail.com>
+Date:   Sun Feb 9 00:51:36 2020 +0300
+
+    Use proper file extension for Asciidoc
+    
+    I chose the longer variant, ".asciidoc", instead of ".adoc", because
+    Asciidoc doesn't seem very popular, and contributors could use a more
+    verbose name to help them learn the syntax.
+
+commit 063bba6cebc332f3de43d57b3a5f4a35fd4904cb
+Author: Alexander Batischev <eual.jp@gmail.com>
+Date:   Sun Jan 13 00:19:06 2019 +0300
+
+    Docs: suggest memory caching for ownCloud (#160)

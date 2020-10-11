@@ -1,0 +1,23 @@
+commit 13770ce9cd61ba2c50218db786366971a64ad82f
+Author: Andre Heider <dhewg@wiibrew.org>
+Date:   Sun Sep 5 12:49:29 2010 +0000
+
+    PLUGINS: Plugin support for the GameCube/Wii backend.
+    
+    svn-id: r52553
+
+commit da414e62b8b61bb661bbf62517c8d249574732e2
+Author: Tony Puccinelli <toneman1138@users.sourceforge.net>
+Date:   Wed Jul 21 08:50:30 2010 +0000
+
+    switched out linker script for plugin linking on ds, added in check for RELA type relocations in ARM loader and coded for REL type relocations (DS now runs many games with Dynamic Plugins enabled)
+    
+    svn-id: r51083
+
+commit 7335e2fc6799478177e70e58645dea3a56883b5f
+Author: Tony Puccinelli <toneman1138@users.sourceforge.net>
+Date:   Thu Jul 8 21:40:26 2010 +0000
+
+    fixed dependencies/paths/etc. in arm9/makefile to get engine plugins building; changed makefile to not clean before building further engines when building all engines; fixed syntax of plugin.ld
+    
+    svn-id: r50751

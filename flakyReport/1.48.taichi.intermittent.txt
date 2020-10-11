@@ -1,0 +1,17 @@
+commit 087ed37129ff0cbf5580212ab9573f1005841e01
+Author: Yuanming Hu <yuanmhu@gmail.com>
+Date:   Mon Sep 30 17:08:30 2019 -0400
+
+    removed openvdb from dependency
+
+commit b43e9bbb86d20aca79ac3bf261f1e563900b9c8a
+Author: Yuanming Hu <yuanmhu@gmail.com>
+Date:   Wed Mar 20 23:14:12 2019 -0400
+
+    Use OpenVDB as external (Makefile instead of CMakeLists.txt)
+
+commit 7500065a020a2c1fb5a547b3ae22950a7d97e6e9
+Author: Yuanming Hu <yuanmhu@gmail.com>
+Date:   Thu Mar 14 23:53:45 2019 -0400
+
+    Added vdb baseline codebase

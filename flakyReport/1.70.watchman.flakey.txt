@@ -1,0 +1,18 @@
+commit bb74054c47b776d9d417a44b31b7b3d77c89a234
+Author: Wez Furlong <wez@fb.com>
+Date:   Thu Jul 16 12:30:28 2020 -0700
+
+    watchman: reduce flakeyness of test_sock_perms
+    
+    Summary:
+    This often flakes out in our infra.  This commit increases a timeout
+    for the expected failure case and allows for infra failures when testing
+    invalid group names.
+    
+    I've also improved the debug output so we have more context if it does fail.
+    
+    Reviewed By: genevievehelsel
+    
+    Differential Revision: D22573872
+    
+    fbshipit-source-id: 945ef12ae616fcf5855b60e770ae525beb968a1e

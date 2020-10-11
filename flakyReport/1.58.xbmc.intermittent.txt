@@ -1,0 +1,95 @@
+commit b2b8224d9649351fd9a5cb662a708a224ec1b427
+Author: Rainer Hochecker <fernetmenta@online.de>
+Date:   Thu Jan 28 20:09:57 2016 +0100
+
+    drop TimeSmoother
+
+commit 00724eb109a702f0098089d849f7c02ea173a4a9
+Author: Stefan Saraev <stefan@saraev.ca>
+Date:   Mon Dec 14 16:19:30 2015 +0200
+
+    [cleanup] nuke cximage
+
+commit 8585408ffa957e82c9ce8b0314d0f50f2c41e445
+Author: wsnipex <wsnipex@a1.net>
+Date:   Sat Jul 26 10:21:24 2014 +0200
+
+    remove visualizations fishbmc, goom, milkdrop, projectm, spectrum, vortex and waveform from tree
+
+commit faac183458137d4a39a4d2bf433f99dfc819ebb3
+Author: Rainer Hochecker <fernetmenta@online.de>
+Date:   Tue Dec 16 12:22:12 2014 +0100
+
+    Revert "rename xbmc folder to src"
+    
+    This reverts commit 135fe8734924f79cedace50986a0fa4f12d76647.
+
+commit 135fe8734924f79cedace50986a0fa4f12d76647
+Author: Fneufneu <fneufneu@xbmc.org>
+Date:   Fri Oct 10 15:09:51 2014 +0200
+
+    rename xbmc folder to src
+
+commit 1f97c3e9dc4e6ea991c8de9210c1a5bec468dc18
+Author: Jonathan Marshall <jmarshall@never.you.mind>
+Date:   Mon Jul 18 12:35:59 2011 +1200
+
+    Add CTimeSmoother class for smoothing timestamps
+
+commit a2f906bc4c1caba0989c6025aab36bc5152d691a
+Author: Jim Carroll <thecarrolls@jiminger.com>
+Date:   Wed Apr 6 20:55:24 2011 -0400
+
+    Removed internal python from linux.
+
+commit c51b1189e3d5353e842991f5859ddcea0f73e426
+Author: theuni <theuni-nospam-@xbmc.org>
+Date:   Mon Jan 24 16:05:21 2011 -0500
+
+    Merged cptspiff's code-reshuffle branch.
+    
+    Squashed commit due to build breakage during code-reshuffle history.
+    
+    Conflicts:
+    	xbmc/Util.cpp
+    	xbmc/cdrip/CDDARipper.cpp
+    	xbmc/filesystem/Directory.cpp
+    	xbmc/filesystem/File.cpp
+
+commit dc078f5d34b04e867a761b888a65912012cb3ba9
+Author: ceros7 <ceros7@svn>
+Date:   Mon Oct 25 02:02:07 2010 +0000
+
+    Include proper Vortex sources.
+    Sources to belong to Team XBMC were properly relicensed.
+    
+    git-svn-id: https://xbmc.svn.sourceforge.net/svnroot/xbmc/trunk@34995 568bbfeb-2a22-0410-94d2-cc84cf5bfa90
+
+commit 99905f220fe49bdedda37ecd0bc9bd730785289a
+Author: ceros7 <ceros7@svn>
+Date:   Tue May 18 22:45:13 2010 +0000
+
+    Remove FastDelegate.h.
+    FastDelegate.h is licensed under the Code Project Open License which is
+    incompatible with the GPL. Also, it seemed this header wasn't used at all in
+    XBMC anyway.
+    See http://trac.xbmc.org/ticket/7983#comment:70 for some more details.
+    
+    git-svn-id: https://xbmc.svn.sourceforge.net/svnroot/xbmc/trunk@30300 568bbfeb-2a22-0410-94d2-cc84cf5bfa90
+
+commit c6771db8b2fa54d139d808dcf22d1c4b2096d1c7
+Author: topfs2 <topfs2@svn>
+Date:   Sun Feb 14 13:16:20 2010 +0000
+
+    Merge commit 'origin/jsonrpc' into trunk
+    
+    git-svn-id: https://xbmc.svn.sourceforge.net/svnroot/xbmc/trunk@27770 568bbfeb-2a22-0410-94d2-cc84cf5bfa90
+
+commit 45285e8a9300cd754a760560640b75b09f98035e
+Author: AlTheKiller <AlTheKiller@svn>
+Date:   Wed Sep 23 01:49:50 2009 +0000
+
+    step 3/4: Move linuxport to trunk.  How'd I get roped into this?
+    
+    
+    git-svn-id: https://xbmc.svn.sourceforge.net/svnroot/xbmc/trunk@23097 568bbfeb-2a22-0410-94d2-cc84cf5bfa90

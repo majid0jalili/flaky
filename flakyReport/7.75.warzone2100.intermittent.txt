@@ -1,0 +1,63 @@
+commit d655d548f4518a531d7518195a79984734b43ec9
+Author: Dennis Schridde <devurandom@gna.org>
+Date:   Sun Mar 8 11:45:08 2009 +0000
+
+    Effect memory pool cleanup
+    
+    I played a bit with implementing a better memory pool for effects and this
+     is what came out.
+    
+    Major changes:
+    Allocates in chunks of 10k effects, uses free/used lists to speed up search
+     for free and updates of active effects.
+    
+    Benefits:
+     * Unlimited number of effects possible.
+     * Faster
+       Not (yet) benchmarked, but logic dictates that iterating over MAX_EFFECTS
+       is slower than iterating over just the number of active effects.
+    
+    (Patch as posted to mailinglist.)
+    
+    git-svn-id: svn+ssh://svn.gna.org/svn/warzone/trunk@6807 4a71c877-e1ca-e34f-864e-861f7616d084
+
+commit 5ba7ddac6bb54a1b5f1e67a433ed8d866e191c50
+Author: No Author <noauthor>
+Date:   Thu Jun 28 17:47:08 2007 +0000
+
+    Create final repository structure.
+    
+    git-svn-id: svn+ssh://svn.gna.org/svn/warzone/trunk@362 4a71c877-e1ca-e34f-864e-861f7616d084
+
+commit d17e78a7130ec32580f03e788c460552f80d580a
+Author: No Author <noauthor>
+Date:   Thu Jun 28 17:09:32 2007 +0000
+
+    Clear out entire repository for move of codebase from BerliOS to Gna! repository hosting.
+    
+    git-svn-id: svn+ssh://svn.gna.org/svn/warzone/trunk@361 4a71c877-e1ca-e34f-864e-861f7616d084
+
+commit fef9923a01c18f0d36ffcd02709324ad0f5cc0d2
+Author: Rodolphe Suescun <rodzilla@gna.org>
+Date:   Mon Jul 18 05:29:39 2005 +0000
+
+    trunk/crossplatform is the new place for stable crossplatform sources.
+    
+    
+    git-svn-id: svn+ssh://svn.gna.org/svn/warzone/trunk@198 4a71c877-e1ca-e34f-864e-861f7616d084
+
+commit 577c9c426758788d5ccb41c96e92a024970791e4
+Author: Dion Mendel <noid@users.berlios.de>
+Date:   Tue Jan 18 08:01:49 2005 +0000
+
+    renamed filenames to lowercase for developer convenience
+    
+    git-svn-id: svn+ssh://svn.gna.org/svn/warzone/trunk@3 4a71c877-e1ca-e34f-864e-861f7616d084
+
+commit dfb2beeb282233128b77c47a774608b3920765eb
+Author: Ben Russon <grizzly_37@users.berlios.de>
+Date:   Tue Jan 18 04:45:05 2005 +0000
+
+    Initial Version
+    
+    git-svn-id: svn+ssh://svn.gna.org/svn/warzone/trunk@1 4a71c877-e1ca-e34f-864e-861f7616d084

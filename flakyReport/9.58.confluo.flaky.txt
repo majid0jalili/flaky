@@ -1,0 +1,17 @@
+commit c7f71fcb439fd6d305a941f17037baef47dfa312
+Author: Anurag Khandelwal <anuragk@berkeley.edu>
+Date:   Wed Sep 6 02:25:16 2017 -0700
+
+    Added build profiles; download external projects instead of keeping their source; use pytest-runner and setuptools for python client
+
+commit 17364111ea65e70dbbce33cb26312857db485409
+Author: Anurag Khandelwal <anuragk@berkeley.edu>
+Date:   Sat Aug 19 18:15:32 2017 -0700
+
+    Updated build
+
+commit daf91219b9d57600d202391da4184c0b0b5f17f5
+Author: Anurag Khandelwal <anuragk@berkeley.edu>
+Date:   Tue Jun 14 15:52:13 2016 -0700
+
+    Bug fixes and added tests

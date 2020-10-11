@@ -1,0 +1,20 @@
+commit dc7ed4db950b6b373b1b4fc513c1c60e7458b344
+Author: JohnMcPMS <johnmcp@microsoft.com>
+Date:   Wed Aug 12 11:42:49 2020 -0700
+
+    Replace yaml-cpp with libyaml (#535)
+    
+    Due to certain bugs in yaml-cpp, it has not had significant fuzzing applied.  Even if those bugs were fixed, it is unknown how many more might exist behind it.  In order to avoid chasing those bugs, we are switching to a YAML parser that does have significant fuzz testing coverage, [libyaml](https://github.com/yaml/libyaml).
+    
+    In addition to the use of libyaml, a C++ wrapper is written to create a near identical surface area for use by the existing manifest validation.  It also includes encoding detection to enable support for ANSI (assumed Windows-1252, which wasn't supported by yaml-cpp), UTF-8 (with and without BOM), UTF-16 LE/BE (both with and without BOM).
+    
+    Finally, the `validate` command now returns a non-zero value when there are issues.  If there is a failure during validation, the value returned is `0x8A150029`.  If there are only warnings, the value returned is `0x8A150028`.
+
+commit fdff7f880fda82903464b59a1be3181301ad5b5e
+Author: Yao Sun <yaosun@microsoft.com>
+Date:   Thu Dec 12 17:01:18 2019 -0800
+
+    Squashed 'src/YamlCppLib/yaml-cpp/' content from commit 9a36242
+    
+    git-subtree-dir: src/YamlCppLib/yaml-cpp
+    git-subtree-split: 9a3624205e8774953ef18f57067b3426c1c5ada6

@@ -1,0 +1,70 @@
+commit 590641926816d194d16a6e1801d9b10e5e782e2c
+Author: Lukas Rusak <lorusak@gmail.com>
+Date:   Thu Mar 12 13:30:51 2020 -0700
+
+    gtest: remove lib/gtest and add as library
+
+commit 0e68409b38fd1e7b03b03bc44f547fbe421d9f9c
+Author: h.udo <hudokkow@gmail.com>
+Date:   Tue Jul 11 15:26:15 2017 +0100
+
+    Bump gtest to 1.8.0
+
+commit 8585408ffa957e82c9ce8b0314d0f50f2c41e445
+Author: wsnipex <wsnipex@a1.net>
+Date:   Sat Jul 26 10:21:24 2014 +0200
+
+    remove visualizations fishbmc, goom, milkdrop, projectm, spectrum, vortex and waveform from tree
+
+commit faac183458137d4a39a4d2bf433f99dfc819ebb3
+Author: Rainer Hochecker <fernetmenta@online.de>
+Date:   Tue Dec 16 12:22:12 2014 +0100
+
+    Revert "rename xbmc folder to src"
+    
+    This reverts commit 135fe8734924f79cedace50986a0fa4f12d76647.
+
+commit 135fe8734924f79cedace50986a0fa4f12d76647
+Author: Fneufneu <fneufneu@xbmc.org>
+Date:   Fri Oct 10 15:09:51 2014 +0200
+
+    rename xbmc folder to src
+
+commit 79d0e5b72307735821813e1b05744e4a84cda4e9
+Author: Andres Mejia <amejia004@gmail.com>
+Date:   Tue Jun 19 10:59:40 2012 -0400
+
+    [GSOC] Add latest snapshot of google test (r619).
+
+commit 1bced88e37124f811cea27e52378d4ad2cac759c
+Author: wiso <wiso@svn>
+Date:   Tue Aug 31 18:20:11 2010 +0000
+
+    [WIN32] changed: build bz2.pyd with a third party bzip2.lib and removed /lib/bzip2
+    
+    git-svn-id: https://xbmc.svn.sourceforge.net/svnroot/xbmc/trunk@33379 568bbfeb-2a22-0410-94d2-cc84cf5bfa90
+
+commit 8dff37eb23760a22c3e4adf45be50c93ecd5319b
+Author: wiso <wiso@svn>
+Date:   Sun Jun 27 19:40:01 2010 +0000
+
+    [WIN32] removed unneeded binary.
+    
+    git-svn-id: https://xbmc.svn.sourceforge.net/svnroot/xbmc/trunk@31447 568bbfeb-2a22-0410-94d2-cc84cf5bfa90
+
+commit 3b7a01e22bd250318d89545d6369f71a455af0dc
+Author: wiso <wiso@svn>
+Date:   Sun Jun 27 19:29:12 2010 +0000
+
+    adding bzip2 1.0.5 for python's bz2.pyd
+    
+    git-svn-id: https://xbmc.svn.sourceforge.net/svnroot/xbmc/trunk@31444 568bbfeb-2a22-0410-94d2-cc84cf5bfa90
+
+commit 45285e8a9300cd754a760560640b75b09f98035e
+Author: AlTheKiller <AlTheKiller@svn>
+Date:   Wed Sep 23 01:49:50 2009 +0000
+
+    step 3/4: Move linuxport to trunk.  How'd I get roped into this?
+    
+    
+    git-svn-id: https://xbmc.svn.sourceforge.net/svnroot/xbmc/trunk@23097 568bbfeb-2a22-0410-94d2-cc84cf5bfa90

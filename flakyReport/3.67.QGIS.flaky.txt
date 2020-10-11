@@ -1,0 +1,212 @@
+commit 4a668fcc03bd5794d72b564678444f6c9fa40d29
+Author: uclaros <uclaros@gmail.com>
+Date:   Fri Aug 14 17:00:53 2020 +0300
+
+    Added test cases for split features tool
+
+commit 25599943978e8b72b759f179219ac4ebfe3d140f
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Jun 19 14:15:52 2020 +0200
+
+    changelog and news update for 3.14
+
+commit 364dc3fd4fc6ff4f32d62eae59adb7940a3430dc
+Author: lbartoletti <lbartoletti@users.noreply.github.com>
+Date:   Fri Mar 20 13:23:11 2020 +0100
+
+    Fix multi split for multilinestring (#34510)
+    
+    * Fix multi split for multilinestring
+
+commit 3ba413cf9202f659339a08f7a4038695b6abad81
+Author: vcloarec <vcloarec@gmail.com>
+Date:   Tue Feb 25 21:41:12 2020 -0400
+
+    add tests
+
+commit ff1d6eee3e832c1328b38819c09df0e8065732a4
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Feb 21 13:36:42 2020 +0100
+
+    changelog and news update for 3.12
+
+commit ee6df432a1646101f46209765b09ba437a752c31
+Author: Alessandro Pasotti <elpaso@itopen.it>
+Date:   Fri Jan 31 09:43:39 2020 +0100
+
+    Disable PG flacky test case
+
+commit b3b3d7053a52ba05a04bf2ee316cb32fe0108587
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Fri Sep 13 10:02:34 2019 +1000
+
+    Don't try to load mssql data
+
+commit 33b48b234ef1fd4823eddfb1f5a6b1f30bde1bcc
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Jun 21 14:32:23 2019 +0200
+
+    changelog and news update for 3.8
+
+commit 62d615c2cd197aa9fe69708a2974aee0cbb709f7
+Author: Peter Petrik <zilolv@gmail.com>
+Date:   Tue Jun 4 15:52:50 2019 +0200
+
+    [QEP 149] Introduce static data providers [API BREAK]
+    
+    - adds QgsProviderGuiRegistry and QgsProviderGuiMetadata
+    - adds QgsProjectStorageGuiRegistry
+    - requires providerMetadataFactory for dynamic data providers
+    - requires providerMetadataGuiFactory for dynamic data providers (GUI only)
+    - removes QgsProviderRegistry::WidgetMode
+
+commit 7410fb0a5238cfdc14707d5cfc65fa4c89a89624
+Author: Denis Rouzaud <denis.rouzaud@gmail.com>
+Date:   Wed Apr 3 11:02:30 2019 -0500
+
+    clearer definition of flaky tests (#9693)
+
+commit 7fb752e0ff00173aaa40dcadfcf9e56bd21f2eee
+Author: Denis Rouzaud <denis.rouzaud@gmail.com>
+Date:   Wed Mar 27 09:45:34 2019 -0500
+
+    [TRAVIS] run flaky test when label is defined (#9509)
+    
+    to declare a test as flaky:
+    
+    * for cpp, use
+    
+    ```
+    if ( !QgsTest::runFlakyTests() )
+        QSKIP( "This test is disabled on Travis CI environment" );
+    ```
+    
+    * for Python, you can use `RUN_FLAKY_TEST` environment variable
+
+commit 2a41fd0c7d591851b96aef0cc0e64b8217ad1e50
+Author: Matthias Kuhn <matthias@opengis.ch>
+Date:   Wed Mar 13 07:30:57 2019 +0100
+
+    Disable flaky 3D mesh rendering test
+
+commit 8c676ba0b3d1fde74ee261c86a137d60b40c42cb
+Author: Matthias Kuhn <matthias@opengis.ch>
+Date:   Tue Mar 12 10:47:08 2019 +0100
+
+    Disable flaky ogrprovider test
+
+commit 2be19fbe0425eba67f1343c2151352ff6d3b2a4f
+Author: Matthias Kuhn <matthias@opengis.ch>
+Date:   Thu Mar 7 20:39:47 2019 +0100
+
+    Disable flaky test
+
+commit a294fc792358412e29d5d03b0634361374df4543
+Author: Denis Rouzaud <denis.rouzaud@gmail.com>
+Date:   Thu Mar 7 13:08:35 2019 +0100
+
+    build and test in 2 steps
+
+commit 30de027df3a1ba83d938dc6ee05d9ad9684bd968
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Jun 22 14:14:17 2018 +0200
+
+    changelog and news update for 3.2
+
+commit 6304adde7d8d76421e0eb621fab2ac0cbee34ce8
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Feb 23 13:09:53 2018 +0100
+
+    changelog and news update for 3.0
+
+commit 206fdbda1ab12af4af2b774a634f46dfcee68079
+Author: Matthias Kuhn <matthias@opengis.ch>
+Date:   Sat Nov 4 09:33:17 2017 +0100
+
+    Disable talkative wms server test
+
+commit e50a8aa31e89c1642a5eb6337cbc7ad9fbdb1310
+Author: Blottiere Paul <blottiere.paul@gmail.com>
+Date:   Wed Oct 18 17:23:25 2017 +0100
+
+    Split WMS tests to detect flaky behavior
+
+commit 8f2c885436008747fde97fa4e8e67277c4f74742
+Author: Matthias Kuhn <matthias@opengis.ch>
+Date:   Thu Sep 21 18:00:40 2017 +0200
+
+    [travis] Disable flaky test
+    
+    See https://travis-ci.org/qgis/QGIS/jobs/278224577
+    https://github.com/qgis/QGIS/pull/5230#issuecomment-331189552
+
+commit b629fbca49bf91336fac6a8f7fa9806d9791cda1
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Mon Sep 4 16:55:35 2017 +1000
+
+    Skip another test which is fragile on Travis
+
+commit 632a2be86a75f844a49e4872335e54e5758fdd1b
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Tue Jun 6 07:30:37 2017 +1000
+
+    Disable QgsTaskManager::waitForFinished test by default
+    
+    The test intermittently fails on Travis builds, likely due
+    to the platform's inconsistent availability to multiple threads.
+
+commit 56fd6e09048c71196d5b746c5847ef46c4a536b7
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Sat Jan 21 15:01:02 2017 +1000
+
+    Revert "Reenable full task manager tests following b45469f"
+    
+    This reverts commit dd614451c9586ea598f93aab56a97a00f409a6cf.
+
+commit dd614451c9586ea598f93aab56a97a00f409a6cf
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Fri Jan 20 08:26:56 2017 +1000
+
+    Reenable full task manager tests following b45469f
+
+commit 46f786eb52e548e2277ea0f565efa734199a9fd3
+Author: Denis Rouzaud <denis.rouzaud@gmail.com>
+Date:   Thu Jan 12 20:29:08 2017 +0100
+
+    add interactive mode to spell checking (allow direct replace or ignore)
+
+commit af5eb6aaabdb5f3218da96c2492566ceb684a47d
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Fri Jan 6 10:54:11 2017 +1000
+
+    Disable flaky test
+
+commit d7b0244e68c149fd28d4487b45cc06aa584a6ceb
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Tue Dec 13 06:57:55 2016 +1000
+
+    Disable another intermittent task manager test
+
+commit b4d49133df079f392aa9d895d7ad970cfec0505b
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Mon Dec 12 09:19:46 2016 +1000
+
+    Temporarily disable flaky part of test
+
+commit 17562bd877b0808cc6cbc2dfc4ec34ae5f3f130e
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Jul 8 14:11:46 2016 +0200
+
+    changelog and news update for 2.16
+
+commit a5795bcaab61b94d165468c6ae2700ffe24c85ba
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Feb 26 13:23:48 2016 +0100
+
+    changelog and news update for 2.14
+
+commit bd231c675cb4619a5caa54bf5e7e3f985291797a
+Author: Matthias Kuhn <matthias@opengis.ch>
+Date:   Wed Dec 2 15:02:29 2015 +0100
+
+    More output to debug flaky CSV test

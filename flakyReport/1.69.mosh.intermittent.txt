@@ -1,0 +1,84 @@
+commit b742e958b6ae7185f557263e4b81db0e1038b882
+Author: John Hood <cgull@glup.org>
+Date:   Sun Oct 18 16:27:31 2015 -0400
+
+    mosh-server: Support timeouts on lost connectivity to network client.
+    
+    Closes #690.
+
+commit a0996386036065fa821b41aab2084569646973b2
+Author: John Hood <cgull@glup.org>
+Date:   Sun Jun 7 22:29:10 2015 -0400
+
+    macosx: Make build more portable and general
+    
+    This broadens the OS X build support to include old and current OS
+    X/Xcode, and Homebrew/MacPorts.
+    
+    Support pkgbuild/productbuild + metadata from Mosh-1.2.4-3 package
+    Search for protobufs in /{usr,opt}/local
+    Make build select pkgbuild if available, PackageMaker if not
+    Make PackageBuilder build work on OS X 10.5, XCode 3.1, Macports
+    Do version substitution
+    Use generic names for c/c++/cpp
+    Make build script arch-indepdendent
+    Changes install dir from /usr to /usr/local
+    
+    Closes #633.
+    
+    Signed-off-by: John Hood <cgull@glup.org>
+
+commit 83bfae7cf2b15db4cae269c23f766d99fbed575b
+Author: John Hood <cgull@glup.org>
+Date:   Fri Jun 12 22:40:16 2015 -0400
+
+    Add contents of mosh-1.2.4-3.pkg, except Payload
+    
+    This is the base for new package builds using
+    pkgbuild and productbuild.
+    
+    Signed-off-by: John Hood <cgull@glup.org>
+
+commit 4012348ec7b625f5ad2bba1bdad71d1b847c94b9
+Author: Peter Iannucci <iannucci@mit.edu>
+Date:   Mon Apr 9 02:25:40 2012 -0400
+
+    Packaging script for Mac OS X .pkg.
+
+commit bdb0ecc2fd89cef2ccbd6d593d9421e188a9da3a
+Author: Alexander Chernyakhovsky <achernya@mit.edu>
+Date:   Fri Mar 16 15:30:47 2012 -0400
+
+    Packaging for Fedora
+
+commit 3721e22bf9660e2da83e6b382d2643a76e4300cc
+Author: Keegan McAllister <mcallister.keegan@gmail.com>
+Date:   Mon Mar 5 11:41:24 2012 -0800
+
+    Rename README to README.md
+    
+    This will cause GitHub to render the Markdown syntax.
+
+commit ea3c0ca53bb2626f2ef0e9b1a65c19d591788148
+Author: Keith Winstein <keithw@mit.edu>
+Date:   Wed Feb 15 13:12:21 2012 -0500
+
+    Add man pages (closes #7 github issue)
+
+commit 14ae2fcb67126760e18cf7468a3222765da67b03
+Author: Keith Winstein <keithw@mit.edu>
+Date:   Mon Feb 6 20:40:39 2012 -0500
+
+    Add README
+
+commit 27eed9fdb7f746edae9f4b25da30a55a11729dac
+Author: Keith Winstein <keithw@mit.edu>
+Date:   Mon Feb 6 18:48:49 2012 -0500
+
+    NEWS and ChangeLog
+
+commit 38c27149ee347aed23b770f2b99e94e6dc18e020
+Author: Keith Winstein <keithw@mit.edu>
+Date:   Sun Feb 5 13:38:13 2012 -0500
+
+    First packaging info

@@ -1,0 +1,20 @@
+commit c0189fcad473fcaed83a9bfd897592e1146bda3f
+Author: David Goodwin <davidg@nvidia.com>
+Date:   Tue Feb 19 18:29:49 2019 -0800
+
+    Add max_sequence_idle_microseconds
+    
+    This setting ensures that inference server resources are freed after a
+    given timeout even if a sequence doesn't send an end marker. Without
+    this timeout malicious or faulty sequences could DOS the server.
+
+commit 010e198092e1e3f7f05713edb3fbd3280f5d93d0
+Author: David Goodwin <davidg@nvidia.com>
+Date:   Mon Feb 11 12:48:03 2019 -0800
+
+    Fix sequence scheduler to efficiently handle backlogs
+    
+    When all available slots are busy, sequences are kept in backlog
+    queues and then swapped into batch slots as they come available.
+    
+    Add end-to-end testing for sequence batcher

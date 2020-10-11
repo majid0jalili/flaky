@@ -1,0 +1,17 @@
+commit 0a555e2bbe2eddb4ed263155f6bdbab9d116e9b3
+Author: Joonsung Lee <joonsung@devsisters.com>
+Date:   Wed Sep 21 16:05:51 2016 +0900
+
+    Chromium 55.0.2861.0
+
+commit c131ee27048643dbdc0231bb83367abd1c4270e4
+Author: Joonsung Lee <joonsung@devsisters.com>
+Date:   Tue Aug 2 20:54:39 2016 +0900
+
+    Add android-related files on DEPS
+
+commit 6909ba89cfb733715724e18ff30aeb7e483900d7
+Author: Joonsung Lee <joonsung@devsisters.com>
+Date:   Wed May 4 17:47:36 2016 +0900
+
+    Chromium: 192da0f866b250d8a674a7dd400ff2a5b6a01ac8

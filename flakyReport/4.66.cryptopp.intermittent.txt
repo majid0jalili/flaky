@@ -1,0 +1,13 @@
+commit f8d97b83ed6d65946570a2ec9d6aa1ac5ff7ce94
+Author: Jeffrey Walton <noloader@gmail.com>
+Date:   Tue Oct 17 20:47:14 2017 -0400
+
+    Fix compile on old PowerPC
+    This cleans up the compile on old PwerMac G5's. Our Altivec and Crypto code relies on Power7 and Power8 extensions. There's no need to shoehorn Altivec and Power4 into old platforms, so we disable Altivec and Crypto unless Power7 is available. The GNUmakefile sets CRYPTOPP_DISABLE_ALTIVEC if Power7 is not available.
+
+commit ba569b55cab52881a4f9c10c97d9ed670a571e45
+Author: Jeffrey Walton <noloader@gmail.com>
+Date:   Sat Sep 9 17:22:42 2017 -0400
+
+    Reduce IBM XL C/C++ compiler to -O2
+    Early versions of IBM XL C/C++ for AIX, V13.1 fail some self tests, like TEA and XTEA

@@ -1,0 +1,226 @@
+commit 4164217553e76dc4d41a396b78514ec4903602fe
+Author: RocketRobz <bobesh8@gmail.com>
+Date:   Thu Oct 1 21:48:52 2020 -0600
+
+    slot1launch: Fix DS Browser and DSTWO support
+    
+    Closes #1194
+
+commit a09e4a9200703d0177fd982a6c7b59aa6a75a37d
+Author: RocketRobz <bobesh8@gmail.com>
+Date:   Thu Aug 20 08:48:52 2020 -0600
+
+    NitroFS: Modernize GBA SLOT support
+
+commit d6022577375530fab170aa71a61a0ac2c5a6dfc0
+Author: RocketRobz <bobesh8@gmail.com>
+Date:   Thu Aug 13 15:29:26 2020 -0600
+
+    Port arm7 code from booter to rungame/resetgame
+
+commit d734b2909af8458686d81a1164414b7a906d10aa
+Author: Ronny Chan <ronny6993@gmail.com>
+Date:   Tue Sep 3 18:05:20 2019 -0400
+
+    akmenu: fix gbarunner2 launch (#756)
+
+commit e7701141765a8639c9bf4da8519a4dd445df1970
+Author: RocketRobz <bobesh8@gmail.com>
+Date:   Tue Aug 6 14:08:59 2019 -0600
+
+    Add MegaMan ZX to SpeedBumpExclude list
+
+commit 31ad2bc9ed1a6befd75b5c2aeef28eb2c225b0b8
+Author: RocketRobz <bobesh8@gmail.com>
+Date:   Thu Mar 7 16:45:46 2019 -0700
+
+    Manual: Add missing .ld file
+
+commit a92c8014d36bd7f299a6557a76bdbbae7d9e0a57
+Author: RocketRobz <bobesh8@gmail.com>
+Date:   Tue Jan 15 11:34:57 2019 -0700
+
+    Fix rest of compilation errors
+
+commit f6bddf95e7b8e7f316371e211f5e4ce12d68b5e1
+Author: RocketRobz <bobesh8@gmail.com>
+Date:   Tue Jan 15 11:28:08 2019 -0700
+
+    Main menu: Add missing file(s)
+
+commit 1829d28d875a2e96c1a36aaf37f664fdf2273244
+Author: RocketRobz <bobesh8@gmail.com>
+Date:   Mon Dec 3 15:48:11 2018 -0700
+
+    Split title and settings into their own .srldr files
+
+commit 6e34adba0065540b2eaecad98458f0019f207db4
+Author: Ronny Chan <ronny6993@gmail.com>
+Date:   Sun Sep 2 18:50:34 2018 -0400
+
+    Fix package build.
+
+commit b544f9eec4ebc0154627049d5bfb195a902fadca
+Author: Ronny Chan <ronny6993@gmail.com>
+Date:   Sat Aug 25 20:38:54 2018 -0400
+
+    Make copy from r4theme
+
+commit da6ae316a2455e5a1c53109e30bde0c58122cfcd
+Author: SLKun <summerslyb@gmail.com>
+Date:   Thu Jul 19 22:43:42 2018 +0800
+
+    optimize makefiles and fix build issue on linux (#122)
+    
+    * update .gitignore
+    
+    * rename directory for case-sensitive filesystem
+    
+    * remove useless bin files
+    
+    * modify makefiles for build correctly
+    
+    * Fix tileandsettings build
+    
+    * refine makefiles
+
+commit 1b37c6ba7a060f643d15c4d4b4d6aba08742f4ef
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Mon Jul 2 14:21:00 2018 -0600
+
+    Add Slot-1 launcher (based on nitrohax/NTR Launcher)
+    
+    Can read set language from Games/Apps settings
+
+commit a446679be9ab0ad189091228c4a6162eca71954c
+Author: ahezard <ahezard@gmail.com>
+Date:   Sun Jun 3 02:58:46 2018 +0200
+
+    Remove unused file
+
+commit 16efedff0ef0bef7ec1d430ea95b43d54d6ae6b5
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Fri May 25 12:48:05 2018 -0600
+
+    non-DSiWarehax: When launching DS ROM, reboot into "Last-ran game" title, with NTR touch/WiFi set
+    
+    Result: Fixed headphone support
+
+commit 133da115c0c1e876cc2b6651d85f54f84552f135
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Wed May 23 15:49:00 2018 -0600
+
+    Add "Last-ran ROM" title
+
+commit cbba22fe595b31f93708b2b27ff87195c691cc07
+Author: ahezard <ahezard@gmail.com>
+Date:   Wed May 23 21:05:29 2018 +0200
+
+    Fix issues with devkitARM R48 (#40)
+    
+    * Update booter bootloader
+    
+    * update booter
+    
+    * Fix titleandsettings
+    
+    * Not needed change
+    
+    * fix last srl
+    
+    * Fix booter_fr srl
+    
+    * Add NO_SDMMC option into the Makefile for flashcard booter
+    
+    * Fix with devKitARMr48
+    
+    * Fix for devKitARMr48
+    
+    * Fix titleAndSettings with devKitArmR48
+    
+    * Fix romsel_dsimenutheme
+    
+    * Fix romsel_r4theme
+    
+    * Revert "Fix romsel_r4theme"
+    
+    This reverts commit 3f903e4b0a7968c3b77e9059f69f1677fb076ffe.
+    
+    * Fix romsel_r4theme
+    
+    * Fix booter_fc
+
+commit 25699297898f9c8b81c93094ded70fb6ccdad3df
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Thu May 10 15:40:59 2018 -0600
+
+    WIP R4 theme
+
+commit 3884b611ed40c8741e1b5b2485e938961d51ac29
+Author: ahezard <ahezard@gmail.com>
+Date:   Thu Apr 26 03:41:36 2018 +0200
+
+    Port to devKitArmR47 libnds 1.7.1 (#34)
+    
+    * Update booter bootloader
+    
+    * update booter
+    
+    * Fix titleandsettings
+    
+    * Not needed change
+    
+    * fix last srl
+    
+    * Fix booter_fr srl
+    
+    * Add NO_SDMMC option into the Makefile for flashcard booter
+
+commit bde45d3c291c4fcfa4cf02af7f66dd644206a3a4
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Fri Feb 9 15:03:24 2018 -0700
+
+    Merge some of @Lykie's changes/fixes, and ditch rocket build of bootstrap
+
+commit b31e0a6d380b6a16a15d4f6e3c52359c1fc67df1
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Sat Sep 2 17:40:11 2017 -0600
+
+    Add Game console option with DSi and 3DS options
+    
+    ALSO: Switch between release and unofficial bootstraps for 3DS.
+    ALSO: Add SRLoader booter.
+
+commit 58581181dcd4a1e15529740032e9cb1164d8ada6
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Mon May 22 12:49:32 2017 -0600
+
+    Add set/unset donor ROM
+    
+    ALSO: Everything uses devkitARM r46 now.
+
+commit c8e8e39e6953d3ebf255e234ab0aa7107215912b
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Sat May 20 18:46:24 2017 -0600
+
+    Include .ld and .s files
+    
+    Once again, the source should compile.
+
+commit c89230bb64d733a9dcae12dc79c486674bf11d56
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Fri May 12 01:01:03 2017 -0600
+
+    Split Title/Settings and ROM select screens into 2 SRL files
+
+commit c5efdb1f649a4558541dd6164b20cba5f63ada70
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Thu May 11 22:54:24 2017 -0600
+
+    Now based on Aura Launcher
+
+commit 8c19a7431b7fa70aa0d7ad7c3306694fe43cd6fd
+Author: Robz8 <bobesh8@gmail.com>
+Date:   Fri May 5 23:40:26 2017 -0600
+
+    Initial commit

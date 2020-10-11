@@ -1,0 +1,1284 @@
+commit 148c169d46d2cdccc7434e827162552279bc3e4a
+Author: Andrew Wong <awong@cloudera.com>
+Date:   Wed Mar 4 17:41:32 2020 -0800
+
+    test: re-deflake TabletServerQuiescingITest
+    
+    Commit bc2efa1ae97fcc4e592c93d38592206d48d6f8f5 undid some of the
+    deflaking done in 6e4dd49 by increasing the number of read threads.
+    
+    This puts us back at using a single reader, which, while may not always
+    yield active scanners, should be significantly less flaky.
+    
+    I ran this 100 times in TSAN mode and saw no failures, compared to the
+    20% flakiness reported by our test dashboard.
+    
+    Change-Id: I598c0f0a9a665691bc675920d8dc5a0d272be72e
+    Reviewed-on: http://gerrit.cloudera.org:8080/15365
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Kudu Jenkins
+
+commit a1bbd3d042322cef3cee0af8713a4bd247699113
+Author: Will Berkeley <wdberkeley@gmail.com>
+Date:   Wed May 29 14:50:50 2019 -0700
+
+    [java] Improve TestAsyncKuduSession: Refactor into more tests
+    
+    TestAsyncKuduSession had a few tests, but one of them, ominously called
+    `test`, was actually 7-8 tests in one, with each test shackled to the
+    next by the shared state of the underlying table. The main improvement
+    of this commit is to refactor mega-`test` into several targeted tests.
+    
+    There were some parts of the original mega test method for which I
+    couldn't determine what precisely they were testing. Those parts have
+    been dropped.
+    
+    I also made a few other small improvements which allowed me to drop
+    almost all the helper code in favor of generic test utils.
+    
+    Change-Id: I73675605c04d16f23ce9cd61763a97486dfcb009
+    Reviewed-on: http://gerrit.cloudera.org:8080/13460
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Kudu Jenkins
+
+commit 7b80b5a44f80c9cd6734e7fd0b709d787558c4d1
+Author: Will Berkeley <wdberkeley@gmail.com>
+Date:   Tue May 28 15:05:38 2019 -0700
+
+    [java] Deflake TestAsyncKuduSession with temporary workaround
+    
+    TestAsyncKuduSession.test is kind of a mess. In particular, it has one
+    section where it tries to insert 21 ops into a session with 20 ops of
+    buffer space. It expects this to trigger a PleaseThrottleException.
+    However, it is inherently racy because the session may manage to flush
+    one or more buffers of ops to the server so no throttling is needed.
+    It's always been an icky test but it wasn't flaky until
+    2bf80b5147f09c980c2f2268ee3467a5b3305a57 cleaned up the session code a
+    bit. Now it's about 30% flaky in RELEASE mode according to the flaky
+    test dashboard. Until I can spend some time to redo the test and
+    understand exactly what about the previous change triggered the
+    flakiness, I'm turning off the check for an exception.
+    
+    I also moved a debug log statement so there's less noise when calling
+    flush in non-AUTO_FLUSH_BACKGROUND modes.
+    
+    Change-Id: I751f1ed3a151eee611a8b88c1527e12271024bf6
+    Reviewed-on: http://gerrit.cloudera.org:8080/13453
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+
+commit 2a0a5ef2193a8e83bd8374772bc491594c1c0aa8
+Author: Adar Dembo <adar@cloudera.com>
+Date:   Tue Apr 30 16:44:55 2019 -0700
+
+    RetryRule: don't report NTP desynchronization test failures
+    
+    This mirrors the logic in build-support/report-test.sh which skips reporting
+    of a failed test if there was an NTP clock synchronization issue.
+    
+    I went back and forth on whether to do this in RetryRule or ResultReporter,
+    but settled on RetryRule as it seemed like the better place for "policy". I
+    also figured spawning a subprocess is faster (and easier) than doing a
+    primitive grep via Java APIs.
+    
+    I tested this by running a local test result server and injecting a failure
+    into a test, once with the magic desynchronization string, and once without.
+    I saw the failure get reported in the former and skipped in the latter.
+    
+    Change-Id: Ibba9768775f225425e98c3c36733aefcc7a42a11
+    Reviewed-on: http://gerrit.cloudera.org:8080/13206
+    Tested-by: Adar Dembo <adar@cloudera.com>
+    Reviewed-by: Grant Henke <granthenke@apache.org>
+
+commit 10ea0ce5a636a050a1207f7ab5ecf63d178683f5
+Author: Adar Dembo <adar@cloudera.com>
+Date:   Sun Apr 21 21:17:04 2019 -0700
+
+    dist-test: support RUN_FLAKY_ONLY
+    
+    The flaky test list is somewhat short so there's no real reason for the
+    tests to be distributed. However, over the years we've observed that the
+    dist-test runtime environment is different enough from non-dist-test
+    environments that a test may be flaky in one but not the other. Since the
+    purpose of flaky test resistance is to improve the precommit experience, and
+    since all precommit tests run in dist-test, the test runs that power the
+    flaky test dashboard (i.e. RUN_FLAKY_ONLY=1) should follow suit and also run
+    in dist-test.
+    
+    Change-Id: Id5a063512f82341a48031911de12c44f902a2723
+    Reviewed-on: http://gerrit.cloudera.org:8080/13072
+    Tested-by: Adar Dembo <adar@cloudera.com>
+    Reviewed-by: Grant Henke <granthenke@apache.org>
+
+commit c550fe8f55ee0a4c6838d246e00e541ef4cff460
+Author: Adar Dembo <adar@cloudera.com>
+Date:   Mon Apr 1 21:59:21 2019 -0700
+
+    build: adapt new Java flaky test infrastructure to existing controls
+    
+    Now that Java tests are reporting success/failure, we can use the existing
+    flaky test controls to drive it. As a refresher, the C++ tests rely on these
+    environment variables:
+    - RUN_FLAKY_ONLY: whether to run just flaky tests or all tests
+    - KUDU_FLAKY_TEST_ATTEMPTS: number of attempts for flaky tests
+    - KUDU_FLAKY_TEST_LIST: path to list of flaky tests, one on each line
+    - KUDU_RETRY_ALL_FAILED_TESTS: whether to retry all tests or just the ones
+                                   in the flaky test list
+    
+    The algorithm is roughly:
+      if RUN_FLAKY_ONLY or KUDU_FLAKY_TEST_ATTEMPTS > 1:
+        populate KUDU_FLAKY_TEST_LIST from test result server
+    
+      if RUN_FLAKY_ONLY:
+        testset = tests listed in KUDU_FLAKY_TEST_LIST
+      else:
+        testset = all tests
+    
+      for t in testset:
+        if KUDU_RETRY_ALL_FAILED_TESTS or (KUDU_FLAKY_TEST_LIST and
+                                           t in KUDU_FLAKY_TEST_LIST):
+          num_attempts = KUDU_FLAKY_TEST_ATTEMPTS (or 1 if unset)
+        else:
+          num_attempts = 1
+    
+        run t up to num_attempts times
+    
+    You can see it at work in build-and-test.sh/run-test.sh. You can also see it
+    in dist-test.py though notably, it doesn't care about RUN_FLAKY_ONLY because
+    we never used that particular combination (presumably the list of flaky
+    tests is short enough that it wouldn't benefit from distributed testing).
+    
+    This patch attempts to mirror these exact semantics for Java tests. Here are
+    the interesting changes:
+    - In RetryRule, rerunFailingTestsCount is gone. The behavior is informed via
+      the aforementioned environment variables instead.
+    - In build-and-test.sh, if RUN_FLAKY_ONLY is set, parse the flaky test list
+      into a series of --tests gradle command line arguments.
+    - In dist-test.py, opt into the C++ flaky test handling (which reflects the
+      above algorithm). There are also some small changes to flaky handling to
+      accommodate Java's per-method flaky test tracking.
+    
+    Note: all of this assumes that there's no overlap between the names of any
+    C++ or Java tests, which is currently true as all C++ tests have names like
+    "tablet-test" or "master_cert_authority-itest" while all Java tests are
+    prefixed with "org.apache.kudu...". If this were to change, we'd need to
+    properly "namespace" the test results in the reporting infrastructure and
+    fetch the flaky test lists separately for C++ and Java tests. For now
+    there's just one flaky test list, and both ctest and gradle are OK with
+    being asked to run irrelevant tests (they'll just be ignored).
+    
+    Change-Id: Ia89598d7eeb5ab642ab4ebb7aa583adcce770eae
+    Reviewed-on: http://gerrit.cloudera.org:8080/12917
+    Reviewed-by: Grant Henke <granthenke@apache.org>
+    Tested-by: Adar Dembo <adar@cloudera.com>
+
+commit 8532311f2739de0ebcfa68666f6a2d7ece3ef226
+Author: Mike Percy <mpercy@apache.org>
+Date:   Wed Dec 5 21:39:50 2018 -0800
+
+    build: enable Java flaky test reporting
+    
+    This patch moves flaky test environment setup out of report-test.sh and
+    into build-and-test.sh so that those environment variables can be
+    inherited by the Java build environment. That change enables flaky test
+    reporting for Java tests.
+    
+    This was tested in a RHEL6 DEBUG build environment. Example:
+    
+    http://dist-test.cloudera.org:8080/test_drilldown?test_name=testHiveMetastoreIntegration%28org.apache.kudu.test.TestMiniKuduCluster%29
+    
+    Change-Id: Ifef74fc9bf5453105c267418fa24daf4c33f73f3
+    Reviewed-on: http://gerrit.cloudera.org:8080/12043
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Grant Henke <granthenke@apache.org>
+
+commit d929aac91831c12e7675faf2dbfd6c578996f84f
+Author: Mike Percy <mpercy@apache.org>
+Date:   Tue Dec 4 18:57:47 2018 -0800
+
+    java: add support for flaky test reporting
+    
+    This patch hooks into the existing RetryRule to report test results to
+    the flaky test server inline as the tests are executed. All of the
+    actual reporting logic is factored out into a separate ResultReporter class.
+    
+    The interface for the test reporter to pass relevant information about
+    the build environment to the flaky test server is based on environment
+    variables. This includes configuration and build metadata such as flaky
+    test server address, git revision, build id, build host, and build type.
+    
+    This patch also includes a simple integration test for the reporter
+    using a mocked-up flaky test server HTTP endpoint.
+    
+    This patch does not integrate the above functionality into the build.
+    That will happen in a follow-up patch.
+    
+    Change-Id: I34f88363dbf52c2f7bba50fbfb5de059f88e7f74
+    Reviewed-on: http://gerrit.cloudera.org:8080/12042
+    Tested-by: Adar Dembo <adar@cloudera.com>
+    Reviewed-by: Grant Henke <granthenke@apache.org>
+
+commit 7645f5b2ea1f54777ce88c61df54422b068142e5
+Author: Andrew Wong <awong@cloudera.com>
+Date:   Sun Jan 6 21:02:46 2019 -0800
+
+    KUDU-2543 pt 3 java: pass around authz tokens
+    
+    Adds handling of authz tokens to the Java client. The Java client will
+    now cache tokens upon opening a table, and use them for RPCs that need
+    them (e.g. Writes and Scans), reacquiring them when receiving word that
+    they are expired.
+    
+    This is tested as follows:
+    - TestAuthnTokenReacquire's test for scans and writes is repurposed to
+      also test for reacquisition of authz tokens when they expire
+    - basic tests are added to test the token cache
+    - a test is added to test authz reacquisition in the case that a
+      multi-master deployment undergoes a leadership change
+    - a test is added to test authz reacquisition upon invalid or expired
+      tokens during prolonged workloads against a multi-master deployment
+    
+    Change-Id: Iadd5f7709b45628d7ddd9e2b100d0dfaabbf15af
+    Reviewed-on: http://gerrit.cloudera.org:8080/12279
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Reviewed-by: Alexey Serbin <aserbin@cloudera.com>
+    Reviewed-by: Hao Hao <hao.hao@cloudera.com>
+
+commit a98186406b90ea5a53e06e7e98c34f6c5810de52
+Author: Andrew Wong <awong@cloudera.com>
+Date:   Wed Jan 2 18:49:21 2019 -0800
+
+    KUDU-2543 pt 2: pass around default authz tokens
+    
+    Adds authz token generation to the master's GetTableSchema endpoint,
+    with which clients can authorize themselves for specific tables. A
+    client will cache these tokens and use them appropriately for RPCs that
+    need them (e.g. Writes and Scans), reacquiring them when receiving word
+    that they are expired.
+    
+    This is tested in the following ways:
+    - unit tests for the new client-side cache for authz tokens
+    - parameterized the token expiration test for authn and authz tokens to
+      have varying token expirations, testing when authn tokens expire but
+      not authz tokens, and vice versa
+    - added various tests to ensure the client behaves correctly in various
+      non-happy cases
+    
+    Change-Id: I7971d652d6adc822167cf959bffd5f994a7ca565
+    Reviewed-on: http://gerrit.cloudera.org:8080/12122
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Alexey Serbin <aserbin@cloudera.com>
+    Reviewed-by: Hao Hao <hao.hao@cloudera.com>
+
+commit 861ecc12f4a67dc5988240fe1149d2f7572cb0de
+Author: Alexey Serbin <alexey@apache.org>
+Date:   Thu Jan 3 15:01:14 2019 -0800
+
+    [build-and-test] add short-circuiting for RUN_FLAKY_ONLY
+    
+    Added a short circuit into build-and-test.sh: in case of
+    RUN_FLAKY_ONLY=1 and no flaky tests are reported, don't build
+    anything and report success right away.
+    
+    Change-Id: I69278c08c496749cd5f30e2d042b9291efde202c
+    Reviewed-on: http://gerrit.cloudera.org:8080/12154
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+
+commit f28e8bb81ee760fda8462738e3bc4d54f414a282
+Author: Andrew Wong <awong@cloudera.com>
+Date:   Wed Nov 21 15:35:52 2018 -0800
+
+    deflake TsRecoveryITest.TestTabletRecoveryAfterSegmentDelete
+    
+    The test runs a write workload and waits for a certain number of WAL
+    segments to show up on disk. Recently, the test has become particularly
+    flaky (~10% flaky in the last couple days according to our test tracking
+    server), though I haven't been able to determine the cause of this new
+    flakiness.
+    
+    Regardless, the test has been at least a little flaky for much longer
+    than the last couple of days, and the cause seems to be that in TSAN, we
+    might not always hit the expected number of WAL segments in the allotted
+    amount of time.
+    
+    Upon inspecting a flamegraph of the test, it seems like a decent
+    percentage of cycles are spent compressing the WALs, so I've removed the
+    log compression codec for the test.
+    
+    Without this fix, the test failed 100/100 times with 4 stress threads in
+    TSAN mode. With it, it passed 1000/1000.
+    
+    Change-Id: Ic19d33a5e43aaae21c1cb6273a09a09b1b91f92c
+    Reviewed-on: http://gerrit.cloudera.org:8080/11979
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+
+commit aa20ef0576cd9e2cf4a035ecdf6dbd746d94c586
+Author: Grant Henke <granthenke@apache.org>
+Date:   Mon Oct 29 12:50:11 2018 -0500
+
+    KUDU-2584: Prevent flaky off-by-one errors in backup tests
+    
+    This patch adds 1 ms to the target snapshot time when
+    a backup is taken. This ensures that we don’t have
+    flakes due to off-by-one errors where all the values are not read.
+    
+    The underlying reason for adding 1 ms is that we pass
+    the timestamp in ms granularity but the snapshot time
+    consists of microseconds plus a logical clock. This
+    means if the data is inserted with a fraction of a ms
+    remaining it could be truncated and unread.
+    
+    Additionaly this patch copies over the timestamp
+    propagation call from the KuduRDD and ensures
+    the Spark tests use the Kudu client from the
+    KuduContext. This should further prevent future
+    snapshot issues.
+    
+    This patch also includes an auto-formating change in
+    KuduBackupOptions that must have been missed in
+    a previous commit.
+    
+    Change-Id: Ia0f1b4a4138cc8c913543a68fad748927cdc439d
+    Reviewed-on: http://gerrit.cloudera.org:8080/11815
+    Tested-by: Grant Henke <granthenke@apache.org>
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+
+commit 7d65f495db9f663f9626caba9b6880288d6cd83b
+Author: Will Berkeley <wdberkeley@gmail.org>
+Date:   Fri Oct 19 11:06:15 2018 -0700
+
+    De-flake ASAN TestSimultaneousLeaderTransferAndAbruptStepdown
+    
+    This test is flaky in ASAN when run with the entire kudu-admin-test,
+    though not when run by itself. I'm not sure why that is, but to try to
+    improve things, I'm reducing the frequency of the simultaneous abrupt
+    stepdown and graceful transfer in ASAN mode so there's more time for
+    the tablet to make progress.
+    
+    I ran the new test as part of the entire kudu-admin-test 1000 times in
+    ASAN and saw no failures. I ran kudu-admin-test 1000 times in ASAN with
+    8 stress threads and saw 4 failures, none of which were
+    TestSimultaneousLeaderTransferAndAbruptStepdown.
+    
+    Change-Id: Ic3237f3fde48daeb2f307dfb78d457217df2beed
+    Reviewed-on: http://gerrit.cloudera.org:8080/11737
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Will Berkeley <wdberkeley@gmail.com>
+
+commit 15f1416f67dcb714842d02647a1f2e06e675660d
+Author: Grant Henke <granthenke@apache.org>
+Date:   Mon Oct 15 13:34:12 2018 -0500
+
+    KUDU-2411: (Part 1) Break out existing test utilities into a seperate module
+    
+    This patch breaks out the test harness and test
+    util classes into a seperate module.
+    
+    This cleans up the dependencies on test jars and
+    is a preliminary step to a public test utility. Though
+    all of the classes still remain marked as private
+    until the interfaces are fleshed out further.
+    
+    Change-Id: Ifa935d6038b6d8756b332178347cec5cb70660a9
+    Reviewed-on: http://gerrit.cloudera.org:8080/11686
+    Reviewed-by: Dan Burkert <danburkert@apache.org>
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Grant Henke <granthenke@apache.org>
+
+commit 66b0a4ccaa714834cd65c0f391a37007f0268b98
+Author: Alexey Serbin <aserbin@cloudera.com>
+Date:   Tue Oct 9 15:54:00 2018 -0700
+
+    [tools] separated rebalancer tests from kudu-admin-test
+    
+    This changelist separates rebalancer-related integration tests
+    from kudu-admin-test into rebalancer_tool-test.  It also contains some
+    other refactoring, such as preparing the RebalancingTest to be used as
+    non-parameterized base class for 3-4-3-only test scenarios.
+    
+    Change-Id: Ia9e0ed25f2dae789f2ef56095d239a7e78139e77
+    Reviewed-on: http://gerrit.cloudera.org:8080/11640
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Will Berkeley <wdberkeley@gmail.com>
+
+commit dc8ae79961f71b8bdc344781fc89d38d94152fc4
+Author: Grant Henke <granthenke@apache.org>
+Date:   Sun Sep 30 20:00:40 2018 -0500
+
+    [test] Move BaseKuduTest to a Junit Rule
+    
+    This patch moves all of BaseKuduTest to a Junit Rule.
+    This avoids inheritance for tests and allows more
+    interesting test composition.
+    
+    Additionally I added method level annotations
+    that can be used to modify the Kudu mini cluster
+    configs on a per test method basis. I changed
+    the tests in TestKuduClient to use the annotations,
+    and will migrate other tests in follow on patches.
+    
+    Change-Id: I32c83b47a576377b924ea41dbeaf78ce2b75e4c4
+    Reviewed-on: http://gerrit.cloudera.org:8080/11547
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+
+commit 5d69deb36925113796cd69f51061b8396b0174fc
+Author: Andrew Wong <awong@cloudera.com>
+Date:   Mon Aug 27 19:03:08 2018 -0700
+
+    build-support: option to retry all failed tests
+    
+    Currently, users can opt to retry flaky tests as reported by the
+    user-specified test server. The test server's flaky test list may not
+    accurately reflect what tests are flaky in all environments. In
+    environments where there are flaky tests that are under-represented by
+    the test server, it would still be nice to be resilient to flakies. As
+    such, this patch adds an option to retry all failed tests.
+    
+    Here's a run of a non-flaky test into which I added a FATAL log.
+    http://dist-test.cloudera.org/job?job_id=awong.1535433877.28172
+    
+    Change-Id: I24aea0b9e7a1c2c66bc5feffcb454ff01cdca6fd
+    Reviewed-on: http://gerrit.cloudera.org:8080/11342
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Grant Henke <granthenke@apache.org>
+
+commit be360bf0122e23f55a12c1ef367cad5329efe274
+Author: Grant Henke <granthenke@apache.org>
+Date:   Fri Aug 24 10:39:10 2018 -0500
+
+    Add support for Java dist-tests on Jenkins
+    
+    Enables running the Java dist-tests on Jenkins
+    when ENABLE_DIST_TEST=1 and BUILD_GRADLE=1.
+    It requires BUILD_GRADLE=1 because the Maven
+    build doesn’t support dist-tests.
+    
+    Change-Id: I20105d3f12fd8c3f95d9fe30fe1b63138614041a
+    Reviewed-on: http://gerrit.cloudera.org:8080/10954
+    Reviewed-by: Grant Henke <granthenke@apache.org>
+    Tested-by: Grant Henke <granthenke@apache.org>
+
+commit 382ee120620484cdc800a15bedbf59573b6606ac
+Author: anupama <anupama.gupta@cloudera.com>
+Date:   Mon Jun 4 01:12:41 2018 -0700
+
+    KUDU-1038 Deleting a tablet should also delete its log recovery directory, if any
+    
+    This fix ensures successful bootstrap of a failed tablet replica, in the case
+    when its WAL segments are missing/deleted. The following scenario is tested:
+    1. A log segment is deleted from one of the Tablet Replicas.
+    
+    2. On server restart, the replica in step 1. enters a failed state.
+    ( Without this fix, due to the presence of log recovery directory (with deleted
+    log segments), the replica remains in a FAILED state and fails to bootstrap )
+    
+    3. This fix deletes the log recovery directory when the tablet data is deleted,
+    as a result of which the failed replica successfully bootstraps.
+    
+    Change-Id: If3f017caf41ac4e00bf89421d6e73924b9fdcbd0
+    Reviewed-on: http://gerrit.cloudera.org:8080/10591
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Mike Percy <mpercy@apache.org>
+
+commit 220cd66f22aab2c9b0696fb2333943ba7889eb6d
+Author: Alexey Serbin <aserbin@cloudera.com>
+Date:   Fri May 11 11:13:47 2018 -0700
+
+    [tools] rebalancer in the kudu CLI tool
+    
+    Introduced rebalancing tool as a part of the Kudu CLI tool.  To run
+    the rebalancer against a Kudu cluster:
+    
+      sudo -u kudu kudu cluster rebalance <master_addresses>
+    
+    This changelist also contains unit tests to cover converting KsckResults
+    into ClusterBalanceInfo and integration tests to verify
+    the functionality of the rebalancer as a part of the Kudu CLI tool.
+    
+    The code was tested against a 12-node cluster running the recent
+    Kudu 1.7 (3-4-3 replica management scheme) with about 12TB of data total
+    and a cluster running Kudu 1.4 (3-2-3 replica management scheme).
+    
+    This tool works against Kudu clusters of version 1.4 and above.
+    It does not work against Kudu version 1.3 and earlier.
+    
+    Change-Id: I269ea1dcb0b528ad9f03308bac6b8769e2141238
+    Reviewed-on: http://gerrit.cloudera.org:8080/10399
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Will Berkeley <wdberkeley@gmail.com>
+
+commit 5d7b68d59ae78560d0997168a27a73c4e5280ecc
+Author: Alexey Serbin <aserbin@cloudera.com>
+Date:   Mon Mar 19 20:04:38 2018 -0700
+
+    [delete_table-itest] fix flake in TestUnknownTabletsAreNotDeleted
+    
+    Fixed flake in the DeleteTableITest.TestUnknownTabletsAreNotDeleted.
+    The flake was easily reproducible under macOS.
+    
+    The scenario involves removing master's data directory along with the
+    IPKI information.  Once the master re-generates its IPKI system records
+    and starts using the new TLS server certificate signed by the newly
+    generated CA private key, the tserver fails to verify the new master's
+    server certificate using the old CA certificate.
+    
+    With the RPC authentication set to "optional" and 10ms tserver->master
+    heartbeat interval, the tserver in most cases was able to establish
+    a connection to the restarted master before it re-generates its IPKI
+    records, so no TLS certificate was used for authentication.
+    
+    Change-Id: Ib6fd439c0ef5fb66b752f7f49175e4c2d818412e
+    Reviewed-on: http://gerrit.cloudera.org:8080/9722
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Will Berkeley <wdberkeley@gmail.com>
+
+commit c04981d81d547819416155f2295e1210d9d7c39a
+Author: Todd Lipcon <todd@apache.org>
+Date:   Thu Feb 22 19:28:53 2018 -0800
+
+    webserver-stress-itest: fix flakiness
+    
+    This fixes a source of flakiness I found on the flaky dashboard. In some runs
+    of this test, we'd hit the following interleaving:
+    
+    - we start the master with webserver_port=0 and it picks some port (eg 35000)
+    - we stop the master
+    - the curl threads are still running, and one of them picks port 35000 as the
+      local side of its TCP connection. It then tries to connect to 35000 and hits
+      the dreaded "tcp loop connect" phenomenon[1] in which it actually connects
+      to _itself_. Thus it just hangs there occupying the port
+    - we try to start the master again, and it fails to bind
+    - we now time out trying to Join() on the curl thread, which is waiting forever
+      for itself to respond to an HTTP request.
+    
+    The fix is to use non-ephemeral ports for the webserver as we already do
+    for the RPC server. I additionally added timeouts to the curl calls.
+    
+    [1] http://www.rampa.sk/static/tcpLoopConnect.html
+    
+    Change-Id: If754d7f47a4c9c04bae3e9ef31acad801dd4db9b
+    Reviewed-on: http://gerrit.cloudera.org:8080/9414
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+
+commit 37b89924ee807f39ae30343b84e837daa7a979b3
+Author: Alexey Serbin <aserbin@cloudera.com>
+Date:   Wed Nov 22 22:03:59 2017 -0800
+
+    KUDU-1097 (patch1): test for replica health reporting
+    
+    Added a test to verify that the leader tablet replica reports on the
+    replica health changes. The tests verifies that the health reports
+    are present in the Raft consensus state reported by the leader replica.
+    The test also verifies that the incremental tablet reports contain
+    appropriate information once the replica health status changes.
+    
+    Change-Id: Ie62b49efebad9a123eec51dd302e375e46e0682d
+    Reviewed-on: http://gerrit.cloudera.org:8080/8642
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Mike Percy <mpercy@apache.org>
+
+commit ab77ce025d9fe68c993d26e15b604c4188e36860
+Author: Alexey Serbin <aserbin@cloudera.com>
+Date:   Sat Oct 14 23:18:59 2017 -0700
+
+    [raft_consensus-itest] separate Raft election tests
+    
+    Separated election-related tests from raft_consensus-itest
+    into raft_consensus-election-itest.
+    
+    This changelist does not contain any functional changes.
+    
+    Change-Id: Ic5289b3de097f9a2ca152034fa2635b67ccddb93
+    Reviewed-on: http://gerrit.cloudera.org:8080/8278
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Alexey Serbin <aserbin@cloudera.com>
+
+commit 22a19d93ab9f1df339b8fe0fde094c406ce5cb2b
+Author: Mike Percy <mpercy@apache.org>
+Date:   Fri Aug 25 14:57:09 2017 -0700
+
+    KUDU-2114. Don't re-delete tombstoned replicas
+    
+    A bug was introduced in 5bca7d8ba185d62952fb3e3163cbe88d20453da0 where
+    the master will now consider tombstoned replicas to not be deleted, and
+    will attempt to re-delete them when it gets a tablet report on them.
+    This patch fixes the problem.
+    
+    Change-Id: I86e5cbe0681557ae86f5bae53f4aeb7635fa6aa6
+    Reviewed-on: http://gerrit.cloudera.org:8080/7842
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Mike Percy <mpercy@apache.org>
+
+commit 58248841f213a64683ee217f025f0a38a8450f74
+Author: Alexey Serbin <aserbin@cloudera.com>
+Date:   Thu Jun 1 18:39:13 2017 -0700
+
+    [java] separating Connection
+    
+    This patch separates lower-level, connection-related functionality
+    from the TabletClient class into the new Connection class.
+    The updated TabletClient has been renamed into RpcProxy.
+    Also, this patch contains other micro-updates on the related code.
+    
+    In addition, this patch addresses KUDU-1878.
+    
+    This work is done in the context of KUDU-2013.
+    
+    Change-Id: Id4ac81d9454631e7501c31576c24f85e968bb871
+    Reviewed-on: http://gerrit.cloudera.org:8080/7146
+    Tested-by: Alexey Serbin <aserbin@cloudera.com>
+    Reviewed-by: Alexey Serbin <aserbin@cloudera.com>
+
+commit fea449ace2f774ba648f4a847299bd290cd104d6
+Author: Mike Percy <mpercy@apache.org>
+Date:   Mon Feb 6 12:58:55 2017 -0800
+
+    KUDU-1601. Delete ancient UNDO delta blocks in the background
+    
+    This patch adds a maintenance manager background task that deletes
+    "ancient" UNDO delta blocks, which means blocks that correspond to data
+    that is considered no longer reachable and a candidate for garbage
+    collection. The task only deletes entire blocks and so does not provoke
+    write amplification.
+    
+    This maintenance task operates in the following way:
+    
+    1. UpdateStats() returns the maximum potentially gc'able bytes of undos
+       in the rowset, which is the sum of all undo delta store sizes up
+       until an initialized one with max_timestamp > the AHM (ancient
+       history mark). The accuracy of this estimate improves over time, and
+       in a steady state will be exact, as undo delta blocks are initialized
+       while running Perform().
+    
+    2. Perform() initializes undo delta stores for the tablet for some
+       budgeted amount of time. Per rowset it initializes undo delta stores
+       with its budget until it finds the earliest one with max_timestamp >
+       AHM. That makes the next UpdateStats() call more accurate. Once it
+       has exhausted its time budget, or has initialized all ancient undo
+       blocks, it garbage-collects all of the known ancient undo delta
+       blocks in the tablet.
+    
+    To avoid starvation of performance improvement maintenance ops, a new
+    flag named --data_gc_prioritization_prob has been introduced that
+    incorporates some randomness into the scheduler at the maintenance
+    manager level. This controls the fraction of the time that the scheduler
+    considers data GC ops higher priority than performance improvement ops.
+    
+    This patch includes the following:
+    
+    * New UNDO delta block GC MM task
+    * New UNDO delta block GC metrics (at the tablet level only)
+    * Flags to enable / disable the GC task as well as flags to throttle it
+    * A few minor improvements in the maintenance manager
+    * Fixes for a few preexisting clang-tidy lint complaints
+    
+    Notable implementation details:
+    
+    * When performing undo delta GC in Tablet::DeleteAncientUndoDeltas(), we
+      only flush the tablet metadata after making the metadata changes
+      across all rowsets. This is safe because we are not actually modifying
+      any data, we are simply removing references to blocks that are no
+      longer reachable by new scanners. The code path that handles the
+      metadata update for compactions and ancient history data GC,
+      DeltaTracker::CommitDeltaStoreMetadataUpdate(), has a DCHECK in place
+      to ensure that it is never called without specifying blocks to remove.
+      This guarantees that the DeltaMemStore flush code path located in
+      DeltaTracker::FlushDMS(), the only delta-related code path that
+      modifies user-visible data, does not utilize that routine for its
+      flush. This fact was also verified by inspection -- FlushDMS()
+      contains its own flush code path.
+    
+    Includes the following tests:
+    
+    * RowSet-level unit test in diskrowset-test
+    * Tablet-level functional test in tablet_history_gc-test
+    * Tablet-level concurrency test in mt-tablet-test
+    * Integration test utilizing the tserver-level MM task in
+      tablet_history_gc-itest
+    * Incorporated into RandomizedTabletHistoryGcITest in
+      tablet_history_gc-itest
+    
+    Manual testing:
+    
+    * I ran 300 iterations of TabletHistoryGcITest.TestUndoDeltaBlockGc on
+      the dist-test cluster under TSAN with 12 stress threads:
+      http://dist-test.cloudera.org/job?job_id=mpercy.1487901212.3733
+    
+    * I also ran YCSB on a 10-node cluster on a table with 200 tablets with
+      mostly default parameters except for --tablet_history_max_age_sec=60.
+      YCSB was configured like so:
+    
+        recordcount=100000
+        operationcount=6000000
+        updateproportion=1.0
+        requestdistribution=zipfian
+        threadcount=10
+        kudu_pre_split_num_tablets=200
+        kudu_sync_ops=true
+    
+      This workload took 839 seconds to run and I did not observe an average
+      update latency increase over time (there was a mild sawtooth pattern),
+      which indicated to me that the compaction operations were keeping up
+      with the updates. The undo delta GC operations were also keeping pace
+      and garbage was being collected aggressively, with generally only tens
+      of MB, or less, of reclaimable data per tablet being present at any
+      given time. It seems the current defaults are reasonable, although
+      additional performance testing is likely warranted.
+    
+    Change-Id: I0309bf7acfb6d018860c80f354012c3500da5c68
+    Reviewed-on: http://gerrit.cloudera.org:8080/4363
+    Tested-by: Mike Percy <mpercy@apache.org>
+    Reviewed-by: David Ribeiro Alves <dralves@apache.org>
+
+commit b9c59cdceb3825556759b0305ecfb615ece391e4
+Author: Todd Lipcon <todd@apache.org>
+Date:   Wed Aug 10 13:57:47 2016 -0700
+
+    test_result_server: improve indexes, add sorting
+    
+    * adds a new index to the underlying database table.
+      I applied this by hand in production and page loads that used to take several
+      seconds are now quite fast.
+    
+    * uses the 'DataTables' jQuery plugin to make the main list of flaky tests
+      sortable by flaky rate.
+    
+    Tested manually by running this locally against the production database.
+    
+    Change-Id: I4f4321ad01d8e5fe83276d07cd6d6025dab5518e
+    Reviewed-on: http://gerrit.cloudera.org:8080/3889
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Todd Lipcon <todd@apache.org>
+
+commit 5f17cb57e3207c2ab2609289390ea9a945e44f2b
+Author: Todd Lipcon <todd@apache.org>
+Date:   Wed Mar 2 15:38:16 2016 -0800
+
+    Fixes for flaky-test build
+    
+    The RUN_FLAKY_ONLY build rotted a bit, and we didn't notice because we don't
+    get notified when the flaky test build fails (we expect it to fail basically
+    all the time since it only runs flaky tests.) It also rotted in such a way that
+    it ran _all_ the tests, so we were still seeing useful data on the dashboard.
+    
+    - Fetch the test list into the proper build dir
+    - Report a better error and exit immediately if the flaky test server is down
+    - Exit the script early if there are no flaky tests
+    - Disable the python build since we don't do flaky-tracking for python.
+    
+    Change-Id: Id6b284e9643fc336e3dbd6a997f0bd60759e97cd
+    Reviewed-on: http://gerrit.cloudera.org:8080/2422
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+
+commit 64bd51c5795ac9726734f29b4060e9fae9dd2b72
+Author: Todd Lipcon <todd@apache.org>
+Date:   Mon Feb 1 15:28:32 2016 -0800
+
+    Do not report tests that fail due to NTP issues
+    
+    Occasionally we have tests that fail due to machines with broken
+    NTP synchronization. In those cases, we don't want to report them
+    to the flaky test infrastructure, since it inflates our flakiness
+    count on every test which uses NTP.
+    
+    Change-Id: Ia103868de0e6fd3ef95ced72035de7f67ccfb8db
+    Reviewed-on: http://gerrit.cloudera.org:8080/1980
+    Reviewed-by: Jean-Daniel Cryans
+    Tested-by: Todd Lipcon <todd@apache.org>
+
+commit 30773866cfec5c112e1b3f385808d88eeaa1d586
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Wed Dec 16 20:51:51 2015 -0800
+
+    KUDU-1317. Spread creation of new tablets more randomly
+    
+    This switches the assignment of new tablets on the cluster from being a pure
+    round-robin to instead use the "power-of-two-choices" algorithm. In this
+    algorithm, each time we need to select a replica location, we sample a random
+    two nodes in the cluster, and choose whichever of those has fewer tablets
+    already on it. Per a simple Python script simulation (attached to the JIRA),
+    this does a much better job of even distribution than pure random selection,
+    but also avoids completely overloading a reformatted node with all replicas
+    of a new table.
+    
+    This patch aims to solve a problem we're seeing with the round-robin
+    strategy where recovery is not well parallelized. Because of round-robin,
+    each tablet server only shares replicas with its "adjacent" nodes in the
+    round robin ring. So, if a server crashes, at most 4 other servers can
+    participate in recovery.
+    
+    To check that the new test isn't flaky, I looped it 1000 times:
+    http://dist-test.cloudera.org/job?job_id=todd.1453857519.32553
+    
+    Change-Id: I8a27c2ed52b49baeffb309ebecd3d58192eaeec6
+    Reviewed-on: http://gerrit.cloudera.org:8080/1654
+    Reviewed-by: Jean-Daniel Cryans
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Kudu Jenkins
+
+commit 113d5b092097b6f9df20fdfc2cba3a551f906c07
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Fri Jan 8 18:28:33 2016 -0800
+
+    Fix up dist_test for C++11, add dist_test support for Jenkins builds
+    
+    This commit does two separate things, but wasn't worth the effort of teasing
+    the changes out -- I was working on Jenkins-ifying dist_test when the C++11
+    changes came in and broke everything, so the two projects got done simultaneously
+    along with a few other fixes.
+    
+    Jenkins-related changes:
+    
+    - Adds flaky-test retry support to dist_test. For flaky tests, we submit the
+      task to the dist test server with a 'max_retries' field so that it will
+      automatically resubmit after a failure.
+    - Adds kudu-ts-cli to the list of dependencies (fixes some tests which now
+      shell out to it)
+    - Adds a 'no_dist_test' ctest label to the tests which currently won't run
+      correctly in the distributed test sandbox. These are basically client tests
+      which require various dev tools to be on the box at runtime, which aren't
+      present in the slave environment.
+    - Adds an ENABLE_DIST_TEST flag to the Jenkins script. When this is passed,
+      it runs the dist-test-capable tests on the cluster, collects the results,
+      and moves them back into the correct directory layout such that Jenkins
+      can parse the results.
+    - Passes through KUDU_COMPRESS_TEST_OUTPUT to the slave environment.
+    - For RELEASE builds, if dist test is enabled, dynamic link for better performance.
+    
+    C++11-related changes:
+    - Fixes the path to llvm-symbolizer now that we build llvm 3.7 as part of our
+      thirdparty build.
+    - Switches from passing the thirdparty directory as an LD_LIBRARY_PATH
+      variable to instead tweak the RPATH of binaries on the slave. This was
+      necessary so that llvm-symbolizer would run correctly in the TSAN environment.
+    - Fixed the way that we pass environment variables inside enable_devtoolset.sh
+      to use the 'env' utility. Without this, on Ubuntu boxes, I was getting an error
+      that 'CC=/path/to/clang' was not an executable.
+    
+    Sort-of-unrelated:
+    - Adds a --no-wait flag to the dist test script. I'm planning on using this
+      soon to have the Jenkins slaves submit the dist test job, then run python
+      and Java tests locally while the other tests are running remotely, then
+      later collect the results. I ended up ripping that out for now, but left
+      the support in the dist-test code.
+    
+    Change-Id: I816f87ca5d1c6147746cfa3230bfe449c849e561
+    Reviewed-on: http://gerrit.cloudera.org:8080/1791
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Todd Lipcon <todd@apache.org>
+
+commit dca76cadeb7a0c7ba6d08608ae42ec388584c0d0
+Author: Mike Percy <mpercy@cloudera.com>
+Date:   Tue Jan 5 14:37:17 2016 -0800
+
+    DeleteTableTest should use ExternalMiniClusterITestBase
+    
+    Removing duplicate code from DeleteTableTest. This is just test cleanup.
+    
+    Change-Id: Iad374c10c2ee8ce46095b827ee4d6d11eb44605b
+    Reviewed-on: http://gerrit.cloudera.org:8080/1713
+    Tested-by: Internal Jenkins
+    Reviewed-by: Todd Lipcon <todd@cloudera.com>
+
+commit cc1b6a4bc9df8536a62533a460f56c3379e75b76
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Mon Aug 24 21:12:19 2015 -0700
+
+    test_result_server: add 2-day failure rate and sparklines
+    
+    This adds a new column to the flaky test dashboard which lists the
+    failure rate over the previous 2 days, in addition to the existing
+    rate which tracks the previous 7 days. This is useful to see if a
+    highly flaky test has actually been fixed more recently (or if it's
+    getting worse).
+    
+    I also added a sparkline (very small graph) which shows the trend
+    over the last 7 days - it's easy to see if a test has taken an
+    uptick or improved.
+    
+    Tested locally, and now also deployed on a1228.
+    
+    Change-Id: I31e0e6bbd3d2cdc5ba99e44b335cee892c4be4db
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/7597
+    Tested-by: jenkins
+    Reviewed-by: Michael Percy <mpercy@cloudera.com>
+
+commit ec178760edc7ff8910fc7c48be9d9672ed547121
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Thu Aug 20 19:25:40 2015 -0700
+
+    delete_table-test: steps to reduce flakiness
+    
+    - disables remote bootstrap when running TestDeleteTableWithConcurrentWrites.
+      We were seeing interference during the delete table operation where one of
+      the tablets would be deleted too slowly and then end up reviving one of the
+      already-deleted replicas, causing is to leave around some orphan metadata.
+      We have a JIRA KUDU-941 filed which will prevent this, but we'll work around
+      it temporarily.
+    - bumps a few timeouts (it seems that sometimes we just don't wait long enough
+      for the fault-injected server to hit the fault)
+    - disable fsync on all servers throughout the test. Remote bootstrap currently
+      fsyncs every block to disk, which means that if the disks are busy from another
+      test, it can take longer than expected. This ought to also help test runtime.
+    
+    Change-Id: Ic6184fa60fe504ba40cfc1ff826a70cf48a1e258
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/7559
+    Tested-by: jenkins
+    Reviewed-by: Michael Percy <mpercy@cloudera.com>
+
+commit 9169afa3d9a760938d9fb3fbfcfcf2c0cb08bd47
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Wed Jul 29 22:19:31 2015 -0700
+
+    KUDU-304 (part 3): catalog_manager: send alter table RPCs to leader only
+    
+    This implements a new TSPicker which selects the leader replica of a
+    given tablet. The triggering of alter now submits only a single task
+    per tablet, instead of one per replica.
+    
+    Additionally, the tablet report handling code needed a slight tweak:
+    it's important to trigger the alter table RPC _after_ the tablet raft
+    config has been updated in the catalog, or else it may not be able
+    to find the most recent leader.
+    
+    Lastly, to work around KUDU-915, I had to change alter table to hold
+    the schema lock all the way until after it appends its COMMIT message
+    to the WAL. This prevents the interleaving of messages in the WAL
+    identified as problematic in KUDU-915.
+    
+    A new unit test verifies the basic functionality. I also changed the
+    randomized alter-table test to use replication. The pstack watcher
+    previously in this test no longer makes as much sense in the
+    multi-TS scenario, so I removed it.
+    
+    I ran the randomized test in TSAN 1000 times, and it failed 6/1000.
+    Most of the failures seem to be related to KUDU-934 or timeouts.
+    This flaky rate seems reasonable to commit this and then separately
+    work on fixing the issues.
+    
+    Change-Id: Idc1c0396c9d83d77570d3d9ed72bfb7d6bac2060
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/7274
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: jenkins
+
+commit 71e88d65d4f732751519da34c8e5974969bdfa96
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Tue Jul 28 10:24:52 2015 -0700
+
+    Add a pstack on test failure to diagnose alter_table-randomized-test flakiness
+    
+    This test has had a lot of client-side timeouts on the verification scan.
+    It's not clear why the scans are occasionally taking 10+ seconds when the
+    amount of data is relatively small.
+    
+    This simply makes the test pstack the tablet server before killing it
+    on test failure. Tested manually by adding an ASSERT_TRUE(false) in the
+    Verify() function and checking that the test output had the TS stacks.
+    
+    Change-Id: Idd56276940d4274f0e7c332c08f45df2d44fbd23
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/7234
+    Reviewed-by: Jean-Daniel Cryans <jdcryans@cloudera.com>
+    Reviewed-by: Michael Percy <mpercy@cloudera.com>
+    Tested-by: jenkins
+
+commit cdeb544d7ecf295c6076b92d3ea8688aeaca13d4
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Mon Dec 15 18:17:58 2014 -0800
+
+    Remove determine-flaky-tests.py
+    
+    We now use our flaky test server backed by a DB instead of using
+    the Jenkins API to find flaky tests.
+    
+    Change-Id: Ie9c8b1d77a02b97e3e6d0a96f8024f66c583da89
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/5589
+    Tested-by: jenkins
+    Reviewed-by: Vladimir Feinberg <vladimir.feinberg@cloudera.com>
+    Reviewed-by: Michael Percy <mpercy@cloudera.com>
+
+commit 82ce8dab3590b721fc90423c44d8cfe604ddc350
+Author: Mike Percy <mpercy@cloudera.com>
+Date:   Thu Aug 28 01:13:11 2014 -0700
+
+    Document more details of consensus / leader election
+    
+    Change-Id: Ibe0046f943eea8402259f318c1ea74d0de4b859e
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/4081
+    Tested-by: jenkins
+    Reviewed-by: Todd Lipcon <todd@cloudera.com>
+    Reviewed-by: David Alves <david.alves@cloudera.com>
+
+commit 32a35cff945a9218ae169a3c57b0804aea881a2d
+Author: Adar Dembo <adar@cloudera.com>
+Date:   Wed Aug 27 13:27:27 2014 -0700
+
+    test: make check for no leftover test output more robust
+    
+    This took way too much time, so here's a far too long commit message.
+    
+    The problem: when a known flaky test fails, is retried, and passes, the test
+    output from the flaky run is left behind, causing the "no leftover test
+    output when all tests pass" check to fail. There are two distinct causes:
+    1. A test fails in ASSERT and ~KuduTest purposefully retains the test output
+       for what is presumed to be further debugging.
+    2. A test fails in CHECK and aborts immediately. No cleanup is done.
+    
+    The first fix I tried was adding a 'never' option to --test_leave_files. I
+    expected this to address #1 but not #2. Turns out it's not a great solution
+    to #1 either, because not all tests use test_util.cc and I didn't think it
+    made sense to define it globally, putting it in tests that wouldn't use it.
+    Nonetheless, I retained the change because I think it's generally useful.
+    
+    Next, I tried using an atexit() handler to clean up outstanding test output.
+    This didn't work for #2 either: abort() doesn't invoke atexit() handlers,
+    and I didn't feel comfortable changing the glog fail function to exit().
+    
+    Next, I changed run-test.sh to compare the contents of TEST_TMPDIR before
+    and after the test runs, and to delete the difference. This was a promising
+    approach because it handles both #1 and #2 in the same way. But it doesn't
+    work when tests are run in parallel, as many of them do. So in the end I
+    settled on a variation: include argv[0] in the test directory name and match
+    on that prefix in run-test.sh.
+    
+    Change-Id: I933193a7eb6674d91c8aa9a75394931c8e66fce8
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/4067
+    Tested-by: jenkins
+    Reviewed-by: Todd Lipcon <todd@cloudera.com>
+
+commit 0fda40cf6caba5aad2ca1867b5b5b735e920ac02
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Thu Aug 21 21:21:08 2014 -0700
+
+    test_result_server: add a simple list_failed_tests endpoint
+    
+    This produces results equivalent to determine_flaky_tests.py --list-tests-only,
+    but is much faster, since it's backed by the test results database instead of
+    by Jenkins' Enterprise XML Repository Of Doom. In fact, this returns results in
+    about 183ms whereas in a recent test run, Jenkins took about 20 minutes (a
+    whopping 6557x speedup!)
+    
+    I tested this patch facebook-style. That is to say, I deployed in production
+    and crossed my fingers that it would work. You can see the results at:
+    
+    http://a1228.halxg.cloudera.com:8080/list_failed_tests?num_days=3&build_pattern=%25kudu-test%25
+    
+    Longer term it would be nice to switch over the determine_flaky_tests.py script
+    to use something like this endpoint, but that was more work than I wanted to
+    put in, tonight, and instead just went for the targeted fix in build-and-test.sh
+    
+    Change-Id: I1b5aabb0029e7e5c3afa7b2c1561444a121f0033
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/3991
+    Tested-by: jenkins
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+
+commit a7511ea47b2ae4ea677004079345a648a111a11e
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Mon Aug 4 16:46:31 2014 -0700
+
+    test_result_server: improve S3 upload, add HTML reports
+    
+    * changes the S3 upload to attach a content-disposition header
+      which results in assigning the proper filename when downloading
+      a test log
+    * add some basic reports showing test failures grouped by test,
+      flaky test failure rates, etc.
+    * add some instructions how to install a virtualenv for the server
+    * bind to wildcard instead of localhost
+    
+    Change-Id: If83b1e9857eac28f34999c814e27b5051f8798ea
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/3756
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: Todd Lipcon <todd@cloudera.com>
+
+commit d160f040137a2b2425c6ceea4c31282ca75af70f
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Fri Aug 1 18:32:18 2014 -0700
+
+    Initial commit of centralized test failure reporting
+    
+    This adds a simple Python web server which takes POST requests
+    recording test results. The results are inserted into a MySQL table
+    which records the revision, test name, exit status, etc. Test
+    logs are also uploaded to S3 with a UUID key, and the UUID is
+    recorded in the database.
+    
+    The run-test.sh script is also updated to call a new report-test.sh
+    script which actually sends the results to the HTTP server.
+    
+    I tested this manually locally and verified that records showed up
+    in the SQL database:
+    
+      *************************** 264. row ***************************
+                id: 264
+         timestamp: 2014-08-01 18:31:35
+          build_id: non-jenkins
+          revision: 6149228e32bfe3c8071c3deeb1215514fdf07961-dirty
+      build_config: fastdebug asan
+          hostname: todd-ThinkPad-T540p
+         test_name: oauth-test
+            status: 23
+           log_key: bdba2b50-19e4-11e4-a54d-005056c00001
+    
+    In a later commit, I'll add some simple web interface to track basic
+    statistics - in particular, for flaky tests, I want to see a percentage
+    "pass rate" for recent revisions, so it's easier to see where they got worse.
+    
+    Change-Id: I7f75a6b04190dcc2b8fd4e407f5e1837d0e89e32
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/3732
+    Reviewed-by: Adar Dembo <adar@cloudera.com>
+    Tested-by: jenkins
+
+commit 1fef5590192392552a3c725e5fc27e941dbb3837
+Author: Adar Dembo <adar@cloudera.com>
+Date:   Wed Jul 30 12:48:44 2014 -0700
+
+    kudu: move everything in src/ into src/kudu/
+    
+    This is the easiest way to ensure that the public C++ client header includes
+    are all prefixed with "kudu/" (i.e. #include "kudu/client/client.h"). It's
+    also the most disruptive. Yay!
+    
+    Actions taken:
+    - Moved everything in src/ to src/kudu/
+    - Prefixed every include using double quotes with "kudu/"
+    - Changed some inappropriate bracketed includes to double quotes
+    - Prefixed every .proto import definition with "kudu/"
+    - Changed a hard-coded path in parser-test.cc
+    - Updated cmake logic
+    
+    Change-Id: I3a42e95d5bc71c79d9d4f68c6951be109a6a5ace
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/3663
+    Reviewed-by: Todd Lipcon <todd@cloudera.com>
+    Tested-by: jenkins
+
+commit dda13415b734c51443bd964107b4be9dbc3d81fe
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Tue Jul 8 11:58:15 2014 -0700
+
+    build: retry known-flaky tests in gerrit jenkins builds
+    
+    Adds code in build-and-test.sh to fetch the list of flaky tests, put them
+    in a file in the build dir, and pass it along to run-test.sh.
+    
+    Tested manually by inspecting the test log.
+    
+    Change-Id: I6351f9c0e26be1da12971f6f4061a54c0b454e59
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/3434
+    Tested-by: jenkins
+    Reviewed-by: Michael Percy <mpercy@cloudera.com>
+
+commit c4941caee4cee21c4ca1baa91069962fcc35b761
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Thu Jul 3 20:31:45 2014 -0700
+
+    tests: allow run-test.sh to auto-retry known-flaky tests
+    
+    This adds environment variables which can configure run-test.sh to
+    automatically retry known flaky tests a few times before failing.
+    The goal is to hook this up in the gerrit jenkins script so that
+    we first run determine-flaky-tests.py to find any tests which have
+    been failing recently on master, and then in gerrit builds allow
+    them to fail once or twice before actually giving a -1.
+    
+    Hopefully this will save everyone a lot of trouble digging through
+    Jenkins on their gerrit builds, while still getting coverage on
+    those tests through the kudu-flaky-tests target.
+    
+    Change-Id: I7d59f6d01bb0f8a5da367efa603aa6f6c5b733da
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/3417
+    Tested-by: Todd Lipcon <todd@cloudera.com>
+    Reviewed-by: Michael Percy <mpercy@cloudera.com>
+
+commit 39bf2905c7b732e52ea3c190dc87414f6bf0a383
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Wed Jul 2 18:25:02 2014 -0700
+
+    build: add a mode to jenkins build to run only recently flaky tests
+    
+    I intend to add this as a new jenkins job to try to re-run these more often.
+    
+    Change-Id: I91f1f5a3829a095aaaa519d0e4f686953919989c
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/3389
+    Tested-by: Todd Lipcon <todd@cloudera.com>
+    Reviewed-by: Michael Percy <mpercy@cloudera.com>
+
+commit 7929a65782524077242d71c7a0f109d2dde8f7c9
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Wed Apr 23 15:16:37 2014 -0700
+
+    rpc: fix status to TimedOut for timeouts during negotiation
+    
+    Previously, the blocking Socket functions would return a generic error
+    in the case that they timed out, because they didn't handle the EAGAIN
+    error number.
+    
+    Now, we properly return TimedOut back to the caller.
+    
+    Change-Id: I8caaac78978345ef017c5335218d9d1cbe95011a
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/2325
+    Reviewed-by: Jean-Daniel Cryans <jdcryans@cloudera.com>
+    Reviewed-by: Michael Percy <mpercy@cloudera.com>
+    Tested-by: Todd Lipcon <todd@cloudera.com>
+
+commit 3c5e206b96f04ccf1259a77970aac3c4c799142a
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Fri Mar 21 13:27:00 2014 -0700
+
+    build: add a python script to find flaky tests
+    
+    This is a simple script which uses the Jenkins API to find any tests
+    which have recently failed. I plan to set up a new Jenkins job which
+    uses this script and then re-runs only those tests in some sort of loop.
+    
+    My assumption is that tests which have recently been flaky are likely to
+    continue to be flaky, so concentrating some extra runtime on those tests
+    is a good idea, even when we think we've fixed the bug.
+    
+    Tested manually using -j kudu-test and '-j kudu-test -j kudu-gerrit'
+    
+    Change-Id: I98f39f0f02f3438aaca22513de7e97fdfeedb87d
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/2041
+    Tested-by: jenkins
+    Reviewed-by: Jean-Daniel Cryans <jdcryans@cloudera.com>
+
+commit e10695219f9111a41d809dd94a43fb799e2fcc73
+Author: Mike Percy <mpercy@cloudera.com>
+Date:   Tue Aug 6 01:06:56 2013 -0700
+
+    Increase max rpc test timeout to 100ms
+    
+    We get occasional test failures because of the current max test timeout.
+    While 20ms should be more than enough, I don't think we've seen it go
+    over 60ms, so we'll just use 100ms as the arbitrary test safety limit.
+    Also, print the seconds elapsed on timeout so we can easily get an idea
+    of what's normal by looking through the run logs.
+    
+    Change-Id: Ia34738644212d11ea538a0dcad2c0bd87b87be1c
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/148
+    Tested-by: jenkins <kitchen-build@cloudera.com>
+    Reviewed-by: Todd Lipcon <todd@cloudera.com>
+
+commit 51e5253925fc185d7e2abbe11c8f604dcf68153a
+Author: Todd Lipcon <todd@cloudera.com>
+Date:   Fri Jun 28 11:56:28 2013 -0700
+
+    Fix Socket::Shutdown to not reset file descriptor to -1
+    
+    This was leaking file descriptors, and also causing an assertion
+    failure sometimes, where the acceptor pool accept() thread
+    tried to accept(-1).
+    
+    The new unit test failed within a couple of iterations without
+    this bug fix. With the fix, I was able to successfully loop
+    it 1000 times.
+    
+    Change-Id: I06f85c76633ecde7b34cb0eabf05c96e31774dc3
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/21
+    Tested-by: jenkins <kitchen-build@cloudera.com>
+    Reviewed-by: Colin McCabe <cmccabe@cloudera.com>

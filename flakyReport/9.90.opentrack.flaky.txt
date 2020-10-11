@@ -1,0 +1,5 @@
+commit 21cb382c2a09405d9ca85e4193582bfd8ae00731
+Author: Stanislaw Halik <sthalik@misaki.pl>
+Date:   Tue Jul 3 08:23:05 2018 +0200
+
+    cleanup

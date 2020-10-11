@@ -1,0 +1,7 @@
+commit ae370c8d8d2e11d35b7a994e7c5ea85cbe78fa22
+Author: anakod <anakod@gmail.com>
+Date:   Wed Jul 15 03:53:42 2015 +0500
+
+    + nRF24L01 support
+    * SPI class improvements
+    - spifFS percentage calculation bug

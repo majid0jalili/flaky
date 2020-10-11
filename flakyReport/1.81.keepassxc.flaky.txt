@@ -1,0 +1,11 @@
+commit 044feea23a6a706fd8a67ebd9e80e0ae7b2f98b2
+Author: thez3ro <io@thezero.org>
+Date:   Fri Mar 17 00:12:55 2017 +0100
+
+    remove short wordlists
+
+commit d9ccde94c9105590dcc42dd1493defbb7cc5ac3a
+Author: thez3ro <io@thezero.org>
+Date:   Sat Mar 4 15:10:50 2017 +0100
+
+    New Diceware passphrase generator, close #21

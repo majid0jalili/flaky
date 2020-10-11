@@ -1,0 +1,32 @@
+commit d5ab85a850d283f7c39ba86101985b62ab299c01
+Author: Paul Asmuth <paul@paulasmuth.com>
+Date:   Sat Jan 31 22:09:10 2015 +0000
+
+    delete dead code
+
+commit 5e2e859ca608ad60578c7cd864f5dbaa8c89fefd
+Author: Paul Asmuth <paul@paulasmuth.com>
+Date:   Sat Jan 31 21:54:46 2015 +0000
+
+    Squashed '3rdparty/libfnord/' content from commit e95f046
+    
+    git-subtree-dir: 3rdparty/libfnord
+    git-subtree-split: e95f046a4284776787b2b09598629b6838a3bde9
+
+commit 9b543abf4cdd8b36a8151a823c3c9ec70ac8dac5
+Author: Paul Asmuth <paul@paulasmuth.com>
+Date:   Sat Jan 31 21:39:09 2015 +0000
+
+    remove libfnord
+
+commit 1fcc191e0a6b6948aae33df370dc50d673f93b57
+Author: Paul Asmuth <paul@paulasmuth.com>
+Date:   Wed Jan 14 15:21:52 2015 +0100
+
+    change file extensions to .cc
+
+commit 015a711c3fa93cbaf339655dc73be2d9616993d9
+Author: Paul Asmuth <paul@paulasmuth.com>
+Date:   Tue Jan 13 17:33:55 2015 +0000
+
+    luceneplusplus import WIP

@@ -1,0 +1,18 @@
+commit 5de9fa9cf375e9b5bdc582d8d166604eeb519844
+Author: Josh Soref <jsoref@users.noreply.github.com>
+Date:   Wed Mar 25 14:02:53 2020 -0400
+
+    ci: run spell check in CI, fix remaining issues (#4799)
+    
+    This commit introduces a github action to check our spelling and fixes
+    the following misspelled words so that we come up green.
+    
+    It also renames TfEditSes to TfEditSession, because Ses is not a word.
+    
+    currently, excerpt, fallthrough, identified, occurred, propagate,
+    provided, rendered, resetting, separate, succeeded, successfully,
+    terminal, transferred, adheres, breaks, combining, preceded,
+    architecture, populated, previous, setter, visible, window, within,
+    appxmanifest, hyphen, control, offset, powerpoint, suppress, parsing,
+    prioritized, aforementioned, check in, build, filling, indices, layout,
+    mapping, trying, scroll, terabyte, vetoes, viewport, whose

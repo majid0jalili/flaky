@@ -1,0 +1,62 @@
+commit 1bedf9ef60a0f3bfdf43e04cb7db3d9ca1aa7439
+Author: Alexandre Lissy <lissyx@lissyx.dyndns.org>
+Date:   Fri Mar 20 17:17:06 2020 +0100
+
+    Add CI for Android 8.0, 9.0 and 10.0
+    
+    We limit ourselves to x86_64 because it seems Google does not provide
+    any system images after API level 25 for arm64-v8a and armeabi-v7a.
+    There is also no system image for API level 27 for x86_64.
+
+commit b396d3a7d41ea335213583d28ab8a7435a52d590
+Author: Alexandre Lissy <lissyx@lissyx.dyndns.org>
+Date:   Mon Jan 14 11:15:41 2019 +0100
+
+    Move to libdeepspeech
+    
+    Fixes #1784
+    Fixes #1786
+
+commit bca54d3f03a502ff7e6b67ed9a5a6aeab2d2bea8
+Author: Carlos Fonseca M <carlfm01@hotmail.com>
+Date:   Fri Dec 14 14:33:27 2018 -0600
+
+    Add OpenFST 1.6.9 Windows + README.mozilla
+
+commit c34fc5b7ac9fdeae656f7098947b25c8264fa647
+Author: Reuben Morais <reuben.morais@gmail.com>
+Date:   Thu Oct 25 17:00:48 2018 -0300
+
+    Import parlance/ctcdecode into repository
+
+commit cb86e7e1915194fed54b6bd256781e770747685c
+Author: Reuben Morais <reuben.morais@gmail.com>
+Date:   Tue Aug 21 18:01:38 2018 -0300
+
+    Update language model to a trie-based LM created from the LibriSpeech LM corpus
+
+commit 650f7f851d36868651101ac963eae7983bc45666
+Author: Alexandre Lissy <lissyx@lissyx.dyndns.org>
+Date:   Fri Jul 20 18:56:57 2018 +0200
+
+    Revert "Fixes #1236 (Switch KenLM to trie based language model)"
+    
+    This reverts commit e34c52fcb98854c5ecc5639a8ace6196f5825fbd.
+
+commit e34c52fcb98854c5ecc5639a8ace6196f5825fbd
+Author: kdavis-mozilla <kdavis@mozilla.com>
+Date:   Fri Jun 1 17:15:25 2018 +0200
+
+    Fixes #1236 (Switch KenLM to trie based language model)
+
+commit 1f3d26ddda6881e8e59c17b4eb5c8bb39471256b
+Author: Reuben Morais <reuben.morais@gmail.com>
+Date:   Sun Sep 10 09:00:45 2017 -0300
+
+    Address review comments
+
+commit 9e266f2fc3da594f86690e42745ce84d94e960dd
+Author: Kelly Davis <kdavis@mozilla.com>
+Date:   Wed Feb 8 15:51:44 2017 +0100
+
+    Temp fix of #8 until tensorflow/tensorflow#6034 is fixed

@@ -1,0 +1,325 @@
+commit e9ede3df0cecf8b3e9393049d72ef20a442ee3e4
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Sat Aug 29 18:29:23 2020 -0700
+
+    Support both current and lts (WIP)
+
+commit 3228d2f1fa598d5af18d1bccb0ac2e012ae19c64
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Sat Aug 22 18:28:10 2020 -0700
+
+    upgrading to 14.8.0 (wip: step 1 only)
+    
+    (wip: pending patches to be applied to node/)
+
+commit 66918bc7ac29f6ba9e3cd3bdb47381572959bf1e
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Sat Aug 22 15:32:24 2020 -0700
+
+    Use github actions as CI
+
+commit f23877e4d3911479735956da80d8807dd49914ac
+Author: Samuel Lee <lee.yuru.samuel@stee.stengg.com>
+Date:   Tue Oct 8 19:19:18 2019 +0800
+
+    Upgraded to 12.11.1
+
+commit c60ae4f247e41b7f3603e4f23a463c1e8613c007
+Author: Samuel Lee <lee.yuru.samuel@stee.stengg.com>
+Date:   Tue Sep 10 18:23:36 2019 +0800
+
+    Upgraded to 12.10.0
+
+commit ea0d85d8c7fe5eba023eaa08acd4ff1727b3717c
+Author: Samuel Lee <lee.yuru.samuel@stee.stengg.com>
+Date:   Wed Aug 7 14:56:02 2019 +0800
+
+    Upgraded to 10.16.2
+
+commit fb720d7468a0018c9e7cd931ea339ab814b9af91
+Author: Samuel Lee <lee.yuru.samuel@stee.stengg.com>
+Date:   Wed May 29 10:42:55 2019 +0800
+
+    Upgraded to 10.16.0
+
+commit 74647585261bc936efa138a53a7e8b08ab3bfb55
+Author: Samuel Lee <lee.yuru.samuel@stee.stengg.com>
+Date:   Thu Mar 14 19:14:35 2019 +0800
+
+    Upgraded to Node.js 10.15.3
+
+commit 364e79fe4a3aeac7eda0341f0c1370665b65b6e6
+Author: Samuel Lee <lee.yuru.samuel@stee.stengg.com>
+Date:   Wed Mar 13 16:11:10 2019 +0800
+
+    AppVeyor and Travis CI should be working now by replacing microtime module with date-time module (For macOS / Linux compatibility) and splitting existing coffeescript test into 2 distinct tests.
+
+commit b8b8bfe282d74f973ae1a6800d97adc91df06dcf
+Author: Samuel Lee <lee.yuru.samuel@stee.stengg.com>
+Date:   Fri Feb 1 13:09:03 2019 +0800
+
+    Upgraded to 10.15.1
+
+commit 194e3edcd1d77f2b5a8e5032255fc0e681f53caa
+Author: Samuel Lee <lee.yuru.samuel@stee.stengg.com>
+Date:   Fri Dec 14 14:53:30 2018 +0800
+
+    Upgraded to 10.14.2
+
+commit f077b9768aac6207a6b65a02720928fdf52d55ff
+Author: samuellee <lee.yuru.samuel@stee.stengg.com>
+Date:   Fri Oct 12 18:12:44 2018 +0800
+
+    Upgraded to 10.12.0
+
+commit 322b2381a5f31ad34d94e0268a93e84e312e6a68
+Author: samuellee <lee.yuru.samuel@stee.stengg.com>
+Date:   Thu Aug 23 09:11:58 2018 +0800
+
+    Upgraded to 10.9.0
+
+commit 0db6676863d9ae35febabd2dd1b31fbcef63a521
+Author: samuellee <lee.yuru.samuel@stee.stengg.com>
+Date:   Fri Jul 20 14:14:20 2018 +0800
+
+    Upgraded to 10.7.0
+
+commit 68ee5e96d00ee57c1a6595659cd8f97323a26a16
+Author: samuellee <lee.yuru.samuel@stee.stengg.com>
+Date:   Mon Jul 16 18:01:20 2018 +0800
+
+    Upgraded to 10.6.0
+
+commit 3edc9f663f9b692f3e7c4036f6915391c84c7c88
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Mon Aug 28 21:40:33 2017 +0800
+
+    upgrade Node.js runtime to v8.4.0
+
+commit 6c83be6a46d07a138e02451fd5b7a004e23b60ca
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Sun Aug 13 17:03:45 2017 +0800
+
+    upgrade Node.js runtime to v8.3.0
+
+commit 806d6f2c318ded02f29e2c768f605f0d83fe758c
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Jul 20 11:40:10 2017 +0800
+
+    recover node/doc/
+
+commit e8f36f80b733b1db9897e42b9e2249dd335c7810
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Jul 20 10:56:54 2017 +0800
+
+    remove  and
+
+commit d594c1051dec6a4aa8ac0cf20af9ca4f4b967c89
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Jul 20 10:41:14 2017 +0800
+
+    upgrade Node.js runtime to v8.2.0
+
+commit 0f9e7f1479d695b51836d0f042948a90fad06e18
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed Jun 14 18:40:31 2017 +0800
+
+    only keep node/
+
+commit b3cfedd0233a20b5695e0e8cf83af4ef4fdf85a6
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed Jun 14 15:40:54 2017 +0800
+
+    drop node 7
+
+commit 7d0df69fb7d3405213adfa85b0e659fce8355f12
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed Jun 14 14:05:27 2017 +0800
+
+    import node-v8.1.1
+
+commit f296bddc8e80ca9636cbbbe2228a952a2ac24281
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed Jun 14 13:55:02 2017 +0800
+
+    import baseline
+
+commit 6e33ded53728fc066997008789201fc9c74bc1b4
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed Jun 14 12:47:32 2017 +0800
+
+    support arbitrary node.js runtime versions #40
+
+commit f924921eefa02e711bd6087697ca22b486c86169
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Mon Jun 12 11:46:46 2017 +0800
+
+    upgrade Node.js runtime to v8.1.0
+
+commit 9b037093f6fbda48ac27c73c9b9589d32ea9699d
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed May 31 10:00:01 2017 +0800
+
+    upgrade Node.js runtime to v8.0.0
+
+commit 2a8b0a29b187671b77d9df8363a1c09fcdd9fe44
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed May 24 12:42:32 2017 +0800
+
+    import https://github.com/nodejs/node/commit/808d0561f40772735af6a2b4c03abe36c3c39edb
+
+commit 68ddd9c9e8ec67c2b037cff049468b363a04311d
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Sat May 6 12:46:07 2017 +0800
+
+    upgrade Node.js runtime to v7.10.0
+
+commit 0ce44d10f1c72e6124affee187c3b212012cff6a
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed Mar 15 15:13:09 2017 +0800
+
+    fix err msg
+
+commit ff940dc926901c8376fb34d642bfe11ae604b1c8
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed Mar 15 14:48:26 2017 +0800
+
+    upgrade Node.js runtime to v7.7.3
+
+commit 9ded2c6560a1c32a0c791b59fd9d61d96fbb34a5
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Mon Mar 13 18:13:46 2017 +0800
+
+    upgrade Node.js runtime to v7.7.2
+
+commit 82709fcdf8a4867db629dc54b9eacaedbfa44799
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Fri Mar 3 15:37:56 2017 +0800
+
+    upgrade to node-v7.7.1
+
+commit 756abfb3fb8fd9980b5ae5ad199120efa19c600a
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Feb 23 20:03:58 2017 +0800
+
+    add test PART 2
+
+commit ae2a1e063afbb2c4711b00209f8fc16e0a1fcdb3
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Mon Feb 6 14:30:49 2017 +0800
+
+    upgrade Node.js runtime to v7.5.0
+
+commit eb635da72a4ad47f3a4bb28461b7adf1fe4a40f6
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Jan 12 15:44:23 2017 +0800
+
+    putting libsquash into node instead of vendor
+
+commit 3f687f510b19a7b32604af4869c7c76a692c6c5d
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Jan 5 16:50:10 2017 +0800
+
+    todo: write tests
+
+commit 02ca263071ee4d432ce19527ed8b23ae1b6dd8d3
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Jan 5 14:25:09 2017 +0800
+
+    upgrade runtime to 7.4.0
+
+commit 0c35107c1c135eb81dc1f9b7ab5a2960598291cc
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed Jan 4 13:34:43 2017 +0800
+
+    use original node source code
+
+commit 9ccc9492e5865d3db41d3943745744b99664f29b
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Dec 22 12:40:56 2016 +0800
+
+    peek node version
+
+commit 2a95b82b434823a9f83ca9eb5716258c1e0092c8
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Dec 22 12:27:46 2016 +0800
+
+    upgrade to node-v7.3.0
+
+commit ce94eca83a80435d7ef44f9ccab564623291dfd3
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Mon Dec 19 12:03:14 2016 +0800
+
+    fix tests
+
+commit 74297a7cbd827e7ea211c08806f972099d9cfea4
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Tue Dec 13 15:57:25 2016 +0800
+
+    Upgrade to node-v7.2.1
+
+commit b320b76f4b6ab8464a7b49922ace3c3116d4185c
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Tue Nov 29 11:24:24 2016 +0800
+
+    Remove node_version
+
+commit 0fe35c2ae586fa0966badf1843e3c12b50b9cad2
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Mon Nov 28 16:33:32 2016 +0800
+
+    Upgrade to node-v7.2.0
+
+commit 0bf2f4e09d9565689221a45ba8b6d48504aae961
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Tue Nov 22 18:39:35 2016 +0800
+
+    simplify project structure
+
+commit 5894c3827844572fa9072341807abc45f10d1989
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Tue Nov 22 17:38:29 2016 +0800
+
+    change enclose-io-compiler to nodec
+
+commit 5b2dc7f109ed347890f13dde925aaf6e116c3bb2
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Nov 10 12:31:14 2016 +0800
+
+    Import node-v7.1.0
+
+commit 1b129572d6d8615f74655881bdae240d83901616
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Fri Nov 4 18:12:55 2016 +0800
+
+    Remove node-v6.8.0
+
+commit 50c5ca8d65ff89c5489b23a612b2355fc8c3cd27
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Fri Nov 4 16:23:48 2016 +0800
+
+    Add node-v6.9.1
+
+commit 82bff237c7cdc7d67d15816fe45798131a105f10
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Fri Nov 4 11:09:11 2016 +0800
+
+    Add test! for win_platform
+
+commit 9db78eb3b796a5cca5d4aa614dd4fc8404200de8
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Oct 27 16:38:30 2016 +0800
+
+    Add node-v7.0.0
+
+commit 6948d811b63887bd15ce62293df316feb6099ec1
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Thu Oct 13 15:26:54 2016 +0800
+
+    Import node-v6.8.0
+
+commit cf12f188bd7625e842259fed320370f23d3d3155
+Author: Minqi Pan <pmq2001@gmail.com>
+Date:   Wed Oct 12 22:59:42 2016 +0800
+
+    Import node-v6.7.0

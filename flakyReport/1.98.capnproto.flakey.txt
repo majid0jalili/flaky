@@ -1,0 +1,20 @@
+commit 9f49cc30c0c85d4813c6fa2ce566d9b3411efe40
+Author: Kenton Varda <kenton@cloudflare.com>
+Date:   Tue Apr 14 14:20:30 2020 -0500
+
+    Skip 'HttpClient concurrency limiting' test on Mac and Windows, where it is flaky.
+
+commit 74c69ad578c4db1961d923522bfc997f22874903
+Author: Joe Lee <jlee@cloudflare.com>
+Date:   Wed Mar 20 13:08:44 2019 -0700
+
+    http-test: Replace windows-conditional block with extra poll
+    
+    Seems to work reliably under Windows, hopefully also Mac.  I'm not
+    totally sure why the extra polling is necessary, though.
+
+commit ef130da3cc51e9dbc0784aaa4db3f35611ce17b9
+Author: Kenton Varda <kenton@sandstorm.io>
+Date:   Sat Sep 23 23:53:17 2017 -0700
+
+    Disable flakey test on Mac.

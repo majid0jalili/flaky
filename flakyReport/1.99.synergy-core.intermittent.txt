@@ -1,0 +1,184 @@
+commit ca91902c6f0d9d46b993b382e703f180e9eff53a
+Author: Nick Bolton <nick@symless.com>
+Date:   Tue May 14 12:18:17 2019 +0100
+
+    Delete ISSUE_TEMPLATE.md
+
+commit 667d79263d5162dcd4198c18099d5a63477f4f88
+Author: Nick Bolton <nick@symless.com>
+Date:   Fri May 3 13:35:39 2019 +0100
+
+    Create ChangeLog
+
+commit 8dcb63d3c01b773a7430fd72fbbef30574cc40f1
+Author: Nick Bolton <nick@symless.com>
+Date:   Fri May 3 13:51:28 2019 +0100
+
+    Delete ChangeLog
+
+commit 2d76a4c5f58b53d6853c72bd0db0e67bd06b0cd5
+Author: Nick Bolton <nick@symless.com>
+Date:   Fri May 3 13:35:39 2019 +0100
+
+    Create ChangeLog
+
+commit faf9e489937e858372747de6922ba024536af039
+Author: Nick Bolton <nick@symless.com>
+Date:   Fri May 3 13:35:19 2019 +0100
+
+    Delete ChangeLog
+
+commit 50fcdcf6726b2ef9a608f87db5f996043137e51c
+Author: Andrew Nelless <andrew@symless.com>
+Date:   Wed Sep 21 11:26:53 2016 +0100
+
+    Improve GitHub issue template
+
+commit f94e1e1660026ebc99526f4271d486d7b0476fbf
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Wed Jun 10 07:04:58 2015 -0700
+
+    Disabled intermittently failing unit test #4651
+
+commit f5d303cab20a1cda0856b12fa1c63ffd8580d980
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Tue May 26 15:57:53 2015 +0100
+
+    ChangeLog for v1.7.3-stable
+
+commit b71c2981637df47db7c497cccd690144da52cda8
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Mon May 25 15:25:14 2015 +0100
+
+    Changed sleep time to 100ms for unit test (hack) #4651
+
+commit 62a501066f66ad98aef2cbb662db1a2fd0d18a6a
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Mon May 18 18:19:43 2015 +0100
+
+    Disabled IPC logging tests for Mac and Linux #4624
+    
+    This is a bit hacky, but IPC logging isn't used on Mac and Linux anyway,
+    and we're hopefully going to remove it.
+
+commit b27b236c07abee919eec1a50908c2e95aa695df2
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Mon May 18 16:39:54 2015 +0100
+
+    Disabled failing IPC tests for Mac #4651
+
+commit 4675f29a4c55fba202f037d6a393342a71761327
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Fri Feb 28 12:36:45 2014 +0000
+
+    code style fixes:
+    - reordered includes to prevent accidental dependencies.
+    - moved arch specific files into their own folder (easier to include with cmake).
+    - renamed non-class files to reflect new code style (lower case with underscores).
+    - using full relative paths for includes (easier for understanding dependencies).
+    - using #pragma once instead of classic-style header guards.
+
+commit 8e74710dad3f46fd184340d4006fe2896fd974e0
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Thu Feb 27 17:45:17 2014 +0000
+
+    code style: dropped C prefix
+
+commit 50e97e23f0dccd0cc18fa9a9aca45759e5c2f38d
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Fri Jan 24 11:51:35 2014 +0000
+
+    fixed: code sign fails on mavericks
+
+commit ba78e4b67f1a853ec6ad2f660055e0ca71744f3b
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Wed Sep 18 06:52:18 2013 +0000
+
+    disabled CIpcTests and NetworkTests on mac, which are failing intermittently.
+
+commit 4e3e64e97c02986e2a260a8cd78ac07ee542c5bd
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Fri Apr 12 03:00:54 2013 +0000
+
+    ChangeLog for 1.4.11
+
+commit c34918fca1bda7e1f3a13c1d546e0609366c5168
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Tue Oct 30 18:42:58 2012 +0000
+
+    appears to fix mouse cursor randomly not showing/hiding bug -- not sure though
+
+commit eda0018fc5aa24a7d2a381cab2046f460aed84f1
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Mon Oct 29 13:43:08 2012 +0000
+
+    attempted fix to 'cursor does not show' bug, though i don't think the issue is solved, it appears to be more stable (but it's so hard to tell, since the bug is so random)
+
+commit 69db3416607c9dc49cce08af0caedd759d645aa4
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Sun Oct 28 11:36:30 2012 +0000
+
+    added cursor show/hide test, and modified osx screen class to be more robust with memory usage. also fixed some bad code style.
+
+commit 240c5a781d05664ea934d529459887154e5405d3
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Fri Oct 26 00:21:22 2012 +0000
+
+    fixed wrong code style around cursor show/hide, made secondary input event handling look more readable, cut down on cursor shown/hidden state usage (to make sure the cursor is shown and hidden when needed), added check after show/hide to make sure that it actually happened
+
+commit 16d6ed9a89ecc6f5a585de071fb130b554c3ef05
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Mon Jul 30 21:55:30 2012 +0000
+
+    changelog for 1.4.10
+
+commit 26aafeebae9be0545d761f277f5342cf14581967
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Sun Jul 29 20:35:51 2012 +0000
+
+    added codesign repeat hack
+
+commit fbc4a8965319728c90364b4ab47bd3c51e547d1a
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Thu Jul 5 21:26:41 2012 +0000
+
+    added retry to installer for synrgyhk.dll file delete problem, seems to help.
+    added hack to daemon to suppresses service controller false positive error.
+    tidied up a few of the log lines to make the place look nicer for newbies.
+    removed annoying build line from dist command.
+
+commit 488241850c2023a6593491ceed360a8092601f86
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Sun Jun 10 16:50:54 2012 +0000
+
+    moving 1.4 to trunk
+
+commit e65886857d2d43a29871094b247dec1d39f4d405
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Wed Oct 5 00:10:22 2011 +0000
+
+    removed trunk; please commit to (and build patches against) release branches instead.
+
+commit 0e94f696fa242a19d60aea3c804f68e8061d0ca3
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Sun May 1 19:31:10 2011 +0000
+
+    comment out another intermittently failing integ test
+
+commit 40b5a9879026b01fdc08e7901e60adf98c652eef
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Thu Apr 28 10:24:02 2011 +0000
+
+    moved integ and unit tests into test dir
+
+commit 143c4cd2975988cc122654eb7dde11d07c1c6a96
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Mon Apr 25 21:09:32 2011 +0000
+
+    restructured source code, put CMakeLists.txt in more conventional locations, and split the libraries up
+
+commit 85f66153ab477f412386c93be2a9a5bb8ac5813c
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Mon Apr 25 02:00:43 2011 +0000
+
+    renamed integ test entry point file

@@ -1,0 +1,57 @@
+commit 207263c1a89de2386d140573d5b5c14b53974048
+Author: rdb <git@rdb.name>
+Date:   Sat Oct 5 19:52:03 2019 +0200
+
+    display: handle resource releases in batches, not individually
+    
+    This is intended to eventually replace the old interface, since GSGs may be able to do a batch of prepare/release operations more efficiently.
+
+commit 83374de0fffee571849127498bf9dd66d2c352e7
+Author: rdb <git@rdb.name>
+Date:   Mon Dec 31 14:01:26 2018 +0100
+
+    shader: don't use GENERIC profile to compile Cg shaders
+    
+    Instead, make an educated guess of what the GSG we are going to be compiling this shader for wants to use as profile.
+
+commit 34068dc0c1d88a6111eec380df4096422a58867e
+Author: rdb <git@rdb.name>
+Date:   Tue Dec 13 21:22:17 2016 +0100
+
+    Implement support for SSBOs
+
+commit b10674ca81c664bfb2445b2413adc90f4152c9ca
+Author: Chris Brunner <github@chrisweb.us>
+Date:   Fri Apr 23 00:09:43 2010 +0000
+
+    Newer versions of emacs don't have this, but we still use it
+
+commit 15265b12e143488a5a09886bea709acd7e9f3fe3
+Author: rdb <git@rdb.name>
+Date:   Tue Mar 31 13:12:44 2009 +0000
+
+    Remove rest of the stuff from doc/
+
+commit 125c82d23b93b8efdcc62621c58099f43dcd9490
+Author: rdb <git@rdb.name>
+Date:   Tue Mar 31 11:49:27 2009 +0000
+
+    Move makepanda to root
+
+commit d7307dd0beed86ae38511b219ead03dd51d6dc4a
+Author: Josh Yelon <jyelon@gmail.com>
+Date:   Wed Sep 12 17:39:32 2007 +0000
+
+    Added basic_shaders_only
+
+commit 6d0692fec6c347f1487a13a824de1ba662fc3987
+Author: Josh Yelon <jyelon@gmail.com>
+Date:   Wed Apr 5 16:47:19 2006 +0000
+
+    *** empty log message ***
+
+commit 0bfd8ed6f92f9c8235ced94c4fd9a5003e49c5be
+Author: David Rose <david@ddrose.com>
+Date:   Mon Jul 18 23:18:49 2005 +0000
+
+    fix gl crash

@@ -1,0 +1,19 @@
+commit 3c3c3678e5572ed77913ffb50dafedf0091a58eb
+Author: heidi-dang <heidi.dang.dev@gmail.com>
+Date:   Mon Jul 30 17:31:01 2018 +1000
+
+    Add cuckoo cache
+    
+    Signed-off-by: 216k155 <216k155@luxcore.io>
+
+commit b6b5e5a13c3973a6807d9443baeb3898971ced09
+Author: 216k155 <shacker@i2pd.net>
+Date:   Sun Oct 8 23:45:23 2017 +1100
+
+    Update files needed for masternodes
+
+commit 2d6eb46b1c0de02ee2f8a1a711a1bdbe7bd1c7c0
+Author: 216k155 <shacker@i2pd.net>
+Date:   Tue Oct 3 03:03:10 2017 +1100
+
+    novacoin forked

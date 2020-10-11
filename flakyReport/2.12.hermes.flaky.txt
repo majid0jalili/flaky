@@ -1,0 +1,55 @@
+commit b1877299d21f978d4c9546eb39ee801bf2a7d761
+Author: Tzvetan Mikov <tmikov@fb.com>
+Date:   Thu Feb 6 00:30:00 2020 -0800
+
+    add the files for internal LLVM fork
+    
+    Summary:
+    Add the LLVM files in a separate commit, to make the actual changes more
+    manageable for review.
+    
+    Reviewed By: dulinriley
+    
+    Differential Revision: D19658624
+    
+    fbshipit-source-id: 1736046b9bd6e56d6bdbe4426b9f78872b48324c
+
+commit 587090b377b7193921b7e07cb9337912e758aa81
+Author: Will Holen <willholen@fb.com>
+Date:   Thu Oct 10 15:25:52 2019 -0700
+
+    CircleCI parallelization fixes and improvements (#127)
+    
+    Summary:
+    This makes the comment more accurate, and uses cmake --build where appropriate.
+    
+    Pull Request resolved: https://github.com/facebook/hermes/pull/127
+    
+    Reviewed By: dulinriley
+    
+    Differential Revision: D17862107
+    
+    Pulled By: willholen
+    
+    fbshipit-source-id: 967b712bc4cb5074557d2283713d6a5dcfb8e0b7
+
+commit 1c5135276600cf57ee669f6973d16248aa0cc7aa
+Author: Will Holen <willholen@fb.com>
+Date:   Tue Oct 8 17:27:57 2019 -0700
+
+    Run regression tests and React Native tests on CircleCI (#123)
+    
+    Summary:
+    This PR runs regression tests and RN tests on CircleCI.
+    
+    Pull Request resolved: https://github.com/facebook/hermes/pull/123
+    
+    Test Plan: Will wait for CircleCI to finish successfully.
+    
+    Reviewed By: dulinriley
+    
+    Differential Revision: D17766351
+    
+    Pulled By: willholen
+    
+    fbshipit-source-id: 95291888c3b77e0df30dad636ef7cad2b6c73652

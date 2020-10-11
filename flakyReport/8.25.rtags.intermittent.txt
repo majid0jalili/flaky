@@ -1,0 +1,47 @@
+commit 0ae5eb7e4f6590c83e2458cfe02ddf7753eac637
+Author: Anders Bakken <agbakken@gmail.com>
+Date:   Thu Jan 31 15:05:38 2013 -0800
+
+    split tools into rct library
+
+commit 9a3398433c3133b8d6fe7068224ed41f089b78ba
+Author: Anders Bakken <agbakken@gmail.com>
+Date:   Mon Jan 28 13:45:41 2013 -0800
+
+    Remove this
+
+commit e0aa057f510e3bf8a2cd60cd81fabae8ad07dbc5
+Author: Anders Bakken <agbakken@gmail.com>
+Date:   Fri Jan 4 12:07:46 2013 -0800
+
+    Balls
+
+commit 8544d166f7bf9bac53d07bb35c83dedf87aad4b4
+Author: Anders Bakken <agbakken@gmail.com>
+Date:   Thu Sep 6 23:31:13 2012 -0700
+
+    Revive make
+
+commit f701653f4b135b1bf0668fadd82994514189bb16
+Author: Anders Bakken <agbakken@gmail.com>
+Date:   Mon Aug 20 22:40:08 2012 -0700
+
+    Move signal slot stuff into src. Also allow for async signals.
+
+commit afca93948d7f7fc932b4aa2d1d44caa3cb156797
+Author: Anders Bakken <agbakken@gmail.com>
+Date:   Fri Jul 13 00:28:17 2012 -0700
+
+    Kill make
+
+commit 95253f521991f6b42d5b3ec241d05148f3d0d0ac
+Author: Jan Erik Hanssen <jhanssen@gmail.com>
+Date:   Fri Jun 22 14:03:26 2012 -0700
+
+    FastDelegate
+
+commit f7facfbf8d8b96562fbbef99b880513e6cecd0af
+Author: Anders Bakken <agbakken@gmail.com>
+Date:   Thu Jun 21 16:51:35 2012 -0700
+
+    Add make

@@ -1,0 +1,53 @@
+commit 42f03574abe0bfd9123377afb31b9b2d279faa0c
+Author: Kevin Hendricks <kevinhendricks@users.noreply.github.com>
+Date:   Wed Sep 16 11:42:17 2015 -0400
+
+    Update all dictionaries to be latest available
+
+commit 4e3534b9922560335cbdcd830fb1ce06cbbd17a9
+Author: Kevin Hendricks <kevinhendricks@users.noreply.github.com>
+Date:   Thu Aug 13 15:55:46 2015 -0400
+
+    Remove Python3 source from tree
+
+commit 36dc3cc1356c1cd4b4aebbab1df5a7b1fc912ba3
+Author: John Schember <john@nachtimwald.com>
+Date:   Sun May 24 12:45:07 2015 -0400
+
+    Add python bundle. Python does not build on windows, python is not installed properly on OSX as a bundle. Cleanup some cmake files.
+
+commit 7cca9b68375b7735a16f96c49cc60e34b959b7ea
+Author: John Schember <john@nachtimwald.com>
+Date:   Sun Mar 29 19:45:40 2015 -0400
+
+    Rework build structure.
+
+commit 86bd2c01688549cadfcb72f3659ff1495e9c76fb
+Author: John Schember <john@nachtimwald.com>
+Date:   Sat Feb 28 16:40:43 2015 -0500
+
+    Remove boost.
+
+commit 287936ef06fe7dab62227405984be9d702787f52
+Author: John Schember <john@nachtimwald.com>
+Date:   Sun Sep 7 16:18:22 2014 -0400
+
+    properly include boost parts.
+
+commit cec097b7d2180715805f5d96373c59a8302850e5
+Author: Grant Drake <grant.drake@gmail.com>
+Date:   Fri Aug 24 08:10:47 2012 +0100
+
+    Fix issue 940: Clipboard copy operations intermittently fail on Windows due to lack of retry logic in Qt handler. Failures only occur in QWebPage and QPlainTextEdit (BV/CV) from my extensive testing, so retry logic added for Windows implementations only.
+
+commit 4d02e96c59bbdd5d919b008fc463c54bcb16e35d
+Author: John Schember <john@nachtimwald.com>
+Date:   Tue Jan 31 21:07:33 2012 -0500
+
+    Fix issue 1214: Dictionary files do not include hypen files or GB files.
+
+commit bfce4be8a85db12a2d395f49bbee2173d21125b4
+Author: John Schember <john@nachtimwald.com>
+Date:   Tue Oct 25 18:00:31 2011 -0400
+
+    More Spell check support work. Mark misspelled words in FlowTab code view.

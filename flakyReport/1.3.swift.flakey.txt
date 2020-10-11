@@ -1,0 +1,37 @@
+commit 63e72909b5df1a95ae2fbc6d2358f1f000b6df19
+Author: Dan Liew <dliew@apple.com>
+Date:   Wed Nov 6 17:55:25 2019 -0800
+
+    [Sanitizers] Add Driver/Frontend option to enable sanitizer instrumentation that supports error recovery.
+    
+    The new option `-sanitize-recover=` takes a list of sanitizers that
+    recovery instrumentation should be enabled for. Currently we only
+    support it for Address Sanitizer.
+    
+    If the option is not specified then the generated instrumentation does
+    not allow error recovery.
+    
+    This option mirrors the `-fsanitize-recover=` option of Clang.
+    
+    We don't enable recoverable instrumentation by default because it may
+    lead to code size blow up (control flow has to be resumable).
+    
+    The motivation behind this change is that today, setting
+    `ASAN_OPTIONS=halt_on_error=0` at runtime doesn't always work. If you
+    compile without the `-sanitize-recover=address` option (equivalent to
+    the current behavior of the swift compiler) then the generated
+    instrumentation doesn't allow for error recovery. What this means is
+    that if you set `ASAN_OPTIONS=halt_on_error=0` at runtime and if an ASan
+    issue is caught via instrumentation then the process will always halt
+    regardless of how `halt_on_error` is set. However, if ASan catches an
+    issue via one of its interceptors (e.g. memcpy) then `the halt_on_error`
+    runtime option is respected.
+    
+    With `-sanitize-recover=address` the generated instrumentation allows
+    for error recovery which means that the `halt_on_error` runtime option
+    is also respected when the ASan issue is caught by instrumentation.
+    
+    ASan's default for `halt_on_error` is true which means this issue only
+    effects people who choose to not use the default behavior.
+    
+    rdar://problem/56346688

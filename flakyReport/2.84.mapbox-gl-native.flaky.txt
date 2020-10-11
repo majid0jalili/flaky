@@ -1,0 +1,133 @@
+commit 35fc402d34494767acc6922261055b75f33f5487
+Author: Mikhail Pozdnyakov <mikhail.pozdnyakov@mapbox.com>
+Date:   Fri Mar 6 23:00:51 2020 +0200
+
+    [render tests] Temporarily ignore tile-mode/streets-v11
+    
+    Due to flaky metrics results
+
+commit 49bcf69a3bc9e73e0f81542b9747ead16f3117ae
+Author: Mikhail Pozdnyakov <mikhail.pozdnyakov@mapbox.com>
+Date:   Mon Nov 11 16:46:22 2019 +0200
+
+    [core] Avoid GeoJSON source flickering on style transitions
+    
+    Before this change, all GeoJSON source cleared tile pyramid
+    at the style transition and it caused flickering.
+    
+    Now, in Continuous mode, we keep the existing tiles until the
+    new GeoJSON data is not yet available, thus providing smart
+    style transitions without flickering.
+    
+    In other modes (Static, Tile) clear the tile pyramid in order
+    to avoid render tests being flaky.
+
+commit 04309e01ceaa267becef16ed9db6f91fcea91f59
+Author: Mikhail Pozdnyakov <mikhail.pozdnyakov@mapbox.com>
+Date:   Thu Aug 1 12:36:24 2019 +0300
+
+    [core] Switch test build to googletest git submodule
+
+commit 3a0db3921c0db4719e9b33a0fab2f30905a0c79d
+Author: Mikhail Pozdnyakov <mikhail.pozdnyakov@mapbox.com>
+Date:   Wed Jul 17 13:00:45 2019 +0300
+
+    [core] Introduce RenderTileSetSource class
+    
+    Encapsulates the tiles update logic based on the given tile set.
+
+commit bbe7679bc66ac6848d3b38931a3065de1b7a30ae
+Author: Mikhail Pozdnyakov <mikhail.pozdnyakov@mapbox.com>
+Date:   Tue Jul 16 15:12:41 2019 +0300
+
+    [core] Render sources keep the existing tiles until the new tileset is ready
+    
+    In Continuous map mode, keep the existing tiles if the new tileset is not
+    yet available, thus providing smart style transitions without flickering.
+
+commit 1985b893b7c50f56e10ecc07776d60103a5a3e5b
+Author: Konstantin Käfer <mail@kkaefer.com>
+Date:   Tue Jul 17 16:59:34 2018 +0200
+
+    [build] vendor Google Test
+
+commit cfd436c287f4209d0d994042452ccbb552a6bd28
+Author: Anand Thakker <anandthakker@users.noreply.github.com>
+Date:   Tue Jul 3 17:17:39 2018 -0400
+
+    [core] Avoid blocking in Thread<Object> constructor (#12151)
+    
+    * Introduce AspiringActor, EstablishedActor
+    
+    This pair of objects represents the two-phase (parent-thread /
+    child-thread) construction that's needed to support constructing
+    Thread<Object> without blocking until the child thread is up and
+    running.
+    
+    An `AspiringActor<O>` is responsible for:
+     - ownership of the actor's `Mailbox`
+     - allocating the memory for (but *not* constructing) the target object `O`
+    
+    Using these two pieces--the mailbox and a stable address for `O`--an
+    `AspiringActor<O>` can accept messages for the target object, or provide
+    `ActorRef<O>`s that do so, before the object has actually been
+    constructed by the corresponding `EstablishedActor<O>`.  (Such messages
+    are queued in the mailbox until after the object is constructed.)
+    
+    This allows for an `AspiringActor<O>` to be created and safely used by a
+    thread other than the one on which the target object will (eventually)
+    live.
+    
+    An `EstablishedActor<O>` is responsible for managing the lifetime of the
+    target object `O` and the open/closed state of the parent's `mailbox`.
+    
+    The `O` object's lifetime is contained by that of its owning
+    `EstablishedActor<O>`: the `EstablishedActor` constructor executes the
+    `O` constructor via "placement new", constructing it at the address
+    provided by the parent `AspiringActor`, and the `~EstablishedActor`
+    destructor similarly executes the `~O` destructor (after closing the
+    mailbox). `EstablishedActor` should therefore live entirely on the
+    thread intended to own `O`.
+    
+    * Remove Actor#{invoke,ask}
+
+commit 7e8bdadb91010b83cea7e8bad7a4e7a2488a91f6
+Author: Thiago Marcos P. Santos <tmpsantos@gmail.com>
+Date:   Wed Jun 21 13:38:49 2017 +0300
+
+    [core] Rename ThreadedObject to Thread
+    
+    Now that the old Thread class is gone, we can give ThreadedObject
+    a better name.
+
+commit 1427628c56d336a21c93ef0a1c57fbfabd98dc5e
+Author: Thiago Marcos P. Santos <tmpsantos@gmail.com>
+Date:   Wed Jun 14 16:30:47 2017 +0300
+
+    [core] Remove util::Thread
+    
+    Fixes #6425
+
+commit c34d1cfaa7a9e61c6bb8f07d4fff547ad68e3115
+Author: Thiago Marcos P. Santos <tmpsantos@gmail.com>
+Date:   Thu Jun 15 17:59:25 2017 +0300
+
+    [tests] Added tests for ThreadedObject
+
+commit bc5e9afd0d9332433c3356064352b54cfbf5aee5
+Author: Thiago Marcos P. Santos <thiago@mapbox.com>
+Date:   Fri Feb 24 15:01:53 2017 +0200
+
+    [tests] Added unit tests for Thread::pause/resume
+
+commit ddc4a8193e775d9cd9280ad7d9bb6975b4a323ee
+Author: John Firebaugh <john.firebaugh@gmail.com>
+Date:   Wed Sep 30 17:19:31 2015 -0700
+
+    Install gtest from mason
+
+commit 85449e097c5fb28088c7866ad7e3b10683b30268
+Author: Konstantin Käfer <mail@kkaefer.com>
+Date:   Mon Mar 17 12:32:27 2014 +0100
+
+    add gtest

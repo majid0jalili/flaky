@@ -1,0 +1,40 @@
+commit c538823df071109fcd421878b22dfe87e1beb0c2
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sun Jan 5 14:21:45 2014 -0600
+
+    Fixed #1038: Bump minimal required Boost to 1.49.0
+
+commit bcdf30dd7e1f531c0197e98975eceea4f193655d
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Mon Dec 17 15:30:58 2012 -0600
+
+    Replacing internal version of Chrono to allow compilation with Boost V1.46.1 and earlier
+
+commit de5b6c7e088617665af43c97c59100ab475137b1
+Author: Bryce Adelstein-Lelbach <blelbach@cct.lsu.edu>
+Date:   Tue Jul 3 21:51:28 2012 +0000
+
+    Move spellcheck into it's own directory
+    
+    
+    
+    git-svn-id: https://svn.cct.lsu.edu/repos/projects/parallex/trunk/hpx@8305 5079c8e4-9419-0410-93bb-9e5ee278c886
+
+commit 0a47f9f66faad322509d8257588118fe4e562cc4
+Author: Andrew Kemp <akemp@cct.lsu.edu>
+Date:   Tue Jul 3 00:05:04 2012 +0000
+
+    Adding the spell checking program.
+    
+    git-svn-id: https://svn.cct.lsu.edu/repos/projects/parallex/trunk/hpx@8287 5079c8e4-9419-0410-93bb-9e5ee278c886
+
+commit a047d5657c9f19e7f39aa0f19462e6237fcedf59
+Author: Hartmut Kaiser <hkaiser@cct.lsu.edu>
+Date:   Wed Mar 4 18:56:49 2009 +0000
+
+    More performance counter work
+    Added Boost.Chrono as an external dependency
+    Improved error handling
+    
+    
+    git-svn-id: https://svn.cct.lsu.edu/repos/projects/parallex/trunk/hpx@1231 5079c8e4-9419-0410-93bb-9e5ee278c886

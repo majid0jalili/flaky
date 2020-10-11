@@ -1,0 +1,13 @@
+commit 7336e95d16b3678c7137a8f15193413f65074164
+Author: Evgeni Raikhel <evgeni.raikhel@intel.com>
+Date:   Tue Aug 25 15:14:28 2020 +0300
+
+    Encapsulate error pollings for UAMG to prevent imgui state machine going out of sync and invoking abort
+    
+    (cherry picked from commit 691d56329143ecac2b947366330d2bd59fed002c)
+
+commit 691d56329143ecac2b947366330d2bd59fed002c
+Author: Evgeni Raikhel <evgeni.raikhel@intel.com>
+Date:   Tue Aug 25 15:14:28 2020 +0300
+
+    Encapsulate error pollings for UAMG to prevent imgui state machine going out of sync and invoking abort

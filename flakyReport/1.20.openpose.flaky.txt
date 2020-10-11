@@ -1,0 +1,21 @@
+commit 9ab56975d0d8c169e62a0b1bd87cd08004716251
+Author: Gines <gineshidalgo99@gmail.com>
+Date:   Wed Jan 10 10:33:57 2018 -0500
+
+    Caffe as submodule (#369)
+    
+    * removed caffe
+    
+    * added caffe submodule
+    
+    * Caffe submodule: Updated doc & old Makefile installer
+    
+    * More elegant alternative to submodule initialization
+    
+    * CMake downloads Caffe
+
+commit 6bc2cdb56451a824d225beeaffe05725216cb4a8
+Author: gineshidalgo99 <gineshidalgo99@gmail.com>
+Date:   Mon Apr 24 10:12:24 2017 -0400
+
+    OpenPose - 1st commit

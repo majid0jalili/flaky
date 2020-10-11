@@ -1,0 +1,44 @@
+commit 50fae4b0c63e55df8fecef797429f86e7423df85
+Author: Iñaki Baz Castillo <ibc@aliax.net>
+Date:   Sun Apr 19 21:12:19 2020 +0200
+
+    Use recvmmsg (#386)
+    
+    Enable UV_UDP_RECVMMSG:
+    
+    - Upgrade libuv to 1.37.0.
+    - Use uv_udp_init_ex() with UV_UDP_RECVMMSG flag.
+    
+    Also fixes #384 by adding our own `uv.gyp` file.
+
+commit dd5368986a2d95738b7a5d60beada08d5496de12
+Author: Iñaki Baz Castillo <ibc@aliax.net>
+Date:   Tue Oct 1 14:17:11 2019 +0200
+
+    Merge 'devel' branch
+    
+    - Google transport-cc congestion control and bandwidth estimation (send & recv)
+    - Windows support (yes, it runs in Windows now)
+    - JavaScript component rewritten to TypeScript with proper interfaces and types
+    - RTP/RTCP packet monitoring in Node layer.
+    - More stats.
+    - Tons of improvements.
+
+commit 768b411e0c697b112f0ccc75cdb279586ee80a1d
+Author: Iñaki Baz Castillo <ibc@aliax.net>
+Date:   Sun Mar 17 23:22:09 2019 +0100
+
+    Moving v3 to master
+
+commit 2b3d322077e751bf0c07817ad78666643aef5fd4
+Author: Iñaki Baz Castillo <ibc@aliax.net>
+Date:   Wed Jul 18 13:47:35 2018 +0200
+
+    Update Node deps and C/C++ deps.
+
+commit bf64e784784c3eef3a79d7b2ed5c6a37cf4772ba
+Author: Iñaki Baz Castillo <ibc@aliax.net>
+Date:   Mon Jun 26 21:23:37 2017 +0200
+
+    - Fix an issue in `buffer.toString()` that makes mediasoup fail in Node 8.
+    - Update libuv to version 1.12.0.

@@ -1,0 +1,47 @@
+commit f80e5f2fed3d0a86bf739e5e2300a96471281065
+Author: joshuastray <joshua.astray.14@gmail.com>
+Date:   Wed Apr 22 18:35:04 2015 +0800
+
+    remove wp8 files
+
+commit 53d7ee27716144028908bd1ceb13f7fe410b1262
+Author: Dale Stammen <dalestam@microsoft.com>
+Date:   Tue Mar 17 10:24:53 2015 -0700
+
+    added SpiderMonkey for Windows 8.1 Universal App
+
+commit dcd24bf2d086a6f2ec8a39fc758019dfce97b14b
+Author: joshuastray <joshua.astray.14@gmail.com>
+Date:   Fri Feb 20 06:35:08 2015 +0800
+
+    SpiderMonkey 33 built for iOS
+
+commit 31c333d139acbc61463df2edb06e486592e1640c
+Author: joshuastray <joshua.astray.14@gmail.com>
+Date:   Thu Feb 12 16:02:55 2015 +0800
+
+    SpiderMonkey 33 for Mac
+
+commit eadaf97354714f27b6a6f7054a2b372c572b4e7c
+Author: joshuastray <joshua.astray.14@gmail.com>
+Date:   Fri Feb 6 14:37:41 2015 +0800
+
+    Upgrade android spidermonkey to 33
+
+commit 0d6526068baff0f33c3c1b6c8c8aa4d8413fd8d0
+Author: joshuastray <joshua.astray.14@gmail.com>
+Date:   Tue Feb 3 11:00:49 2015 +0800
+
+    SpiderMonkey 33 for wp8
+
+commit e17d0fe22da5928ebc1774c3cdd06d96e1249dac
+Author: joshuastray <joshua.astray.14@gmail.com>
+Date:   Mon Dec 22 15:09:09 2014 +0800
+
+    Upgrade win32 SpiderMonkey to v33
+
+commit e4651f9faa675804ac3ebc9bb86dbde46aac71c3
+Author: joshuastray <joshua.astray.14@gmail.com>
+Date:   Tue Dec 2 15:54:46 2014 +0800
+
+    Upgrade linux SpiderMonkey to 33

@@ -1,0 +1,17 @@
+commit 0e618d75ac7df755c53b67bb0393b4d7897ded5a
+Author: Takayama Fumihiko <tekezo@pqrs.org>
+Date:   Wed Jan 2 21:06:43 2019 +0900
+
+    update vendor
+
+commit c908d0de922cd3a7a742235038a90e58c0f9de43
+Author: Takayama Fumihiko <tekezo@pqrs.org>
+Date:   Wed Aug 3 18:56:00 2016 +0900
+
+    remove asio
+
+commit fa8555a2e3e7c6be6bb592f6f8a55132bb081449
+Author: Takayama Fumihiko <tekezo@pqrs.org>
+Date:   Sat Jul 30 17:23:43 2016 +0900
+
+    add vendor/asio

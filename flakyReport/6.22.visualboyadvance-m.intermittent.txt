@@ -1,0 +1,28 @@
+commit e083c00982e964c757df0e472ca66e622d974d29
+Author: DoctorWho11 <11doctorwhocanada@gmail.com>
+Date:   Mon Jun 15 17:46:34 2015 -0400
+
+    moving the deps to it's own repo
+
+commit 46d07e1e5e905b286a5485cab4b242c529ca7e7c
+Author: DoctorWho11 <11doctorwhocanada@gmail.com>
+Date:   Wed Jun 10 20:08:42 2015 -0400
+
+    initial dump of the dependencies into trunk, may look to changing it into a git submodule later.
+
+commit f1e3094c68fb714fc87530b6f7925205fb1d9d72
+Author: skidau <skidau@a31d4220-a93d-0410-bf67-fe4944624d44>
+Date:   Fri Mar 20 02:11:12 2015 +0000
+
+    Preliminary update to the GameCube to GBA link cable emulation. Fixes Zelda Wind Waker's Tingle Tuner connection, Pac-Man Vs, Final Fantasy: Crystal Chronicles multiplayer, and most other Gamecube to GBA link cable games.
+    
+    * Added a second socket at port 49420 (0xc10c) which sends clock information
+    * Handled disconnections from the GBA and GC
+    * Made the transfers asynchronous
+    * Blocks the socket before the connection times out
+    
+    Requires Dolphin 4.0-5899 or later.
+
+commit 10989d232a3097d71a56b009725d95e1366ee179
+Author: squall-leonhart <squall-leonhart@a31d4220-a93d-0410-bf67-fe4944624d44>
+Date:   Tue Feb 23 23:47:28 2010 +0000

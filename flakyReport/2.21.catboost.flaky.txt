@@ -1,0 +1,104 @@
+commit a6afdef0ebb3c6e61da169ba226ccecc66e5acd8
+Author: arcadia-devtools <arcadia-devtools@yandex-team.ru>
+Date:   Mon Sep 21 19:58:56 2020 +0300
+
+    intermediate changes
+    ref:4a12e2c0fd5634f039fe2916a13cd0aed36338ce
+
+commit 6646b0a71b2220c3247ddd1150bdb5edc205bb63
+Author: arcadia-devtools <arcadia-devtools@yandex-team.ru>
+Date:   Mon Aug 31 15:07:17 2020 +0300
+
+    intermediate changes
+    ref:b42c223222f460a99e51676770c39aa5f984fefa
+
+commit e546c75664608155f33e93d434cbb3ffea50c79a
+Author: orivej <orivej@yandex-team.ru>
+Date:   Tue Jul 23 11:36:37 2019 +0300
+
+    Propagate NO_CHECK_IMPORTS from libraries and sort import test. DEVTOOLS-5674
+    
+    ref:3098ca570d2775c0b3bd9079e7373351f5e0fd85
+
+commit ff7fceb9efa9e7b4e756f5a63c3c2eb4c29e05f7
+Author: arcadia-devtools <arcadia-devtools@yandex-team.ru>
+Date:   Thu Jun 6 17:35:49 2019 +0300
+
+    intermediate changes
+    ref:a5645e08ec57ee5759feb53ef314d64034c9c47d
+
+commit 181bfa11dc30df94149287a60fb230fd0c43eaba
+Author: Dmitriy Kruchinin <kruch.dmitriy@gmail.com>
+Date:   Thu May 30 21:50:56 2019 +0300
+
+    Train with text features
+    
+    ref:56fa8094c7bf2eaf23f258496e4fe2463cd2b650
+
+commit 38adf29b1586710cf886d78fae0d714ec032b806
+Author: Konstantin Sidorov <kost2906@yandex.ru>
+Date:   Thu May 2 18:46:16 2019 +0400
+
+    Removing binary artifacts & local datasets
+
+commit 0c9417ab199ceb0d9268dc29f0bcadd3ed9175be
+Author: Konstantin Sidorov <17minute.day@gmail.com>
+Date:   Sat Mar 16 23:44:14 2019 +0400
+
+    First blood -- the low-level API + working example (Iris dataset model @ C# .NET Core console app)
+
+commit 27104218dc978f5ae9513140c25d29be6bbe15e9
+Author: exprmntr <exprmntr@yandex-team.ru>
+Date:   Mon Dec 17 13:42:14 2018 +0300
+
+    Skip flaky.flaky_pytest_plugin
+    
+    Note: mandatory check (NEED_CHECK) was skipped
+    ref:8bbff64257b23018d8c593f7be7cae56074f9a62
+
+commit 75abbd8ed8b2447994ff1627bd4ec8ddc21a8687
+Author: Dmitry Baksheev <dbakshee@yandex.ru>
+Date:   Wed Aug 8 11:54:54 2018 +0300
+
+    Fix some fails in gpu tests
+    
+    MLTOOLS-1921
+    MLTOOLS-1977
+    
+    ref:aa865352c3628e907378aa1a3206dc2ef68b3b04
+
+commit 88e5af56a2e9212393b334daf2019dc73702f322
+Author: Dmitry Baksheev <dbakshee@yandex.ru>
+Date:   Thu Aug 2 00:14:57 2018 +0300
+
+    Test caboost/python-package on gpu
+    
+    MLTOOLS-1921
+    
+    ref:859d33df6c63f26ad5de99c2287a17fdffc1d43e
+
+commit 872a8b00af7841b7a3e8a90b0d52720066e22e20
+Author: Nikita Slyusarev <nslus@yandex-team.ru>
+Date:   Sat Jan 20 23:35:45 2018 +0300
+
+    IGNIETFERRO-486 [contrib] versionless contrib naming: python/numpy (https://ci.yandex-team.ru/check/ffex)
+    
+    * Merge default
+    * Merge default
+    * Update other mentions
+    * Update pip2arc db
+    * Update ya.make mentions
+    * Rename numpy-1.11.1 -> numpy
+    ref:c93e49af28581d43876c939f75c8fcd09043c835
+
+commit 4762e75e682c5eb74b9505678b76622f57e9a015
+Author: exprmntr <exprmntr@yandex-team.ru>
+Date:   Wed Dec 6 00:38:23 2017 +0300
+
+    Update catboost
+
+commit 37378d278a57a2464547e07e48a2c779d888e174
+Author: Anton Okhitin <exprmntr@pepe.search.yandex.net>
+Date:   Tue Jul 18 08:33:21 2017 +0300
+
+    Export catboost

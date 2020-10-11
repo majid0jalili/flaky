@@ -1,0 +1,97 @@
+commit 6a107c804edebef568a72d72462e24aff67a6726
+Author: Martin Dobias <wonder.sk@gmail.com>
+Date:   Fri Mar 27 14:36:44 2020 +0100
+
+    Added initial unit test + test data
+
+commit ff1d6eee3e832c1328b38819c09df0e8065732a4
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Feb 21 13:36:42 2020 +0100
+
+    changelog and news update for 3.12
+
+commit aee8ed40b9278fb088e245f3c957d028e4583122
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Feb 22 13:47:20 2019 +0100
+
+    changelog and news update for 3.6
+
+commit 30de027df3a1ba83d938dc6ee05d9ad9684bd968
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Jun 22 14:14:17 2018 +0200
+
+    changelog and news update for 3.2
+
+commit 6304adde7d8d76421e0eb621fab2ac0cbee34ce8
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Feb 23 13:09:53 2018 +0100
+
+    changelog and news update for 3.0
+
+commit 2286710606e212dc60f70d63e234f7edb2165198
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Mon Sep 4 10:32:08 2017 +1000
+
+    Skip some task manager tests on Travis only
+    
+    Instead of #ifdefing them out, only prevent them running
+    on Travis so that they still run locally.
+    
+    Also skip another task manager test which randomly
+    fails only on Travis
+
+commit 632a2be86a75f844a49e4872335e54e5758fdd1b
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Tue Jun 6 07:30:37 2017 +1000
+
+    Disable QgsTaskManager::waitForFinished test by default
+    
+    The test intermittently fails on Travis builds, likely due
+    to the platform's inconsistent availability to multiple threads.
+
+commit 46f786eb52e548e2277ea0f565efa734199a9fd3
+Author: Denis Rouzaud <denis.rouzaud@gmail.com>
+Date:   Thu Jan 12 20:29:08 2017 +0100
+
+    add interactive mode to spell checking (allow direct replace or ignore)
+
+commit f73f3c14f5e785453572ee9ed330af2a79aea903
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Wed Nov 30 13:49:48 2016 +1000
+
+    Remove outdated flaky test ifdefs
+
+commit 14b6b3f6eebbfea5f8ea3cef7b806ccfdbf3c9c8
+Author: Nyall Dawson <nyall.dawson@gmail.com>
+Date:   Mon Nov 28 18:32:15 2016 +1000
+
+    Harden everything up
+    
+    And finally fix a racy condition which has been plaguing me for
+    ages
+
+commit a5795bcaab61b94d165468c6ae2700ffe24c85ba
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Feb 26 13:23:48 2016 +0100
+
+    changelog and news update for 2.14
+
+commit e907c3ee381d3188b7128afb5456755b47f0c4de
+Author: Juergen E. Fischer <jef@norbit.de>
+Date:   Fri Feb 20 13:05:34 2015 +0100
+
+    changelog update for 2.8
+
+commit 640f6a067b7a6173e187f19dba52a5ab29a11428
+Author: Werner Macho <werner.macho@gmail.com>
+Date:   Sun Apr 15 13:57:20 2012 +0200
+
+    rename our CHANGELOG to NEWS and add new ChangeLog according to GNU Standards
+
+commit cbf1a50bd654a2101eccf317cb19dd1bdfe18870
+Author: jef <jef@c8812cc2-4d05-0410-92ff-de0c093fc19c>
+Date:   Sun Dec 20 12:29:07 2009 +0000
+
+    fix common typos
+    
+    git-svn-id: http://svn.osgeo.org/qgis/trunk@12528 c8812cc2-4d05-0410-92ff-de0c093fc19c

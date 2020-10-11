@@ -1,0 +1,15 @@
+commit eb1560d12af01f667fe6f480e110d0ec720d815e
+Author: ThePhD <phdofthehouse@gmail.com>
+Date:   Fri Aug 11 03:24:17 2017 -0400
+
+    add as_container documentation
+    improve exception documentation
+    improve state_view default handlers
+    add SAFE_PROPAGATION defines for compiling C++ as Lua
+    add examples for automatic operator registrations and as_container
+    fix tutorial code
+    change tests to not throw unless absolutely necessary
+    provide synchronization for file writing in tests
+    provide thread safety around thread tests for REQUIRE
+    add ostream automatic support
+    change 5.1 compat to only kick in luaL_loadbufferx and luaL_loadfilex when LuaJIT is version 2.0.1 and lower

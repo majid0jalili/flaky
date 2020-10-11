@@ -1,0 +1,5 @@
+commit 1a2e63ecffaa1e9065ecc046bf2ea0f1c09807b1
+Author: Takeshi Nakatani <ggtakec@gmail.com>
+Date:   Sun Dec 17 07:37:19 2017 +0000
+
+    Updated ChangeLog and configure.ac for release 1.83

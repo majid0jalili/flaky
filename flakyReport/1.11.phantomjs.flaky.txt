@@ -1,0 +1,53 @@
+commit 09a48390916a14d52862a55eacf285c1f613da3d
+Author: jesg <jesg@users.noreply.github.com>
+Date:   Sun Jun 18 08:08:26 2017 -0700
+
+    update ghostdriver for phantomjs 2.5 (#14849)
+    
+    * fix page load for phantomjs 2.5.0
+    * add unhandledPromptBehavior w3c capability
+    * add blacklist/whitelist filters
+    * fix sending keys to content editable elements
+    * fix file upload for phantomjs 2.5.0
+    * fix action chains with elements in iframes
+    * replace calls to execute_script with atoms
+    * add --remoteHost (@madhavajay)
+    * add w3c defaults for add cookie
+    * fix multiple file upload
+    * add w3c timeout defaults
+    * fix custom phantomjs headers
+    * add support for switch to parent frame (Chui Tey)
+    * add support for right click (Artur Signell)
+    * add zoomFactor capability
+    * fix reset log buffer after each post request
+    * fix registration with selenium grid
+    * fix memory leak in har log
+    * add limited support for loggingPrefs capability
+    * fix browser and har logs default to OFF
+    * various bug fixes
+    
+    Issue #14553
+
+commit 78ab619b350ac5553579bbd1cdd7cdc483894f6e
+Author: Vitaly Slobodin <vitaliy.slobodin@gmail.com>
+Date:   Wed Oct 7 01:38:17 2015 +0300
+
+    Removed bundled QtWebkit copy
+
+commit cf12fc4a236e071382e9e6b9c391b606eac17ea1
+Author: Vitaliy Slobodin <vitaliy.slobodin@gmail.com>
+Date:   Thu Jul 24 10:25:46 2014 -0700
+
+    Long live PhantomJS 2!
+    
+    https://github.com/ariya/phantomjs/issues/10448
+
+commit ba5998f74ec7399b429008cf8f2bb2f4a0bfb652
+Author: Ivan De Marino <detronizator@gmail.com>
+Date:   Wed Feb 5 23:08:41 2014 +0000
+
+    Making GhostDriver test "quiet-er" (and parallel)
+    
+    Also, trying to get the exit status of those tests reported, in case they fail.
+    
+    Related to #11952.

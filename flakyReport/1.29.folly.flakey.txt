@@ -1,0 +1,50 @@
+commit 69c7f1b7a75a84425afff920856a077738c6f592
+Author: David Goldblatt <davidgoldblatt@fb.com>
+Date:   Fri Dec 14 13:31:41 2018 -0800
+
+    Add AtomicReadMostlyMainPtr
+    
+    Summary:
+    This is a ReadMostlyMainPtr variant that allows racy accesses. By making the
+    write-side slower, the read side can avoid any contended shared accesses or
+    RMWs.
+    
+    Reviewed By: djwatson
+    
+    Differential Revision: D13413105
+    
+    fbshipit-source-id: f03c7ad58be72b63549b145ed6f41c51563831d1
+
+commit 2e6097a30672e8c78230d8aca495c48a385b56b8
+Author: Adam Simpkins <simpkins@fb.com>
+Date:   Tue Jan 30 17:39:23 2018 -0800
+
+    make the SKIP() macro report tests as successful
+    
+    Summary:
+    The googletest framework does not have a built-in mechanism for skipping tests
+    at run-time.  Folly uses a `SKIP()` macro for some tests to report themselves
+    as skipped.  For our internal builds these are reported as failures with a
+    special message that gets handled by our test runner framework.  However for
+    open source builds it is better to report these tests as passing rather than as
+    failing.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D6843331
+    
+    fbshipit-source-id: f74f29354305703448e5757ddc0ec3e72380a8f7
+
+commit 140c62d25d930cdbdacaa337d254a2471875a4be
+Author: Mark Isaacson <markisaa@fb.com>
+Date:   Wed Nov 25 11:38:54 2015 -0800
+
+    Make folly's T_CHECK_TIMEOUT/T_CHECK_TIME_LT use SKIP() on failure
+    
+    Summary: Make these more spurious failure-aware/tolerant.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D2689775
+    
+    fb-gh-sync-id: 1a9b247b97cc3529b12f6f7b76a4af2e32822d45

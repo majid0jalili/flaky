@@ -1,0 +1,27 @@
+commit 697987ef1cd0ce2b42298e82f67b327f5d0b311d
+Author: youssef <youssef.emad.attia@gmail.com>
+Date:   Mon Feb 29 11:14:42 2016 +0200
+
+    rename features and use one cell for models and plotting
+
+commit 5949b783832f3cf327c1fe4cc3dfc6d0c68c9878
+Author: youssef <youssef.emad.attia@gmail.com>
+Date:   Sat Feb 27 20:13:02 2016 +0200
+
+    add visualizations for different classification models
+
+commit 9bb3b2eb87b79547c2fc7ea20039dc9257dd6987
+Author: Soeren Sonnenburg <sonne@debian.org>
+Date:   Sat Apr 9 00:00:57 2011 +0200
+
+    remove boosting directory
+    
+    If we merge again we have to merge with newer
+    multiboost algorithms anyway. The current ones show many warnings and
+    cause errors when generating the documentation.
+
+commit 0f4f35dea207fbd1736dd2fe018b11c7fa2b66ca
+Author: Soeren Sonnenburg <sonne@debian.org>
+Date:   Sat Dec 11 06:28:30 2010 +0000
+
+    experimental merge of multiboost

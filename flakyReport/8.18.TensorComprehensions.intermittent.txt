@@ -1,0 +1,13 @@
+commit a4bc28a18337af9e15ce8bfadf55f7a91019f96e
+Author: nicolasvasilache <nicolas.vasilache@gmail.com>
+Date:   Mon Apr 2 16:21:45 2018 -0600
+
+    Separate cuda tests into test/cuda folder
+    
+    This changeset moves the cuda-specific tests into the test/cuda folder and is useful for simplifying dependencies in our internal build system.
+
+commit 747c0a6d8b0158abd89ff1f90963ef61a83f8fa1
+Author: Nicolas Vasilache <nicolas.vasilache@gmail.com>
+Date:   Tue Feb 13 07:46:23 2018 -0800
+
+    Initial OSS release of Tensor Comprehensions.

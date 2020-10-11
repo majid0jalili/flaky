@@ -1,0 +1,11 @@
+commit e976861021979fa576a8560e29775c1f5d5688de
+Author: Evan Drumwright <edrumwri@hotmail.com>
+Date:   Thu Dec 13 22:08:15 2018 -0500
+
+    Handles events at initial time step (#9766), adds unit tests for mixed discrete-continuous systems, adds a simple discrete system example (fibonacci), adds "Discrete Systems" documentation module, and adds documentation on simulator stepping algorithm.
+
+commit f3534bd049c06afbf7ee7b67bed0ba5d06cc4414
+Author: Eric Cousineau <eric.cousineau@tri.global>
+Date:   Wed Dec 13 10:24:31 2017 -0500
+
+    call_python: Add threading to client.

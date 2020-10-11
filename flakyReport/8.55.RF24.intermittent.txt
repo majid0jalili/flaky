@@ -1,0 +1,35 @@
+commit 435e4db883811700d4688b9d5c86bf93528d31fa
+Author: TMRh20 <tmrh20@gmail.com>
+Date:   Tue Nov 4 08:41:02 2014 -0600
+
+    Merge RPi and Arduino code
+    
+    Merged code to simplify everything
+    - #31 Timing of stopListening() adjusted slightly to further prevent
+    blank ack-payloads if powering down while using ack-payloads or
+    switching between modes
+
+commit 327f0609cf7b52b70accccc175b5809dd5074704
+Author: TMRh20 <tmrh20@gmail.com>
+Date:   Thu Jul 31 00:49:45 2014 -0600
+
+    Add optional write timeout/failure handling
+    
+    Per issue #5 by sven337
+    - Add optional failure handling/timeout
+    - Un-comment #define FAILURE_HANDLING in RF24_config.h to enable
+    - Add radio.errorDetected variable - indicates if an error/timeout was
+    detected
+    example:
+    if(radio.failureDetected){
+    delay(1000);
+    radio.begin();
+    radio.failureDetected = 0;
+    radio.openWritingPipe(addresses[1]);
+    radio.openReadingPipe(1,addresses[0]);
+    report_failure(); //blink leds, send a message, etc.
+    }
+    
+    Additional:
+    - removed unused wide_band boolean
+    - remove rx buffer flushes for RPi also

@@ -1,0 +1,14 @@
+commit 392e74cd70b057f1878b17c656764dc5fc0a0143
+Author: Paul Beckingham <paul@beckingham.net>
+Date:   Sat Dec 17 20:23:36 2016 -0500
+
+    ViewText: Eliminated
+
+commit ec7d9ed76535ab0fb0a10bb9f3b96928e41194eb
+Author: Paul Beckingham <paul@beckingham.net>
+Date:   Wed May 11 00:20:35 2011 -0400
+
+    View
+    
+    - Converted history reports to use ViewText.
+    - Fixed unit test.

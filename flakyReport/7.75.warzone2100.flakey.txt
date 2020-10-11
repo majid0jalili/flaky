@@ -1,0 +1,5 @@
+commit 5f8cf3ed59d5aa82d307f149a6514f4d76d33037
+Author: past-due <30942300+past-due@users.noreply.github.com>
+Date:   Tue Feb 25 12:05:02 2020 -0500
+
+    Update Release checklist

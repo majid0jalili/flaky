@@ -1,0 +1,11 @@
+commit 2a8477cbda2d67d6bc8749e1b8d890366614b3e5
+Author: topjohnwu <topjohnwu@gmail.com>
+Date:   Mon Nov 21 01:33:12 2016 +0800
+
+    Process zip with Java
+
+commit cb5187fd8d900d7dd5ddeec8a1d23d378b58bf1e
+Author: topjohnwu <topjohnwu@gmail.com>
+Date:   Wed Sep 28 14:50:26 2016 +0800
+
+    Finish repo download and flash

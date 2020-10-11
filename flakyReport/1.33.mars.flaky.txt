@@ -1,0 +1,5 @@
+commit ff8726f18c669bc020d3ece0d49193a49cf43bcb
+Author: perryzhou <perryzhou@tencent.com>
+Date:   Wed Nov 6 21:08:53 2019 +0800
+
+    googletest support

@@ -1,0 +1,182 @@
+commit af567ff5ba333f39ff9b7dac44e74a7b558c0da7
+Author: Hoyt Koepke <hoytak@graphlab.com>
+Date:   Tue Dec 17 19:25:36 2019 -0700
+
+    Build System Improvements (#2835)
+    
+    This Commit introduces a significant overhaul of the build system with a focus on simplification and integration with proper CMake options.
+    
+    Improvements:
+    
+    All dependencies except openssl, curl, and libxml are moved into src/external and compiled as part of our source build. These dependencies are those needed for adding remote fs support, so compiling with --no-remotefs does not compile anything in deps/.
+    
+    CMakeLists.txt simplification. Now CMakeLists.txt is organized in a far more standard way. In addition, more logic is added to and moved to the ./configure script, as many cmake options that we were previously overriding with our own compiler flags work correctly when specified in CMake BEFORE the CMakeLists.txt file is loaded.
+    
+    More options in ./configure to support additional compilation options, such as listing out all source files used in the build or turning on or off various options.
+    
+    The custom model dylibs for iOS are now compiled using xcodebuild. XCode is supported as a generator for these models, which means that the compilation builds an xcode project, then calls xcodebuild to compile it. This allows better integration with the OSX ecosystem and should provide a way to resolve #834 easily.
+    
+    Source changes needed to support the above compilation and other internal dependencies. These changes included proper use of ARC globally, fixing all the size_t -> int conversions (int is 32 bit on some platforms, while size_t is 64 bit).
+
+commit 8e6150232e335ace28e3c872581ce72f18f925fb
+Author: Hoyt Koepke <hoytak@graphlab.com>
+Date:   Wed Oct 2 15:35:46 2019 -0700
+
+    Upgraded version of libpng for bugfix. (#2319)
+
+commit d61d403efc54eb80ef2feb15624adecde404cae5
+Author: Zach Nation <znation@apple.com>
+Date:   Wed Aug 14 22:10:32 2019 -0700
+
+    Add external dependency: Node.js (#2231)
+    
+    * Takes a drop of Node.js 10.15.3 under `deps/src`
+    * Adds an external CMake project for it in `deps/cmake`
+    
+    Needed for executing JavaScript build tooling at compile time, as part
+    of #1822.
+
+commit 846d0b057352d545d1fa7dcd41e5298bfeefbc26
+Author: Hoyt Koepke <hoytak@graphlab.com>
+Date:   Fri Jun 28 11:57:42 2019 -0700
+
+    Upgrade for Curl + move LibBz2 into src/external. (#2097)
+    
+    As part of my attempt to get Turi Compiling on MacOS 10.15 beta, I upgraded curl
+    This wasn't the problems, but this upgrade is useful (curl contains a
+    number of bugfixes), so there's no reason not to adopt it.
+
+commit ed59f5c9e9304055921367c91114206ddeb1ccd8
+Author: Abhishek <abhishekpratapa@gmail.com>
+Date:   Tue Jan 29 17:55:37 2019 -0800
+
+    Image Classification Evaluation (#1335)
+    
+    * added backend for the evaluation of image classification
+    
+    * 1) Updated react-scripts\n 2) Added plumbing for evaluation_spec\n3) Set up scaffolding to load evaluation_spec and data
+    
+    * EvlauationTopBar\n\t- Plumbed through the initial data for the EvaluationTopBar\n\t- TODO: need to plumb through  and  data for top bar rendering
+    
+    * Added comments to the evaluate UI
+    
+    * Added a callback for the selector
+    
+    * added backend to front end functionality
+    
+    * Added Image Evaluation
+    
+    * First Round of Feedback
+    
+    * Added functools for python3 support
+    
+    * Removed UserDict dependency
+    
+    * Added data attribute to dict
+    
+    * moved virtual method implementation of  to  file
+    
+    * added namespace to virtual function
+    
+    * refactored evaluate
+    
+    * fixed sort and reduce functions
+    
+    * Used maked shared instead
+    
+    * Fixed a couple of UI changes
+    
+    * Fixed failing unit test in test_logistic_classifier
+    
+    * Added a with_predictions flag to evaluate
+    
+    * Fixed test failure Python 3.5
+
+commit a01609fa5033c65d7609c38af812294da700bcf7
+Author: Zach Nation <znation@gmail.com>
+Date:   Thu Dec 13 16:22:12 2018 -0800
+
+    Upgrade Boost to 1.68.0 (#1187)
+    
+    * Add Boost 1.68.0, remove 1.65.1
+    
+    * Update Boost external project cmake
+    
+    * Fix some build errors
+    
+    * Replace GIL_FORCEINLINE with BOOST_FORCE_INLINE
+    
+    * Remove BOOST_FORCE_INLINE
+    
+    That no longer exists either
+    
+    * Fix for hang in non-space parser
+    
+    Otherwise, the new post-skip behavior is to get stuck in a while
+    loop trying to parse while `first == last`.
+    
+    * Add back Boost date/time patch
+    
+    * Switch out Boost for Unix line endings
+    
+    I accidentally committed the version with Windows line endings earlier.
+    
+    * Turns out we need the `|| true` for incremental builds
+    
+    * Fix date/time patch
+    
+    Seems we no longer need part of it since it has changed in Boost
+    
+    * Fixed tuple conversion in variant_converter.
+    
+    * Fix build break from last commit
+
+commit 9b58e28bfc6e9080ebc462e0d351e9ea959adc0e
+Author: Zach Nation <znation@gmail.com>
+Date:   Fri Nov 16 16:12:56 2018 -0800
+
+    Remove nodejs/npm build dependency (#1213)
+    
+    With this commit, we use a different strategy for modifying and building the UI
+    assets for Turi Create. Previously, we would invoke npm to install dependencies
+    and run the build as part of the Turi Create build. However, this introduced a
+    few problems:
+    
+    * Different versions of node/npm on developer machines gave different behavior
+      and some combinations did not work.
+    * The out-of-the-box Ubuntu setups are one of the configurations that don't work,
+      resulting in a fresh clone of Turi Create failing to compile on a fresh install
+      of Ubuntu.
+    * In Travis CI, the `npm install` or `npm run build` commands tend to fail for
+      strange reasons (possibly networking issues, disk issues, or timeouts).
+    * All developers of Turi Create now need to have node/npm, even though few
+      developers are modifying the JS/HTML/CSS code.
+    
+    With this change, the npm build is skipped as part of the regular Turi Create build,
+    and instead, the output of the npm build is committed directly to the repository.
+    
+    For developers who don't modify HTML/CSS/JS, nothing should change.
+    
+    For developers who do, you will now need to run `npm install` and `npm run build
+    explicitly on your dev machine whenever modifying `package.json`, and any JS/
+    HTML/CSS code, respectively. You will then need to commit the output it generates
+    into the repo, along with any other changes you are making, for those changes
+    to get picked up by others.
+
+commit 67fc610199d4362e625f125173ac281b4db968e7
+Author: Zach Nation <znation@gmail.com>
+Date:   Mon Jun 4 12:49:56 2018 -0700
+
+    Recommender export to Core ML (#623)
+    
+    * Build changes to allow arm64/iOS compilation.
+    * Implement model save/load with streams (bypass dir_archive for now).
+    * Recommender export to Core ML implemented (only item similarity for
+      now - the other types require SFrame/SArray serialization).
+    * Unit tests for recommender export to Core ML
+
+commit e8e1f451d37b01f948846092851a079cc88426ff
+Author: Zach Nation <znation@apple.com>
+Date:   Thu Dec 7 12:14:27 2017 -0800
+
+    Initial commit of Turi Create 4.0.

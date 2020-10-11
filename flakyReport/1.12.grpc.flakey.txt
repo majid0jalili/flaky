@@ -1,0 +1,5 @@
+commit 9cedb80c6f01e643c4d16dedc55eef14c203c8b5
+Author: James Newton-King <james@newtonking.com>
+Date:   Thu Dec 5 12:12:43 2019 +1300
+
+    Fix flaky health check test

@@ -1,0 +1,16 @@
+commit dd75f56480f703cc078dc639319e7ae14dc36218
+Author: Rainer Kuemmerle <rainer.kuemmerle@gmail.com>
+Date:   Mon Mar 28 11:25:14 2016 +0200
+
+    gtest as external project
+    
+    gtest will now be downloaded when buildig the source.
+    Delete the gtest copy from the external folder.
+
+commit 37f465e4963f7e6ea7c3fa34315d1b6ddbdec8ae
+Author: Rainer Kuemmerle <kuemmerl@informatik.uni-freiburg.de>
+Date:   Sat Jun 28 09:40:10 2014 +0200
+
+    adding gtest 1.7.0
+    
+    adding gtest framework for building unit tests

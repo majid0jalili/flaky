@@ -1,0 +1,11 @@
+commit 0d8dceea4310fde5706b3ce1c70609d72a38efdf
+Author: John Schoenick <johns@valvesoftware.com>
+Date:   Wed Sep 9 18:35:41 2015 -0700
+
+    Updated the SDK with the latest code from the TF and HL2 branches.
+
+commit 39ed87570bdb2f86969d4be821c94b722dc71179
+Author: Joe Ludwig <joe@valvesoftware.com>
+Date:   Wed Jun 26 15:22:04 2013 -0700
+
+    First version of the SOurce SDK 2013

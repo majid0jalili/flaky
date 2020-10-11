@@ -1,0 +1,5 @@
+commit 4d64337c092f76cb1e971e0267434367eebbbb69
+Author: cyanine <lambda@makehave.com>
+Date:   Thu Mar 7 16:33:54 2019 +0800
+
+    added opensfm as default sfm tool.

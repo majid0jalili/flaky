@@ -1,0 +1,863 @@
+commit 859196276015e1d6d811e92112e62d31e2188fb1
+Author: paul-rogers <progers@cloudera.com>
+Date:   Sun Jan 20 11:48:30 2019 -0800
+
+    IMPALA-8095: Detailed expression cardinality tests
+    
+    Cardinality is a critical input to the query planning process,
+    especially join planning. Impala has many high-level end-to-end tests
+    that implicitly test cardinality at the "wholesale" level: A test will
+    produce a wrong result if the cardinality is badly wrong.
+    
+    This patch adds detailed unit tests for cardinality:
+    
+    * Table cardinality, NDV values and null count in metadata retrieved from
+      HMS.
+    * Table cardinality, NDV values and null counts in metadata presented to
+      the query.
+    * Expression NDV and selectivity values (which derive from table
+      cardinality and column NDV.)
+    
+    The test illustrate a number of bugs. This patch simply identifies the
+    bugs, comments out the tests that fail because of the bugs, and
+    substitutes tests that pass with the current, incorrect, behavior.
+    Future patches will fix the bugs. Reviewers can note the difference
+    between the original, incorrect behavior shown here, and the revised
+    behavior in those additional patches.
+    
+    Since none of the existing "functional" tables provide the level of
+    detail needed for these tests, added a new test table specifically for
+    this task.
+    
+    This set of tests was a good time to extend the test "fixture" framework
+    created earlier. The FrontendTestBase class was refactored to use a new
+    FrontendFixture which represents a (simulated) Impala and HMS cluster.
+    The previous SessionFixture represents a single user session (with
+    session options) and the QueryFixture represents a single query.
+    
+    As part of this refactoring, the fixture classes moved into "common"
+    alongside FrontendTestBase.
+    
+    Testing: This patch includes only tests: no "production" code was
+    changed.
+    
+    Change-Id: I3da58ee9b0beebeffb170b9430bd36d20dcd2401
+    Reviewed-on: http://gerrit.cloudera.org:8080/12248
+    Reviewed-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+    Tested-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+
+commit f616a757e5e44da7d12ba62e2874269e36ed3a54
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Sat Sep 29 12:13:35 2018 -0700
+
+    IMPALA-7647: Add HS2/Impyla dimension to TestQueries
+    
+    I used some ideas from Alex Leblang's abandoned patch:
+    https://gerrit.cloudera.org/#/c/137/ in order to run .test files through
+    HS2. The advantage of using Impyla is that much of the code will be
+    reusable for any Python client implementing the standard Python dbapi
+    and does not require us implementing yet another thrift client.
+    
+    This gives us better coverage of non-trivial result sets from HS2,
+    including handling of NULLs, error logs and more interesting result
+    sets than the basic HS2 tests.
+    
+    I added HS2 coverage to TestQueries, which has a reasonable variety of
+    queries and covers the data types in alltypes. I also added
+    TestDecimalQueries, TestStringQuery and TestCharFormats to get coverage
+    of DECIMAL, CHAR and VARCHAR that aren't in alltypes. Coverage of
+    results sets with NULLs was limited so I added a couple of queries.
+    
+    Places where results differ from Beeswax:
+    * Impyla is a Python dbapi client so must convert timestamps into python datetime
+      objects, which only have microsecond precision. Therefore result
+      timestamps within nanosecond precision are truncated.
+    * The HS2 interface reports the NULL type as BOOLEAN as a workaround for
+      IMPALA-914.
+    * The Beeswax interface reported VARCHAR as STRING, but HS2 reports
+      VARCHAR.
+    
+    I dealt with different results by adding additional result sections so
+    that the expected differences between the clients/protocols were
+    explicit.
+    
+    Limitations:
+    * Not all of the same methods are implemented as for beeswax, so some
+      tests that have more complicated interactions with the client will not
+      work with HS2 yet.
+    * We don't have a way to get the affected row count for inserts.
+    
+    I also simplified the ImpalaConnection API by removing some unnecessary
+    methods and moved some generic methods to the base class.
+    
+    Testing:
+    * Confirmed that it detected IMPALA-7588 by re-applying the buggy patch.
+    * Ran exhaustive and CentOS6 tests.
+    
+    Change-Id: I9908ccc4d3df50365be8043b883cacafca52661e
+    Reviewed-on: http://gerrit.cloudera.org:8080/11546
+    Reviewed-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+    Tested-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+
+commit 2a6d08d75415e904d7c615be781c80a6ec448afe
+Author: Lars Volker <lv@cloudera.com>
+Date:   Tue Jul 3 15:10:52 2018 -0700
+
+    IMPALA-7006: Add KRPC folders from kudu@334ecafd
+    
+    cp -a ~/checkout/kudu/src/kudu/{rpc,util,security} be/src/kudu/
+    
+    Change-Id: I232db2b4ccf5df9aca87b21dea31bfb2735d1ab7
+    Reviewed-on: http://gerrit.cloudera.org:8080/10757
+    Reviewed-by: Lars Volker <lv@cloudera.com>
+    Tested-by: Lars Volker <lv@cloudera.com>
+
+commit 9de081ab91876b7789cd3dfc94f632842e36eef6
+Author: Lars Volker <lv@cloudera.com>
+Date:   Tue Jul 3 15:07:03 2018 -0700
+
+    IMPALA-7006: Remove KRPC folders
+    
+    Change-Id: Ic677484c27ed18b105da0a6b0901df4eb9f248e6
+    Reviewed-on: http://gerrit.cloudera.org:8080/10756
+    Reviewed-by: Lars Volker <lv@cloudera.com>
+    Tested-by: Lars Volker <lv@cloudera.com>
+
+commit 9878d7b533716087f89c3b644d062dd950069d5b
+Author: Bikramjeet Vig <bikramjeet.vig@cloudera.com>
+Date:   Mon Jul 2 14:27:09 2018 -0700
+
+    IMPALA-6352: Dump backtrace on failure of TestTableSample
+    
+    TestTableSample is a flaky test which has been failing very rarely due
+    to a possible hung thread. Therefore this patch adds a timeout to the
+    test and logs the backtrace of all impalads if timeout occurs, so we
+    can get more information on the state of those threads.
+    
+    Change-Id: I73fcdd30863cee105584c947bb0c48cf872809c1
+    Reviewed-on: http://gerrit.cloudera.org:8080/10851
+    Reviewed-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+    Tested-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+
+commit de9f90102039b4c06ef380e952de2a429d69ab94
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Sun Oct 29 12:38:47 2017 -0700
+
+    IMPALA-4835: switch I/O buffers to buffer pool
+    
+    This is the following squashed patches that were reverted.
+    
+    I will fix the known issues with some follow-on patches.
+    
+    ======================================================================
+    IMPALA-4835: Part 1: simplify I/O mgr mem mgmt and cancellation
+    
+    In preparation for switching the I/O mgr to the buffer pool, this
+    removes and cleans up a lot of code so that the switchover patch starts
+    from a cleaner slate.
+    
+    * Remove the free buffer cache (which will be replaced by buffer pool's
+      own caching).
+    * Make memory limit exceeded error checking synchronous (in anticipation
+      of having to propagate buffer pool errors synchronously).
+    * Simplify error propagation - remove the (ineffectual) code that
+      enqueued BufferDescriptors containing error statuses.
+    * Document locking scheme better in a few places, make it part of the
+      function signature when it seemed reasonable.
+    * Move ReturnBuffer() to ScanRange, because it is intrinsically
+      connected with the lifecycle of a scan range.
+    * Separate external ReturnBuffer() and internal CleanUpBuffer()
+      interfaces - previously callers of ReturnBuffer() were fudging
+      the num_buffers_in_reader accounting to make the external interface work.
+    * Eliminate redundant state in ScanRange: 'eosr_returned_' and
+      'is_cancelled_'.
+    * Clarify the logic around calling Close() for the last
+      BufferDescriptor.
+      -> There appeared to be an implicit assumption that buffers would be
+         freed in the order they were returned from the scan range, so that
+         the "eos" buffer was returned last. Instead just count the number
+         of outstanding buffers to detect the last one.
+      -> Touching the is_cancelled_ field without holding a lock was hard to
+         reason about - violated locking rules and it was unclear that it
+         was race-free.
+    * Remove DiskIoMgr::Read() to simplify the interface. It is trivial to
+      inline at the callsites.
+    
+    This will probably regress performance somewhat because of the cache
+    removal, so my plan is to merge it around the same time as switching
+    the I/O mgr to allocate from the buffer pool. I'm keeping the patches
+    separate to make reviewing easier.
+    
+    Testing:
+    * Ran exhaustive tests
+    * Ran the disk-io-mgr-stress-test overnight
+    
+    ======================================================================
+    IMPALA-4835: Part 2: Allocate scan range buffers upfront
+    
+    This change is a step towards reserving memory for buffers from the
+    buffer pool and constraining per-scanner memory requirements. This
+    change restructures the DiskIoMgr code so that each ScanRange operates
+    with a fixed set of buffers that are allocated upfront and recycled as
+    the I/O mgr works through the ScanRange.
+    
+    One major change is that ScanRanges get blocked when a buffer is not
+    available and get unblocked when a client returns a buffer via
+    ReturnBuffer(). I was able to remove the logic to maintain the
+    blocked_ranges_ list by instead adding a separate set with all ranges
+    that are active.
+    
+    There is also some miscellaneous cleanup included - e.g. reducing the
+    amount of code devoted to maintaining counters and metrics.
+    
+    One tricky part of the existing code was the it called
+    IssueInitialRanges() with empty lists of files and depended on
+    DiskIoMgr::AddScanRanges() to not check for cancellation in that case.
+    See IMPALA-6564/IMPALA-6588. I changed the logic to not try to issue
+    ranges for empty lists of files.
+    
+    I plan to merge this along with the actual buffer pool switch, but
+    separated it out to allow review of the DiskIoMgr changes separate from
+    other aspects of the buffer pool switchover.
+    
+    Testing:
+    * Ran core and exhaustive tests.
+    
+    ======================================================================
+    IMPALA-4835: Part 3: switch I/O buffers to buffer pool
+    
+    This is the final patch to switch the Disk I/O manager to allocate all
+    buffer from the buffer pool and to reserve the buffers required for
+    a query upfront.
+    
+    * The planner reserves enough memory to run a single scanner per
+      scan node.
+    * The multi-threaded scan node must increase reservation before
+      spinning up more threads.
+    * The scanner implementations must be careful to stay within their
+      assigned reservation.
+    
+    The row-oriented scanners were most straightforward, since they only
+    have a single scan range active at a time. A single I/O buffer is
+    sufficient to scan the whole file but more I/O buffers can improve I/O
+    throughput.
+    
+    Parquet is more complex because it issues a scan range per column and
+    the sizes of the columns on disk are not known during planning. To
+    deal with this, the reservation in the frontend is based on a
+    heuristic involving the file size and # columns. The Parquet scanner
+    can then divvy up reservation to columns based on the size of column
+    data on disk.
+    
+    I adjusted how the 'mem_limit' is divided between buffer pool and non
+    buffer pool memory for low mem_limits to account for the increase in
+    buffer pool memory.
+    
+    Testing:
+    * Added more planner tests to cover reservation calcs for scan node.
+    * Test scanners for all file formats with the reservation denial debug
+      action, to test behaviour when the scanners hit reservation limits.
+    * Updated memory and buffer pool limits for tests.
+    * Added unit tests for dividing reservation between columns in parquet,
+      since the algorithm is non-trivial.
+    
+    Perf:
+    I ran TPC-H and targeted perf locally comparing with master. Both
+    showed small improvements of a few percent and no regressions of
+    note. Cluster perf tests showed no significant change.
+    
+    Change-Id: I3ef471dc0746f0ab93b572c34024fc7343161f00
+    Reviewed-on: http://gerrit.cloudera.org:8080/9679
+    Reviewed-by: Tim Armstrong <tarmstrong@cloudera.com>
+    Tested-by: Tim Armstrong <tarmstrong@cloudera.com>
+
+commit b50aaff399d8da368c992217d35d42083444357a
+Author: Vuk Ercegovac <vercegovac@cloudera.com>
+Date:   Wed Mar 7 13:44:47 2018 -0800
+
+    IMPALA-6602: fixes flaky expiration test
+    
+    The test_query_expiration test assumes that a metric and
+    the query state are maintained atomically. Since they're
+    not, occasionaly flakes (false negatives) occur.
+    
+    The fix in this patch is to loop until the expected state
+    is seen. If the expected state is not seen with a given number
+    of iterations, the test fails. These tests depend on timing so
+    if this validation takes too long, the test will also fail.
+    Such looping is used in the two places where its assumed that the
+    client state and metrics are maintained atomically.
+    
+    Change-Id: I7aabed87d84d5cfd8078cc6c39df48e22ff30afc
+    Reviewed-on: http://gerrit.cloudera.org:8080/9538
+    Reviewed-by: Tim Armstrong <tarmstrong@cloudera.com>
+    Tested-by: Impala Public Jenkins
+
+commit 161cbe30ff0cba70e48fe48d41e0d76ec5273264
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Fri Mar 2 16:09:25 2018 -0800
+
+    Revert IMPALA-4835 and dependent changes
+    
+    Revert "IMPALA-6585: increase test_low_mem_limit_q21 limit"
+    
+    This reverts commit 25bcb258dfd712f1514cf188206667a5e6be0e26.
+    
+    Revert "IMPALA-6588: don't add empty list of ranges in text scan"
+    
+    This reverts commit d57fbec6f67b83227b4c6117476da8f7d75fc4f6.
+    
+    Revert "IMPALA-4835: Part 3: switch I/O buffers to buffer pool"
+    
+    This reverts commit 24b4ed0b29a44090350e630d625291c01b753a36.
+    
+    Revert "IMPALA-4835: Part 2: Allocate scan range buffers upfront"
+    
+    This reverts commit 5699b59d0c5cbe37e888a367adb42fa12dfb0916.
+    
+    Revert "IMPALA-4835: Part 1: simplify I/O mgr mem mgmt and cancellation"
+    
+    This reverts commit 65680dc42107db4ff2273c635cedf83d20f0ea94.
+    
+    Change-Id: Ie5ca451cd96602886b0a8ecaa846957df0269cbb
+    Reviewed-on: http://gerrit.cloudera.org:8080/9480
+    Reviewed-by: Dan Hecht <dhecht@cloudera.com>
+    Tested-by: Impala Public Jenkins
+
+commit 24b4ed0b29a44090350e630d625291c01b753a36
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Fri Jan 5 16:47:03 2018 -0800
+
+    IMPALA-4835: Part 3: switch I/O buffers to buffer pool
+    
+    This is the final patch to switch the Disk I/O manager to allocate all
+    buffer from the buffer pool and to reserve the buffers required for
+    a query upfront.
+    
+    * The planner reserves enough memory to run a single scanner per
+      scan node.
+    * The multi-threaded scan node must increase reservation before
+      spinning up more threads.
+    * The scanner implementations must be careful to stay within their
+      assigned reservation.
+    
+    The row-oriented scanners were most straightforward, since they only
+    have a single scan range active at a time. A single I/O buffer is
+    sufficient to scan the whole file but more I/O buffers can improve I/O
+    throughput.
+    
+    Parquet is more complex because it issues a scan range per column and
+    the sizes of the columns on disk are not known during planning. To
+    deal with this, the reservation in the frontend is based on a
+    heuristic involving the file size and # columns. The Parquet scanner
+    can then divvy up reservation to columns based on the size of column
+    data on disk.
+    
+    I adjusted how the 'mem_limit' is divided between buffer pool and non
+    buffer pool memory for low mem_limits to account for the increase in
+    buffer pool memory.
+    
+    Testing:
+    * Added more planner tests to cover reservation calcs for scan node.
+    * Test scanners for all file formats with the reservation denial debug
+      action, to test behaviour when the scanners hit reservation limits.
+    * Updated memory and buffer pool limits for tests.
+    * Added unit tests for dividing reservation between columns in parquet,
+      since the algorithm is non-trivial.
+    
+    Perf:
+    I ran TPC-H and targeted perf locally comparing with master. Both
+    showed small improvements of a few percent and no regressions of
+    note. Cluster perf tests showed no significant change.
+    
+    Change-Id: Ic09c6196b31e55b301df45cc56d0b72cfece6786
+    Reviewed-on: http://gerrit.cloudera.org:8080/8966
+    Reviewed-by: Tim Armstrong <tarmstrong@cloudera.com>
+    Tested-by: Impala Public Jenkins
+
+commit c7db60aa46565c19634e8a791df3af8d116b9017
+Author: Henry Robinson <henry@cloudera.com>
+Date:   Fri Oct 28 17:10:46 2016 -0700
+
+    IMPALA-4669: [KRPC] Import RPC library from kudu@314c9d8
+    
+    Change-Id: I06ab5b56312e482a27fa484414c338438ad6972c
+    Reviewed-on: http://gerrit.cloudera.org:8080/5718
+    Reviewed-by: Michael Ho <kwho@cloudera.com>
+    Tested-by: Impala Public Jenkins
+
+commit d6abb29dc915521b98a32cadbe82eb02f46c37da
+Author: Henry Robinson <henry@cloudera.com>
+Date:   Tue Oct 25 14:57:17 2016 -0700
+
+    IMPALA-4669: [KUTIL] Import kudu_util library from kudu@314c9d8
+    
+    Update LICENSE.txt and rat_exclude_files.txt
+    
+    Change-Id: I6d89384730b60354b5fae2b1472183d2a561d170
+    Reviewed-on: http://gerrit.cloudera.org:8080/5714
+    Reviewed-by: Henry Robinson <henry@cloudera.com>
+    Tested-by: Impala Public Jenkins
+
+commit ee0fc260d1420b34a3d3fb1073fe80b3c63a9ab9
+Author: Alex Behm <alex.behm@cloudera.com>
+Date:   Tue May 9 22:02:29 2017 -0700
+
+    IMPALA-5309: Adds TABLESAMPLE clause for HDFS table refs.
+    
+    Syntax:
+    <tableref> TABLESAMPLE SYSTEM(<number>) [REPEATABLE(<number>)]
+    The first number specifies the percent of table bytes to sample.
+    The second number specifies the random seed to use.
+    
+    The sampling is coarse-grained. Impala keeps randomly adding
+    files to the sample until at least the desired percentage of
+    file bytes have been reached.
+    
+    Examples:
+    SELECT * FROM t TABLESAMPLE SYSTEM(10)
+    SELECT * FROM t TABLESAMPLE SYSTEM(50) REPEATABLE(1234)
+    
+    Testing:
+    - Added parser, analyser, planner, and end-to-end tests
+    - Private core/hdfs run passed
+    
+    Change-Id: Ief112cfb1e4983c5d94c08696dc83da9ccf43f70
+    Reviewed-on: http://gerrit.cloudera.org:8080/6868
+    Reviewed-by: Alex Behm <alex.behm@cloudera.com>
+    Tested-by: Impala Public Jenkins
+
+commit 4a79c9e7e3928f919b5fb60bab4145ba886d6252
+Author: Taras Bobrovytsky <tbobrovytsky@cloudera.com>
+Date:   Thu Mar 30 13:08:21 2017 -0700
+
+    IMPALA-5181: Extract PYPI metadata from a webpage
+    
+    There were some build failures due to a failure to download a JSON file
+    containing package metadata from PYPI. We need to switch to downloading
+    this from a PYPI mirror. In order to be able to download the metadata
+    from a PYPI mirror, we need be able to extract the data from a web page,
+    because PYPI mirrors do not always have a JSON interface.
+    
+    We implement a regex based html parser in this patch. Also, we increase
+    the number of download attempts and randomly vary the amount of time
+    between each attempt.
+    
+    Testing:
+    - Tested locally against PYPI and a PYPI mirror.
+    - Ran a private build that passed (which used a PYPI mirror).
+    
+    Change-Id: If3845a0d5f568d4352e3cc4883596736974fd7de
+    Reviewed-on: http://gerrit.cloudera.org:8080/6579
+    Reviewed-by: Tim Armstrong <tarmstrong@cloudera.com>
+    Tested-by: Impala Public Jenkins
+
+commit 18927ac852303288d3ada15ffd3f6b87b43b389e
+Author: John Russell <jrussell@cloudera.com>
+Date:   Fri Mar 3 11:47:08 2017 -0800
+
+    [DOCS] Wide-ranging cleanup of CDH and Cloudera references
+    
+    Genericize 3-part version numbers in "known issues".
+    
+    Genericize CDH version numbers in 'ports' topic.
+    
+    Genericize 'Cloudera' and hostnames in 'Tables' topic.
+    
+    Genericize the version numbers in 'added in' blurbs.
+    
+    Remove lots of CDH / Impala notices from release notes.
+    
+    Remove obsolete conref'able elements that weren't
+    actually being called from anywhere, that contained
+    CDH version number wording.
+    
+    Reword 'Cloudera recommends'.
+    
+    Remove more hidden or commented material with
+    Cloudera-specific wording.
+    
+    Remove obsolete CDH references from 'incompatible changes'.
+    
+    Change 'cloudera' HDFS username for LOAD DATA examples.
+    
+    Remove material related to big lists of CDH fixed JIRAs.
+    Genericize some CDH-related language.
+    
+    Change-Id: Iaa5db6c20f4d010972ade4945a3ea59b32ef95de
+    Reviewed-on: http://gerrit.cloudera.org:8080/6267
+    Reviewed-by: Ambreen Kazi <ambreen.kazi@cloudera.com>
+    Reviewed-by: John Russell <jrussell@cloudera.com>
+    Tested-by: Impala Public Jenkins
+
+commit 652e7d56d9ac52a8c3d36ca4b04298d4b89897aa
+Author: Matthew Jacobs <mj@cloudera.com>
+Date:   Tue Dec 13 14:57:01 2016 -0800
+
+    IMPALA-4654: KuduScanner must return when ReachedLimit()
+    
+    Fixes a bug in the KuduScanner where the scan node's limit
+    was not respected and thus the scanner thread would
+    continue executing until the scan range was fully consumed.
+    This could result in completed queries leaving fragments
+    running and those threads could be using significant CPU and
+    memory.
+    
+    For example, the query 'select * from tpch_kudu.lineitem
+    limit 90' when running in the minicluster and lineitem is
+    partitioned into 3 hash partitions would end up leaving a
+    scanner thread running for ~60 seconds. In real world
+    scenarios this can cause unexpected resource consumption.
+    This could build up over time leading to query failures if
+    these queries are submitted frequently.
+    
+    The fix is to ensure KuduScanner::GetNext() returns with
+    eos=true when it finds ReachedLimit=true. An unnecessary and
+    somewhat confusing flag 'batch_done' was being returned by a
+    helper function DecodeRowsIntoRowBatch, which isn't
+    necessary and was removed in order to make it more clear how
+    the code in GetNext() should behave.
+    
+    Change-Id: Iaddd51111a1b2647995d68e6d37d0500b3a322de
+    Reviewed-on: http://gerrit.cloudera.org:8080/5493
+    Reviewed-by: Alex Behm <alex.behm@cloudera.com>
+    Reviewed-by: Tim Armstrong <tarmstrong@cloudera.com>
+    Reviewed-by: Dan Hecht <dhecht@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit 3be0f122a5bb5d3549d9240b95a5d29b4a21b1a2
+Author: Jim Apple <jbapple@cloudera.com>
+Date:   Tue Nov 8 16:49:18 2016 -0800
+
+    IMPALA-3398: Add docs to main Impala branch.
+    
+    These are refugees from doc_prototype. They can be rendered with the
+    DITA Open Toolkit version 2.3.3 by:
+    
+    /tmp/dita-ot-2.3.3/bin/dita \
+      -i impala.ditamap \
+      -f html5 \
+      -o $(mktemp -d) \
+      -filter impala_html.ditaval
+    
+    Change-Id: I8861e99adc446f659a04463ca78c79200669484f
+    Reviewed-on: http://gerrit.cloudera.org:8080/5014
+    Reviewed-by: John Russell <jrussell@cloudera.com>
+    Tested-by: John Russell <jrussell@cloudera.com>
+
+commit 50f7753d2bf3bde0ea67319b680806a071d69871
+Author: Matthew Jacobs <mj@cloudera.com>
+Date:   Wed Oct 26 17:25:30 2016 -0700
+
+    IMPALA-3771: Expose kudu client timeout and set default
+    
+    The Kudu client timeout was too low for Impala usage. This
+    sets the default timeout to 3 minutes and exposes it as a
+    gflag.
+    
+    New timeout tests were added.
+    
+    Change-Id: Iad95e8e38aad4f76d21bac6879db6c02b3c3e045
+    Reviewed-on: http://gerrit.cloudera.org:8080/4849
+    Reviewed-by: Matthew Jacobs <mj@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit 94ef5b19b9c6f8599ae1787c2d085b54f562689f
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Wed Sep 7 09:04:15 2016 -0700
+
+    IMPALA-4087: TestFragmentLifecycle.test_failure_in_prepare
+    
+    The test previously got the "initial" value of number of fragments by
+    reading the metric. This gave an incorrect non-zero result if there were
+    any leftover queries running on the cluster.
+    
+    Avoid the problem and simplify the test by explicitly waiting for the
+    number of fragments to go to zero.
+    
+    Change-Id: I112e502a25f075928b0f6ef376c7fd9c6376ef4d
+    Reviewed-on: http://gerrit.cloudera.org:8080/4325
+    Reviewed-by: Tim Armstrong <tarmstrong@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit 2ab130aa0a0d8b974a618899d162cd1d1fbd765d
+Author: Juan Yu <jyu@cloudera.com>
+Date:   Thu Jun 9 11:51:22 2016 -0700
+
+    IMPALA-3575: Add retry to backend connection request and rpc timeout
+    
+    This patch adds a configurable timeout for all backend client
+    RPC to avoid query hang issue.
+    
+    Prior to this change, Impala doesn't set socket send/recv timeout for
+    backend client. RPC will wait forever for data. In extreme cases
+    of bad network or destination host has kernel panic, sender will not
+    get response and RPC will hang. Query hang is hard to detect. If
+    hang happens at ExecRemoteFragment() or CancelPlanFragments(), query
+    cannot be canelled unless you restart coordinator.
+    
+    Added send/recv timeout to all RPCs to avoid query hang. For catalog
+    client, keep default timeout to 0 (no timeout) because ExecDdl()
+    could take very long time if table has many partitons, mainly waiting
+    for HMS API call.
+    
+    Added a wrapper RetryRpcRecv() to wait for receiver response for
+    longer time. This is needed by certain RPCs. For example, TransmitData()
+    by DataStreamSender, receiver could hold response to add back pressure.
+    
+    If an RPC fails, the connection is left in an unrecoverable state.
+    we don't put the underlying connection back to cache but close it. This
+    is to make sure broken connection won't cause more RPC failure.
+    
+    Added retry for CancelPlanFragment RPC. This reduces the chance that cancel
+    request gets lost due to unstable network, but this can cause cancellation
+    takes longer time. and make test_lifecycle.py more flaky.
+    The metric num-fragments-in-flight might not be 0 yet due to previous tests.
+    Modified the test to check the metric delta instead of comparing to 0 to
+    reduce flakyness. However, this might not capture some failures.
+    
+    Besides the new EE test, I used the following iptables rule to
+    inject network failure to verify RPCs never hang.
+    1. Block network traffic on a port completely
+      iptables -A INPUT -p tcp -m tcp --dport 22002 -j DROP
+    2. Randomly drop 5% of TCP packets to slowdown network
+      iptables -A INPUT -p tcp -m tcp --dport 22000 -m statistic --mode random --probability 0.05 -j DROP
+    
+    Change-Id: Id6723cfe58df6217f4a9cdd12facd320cbc24964
+    Reviewed-on: http://gerrit.cloudera.org:8080/3343
+    Reviewed-by: Juan Yu <jyu@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit baf8fe202c1e212bbed3c73a6a63017eceb4a180
+Author: Taras Bobrovytsky <tbobrovytsky@cloudera.com>
+Date:   Sat Jul 9 02:07:17 2016 +0000
+
+    IMPALA-3778: Fix ASF packaging build
+    
+    The tarballs in IMPALA_HOME/infra/python/deps and the thirdparty
+    directory have been removed in the ASF repository. All Python
+    dependencies and CDH components must now be downloaded as part of every
+    build. This caused the ASF packaging build to fail. Before this patch,
+    we used the system pip to download the Python dependencies, which caused
+    flakiness and inconsistency on different operating systems. This patch
+    fixes the problem by using our own script (which requires Python 2.6+ to
+    be installed on the system), to download all the files in
+    requirements.txt.
+    
+    Also replaced all whl and zip Python packages with tar.gz to make it
+    consistent with the ASF build.
+    
+    Change-Id: Ibe5a743096cda2059bd330805d324983f6730e19
+    Reviewed-on: http://gerrit.cloudera.org:8080/3647
+    Reviewed-by: Jim Apple <jbapple@cloudera.com>
+    Tested-by: Taras Bobrovytsky <tbobrovytsky@cloudera.com>
+
+commit 34c95c95901ba3d81a2b30f17ebf194cec4ef1d1
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Fri Apr 22 11:14:02 2016 -0700
+
+    IMPALA-2345,2991: test coverage for spilling and sorts
+    
+    Add missing coverage for sorting by CHAR and VARCHAR.
+    
+    Add more coverage for spilling sorts.
+    
+    Fix spilling tests: ensure that they actually reliably spill (many of
+    them had memory limits high enough that they could run entirely in
+    memory).
+    
+    I ran this in a loop for a while to flush out flaky tests. The tests
+    should be fairly predictable given that they're not run concurrently
+    with other tests and we allocate enough block manager memory so that
+    each operator can obtain its reservation.
+    
+    Change-Id: Ia2d2627a2c327dcdf269ea3216385b1af9dfa305
+    Reviewed-on: http://gerrit.cloudera.org:8080/2877
+    Reviewed-by: Tim Armstrong <tarmstrong@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit 8e0267f2a918a6b8ad68082c4ecc1a4610e86deb
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Tue Apr 12 12:14:32 2016 -0700
+
+    IMPALA-3328: xfail TPC-H q9 if memory limit exceeded
+    
+    The test is flaky due to nondeterministic memory consumption under ASAN.
+    Xfail until we have more concrete guarantees on mem usage.
+    
+    Change-Id: Ieefcb8f8ecc179f483f6d06af80c814fe0ef728e
+    Reviewed-on: http://gerrit.cloudera.org:8080/2770
+    Reviewed-by: Tim Armstrong <tarmstrong@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit 368d7be7e6ffefd7bdcc7fa2cf91bc986833712f
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Thu Mar 3 14:12:32 2016 -0800
+
+    IMPALA-2728: reenable mem limit test now that it is stable
+    
+    The test has not xfailed in a long time, so we believe that various
+    memory usage fixes have fixed the flakiness.
+    
+    Change-Id: Idff06791e9d880cc8ddf54c0c977a556d3701bea
+    Reviewed-on: http://gerrit.cloudera.org:8080/2442
+    Reviewed-by: Dan Hecht <dhecht@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit 212bea529fc0694b43253960408170e9a04b47ec
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Sat Feb 13 14:50:58 2016 -0800
+
+    IMPALA-2994: Temporary workaround for flaky spilling test
+    
+    The test was recently reenabled in commit
+    71a0a7d998702781ae44270f8c742b10c34c0efc.
+    
+    Continue running the test but loosen the memory limit and don't check
+    the runtime profile. The memory limits for this set of tests needs
+    revisiting in any case.
+    
+    Change-Id: I195e8ad3b67c8ff85d5d15c2646a13f5feb57553
+    Reviewed-on: http://gerrit.cloudera.org:8080/2183
+    Reviewed-by: Tim Armstrong <tarmstrong@cloudera.com>
+    Tested-by: Internal Jenkins
+    (cherry picked from commit 51632f39a45ba9deac9b86bbdb14ff10cbee35ac)
+
+commit f288867833b6f2953ef570217b953c9d523435b4
+Author: Casey Ching <casey@cloudera.com>
+Date:   Fri Aug 21 14:44:14 2015 -0700
+
+    Stress test: Various changes
+    
+    The major changes are:
+    
+    1) Collect backtrace and fatal log on crash.
+    2) Poll memory usage. The data is only displayed at this time.
+    3) Support kerberos.
+    4) Add random queries.
+    5) Generate random and TPC-H nested data on a remote cluster. The
+       random data generator was converted to use MR for scaling.
+    6) Add a cluster abstraction to run data loading for #5 on a
+       remote or local cluster. This also moves and consolidates some
+       Cloudera Manager utilities that were in the stress test.
+    7) Cleanup the wrappers around impyla. That stuff was getting
+       messy.
+    
+    Change-Id: I4e4b72dbee1c867626a0b22291dd6462819e35d7
+    Reviewed-on: http://gerrit.cloudera.org:8080/1298
+    Reviewed-by: Casey Ching <casey@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit c6f0667837254a44813b32a7ff2681afbe12e23e
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Thu Jan 7 11:41:29 2016 -0800
+
+    IMPALA-2728: workaround by xfailing tpch-q21 mem limit
+    
+    This change only affects behaviour when the query is expected to succeed
+    at the given memory limit and it instead fails with memory limit
+    exceeded. In this case the test is xfailed.
+    
+    Also remove unnecessary semicolons in Python file.
+    
+    Change-Id: Ifae64b2653ee3ab7b59d27b6abbb5215db838190
+    Reviewed-on: http://gerrit.cloudera.org:8080/1737
+    Reviewed-by: Alex Behm <alex.behm@cloudera.com>
+    Reviewed-by: Dan Hecht <dhecht@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit dd88b3b465879e289b318ba69e669e922037f08f
+Author: Alex Behm <alex.behm@cloudera.com>
+Date:   Wed Aug 12 10:23:13 2015 -0700
+
+    IMPALA-2201: Unconditionally update the partition stats and row count.
+    
+    Before this patch, we used to only send alterPartition() requests to
+    the Hive Metastore for partitions whose stats have changed during
+    COMPUTE [INCREMENTAL] STATS. However, there is other state associated
+    with the stats like the STATS_GENERATED_VIA_STATS_TASK that was not
+    properly handled. Not updating this additional partition metadata
+    was the root cause of IMPALA-2201.
+    
+    This patch changes COMPUTE [INCREMENTAL] STATS to unconditionally update the
+    partition stats and row counts in the Hive Metastore, even if the partition
+    already has identical stats. This behavior results in possibly redundant work,
+    but it is predictable and easy to reason about because it does not depend on
+    the existing state of the metadata.
+    
+    Note that in versions starting from CDH 5.4 it is not possible to reproduce
+    IMPALA-2201 because of a behavioral change in the Hive Metastore in the
+    alterPartition() code path.
+    
+    Change-Id: I10105d8d6306d9ad9988b03abc23752d7bc98252
+    Reviewed-on: http://gerrit.cloudera.org:8080/640
+    Reviewed-by: Alex Behm <alex.behm@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit cee1e84c1e2e41cfc3a75f1b27f139ba3b6303bc
+Author: Martin Grund <mgrund@cloudera.com>
+Date:   Tue Dec 2 09:20:27 2014 -0800
+
+    IMPALA-1587: Extending caching directives for multiple replicas
+    
+    This patch adds the possibility to specify the number of replicas that
+    should be cached in main memory. This can be useful in high QPS
+    scenarios as the majority of the load is no longer the single cached
+    replica, but a set of cached replicas. While the cache replication
+    factor can be larger than the block replication factor on disk, the
+    difference will be ignored by HDFS until more replicas become
+    available.
+    
+    This extends the current syntax for specifying the cache pool in the
+    following way:
+    
+       cached in 'poolName'
+    
+    is extended with the optional replication factor
+    
+       cached in 'poolName' with replication = XX
+    
+    By default, the cache replication factor is set to 1. As this value is
+    not yet configurable in HDFS it's defined as a constant in the JniCatalog
+    thrift specification. If a partitioned table is cached, all its child
+    partitions inherit this cache replication factor. If child partitions
+    have a custom cache replication factor, changing the cache replication
+    factor on the partitioned table afterwards will overwrite this custom
+    value. If a new partition is added to the table, it will again inherit
+    the cache replication factor of the parent independent of the cache pool
+    that is used to cache the partition.
+    
+    To review changes and status of the replication factor for tables and
+    partitions the replication factor is part of output of the "show
+    partitions" command.
+    
+    Change-Id: I2aee63258d6da14fb5ce68574c6b070cf948fb4d
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/5533
+    Tested-by: jenkins
+    Reviewed-by: Martin Grund <mgrund@cloudera.com>
+
+commit 9103eb2a0aad8ce10f6e1d0bfb59a8912a615acd
+Author: ishaan <ishaan@cloudera.com>
+Date:   Tue Sep 23 17:29:49 2014 -0700
+
+    Fix session expiration test.
+    
+    The session expiration test would occasionally fail because two sessions ended up expiring
+    at approximately the same time. This patch ensures that no session is active when the
+    initial metric value is polled.
+    
+    Change-Id: Ib62e7c23fb0c43e0e8ee0c17770d47df19964117
+    Reviewed-on: http://gerrit.sjc.cloudera.com:8080/4502
+    Reviewed-by: Ishaan Joshi <ishaan@cloudera.com>
+    Tested-by: jenkins
+
+commit ad534429df40bc350a0635e03c8e68ebb2170714
+Author: Nong Li <nong@cloudera.com>
+Date:   Tue Jun 10 14:44:25 2014 -0700
+
+    [CDH5] Disable flaky hdfs caching test.
+    
+    Change-Id: I19900ae029876d8f74169eda0f08f5be3509fbaf
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/2946
+    Reviewed-by: Nong Li <nong@cloudera.com>
+    Tested-by: jenkins

@@ -1,0 +1,59 @@
+commit 4c06e2c293765798ef5c93c5f86cc96c9ccbc73d
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Thu Nov 8 14:26:55 2018 -0800
+
+    Process docs for landing prs [ci skip] (#7404)
+
+commit 4f42f6b4abcd9da07b316243434a6b3bd53f34d6
+Author: satoshinm <snmatsutake@yahoo.co.jp>
+Date:   Thu May 18 09:38:49 2017 -0700
+
+    Implement glfw joystick API (#5175)
+    
+    * Implement glfw joystick API
+    
+    Joystick connected/disconnected callbacks are called in
+    refreshJoysticks(). The gamepadconnected/disconnected events are only
+    used as a hint to refresh the joysticks, whose getGamepads() state is
+    compared to the previous state to determine the new state.
+
+commit b0505a951e2814bd914076dde087420648f253ef
+Author: Aidan Hobson Sayers <aidanhs@cantab.net>
+Date:   Thu Mar 10 01:01:12 2016 +0000
+
+    Make socket test startup and shutdown more robust
+    
+    In particular, actually open connections to workers to ensure
+    they're up and running.
+
+commit 1a5934a08d74a614e7258fefe628dc600bdabf1e
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Mon Oct 27 15:23:11 2014 -0700
+
+    disable most websockify-using parts of sockets tests; #2700
+
+commit 79c9d47c032a2013c8c830bd6df72bf39e7016ef
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Sun Oct 19 16:54:36 2014 -0700
+
+    port some tests to SDL2; combined patch including all the tests work of Charlie Birks <admin@daftgames.net> and Sathyanarayanan Gunasekaran <gsathya.ceg@gmail.com>, and some final integration tweaks (-lSDL2 => -s USE_SDL=2), keep tests disabled for now; #2404
+
+commit 39b138d4ddda29b535285bc1c5223641dcacce28
+Author: John Vilk <jvilk@cs.umass.edu>
+Date:   Wed Nov 6 22:08:33 2013 -0500
+
+    [SDL] Joystick API implementation using HTML5 Gamepad API
+    
+    Works in browsers that implement the working draft of the standard (current Chrome / Firefox stable):
+    http://www.w3.org/TR/2012/WD-gamepad-20120529/#gamepad-interface
+    
+    ...and browsers that implement the editor's draft (current Firefox Nightly):
+    https://dvcs.w3.org/hg/gamepad/raw-file/default/gamepad.html#idl-def-Gamepad
+    
+    Contains unit tests for both event types.
+
+commit f842201acec3c1edafb2916a76a8eb8d75474c2b
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Wed May 30 19:58:50 2012 -0700
+
+    make test_sdl_mouse more robust

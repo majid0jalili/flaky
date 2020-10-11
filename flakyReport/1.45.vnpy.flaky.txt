@@ -1,0 +1,41 @@
+commit 6b49cdb2ad14ac0eda4d9ca6e8cfaae95387c6bb
+Author: vn.py <xiaoyou.chen@foxmail.com>
+Date:   Fri Feb 1 13:36:30 2019 +0800
+
+    [Del] remove binding related code
+
+commit 2b72275613a1d61b5be1d1f29baf15e4eaf0e219
+Author: nanoric <nanoric@qq.com>
+Date:   Tue Jan 22 06:15:47 2019 -0400
+
+    [Add] added generator code
+
+commit 6d82c56598c7c4d61703261027107c2c8e33b6ab
+Author: vn.py <vn.py@foxmail.com>
+Date:   Wed Aug 30 21:18:04 2017 +0800
+
+    移除archive目录
+
+commit e2070e1b0e1a5e0a9b87979be4b55655ddb42307
+Author: chenxy123 <xiaoyou.chen@hotmail.com>
+Date:   Fri May 5 23:24:39 2017 +0800
+
+    调整目录结构
+
+commit 1fac0d7f924312e35adb416b787a7c5b84954cbf
+Author: chenxy123 <xiaoyou.chen@hotmail.com>
+Date:   Thu May 4 23:23:25 2017 +0800
+
+    更改项目的目录结构
+
+commit da1fb95ebfca386d8900a9c7483f778d52bb8c60
+Author: WOLF <xiaoyou.chen@hotmail.com>
+Date:   Fri Apr 24 15:21:00 2015 +0800
+
+    修复了vn.ctp中的ReqOrderInsert函数bug，发布ctpdemo
+
+commit 24e589ec6e749aef0ad2f6a98a380cdb364ae3fb
+Author: WOLF <xiaoyou.chen@hotmail.com>
+Date:   Mon Apr 20 16:48:12 2015 +0800
+
+    修复API中和GIL相关的一个bug，发布vn.demo

@@ -1,0 +1,43 @@
+commit 5210a74872875e22571be2a41913783399c18d87
+Author: Reid Kleckner <rnk@google.com>
+Date:   Thu Jul 21 21:07:47 2016 +0000
+
+    Disable a flaky test on Windows that uses "echo >>"
+    
+    git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@276335 91177308-0d34-0410-b5e6-96231b3b80d8
+
+commit c83d828a7978c267d9bd1331dd1bd41ee72feb55
+Author: Aaron Ballman <aaron@aaronballman.com>
+Date:   Mon May 19 17:58:28 2014 +0000
+
+    Removing an XFAIL which shouldn't apply. We no longer care about MSVC 9, and this test probably should not have been XFAILed everywhere regardless. The test passes on Windows with MSVC 12.
+    
+    git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@209148 91177308-0d34-0410-b5e6-96231b3b80d8
+
+commit cd856aee39d563d6bd04fc8461bd469e2612f4c0
+Author: Daniel Dunbar <daniel@zuster.org>
+Date:   Fri Jan 25 21:12:20 2013 +0000
+
+    [utils] Remove the OptionalTests subdir no one runs.
+    
+    git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@173491 91177308-0d34-0410-b5e6-96231b3b80d8
+
+commit 08c0cdfd43fc395e1986106a04efa249f63af859
+Author: Daniel Dunbar <daniel@zuster.org>
+Date:   Fri Apr 9 15:30:57 2010 +0000
+
+    Forcibly disable test/PCH/pr4489.c, it is flaky on one of the buildbots.
+    
+    git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@100864 91177308-0d34-0410-b5e6-96231b3b80d8
+
+commit 6d44f6ea30e3f492a464f78e47378713157f06eb
+Author: Daniel Dunbar <daniel@zuster.org>
+Date:   Thu Jan 21 16:55:39 2010 +0000
+
+    Add utils/OptionalTests, a dumping ground for additional (lit) tests which for
+    one reason or another don't belong in the regular test suite.
+    
+    Inside is utils/OptionalTests/Extra which is specifically for tests that match
+    the layout of the regular tests.
+    
+    git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@94080 91177308-0d34-0410-b5e6-96231b3b80d8

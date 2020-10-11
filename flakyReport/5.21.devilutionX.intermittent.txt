@@ -1,0 +1,5 @@
+commit 7053755cfcebadcdab2a5d1c3d611e2eb536ac76
+Author: Xadhoom <>
+Date:   Thu Jan 31 19:32:40 2019 +0000
+
+    Add asio 1.12.2

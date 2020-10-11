@@ -1,0 +1,17 @@
+commit 957e67da24709dbe2db9c46be42d1355a1788666
+Author: Fabien Castan <fabcastan@gmail.com>
+Date:   Wed Feb 28 10:33:52 2018 +0100
+
+    [build] remove internal ceres and eigen
+
+commit 250055faf25201e10c38c36f6506add9587d1a8d
+Author: Gregoire De Lillo <gregoire.delillo@me.com>
+Date:   Tue Sep 12 14:49:24 2017 +0200
+
+    [dependencies] move `third_party` to `dependencies`
+
+commit 5c5c221ca8e93a58eb1d1dd83394f75b5f43f48b
+Author: pmoulon <pmoulon@gmail.com>
+Date:   Fri Feb 8 17:21:30 2013 +0100
+
+    Initial revision v0.1

@@ -1,0 +1,200 @@
+commit f9e385f5148134c88cdc616b851b9b42806e3285
+Author: Zeyi (Rice) Fan <zeyi@fb.com>
+Date:   Wed Jul 15 07:39:00 2020 -0700
+
+    disable flush_subscription test on Windows
+    
+    Summary: This test is quite flaky when running on Windows & heavy load. Let's disable it for now to unblock Watchman release on Windows.
+    
+    Reviewed By: wez
+    
+    Differential Revision: D22511083
+    
+    fbshipit-source-id: fd28d2193d3b7a40b1d2c9608061dee8d5116cab
+
+commit bcbe69b4338bb1a3bb70aca4bbb5bc2ca38d119f
+Author: Zeyi (Rice) Fan <zeyi@fb.com>
+Date:   Mon Jul 6 16:00:45 2020 -0700
+
+    add retry flag to getdeps test
+    
+    Summary: This commit adds a flag `--retry` to getdeps and teach it to run retry failed test. This allows us to still pass the tests when there are some flaky tests presents.
+    
+    Reviewed By: wez
+    
+    Differential Revision: D22291063
+    
+    fbshipit-source-id: 572af48a52ceb4a9abbf530cc0154ded0120c0de
+
+commit 59f3b87d7987b1eb03a3f00151e9e667c20f9adf
+Author: Wez Furlong <wez@fb.com>
+Date:   Thu Mar 21 07:38:11 2019 -0700
+
+    watchman: skip local saved state tests on ubuntu
+    
+    Summary:
+    This is problematic on the lego-linux hosts for the same reasons that test_scm.py is.
+    Skip it for now.
+    
+    Reviewed By: avalonalex
+    
+    Differential Revision: D14550119
+    
+    fbshipit-source-id: 6c1ae3f50c2990f6ab1d8e6f1c8dab0508623e3a
+
+commit db241e991e5a4353b39a6bc8a2f40d6c629d8f19
+Author: Matt Glazar <strager@fb.com>
+Date:   Tue Nov 13 13:20:08 2018 -0800
+
+    Disable flaky test to make Facebook diff builds green
+    
+    Summary:
+    test_scmHg is failing very frequently for Facebook's internal watchman-lego-linux-autoconf and watchman-lego-linux-cmake builds. Since those builds use `make integration` to run test instead of using Facebook's test runners, normal test infra doesn't handle the failures. This means that test_scmHg failures always appear in a diff's UI as the diff's fault, not as flakiness.
+    
+    Until we can investigate the cause of the failures, disable the test manually and make builds green again.
+    
+    Reviewed By: wez
+    
+    Differential Revision: D13033895
+    
+    fbshipit-source-id: 4fac357631fa667abbfc9afdfe0a6bd233cdd49e
+
+commit f6cbdc408f8dccf75231c2bc424239f67afcd846
+Author: Wez Furlong <wez@fb.com>
+Date:   Fri Mar 2 20:29:36 2018 -0800
+
+    remove php test running infra
+    
+    Summary: redparty
+    
+    Reviewed By: chadaustin
+    
+    Differential Revision: D7133607
+    
+    fbshipit-source-id: f3c2492e5213876d17d7eac7835ac6e4545b82a8
+
+commit 9a2daf2205d69d3f1084b2e0f5cace1afb3937f7
+Author: Wez Furlong <wez@fb.com>
+Date:   Thu Dec 21 13:54:51 2017 -0800
+
+    enable retrying for nodejs tests
+    
+    Summary:
+    I observed that we're not kicking in with the flaky test retry
+    machinery and that this is causing travis to report some builds
+    as failed.
+    
+    This diff enables retrying, and also allows for picking up `nodejs`
+    from the PATH which is how my Ubuntu 16.04 system installs the node
+    binary.
+    Closes https://github.com/facebook/watchman/pull/560
+    
+    Differential Revision: D6622884
+    
+    Pulled By: wez
+    
+    fbshipit-source-id: 2294dc45eb6f5d0ccdb0ec4a1135396d470b70bd
+
+commit e4f1cb980288f02117e587118688adebc5cbf080
+Author: Wez Furlong <wez@fb.com>
+Date:   Sat May 20 18:20:56 2017 -0700
+
+    Retry flaky tests
+    
+    Summary:
+    Adds an option to the test runner that specifies how many times we
+    should retry flaky tests.  This defaults to 2.
+    
+    We don't really know whether a test is flaky or not ahead of time,
+    so this really just specifies how many times we'll retry a failing
+    test.
+    
+    We'll only perform this retry behavior if the test instance has
+    a method that allows setting the current attempt number.  We do
+    this because most of our tests derive an output directory from
+    the current test configuration; we need to augment that path with
+    the attempt number in order for the subsequent attempt to be able
+    to run in a clean environment.
+    
+    I've enabled this for python and php tests.
+    
+    A failing test will still print out its failure reason on each attempt,
+    along with the current attempt number, but if it passes on a subsequent
+    attempt, the overall test run status will reflect only its passing
+    result.
+    
+    We could potentialy track a number of flaky tests and report it at the end,
+    but I just want to get this in so that our OSS CI needs less manual poking.
+    
+    In addition to the above, tweak how we collect and report failing tests
+    in travis and circle, so that we don't overwhelm their respective UIs with
+    log data.
+    
+    I've also temporarily disabled the watchman java tests; we'll follow up
+    and fix those, but I just want to get the CI into a default green state.
+    
+    Closes https://github.com/facebook/watchman/pull/473
+    
+    Differential Revision: D5101754
+    
+    Pulled By: wez
+    
+    fbshipit-source-id: c2ee1485611e3566e4ec5b74e97273a4612038af
+
+commit c9a5e11a12b4d6e871d29a7cda22e52a49affa36
+Author: Wez Furlong <wez@fb.com>
+Date:   Thu Sep 8 14:13:01 2016 -0700
+
+    watchman: adjust tests so that they can be run and collected by our internal CI
+    
+    Summary:
+    The main thrust of this diff is to change our funky test matrix
+    expansion with a differently funky way to expand the test matrix.
+    
+    The idea here is that we generate test classes for the various permutations
+    of tests rather than re-using the same class and passing in parameters.
+    
+    This allows our internal CI system to keep track of the individual tests more
+    easily.
+    
+    This is the same approach that we use in the eden tests.
+    
+    Reviewed By: sid0
+    
+    Differential Revision: D3835642
+    
+    fbshipit-source-id: c93a3328d8113d12e8aa1c59b772b44ff79c97a3
+
+commit cc476197e09adb960eaf2d69e525c1de722c041b
+Author: Wez Furlong <wez@fb.com>
+Date:   Thu Aug 18 08:11:24 2016 -0700
+
+    disable the dir move test on windows
+    
+    It's too flaky for reasons outside our control.
+
+commit 4cfe8ba1ca2dbf5f2c5aae36522074004d83b1ef
+Author: Siddharth Agarwal <sid0@fb.com>
+Date:   Thu Jun 30 10:02:00 2016 -0700
+
+    tests: make them less flaky
+
+commit a4d739e91259361a978dbc90f52f9161862aaf35
+Author: Dhruv Singhal <dhruvs@fb.com>
+Date:   Wed Jun 15 13:52:17 2016 -0700
+
+    Added raw native types to BSER conversion tests to the client side.
+
+commit ebaba2dc5a1a0358958502abf458b60eeefe9b42
+Author: Wez Furlong <wez@fb.com>
+Date:   Sun May 22 08:39:37 2016 -0700
+
+    import libart as a third party dependency
+    
+    Summary: pulling in the BSD licensed Adaptive Radix Tree implementation
+    from https://github.com/armon/libart.git at the current head revision
+    d639b9207c1d8e6b65892276f6bd1d080bd261ec
+    
+    I didn't include its bundled dependency on check; I will port its tests
+    to use our test infrastructure in the following diff that integrates
+    it into our build system.

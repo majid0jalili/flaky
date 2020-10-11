@@ -1,0 +1,34 @@
+commit f8f32efb97e0ed0fce4a535087d885d3cef22274
+Author: Jeff Kaufman <jeff@jefftk.com>
+Date:   Tue Aug 23 07:46:20 2016 -0400
+
+    Test shm checkpointing.  Relies on shm checkpointing implementation in mod_pagespeed. (#930)
+
+commit cb65e29c343025687a3dd238e7afd4522d2dc0d9
+Author: Jeff Kaufman <jefftk@google.com>
+Date:   Fri Apr 26 11:33:51 2013 -0400
+
+    psol: removing psol
+
+commit a996856b7b961bcdc13edfa6c4fe3040b2d9222e
+Author: Jeff Kaufman <jefftk@google.com>
+Date:   Mon Mar 18 12:36:07 2013 -0400
+
+    psol: updating from r2577
+
+commit 35dd83397edd6ce5e2f0d86e204377f02eabbfc5
+Author: Jeff Kaufman <jefftk@google.com>
+Date:   Wed Jan 2 17:07:50 2013 -0500
+
+    psol: support a binary distribution
+    
+    We want people to be able to install ngx_pagespeed like any other nginx module.
+    If PSOL were a full-fledged library with a stable interface we could simply say
+    "install PSOL" which might be as easy as `apt-get install psol-dev`, but it's
+    not.  Instead we directly include a precompiled binary library along with its
+    headers.  By building the binaries on something sufficiently old (Centos 5.4)
+    they should work pretty much everywhere someone might think to run
+    ngx_pagespeed, but building from source is still a documented option if they
+    don't.
+    
+    Headers and binaries are from trunk of r2338, as documented in the READMEs.

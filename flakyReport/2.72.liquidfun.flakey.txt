@@ -1,0 +1,53 @@
+commit 703e69a0d22110f68a18f1f6d9579156865346c1
+Author: Jason Sanmiya <jsanmiya@google.com>
+Date:   Wed Apr 1 10:36:34 2015 -0700
+
+    Move test to correct location.
+    
+    Change-Id: I1cb2ce43df38c912f19dc96037f4a1ef000ea8ac
+
+commit 86081048834dca5971e933b8948ce2d2c07af0e2
+Author: Tom Nielsen <tnielsen@pobox.com>
+Date:   Tue Feb 10 03:10:17 2015 -0800
+
+    Added detecting particle to fixture collection filtering and test.
+
+commit f65a00acf0f62485998d6332b11e89d3a55149ca
+Author: Stewart Miles <smiles@google.com>
+Date:   Mon Oct 28 17:37:39 2013 -0700
+
+    Scripts to support automated builds of splash2d.
+    
+    The following build scripts have been added:
+    * Autobuild/build.bat
+        Builds all projects on Windows using Visual Studio.
+    * Autobuild/build.sh
+        Builds all projects on Linux and OSX using make and XCode respectively.
+    * Autobuild/build_android.sh
+        Builds all Android projects on Linux and OSX using the Android NDK via
+        the build_apk.sh helper script.  This will generate an apk for each
+        sample and unit test application.
+    * Autobuild/build_android.bat
+        Builds all Android projects on Windows under the cmd shell (cygwin needs
+        to be debugged).  This will *not* generate apks for each sample or
+        unit test application.  When the ndk-build is working under cygwin or
+        build_apk.sh is ported to python the build of apks on Windows will be
+        supported.
+    * Autobuild/msbuild.bat
+        Helper script which finds msbuild.exe to initiate Visual Studio builds
+        from the command line.  This is used by build.bat.
+    
+    NDK makefiles have been modified to reference source files relative to each
+    project's directory to workaround absolute source file references causing
+    the NDK build on Windows to fail.
+    
+    Finally, run_tests_android.sh has been modified to execute correctly on OSX
+    which uses bash 3.2 that doesn't support ${@}.
+    
+    Tested:
+    Verified all scripts successfully build their build targets on Windows, OSX
+    and Linux.  Windows build have also been successfully tested on one of the
+    Android team's Windows build machines.
+    
+    Bug: 11444617,11132966
+    Change-Id: Ie230aeff66ed29c576586d0501f4412aaf4b49fb

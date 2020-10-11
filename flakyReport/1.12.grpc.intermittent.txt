@@ -1,0 +1,29 @@
+commit f700a8c73c71f4117ac6367fbf1929eb25473e80
+Author: Menghan Li <menghanl@google.com>
+Date:   Thu Aug 20 16:19:55 2020 -0700
+
+    Merge pull request #23909 from menghanl/xds_test_fail_on_error
+
+commit 1eb137b28dffee3450b53be4c01ee1a67bcc9756
+Author: Menghan Li <menghanl@google.com>
+Date:   Thu Aug 20 12:10:26 2020 -0700
+
+    xds testing: disable fail_on_failed_rpc check
+    
+    Fixing this needs further work to not share resources between tests.
+
+commit 843c8d9e75acca671090df8d7f95d4eb973c88ff
+Author: Arjun Roy <arjunroy@google.com>
+Date:   Wed Nov 7 17:39:07 2018 -0800
+
+    Fixed intermittent CPP sync server shutdown leak.
+    
+    Specifically: if a request handling thread is in flight but scheduled
+    out when shutdown is called on the server, but it has already passed
+    the shutdown check, then when it resumes it will add a grpc_call to
+    the completion queue that is leaked. We fix this by explicitly freeing
+    such calls after all worker threads have shutdown.
+    
+    To manifest the leak, run the end2end::ClientCancelsRequestStream
+    test repeatedly on the unpatched server implementation. About 0.5% of
+    the time, the leak will manifest.

@@ -1,0 +1,49 @@
+commit 831c22a14909e71ad5ea3c2b208b23f4459e8ca2
+Author: AliSQL <AliSQL@alibaba-inc.com>
+Date:   Sat Oct 8 12:20:39 2016 +0800
+
+    [Feature] Issue#26 ADD TokuDB 7.5.3 SUPPORT
+
+commit 47dcae3be17a79a2373c50348ca0a93043cdb1fb
+Author: Anitha Gopi <anitha.gopi@sun.com>
+Date:   Mon Dec 20 19:49:35 2010 +0530
+
+    Bug #59055 : Remove ndb tests from repository. Removal of tests from sys_vars is pending. It has some issues that are yet to be resolved
+
+commit 52646a73db94a0d13e2dde562ab186446ad67451
+Author: Jonas Oreland <jonas@mysql.com>
+Date:   Wed Apr 28 12:31:34 2010 +0200
+
+    ndb - disable ndb_disconnect_ddl(bug#31853) - as testcase is flaky
+
+commit 8661497e9bde1f42674b9789799d81b0ea2ba0d0
+Author: msvensson@pilot.(none) <>
+Date:   Wed Jun 27 14:28:02 2007 +0200
+
+    WL#3933 Split main test suite to rpl, rpl_ndb and ndb
+     - Update mysql-test-run.pl to collect tests from several suites
+     - Group test into suites
+     - Add suite.opt file
+
+commit 8b5de073424513502e63e0e1912c14323ae14817
+Author: pekka@orca.ndb.mysql.com <>
+Date:   Mon Oct 16 16:13:03 2006 +0200
+
+    ndb - replace explain 'rows' by '#' in ndb*.test - stats are not deterministic
+
+commit a9ef0b4bf11c25b64c38aee037a03f0875b9003c
+Author: sasha@mysql.sashanet.com <>
+Date:   Fri Nov 24 19:49:13 2000 -0700
+
+    slave master.info FILE -> IO_CACHE
+    send_file() is more stack-friendly - changed large static buffer to alloc_root()
+    fixed my_b_seek() to work with WRITE_CACHE
+    test case to make sure the slave starts correctly after being stopped
+    truncated words file so the replication tests will take less time
+
+commit 24a7aae0f452f75cdfb09ccf1cec37d38d0f82a9
+Author: sasha@mysql.sashanet.com <>
+Date:   Fri Nov 17 23:35:40 2000 -0700
+
+    fixed bugs in delayed insert replication and when slave loses connection after Int_var but before Query
+    public test suite now tests replication code as well

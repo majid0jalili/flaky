@@ -1,0 +1,17 @@
+commit efa3d61217fa8cc2de7bfb33064fc6d8079d79b1
+Author: Petros Kataras <petros.kataras@aec.at>
+Date:   Thu Dec 3 17:21:57 2015 +0100
+
+    Removing self-compiled GStreamer since now there is support for all versions.
+
+commit b805dab4aa06b452c426a02547d3aa7e4ea3c5f9
+Author: Petros Kataras <petroskataras@gmail.com>
+Date:   Sat Nov 14 14:38:34 2015 +0100
+
+    GStreamer v1.6.1 locally included and linked with Cinder.
+
+commit 708487cd968a7a7eaa7e015ea3fc0f1a75852d29
+Author: Andrew Bell <cinder.afb@gmail.com>
+Date:   Sat Jan 24 22:58:58 2015 -0500
+
+    Initial work moving to standalone ASIO

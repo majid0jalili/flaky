@@ -1,0 +1,45 @@
+commit 5d202047819d9e2c16733a9c721cce8882389293
+Author: Fletcher Dunn <fletcherd@valvesoftware.com>
+Date:   Wed Jan 30 10:58:38 2019 -0800
+
+    Overhaul how configurtion options are set.
+    
+    Moved them to ISteamNetworkingUtils, which is now actually shared Steam (mostly) with a real accessor and and interface, and not a dummy interface object with all static methods.
+    
+    Connection settings have a system of inheritance, so they can be set globally, per SteamNetworkingSockets interface, per listen socket, or per connection.
+    
+    Deleted the config variable to simulate fake *message* loss.  That is not useful.
+    
+    Introduced STEAMNETWORKINGSOCKETS_ENABLE_SDR define, to make it more clear why code is being #ifdef'ed out.  (E.g. if we open-sourced that code, we would want that included.)
+    
+    Replaced ESteamNetworkingSendType with a basic flags bitmask.
+    
+    Cleaned up a bunch of comments.
+    
+    Changed SteamNetworkingMessage_t release mechanism.  Now the callback is only to free the buffer, and it's assumed that this API will manage the actual objects.  (This is important because the actual type is a derived type and has extra stuff on the end.)  Also laid some groundwork for user management of message objects.  (Relevant for issue #51.)
+
+commit 672203467723a153e3a1941e50396a908bd37f05
+Author: Fletcher Dunn <fletcherd@valvesoftware.com>
+Date:   Fri Jan 11 07:48:49 2019 -0800
+
+    Move all public headers to steam folder, matching the Steamworks SDK layout.
+    
+    Also moved a bunch of Steam-specific stuff to other files, which are not included in this repository.
+    Moved high level init/kill to a seperate file, so that isteamnworkigsockets.h won't be cluttered with
+    a bunch of #ifdefs.
+    
+    Added IClient interface layer, which is useless in this context, butneeded in Steam, since we
+    provide backwards compatibility for all old ISteamXxx interfaces.
+
+commit 954e7f1d26b06077deda68da8136c42df0c4cf3b
+Author: Fletcher Dunn <fletcherd@valvesoftware.com>
+Date:   Fri Mar 30 13:36:41 2018 -0700
+
+    Add meson build file, which was mistakenly omitted from initial comit.
+    Move truly "public" headers to an "include" folder.  The internal "public" directory contains files that are only "public" in the context of the Steam build environment.
+
+commit 646a3a53fbc54070cdfcec1fb0abd9b8b02bae4f
+Author: Fletcher Dunn <fletcherd@valvesoftware.com>
+Date:   Fri Mar 30 10:55:48 2018 -0700
+
+    Initial checkin.  There's a lot of work that needs to be done to make this more open-source friendly, especially on Windows.  The README has notes on the known shortcomings and what should be coming soon.

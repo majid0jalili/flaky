@@ -1,0 +1,51 @@
+commit fa34e5e9a647afb85518a516b2a8e6bcf650b722
+Author: Z Stern <zalman@zalman-macbookpro2.roam.corp.google.com>
+Date:   Tue Jul 28 08:55:00 2015 -0700
+
+    Add code to handle memory allocation failures in memoized cache logic.
+    
+    Add a test for above memory failures in memoization cache.
+    
+    
+    Former-commit-id: fbee8d99ebac4288470858fc3778b0bf2043ae5a
+
+commit e950a43d1130fa083f710da289a133ee68b6cd26
+Author: Jonathan Ragan-Kelley <jrk@csail.mit.edu>
+Date:   Thu May 23 22:55:07 2013 -0400
+
+    Promote C++ compiler to root
+    
+    This commit promotes the C++ compiler rewrite, which had been living
+    under the `cpp/` subdirectory, to the top level of the repository,
+    replacing everything from the original OCaml version.
+    
+    
+    Former-commit-id: b8f7e92661ca65cce18cdee40ad5ee6b493f7b13
+
+commit 265a5b12196227d39deaf501a1c1734ce7dd0b0f
+Author: Jonathan Ragan-Kelley <jrk@csail.mit.edu>
+Date:   Mon May 6 13:47:08 2013 -0400
+
+    Refactor JITCompiledModule support for platform specialization
+    
+    Add lazy CUDA symbol initialization hooks
+    
+    Former-commit-id: 227dc9759881f4aa027feb46f51c83928617b4bf
+
+commit 2c75fcbdf751fdd79ac8e66905780d580d199aae
+Author: Jonathan Ragan-Kelley <jrk@csail.mit.edu>
+Date:   Mon Feb 6 21:55:27 2012 -0500
+
+    Add --minimal option to bootstrap
+    
+    Currently reduces LLVM build:
+    
+    - no docs
+    - only host,x86_64,ptx,arm targets
+    
+    This oddly fails to build due to build system errors on OS X, but seems
+    to work on Ubuntu. This is an LLVM bug. (It thinks it libLTO.dylib
+    depends on the Hexagon backend, even when that target is disabled.)
+    
+    
+    Former-commit-id: 182d0247155420ca86dbd99d7f4c925daca09ed9

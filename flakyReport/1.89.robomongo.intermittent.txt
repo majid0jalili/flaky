@@ -1,0 +1,26 @@
+commit baaac575c1aa2de15d206f929effdf6adf7e2861
+Author: schetnikovich <tschetnikovich@gmail.com>
+Date:   Mon Jan 4 14:07:46 2016 +0300
+
+    Radical project cleanup
+
+commit 17a7057481d5656b37df971b0251d6f2d41e6205
+Author: Alexandr <topilski@github.com>
+Date:   Sat Jun 29 12:31:42 2013 +0300
+
+    Delete not needed sources, fix build on linux
+
+commit 494bd677efd521f95c54d34e13fda7871538b654
+Author: schetnikovich <tschetnikovich@gmail.com>
+Date:   Tue Jun 18 00:36:16 2013 +0300
+
+    MongoDB now part of sources (as third-party) and Scons will be used to build Robomongo
+    
+    MongoDB sources now located in /src/third-party/mongodb. SConstruct file added that
+    will be used to automate build process.
+
+commit ae0455f7ebeb563c4728303f2a157399f1fc7550
+Author: schetnikovich <tschetnikovich@gmail.com>
+Date:   Wed Dec 5 19:28:23 2012 +0300
+
+    boost 1.49, spidermonkey 1.7, mongo shelell with minor modifications. all as static libs

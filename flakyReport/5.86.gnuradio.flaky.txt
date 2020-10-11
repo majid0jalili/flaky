@@ -1,0 +1,48 @@
+commit bbf5381632e1aef70e9fbf0d9e0b5b946688b495
+Author: Marcus Müller <mmueller@gnuradio.org>
+Date:   Wed Jul 17 23:43:06 2019 +0200
+
+    CHANGELOG for 3.8.0.0-rc1 release candidate
+
+commit 45e0fa62da95b18e9068c22157cfa97070c92a6c
+Author: Marcus Müller <marcus.mueller@ettus.com>
+Date:   Fri Mar 30 16:44:55 2018 +0200
+
+    added CHANGELOG in new format
+
+commit 6d9a16470bbb416d311a8830d7db42d6c69a39cf
+Author: Johnathan Corgan <johnathan@corganlabs.com>
+Date:   Thu Sep 8 13:15:11 2016 -0700
+
+    wxgui: removed
+
+commit c856fe0106bcbcad871452014af2eb459a32e916
+Author: Tom Rondeau <trondeau@vt.edu>
+Date:   Mon Mar 18 15:55:38 2013 -0400
+
+    wxgui: Moved oscope and histogram bases into wxgui.
+    
+    This makes gr-wxgui more like a normal component that generates a libgnuradio-wxgui.so file.
+
+commit 35b689eb88a3534025848054d629c0bb368b66f0
+Author: Marcus Leech <mleech@ripnet.com>
+Date:   Mon Feb 6 22:23:06 2012 -0500
+
+    gui: better handling of buffers in oscope for stripchart/non-stripchart.
+
+commit 85b76dd55f422cf70238c58f2e39c2c28555f6ce
+Author: jcorgan <jcorgan@221aa14e-8319-0410-a670-987f0aec2ac5>
+Date:   Tue Jan 27 18:00:05 2009 +0000
+
+    General housekeeping--removing ancient cruft mostly.
+    
+    git-svn-id: http://gnuradio.org/svn/gnuradio/trunk@10315 221aa14e-8319-0410-a670-987f0aec2ac5
+
+commit 5d69a524f81f234b3fbc41d49ba18d6f6886baba
+Author: jcorgan <jcorgan@221aa14e-8319-0410-a670-987f0aec2ac5>
+Date:   Thu Aug 3 04:51:51 2006 +0000
+
+    Houston, we have a trunk.
+    
+    
+    git-svn-id: http://gnuradio.org/svn/gnuradio/trunk@3122 221aa14e-8319-0410-a670-987f0aec2ac5

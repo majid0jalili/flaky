@@ -1,0 +1,37 @@
+commit 4a4c54b31732d84942c978e6e9467572ddd22bd7
+Author: Christopher James Halse Rogers <raof@ubuntu.com>
+Date:   Fri Jul 24 13:22:05 2020 +1000
+
+    Add snapcraft packaging
+
+commit b21817bc3830204c4b43c99b81b0180ec16b276f
+Author: Robert O'Callahan <robert@ocallahan.org>
+Date:   Fri Jul 28 11:48:14 2017 +1200
+
+    Remove obsolete documentation and reference the tech report instead
+
+commit 06e9d0adeff8f1300dd58d1c56918936b1bf2d41
+Author: Kyle Huey <khuey@kylehuey.com>
+Date:   Tue Sep 27 18:41:07 2016 -0700
+
+    PREVENT_SWITCH when signal delivery could trigger syscall restart.
+    
+    Closes #1831.
+
+commit 6afb6c264c92da055e48f958973fa02359cb8f37
+Author: Robert O'Callahan <robert@ocallahan.org>
+Date:   Tue Feb 23 11:57:03 2016 +1300
+
+    Chaos mode tests
+
+commit 583f700b333d5799bfcfbdb076b0d161eb107514
+Author: Chris Jones <cjones.bugs@gmail.com>
+Date:   Thu Feb 27 22:46:05 2014 -0800
+
+    Add files missing from previous commit.
+
+commit cd198ffe0e77ab8aa4387d08a61f2990a168b695
+Author: Chris Jones <cjones.bugs@gmail.com>
+Date:   Wed Aug 28 00:08:57 2013 -0700
+
+    Initial design presentation (with many TODOs).

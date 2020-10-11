@@ -1,0 +1,98 @@
+commit 6ef59138137280ffb3c01f41f527abc2bd3249d0
+Author: Abseil Team <absl-team@google.com>
+Date:   Tue Dec 11 14:10:54 2018 -0500
+
+    Googletest export
+    
+    The gmock matchers have a concept of MatchAndExpain; where the details of the
+    matching are written to a "result listener". A matcher can avoid creating
+    expensive debug info by checking result_listener->IsInterested(); but,
+    unfortunately, the default matcher code (called from EXPECT_THAT) is always
+    "interested".
+    
+    This change implements EXPECT_THAT matching to first run the matcher in a "not
+    interested" mode; and then run it a second time ("interested") only if the
+    match fails.
+    
+    PiperOrigin-RevId: 225036073
+
+commit 6cbd3753dc195595689a0fbb99e7297128a2ed26
+Author: misterg <misterg@google.com>
+Date:   Tue Dec 11 11:35:25 2018 -0500
+
+    Googletest export
+    
+    rollback of 224929783
+    
+    PiperOrigin-RevId: 225008559
+
+commit 06bb8d4d6dcfd1a6111794467676500d955cb144
+Author: Abseil Team <absl-team@google.com>
+Date:   Mon Dec 10 22:46:47 2018 -0500
+
+    Googletest export
+    
+    The gmock matchers have a concept of MatchAndExpain; where the details of the
+    matching are written to a "result listener". A matcher can avoid creating
+    expensive debug info by checking result_listener->IsInterested(); but,
+    unfortunately, the default matcher code (called from EXPECT_THAT) is always
+    "interested".
+    
+    This change implements EXPECT_THAT matching to first run the matcher in a "not
+    interested" mode; and then run it a second time ("interested") only if the
+    match fails.
+    
+    PiperOrigin-RevId: 224929783
+
+commit 421f527df32ff3f437166513d3621fd543bf42a7
+Author: Gennadiy Civil <misterg@google.com>
+Date:   Wed Aug 1 16:23:20 2018 -0400
+
+    more test changes
+
+commit 8f87d00398228925b1542b81710a9015c8f68e7b
+Author: Gennadiy Civil <misterg@google.com>
+Date:   Mon Jun 11 11:40:35 2018 -0400
+
+    Rename AdvancedGuide.md to advanced.md and adjust the links.
+    Part of documentation rationalization work
+
+commit b3908406e65b000258c2f69495ba6c63dfc7935d
+Author: Herbert Thielen <thielen@hs-worms.de>
+Date:   Sun Jul 30 16:26:29 2017 +0200
+
+    remove doc of former versions
+    
+    The documentation of former versions is available in the history (e.g.
+    by checking out the appropriate git tags), so there is no need to keep
+    them in parallel to the current documentation.
+
+commit 1f87a0970dc0880c954ea4066fd7b72fad6fb089
+Author: Billy Donahue <billydonahue@google.com>
+Date:   Tue Aug 25 16:18:00 2015 -0400
+
+    Move everything in googletest into googletest/googletest
+
+commit 613e23a4bf37470845405a6090ce5ac4d66f5b4a
+Author: Billy Donahue <billydonahue@google.com>
+Date:   Sat Aug 22 17:35:22 2015 -0400
+
+    Move wiki .md files to docs/ folder.
+
+commit 642acbd61235dc68f606237193cf7e7c4a61af67
+Author: Google Code Exporter <GoogleCodeExporter@users.noreply.github.com>
+Date:   Tue Jul 28 11:15:35 2015 -0400
+
+    Migrating wiki contents from Google Code
+
+commit 3bef459eac9aa84c579f34249aebc9ff56832054
+Author: zhanyong.wan <zhanyong.wan@861a406c-534a-0410-8894-cb66d6ee9925>
+Date:   Wed Feb 24 17:19:25 2010 +0000
+
+    Adds threading support (by Miklos Fazekas, Vlad Losev, and Chandler Carruth); adds wide InitGoogleTest to gtest.def (by Vlad Losev); updates the version number (by Zhanyong Wan); updates the release notes for 1.5.0 (by Vlad Losev); removes scons scripts from the distribution (by Zhanyong Wan); adds the cmake build script to the distribution (by Zhanyong Wan); adds fused source files to the distribution (by Vlad Losev and Chandler Carruth).
+
+commit d201456903f3ecae1f7794edfab0d5678e642265
+Author: shiqian <shiqian@861a406c-534a-0410-8894-cb66d6ee9925>
+Date:   Thu Jul 3 22:38:12 2008 +0000
+
+    Initial import.

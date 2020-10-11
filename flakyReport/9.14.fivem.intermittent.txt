@@ -1,0 +1,7 @@
+commit f79c33b523225c450c08b055650cfdb6d0b27e54
+Author: zirconium <zirconium@fivem.net>
+Date:   Mon Jan 27 16:06:53 2020 +0100
+
+    import partial checkout of Chromium source code
+    
+    This corresponds to a (patched) version of Chromium commit d92ba9a60a89b549b7240dbe2bad4bc216bb4521.

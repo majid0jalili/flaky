@@ -1,0 +1,241 @@
+commit 4c99c326d669001aa1bdd197d810e10ffe87c8a2
+Author: David E. DeMarle <dave.demarle@kitware.com>
+Date:   Tue Jan 22 16:31:59 2019 -0500
+
+    Promote HTG to DataObject
+    
+    Removed DataSet API from HTG and removed ComputeDualGrid.
+    Using FieldData instead of PointData or CellData for arrays.
+    The implicit dual grid output of HTG itself as a dataset no longer exists.
+    Reduce test threshold
+    Remove usage of GetNumberOfPoints() and replaced by GetNumberOfVertices()
+    Rename MaterialMask by Mask
+    CEA contrib fix for vtkAdaptiveDataSetSurfaceFilter
+    Add missing parent Initialize() call
+    
+    GridSize still needs to be used for now until Dimensions/Extent is fixed
+
+commit de706cd3042c28846866ec4e1ee75fdac4be8788
+Author: Ben Boeckel <ben.boeckel@kitware.com>
+Date:   Tue Jan 16 17:24:22 2018 -0500
+
+    TclTk: remove
+    
+    We only needed the internal headers shipped with TclTk, but they are
+    shipped by every major distribution of TclTk anyways (just not manual
+    builds).
+
+commit 109b55aa8a8439986fc0722a2c8d8f143c102d64
+Author: Libpng Upstream <kwrobot@kitware.com>
+Date:   Wed Jan 24 11:24:29 2018 -0500
+
+    png 2018-01-24 (df748a32)
+    
+    Code extracted from:
+    
+        https://gitlab.kitware.com/third-party/png.git
+    
+    at commit df748a3263c87975437f698061c7984d420248c6 (for/vtk-old).
+
+commit 61c95e2e33bdbcb043f3a051d1cdb6ab6a5216e8
+Author: Ben Boeckel <ben.boeckel@kitware.com>
+Date:   Fri Dec 15 14:12:58 2017 -0500
+
+    Twisted: remove the import
+
+commit 53ae151ec2a3ce76d5ba4d094c5116dc81c59c35
+Author: David E. DeMarle <dave.demarle@kitware.com>
+Date:   Tue Sep 12 14:22:38 2017 -0400
+
+    Revert "Revert "miscellaneous cleanup for merge readiness""
+    
+    This reverts commit 845a0db64f459d5daa91a45f66e423cd2e342402.
+
+commit 845a0db64f459d5daa91a45f66e423cd2e342402
+Author: David E. DeMarle <dave.demarle@kitware.com>
+Date:   Fri Aug 18 09:14:19 2017 -0400
+
+    Revert "miscellaneous cleanup for merge readiness"
+    
+    This reverts commit 06e08644a0cbb6ad52e2276dd87fc8745a7be005.
+
+commit 06e08644a0cbb6ad52e2276dd87fc8745a7be005
+Author: David E. DeMarle <dave.demarle@kitware.com>
+Date:   Tue Aug 8 12:27:20 2017 -0400
+
+    miscellaneous cleanup for merge readiness
+    
+    * pedantic spacing, doxygen and other style changes
+    * fix unused variable warnings
+    * fix sign comparison warnings
+    * fix overridden variable warnings.
+    * use nullptr instead of NULL or 0
+    * use VTK_DELETE_FUNCTION instead of //Not implemented.
+    * update a stray __WRAP__ to __VTK_WRAP__ (can likely remove too)
+    * fixup override, should now be virtual only on base class, override
+    on intermediate children. I'm not familar enough to know if any of the
+    override should be final so I didn't add any.
+    * revert the change to vtkCellTypeSource as it should not be required
+    * fix a faulty test and commit the baseline image
+    * can not stack allocate parentCursors dynamic array
+    * fix potential use of uninitialized variable warnings with good defaults
+    * remove declarations without implementations
+    * fix type converion warnings
+    * mtime declation and implementation return types must agree
+    * M_SQRT2 is not cross platform
+    * remove non-cross platform rusage from test
+    * fix address unsigned<0 warnings
+    * fix virtual function hidden warning
+    * VTK_NEWINSTANCE hint so wrappers avoid comp warning
+    * fix missing braces warning
+    * fix bool vs number comparison warnings
+    * fix invalid character literal escape sequence
+    * streamline types in GetShiftedLevelZeroIndex to avoid warnings and
+    make -1's meaningfule
+    * revert planecutter changes as they are harmful and not needed
+    * increase test tolerance and add alternate baseline images
+        A couple of the dashboard machines draw lines slightly differently.
+     Increase test tolerance to just above current failed level and in a
+     few cases do that and add alternate images to settle down the noise.
+    * disable two tests that do not work on every machine
+       Authors are not yet able to reproduce and fix whatever the
+     root cause is. disabling the tests until they can.
+
+commit 70e1c81956779f60f70fa507867fa05ec4e8a5f5
+Author: Twisted Upstream <kwrobot@kitware.com>
+Date:   Tue Jul 25 10:50:59 2017 -0400
+
+    Twisted 2017-07-25 (1ff01541)
+    
+    Code extracted from:
+    
+        https://gitlab.kitware.com/third-party/twisted.git
+    
+    at commit 1ff01541b859b26ab850edeb1395cabaca5caf46 (for/vtk).
+
+commit 6225fd32f8f735766ddb63f9c0608214d6223e84
+Author: Twisted Upstream <kwrobot@kitware.com>
+Date:   Thu Mar 30 15:20:58 2017 -0400
+
+    Twisted 2017-03-30 (83a3a529)
+    
+    Code extracted from:
+    
+        https://gitlab.kitware.com/third-party/twisted.git
+    
+    at commit 83a3a5292c563c08b7ef8ac702ec43d717c35eda (for/vtk).
+
+commit 118303563bc5135fa010abf2cb4be0d33687e57a
+Author: Twisted Upstream <kwrobot@kitware.com>
+Date:   Thu Mar 30 15:20:58 2017 -0400
+
+    Twisted 2017-03-30 (83a3a529)
+    
+    Code extracted from:
+    
+        https://gitlab.kitware.com/third-party/twisted.git
+    
+    at commit 83a3a5292c563c08b7ef8ac702ec43d717c35eda (for/vtk).
+
+commit d424ff953565b1a381903256559ace01d5954c12
+Author: Aron Helser <aron.helser@kitware.com>
+Date:   Wed Mar 29 16:42:35 2017 -0400
+
+    ThirdParty Twisted: remove old version, import prep
+    
+    Remove the old version of twisted as prep for
+    importing from the third-party repository.
+
+commit 944f724460f5afce0585bf9d07bb2a5d3a4620db
+Author: Proj Upstream <kwrobot@kitware.com>
+Date:   Tue Mar 8 12:44:42 2016 -0500
+
+    libproj4 2016-03-08 (41bdf053)
+    
+    Code extracted from:
+    
+        https://gitlab.kitware.com/third-party/proj.git
+    
+    at commit 41bdf05361007f8c5186f3df9944d86bb273ed13 (for/vtk).
+
+commit 5736031c3fe29a7ccec924fc00ad3217be9deae2
+Author: Dave DeMarle <dave.demarle@kitware.com>
+Date:   Thu Jan 30 12:34:21 2014 -0500
+
+    move dashboard management scripts into better place
+    
+    Change-Id: I001593bedd412465fab6fe3917607a94d84b40a4
+
+commit 07aaa329f6209212f2bdddafc3a3b3e1b8806342
+Author: Zach Mullen <zach.mullen@kitware.com>
+Date:   Thu Jul 25 14:19:52 2013 -0400
+
+    Web module.
+    
+    This module moves most of the functionality from ParaViewWeb down
+    into VTK proper.
+    
+    Change-Id: I3cf98c68b2c7c254c9463db2668532a5b2dfe353
+
+commit b36cfc7e66e4b7316219ac6ed12972e27716377c
+Author: Dave DeMarle <dave.demarle@kitware.com>
+Date:   Wed Jun 26 12:02:00 2013 -0400
+
+    add scraper to diagnose intermittent problems
+    
+    This script scrapes cdash results for each submitter over time
+    so that you can see problematic machines and tests that fail some
+    of the time.
+    
+    Change-Id: Idbe3c7cf53bc413e632e9d8f763f697a49a7ac30
+
+commit e7d5b180d7a59db7aaecf69a400b084a27d1905e
+Author: Bill Lorensen <bill.lorensen@gmail.com>
+Date:   Thu Feb 7 09:18:54 2013 -0500
+
+    COMP: Run SQL tests serial
+    
+    Intermittent test failures on SQL tests appear on systems that run
+    tests in parallel. This patch forces the SQL tests to run serial.
+    
+    Change-Id: Ie6a8b52c30a73d273ca0188857ca0e541cd4cbc6
+
+commit cdd4d6fdec8b4b2c143224ca1d94699c96a8b58a
+Author: VTK Developers <vtk-developers@vtk.org>
+Date:   Mon Apr 9 10:04:47 2012 -0400
+
+    Modularize VTK tree layout
+    
+    Move source files from their former monolithic VTK location to their new
+    location in modular VTK without modification.  This preserves enough
+    information for "git blame -M" and "git log --follow" to connect
+    modularized VTK files to their original location and history.
+    
+    Co-Author: Marcus D. Hanwell <marcus.hanwell@kitware.com>
+    Co-Author: Chris Harris <chris.harris@kitware.com>
+    Co-Author: Brad King <brad.king@kitware.com>
+    Co-Author: Nikhil Shetty <nikhil.shetty@kitware.com>
+
+commit d33fbee0acdc186b904968b366daad738fa8f8c7
+Author: Sebastien Barre <sebastien.barre@kitware.com>
+Date:   Tue Oct 21 16:12:22 2008 -0400
+
+    ENH: add Tcl/Tk 8.6 support
+
+commit d5e563a2d5668934cf07e302ce9f9e0255437ed2
+Author: Sebastien Barre <sebastien.barre@kitware.com>
+Date:   Tue Oct 21 16:08:57 2008 -0400
+
+    ENH: add Tcl/Tk 8.6 support
+
+commit 8dc60708dcde64841d2234e97a74a5afccbaad74
+Author: Sebastien Barre <sebastien.barre@kitware.com>
+Date:   Thu Jan 24 15:34:09 2008 -0500
+
+    ENH: update for Tcl/Tk 8.5
+
+commit 8ca6b2b5ed9407d362d7a946726588e3ff01cb76
+Author: Sebastien Barre <sebastien.barre@kitware.com>
+Date:   Thu Jan 24 15:33:21 2008 -0500
+
+    ENH: update for Tcl/Tk 8.5

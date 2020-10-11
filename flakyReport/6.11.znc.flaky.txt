@@ -1,0 +1,11 @@
+commit b3b38956a7a5d909b6aa964ad432e418c93ce826
+Author: Alexey Sokolov <alexey+znc@asokolov.org>
+Date:   Sat May 23 11:19:31 2020 +0100
+
+    Rewrite how modpython loads modules
+    
+    'imp' was deprecated since python 3.3.
+    This removes the undocumented feature of loading python C extension as
+    ZNC module, but adds a test that python package can be loaded.
+    
+    Bump python requirements to 3.4

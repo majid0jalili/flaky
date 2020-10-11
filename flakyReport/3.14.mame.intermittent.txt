@@ -1,0 +1,52 @@
+commit d4c772bcc7263dd2697a7977d196a96ad2d067a3
+Author: Ivan Vangelista <mesgnet@yahoo.it>
+Date:   Thu May 28 18:10:20 2020 +0200
+
+    drivers starting with i, j, k, l and m: more macro removal (nw)
+
+commit cf64b0fed3c59d2aa5f0a7ccb272ecf758c2fcfd
+Author: Patrick Mackinlay <pmackinlay@hotmail.com>
+Date:   Fri Apr 5 19:04:52 2019 +0700
+
+    3c505: replace hle (nw)
+    
+    For review/comment especially by @rb6502 and Hans Ostermeyer because it's:
+    * a rewrite/replacement of prior work, and proposes taking over the copyright as well; and
+    * untested on Apollo at the moment because the driver is crashing while trying to install Domain/OS (unrelated to this device).
+    Testing with the 3c505.exe diagnostic program on MS-DOS passes the Group 1 & 2 tests successfully when using 16-bit DMA channel. It intermittently fails the Group 2 transmit test when using an 8-bit channel.
+
+commit 0bd02131b644b61088789f52f31b750c9aecaa6d
+Author: mooglyguy <therealmogminer@gmail.com>
+Date:   Wed Dec 5 19:45:08 2018 +0100
+
+    3rdparty: Updated bgfx, bimg, and bx to latest upstream. [Ryan Holtz]
+
+commit ff01b716711b97c2fcaa709ea97f7650f106aa10
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Fri Oct 7 14:13:19 2016 +0200
+
+    Added ASIO networking library (nw)
+
+commit 7c19aac60e12d6f5ea301bdb34d7826a01e0b06f
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Sun Nov 8 12:56:12 2015 +0100
+
+    Rename *.c -> *.cpp in our source (nw)
+
+commit f88cefad27a1737c76e09d99c9fb43e173506081
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Sun Sep 13 08:41:44 2015 +0200
+
+    Move all devices into separate part of src tree (nw)
+
+commit c26cf28cba55c3323a0fcc733bf22221f37bcd9d
+Author: Curt Coder <curtcoder@mail.com>
+Date:   Sun Oct 20 16:35:08 2013 +0000
+
+    (MESS) cbmiec: Moved under emu/bus. (nw)
+
+commit 7285b359d259b2ae0fdf85096571c386ec8c991a
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Tue Aug 21 10:41:19 2012 +0000
+
+    Merge of MESS sources (no whatsnew)

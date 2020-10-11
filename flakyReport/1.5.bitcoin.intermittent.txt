@@ -1,0 +1,90 @@
+commit fad21a1a7aa8804f4699e5821f074f5d3845c78b
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri May 29 15:32:56 2020 -0400
+
+    test: Explain that a bug should be filed when the test fail
+
+commit fa3f9a05660687bf4146e089050e944a1d6cbe3c
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Mon May 4 20:06:38 2020 -0400
+
+    test: Fix intermittent sync_blocks failures
+
+commit fa9064704524a0fd1fa9ea73eea45b07316ac3d1
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Mon Mar 2 14:14:30 2020 -0500
+
+    test: Wait for both veracks in add_p2p_connection
+
+commit 222e627322ce4de3292259a4868d23983f2a5394
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Sun Jul 29 19:01:46 2018 +0200
+
+    doc: Add historical release notes for 0.16.2
+    
+    Tree-SHA512: 39601090cbfbc51b00426696c118758953d3eb5e0323e9105a5aabb63ab22eb1b3edbabb541bb7a24869c53624dee3c220fd2c1f3fbe627f8d9d168a23064393
+
+commit 280924e6729b83b979a1b7384927b4fbc941b2fd
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Fri Jun 15 18:29:19 2018 +0200
+
+    doc: Add historical release notes for 0.16.1
+    
+    Tree-SHA512: cca8188f954eeded58f705749b2ae51b08aadf4feddafaaafc57df2f84c10a3340a373c1602e9aa290c54b67cdcce53f61f4ca2db87bd98de5449afc53e25f86
+
+commit c9e69fbf3915fe1187b4c2e77be5ae6b16121194
+Author: Jeremy Rubin <jeremy.l.rubin@gmail.com>
+Date:   Wed Oct 5 16:58:47 2016 -0400
+
+    Add CuckooCache implementation and replace the sigcache map_type with it
+    
+    SQUASHME: Change cuckoocache to only work for powers of two, to avoid mod operator
+    SQUASHME: Update Documentation and simplify logarithm logic
+    SQUASHME: OSX Build Errors
+    SQUASHME: minor Feedback from sipa + bluematt
+    SQUASHME: DOCONLY: Clarify a few comments.
+
+commit 0e3ccbfb26b11ea3d9ed7dfd39886d69097286e1
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Thu Feb 18 18:08:59 2016 +0100
+
+    doc: Add historical release notes for 0.10.4 0.11.2 and 0.12.0
+
+commit 69baec96473ca2dc28ac016093770a46650a4ac9
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Thu Jan 30 12:31:17 2014 +0100
+
+    doc: Add historical release notes
+    
+    Add all known release notes for versions since 0.3.12,
+    thanks to Matt Corallo for collecting them on the wiki.
+
+commit 29a414632725431f0947fae60f239946021f9a60
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Tue Oct 15 14:34:12 2013 +0200
+
+    doc: remove readme-qt.md
+    
+    Now that autotools is used as a build system there is nothing
+    special about building the GUI anymore. Merge the salvageable
+    parts into build-unix.md
+
+commit 7772821a696645bd2f88c82652119c0986ab0453
+Author: fanquake <fanquake@gmail.com>
+Date:   Wed Jul 10 16:01:57 2013 +0800
+
+    Remove readme-qt.rst and update documentation for readme-qt.md
+
+commit 00a887450364bd5b096978291b6a6e0f47181d75
+Author: super3 <me@super3.org>
+Date:   Sun Jun 16 06:29:23 2013 -0400
+
+    Markdown Cleanup - Part 2
+    
+    Now everything is in markdown...
+
+commit 6c33ec404530419ef78d075be92cf0408323bf84
+Author: Chris Moore <dooglus@gmail.com>
+Date:   Mon Oct 24 16:21:28 2011 -0700
+
+    Warn about the qt-at-spi bug in Ubuntu 11.10.

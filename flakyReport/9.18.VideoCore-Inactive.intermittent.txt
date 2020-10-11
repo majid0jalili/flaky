@@ -1,0 +1,21 @@
+commit b3e28a901f705d8588cd3c5aa3995052ae8e6131
+Author: Jeffrey Wescott <jeffrey.wescott@gmail.com>
+Date:   Mon Jun 2 23:41:17 2014 -0700
+
+    We'll pull-in boost, glm, and UriParser via CocoaPods. As such:
+    - remove the git submodule for UriParser
+    - remove the boost and glm folders
+
+commit ff60beabde89ed2e4fb11787fb19751a7057d392
+Author: Jeffrey Wescott <jeffrey.wescott@gmail.com>
+Date:   Mon Jun 2 23:41:17 2014 -0700
+
+    We'll pull-in boost, glm, and UriParser via CocoaPods. As such:
+    - remove the git submodule for UriParser
+    - remove the boost and glm folders
+
+commit 6bf9e9dcb172e97151c7e05d57f064cf2fe2fb14
+Author: James Hurley <jamesghurley@gmail.com>
+Date:   Wed Feb 26 15:38:44 2014 -0800
+
+    Initial commit

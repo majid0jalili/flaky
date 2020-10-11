@@ -1,0 +1,32 @@
+commit 8760eccf4087e4e5c60d3761ac676d06ba7b3723
+Author: Rui Zhu <zrphercule@fb.com>
+Date:   Wed Aug 12 14:07:00 2020 -0700
+
+    Add support of quantized batchnorm 3d relu support in torch_glow (#4803)
+    
+    Summary:
+    Pull Request resolved: https://github.com/pytorch/glow/pull/4803
+    
+    Add support of quantized batchnorm 3d relu node
+    
+    Reviewed By: jackm321
+    
+    Differential Revision: D23011963
+    
+    fbshipit-source-id: cf5dd7c0859699bf7ad5ea1f0fcd565cc761b1c3
+
+commit 08969ece63dfe745f6b46d4a6191b672b906aa6e
+Author: zrphercule <zrphercule@gmail.com>
+Date:   Wed Jan 8 13:46:03 2020 -0800
+
+    Remove flaky redundent unit test (#3925)
+    
+    Summary:
+    Given we have test_quantized_linear_packed_rowwise already, this test is weak enough to be removed, but strong enough to cause the off-by-one problem because the input is totally random floating number.
+    Pull Request resolved: https://github.com/pytorch/glow/pull/3925
+    
+    Differential Revision: D19317821
+    
+    Pulled By: zrphercule
+    
+    fbshipit-source-id: c4fa4f310e0943393f255b7453372f7265fb8ef7

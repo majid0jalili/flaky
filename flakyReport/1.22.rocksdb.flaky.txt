@@ -1,0 +1,208 @@
+commit afa3518839a013173ee90599aab6f6f5ae58f5f7
+Author: sdong <siying.d@fb.com>
+Date:   Wed Jun 3 15:53:09 2020 -0700
+
+    Revert "Update googletest from 1.8.1 to 1.10.0 (#6808)" (#6923)
+    
+    Summary:
+    This reverts commit 8d87e9cea13b09e12d0d22d4fdebdd5bacbb5c6e.
+    
+    Based on offline discussions, it's too early to upgrade to gtest 1.10, as it prevents some developers from using an older version of gtest to integrate to some other systems. Revert it for now.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/6923
+    
+    Reviewed By: pdillinger
+    
+    Differential Revision: D21864799
+    
+    fbshipit-source-id: d0726b1ff649fc911b9378f1763316200bd363fc
+
+commit 8d87e9cea13b09e12d0d22d4fdebdd5bacbb5c6e
+Author: Adam Retter <adam.retter@googlemail.com>
+Date:   Mon Jun 1 20:31:29 2020 -0700
+
+    Update googletest from 1.8.1 to 1.10.0 (#6808)
+    
+    Summary: Pull Request resolved: https://github.com/facebook/rocksdb/pull/6808
+    
+    Reviewed By: anand1976
+    
+    Differential Revision: D21483984
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: 70c5eff2bd54ddba469761d95e4cd4611fb8e598
+
+commit fbab9913e241fb618ace06613e65242c5cd045e3
+Author: Wilfried Goesgens <willi@arangodb.com>
+Date:   Mon Sep 9 11:22:28 2019 -0700
+
+    upgrade gtest 1.7.0 => 1.8.1 for json result writing
+    
+    Summary: Pull Request resolved: https://github.com/facebook/rocksdb/pull/5332
+    
+    Differential Revision: D17242232
+    
+    fbshipit-source-id: c0d4646556a1335e51ac7382b986ca7f6ced7b64
+
+commit 1b59a490ef8d8da78c826b379167207dfa682b4c
+Author: Sagar Vemuri <svemuri@fb.com>
+Date:   Thu May 30 16:07:57 2019 -0700
+
+    Fix flaky DBTest2.PresetCompressionDict test (#5378)
+    
+    Summary:
+    Fix flaky DBTest2.PresetCompressionDict test.
+    
+    This PR fixes two issues with the test:
+    1. Replaces `GetSstFiles` with `TotalSize`, which is based on `DB::GetColumnFamilyMetaData` so that only the size of the live SST files is taken into consideration when computing the total size of all sst files. Earlier, with `GetSstFiles`, even obsolete files were getting picked up.
+    1. In ZSTD compression, it is sometimes possible that using a trained dictionary is not better than using an untrained one. Using a trained dictionary performs well in 99% of the cases, but still in the remaining ~1% of the cases (out of 10000 runs) using an untrained dictionary gets better compression results.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/5378
+    
+    Differential Revision: D15559100
+    
+    Pulled By: sagar0
+    
+    fbshipit-source-id: c35adbf13871f520a2cec48f8bad9ff27ff7a0b4
+
+commit 93f7e7a450ced3414f7443121d38fa5c536d9986
+Author: Siying Dong <siying.d@fb.com>
+Date:   Tue Feb 19 14:41:16 2019 -0800
+
+    Temporarily Disable DBTest2.PresetCompressionDict (#5003)
+    
+    Summary:
+    DBTest2.PresetCompressionDict is flaky. Temparily disable it for now.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/5003
+    
+    Differential Revision: D14139505
+    
+    Pulled By: siying
+    
+    fbshipit-source-id: ebf1872d364b76b2cb021b489ea2f17ee997116a
+
+commit 62f70f6d144132e652705fa1d2f2737764721e99
+Author: Andrew Kryczka <andrewkr@fb.com>
+Date:   Mon Feb 11 19:42:25 2019 -0800
+
+    Reduce scope of compression dictionary to single SST (#4952)
+    
+    Summary:
+    Our previous approach was to train one compression dictionary per compaction, using the first output SST to train a dictionary, and then applying it on subsequent SSTs in the same compaction. While this was great for minimizing CPU/memory/I/O overhead, it did not achieve good compression ratios in practice. In our most promising potential use case, moderate reductions in a dictionary's scope make a major difference on compression ratio.
+    
+    So, this PR changes compression dictionary to be scoped per-SST. It accepts the tradeoff during table building to use more memory and CPU. Important changes include:
+    
+    - The `BlockBasedTableBuilder` has a new state when dictionary compression is in-use: `kBuffered`. In that state it accumulates uncompressed data in-memory whenever `Add` is called.
+    - After accumulating target file size bytes or calling `BlockBasedTableBuilder::Finish`, a `BlockBasedTableBuilder` moves to the `kUnbuffered` state. The transition (`EnterUnbuffered()`) involves sampling the buffered data, training a dictionary, and compressing/writing out all buffered data. In the `kUnbuffered` state, a `BlockBasedTableBuilder` behaves the same as before -- blocks are compressed/written out as soon as they fill up.
+    - Samples are now whole uncompressed data blocks, except the final sample may be a partial data block so we don't breach the user's configured `max_dict_bytes` or `zstd_max_train_bytes`. The dictionary trainer is supposed to work better when we pass it real units of compression. Previously we were passing 64-byte KV samples which was not realistic.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4952
+    
+    Differential Revision: D13967980
+    
+    Pulled By: ajkr
+    
+    fbshipit-source-id: 82bea6f7537e1529c7a1a4cdee84585f5949300f
+
+commit 854a4be03f80a785387a7048d01b6d9923b95cef
+Author: Anand Ananthabhotla <anand76@devvm1373.frc2.facebook.com>
+Date:   Tue Oct 9 22:50:59 2018 -0700
+
+    Handle mixed slowdown/no_slowdown writer properly (#4475)
+    
+    Summary:
+    There is a bug when the write queue leader is blocked on a write
+    delay/stop, and the queue has writers with WriteOptions::no_slowdown set
+    to true. They are not woken up until the write stall is cleared.
+    
+    The fix introduces a dummy writer inserted at the tail to indicate a
+    write stall and prevent further inserts into the queue, and a condition
+    variable that writers who can tolerate slowdown wait on before adding
+    themselves to the queue. The leader calls WriteThread::BeginWriteStall()
+    to add the dummy writer and then walk the queue to fail any writers with
+    no_slowdown set. Once the stall clears, the leader calls
+    WriteThread::EndWriteStall() to remove the dummy writer and signal the
+    condition variable.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4475
+    
+    Differential Revision: D10285827
+    
+    Pulled By: anand1976
+    
+    fbshipit-source-id: 747465e5e7f07a829b1fb0bc1afcd7b93f4ab1a9
+
+commit e15382c09c87a65eaeca9bda233bab503f1e5772
+Author: Siying Dong <siying.d@fb.com>
+Date:   Wed Apr 26 17:12:28 2017 -0700
+
+    Disable two flaky tests
+    
+    Summary: Closes https://github.com/facebook/rocksdb/pull/2217
+    
+    Differential Revision: D4959351
+    
+    Pulled By: siying
+    
+    fbshipit-source-id: ce7c3a430bae0d15e06b3d5c958ebce969d08564
+
+commit 182b940e70929d97abd1fee89273a069acd98d16
+Author: Maysam Yabandeh <myabandeh@fb.com>
+Date:   Mon Nov 21 17:56:19 2016 -0800
+
+    Add WriteOptions.no_slowdown
+    
+    Summary:
+    If the WriteOptions.no_slowdown flag is set AND we need to wait or sleep for
+    the write request, then fail immediately with Status::Incomplete().
+    Closes https://github.com/facebook/rocksdb/pull/1527
+    
+    Differential Revision: D4191405
+    
+    Pulled By: maysamyabandeh
+    
+    fbshipit-source-id: 7f3ce3f
+
+commit 2a9c97108e44f9075a0f8bc7355ca2ad6ad89533
+Author: Islam AbdelRahman <tec@fb.com>
+Date:   Wed Aug 24 15:32:01 2016 -0700
+
+    [Flaky Test] Disable DBPropertiesTest.GetProperty
+    
+    Summary: Disable flaky test
+    
+    Test Plan: run it
+    
+    Reviewers: yiwu, andrewkr, kradhakrishnan, yhchiang, lightmark, sdong
+    
+    Reviewed By: sdong
+    
+    Subscribers: andrewkr, dhruba
+    
+    Differential Revision: https://reviews.facebook.net/D62487
+
+commit a7aba2ef6b4e5bbb9ea525d35f4c9c365735f3ec
+Author: Igor Sugak <sugak@dev2112.prn1.facebook.com>
+Date:   Mon Mar 16 18:27:30 2015 -0700
+
+    rocksdb: Add gtest
+    
+    Summary:
+    Adds gtest fused source code into `third-party` directory. No manual changes.
+    
+    gtest latest released 1.7 has clang dev compilation errors. Trunk version requires only one disabled warning (-Wno-missing-field-initializers)
+    
+    Fused code is made as described here https://fburl.com/90806322
+    Details about why we need gtest source code instead of precompiled library https://fburl.com/90805763
+    Source used from http://googletest.googlecode.com/svn/trunk
+    
+    Test Plan:
+    Build and notice no errors. Also check in logs that gtest-all.o being compiled gtest-all.o.
+    ```lang=bash
+    % USE_CLANG=1 make all
+    ```
+    
+    Reviewers: lgalanis, yufei.zhu, rven, sdong, igor, meyering
+    
+    Reviewed By: meyering
+    
+    Subscribers: meyering, yhchiang, dhruba, leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D33345

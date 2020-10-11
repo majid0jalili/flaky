@@ -1,0 +1,23 @@
+commit a37da20ae74c81703b1c811182fc154d95ed46fe
+Author: Jan Niklas Hasse <jhasse@bixense.com>
+Date:   Fri Aug 30 13:07:58 2019 +0200
+
+    Use short CONTRIBUTING.md instead of HACKING.md
+    
+    * Only the most important parts and some new guidelines in
+      CONTRIBUTING.md.
+    * Complete HACKING.md content moved to the GitHub wiki:
+      https://github.com/ninja-build/ninja/wiki
+    * README is now also Markdown formatted.
+
+commit 6ee71118b87935c6629f69a41bfa531925ef44c2
+Author: Jan Niklas Hasse <jhasse@bixense.com>
+Date:   Fri Aug 30 13:06:56 2019 +0200
+
+    Rename HACKING.md to CONTRIBUTING.md
+
+commit 4497d0f247d1772c75949668d9c7351ae54565ce
+Author: Evan Martin <martine@danga.com>
+Date:   Thu Apr 11 13:50:36 2013 -0700
+
+    add HACKING note on cl.exe-via-wine

@@ -1,0 +1,28 @@
+commit cba8947ee8a22e9abd801df78e3ff0e6b58fb77b
+Author: Jonathan White <support@dmapps.us>
+Date:   Fri Jan 10 19:09:46 2020 -0500
+
+    Prevent unnecessary merge requests on intermittent network shares
+    
+    * Fixes #4118
+
+commit 9683b7b7a14f2bffb1d04346a7eae4d5f32ee6a6
+Author: Thomas McWork <thomas.mc.work@gmail.com>
+Date:   Sun Sep 8 13:30:51 2019 +0200
+
+    Convert CHANGELOG to Markdown Format (#3512)
+
+commit d6cae74176c828150b1cb19fb11f47d0cd5ab0c0
+Author: Jonathan White <support@dmapps.us>
+Date:   Tue Aug 21 12:19:15 2018 -0400
+
+    Release 2.3.4 version bump
+    
+    * Corrects INSTALL.md build instructions for Windows (#2126)
+    * Rephrase Qt 5.5.x warning to include on-screen keyboard combo
+
+commit d8866c64d2a5b1f5b0c6767d5e7c4e4b6bc92253
+Author: Janek Bevendorff <janek@jbev.net>
+Date:   Tue Feb 27 22:36:40 2018 +0100
+
+    Update CHANGELOG for 2.3.0

@@ -1,0 +1,187 @@
+commit c9f89cd0cb1de118a469814beb4c337b609308cb
+Author: Teddy Reed <teddy@casualhacking.io>
+Date:   Mon Oct 5 08:42:44 2020 -0400
+
+    tests: Reduce flakiness of test_osqueryi (#6688)
+
+commit e5f9a8dd7a8ba8a69a3ab4f93b6842efa4788c33
+Author: Stefano Bonicatti <stefano.bonicatti@gmail.com>
+Date:   Tue Apr 14 16:53:39 2020 +0200
+
+    release: updating changelog for 4.3.0 release (#6387)
+
+commit 7dbc6d357798574433a0a791d2143a1d8063e1ec
+Author: Nick Anderson <thor@fb.com>
+Date:   Thu Feb 13 12:26:34 2020 -0800
+
+    release: updating changelog for 4.2.0 release (#6239)
+
+commit eb2ebd65b34455d184b1a53fc96395156cae91ce
+Author: seph <seph@directionless.org>
+Date:   Thu Dec 12 20:45:55 2019 -0500
+
+    Enable more column validation on integration tests (#6106)
+    
+    Co-Authored-By: Teddy Reed <teddy@casualhacking.io>
+
+commit 942878854b0f13129ba4b41bbeebd3c7b6cf3455
+Author: Stefano Bonicatti <stefano.bonicatti@gmail.com>
+Date:   Tue Jun 25 10:50:43 2019 +0200
+
+    Add CMake support
+    
+    Taken from osql-experimental.
+    
+    - Change CMake code license to the one present in osquery right now
+    
+    - Package metadata doesn't mention Trail of Bits or osql anymore
+    
+    - Set specific ACLs for the osqueryd on Windows when packaging
+    
+    - Remove LLVM_INSTALL_PATH support on macOS, since we are using AppleClang
+    
+    - Remove OSQUERY_SOURCE_DIR variable need and source in a submodule support
+    
+    - Add targets format_check and format to check code formatting and
+      format it with clang-format
+    
+    - Do not warn about not using Clang on macOS when using AppleClang
+
+commit 971bee444168e7841bcd499867fa4c1c66ad39a6
+Author: George Guliashvili <gguli@fb.com>
+Date:   Fri Sep 21 11:54:31 2018 -0700
+
+    Move build system to BUCK
+    
+    fbshipit-source-id: 8ffef5e6a393ac67ce56dcb74845402e43d964a0
+
+commit 9fb6a604dd08c56c473dfb6aad46d154f48e2401
+Author: Alexander <akindyakov@gmail.com>
+Date:   Thu Jun 14 13:12:26 2018 +0100
+
+    Force `osqueryi` to not use osquery extensions from system env in tests. (#4524)
+    
+    To prevent any affects from system env.
+
+commit 192ccaeaed731b690ca1d26b54cd31b86615be28
+Author: Mitchell Grenier <mitchell.wm.grenier@gmail.com>
+Date:   Fri May 4 13:54:14 2018 -0700
+
+    New ATC Tables (#4271)
+
+commit 305108155a36033e15efbd33e560b04dadc80e8a
+Author: Nick Anderson <nanderson7@gmail.com>
+Date:   Wed Apr 18 07:51:04 2018 -0700
+
+    bug: handle windows service shutdowns gracefully (#4286)
+
+commit 891a6fb17a57133c4d068a5147ff9d27eb823027
+Author: Nick Anderson <nanderson7@gmail.com>
+Date:   Fri Jul 21 11:10:06 2017 -0700
+
+    windows: Fixing watcher respawn logic for killed worker processes (#3475)
+
+commit 0dede0f352f8a4ca9f4b993169352eb8debbdc0c
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Thu Jan 26 09:52:15 2017 -0800
+
+    registry: Fix enable_foreign and add test (#2942)
+
+commit dcbb32f442ccf4e6e4f935edf402dabcf7b7d688
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Thu Dec 8 18:24:01 2016 -0800
+
+    Allow autoload paths to include directories (#2855)
+
+commit 17b89fc1820858128ff6ea7a6548a0503e77766a
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Sun Sep 25 22:19:31 2016 -0700
+
+    Refactor events and remove 10/3600 indexes (#2523)
+
+commit bcd90070ae32dbf3c18e1b02a8a0d59a519a8cce
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Fri Sep 23 16:46:02 2016 -0700
+
+    Remove time-override for events add API (#2508)
+    
+    This will remove the use of current time for syslog.time and introduce
+    a new column called 'datetime'.
+    
+    Events now uses an "optimize_id" alongside "optimize" to prevent returning
+    colliding events added within the same second as the previous genTable call.
+
+commit 7f304a0934ec96bc3a5a0e3c3bdeda4826183031
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Mon Jul 11 09:45:57 2016 -0700
+
+    Various fixups and best practices (#2237)
+
+commit b5defa7436dc2e84fada4125fd6a756c168877a6
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Mon Mar 7 21:25:35 2016 -0800
+
+    Allow extensions to use the backing store
+
+commit afd17f81340622d137dc2eb5712cc6f3b8b7e069
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Sat Mar 5 09:29:51 2016 -0800
+
+    1. Reorganize RocksDB database handle into a plugin
+    2. Introduce a SQLite-based database plugin
+    3. Refactor database usage to include local 'fast-calls'
+    4. Introduce an 'ephemeral' database plugin for testing (like a mock)
+
+commit cf22d4c60ea70a319388dfcbbbd26b34215ed052
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Sat Feb 6 19:20:25 2016 -0800
+
+    Fix -A/.all contention via do_meta_command
+
+commit b9117b17a11d27af665f8359f73b462507c618d1
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Wed Jan 20 11:37:29 2016 -0800
+
+    [Fix #1788] Use an array for the 'data' key in TLS logs
+
+commit 1a12b41d76e79190d604b2f58cfb47d89f78dc28
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Fri Jan 15 00:53:38 2016 -0800
+
+    Promote 10.11 to default darwin package builder
+
+commit a3a05e7e1e4aaafa23b344ec63ac84ad7c540bb4
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Sat Nov 21 20:36:32 2015 -0800
+
+    [#1527] Add a --profile option to the shell, replace 'run'
+
+commit 98f212e7a925366e96b3fbd6af8474acba08b2d6
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Sun Nov 15 13:21:16 2015 -0800
+
+    Add a SQLite query planner for type detection
+
+commit 28bdcecc19c55c25a1f13175dafda2ae516e71d7
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Sun Nov 8 02:29:49 2015 -0800
+
+    Custom flaky test marker
+
+commit 6aae4c9aa01fbd39a60054fcf4fc3bd706a14b78
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Mon Nov 2 00:45:45 2015 -0800
+
+    Fix tests and shell escape errors (faults)
+
+commit 50550e607a1a21663b2bc955a7ff59ffe67de95a
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Thu Sep 24 16:12:26 2015 -0700
+
+    Build and provision edits for FreeBSD CI
+
+commit cd8f42844a275ddab1b4739dbfe65de36268a786
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Wed Oct 28 09:40:17 2015 -0700
+
+    Mark flaky integration tests

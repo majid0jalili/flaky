@@ -1,0 +1,2512 @@
+commit 0832a1093d6f59b77f968c1d96d936309901a16a
+Author: Tobias Tebbi <tebbi@chromium.org>
+Date:   Fri Sep 18 16:40:24 2020 +0200
+
+    Reland^5 "[flags] warn about contradictory flags"
+    
+    This is a reland of 2000aea58aed517a755178ebb4712c18acb0c88b
+    Changes compared to last reland:
+    - Add rule in variants.py for --enable_experimental_regexp_engine.
+    - Make sure --abort-on-contradictory-flags works as well as --fuzzing
+      to disable the checking for fuzzers, including for d8 flags.
+    
+    Original change's description:
+    > Reland^4 "[flags] warn about contradictory flags"
+    >
+    > This is a reland of 0ba115e6a9ef0a8aa2af9ce22a1a4521a4a0b363
+    > Changes compared to last reland:
+    > - Fix Python code trying to write to expected_outcomes, which is now a
+    >   computed property.
+    > - Fix remaining place in d8.cc that ignored the --fuzzing flag.
+    > - Expect flag contradictions for --cache in code_serializer variant.
+    >
+    > Original change's description:
+    > > Reland^3 "[flags] warn about contradictory flags"
+    > >
+    > > Changes:
+    > > - Also allow second parameter influenced by --cache to be reassigned.
+    > > - Fix --stress-opt to only --always-opt in the last iteration as before.
+    > >
+    > > Original change's description:
+    > > > Reland^2 "[flags] warn about contradictory flags"
+    > > >
+    > > > This is a reland of d8f8a7e2105305921ca31450ecc38e009bc075c3
+    > > > Change compared to last reland:
+    > > > - Do not check for d8 flag contradictions in the presence of --fuzzing
+    > > > - Allow identical re-declaration of --cache=*
+    > > >
+    > > > Original change's description:
+    > > > > Reland "[flags] warn about contradictory flags"
+    > > > >
+    > > > > This is a reland of b8f91666649b637e87a338f884d7987b169f6692
+    > > > > Difference to previous CL: Additional functionality to specify
+    > > > > incompatible flags based on GN variables and extra-flags, used
+    > > > > to fix the issues that came up on the waterfall.
+    > > > >
+    > > > > This also changes the rules regarding repeated flags: While
+    > > > > explicitly repeated flags are allowed for boolean values as long
+    > > > > as they are identical, repeated flags or explicit flags in the
+    > > > > presence of an active implication are disallowed for non-boolean
+    > > > > flags. The latter simplifies specifying conflict rules in
+    > > > > variants.py. Otherwise a rule like
+    > > > >
+    > > > > INCOMPATIBLE_FLAGS_PER_EXTRA_FLAG = {
+    > > > >   "--gc-interval=*": ["--gc-interval=*"],
+    > > > > }
+    > > > >
+    > > > > wouldn't work because specifying the same GC interval twice
+    > > > > wouldn't actually count as a conflict. This was an issue with
+    > > > > test/mjsunit/wasm/gc-buffer.js, which specifies
+    > > > > --gc-interval=500 exactly like the extra flag by the stress bot.
+    > > > >
+    > > > > Also, this now expands contradictory flags checking to d8 flags
+    > > > > for consistency.
+    > > > >
+    > > > > Original change's description:
+    > > > > > [flags] warn about contradictory flags
+    > > > > >
+    > > > > > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    > > > > >
+    > > > > > Bug: v8:10577
+    > > > > > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > > > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > > > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > > > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > > > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > > > Cr-Commit-Position: refs/heads/master@{#68168}
+    > > > >
+    > > > > Bug: v8:10577
+    > > > > Change-Id: I268e590ee18a535b13dee14eeb15ddd0a9ee8341
+    > > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2235115
+    > > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > > Cr-Commit-Position: refs/heads/master@{#68989}
+    > > >
+    > > > Bug: v8:10577
+    > > > Change-Id: I31d2794d4f9ff630f3444210100c64d67d881276
+    > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2339464
+    > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > Cr-Commit-Position: refs/heads/master@{#69339}
+    > >
+    > > Bug: v8:10577
+    > > Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_rel_ng
+    > > Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_isolates_rel_ng
+    > > Change-Id: I4a69dc57a102782cb453144323e3752ac8278624
+    > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2352770
+    > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > Reviewed-by: Tobias Tebbi <tebbi@chromium.org>
+    > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > Cr-Commit-Position: refs/heads/master@{#69433}
+    >
+    > Change-Id: Ib6d2aeb495210f581ac671221c265df58e8e5e70
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2398640
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#69954}
+    
+    Bug: v8:10577
+    TBR: clemensb@chromium.org, tmrts@chromium.org
+    Change-Id: Iab2d32cdcc2648934fc52255ccf3ae3ec9ca4d9b
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2416386
+    Reviewed-by: Tobias Tebbi <tebbi@chromium.org>
+    Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#70000}
+
+commit a0e38f31860f7b73ecedb5a158fd9be3a09022b7
+Author: Bill Budge <bbudge@chromium.org>
+Date:   Wed Sep 16 20:45:06 2020 +0000
+
+    Revert "Reland^4 "[flags] warn about contradictory flags""
+    
+    This reverts commit 2000aea58aed517a755178ebb4712c18acb0c88b.
+    
+    Reason for revert: Breaks NumFuzz.
+    
+    Original change's description:
+    > Reland^4 "[flags] warn about contradictory flags"
+    >
+    > This is a reland of 0ba115e6a9ef0a8aa2af9ce22a1a4521a4a0b363
+    > Changes compared to last reland:
+    > - Fix Python code trying to write to expected_outcomes, which is now a
+    >   computed property.
+    > - Fix remaining place in d8.cc that ignored the --fuzzing flag.
+    > - Expect flag contradictions for --cache in code_serializer variant.
+    >
+    > Original change's description:
+    > > Reland^3 "[flags] warn about contradictory flags"
+    > >
+    > > Changes:
+    > > - Also allow second parameter influenced by --cache to be reassigned.
+    > > - Fix --stress-opt to only --always-opt in the last iteration as before.
+    > >
+    > > Original change's description:
+    > > > Reland^2 "[flags] warn about contradictory flags"
+    > > >
+    > > > This is a reland of d8f8a7e2105305921ca31450ecc38e009bc075c3
+    > > > Change compared to last reland:
+    > > > - Do not check for d8 flag contradictions in the presence of --fuzzing
+    > > > - Allow identical re-declaration of --cache=*
+    > > >
+    > > > Original change's description:
+    > > > > Reland "[flags] warn about contradictory flags"
+    > > > >
+    > > > > This is a reland of b8f91666649b637e87a338f884d7987b169f6692
+    > > > > Difference to previous CL: Additional functionality to specify
+    > > > > incompatible flags based on GN variables and extra-flags, used
+    > > > > to fix the issues that came up on the waterfall.
+    > > > >
+    > > > > This also changes the rules regarding repeated flags: While
+    > > > > explicitly repeated flags are allowed for boolean values as long
+    > > > > as they are identical, repeated flags or explicit flags in the
+    > > > > presence of an active implication are disallowed for non-boolean
+    > > > > flags. The latter simplifies specifying conflict rules in
+    > > > > variants.py. Otherwise a rule like
+    > > > >
+    > > > > INCOMPATIBLE_FLAGS_PER_EXTRA_FLAG = {
+    > > > >   "--gc-interval=*": ["--gc-interval=*"],
+    > > > > }
+    > > > >
+    > > > > wouldn't work because specifying the same GC interval twice
+    > > > > wouldn't actually count as a conflict. This was an issue with
+    > > > > test/mjsunit/wasm/gc-buffer.js, which specifies
+    > > > > --gc-interval=500 exactly like the extra flag by the stress bot.
+    > > > >
+    > > > > Also, this now expands contradictory flags checking to d8 flags
+    > > > > for consistency.
+    > > > >
+    > > > > Original change's description:
+    > > > > > [flags] warn about contradictory flags
+    > > > > >
+    > > > > > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    > > > > >
+    > > > > > Bug: v8:10577
+    > > > > > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > > > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > > > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > > > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > > > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > > > Cr-Commit-Position: refs/heads/master@{#68168}
+    > > > >
+    > > > > Bug: v8:10577
+    > > > > Change-Id: I268e590ee18a535b13dee14eeb15ddd0a9ee8341
+    > > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2235115
+    > > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > > Cr-Commit-Position: refs/heads/master@{#68989}
+    > > >
+    > > > Bug: v8:10577
+    > > > Change-Id: I31d2794d4f9ff630f3444210100c64d67d881276
+    > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2339464
+    > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > Cr-Commit-Position: refs/heads/master@{#69339}
+    > >
+    > > Bug: v8:10577
+    > > Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_rel_ng
+    > > Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_isolates_rel_ng
+    > > Change-Id: I4a69dc57a102782cb453144323e3752ac8278624
+    > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2352770
+    > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > Reviewed-by: Tobias Tebbi <tebbi@chromium.org>
+    > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > Cr-Commit-Position: refs/heads/master@{#69433}
+    >
+    > Change-Id: Ib6d2aeb495210f581ac671221c265df58e8e5e70
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2398640
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#69954}
+    
+    TBR=clemensb@chromium.org,tebbi@chromium.org,tmrts@chromium.org
+    
+    Change-Id: I2dc80bcad9f74c29298902e01939e7e7f3336cf6
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2415133
+    Reviewed-by: Bill Budge <bbudge@chromium.org>
+    Commit-Queue: Bill Budge <bbudge@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#69959}
+
+commit 2000aea58aed517a755178ebb4712c18acb0c88b
+Author: Tobias Tebbi <tebbi@chromium.org>
+Date:   Wed Sep 16 17:30:40 2020 +0200
+
+    Reland^4 "[flags] warn about contradictory flags"
+    
+    This is a reland of 0ba115e6a9ef0a8aa2af9ce22a1a4521a4a0b363
+    Changes compared to last reland:
+    - Fix Python code trying to write to expected_outcomes, which is now a
+      computed property.
+    - Fix remaining place in d8.cc that ignored the --fuzzing flag.
+    - Expect flag contradictions for --cache in code_serializer variant.
+    
+    Original change's description:
+    > Reland^3 "[flags] warn about contradictory flags"
+    >
+    > Changes:
+    > - Also allow second parameter influenced by --cache to be reassigned.
+    > - Fix --stress-opt to only --always-opt in the last iteration as before.
+    >
+    > Original change's description:
+    > > Reland^2 "[flags] warn about contradictory flags"
+    > >
+    > > This is a reland of d8f8a7e2105305921ca31450ecc38e009bc075c3
+    > > Change compared to last reland:
+    > > - Do not check for d8 flag contradictions in the presence of --fuzzing
+    > > - Allow identical re-declaration of --cache=*
+    > >
+    > > Original change's description:
+    > > > Reland "[flags] warn about contradictory flags"
+    > > >
+    > > > This is a reland of b8f91666649b637e87a338f884d7987b169f6692
+    > > > Difference to previous CL: Additional functionality to specify
+    > > > incompatible flags based on GN variables and extra-flags, used
+    > > > to fix the issues that came up on the waterfall.
+    > > >
+    > > > This also changes the rules regarding repeated flags: While
+    > > > explicitly repeated flags are allowed for boolean values as long
+    > > > as they are identical, repeated flags or explicit flags in the
+    > > > presence of an active implication are disallowed for non-boolean
+    > > > flags. The latter simplifies specifying conflict rules in
+    > > > variants.py. Otherwise a rule like
+    > > >
+    > > > INCOMPATIBLE_FLAGS_PER_EXTRA_FLAG = {
+    > > >   "--gc-interval=*": ["--gc-interval=*"],
+    > > > }
+    > > >
+    > > > wouldn't work because specifying the same GC interval twice
+    > > > wouldn't actually count as a conflict. This was an issue with
+    > > > test/mjsunit/wasm/gc-buffer.js, which specifies
+    > > > --gc-interval=500 exactly like the extra flag by the stress bot.
+    > > >
+    > > > Also, this now expands contradictory flags checking to d8 flags
+    > > > for consistency.
+    > > >
+    > > > Original change's description:
+    > > > > [flags] warn about contradictory flags
+    > > > >
+    > > > > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    > > > >
+    > > > > Bug: v8:10577
+    > > > > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > > Cr-Commit-Position: refs/heads/master@{#68168}
+    > > >
+    > > > Bug: v8:10577
+    > > > Change-Id: I268e590ee18a535b13dee14eeb15ddd0a9ee8341
+    > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2235115
+    > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > Cr-Commit-Position: refs/heads/master@{#68989}
+    > >
+    > > Bug: v8:10577
+    > > Change-Id: I31d2794d4f9ff630f3444210100c64d67d881276
+    > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2339464
+    > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > Cr-Commit-Position: refs/heads/master@{#69339}
+    >
+    > Bug: v8:10577
+    > Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_rel_ng
+    > Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_isolates_rel_ng
+    > Change-Id: I4a69dc57a102782cb453144323e3752ac8278624
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2352770
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#69433}
+    
+    Change-Id: Ib6d2aeb495210f581ac671221c265df58e8e5e70
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2398640
+    Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#69954}
+
+commit a57560855506e5a12d39d0b4d48c997bb29538d0
+Author: Francis McCabe <fgm@chromium.org>
+Date:   Mon Aug 17 19:33:57 2020 +0000
+
+    Revert "Reland^3 "[flags] warn about contradictory flags""
+    
+    This reverts commit dc18b82221da49b59c486c9eed692e5bf6fc7aea.
+    
+    Reason for revert: still causing failures: https://ci.chromium.org/p/v8/builders/ci/V8%20Linux%20-%20debug/31566
+    
+    Original change's description:
+    > Reland^3 "[flags] warn about contradictory flags"
+    >
+    > This is a reland of 0ba115e6a9ef0a8aa2af9ce22a1a4521a4a0b363
+    > Changes:
+    > - Also allow second parameter influenced by --cache to be reassigned.
+    > - Fix --stress-opt to only --always-opt in the last iteration as before.
+    >
+    > Original change's description:
+    > > Reland^2 "[flags] warn about contradictory flags"
+    > >
+    > > This is a reland of d8f8a7e2105305921ca31450ecc38e009bc075c3
+    > > Change compared to last reland:
+    > > - Do not check for d8 flag contradictions in the presence of --fuzzing
+    > > - Allow identical re-declaration of --cache=*
+    > >
+    > > Original change's description:
+    > > > Reland "[flags] warn about contradictory flags"
+    > > >
+    > > > This is a reland of b8f91666649b637e87a338f884d7987b169f6692
+    > > > Difference to previous CL: Additional functionality to specify
+    > > > incompatible flags based on GN variables and extra-flags, used
+    > > > to fix the issues that came up on the waterfall.
+    > > >
+    > > > This also changes the rules regarding repeated flags: While
+    > > > explicitly repeated flags are allowed for boolean values as long
+    > > > as they are identical, repeated flags or explicit flags in the
+    > > > presence of an active implication are disallowed for non-boolean
+    > > > flags. The latter simplifies specifying conflict rules in
+    > > > variants.py. Otherwise a rule like
+    > > >
+    > > > INCOMPATIBLE_FLAGS_PER_EXTRA_FLAG = {
+    > > >   "--gc-interval=*": ["--gc-interval=*"],
+    > > > }
+    > > >
+    > > > wouldn't work because specifying the same GC interval twice
+    > > > wouldn't actually count as a conflict. This was an issue with
+    > > > test/mjsunit/wasm/gc-buffer.js, which specifies
+    > > > --gc-interval=500 exactly like the extra flag by the stress bot.
+    > > >
+    > > > Also, this now expands contradictory flags checking to d8 flags
+    > > > for consistency.
+    > > >
+    > > > Original change's description:
+    > > > > [flags] warn about contradictory flags
+    > > > >
+    > > > > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    > > > >
+    > > > > Bug: v8:10577
+    > > > > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > > Cr-Commit-Position: refs/heads/master@{#68168}
+    > > >
+    > > > Bug: v8:10577
+    > > > Change-Id: I268e590ee18a535b13dee14eeb15ddd0a9ee8341
+    > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2235115
+    > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > Cr-Commit-Position: refs/heads/master@{#68989}
+    > >
+    > > Bug: v8:10577
+    > > Change-Id: I31d2794d4f9ff630f3444210100c64d67d881276
+    > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2339464
+    > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > Cr-Commit-Position: refs/heads/master@{#69339}
+    >
+    > Bug: v8:10577
+    > Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_rel_ng
+    > Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_isolates_rel_ng
+    > Change-Id: I4a69dc57a102782cb453144323e3752ac8278624
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2352770
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#69433}
+    
+    TBR=machenbach@chromium.org,neis@chromium.org,clemensb@chromium.org,tebbi@chromium.org,tmrts@chromium.org
+    
+    Change-Id: I4ccdd7b931d0ddccbcec1d6cfae8d4874ee49cfc
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Bug: v8:10577
+    Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_rel_ng
+    Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_isolates_rel_ng
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2360414
+    Reviewed-by: Francis McCabe <fgm@chromium.org>
+    Commit-Queue: Francis McCabe <fgm@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#69438}
+
+commit dc18b82221da49b59c486c9eed692e5bf6fc7aea
+Author: Tobias Tebbi <tebbi@chromium.org>
+Date:   Mon Aug 17 16:27:36 2020 +0200
+
+    Reland^3 "[flags] warn about contradictory flags"
+    
+    This is a reland of 0ba115e6a9ef0a8aa2af9ce22a1a4521a4a0b363
+    Changes:
+    - Also allow second parameter influenced by --cache to be reassigned.
+    - Fix --stress-opt to only --always-opt in the last iteration as before.
+    
+    Original change's description:
+    > Reland^2 "[flags] warn about contradictory flags"
+    >
+    > This is a reland of d8f8a7e2105305921ca31450ecc38e009bc075c3
+    > Change compared to last reland:
+    > - Do not check for d8 flag contradictions in the presence of --fuzzing
+    > - Allow identical re-declaration of --cache=*
+    >
+    > Original change's description:
+    > > Reland "[flags] warn about contradictory flags"
+    > >
+    > > This is a reland of b8f91666649b637e87a338f884d7987b169f6692
+    > > Difference to previous CL: Additional functionality to specify
+    > > incompatible flags based on GN variables and extra-flags, used
+    > > to fix the issues that came up on the waterfall.
+    > >
+    > > This also changes the rules regarding repeated flags: While
+    > > explicitly repeated flags are allowed for boolean values as long
+    > > as they are identical, repeated flags or explicit flags in the
+    > > presence of an active implication are disallowed for non-boolean
+    > > flags. The latter simplifies specifying conflict rules in
+    > > variants.py. Otherwise a rule like
+    > >
+    > > INCOMPATIBLE_FLAGS_PER_EXTRA_FLAG = {
+    > >   "--gc-interval=*": ["--gc-interval=*"],
+    > > }
+    > >
+    > > wouldn't work because specifying the same GC interval twice
+    > > wouldn't actually count as a conflict. This was an issue with
+    > > test/mjsunit/wasm/gc-buffer.js, which specifies
+    > > --gc-interval=500 exactly like the extra flag by the stress bot.
+    > >
+    > > Also, this now expands contradictory flags checking to d8 flags
+    > > for consistency.
+    > >
+    > > Original change's description:
+    > > > [flags] warn about contradictory flags
+    > > >
+    > > > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    > > >
+    > > > Bug: v8:10577
+    > > > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > Cr-Commit-Position: refs/heads/master@{#68168}
+    > >
+    > > Bug: v8:10577
+    > > Change-Id: I268e590ee18a535b13dee14eeb15ddd0a9ee8341
+    > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2235115
+    > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > Cr-Commit-Position: refs/heads/master@{#68989}
+    >
+    > Bug: v8:10577
+    > Change-Id: I31d2794d4f9ff630f3444210100c64d67d881276
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2339464
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#69339}
+    
+    Bug: v8:10577
+    Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_rel_ng
+    Cq-Include-Trybots: luci.v8.try:v8_linux64_tsan_isolates_rel_ng
+    Change-Id: I4a69dc57a102782cb453144323e3752ac8278624
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2352770
+    Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    Reviewed-by: Tobias Tebbi <tebbi@chromium.org>
+    Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#69433}
+
+commit 7e9322335ee659e70c0239fc402db7d86f4b56d6
+Author: Bill Budge <bbudge@chromium.org>
+Date:   Tue Aug 11 17:11:53 2020 +0000
+
+    Revert "Reland^2 "[flags] warn about contradictory flags""
+    
+    This reverts commit 0ba115e6a9ef0a8aa2af9ce22a1a4521a4a0b363.
+    
+    Reason for revert: Breaks test on TSAN - block-conflicts
+    https://ci.chromium.org/p/v8/builders/ci/V8%20Linux64%20TSAN%20-%20concurrent%20marking/14230
+    
+    Original change's description:
+    > Reland^2 "[flags] warn about contradictory flags"
+    >
+    > This is a reland of d8f8a7e2105305921ca31450ecc38e009bc075c3
+    > Change compared to last reland:
+    > - Do not check for d8 flag contradictions in the presence of --fuzzing
+    > - Allow identical re-declaration of --cache=*
+    >
+    > Original change's description:
+    > > Reland "[flags] warn about contradictory flags"
+    > >
+    > > This is a reland of b8f91666649b637e87a338f884d7987b169f6692
+    > > Difference to previous CL: Additional functionality to specify
+    > > incompatible flags based on GN variables and extra-flags, used
+    > > to fix the issues that came up on the waterfall.
+    > >
+    > > This also changes the rules regarding repeated flags: While
+    > > explicitly repeated flags are allowed for boolean values as long
+    > > as they are identical, repeated flags or explicit flags in the
+    > > presence of an active implication are disallowed for non-boolean
+    > > flags. The latter simplifies specifying conflict rules in
+    > > variants.py. Otherwise a rule like
+    > >
+    > > INCOMPATIBLE_FLAGS_PER_EXTRA_FLAG = {
+    > >   "--gc-interval=*": ["--gc-interval=*"],
+    > > }
+    > >
+    > > wouldn't work because specifying the same GC interval twice
+    > > wouldn't actually count as a conflict. This was an issue with
+    > > test/mjsunit/wasm/gc-buffer.js, which specifies
+    > > --gc-interval=500 exactly like the extra flag by the stress bot.
+    > >
+    > > Also, this now expands contradictory flags checking to d8 flags
+    > > for consistency.
+    > >
+    > > Original change's description:
+    > > > [flags] warn about contradictory flags
+    > > >
+    > > > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    > > >
+    > > > Bug: v8:10577
+    > > > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > > Cr-Commit-Position: refs/heads/master@{#68168}
+    > >
+    > > Bug: v8:10577
+    > > Change-Id: I268e590ee18a535b13dee14eeb15ddd0a9ee8341
+    > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2235115
+    > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > Cr-Commit-Position: refs/heads/master@{#68989}
+    >
+    > Bug: v8:10577
+    > Change-Id: I31d2794d4f9ff630f3444210100c64d67d881276
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2339464
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#69339}
+    
+    TBR=machenbach@chromium.org,neis@chromium.org,clemensb@chromium.org,tebbi@chromium.org,tmrts@chromium.org
+    
+    Change-Id: I1454a05e357ddd704db7fb79e51be65d45a9a16e
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Bug: v8:10577
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2348365
+    Reviewed-by: Bill Budge <bbudge@chromium.org>
+    Commit-Queue: Bill Budge <bbudge@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#69341}
+
+commit 0ba115e6a9ef0a8aa2af9ce22a1a4521a4a0b363
+Author: Tobias Tebbi <tebbi@chromium.org>
+Date:   Tue Aug 11 16:39:38 2020 +0200
+
+    Reland^2 "[flags] warn about contradictory flags"
+    
+    This is a reland of d8f8a7e2105305921ca31450ecc38e009bc075c3
+    Change compared to last reland:
+    - Do not check for d8 flag contradictions in the presence of --fuzzing
+    - Allow identical re-declaration of --cache=*
+    
+    Original change's description:
+    > Reland "[flags] warn about contradictory flags"
+    >
+    > This is a reland of b8f91666649b637e87a338f884d7987b169f6692
+    > Difference to previous CL: Additional functionality to specify
+    > incompatible flags based on GN variables and extra-flags, used
+    > to fix the issues that came up on the waterfall.
+    >
+    > This also changes the rules regarding repeated flags: While
+    > explicitly repeated flags are allowed for boolean values as long
+    > as they are identical, repeated flags or explicit flags in the
+    > presence of an active implication are disallowed for non-boolean
+    > flags. The latter simplifies specifying conflict rules in
+    > variants.py. Otherwise a rule like
+    >
+    > INCOMPATIBLE_FLAGS_PER_EXTRA_FLAG = {
+    >   "--gc-interval=*": ["--gc-interval=*"],
+    > }
+    >
+    > wouldn't work because specifying the same GC interval twice
+    > wouldn't actually count as a conflict. This was an issue with
+    > test/mjsunit/wasm/gc-buffer.js, which specifies
+    > --gc-interval=500 exactly like the extra flag by the stress bot.
+    >
+    > Also, this now expands contradictory flags checking to d8 flags
+    > for consistency.
+    >
+    > Original change's description:
+    > > [flags] warn about contradictory flags
+    > >
+    > > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    > >
+    > > Bug: v8:10577
+    > > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > Cr-Commit-Position: refs/heads/master@{#68168}
+    >
+    > Bug: v8:10577
+    > Change-Id: I268e590ee18a535b13dee14eeb15ddd0a9ee8341
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2235115
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Reviewed-by: Georg Neis <neis@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#68989}
+    
+    Bug: v8:10577
+    Change-Id: I31d2794d4f9ff630f3444210100c64d67d881276
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2339464
+    Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#69339}
+
+commit a269ce201da39393e21825e28e9ab85a96dc8722
+Author: Maya Lekova <mslekova@chromium.org>
+Date:   Wed Jul 22 13:48:19 2020 +0000
+
+    Revert "Reland "[flags] warn about contradictory flags""
+    
+    This reverts commit d8f8a7e2105305921ca31450ecc38e009bc075c3.
+    
+    Reason for revert: Breaks code_serializer variant - https://cr-buildbucket.appspot.com/build/8874070652992164976
+    
+    Original change's description:
+    > Reland "[flags] warn about contradictory flags"
+    >
+    > This is a reland of b8f91666649b637e87a338f884d7987b169f6692
+    > Difference to previous CL: Additional functionality to specify
+    > incompatible flags based on GN variables and extra-flags, used
+    > to fix the issues that came up on the waterfall.
+    >
+    > This also changes the rules regarding repeated flags: While
+    > explicitly repeated flags are allowed for boolean values as long
+    > as they are identical, repeated flags or explicit flags in the
+    > presence of an active implication are disallowed for non-boolean
+    > flags. The latter simplifies specifying conflict rules in
+    > variants.py. Otherwise a rule like
+    >
+    > INCOMPATIBLE_FLAGS_PER_EXTRA_FLAG = {
+    >   "--gc-interval=*": ["--gc-interval=*"],
+    > }
+    >
+    > wouldn't work because specifying the same GC interval twice
+    > wouldn't actually count as a conflict. This was an issue with
+    > test/mjsunit/wasm/gc-buffer.js, which specifies
+    > --gc-interval=500 exactly like the extra flag by the stress bot.
+    >
+    > Also, this now expands contradictory flags checking to d8 flags
+    > for consistency.
+    >
+    > Original change's description:
+    > > [flags] warn about contradictory flags
+    > >
+    > > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    > >
+    > > Bug: v8:10577
+    > > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > > Reviewed-by: Georg Neis <neis@chromium.org>
+    > > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > > Cr-Commit-Position: refs/heads/master@{#68168}
+    >
+    > Bug: v8:10577
+    > Change-Id: I268e590ee18a535b13dee14eeb15ddd0a9ee8341
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2235115
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Reviewed-by: Georg Neis <neis@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#68989}
+    
+    TBR=machenbach@chromium.org,neis@chromium.org,clemensb@chromium.org,tebbi@chromium.org,tmrts@chromium.org
+    
+    Change-Id: I7969065b0edbc463a94e530485bc2ab623d77b62
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Bug: v8:10577
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2312782
+    Reviewed-by: Maya Lekova <mslekova@chromium.org>
+    Commit-Queue: Maya Lekova <mslekova@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#68992}
+
+commit d8f8a7e2105305921ca31450ecc38e009bc075c3
+Author: Tobias Tebbi <tebbi@chromium.org>
+Date:   Wed Jul 22 12:33:18 2020 +0200
+
+    Reland "[flags] warn about contradictory flags"
+    
+    This is a reland of b8f91666649b637e87a338f884d7987b169f6692
+    Difference to previous CL: Additional functionality to specify
+    incompatible flags based on GN variables and extra-flags, used
+    to fix the issues that came up on the waterfall.
+    
+    This also changes the rules regarding repeated flags: While
+    explicitly repeated flags are allowed for boolean values as long
+    as they are identical, repeated flags or explicit flags in the
+    presence of an active implication are disallowed for non-boolean
+    flags. The latter simplifies specifying conflict rules in
+    variants.py. Otherwise a rule like
+    
+    INCOMPATIBLE_FLAGS_PER_EXTRA_FLAG = {
+      "--gc-interval=*": ["--gc-interval=*"],
+    }
+    
+    wouldn't work because specifying the same GC interval twice
+    wouldn't actually count as a conflict. This was an issue with
+    test/mjsunit/wasm/gc-buffer.js, which specifies
+    --gc-interval=500 exactly like the extra flag by the stress bot.
+    
+    Also, this now expands contradictory flags checking to d8 flags
+    for consistency.
+    
+    Original change's description:
+    > [flags] warn about contradictory flags
+    >
+    > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    >
+    > Bug: v8:10577
+    > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > Reviewed-by: Georg Neis <neis@chromium.org>
+    > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#68168}
+    
+    Bug: v8:10577
+    Change-Id: I268e590ee18a535b13dee14eeb15ddd0a9ee8341
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2235115
+    Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    Reviewed-by: Georg Neis <neis@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#68989}
+
+commit b342cbb20b1d86c9c3098ee9b184e504b285f87d
+Author: Clemens Backes <clemensb@chromium.org>
+Date:   Thu Jun 4 10:19:46 2020 +0000
+
+    Revert "[flags] warn about contradictory flags"
+    
+    This reverts commit b8f91666649b637e87a338f884d7987b169f6692.
+    
+    Reason for revert: Fails gc-stress (https://ci.chromium.org/p/v8/builders/ci/V8%20Linux%20-%20gc%20stress/28341).
+    
+    Original change's description:
+    > [flags] warn about contradictory flags
+    >
+    > Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    >
+    > Bug: v8:10577
+    > Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    > Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    > Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    > Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    > Reviewed-by: Georg Neis <neis@chromium.org>
+    > Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    > Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#68168}
+    
+    TBR=machenbach@chromium.org,neis@chromium.org,clemensb@chromium.org,tebbi@chromium.org,tmrts@chromium.org
+    
+    Change-Id: Ia1e3373fbb4c369594ceb98eb560e3ccf2cb8780
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Bug: v8:10577
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2230523
+    Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    Commit-Queue: Clemens Backes <clemensb@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#68169}
+
+commit b8f91666649b637e87a338f884d7987b169f6692
+Author: Tobias Tebbi <tebbi@chromium.org>
+Date:   Wed Jun 3 22:17:51 2020 +0200
+
+    [flags] warn about contradictory flags
+    
+    Design Doc: https://docs.google.com/document/d/1lkvu8crkK7Ei39qjkPCFijpNyxWXsOktG9GB-7K34jM/
+    
+    Bug: v8:10577
+    Change-Id: Ib9cfdffa401c48c895bf31caed5ee03545beddab
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2154792
+    Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    Reviewed-by: Georg Neis <neis@chromium.org>
+    Reviewed-by: Tamer Tas <tmrts@chromium.org>
+    Commit-Queue: Tobias Tebbi <tebbi@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#68168}
+
+commit 9036662f6da13c9728612c41ad393d69602c45e2
+Author: Michael Achenbach <machenbach@chromium.org>
+Date:   Thu May 28 19:50:39 2020 +0200
+
+    [foozzie] Defeat the CrashTests loop
+    
+    This prepares using ochang_js_fuzzer with foozzie. The fuzzer uses
+    tests from CrashTests in the corpus. This leads to a loop when
+    used with differential fuzzing, as foozzie dedupes failures based
+    on the original file path. Foozzie finds a new failure for the
+    existing failure in CrashTests, for which clusterfuzz creates a new
+    crash test and so on.
+    
+    This subsumes all failures from CrashTests under the same key.
+    Once such a failure is reported, a developer can add it to a
+    mapping in foozzie.py, after which the global key can be used
+    again by clusterfuzz to report another failure.
+    
+    No-Try: true
+    Bug: chromium:1044942
+    Change-Id: I801a23faeb0c672d6ad64b4100c463f53e36cbc2
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2214837
+    Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    Reviewed-by: Maya Lekova <mslekova@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#68053}
+
+commit 8364fc74be43b4306f4023c826e01cc437838f4b
+Author: Jakob Kummerow <jkummerow@chromium.org>
+Date:   Wed Jan 15 12:24:58 2020 +0100
+
+    [test] Proper OOM handling for multi-mapped mock allocator
+    
+    When reserving the requested virtual memory fails (due to address space
+    exhaustion), simply return nullptr to indicate allocation failure, which
+    callers must be prepared to handle anyway. That way, ClusterFuzz will
+    correctly classify OOM situations.
+    Bonus change: skip demo test on simulators to save time.
+    Drive-by cleanup: add a 'simulator_run' section to mjsunit.status
+    
+    Bug: chromium:1042151,chromium:1042173
+    Change-Id: I8569f3c0d2a681fbf6f91b665dcb88a4ac3b901e
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2002391
+    Reviewed-by: Clemens Backes <clemensb@chromium.org>
+    Commit-Queue: Jakob Kummerow <jkummerow@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#65785}
+
+commit 8e8fedde09ec90f1ee8272dc8b60dca2a04e8d0f
+Author: Michael Achenbach <machenbach@chromium.org>
+Date:   Wed Nov 27 13:36:10 2019 +0100
+
+    [release] Remove changelog file
+    
+    https://v8.dev/blog/tags/release is the new ChangeLog!
+    
+    No-Try: true
+    Bug: v8:10010
+    Change-Id: I6a0a8a893dfa29607ba2431daeea8ad1b11e2405
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/1940148
+    Reviewed-by: Mathias Bynens <mathias@chromium.org>
+    Reviewed-by: Yang Guo <yangguo@chromium.org>
+    Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#65201}
+
+commit fbcc2e874d67330322e85f11bc36025fd5072ba8
+Author: Simon Zünd <szuend@chromium.org>
+Date:   Wed Nov 6 09:38:21 2019 +0100
+
+    Introduce REPL mode
+    
+    Design doc: bit.ly/v8-repl-mode
+    
+    This CL adds a new REPL mode that can be used via
+    DebugEvaluate::GlobalREPL. REPL mode only implements re-declaration
+    of 'let' bindings at the moment. Example:
+    
+    REPL Input 1: let x = 21;
+    REPL Input 2: let x = 42;
+    
+    This would normally throw a SyntaxError, but works in REPL mode.
+    
+    The implementation is done by:
+      - Setting a 'repl mode' bit on {Script}, {ScopeInfo}, {ParseInfo}
+        and script {Scope}.
+      - Each global let declaration still gets a slot reserved in the
+        respective {ScriptContext}.
+      - When a new REPL mode {ScriptContext} is created, name clashes
+        for let bindings are not reported as errors.
+      - Declarations, loads and stores for global let in REPL mode are
+        now "load/store global" instead of accessing their respective
+        context slot directly. This causes a lookup in the ScriptContextTable
+        where the found slot for each name is guaranteed to be the same
+        (the first one).
+    
+    Bug: chromium:1004193, chromium:1018158
+    Change-Id: Ia6ab526b9f696400dbb8bfb611a4d43606119a47
+    Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/1876061
+    Commit-Queue: Simon Zünd <szuend@chromium.org>
+    Reviewed-by: Ross McIlroy <rmcilroy@chromium.org>
+    Reviewed-by: Toon Verwaest <verwaest@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#64793}
+
+commit 98b47ebb333cac3e7a175f5087cbc735d591c36f
+Author: Mike Stanton <mvstanton@chromium.org>
+Date:   Fri Dec 21 13:40:33 2018 +0100
+
+    [Test] CSuite benchmark runner
+    
+    It's nice to have a quick way to get stable results on the local
+    machine for the classic d8 benchmarks. CSuite revitalizes an
+    old tool called BSuite which offers multiple averaged runs,
+    and a nice ascii display of results.
+    
+    Sample usage:
+    
+    ./csuite.py octane baseline ~/src/v8/out/d8
+    ./csuite.py octane compare ~/src/v8/out-mine/d8
+    
+                                  benchmark:    score |   master |      % |
+    ===================================================+==========+========+
+                                    Richards:  26201.0 |  26568.0 |   -1.4 |
+                                   DeltaBlue:  55744.0 |  58309.0 |   -4.4 |
+                                      Crypto:  31831.0 |  31815.0 |        |
+                                    RayTrace:  73481.0 |  73185.0 |    0.4 |
+                  ............<snip>............................
+                                      Octane:  36388.0 |  35741.0 |    1.8 |
+    ---------------------------------------------------+----------+--------+
+    
+    
+    See README.md for more documentation.
+    
+    Change-Id: I182490506ca07fab1240bd485bd1d7a8920db893
+    Reviewed-on: https://chromium-review.googlesource.com/c/1387487
+    Commit-Queue: Michael Stanton <mvstanton@chromium.org>
+    Reviewed-by: Yang Guo <yangguo@chromium.org>
+    Reviewed-by: Jakob Kummerow <jkummerow@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#58434}
+
+commit 5bd58639dc646b0b76f56ad2445aaeeebbc7e1f8
+Author: Predrag Rudic <predrag.rudic@mips.com>
+Date:   Fri Dec 7 16:34:17 2018 +0100
+
+    [tests] Skip wasm/atomics64-stress test on pre-r6 MIPS32
+    
+    MIPS32 doesn't have instructions to properly handle 64-bit atomic
+    instructions.
+    
+    Skipping those test on MIPS64 simulator because they have flaky
+    TIMEOUT on buildbots.
+    
+    Change-Id: I31511dfce70a933b9326a7c270509c5f31af743a
+    Reviewed-on: https://chromium-review.googlesource.com/c/1367450
+    Reviewed-by: Stephan Herhut <herhut@chromium.org>
+    Commit-Queue: Predrag Rudic <prudic@wavecomp.com>
+    Cr-Commit-Position: refs/heads/master@{#58125}
+
+commit 767861046ca68e5ee72307fa1fb5e27397cb6501
+Author: Michael Achenbach <machenbach@chromium.org>
+Date:   Thu Nov 29 08:05:25 2018 +0000
+
+    Revert "Reland "[cpu-profiler] Fix stack iterability for fast C calls with no exit frame""
+    
+    This reverts commit ddaa1f0a0d44ee14103214ca7e34e990f87049bb.
+    
+    Reason for revert:
+    Still flaky on windows. Maybe reland and keep skipped on windows?
+    https://ci.chromium.org/p/v8/builders/luci.v8.ci/V8%20Win32%20-%20nosnap%20-%20shared/31002
+    https://ci.chromium.org/p/v8/builders/luci.v8.ci/V8%20Win64/27826
+    
+    Original change's description:
+    > Reland "[cpu-profiler] Fix stack iterability for fast C calls with no exit frame"
+    >
+    > This is a reland of d5f4a33eb853831a76832cacaf6f79d6771cb4cf
+    >
+    > Original change's description:
+    > > [cpu-profiler] Fix stack iterability for fast C calls with no exit frame
+    > >
+    > > Before fast C calls, store the current FP and PC on the isolate. When
+    > > iterating frames in SafeStackFrameIterator, check if these fields are
+    > > set and start iterating at the calling frame's FP instead of the current
+    > > FP, which will be in C++ code. We need to do this because c_entry_fp is
+    > > not set on the Isolate for Fast-C-Calls because we don't build an exit
+    > > frame.
+    > >
+    > > This change makes stack samples that occur within 'Fast-C-Calls'
+    > > iterable, meaning we can properly attribute ticks within the JS caller.
+    > >
+    > > Fast-C-Calls can't call back into JS code, so we can only ever have one
+    > > such call on the stack at a time, allowing us to store the FP on the
+    > > isolate rather than the stack.
+    > >
+    > > TBR=v8-mips-ports@googlegroups.com
+    > >
+    > > Bug: v8:8464, v8:7202
+    > > Change-Id: I7bf39eba779dad34754d5759d741c421b362a406
+    > > Reviewed-on: https://chromium-review.googlesource.com/c/1340241
+    > > Commit-Queue: Peter Marshall <petermarshall@chromium.org>
+    > > Reviewed-by: Jakob Gruber <jgruber@chromium.org>
+    > > Reviewed-by: Martyn Capewell <martyn.capewell@arm.com>
+    > > Reviewed-by: Alexei Filippov <alph@chromium.org>
+    > > Cr-Commit-Position: refs/heads/master@{#57896}
+    >
+    > TBR=v8-mips-ports@googlegroups.com
+    > TBR=jgruber@chromium.org
+    >
+    > Bug: v8:8464, v8:7202
+    > Change-Id: I5f37ded4ea572e8e9890ba186aa3d74a0dfc1274
+    > Reviewed-on: https://chromium-review.googlesource.com/c/1354042
+    > Reviewed-by: Peter Marshall <petermarshall@chromium.org>
+    > Commit-Queue: Peter Marshall <petermarshall@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#57912}
+    
+    TBR=alph@chromium.org,jgruber@chromium.org,petermarshall@chromium.org,martyn.capewell@arm.com,v8-arm-ports@googlegroups.com,v8-mips-ports@googlegroups.com,ibogosavljevic@wavecomp.com
+    
+    Change-Id: If810648dbf60df2ff70455b6e8ef466136c90145
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Bug: v8:8464, v8:7202
+    Reviewed-on: https://chromium-review.googlesource.com/c/1354461
+    Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#57925}
+
+commit ddaa1f0a0d44ee14103214ca7e34e990f87049bb
+Author: Peter Marshall <petermarshall@chromium.org>
+Date:   Mon Nov 26 15:46:46 2018 +0100
+
+    Reland "[cpu-profiler] Fix stack iterability for fast C calls with no exit frame"
+    
+    This is a reland of d5f4a33eb853831a76832cacaf6f79d6771cb4cf
+    
+    Original change's description:
+    > [cpu-profiler] Fix stack iterability for fast C calls with no exit frame
+    >
+    > Before fast C calls, store the current FP and PC on the isolate. When
+    > iterating frames in SafeStackFrameIterator, check if these fields are
+    > set and start iterating at the calling frame's FP instead of the current
+    > FP, which will be in C++ code. We need to do this because c_entry_fp is
+    > not set on the Isolate for Fast-C-Calls because we don't build an exit
+    > frame.
+    >
+    > This change makes stack samples that occur within 'Fast-C-Calls'
+    > iterable, meaning we can properly attribute ticks within the JS caller.
+    >
+    > Fast-C-Calls can't call back into JS code, so we can only ever have one
+    > such call on the stack at a time, allowing us to store the FP on the
+    > isolate rather than the stack.
+    >
+    > TBR=v8-mips-ports@googlegroups.com
+    >
+    > Bug: v8:8464, v8:7202
+    > Change-Id: I7bf39eba779dad34754d5759d741c421b362a406
+    > Reviewed-on: https://chromium-review.googlesource.com/c/1340241
+    > Commit-Queue: Peter Marshall <petermarshall@chromium.org>
+    > Reviewed-by: Jakob Gruber <jgruber@chromium.org>
+    > Reviewed-by: Martyn Capewell <martyn.capewell@arm.com>
+    > Reviewed-by: Alexei Filippov <alph@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#57896}
+    
+    TBR=v8-mips-ports@googlegroups.com
+    TBR=jgruber@chromium.org
+    
+    Bug: v8:8464, v8:7202
+    Change-Id: I5f37ded4ea572e8e9890ba186aa3d74a0dfc1274
+    Reviewed-on: https://chromium-review.googlesource.com/c/1354042
+    Reviewed-by: Peter Marshall <petermarshall@chromium.org>
+    Commit-Queue: Peter Marshall <petermarshall@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#57912}
+
+commit 2f530d5c17351061dcc19bc1fc03bba93373548d
+Author: Maya Lekova <mslekova@chromium.org>
+Date:   Wed Nov 28 11:04:25 2018 +0000
+
+    Revert "[cpu-profiler] Fix stack iterability for fast C calls with no exit frame"
+    
+    This reverts commit d5f4a33eb853831a76832cacaf6f79d6771cb4cf.
+    
+    Reason for revert: Seems to cause a no snapshot build failure - https://ci.chromium.org/p/v8/builders/luci.v8.ci/V8%20Linux%20-%20nosnap%20-%20debug/21967
+    
+    Original change's description:
+    > [cpu-profiler] Fix stack iterability for fast C calls with no exit frame
+    >
+    > Before fast C calls, store the current FP and PC on the isolate. When
+    > iterating frames in SafeStackFrameIterator, check if these fields are
+    > set and start iterating at the calling frame's FP instead of the current
+    > FP, which will be in C++ code. We need to do this because c_entry_fp is
+    > not set on the Isolate for Fast-C-Calls because we don't build an exit
+    > frame.
+    >
+    > This change makes stack samples that occur within 'Fast-C-Calls'
+    > iterable, meaning we can properly attribute ticks within the JS caller.
+    >
+    > Fast-C-Calls can't call back into JS code, so we can only ever have one
+    > such call on the stack at a time, allowing us to store the FP on the
+    > isolate rather than the stack.
+    >
+    > TBR=v8-mips-ports@googlegroups.com
+    >
+    > Bug: v8:8464, v8:7202
+    > Change-Id: I7bf39eba779dad34754d5759d741c421b362a406
+    > Reviewed-on: https://chromium-review.googlesource.com/c/1340241
+    > Commit-Queue: Peter Marshall <petermarshall@chromium.org>
+    > Reviewed-by: Jakob Gruber <jgruber@chromium.org>
+    > Reviewed-by: Martyn Capewell <martyn.capewell@arm.com>
+    > Reviewed-by: Alexei Filippov <alph@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#57896}
+    
+    TBR=alph@chromium.org,jgruber@chromium.org,petermarshall@chromium.org,martyn.capewell@arm.com,v8-arm-ports@googlegroups.com,v8-mips-ports@googlegroups.com,ibogosavljevic@wavecomp.com
+    
+    Change-Id: I85f846e57b6fa845e7770c616435cebffdb2a245
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Bug: v8:8464, v8:7202
+    Reviewed-on: https://chromium-review.googlesource.com/c/1352302
+    Reviewed-by: Maya Lekova <mslekova@chromium.org>
+    Commit-Queue: Maya Lekova <mslekova@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#57899}
+
+commit d5f4a33eb853831a76832cacaf6f79d6771cb4cf
+Author: Peter Marshall <petermarshall@chromium.org>
+Date:   Mon Nov 26 15:46:46 2018 +0100
+
+    [cpu-profiler] Fix stack iterability for fast C calls with no exit frame
+    
+    Before fast C calls, store the current FP and PC on the isolate. When
+    iterating frames in SafeStackFrameIterator, check if these fields are
+    set and start iterating at the calling frame's FP instead of the current
+    FP, which will be in C++ code. We need to do this because c_entry_fp is
+    not set on the Isolate for Fast-C-Calls because we don't build an exit
+    frame.
+    
+    This change makes stack samples that occur within 'Fast-C-Calls'
+    iterable, meaning we can properly attribute ticks within the JS caller.
+    
+    Fast-C-Calls can't call back into JS code, so we can only ever have one
+    such call on the stack at a time, allowing us to store the FP on the
+    isolate rather than the stack.
+    
+    TBR=v8-mips-ports@googlegroups.com
+    
+    Bug: v8:8464, v8:7202
+    Change-Id: I7bf39eba779dad34754d5759d741c421b362a406
+    Reviewed-on: https://chromium-review.googlesource.com/c/1340241
+    Commit-Queue: Peter Marshall <petermarshall@chromium.org>
+    Reviewed-by: Jakob Gruber <jgruber@chromium.org>
+    Reviewed-by: Martyn Capewell <martyn.capewell@arm.com>
+    Reviewed-by: Alexei Filippov <alph@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#57896}
+
+commit 47daa48696cb88691994ebc5d6512df042c7e389
+Author: Leszek Swirski <leszeks@chromium.org>
+Date:   Mon Nov 26 11:07:26 2018 +0100
+
+    Reland "[parser] Perfect hash for keywords"
+    
+    This is a reland of ca086a497cc46ecf6eea92baa99283e292291624
+    
+    Original change's description:
+    > [parser] Perfect hash for keywords
+    >
+    > Use gperf to generate a perfect hash table for keyword lookup. Adds a
+    > python script which munges the output of gperf and adds additional
+    > cleanup and optimisations.
+    >
+    > Change-Id: I3656a7287dbd0688917893de3a671faef9e4578a
+    > Reviewed-on: https://chromium-review.googlesource.com/c/1349240
+    > Commit-Queue: Leszek Swirski <leszeks@chromium.org>
+    > Reviewed-by: Toon Verwaest <verwaest@chromium.org>
+    > Reviewed-by: Marja Hölttä <marja@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#57790}
+    
+    Change-Id: Ifb53527ba3d0652ea4f5d03740f7c856ad5d91da
+    Reviewed-on: https://chromium-review.googlesource.com/c/1350121
+    Reviewed-by: Toon Verwaest <verwaest@chromium.org>
+    Commit-Queue: Leszek Swirski <leszeks@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#57831}
+
+commit c8d3d8fb8bca54c03b207a3d6c5e3796ff94c026
+Author: Maya Lekova <mslekova@chromium.org>
+Date:   Mon Nov 26 08:19:12 2018 +0000
+
+    Revert "[parser] Perfect hash for keywords"
+    
+    This reverts commit ca086a497cc46ecf6eea92baa99283e292291624.
+    
+    Reason for revert: Seems to be the cause for https://bugs.chromium.org/p/chromium/issues/detail?id=908296
+    
+    Original change's description:
+    > [parser] Perfect hash for keywords
+    >
+    > Use gperf to generate a perfect hash table for keyword lookup. Adds a
+    > python script which munges the output of gperf and adds additional
+    > cleanup and optimisations.
+    >
+    > Change-Id: I3656a7287dbd0688917893de3a671faef9e4578a
+    > Reviewed-on: https://chromium-review.googlesource.com/c/1349240
+    > Commit-Queue: Leszek Swirski <leszeks@chromium.org>
+    > Reviewed-by: Toon Verwaest <verwaest@chromium.org>
+    > Reviewed-by: Marja Hölttä <marja@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#57790}
+    
+    TBR=marja@chromium.org,leszeks@chromium.org,verwaest@chromium.org
+    
+    # Not skipping CQ checks because original CL landed > 1 day ago.
+    
+    Change-Id: Ia0cc283f21e9f6793522c46a1fd40ba2d88597fb
+    Reviewed-on: https://chromium-review.googlesource.com/c/1350113
+    Reviewed-by: Maya Lekova <mslekova@chromium.org>
+    Commit-Queue: Maya Lekova <mslekova@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#57811}
+
+commit ca086a497cc46ecf6eea92baa99283e292291624
+Author: Leszek Swirski <leszeks@chromium.org>
+Date:   Fri Nov 23 15:21:10 2018 +0100
+
+    [parser] Perfect hash for keywords
+    
+    Use gperf to generate a perfect hash table for keyword lookup. Adds a
+    python script which munges the output of gperf and adds additional
+    cleanup and optimisations.
+    
+    Change-Id: I3656a7287dbd0688917893de3a671faef9e4578a
+    Reviewed-on: https://chromium-review.googlesource.com/c/1349240
+    Commit-Queue: Leszek Swirski <leszeks@chromium.org>
+    Reviewed-by: Toon Verwaest <verwaest@chromium.org>
+    Reviewed-by: Marja Hölttä <marja@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#57790}
+
+commit 9c0015735145d3c0c89e8f3853845a30f39c7df6
+Author: Stephan Herhut <herhut@chromium.org>
+Date:   Fri Oct 19 10:33:02 2018 +0200
+
+    [wasm] Add stress test for I64 atomics
+    
+    This test is modelled after the atomics-stress test but supports 64 bit
+    operands.
+    
+    Bug: v8:6532
+    Change-Id: I313b1ade74a58201b3fa097ba5b1515754a685db
+    Reviewed-on: https://chromium-review.googlesource.com/c/1234414
+    Commit-Queue: Stephan Herhut <herhut@chromium.org>
+    Reviewed-by: Andreas Haas <ahaas@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#56812}
+
+commit c7a17431152ffdaa75b4056d30e0090e4596566e
+Author: Stephan Herhut <herhut@chromium.org>
+Date:   Fri Oct 19 10:28:13 2018 +0200
+
+    [wasm] Add stress test of atomic opcodes.
+    
+    This test runs random sequences of atomic wasm operations on multiple
+    threads and tries to compute an equivalent sequential interleaving that
+    would reproduce intermediate results.
+    By its nature, this test might time out and is flaky.
+    
+    Bug: v8:6532
+    Change-Id: Iafdab4561cbf37a5c3fa9b8af9d0fbaaf5681608
+    Reviewed-on: https://chromium-review.googlesource.com/c/1195366
+    Commit-Queue: Stephan Herhut <herhut@chromium.org>
+    Reviewed-by: Andreas Haas <ahaas@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#56810}
+
+commit 2d6e0be103360a2e699a39eefb821454801071f3
+Author: Clemens Hammacher <clemensh@chromium.org>
+Date:   Thu Sep 13 13:07:31 2018 +0000
+
+    Reenable wasm regress-827806 test
+    
+    This test was disabled because of flakes. This should be fixed now.
+    
+    R=ahaas@chromium.org
+    
+    Bug: v8:7872
+    Change-Id: I288f3776ca7f946caf20a66f1cdf5d37bd6ba245
+    Reviewed-on: https://chromium-review.googlesource.com/1224376
+    Reviewed-by: Clemens Hammacher <clemensh@chromium.org>
+    Reviewed-by: Andreas Haas <ahaas@chromium.org>
+    Commit-Queue: Clemens Hammacher <clemensh@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#55900}
+
+commit bea2dc3a71dba87a832d58d7cbc740b72fb3632d
+Author: Yang Guo <yangguo@chromium.org>
+Date:   Thu Jun 21 17:27:15 2018 +0200
+
+    Skip flaky wasm regress-827806 test
+    
+    TBR=clemensh@chromium.org
+    
+    Bug: v8:7872
+    
+    
+    Change-Id: I1f61e1ec7ffd86c7e8f74821fa0c4cd59bef57b2
+    Reviewed-on: https://chromium-review.googlesource.com/1110134
+    Reviewed-by: Yang Guo <yangguo@chromium.org>
+    Reviewed-by: Clemens Hammacher <clemensh@chromium.org>
+    Commit-Queue: Yang Guo <yangguo@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#53940}
+
+commit 2c8663aa1a2d7e411bb2759dfe31d289990db135
+Author: Yang Guo <yangguo@chromium.org>
+Date:   Thu Feb 8 20:21:52 2018 +0100
+
+    [gyp] remove gyp files.
+    
+    R=machenbach@chromium.org
+    
+    Bug: v8:7335
+    Change-Id: Ied1101295fc9ee37fcc038b9aeb557229722df0b
+    Reviewed-on: https://chromium-review.googlesource.com/897566
+    Commit-Queue: Yang Guo <yangguo@chromium.org>
+    Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#51185}
+
+commit 6c72df9ed09e2acdb217b82a3a9be35471761231
+Author: Michael Achenbach <machenbach@chromium.org>
+Date:   Tue Jan 16 15:56:20 2018 +0100
+
+    Reland "[test] Add test runner system tests for flaky tests"
+    
+    This is a reland of 96f5579669dfa8dde45f26bec8ac71c4b643f2fb
+    Original change's description:
+    > [test] Add test runner system tests for flaky tests
+    >
+    > This uses a temporary file in the mocked d8 script to let d8 flip
+    > between FAIL and PASS on rerun.
+    >
+    > This adds a separate test root with dedicated test suite for testing
+    > flakes to no interfere with existing status file configs.
+    >
+    > NOTRY=true
+    >
+    > Bug: v8:6917
+    > Change-Id: Id43753650195fb74cceb2a3ee9014100cabad546
+    > Reviewed-on: https://chromium-review.googlesource.com/867917
+    > Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    > Reviewed-by: Sergiy Byelozyorov <sergiyb@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#50621}
+    
+    TBR=sergiyb@chromium.org
+    NOTRY=true
+    
+    Bug: v8:6917
+    Change-Id: I4e7bca272dfd8778fbb8d012fcd6fd8406158e43
+    Reviewed-on: https://chromium-review.googlesource.com/868433
+    Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#50625}
+
+commit bc130d803c2284142aaee25ecaf7a87b321195e6
+Author: Michael Achenbach <machenbach@chromium.org>
+Date:   Tue Jan 16 14:39:23 2018 +0000
+
+    Revert "[test] Add test runner system tests for flaky tests"
+    
+    This reverts commit 96f5579669dfa8dde45f26bec8ac71c4b643f2fb.
+    
+    Reason for revert: breaks CI presubmit:
+    https://build.chromium.org/p/client.v8/builders/V8%20Linux%20-%20presubmit/builds/22115
+    
+    Original change's description:
+    > [test] Add test runner system tests for flaky tests
+    >
+    > This uses a temporary file in the mocked d8 script to let d8 flip
+    > between FAIL and PASS on rerun.
+    >
+    > This adds a separate test root with dedicated test suite for testing
+    > flakes to no interfere with existing status file configs.
+    >
+    > NOTRY=true
+    >
+    > Bug: v8:6917
+    > Change-Id: Id43753650195fb74cceb2a3ee9014100cabad546
+    > Reviewed-on: https://chromium-review.googlesource.com/867917
+    > Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    > Reviewed-by: Sergiy Byelozyorov <sergiyb@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#50621}
+    
+    TBR=machenbach@chromium.org,sergiyb@chromium.org,majeski@google.com
+    
+    Change-Id: I103bf8f0e926a3f56921f14bdd7e875ce839ea71
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Bug: v8:6917
+    Reviewed-on: https://chromium-review.googlesource.com/868530
+    Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#50624}
+
+commit 96f5579669dfa8dde45f26bec8ac71c4b643f2fb
+Author: Michael Achenbach <machenbach@chromium.org>
+Date:   Tue Jan 16 15:22:25 2018 +0100
+
+    [test] Add test runner system tests for flaky tests
+    
+    This uses a temporary file in the mocked d8 script to let d8 flip
+    between FAIL and PASS on rerun.
+    
+    This adds a separate test root with dedicated test suite for testing
+    flakes to no interfere with existing status file configs.
+    
+    NOTRY=true
+    
+    Bug: v8:6917
+    Change-Id: Id43753650195fb74cceb2a3ee9014100cabad546
+    Reviewed-on: https://chromium-review.googlesource.com/867917
+    Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    Reviewed-by: Sergiy Byelozyorov <sergiyb@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#50621}
+
+commit e1591bbdc5a774c151b8af4ebbb1172ec403e464
+Author: Sigurd Schneider <sigurds@chromium.org>
+Date:   Wed Jan 10 18:31:26 2018 +0100
+
+    [turbofan] Support multiple receiver maps in Array.prototype.pop/shift
+    
+    Bug: v8:7205
+    Change-Id: I3de97ca0990ca4d791c990eee7e23f29a75eff31
+    Reviewed-on: https://chromium-review.googlesource.com/856558
+    Commit-Queue: Sigurd Schneider <sigurds@chromium.org>
+    Reviewed-by: Benedikt Meurer <bmeurer@chromium.org>
+    Reviewed-by: Michael Stanton <mvstanton@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#50534}
+
+commit 887d8d7e023f905c435c74374e7a50dd49bc55c7
+Author: Sigurd Schneider <sigurds@chromium.org>
+Date:   Wed Jan 10 15:12:34 2018 +0100
+
+    Reland "[turbofan] Handle mixed packed/unpacked multimaps in Array.prototype.push"
+    
+    This is a reland of ae14edca68f93bbe50bb2ee1f4527da2b2770664
+    Original change's description:
+    > [turbofan] Handle mixed packed/unpacked multimaps in Array.prototype.push
+    >
+    > Bug: v8:7127, v8:7204, v8:7205
+    > Change-Id: I4eb009492222b208ff8875b4b7940174dfb132ff
+    > Reviewed-on: https://chromium-review.googlesource.com/847576
+    > Commit-Queue: Sigurd Schneider <sigurds@chromium.org>
+    > Reviewed-by: Michael Stanton <mvstanton@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#50451}
+    
+    Bug: v8:7127, v8:7204, v8:7205
+    Change-Id: I327aa69f0a12f8b3e3fd4e00219591f59e7ed746
+    Reviewed-on: https://chromium-review.googlesource.com/859857
+    Reviewed-by: Michael Stanton <mvstanton@chromium.org>
+    Commit-Queue: Sigurd Schneider <sigurds@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#50524}
+
+commit 5c10512ce8d134546f9db2e124936c9323bfa3c5
+Author: Alexei Filippov <alph@chromium.org>
+Date:   Tue Dec 12 16:37:54 2017 -0800
+
+    Mark test-cpu-profiler/NativeFrameStackTrace test as flaky
+    
+    BUG=v8:7202
+    TBR=mstarzinger@chromium.org
+    
+    Change-Id: I5399eab9a04edf98d57ee9e18be76e69f7cc9fa2
+    Reviewed-on: https://chromium-review.googlesource.com/823566
+    Reviewed-by: Alexei Filippov <alph@chromium.org>
+    Commit-Queue: Alexei Filippov <alph@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#50059}
+
+commit 45e52d520b2de919c9b28174d721b148cd9b46c7
+Author: Michael Achenbach <machenbach@chromium.org>
+Date:   Mon Nov 13 19:12:57 2017 +0000
+
+    Revert "Make intl/overrides/caching.js more 'robust'"
+    
+    This reverts commit 4091f2b3a87f14476b16f1448ee83d4db511e752.
+    
+    Reason for revert: Flaky on the bots:
+    https://build.chromium.org/p/client.v8/builders/V8%20Linux64/builds/21321
+    https://build.chromium.org/p/client.v8/builders/V8%20Win64/builds/20879
+    https://build.chromium.org/p/client.v8/builders/V8%20Win64%20-%20msvc/builds/101
+    
+    Original change's description:
+    > Make intl/overrides/caching.js more 'robust'
+    >
+    > Bug: None
+    > Test: intl/overrides/caching
+    > Cq-Include-Trybots: master.tryserver.v8:v8_linux_noi18n_rel_ng
+    > Change-Id: Iffd0f58f76d6514924badca18a2112df572e53d2
+    > Reviewed-on: https://chromium-review.googlesource.com/757945
+    > Reviewed-by: Adam Klein <adamk@chromium.org>
+    > Commit-Queue: Jungshik Shin <jshin@chromium.org>
+    > Cr-Commit-Position: refs/heads/master@{#49334}
+    
+    TBR=adamk@chromium.org,jshin@chromium.org
+    
+    Change-Id: Id2fe00089c2bcbc8ecc7958fe13c8a80da733e60
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Bug: None
+    Cq-Include-Trybots: master.tryserver.v8:v8_linux_noi18n_rel_ng
+    Reviewed-on: https://chromium-review.googlesource.com/766288
+    Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#49336}
+
+commit 4091f2b3a87f14476b16f1448ee83d4db511e752
+Author: Jungshik Shin <jshin@chromium.org>
+Date:   Sun Nov 12 15:45:22 2017 -0800
+
+    Make intl/overrides/caching.js more 'robust'
+    
+    Bug: None
+    Test: intl/overrides/caching
+    Cq-Include-Trybots: master.tryserver.v8:v8_linux_noi18n_rel_ng
+    Change-Id: Iffd0f58f76d6514924badca18a2112df572e53d2
+    Reviewed-on: https://chromium-review.googlesource.com/757945
+    Reviewed-by: Adam Klein <adamk@chromium.org>
+    Commit-Queue: Jungshik Shin <jshin@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#49334}
+
+commit f3b6b5b587b1339e75962b1f695028d5ba11b116
+Author: Camillo Bruni <cbruni@chromium.org>
+Date:   Thu Nov 9 15:11:50 2017 +0100
+
+    Enable RCS unittests again
+    
+    - Implement exchangeable timer clock for RuntimeCallStats for testing
+    - Rewrite RuntimeCAllStatsTest to overwrite the default RCS timer
+    
+    This gets rid of the previous flakiness for these tests due to using
+    the real platform timer.
+    
+    Bug: v8:5677
+    Change-Id: Iff312c7f79ab97407ba1c0c2c72fb0b35a5efdf1
+    Reviewed-on: https://chromium-review.googlesource.com/760416
+    Reviewed-by: Jakob Gruber <jgruber@chromium.org>
+    Reviewed-by: Michael Lippautz <mlippautz@chromium.org>
+    Commit-Queue: Camillo Bruni <cbruni@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#49285}
+
+commit 27a75926cd2ba37b74c8889bac50d2bba570f6a0
+Author: Ulan Degenbaev <ulan@chromium.org>
+Date:   Wed Oct 18 15:05:11 2017 +0200
+
+    Disable stress-incremental-marking flag for tests using a lot of memory.
+    
+    These tests are currently failing on TSAN bot with OOM when running
+    with the stress-incremental-marking flag.
+    
+    Bug: v8:6924
+    Change-Id: I50b9a7142b2e8759f4bc327516f8c06ce1779777
+    Reviewed-on: https://chromium-review.googlesource.com/723427
+    Commit-Queue: Ulan Degenbaev <ulan@chromium.org>
+    Reviewed-by: Michael Achenbach <machenbach@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#48693}
+
+commit c81dbaf2b200267b0c6daa68c18dc7917541fd80
+Author: cbruni <cbruni@chromium.org>
+Date:   Mon Nov 28 02:51:07 2016 -0800
+
+    [tests] Skip RuntimeCallStatsTest due to flaky timers
+    
+    R=machenbach@chromium.org
+    BUG=v8:5677
+    NOTRY=true
+    
+    Review-Url: https://codereview.chromium.org/2528363002
+    Cr-Commit-Position: refs/heads/master@{#41305}
+
+commit ed5802cc8c43285b859c8f2429e7b4bf76dec3ae
+Author: mstarzinger <mstarzinger@chromium.org>
+Date:   Thu Jul 14 06:54:08 2016 -0700
+
+    [turbofan] Re-enable flaky tests that should no longer flake.
+    
+    R=machenbach@chromium.org
+    
+    Review-Url: https://codereview.chromium.org/2143973002
+    Cr-Commit-Position: refs/heads/master@{#37767}
+
+commit 3bf44848c3043eba6d32ba948ca25d4181611c32
+Author: machenbach <machenbach@chromium.org>
+Date:   Fri Apr 29 03:08:53 2016 -0700
+
+    [gn] Move build to gypfiles
+    
+    This prepares for pulling chromium's build as dependency for
+    gn. After this, the files in build and gypfiles need to stay
+    in sync until chromium is updated.
+    
+    BUG=chromium:474921
+    LOG=n
+    
+    Review-Url: https://codereview.chromium.org/1848553003
+    Cr-Commit-Position: refs/heads/master@{#35898}
+
+commit c2186834942d79b0575d8357fd835535083916d6
+Author: yangguo <yangguo@chromium.org>
+Date:   Wed Apr 27 23:17:40 2016 -0700
+
+    [debugger,interpreter] precisely determine execution tier.
+    
+    R=mstarzinger@chromium.org
+    BUG=v8:4690
+    LOG=N
+    
+    Review-Url: https://codereview.chromium.org/1921853005
+    Cr-Commit-Position: refs/heads/master@{#35840}
+
+commit 612985b298c8d5a150b36ba7b07e9b5cad7bb729
+Author: yangguo <yangguo@chromium.org>
+Date:   Wed Apr 27 03:53:16 2016 -0700
+
+    Revert of [debugger] unskip mjsunit/debug-stepin-builtin-callback-opt. (patchset #1 id:1 of https://codereview.chromium.org/1927543002/ )
+    
+    Reason for revert:
+    Now we do have a repro!
+    
+    https://build.chromium.org/p/client.v8/builders/V8%20Linux%20-%20gc%20stress/builds/3187/steps/Mjsunit%20-%20ignition%20-%20turbofan/logs/debug-stepin-builtin-..
+    
+    Original issue's description:
+    > [debugger] unskip mjsunit/debug-stepin-builtin-callback-opt.
+    >
+    > This test does not seem to fail any longer.
+    >
+    > R=machenbach@chromium.org
+    > BUG=v8:4690
+    > LOG=N
+    >
+    > Committed: https://crrev.com/f8e44fb5aaaa80cf2d39bc3164f2c962a6b57f5e
+    > Cr-Commit-Position: refs/heads/master@{#35814}
+    
+    TBR=machenbach@chromium.org
+    # Skipping CQ checks because original CL landed less than 1 days ago.
+    NOPRESUBMIT=true
+    NOTREECHECKS=true
+    NOTRY=true
+    BUG=v8:4690
+    
+    Review URL: https://codereview.chromium.org/1931433002
+    
+    Cr-Commit-Position: refs/heads/master@{#35815}
+
+commit f8e44fb5aaaa80cf2d39bc3164f2c962a6b57f5e
+Author: yangguo <yangguo@chromium.org>
+Date:   Wed Apr 27 03:18:33 2016 -0700
+
+    [debugger] unskip mjsunit/debug-stepin-builtin-callback-opt.
+    
+    This test does not seem to fail any longer.
+    
+    R=machenbach@chromium.org
+    BUG=v8:4690
+    LOG=N
+    
+    Review URL: https://codereview.chromium.org/1927543002
+    
+    Cr-Commit-Position: refs/heads/master@{#35814}
+
+commit 7f363d5d47e98711900d44c0910819eb3455e814
+Author: machenbach <machenbach@chromium.org>
+Date:   Wed Mar 16 00:34:03 2016 -0700
+
+    [test] Remove feature to mark flaky tests.
+    
+    The feature was removed from the bots a while ago. It was
+    superseeded by the flaky-test detection which reruns tests.
+    
+    Remaining tests still marked as flaky most certainly pass
+    since a while.
+    
+    Referencing all the bugs whose expectations lines get
+    removed by this.
+    
+    BUG=v8:3838,v8:3525,v8:3125
+    LOG=n
+    
+    Review URL: https://codereview.chromium.org/1802983002
+    
+    Cr-Commit-Position: refs/heads/master@{#34804}
+
+commit 6cfa6c71087c7fe8bae2101b0089566590f10531
+Author: rmcilroy <rmcilroy@chromium.org>
+Date:   Tue Mar 15 06:19:24 2016 -0700
+
+    [Interpreter] Add two skips back for a flaky test and failure on msan.
+    
+    BUG=v8:4680
+    LOG=N
+    TBR=machenbach@chromium.org
+    NOTRY=true
+    
+    Review URL: https://codereview.chromium.org/1801033002
+    
+    Cr-Commit-Position: refs/heads/master@{#34788}
+
+commit 530cc16460b14544760c06484a4aec2413cbd79d
+Author: bradnelson <bradnelson@chromium.org>
+Date:   Thu Mar 3 20:45:22 2016 -0800
+
+    Handle stack frames differently inside and on the boundary of wasm.
+    
+    Frames entering of inside wasm don't have a function or context argument.
+    Adding distinct wasm frame and function types to express this.
+    
+    Fixes a GC issue on several embenchen wasm tests, reenabling them.
+    
+    BUG= https://code.google.com/p/v8/issues/detail?id=4203
+    TEST=mjsunit/wasm/embenchen
+    R=titzer@chromium.org,aseemgarg@chromium.org,jfb@chromium.org,yangguo@chromium.org
+    LOG=N
+    
+    Review URL: https://codereview.chromium.org/1764603003
+    
+    Cr-Commit-Position: refs/heads/master@{#34476}
+
+commit dbc0f99b94100a1176690f7e0c6d0c4ba06438d5
+Author: bradnelson <bradnelson@chromium.org>
+Date:   Thu Mar 3 10:51:30 2016 -0800
+
+    Enabling some embenchen tests running through asm->wasm.
+    
+    BUG= https://code.google.com/p/v8/issues/detail?id=4203
+    TEST=mjsunit/asm-wasm
+    R=titzer@chromium.org,aseemgarg@chromium.org
+    LOG=N
+    
+    Review URL: https://codereview.chromium.org/1758893002
+    
+    Cr-Commit-Position: refs/heads/master@{#34466}
+
+commit dbf5fffd2d58289fcb05c0ac7dde40c76dfa9472
+Author: mythria <mythria@chromium.org>
+Date:   Tue Mar 1 07:19:24 2016 -0800
+
+    [Interpreter] Fixes PushArgsAndConstruct builtin to not store any data outside esp.
+    
+    In ia32 PushArgsAndConstruct builtin, we run out of registers and need to
+    temporarily store the data in the stack. In the earlier implementation,
+    a location outside the esp was used. This causes a problem if there is a
+    interrupt/signals which would use the same stack and corrupt the data that
+    is above the esp. This cl fixes it by pushing it onto the stack so that
+    the stack pointer is updated and hence the corruption will not happen. We
+    reuse the slot meant for receiver as a temporary store.
+    
+    TBR=rmcilroy@chromium.org
+    BUG=v8:4280
+    LOG=N
+    
+    Review URL: https://codereview.chromium.org/1750373002
+    
+    Cr-Commit-Position: refs/heads/master@{#34397}
+
+commit 844e410d5ce513beef2d2f635b63cc2f18d6df77
+Author: mythria <mythria@chromium.org>
+Date:   Tue Mar 1 06:15:07 2016 -0800
+
+    [Interpreter] Adds translation of optimized frame to bytecode offset in FrameSummary
+    
+    Adds the translation from optimized frame to bytecode offset
+    in FrameSummary. For interpreter, the bailout id represents the bytecode
+    array offset. So we can directly use the bailout id as the code offset
+    in the FrameSummary. Also updates mjsunit.status with more information
+    about failing tests.
+    
+    BUG=v8:4280, v8:4689
+    LOG=N
+    
+    Review URL: https://codereview.chromium.org/1740753002
+    
+    Cr-Commit-Position: refs/heads/master@{#34393}
+
+commit 2714ee553933523d50abdc44897d9df3203c39fe
+Author: jochen <jochen@chromium.org>
+Date:   Mon Jul 27 04:51:16 2015 -0700
+
+    Make V8 compile with MSVS 2015
+    
+    BUG=v8:4326
+    R=machenbach@chromium.org
+    LOG=y
+    
+    Review URL: https://codereview.chromium.org/1259693003
+    
+    Cr-Commit-Position: refs/heads/master@{#29868}
+
+commit dd3067a7870ecee56fd7eb3abc0169add9301f4f
+Author: mstarzinger <mstarzinger@chromium.org>
+Date:   Thu Apr 9 01:21:38 2015 -0700
+
+    Disable more failing tests after f3338dd3b01c.
+    
+    TBR=machenbach@chromium.org
+    NOTREECHECKS=true
+    NOTRY=true
+    
+    Review URL: https://codereview.chromium.org/1075813002
+    
+    Cr-Commit-Position: refs/heads/master@{#27687}
+
+commit 515e483dd0f468226715f0ea9826dd568a56a27b
+Author: mstarzinger <mstarzinger@chromium.org>
+Date:   Wed Apr 8 07:16:50 2015 -0700
+
+    Disable more failing tests after f3338dd3b01c.
+    
+    TBR=machenbach@chromium.org
+    NOTREECHECKS=true
+    NOTRY=true
+    
+    Review URL: https://codereview.chromium.org/1067413002
+    
+    Cr-Commit-Position: refs/heads/master@{#27670}
+
+commit 0716bc3f76b31afe733facc846a2c2f74aafb445
+Author: mstarzinger <mstarzinger@chromium.org>
+Date:   Wed Apr 8 02:51:14 2015 -0700
+
+    Disable more failing tests after f3338dd3b01c.
+    
+    TBR=yangguo@chromium.org
+    NOTREECHECKS=true
+    NOTRY=true
+    
+    Review URL: https://codereview.chromium.org/1067353002
+    
+    Cr-Commit-Position: refs/heads/master@{#27652}
+
+commit d98d97ee17d900db6fa486cc48d3091f41971d8d
+Author: jochen <jochen@chromium.org>
+Date:   Mon Dec 22 07:30:35 2014 -0800
+
+    Mark mjsunit/setters-on-elements as flaky
+    
+    TBR=machenbach@chromium.org
+    LOG=n
+    BUG=v8:3784
+    NOTREECHECKS=true
+    
+    Review URL: https://codereview.chromium.org/817293002
+    
+    Cr-Commit-Position: refs/heads/master@{#25929}
+
+commit d092ce2c48caf5a72254c22c93098130f4f47000
+Author: machenbach@chromium.org <machenbach@chromium.org>
+Date:   Thu Sep 25 14:09:34 2014 +0000
+
+    Refactoring: Remove unnecessary logic from push_to_trunk.
+    
+    Remove some svnish things that are output-only.
+    
+    BUG=chromium:410721
+    LOG=n
+    TBR=tandrii@chromium.org
+    
+    Review URL: https://codereview.chromium.org/598403003
+    
+    git-svn-id: https://v8.googlecode.com/svn/branches/bleeding_edge@24231 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 4c345d38bd59452c5868874cbbf06c7beb7628cd
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Jul 24 09:26:03 2014 +0000
+
+    Partially revert "Unflake and speedup JsNative*Sample cpu profile tests"
+    
+    This reverts the test expectations of commit r22345. Several cpu profiler flakes were happening lately.
+    
+    BUG=v8:2999
+    LOG=n
+    R=bmeurer@chromium.org
+    TBR=bmeurer@chromium.org
+    
+    Review URL: https://codereview.chromium.org/418843002
+    
+    git-svn-id: https://v8.googlecode.com/svn/branches/bleeding_edge@22588 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit e64230c1f9069be9db754f8715e89ef1efb7b338
+Author: alph@chromium.org <alph@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Jul 11 09:06:12 2014 +0000
+
+    Unflake and speedup JsNative*Sample cpu profile tests
+    
+    Instead of running cpu profiler for a hundred milliseconds,
+    collecting samples distributed in a non-deterministic way all along
+    the code, make the tests rely on a single sample we collect on
+    the profiler start.
+    
+    R=bmeurer@chromium.org, yurys@chromium.org
+    
+    Review URL: https://codereview.chromium.org/301603005
+    
+    git-svn-id: https://v8.googlecode.com/svn/branches/bleeding_edge@22345 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit e093f3f0d3e0c1217a740d8cd5e053d5d30cedda
+Author: mvstanton@chromium.org <mvstanton@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Tue Jun 3 13:18:16 2014 +0000
+
+    Adjust cctest.status for Cpu profiler tests which are flaky.
+    
+    R=machenbach@chromium.org
+    
+    Review URL: https://codereview.chromium.org/307383003
+    
+    git-svn-id: https://v8.googlecode.com/svn/branches/bleeding_edge@21637 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit d7d4452e1cba4d7b2328d155198488e95261252b
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Mar 20 09:23:44 2014 +0000
+
+    Deprecate prepare push commit when pushing to trunk.
+    
+    - This also deprecates using version.cc on bleeding edge.
+    - The deprecated push-to-trunk.sh is deleted.
+    - The script now commits bleeding edge HEAD by default. Committing different revisions will be added in a follow up CL.
+    
+    R=jkummerow@chromium.org
+    
+    Review URL: https://codereview.chromium.org/203753010
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@20101 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 1864f7388e2d8448569231ab46a1c4d6ec203a96
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Tue Jan 21 12:41:25 2014 +0000
+
+    Add infrastructure for skipping tests in GC stress mode.
+    
+    Also move the GC stress configuration from the buildbot to the test runner.
+    
+    BUG=
+    R=jkummerow@chromium.org, mvstanton@chromium.org
+    
+    Review URL: https://codereview.chromium.org/141653008
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@18708 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 3be4500877c100b125210df0992284afbb4e4a45
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Mon Jan 20 19:05:31 2014 +0000
+
+    [Sheriff] Temporarily mark two mjsunit tests as flaky.
+    
+    The tests are blocking the v8 lkgr. They will be unmarked again after there is infrastructure to disable them on GC stress only.
+    
+    TBR=mvstanton@chromium.org
+    BUG=
+    
+    Review URL: https://codereview.chromium.org/139343008
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@18698 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 5e535ae6c13a5db0363530b04ead5b7bc6dec8d7
+Author: jkummerow@chromium.org <jkummerow@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Tue Dec 3 14:24:40 2013 +0000
+
+    'make quickcheck': don't overwrite debug output.
+    
+    Achieved by turning optdebug into a first-class compilation mode.
+    
+    R=bmeurer@chromium.org, machenbach@chromium.org
+    
+    Review URL: https://codereview.chromium.org/98963002
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@18236 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 59ff4ec6578bc55dd2febabfcb2f0469e8756e6c
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Nov 28 13:18:04 2013 +0000
+
+    Add fast make and test all target.
+    
+    The new target called "quickcheck" builds and tests with several configurations using recent test runner speed improvements.
+    
+    Runtime from scratch (after make clean): < 8 min
+    Runtime tests only: < 3 min
+    
+    TEST=make quickcheck
+    R=jkummerow@chromium.org, yangguo@chromium.org
+    
+    Review URL: https://codereview.chromium.org/94703002
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@18120 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit e6e8acd4463344d4bf8bbfcec3cd7d3a032af415
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Mon Nov 25 17:34:52 2013 +0000
+
+    Make test runner more flexible for running fast tests.
+    
+    Transformed variant flags into named variants. Now, all combinations of variants can be specified on the command line. The old command-line flags are kept for backwards compatibility on the bots.
+    
+    Added two new test groups: slow and pass|fail. Both are implemented similar to the flaky test feature and allow to either skip or run tests marked as slow or as pass|fail.
+    
+    R=yangguo@chromium.org
+    
+    Review URL: https://codereview.chromium.org/85733003
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@18062 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit a8f77a54cf3bc99b442c6fab3914f2ecaa908045
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Nov 8 14:27:16 2013 +0000
+
+    Add push-to-trunk python port.
+    
+    Preliminary version.
+    
+    TODO: Add wrapper script in tools dir.
+    TODO: Some refactoring.
+    
+    R=jkummerow@chromium.org
+    
+    Review URL: https://codereview.chromium.org/49653002
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@17600 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 5b105b248ee10ab196b423a4e55a3c645bf8ea71
+Author: yurys@chromium.org <yurys@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Wed Oct 16 08:15:06 2013 +0000
+
+    Fix unexpected stack traces in test-cpu-profiler/JsNativeJsSample
+    
+    This is a follow-up fix for r17140 which makes sure that cpu profiler is started before profiled js functions are compiled so that the profiler gets information about "no frame" ranges along with add code events.
+    
+    BUG=v8:2933
+    R=jkummerow@chromium.org, loislo@chromium.org
+    
+    Review URL: https://codereview.chromium.org/27121003
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@17229 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit f156ae52820b9a64de433591c9a5d176b9b74d65
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Wed Aug 28 10:50:42 2013 +0000
+
+    Mark cpu profiler tests as flaky to avoid tree closing.
+    
+    BUG=
+    R=jkummerow@chromium.org
+    
+    Review URL: https://codereview.chromium.org/23600003
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@16387 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 676f18f207351c9db7e83a5ded56e38244db7b36
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Tue Aug 13 08:30:06 2013 +0000
+
+    Ignore flaky intl test.
+    
+    BUG=
+    R=jkummerow@chromium.org
+    
+    Review URL: https://codereview.chromium.org/22853004
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@16165 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit e7585af65b8756f4ac71846d0138df2be61a3025
+Author: machenbach@chromium.org <machenbach@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Tue Aug 6 14:39:39 2013 +0000
+
+    Add flaky test classification feature to test suites.
+    
+    Test expectations can now include outcome: FLAKY.
+    
+    The test runner can now run a class of tests (flaky|non-flaky|all). All tests are in the non-flaky class that are not marked as FLAKY.
+    
+    The slash correction for windows is now pulled into the test name method. Currently the progress output on windows contains a mixture of / and \.
+    
+    R=jkummerow@chromium.org
+    
+    Review URL: https://codereview.chromium.org/22381003
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@16080 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 77d93014aed82266eb08c636d615d47bb087bedd
+Author: yurys@chromium.org <yurys@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri May 24 16:19:06 2013 +0000
+
+    Un-flake test-cpu-profiler/SampleWhenFrameIsNotSetup
+    
+    It is OK for FindChild to return NULL. If the child must
+    exist GetChild should be used to force the assertion.
+    
+    BUG=v8:2628
+    R=svenpanne@chromium.org
+    
+    Review URL: https://codereview.chromium.org/15786004
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@14809 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 874366168250c0a41b2452b201f18267994c9f78
+Author: mstarzinger@chromium.org <mstarzinger@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Tue May 21 11:24:20 2013 +0000
+
+    Disable flaky test after r14723.
+    
+    R=svenpanne@chromium.org
+    BUG=v8:2628
+    TEST=cctest/test-cpu-profiler/SampleWhenFrameIsNotSetup
+    
+    Review URL: https://codereview.chromium.org/15415007
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@14729 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 3ad62f5ee18caa1197def6d2ad127541760d59cd
+Author: yurys@chromium.org <yurys@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri May 17 15:10:25 2013 +0000
+
+    Allow for no samples in test-cpu-profiler/SampleWhenFrameIsNotSetup
+    
+    The test should only check that there are no sample stacks that never possible in the JS code being profiled.
+    
+    BUG=v8:2628
+    R=svenpanne@chromium.org
+    
+    Review URL: https://codereview.chromium.org/14845018
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@14723 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit f5817cfc2b4d024ce291465004b06699d344c64d
+Author: mstarzinger@chromium.org <mstarzinger@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Tue May 7 14:02:31 2013 +0000
+
+    Disable flaky CPU profiler test case.
+    
+    R=svenpanne@chromium.org
+    BUG=v8:2628
+    TEST=cctest/test-cpu-profiler/CollectCpuProfile
+    
+    Review URL: https://codereview.chromium.org/14767021
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@14574 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 5eadc1a4282cb8686d1c1d69cda1fa26a390cad1
+Author: jkummerow@chromium.org <jkummerow@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Apr 18 11:01:14 2013 +0000
+
+    Remove SCons related files
+    
+    Review URL: https://codereview.chromium.org/14348002
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@14328 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 1080d2aade6881346d5cd2306fdfb5b771d0e208
+Author: rossberg@chromium.org <rossberg@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Dec 14 14:19:18 2012 +0000
+
+    Object.oberve: assertions to narrow down flaky crashes with array length mutation.
+    
+    R=mstarzinger@chromium.org
+    BUG=v8:2409
+    
+    Review URL: https://codereview.chromium.org/11566027
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@13221 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit fb5a5e22ec97dc067af7e7f697e1438a58104d35
+Author: rossberg@chromium.org <rossberg@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Dec 13 09:31:44 2012 +0000
+
+    Object.observe: Make array length and other magic data properties work correctly.
+    
+    Also, disable TestFastElementsLength test for now, since it flakes on buildbots for yet unknown reasons.
+    
+    R=mstarzinger@chromium.org
+    BUG=v8:2409
+    
+    Review URL: https://codereview.chromium.org/11554019
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@13213 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 975d6e21709f3399f421e4e76d0ddafdffb06019
+Author: jkummerow@chromium.org <jkummerow@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Mon Sep 24 09:38:46 2012 +0000
+
+    First commit of new tools/run-tests.py
+    
+    Review URL: https://codereview.chromium.org/10919265
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@12583 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit d1aaafd89d3c397e28d64be72ce9c8f2f61fcdb6
+Author: jkummerow@chromium.org <jkummerow@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Wed Aug 8 14:57:10 2012 +0000
+
+    tools/push-to-trunk.sh: Add a check whether grepping for the just-committed SVN revision number succeeded.
+    
+    R=yangguo@chromium.org
+    
+    Review URL: https://chromiumcodereview.appspot.com/10828210
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@12279 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 30754768babc739856f5918e22704ee1fb37d069
+Author: fschneider@chromium.org <fschneider@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Sep 2 09:28:14 2011 +0000
+
+    Add flaky test expectation for a mozilla-debug test that assumes a specific execution time.
+    Review URL: http://codereview.chromium.org/7053036
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@9114 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 0648103e8c2867bafd55b668ea5ebaa9413cf765
+Author: ricow@chromium.org <ricow@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Tue Feb 15 13:37:10 2011 +0000
+
+    x64: Port OSR to the x64 platform.
+    
+    
+    Review URL: http://codereview.chromium.org/6515012
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@6791 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 7e423ec8b9da760b294e8da5a6b68dd30fd0647d
+Author: ricow@chromium.org <ricow@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Jan 21 11:47:02 2011 +0000
+
+    Mark mozilla/ecma_3/RegExp/regress-85721 as flaky.
+    
+    This tests is flaky in debug mode (especially on mac)
+    
+    
+    
+    Review URL: http://codereview.chromium.org/6275012
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@6429 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 22d1249b683f1f1a1f5970a0827775b7c6472be0
+Author: ricow@chromium.org <ricow@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Jan 7 13:53:20 2011 +0000
+
+    Disable flaky test on x64 when running with --crankshaft.
+    
+    mjsunit/compiler/simple-osr is flaky.
+    
+    Disabling for now until we get osr in place on the x64 port.
+    
+    Bug 1026 created to track this:
+    http://code.google.com/p/v8/issues/detail?id=1026
+    
+    
+    Review URL: http://codereview.chromium.org/6176001
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@6229 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit b1c71408d7c7892c22d8efb6707c0b42eb943d63
+Author: kmillikin@chromium.org <kmillikin@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Mon Dec 13 16:52:04 2010 +0000
+
+    Rename regression test and reenable disabled test.
+    
+    The regression test for v8 issue 969 was committed with the wrong file
+    name.  Also reenable a test that was disabled due to that issue.
+    
+    Review URL: http://codereview.chromium.org/5707008
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@5992 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit ad0401174a696df5ad28125d9aa0ad544cb7c695
+Author: ricow@chromium.org <ricow@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Mon Dec 13 12:10:41 2010 +0000
+
+    Temporarily disable mjsunit/array-splice (issue 969)
+    
+    Disabling this to get the waterfall green, Kevin knows what the issue
+    is and is working on a fix.
+    
+    
+    Review URL: http://codereview.chromium.org/5752005
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@5980 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 7fc3fd76e320b02146b2dad238cc3e8f452e0dfb
+Author: ricow@chromium.org <ricow@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Aug 20 13:00:22 2010 +0000
+
+    Re-enable test-api/RegExpInterruption on arm.
+    
+    This test has been disabled for a very long time, and the fix in
+    http://code.google.com/p/v8/source/detail?r=5308 should make this go
+    away.
+    
+    I will watch the buildbot continuously over the next few days to make
+    sure it does not appear again. If it does not I will close bug 240.
+    
+    
+    Review URL: http://codereview.chromium.org/3127023
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@5312 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 6edd72849ac34088af5d755522fea5972413f406
+Author: ager@chromium.org <ager@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Nov 12 10:23:05 2009 +0000
+
+    Change expectations for LargeObjectSpace test on ARM.  It should pass,
+    and if it doesn't we need to figure out why.
+    
+    Review URL: http://codereview.chromium.org/385065
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@3287 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 8bc96eca76ae17b0d0b69784916619b212db000e
+Author: sgjesse@chromium.org <sgjesse@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Wed Oct 7 07:24:51 2009 +0000
+
+    Prepare push to trunk. Now working on version 1.3.15.
+    
+    TBR=ager@chromium.org
+    Review URL: http://codereview.chromium.org/262004
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@3023 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 3b84a19bfe609ff464ea6722a68238612dc8297a
+Author: sgjesse@chromium.org <sgjesse@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Wed Apr 22 09:01:13 2009 +0000
+
+    Enable flaky test that was fixed some time ago.
+    Review URL: http://codereview.chromium.org/80001
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@1760 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 3b80ddac19f6eb2afe55d33f27534c4424afdaaa
+Author: kasperl@chromium.org <kasperl@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Sat Apr 11 09:01:45 2009 +0000
+
+    Prepare a push to trunk (version 1.1.8).
+    Review URL: http://codereview.chromium.org/71001
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@1691 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 7a83e2c0f68ca3790f2be6c4f2186965f70deec4
+Author: sgjesse@chromium.org <sgjesse@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Feb 26 13:32:44 2009 +0000
+
+    Skip flaky (occasionally crashes) test on ARM until issue has been resolved.
+    
+    BUG=240
+    Review URL: http://codereview.chromium.org/28183
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@1376 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 2da0c25569ef86219ecde1f8a1bb5d15d188bac6
+Author: lrn@chromium.org <lrn@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Oct 31 10:19:01 2008 +0000
+
+    Reverting patch on wrong branch.
+    
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@668 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit b9a251a98ee8c8699cd3c9c7d231de58d67e38ae
+Author: lrn@chromium.org <lrn@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Oct 31 09:45:00 2008 +0000
+
+    We still compile with JSCRE immediately, instead of at the first use.
+    
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@666 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 8e675da3717f8be02ee974ebcfa52aa11c150984
+Author: kasperl@chromium.org <kasperl@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Oct 23 06:11:39 2008 +0000
+
+    Update Mozilla test status to reflect that regress-363258
+    is flaky on Linux and Mac (as well as Windows) and remove
+    line that refers to non-existing mozilla/... test.
+    Review URL: http://codereview.chromium.org/7910
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@559 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 1aee7c79aa64218809ba3f8423c68b3a55b3036c
+Author: kasperl@chromium.org <kasperl@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Oct 9 05:39:00 2008 +0000
+
+    Fix typo in include/v8.h (issue 108) and mark test-spaces/LargeObjectSpace as flaky on ARM (issue 113). TBR=ager@chromium.org
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@472 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit f2ac600e4be8c08e86952350b1ec4e3f38ba56eb
+Author: sgjesse@chromium.org <sgjesse@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Sep 26 07:57:11 2008 +0000
+
+    Mark test test-debug/ThreadedDebugging as flaky.
+    Review URL: http://codereview.chromium.org/5001
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@381 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit f67fd01cc0bc6cf570639038a868b59423145d66
+Author: ager@chromium.org <ager@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Sep 4 12:53:41 2008 +0000
+
+    Update the test expectation for a flaky test.
+    
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@135 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 05bbf90b3af78cbb10626a5a4a8e7fa88c80e6a9
+Author: christian.plesner.hansen <christian.plesner.hansen@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Wed Aug 27 10:11:39 2008 +0000
+
+    Changed shell sample to take flags directly from the command-line.  Added api call that implements this.
+    
+    Added better test support.
+    
+    Added load, quit and version functions to the shell sample so it's easier to run benchmarks and tests.
+    
+    
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@18 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit c42f5829a1aea4c2aafd10583b339f7b0711ab3e
+Author: christian.plesner.hansen <christian.plesner.hansen@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Aug 22 13:33:59 2008 +0000
+
+    Included mjsunit JavaScript test suite and C++ unit tests.
+    
+    In the shell sample don't print the result of executing a script, only
+    evaluating expressions.
+    
+    Fixed issue when building samples on Windows using a shared V8
+    library.  Added visibility option on Linux build which makes the
+    generated library 18% smaller.
+    
+    Changed build system to accept multiple build modes in one build and
+    generate seperate objects, libraries and executables for each mode.
+    
+    Removed deferred negation optimization (a * -b => -(a * b)) since this
+    visibly changes operand conversion order.
+    
+    Improved parsing performance by introducing stack guard in preparsing.
+    Without a stack guard preparsing always bails out with stack overflow.
+    
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@16 ce2b1a6d-e550-0410-aec6-3dcde31c8c00

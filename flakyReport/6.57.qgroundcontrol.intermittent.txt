@@ -1,0 +1,32 @@
+commit 628220133a55b0ce240259fde0d41bc876ff620c
+Author: Gus Grubba <gus@auterion.com>
+Date:   Wed May 15 17:38:17 2019 -0400
+
+    Remove stale files
+
+commit da1296ef2dc3e55c37e17d9269bd75323370cf91
+Author: DonLakeFlyer <don@thegagnes.com>
+Date:   Sun Mar 26 14:11:29 2017 -0700
+
+    New file save settings and desktop/mobile file dialog capability
+
+commit e4e71de7488922021037a8302759896d97e90bbd
+Author: Don Gagne <don@thegagnes.com>
+Date:   Fri Oct 30 15:38:21 2015 -0700
+
+    Remove remaining singletons
+
+commit ba335a79a2baf8ea0ea38d7ff9ed19f3fbe733ec
+Author: Don Gagne <don@thegagnes.com>
+Date:   Tue Dec 23 16:46:28 2014 -0800
+
+    Fix intermittent UT failure
+
+commit a6870045e264f2b176bb21b8691d5e3725a783d4
+Author: Don Gagne <don@thegagnes.com>
+Date:   Mon Nov 24 13:29:40 2014 -0800
+
+    New QGCFileDialog apis
+    
+    Using QFileDialog directly on OS X can hang intermittently due to Qt
+    bug. QGCFileDialog works around this by not using the native dialogs.

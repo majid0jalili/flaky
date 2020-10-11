@@ -1,0 +1,6 @@
+commit 68e6f2a32c9ecb015187f14c92aaea294fce1daa
+Author: Kim Kulling <kim.kulling@googlemail.com>
+Date:   Sun Sep 11 16:06:29 2016 +0200
+
+    Unittest: add gtest as part of the contrib to avoid build issues on
+    offline systems.

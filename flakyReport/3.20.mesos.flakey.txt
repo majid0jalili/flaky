@@ -1,0 +1,63 @@
+commit ac7535d4aaa54c2100c5ae8c678c712ceea01099
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Wed Feb 22 23:16:45 2012 +0000
+
+    Updated libprocess to use autotools and corresponding changes.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1292579 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 0a889fa62ffd47c7445cd9c3dcd1dfbf4824c68f
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Thu Feb 9 00:51:23 2012 +0000
+
+    Replaced third_party directories with tar.gz versions in order to support 'make dist' (contributed by Charles Reiss). Also removed '--no-recursive' for bootstrap so older machines that don't have a modern enough version of autoconf/autoreconf can run bootstrap.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1242195 13f79535-47bb-0310-9956-ffa450edef68
+
+commit fe4a36b3c3dfb8fcfa62cfbf337a22c61e003f30
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 09:12:02 2011 +0000
+
+    Added glog.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1132268 13f79535-47bb-0310-9956-ffa450edef68
+
+commit d619682b0675d1511ec3c99a42543589f3fb2ad5
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 09:11:00 2011 +0000
+
+    Removing glog so it can be added fresh (without being configured).
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1132267 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 6ee56f4e4d2a37110d49b2099654d49d013c3d97
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 09:10:30 2011 +0000
+
+    Added glog to libprocess.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1132266 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 4b66c44a01a7d394358681900fe9c5dd4589a565
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 08:12:18 2011 +0000
+
+    Moved third_party out of src.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131987 13f79535-47bb-0310-9956-ffa450edef68
+
+commit cbfb1b931a3ac2f4a2669e69afb89b20dc28b976
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 05:33:57 2011 +0000
+
+    Updated Google Log to 0.3.1 and fixed .gitignore.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131793 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 9bc36de05a9542a319d348505a1838f9190a6c21
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 03:04:24 2011 +0000
+
+    Initial commit.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131516 13f79535-47bb-0310-9956-ffa450edef68

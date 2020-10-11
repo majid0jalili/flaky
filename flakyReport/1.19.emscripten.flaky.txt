@@ -1,0 +1,129 @@
+commit 56d7fb8b0d62aa2a13612f1e6ebe7933aa4cde3b
+Author: Alon Zakai <azakai@google.com>
+Date:   Mon Aug 12 13:09:29 2019 -0700
+
+    Browser test improvements (#9208)
+    
+    Remove the @flaky annotation, which used to run annotated tests up to 3 times. Instead, since the problem is more widespread (any timing issue on the CI VMs can make a test fail), let each browser test run twice before failing it.
+    
+    This is an optimization over @flaky - that ran the whole test again. This just runs the browser portion, so it avoids duplicate building.
+    
+    Standardizes the timeout to 60s. This should avoid more flakiness.
+    
+    Fixes the glgears_long test, apparently our bots now can reach only 20fps (not sure what changed there..)?
+
+commit 8fa09b596fc44f338024aab030e08cde097f5ae9
+Author: Alon Zakai <azakai@google.com>
+Date:   Wed Jul 17 16:49:06 2019 -0700
+
+    Mark as flaky some graphics tests. These have always been flaky but recently the frequency of all 3 has increased a bunch. Could be the firefox update. (#9008)
+
+commit 79e1df93c70524d5379171e116c730560c268ef4
+Author: Alon Zakai <azakai@google.com>
+Date:   Fri Jun 28 14:50:50 2019 -0700
+
+    mark two tests as flaky (#8866)
+    
+    These seem to be common enough in recent runs to justify retrying.
+
+commit 16edbe51e141f443a27a9a8919786089facdcfbb
+Author: Alon Zakai <azakai@google.com>
+Date:   Fri Jun 21 17:27:23 2019 -0700
+
+    Wasm backend pthreads testing improvements (#8842)
+    
+    
+     *   After #8811 landed a lot more tests can pass, this enables all those that can.
+     *   Remove unnecessary stuff in test_pthread_gcc_atomic_fetch_and_op.
+     *   Add more runtime assertions for the stack position.
+    
+    There are still a few tests that don't pass, so this doesn't close #8718. But they are quite few at this point (and look unrelated to stack issues - something else going on there).
+
+commit 30eb07a16404e6075c8672f63e1d35e190a6f476
+Author: Alon Zakai <azakai@google.com>
+Date:   Tue Jun 4 13:30:49 2019 -0700
+
+    Enable some pthreads tests on the wasm backend path (#8715)
+    
+    Build more system libs with -mt.
+    Test fixes.
+    Misc minor JS glue fixes.
+    Some tests still fail on odd things, I marked them as TODO - fix final pthreads tests,  opened #8718 to track that. There may be some serious issues there.
+
+commit 86ee826d0f8c6d330b587d8eb1f23566f879ccc4
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Thu Nov 1 19:07:51 2018 -0700
+
+    Sockets fixes + testing (#7420)
+    
+    
+    *    Add some missing stuff in deps_info.json which fixes #7417.
+    *    Move the non-browser-dependent parts of the sockets tests into other, so that they run on CI.
+
+commit 264c00695789ef86d0ffd80c3f3fcd2086905671
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Thu Nov 1 15:48:29 2018 -0700
+
+    fix browser.test_pthread_sbrk - the test assumed each thread must see some allocation failures, but it is possible one or two will be lucky to run early enough so that their allocations all succeed (#7415)
+
+commit b5170dd95a37131a2324ef2e6f3db79700b19072
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Tue Oct 30 11:05:43 2018 -0700
+
+    Get most chrome browser tests running (#7375)
+    
+    * use new KeyboardEvent(), as event.initKeyEvent was deprecated and removed from chrome
+    
+    * remove dump() calls
+    
+    * mark a test as no-chrome
+    
+    * add a mechanism to manually run a reftest, for tests that are async
+    
+    * xvfb fixes: show the log, and automatically find a port, so that another invocation during the emrun test succeeds
+    
+    * add some debugging code for browser tests
+    
+    * update sdl2 port to version_15, which brings in a fix for egl error reporting on context creation failure (which happens on chrome on ci sometimes)
+    
+    * browser test improvements: mark pthread_sbrk as flaky, mark two more tests that need a manual reftest trigger, and avoid creating an sdl2 renderer if we don't need one in some tests
+    
+    * more reference slack for browser.test_sdl2_gfx
+    
+    * mark browser.test_sdl2_mouse as flaky - the errors there appear to just be random weirdness on headless chrome's side
+
+commit 6a8b4966804fe8f9f64972932649a9251cd0b661
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Wed Jul 11 16:15:47 2018 -0700
+
+    remove builtin crunch support (#6827)
+
+commit 405d5a8ed2f32f96651b5ef3722e7ddfd369e2d5
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Mon May 9 11:52:16 2016 -0700
+
+    ignore crunch test time diffs on non-linux, where OS file change reporting seems flaky
+
+commit 8d2ccfd2145296a43fc4bc9584aab898167fec53
+Author: Bruce Mitchener <bruce.mitchener@gmail.com>
+Date:   Wed Apr 15 10:57:37 2015 +0700
+
+    Remove more of the old compiler.
+
+commit c7e19b82f3cb7a9be1bd9a4eeaa72e31253ecee7
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Fri Feb 21 12:34:55 2014 -0800
+
+    deprecate toy gc impl
+
+commit c67e7e831cfd3c67b533f9e44b75c0925a5c52b9
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Fri Jan 3 17:29:32 2014 -0800
+
+    disable/update various browser tests for fastcomp
+
+commit ae80958f6e91af709b354a5f6c1e31951f591436
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Sun Nov 13 21:09:12 2011 -0800
+
+    warnOnce

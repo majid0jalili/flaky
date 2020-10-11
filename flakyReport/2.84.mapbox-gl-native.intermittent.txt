@@ -1,0 +1,65 @@
+commit 206b9bde5ed9204de6ec18c0d37495db7c30aa09
+Author: Minh Nguyễn <mxn@1ec5.org>
+Date:   Thu Feb 27 13:09:39 2020 -0800
+
+    [ios, macos] Deleted iOS/macOS map SDK sources, resources, scripts
+
+commit c507b8a693d91dea1b0018f9105553128a245146
+Author: Mike Morris <mikemorris@users.noreply.github.com>
+Date:   Fri Apr 8 19:20:21 2016 -0400
+
+    node-v3.1.0
+    
+    update deps in package.json
+
+commit 13e2acbc754893efb945fe02d20824698415dcdb
+Author: John Firebaugh <john.firebaugh@gmail.com>
+Date:   Thu Feb 11 12:21:49 2016 -0800
+
+    [ios, osx] Consolidate remaining files in platform/{ios,osx}
+
+commit 6a78a4763d46fe5f0bde4ca72446fd4ccb0ea4bc
+Author: Konstantin Käfer <mail@kkaefer.com>
+Date:   Fri Oct 2 14:20:07 2015 +0200
+
+    [iOS] fix benchmarking app and update to style v8
+
+commit e4cc06b798d74cf353f641c833941fd864582a22
+Author: Thiago Marcos P. Santos <thiago@mapbox.com>
+Date:   Thu Jul 2 13:35:23 2015 +0300
+
+    Add test fixtures for testing raster tiles
+    
+    Add a raster source for the style we use for testing that will
+    force requests for raster tiles.
+
+commit 6ef6591a526fd23e95f0ee854e8d57ee273ccf7e
+Author: Thiago Marcos P. Santos <thiago@mapbox.com>
+Date:   Mon May 18 13:32:56 2015 +0300
+
+    Add MockFileSource and MockView for testing the ResourceLoader
+    
+    - MockFileSource
+      Will load pre-defined resources from the filesystem. It supports
+      passing a string, that when it matches an URL, will simulate a failure.
+    
+    - MockView
+      It is just a no-op to not get in the way when testing
+      resource loading.
+    
+    Few more additions:
+    
+    - style.json
+      Specially crafted style that will look always for the same tile,
+      glyph range, etc at the "test/fixtures/resources/" path. No matter
+      where you look (or at what zoom), you always get the same stuff.
+    
+    - vector.pbf
+      This taken from a part of Taipei that will request several glyph
+      ranges.
+
+commit 24083c582c7308025ed05285ad9e82696c70658a
+Author: Konstantin Käfer <mail@kkaefer.com>
+Date:   Tue May 5 11:38:27 2015 +0200
+
+    [iOS] add benchmarking application

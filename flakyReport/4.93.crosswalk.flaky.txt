@@ -1,0 +1,37 @@
+commit 2cd883936435b159968317312772a69a0092aec5
+Author: hengzhi.wu <hengzhix.wu@intel.com>
+Date:   Tue Sep 8 18:56:52 2015 +0800
+
+    [Android] Implement the setInitialScale() API.
+    
+    This patch is to implement the embedding api for setInitialScale().
+    Add test case for setInitialScale().
+    
+    BUG=XWALK-4304, XWALK-4365
+
+commit 049aab05ba4bc9a374d41e708e17502c80315366
+Author: jinbang.zhang <jinbangx.zhang@intel.com>
+Date:   Tue Jul 22 15:04:24 2014 +0800
+
+    [Android] Move some tests to internal shell test
+    
+    Implement 'TODO(wang16)' for core shell test.
+    Move GeolocationPermissionTest, RendererResponsivenessTest,
+    SetAppCacheEnabledTest, WebNotificationTest into internal shell test.
+
+commit c7c6c0887bcbda6075179f45f708e2028cd4683c
+Author: hengzhi.wu <hengzhix.wu@intel.com>
+Date:   Wed Nov 13 11:26:17 2013 +0800
+
+    [Android] Add the test case about DomStorageEnabled and AppCacheEnabled.
+    
+    Implement the test cases about DomStorageEnabled and AppCacheEnabled.
+    
+    Test AppCache by setting the data in TestWebServer instance.
+    Test DomStorage by loading the html, in this html file, it checks
+    the domstorage enabled or not by javascript.
+    
+    For test case "DomStorageEnabled" should add the parameter "--test_data", as follows:
+    build/android/run_instrumentation_tests.py --test-apk XWalkCoreTest \
+    --test_data xwalkview:xwalk/test/data/device_files/ \
+    --verbose -I --num_retries=1 -f testDomStorageEnabledWithTwoViews

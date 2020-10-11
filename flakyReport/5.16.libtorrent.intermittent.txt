@@ -1,0 +1,47 @@
+commit 53cbb607d0f5bf16d4e3703cf0478a463bb24f51
+Author: arvidn <arvid@cs.umu.se>
+Date:   Sat Jun 17 11:35:53 2017 -0400
+
+    first steps towards spell checking documentation
+
+commit fce967b5fbd28184db256edbd26efc7d92d23e9f
+Author: Arvid Norberg <arvid@libtorrent.org>
+Date:   Tue Oct 14 02:06:20 2014 +0000
+
+    merged changes from RC_1_0 to change email address from @rasterbar.com to @libtorrent.org
+
+commit 7351389ce8aee43059881b36bfd6247f75853db0
+Author: Arvid Norberg <arvid@libtorrent.org>
+Date:   Sun Jul 6 19:18:00 2014 +0000
+
+    land libtorrent_aio branch in trunk
+
+commit 90452a9bf310c1ecfd9c2943b4680177c5999cea
+Author: Arvid Norberg <arvid@libtorrent.org>
+Date:   Sat Dec 21 09:54:17 2013 +0000
+
+    regenerated html and added html files to the repo
+
+commit 55ed312b76421e1e8f17c21fcc4b7411a1079ace
+Author: Arvid Norberg <arvid@libtorrent.org>
+Date:   Tue Aug 6 02:50:57 2013 +0000
+
+    move torrent_handle documentation into header file
+
+commit 5a1669cf03224d350f11ecb75113153ee527a417
+Author: Arvid Norberg <arvid@libtorrent.org>
+Date:   Mon Nov 29 00:53:58 2010 +0000
+
+    revert
+
+commit 6018aaeb495da904eab7a9cf897f49c028199ff2
+Author: Arvid Norberg <arvid@libtorrent.org>
+Date:   Mon Nov 29 00:52:16 2010 +0000
+
+    merge uTP branch back into trunk
+
+commit 3fea2080fd082e2d7fe9d021b1dbddccb3505873
+Author: Arvid Norberg <arvid@libtorrent.org>
+Date:   Sun Apr 13 18:54:36 2008 +0000
+
+    added an asynchronous save_resume_data to make it easier to synchronize with the disk IO thread

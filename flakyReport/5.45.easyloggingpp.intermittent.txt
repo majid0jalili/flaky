@@ -1,0 +1,17 @@
+commit 706736c510ef1ac151c95ca0ec7dfa1bb7c1e241
+Author: mkhan3189 <mkhan3189@gmail.com>
+Date:   Thu Aug 15 23:34:00 2013 +1000
+
+    v9.00 Release with a lot of major improvements - see release notes at http://easylogging.org
+
+commit 383adc64161a77fd8015909224374249208a3d34
+Author: Majid Khan <mkhan3189@gmail.com>
+Date:   Mon Mar 25 19:31:09 2013 +1100
+
+    v7.40 Control performance tracking via _ENABLE_PERFORMANCE_TRACKING
+
+commit 5375a611cd42cf560401e79fd219588c7600c980
+Author: Majid Khan <mkhan3189@gmail.com>
+Date:   Tue Mar 19 23:49:06 2013 +1100
+
+    new sample fast-dictionary added

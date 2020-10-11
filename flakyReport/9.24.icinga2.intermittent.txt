@@ -1,0 +1,21 @@
+commit 50d706dedcc70e9bece800e35ca1db9193954085
+Author: Michael Friedrich <michael.friedrich@icinga.com>
+Date:   Tue Jun 20 11:19:35 2017 +0200
+
+    Rename ChangeLog to CHANGELOG.md
+    
+    refs #4925
+
+commit e9db4bc1b9389a903aef2117684c3e1f62b19d6c
+Author: Gunnar Beutner <gunnar@beutner.name>
+Date:   Sat Nov 14 06:10:44 2015 +0100
+
+    Update changelog and spec files
+    
+    refs #10593
+
+commit 6176d3bc8c14a1f5ce3ab73fb45619e57e09e8c7
+Author: Gunnar Beutner <gunnar@beutner.name>
+Date:   Mon Mar 9 12:52:05 2015 +0100
+
+    Release version 2.3.0

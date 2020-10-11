@@ -1,0 +1,14 @@
+commit df0e9336bfcb61af7173183eac95904e816dd278
+Author: Damian Jarek <damian.jarek93@gmail.com>
+Date:   Fri Apr 5 19:30:15 2019 +0200
+
+    Cleanup CI:
+    
+    close #1558
+    
+    - Parallelize submodule clone.
+    - Do a shallow submodule clone.
+    - Move submodule update code to a script.
+    - Build with BOOST_BEAST_USE_STD_STRING_VIEW on msvc
+    
+    Signed-off-by: Damian Jarek <damian.jarek93@gmail.com>

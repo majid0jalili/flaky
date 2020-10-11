@@ -1,0 +1,42 @@
+commit bd8c2af216ff565fbae187305511eefda6d43174
+Author: Boudewijn Rempt <boud@valdyas.org>
+Date:   Sat Nov 7 09:28:41 2015 +0100
+
+    Remove breakpad from git master
+    
+    We cannot handle the crash dumps from breakpad anymore, and breakpad
+    hasn't been built for a year or so, so get rid of it for now.
+
+commit 9c335151d8c77c3d4ebb37524325be28aaa32c42
+Author: Boudewijn Rempt <boud@valdyas.org>
+Date:   Fri Sep 25 11:45:01 2015 +0200
+
+    Remove everything that is not useful for Krita
+
+commit 44cb9fe218a908c6f8ae6319eeb800001e476250
+Author: Boudewijn Rempt <boud@valdyas.org>
+Date:   Thu Feb 27 14:09:25 2014 +0100
+
+    Add the google-breakpad crashhandler for Krita on Windows
+    
+    It is only enabled with with -DUSE_BREAKPAD=ON option. The default
+    KDE crashhandler overrides ours unless you start krita with the
+    --nocrashhandler option.
+    
+    It's a pity that we need to copy breakpad into our 3rd party
+    source tree, but it seems that that is how breakpad prefers it...
+    
+    Conflicts:
+    	CMakeLists.txt
+    	krita/crashreporter/mainwindow.cpp
+    	krita/crashreporter/wdg_crash_reporter.ui
+    	krita/kis_crash_handler.cpp
+    	krita/main.cc
+
+commit 457cdc453a02b43e4d1fd7d693e6201013d7d8f5
+Author: Fredy Yanardi <fyanardi@gmail.com>
+Date:   Mon Oct 1 17:29:21 2007 +0000
+
+    Move all text-editing plugins to one place
+    
+    svn path=/trunk/koffice/; revision=719685

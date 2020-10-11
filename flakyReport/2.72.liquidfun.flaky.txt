@@ -1,0 +1,66 @@
+commit 41d023cb5b88354da8054c98ac5496d4147906b9
+Author: Brett Chabot <brettchabot@android.com>
+Date:   Wed Nov 30 12:44:19 2011 -0800
+
+    Update gtest to 1.6
+    
+    Change-Id: I64785f7e1926e230b3f1b8df47c424e6ee423446
+
+commit f7ed03e36df3547e429efc9d4decdbb0c098fc11
+Author: zhanyong.wan <zhanyong.wan@861a406c-534a-0410-8894-cb66d6ee9925>
+Date:   Wed Feb 24 17:19:25 2010 +0000
+
+    Adds threading support (by Miklos Fazekas, Vlad Losev, and Chandler Carruth); adds wide InitGoogleTest to gtest.def (by Vlad Losev); updates the version number (by Zhanyong Wan); updates the release notes for 1.5.0 (by Vlad Losev); removes scons scripts from the distribution (by Zhanyong Wan); adds the cmake build script to the distribution (by Zhanyong Wan); adds fused source files to the distribution (by Vlad Losev and Chandler Carruth).
+    
+    
+    git-svn-id: http://googletest.googlecode.com/svn/trunk@376 861a406c-534a-0410-8894-cb66d6ee9925
+
+commit fc3d9e6d0c726733398fdd21bab848d28fcc6715
+Author: Nicolas Catania <niko@google.com>
+Date:   Thu May 28 19:30:30 2009 -0700
+
+    First import of gtest 1.3.0.
+    
+    Currently builds only under linux.
+    Support for darwin and windows will be added later.
+    
+    Removed unecessary make files for other systems.
+    Added Android.mk to build the libraries and test suite on host.
+    
+    Will enable the target build when the aSTL is available.
+    
+    Added NOTICE and MODULE_LICENSE files.
+    
+    Tests are tagged with 'eng' and 'tests'
+
+commit e8c4304d16129d80827c3bad28ff1e12d443ebfa
+Author: Nicolas Catania <niko@google.com>
+Date:   Tue May 26 16:40:22 2009 -0700
+
+    Revert "First import of gtest 1.3.0"
+    
+    This reverts commit 96839103cf05c81525e57ef00456e0afac90823f.
+
+commit a11ed1f94092a82ad7b0db4bf41c04ee54ad9e92
+Author: Nicolas Catania <niko@google.com>
+Date:   Thu Apr 30 14:02:25 2009 -0700
+
+    First import of gtest 1.3.0
+    
+    Removed unecessary make files for other systems.
+    Added Android.mk to build the libraries and test suite on host.
+    
+    Will enable the target build when the aSTL is available.
+    
+    Added NOTICE and MODULE_LICENSE files.
+    
+    Tests are tagged with 'eng' and 'tests'
+
+commit 5256e4151356d9b73f30478d07bee2d314d6aab0
+Author: shiqian <shiqian@861a406c-534a-0410-8894-cb66d6ee9925>
+Date:   Thu Jul 3 22:38:12 2008 +0000
+
+    Initial import.
+    
+    
+    git-svn-id: http://googletest.googlecode.com/svn/trunk@40 861a406c-534a-0410-8894-cb66d6ee9925

@@ -1,0 +1,18 @@
+commit dd5368986a2d95738b7a5d60beada08d5496de12
+Author: Iñaki Baz Castillo <ibc@aliax.net>
+Date:   Tue Oct 1 14:17:11 2019 +0200
+
+    Merge 'devel' branch
+    
+    - Google transport-cc congestion control and bandwidth estimation (send & recv)
+    - Windows support (yes, it runs in Windows now)
+    - JavaScript component rewritten to TypeScript with proper interfaces and types
+    - RTP/RTCP packet monitoring in Node layer.
+    - More stats.
+    - Tons of improvements.
+
+commit 768b411e0c697b112f0ccc75cdb279586ee80a1d
+Author: Iñaki Baz Castillo <ibc@aliax.net>
+Date:   Sun Mar 17 23:22:09 2019 +0100
+
+    Moving v3 to master

@@ -1,0 +1,69 @@
+commit 775a828aade1b87811875ea0ddfa0554c442654b
+Author: Kazuaki Ishizaki <ishizaki@jp.ibm.com>
+Date:   Fri Dec 20 06:46:43 2019 +0900
+
+    minor spelling tweaks
+
+commit 37b20d191a20e1f85e8535d78aaf3dd8b972e807
+Author: Sachin Joglekar <srjoglekar@google.com>
+Date:   Fri Apr 19 09:58:32 2019 -0700
+
+    Refactors ImagenetModelEvaluator to use ImageClassificationStage.
+    
+    PiperOrigin-RevId: 244374565
+
+commit 61c6c84964b4aec80aeace187aab8cb2c3e55a72
+Author: Austin Anderson <angerson@google.com>
+Date:   Wed Oct 31 14:16:59 2018 -0700
+
+    Migrate TensorFlow Lite out of tensorflow/contrib
+    
+    This change moves //tensorflow/contrib/lite to //tensorflow/lite in preparation
+    for TensorFlow 2.0's deprecation of contrib/. If you refer to TF Lite build
+    targets or headers, you will need to update them manually. If you use TF Lite
+    from the TensorFlow python package, "tf.contrib.lite" now points to "tf.lite".
+    Please update your imports as soon as possible.
+    
+    For more details, see https://groups.google.com/a/tensorflow.org/forum/#!topic/tflite/iIIXOTOFvwQ
+    
+    @angersson and @aselle are conducting this migration. Please contact them if
+    you have any further questions.
+    
+    PiperOrigin-RevId: 219536476
+
+commit e2d300823f410823b1b5fee4e5159a754247e219
+Author: Shashi Shekhar <shashishekhar@google.com>
+Date:   Mon Jun 4 15:00:11 2018 -0700
+
+    Move benchmarking code to a new directory and add some documentation.
+    
+    PiperOrigin-RevId: 199200246
+
+commit eebbcaf554fb89059054936491763fde9cf9513d
+Author: Shashi Shekhar <shashishekhar@google.com>
+Date:   Thu May 31 13:10:07 2018 -0700
+
+    Add profiling statistics to benchmark.
+    
+    PiperOrigin-RevId: 198767297
+
+commit 7c9d2a458ee6cb925a0b3d23793d0e356a6eac12
+Author: Pete Warden <petewarden@google.com>
+Date:   Tue Apr 11 14:53:41 2017 -0800
+
+    Add AudioSpectrogram op to TensorFlow for audio feature generation
+    Change: 152872386
+
+commit 4c9ec814db9e01c5ad25b6fed2745bf8abbe9706
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed Apr 5 17:33:07 2017 -0800
+
+    Automated rollback of change 152332221
+    Change: 152333917
+
+commit a24c6b842d982de8a38ae5058ace91cb47ee3cef
+Author: Pete Warden <petewarden@google.com>
+Date:   Wed Apr 5 17:10:48 2017 -0800
+
+    Add AudioSpectrogram op to TensorFlow for audio feature generation
+    Change: 152332221

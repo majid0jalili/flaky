@@ -1,0 +1,109 @@
+commit b9a88158664dae049d9f75b9097f7327b17572c8
+Author: Dmitry Lavrushko <dmitryl@crytek.com>
+Date:   Tue Jun 25 10:06:04 2019 +0200
+
+    !F (Sandbox) (DEV-8191) Migrate python from 2.7.10 to 3.7.3
+    
+    Copied from Perforce
+     Change: 1989545
+
+commit ab6da8a88d84db4145f1a978c10f9e538a0067ad
+Author: Fei Teng <feit@crytek.de>
+Date:   Mon Jun 24 10:07:45 2019 +0200
+
+    !RT (CryVersionSelector) Use directory deployment to speed up project context menu interactions. Remove Win32 configurations. Improve spelling.
+    
+    Copied from Perforce
+     Change: 1988973
+
+commit 801d46a9e1e40a0fc74f57ee46e90a7b1af31b59
+Author: Henrique Gemignani <henrique@crytek.com>
+Date:   Tue Apr 2 12:41:13 2019 +0200
+
+    !F (CMake) (BREAK-309) Use a CMake included in Tools on Linux
+    
+    Copied from Perforce
+     Change: 1953172
+
+commit 733ddd46c2a4aa756f0562a571c5a1dbbfe21a4e
+Author: Build <deployment_all@crytek.de>
+Date:   Thu Feb 9 00:06:08 2017 +0100
+
+    !I integrate from //ce/main/...
+    
+    Copied from Perforce
+     Change: 1488589
+
+commit e543872ecd3570961053b97b7b03b2d78b1f2f8d
+Author: David Kaye <davidka@crytek.de>
+Date:   Fri Dec 9 10:22:31 2016 +0100
+
+    Populate -o //ce/main/... //ce/main_pullrequests/....
+    
+    Copied from Perforce
+     Change: 1477283
+
+commit 49b6ea234cb59ea03e7c59ab7405a4f9542127fc
+Author: Roman Zawada <romanza@crytek.de>
+Date:   Mon Nov 7 15:57:38 2016 +0100
+
+    !XI Copying //ce/task_sandbox_python_cleanup_02 to main (//ce/main) (Approved by samuelk)
+    !F (Python) Allowing more complex python scripting in Sandbox. Python in Sandbox contains now all standard libraries, allows to create UI from python trough PySide2 and introduces Python plugins.
+    !F (Sandbox/Python) Python Interactive Console tool to quickly write python code in Sandbox
+    Review: ID 62281 by Author: Roman Zawada, Author: Martin Palko, Reviewer: Samuel Kahn, Reviewer: Michael Madsen, Observer: Nico Moss
+    
+    Copied from Perforce
+     Change: 1462889
+
+commit e4cae5be2e1073f4e4340fcdacf2ad0b40cbe611
+Author: Michael Madsen <michaelma@crytek.de>
+Date:   Thu Jul 14 17:00:30 2016 +0200
+
+    !XI //ce/task_cmake -> //ce/main (Approved by achim)
+    !XF (CMake) Support ORBIS, Durango builds
+    Review: ID 57799 by Author: Michael Madsen, Reviewer: David Kaye, Observer: Thomas Wollenzin, Observer: Nicolas Schulz, Observer: Anton Knyazyev, Observer: Paul Slinger, Observer: Scott Peter, Observer: Nico Moss, Observer: Gabriel Rodriguez H, Observer: Matthijs, Observer: Jordan Stefanelli, Observer: Samuel Kahn, Observer: David Marquant
+    
+    Copied from Perforce
+     Change: 1415990
+
+commit ade06dc98369032e8bb34e4dd897f68d7ce57b79
+Author: David Marquant <davidm@crytek.com>
+Date:   Wed Jul 6 09:03:16 2016 +0200
+
+    !XT (Build) Reduce dowload sdks exe in size. (Approved by davidka)
+    Review: ID 57411 by Author: David Marquant, Reviewer: Nico Moss, Observer: David Kaye
+    
+    Copied from Perforce
+     Change: 1411863
+
+commit ca9d28e33a9a23b8ef30671ed2a724d9a91e6f86
+Author: David Marquant <davidm@crytek.com>
+Date:   Tue Jun 7 10:39:34 2016 +0200
+
+    !A (git) Add script for downloading sdks from github. (Approved by davidka)
+    Review: ID 56269 by Author: David Marquant, Reviewer: David Kaye, Observer: Jordan Stefanelli
+    
+    Copied from Perforce
+     Change: 1398526
+
+commit 97dede9c814335dc54695f7a725272711e881234
+Author: David Kaye <davidka@crytek.de>
+Date:   Sun Apr 17 12:33:11 2016 +0200
+
+    !XI Branch //ce/main to //ce/main_stabilisation.
+    
+    Copied from Perforce
+     Change: 1378678
+
+commit aa93834e90b797aeab21d24c0e17fb89e9aec6c3
+Author: Matthijs <matthijs@crytek.com>
+Date:   Fri Apr 15 22:00:34 2016 +0200
+
+    !XR Apply formatting to CryEngine (except CryEngine/CryPhysics), Sandbox and GameZero folders. (Approved by matthijs)
+    !XA Add tool and settings used to Code/Tools/uncrustify, also including (zipped) sources as required by license.
+    Review: ID 54414 by Author: Matthijs van der Meide, Reviewer: David Kaye, Observer: Thomas Wollenzin, Observer: Nicolas Schulz, Observer: Anton Knyazyev, Observer: Romanchuk Katerina, Observer: Dario Sancho, Observer: Scott Peter, Observer: Nico Moss, Observer: Gabriel Rodriguez H, Observer: Samuel Kahn, Observer: Michael Madsen
+    
+    [grafted history before @1378678]
+    
+    Copied from Perforce
+     Change: 1378617

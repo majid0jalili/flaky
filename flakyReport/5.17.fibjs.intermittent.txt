@@ -1,0 +1,23 @@
+commit 6004a33c3879da6ff36bd6b7441bfddcec31050d
+Author: xicilion <lion@9465.net>
+Date:   Mon Mar 26 16:03:09 2012 +0000
+
+    增加 msvc 项目文件，解决 vc 兼容问题。再次删除 boost 目录，未来使用 libev 支撑网络操作。
+
+commit 1c98c99354276f260ed7d4caeb1b754122f55a47
+Author: xicilion <lion@9465.net>
+Date:   Thu Mar 8 14:47:11 2012 +0000
+
+    新增 boost asio 简单测试代码，并引入 boost 库的 asio 及其依赖模块。
+
+commit c89cd2d55c7a947efa2bdcc10a0974161c026ad4
+Author: xicilion <lion@9465.net>
+Date:   Sat Mar 3 11:50:48 2012 +0000
+
+    删除 boost 头文件目录，里面有太多 cpp 文件，导致无法编译。将采取使用时引入的方式充实头文件。
+
+commit ba0d3b465bdca15d8a7e7f1c9d4c498c3bc1b2dd
+Author: xicilion <lion@9465.net>
+Date:   Sat Mar 3 09:30:21 2012 +0000
+
+    添加 boost 头文件。libs 未添加，未来按需添加。

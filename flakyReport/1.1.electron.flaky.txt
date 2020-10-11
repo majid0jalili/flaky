@@ -1,0 +1,266 @@
+commit 0b055b2fb87281832216c59fe7877e185d6f8d16
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Thu Sep 17 10:04:53 2020 +0900
+
+    test: retry the "v8 samples" test for a few times (#25477)
+
+commit 08f288faf1ce3395f281e0352e9a35db9f7b00ca
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Tue May 26 22:21:38 2020 +0900
+
+    test: use WebContents event to test beforeunload (#23699)
+
+commit 2541d624868059dfc9712612fab949065c5799b0
+Author: Jeremy Apthorp <jeremya@chromium.org>
+Date:   Thu Apr 16 15:22:39 2020 -0700
+
+    chore: remove disable_user_gesture... patch (#23066)
+
+commit 8a92b65fd373d55bbca4f51308a7a247be7476a0
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Fri Jan 10 04:50:30 2020 +0900
+
+    test: retry for a few flaky tests (#21658)
+
+commit 2f35c98e7639190ada7176246333c797a1226761
+Author: John Kleinschmidt <jkleinsc@github.com>
+Date:   Thu Jan 31 12:59:32 2019 -0500
+
+    ci: build mac on CircleCI (#16552)
+
+commit ca218b63958891e79c6aad28d559801e47dc53a5
+Author: Shelley Vohr <codebytere@github.com>
+Date:   Thu Jan 10 14:15:47 2019 -0800
+
+    test: allow retries for flaky mas loginitem specs (#16347)
+
+commit 405edebc51d31378804de8733a1026f5c26cb8fa
+Author: Milan Burda <milan.burda@gmail.com>
+Date:   Fri Oct 26 17:16:24 2018 +0200
+
+    chore: remove unused chrome_notification_types.h (#15409)
+    
+    * chore: remove unused chrome_notification_types.h
+    
+    * chore: remove dummy simple_message_box.h
+
+commit ef12492d6caa6fa8cf1b0275e5371241bb147ea4
+Author: Jeremy Apthorp <nornagon@nornagon.net>
+Date:   Thu Sep 20 17:30:26 2018 -0700
+
+    update chromium and v8 patches
+
+commit b59e01bdb0ed11e42d1bbf7e01ee092308ee8c65
+Author: Samuel Attard <samuel.r.attard@gmail.com>
+Date:   Thu Oct 4 12:03:15 2018 +1000
+
+    Revert "feat: upgrade to Chromium 68.0.3440.128 and Node 10.11.0 (#14677)" (#14963)
+    
+    This reverts commit e01280142009d79e6429f37a3266d43eb34e6a8a.
+
+commit e01280142009d79e6429f37a3266d43eb34e6a8a
+Author: Jeremy Apthorp <nornagon@nornagon.net>
+Date:   Wed Oct 3 19:02:14 2018 -0700
+
+    feat: upgrade to Chromium 68.0.3440.128 and Node 10.11.0 (#14677)
+    
+    * Update to Chromium 68.0.3440.128 and Node 10.10.0
+    
+    * update v8, ffmpeg, chromium, crashpad, boringssl, and webrtc patches
+    
+    * fix SSL_get_tlsext_status_type patch
+    
+    * pass encryption_modes_supported to CdmInfo
+    
+    * kNoSandbox moved into service_manager
+    
+    * bump CHROME_VERSION_STRING
+    
+    TODO: automatically pull in the real chrome version
+    
+    * PathService -> base::PathService
+    
+    * net::X509Certificate::Equals -> net::X509Certificate::EqualsExcludingChain
+    
+    * use content::ChildProcessTerminationInfo
+    
+    * GetHandle() -> GetProcess().Handle()
+    
+    * ScopedNestableTaskAllower doesn't take an argument
+    
+    * net::HttpAuthCache::ClearEntriesAddedWithin -> ClearAllEntries
+    
+    * std::unique_ptr<WebContents>
+    
+    * blink::WebFullscreenOptions
+    
+    * OnAudioStateChanged doesn't take a WebContents
+    
+    * content::RESULT_CODE_NORMAL_EXIT -> service_manager::RESULT_CODE_NORMAL_EXIT
+    
+    * MessageLoopCurrent
+    
+    * WasResized -> SynchronizeVisualProperties
+    
+    * SetTimeStamp takes a base::TimeTicks
+    
+    * ExecuteScriptInIsolatedWorld is single-script only
+    
+    * DispatchNonPersistentCloseEvent takes a callback now
+    
+    * expose URLRequestContextGetter::{Add,Remove}Observer
+    
+    * test: remove no longer existing Chromium test deps
+    
+    cc_blink_unittests has been removed in
+    https://chromium-review.googlesource.com/1053765
+    
+    mojo_common_unittests has been removed in
+    https://chromium-review.googlesource.com/1028000
+    
+    * SetFdLimit -> IncreaseFdLimitTo
+    
+    NOTE: the behaviour of this API has changed slightly, and we should
+    mention that in the notes.
+    
+    * MessageLoop::QuitWhenIdleClosure -> RunLoop::QuitCurrentWhenIdleClosureDeprecated
+    
+    * certificate_transparency moved out of net/
+    
+    pending a clearer decision about what to do with CT
+    
+    in the mean time, copy CreateLogVerifiersForKnownLogs from deleted chromium source
+    
+    * add secure_origin_whitelist to chrome source list
+    
+    NOTE: is this something we actually want? cc @deepak1556
+    
+    * DrainBackgroundTasks -> DrainTasks
+    
+    * use new node options parser
+    
+    * fix disable_scroll_begin_dcheck.patch
+    
+    * ViewsDelegate::CreateWebContents went away
+    
+    see https://chromium-review.googlesource.com/c/chromium/src/+/1031314
+    
+    * kZygoteProcess moved into service_manager
+    
+    * test: minor improvements to the Node spec
+    
+     - reformat some parts
+     - better failures reporting with `expect`
+     - skip some tests instead of marking them as passed
+    
+    * chromium removed *_posix.cc from the source filters
+    
+    * test: fix :electron_tests compilation
+    
+    * better crash diagnostics in ffmpeg test
+    
+    * fix: enable back a DCHECK in viz::ServerSharedBitmapManager
+    
+    Fixes #14327.
+    Backports https://chromium-review.googlesource.com/802574.
+    
+    * chore: update linux sysroots
+    
+    * chore: remove obsolete "install-sysroot.py" script
+    
+    * test: fix frame-subscriber test on Mac
+    
+    * disable OSR for now
+    
+    * test: make before-input-event test more robust
+    
+    * test: make run-as-node --inspect test more robust on windows
+    
+    * roll node to v10.11.0
+    
+    * avoid duplicate files when building a zip
+    
+    * disable failing assert in beginFrameSubscription dirty-rectangle test
+    
+    * experiment with is_cfi = false
+    
+    * fix: build torque with x64 toolchain
+    
+    Co-Authored-By: Alexey Kuzmin <github@alexeykuzmin.com>
+    
+    * test: disable the "app.relaunch" test on Linux
+    
+    * chore: bump node to get header tar file
+    
+    * chore: bump node to fix tar.py line endings
+
+commit 6f2f761df30242f41be595939c085193d62a2382
+Author: Jeremy Apthorp <nornagon@nornagon.net>
+Date:   Fri Sep 14 11:03:43 2018 -0700
+
+    update v8, ffmpeg, chromium, crashpad, boringssl, and webrtc patches
+
+commit 8441d09a1808ee95a71849a141b85e479b2ae68e
+Author: Robo <hop2deep@gmail.com>
+Date:   Thu Sep 6 02:30:05 2018 +0530
+
+    chore: refactor webContents module isCurrentlyAudible api spec (#14410)
+
+commit e6e621515f1ad7e7c0c9e241611ab875d5378360
+Author: Jeremy Apthorp <nornagon@nornagon.net>
+Date:   Tue Aug 7 12:23:48 2018 -0700
+
+    chore: disable flaky isCurrentlyAudible test (#13970)
+
+commit 533dfc42a854f0a5992efb1e6a91ed7fed8d8520
+Author: shelley vohr <codebytere@github.com>
+Date:   Mon Feb 12 09:09:38 2018 -0500
+
+    enhance documentation around contributing to electron (#11887)
+    
+    * add issues document
+    
+    * add documentation coding style to doc
+    
+    * copyediting
+    
+    * replace `nodejs/node` with `electron/electron`
+    * fix commasplice
+    * fix two most important... s/is/are/
+    * omit unnecessary words
+    
+    * add pull requests doc
+    
+    * copyediting
+    
+    * add general code style to styleguide
+    
+    * updates to CONTRIBUTING.md
+    
+    * copyediting
+    
+    * mark shell blocks as ```sh
+    * mitigate phrase duplication e.g. 'best practice'
+    * lots of opinionated changes to omit unnecessary words
+    
+    * fix numbering & re-apply changes that I overwrote
+
+commit 1f9691ae13167fc9b60c637eb5fb629e5dcc5c75
+Author: Kevin Sawicki <kevinsawicki@gmail.com>
+Date:   Mon Jan 11 18:40:23 2016 -0800
+
+    Convert all source files to JavaScript
+
+commit 13c737823bee91f7f486f7d341b3d5712f6d5733
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Fri Dec 4 11:52:34 2015 +0800
+
+    spec: Suppress execFileSync test
+    
+    It somehow makes the test flaky after refresh.
+
+commit d934526bb3306cbb0022eab593055a44736a2c10
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Thu Aug 21 15:38:20 2014 +0800
+
+    Add printing related source codes from chrome.

@@ -1,0 +1,46 @@
+commit a1b54848110ae9d85df05e27afe470ff0f369196
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Fri Aug 21 08:14:54 2020 -0700
+
+    Work around a backup bug with DB custom checksums (#7294)
+    
+    Summary:
+    On a read-write DB configured with
+    DBOptions::file_checksum_gen_factory, BackupEngine::CreateNewBackup can
+    fail intermittently, with non-OK status. This is due to a race between
+    GetLiveFiles and GetLiveFilesChecksumInfo in creating backups.
+    
+    For patching 6.12 release (as this commit is intended for, except this is a
+    forward-merged version), we can simply treat files for which we falsely failed
+    to get checksum info as legacy files lacking checksum info.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7294
+    
+    Test Plan: unit test reproducer included
+    
+    Reviewed By: ajkr
+    
+    Differential Revision: D23253489
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: 9e4945dad120b776ad3e753be10b962f61f28e14
+
+commit f3801528c19e5123daf235241ad1ae3d477ce00b
+Author: Sagar Vemuri <svemuri@fb.com>
+Date:   Wed Jul 18 18:41:26 2018 -0700
+
+    Disable DBFlushTest.SyncFail and DBTest.GroupCommitTest on Travis (#4154)
+    
+    Summary:
+    I am temporarily disabling DBFlushTest.SyncFail and DBTest.GroupCommitTest tests on Travis until we figure out the root-cause. These tests will still continue to run locally though.
+    I haven't been able to reproduce these failures locally so far (even on a [local Travis environment](https://docs.travis-ci.com/user/common-build-problems/#Troubleshooting-Locally-in-a-Docker-Image) ).
+    
+    These tests  are failing way too frequently causing everyone to wonder why their PR failed on travis, and waste time in debugging.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4154
+    
+    Differential Revision: D8907258
+    
+    Pulled By: sagar0
+    
+    fbshipit-source-id: f40068b16e9245fb3791b6a4796435d1ce1ed205

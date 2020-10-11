@@ -1,0 +1,5 @@
+commit 640f6a067b7a6173e187f19dba52a5ab29a11428
+Author: Werner Macho <werner.macho@gmail.com>
+Date:   Sun Apr 15 13:57:20 2012 +0200
+
+    rename our CHANGELOG to NEWS and add new ChangeLog according to GNU Standards

@@ -1,0 +1,42 @@
+commit 41870cdbbf94e32b7acd543499cdf17ccd677a7d
+Author: Paul Aiyedun <paul.aiyedun@omnisci.com>
+Date:   Mon Sep 28 12:00:43 2020 -0700
+
+    FSI refresh scheduler cleanup
+    
+    * Fix `is_scheduler_running_` typo
+    
+    * Expand comment that explains the reason for waiting for two refresh cycles in some test cases
+    
+    * Update disabled `ScheduledRefreshTest.PostEvictionError` test case to wait two refresh cycles
+    
+    * Temporarily disable the `ScheduledRefreshTest.PreEvictionError` test case until intermittent failure is resolved
+
+commit 054e0a113d6524964c7c6eb9e9c7f16d6c65a456
+Author: mapd-bot <machines@mapd.com>
+Date:   Sat Feb 15 22:19:02 2020 -0800
+
+    deps: finish removing vendored librdkafka
+
+commit cdf4ec36c39de9d88e4265900e5ee933c464fa1f
+Author: MapD Bot <machines@mapd.com>
+Date:   Thu Apr 11 00:04:21 2019 -0700
+
+    deps: add etcd, jsonschema for distributed consensus support
+
+commit d07314c1198fb9909968e524d175cfaab1b4f165
+Author: Michael Thomson <michael@mapd.com>
+Date:   Sun Apr 23 19:53:56 2017 -0700
+
+    Add librdkafka 0.9.5.x to the ThirdParty sources
+    
+    Add gitignored packaging directory
+
+commit 77f315899b408174e59cac3311d5ec892d840cf2
+Author: Andrew Seidl <dev@aas.io>
+Date:   Wed Feb 8 08:23:21 2017 -0800
+
+    import: add gdal support files
+    
+    Required for reading geo files in different projections. Ugly hack, but
+    means the user shouldn't have to install gdal separately.

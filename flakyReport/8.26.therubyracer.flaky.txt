@@ -1,0 +1,77 @@
+commit 76f2f76cc4c03681b5395d03f0b8f9767f7c41a3
+Author: Charles Lowell <cowboyd@thefrontside.net>
+Date:   Tue May 10 14:50:21 2011 -0500
+
+    use git external for v8 source.
+
+commit 7569579175882455e4390b1b70e587849a9a95ec
+Author: Charles Lowell <cowboyd@thefrontside.net>
+Date:   Mon Mar 7 07:20:32 2011 -0600
+
+    upgrade to v8 3.1.8
+
+commit f317b976521b2f5ea5b65d15a3ac2e9f226df5b5
+Author: Charles Lowell <cowboyd@thefrontside.net>
+Date:   Sun Aug 1 10:52:31 2010 -0500
+
+    remove 2.1.10
+
+commit e0e66a200075354ea781a0d0eac6282de5d9c75d
+Author: Charles Lowell <cowboyd@thefrontside.net>
+Date:   Sun Aug 1 10:16:39 2010 -0500
+
+    upgrade to v8 2.3.3
+
+commit 185938df16fe369cd08c969034b73ada2e59a1a2
+Author: Charles Lowell <cowboyd@thefrontside.net>
+Date:   Sat Jun 5 13:50:25 2010 +0300
+
+    Revert "upgrade to V8 2.2.14" --totally hosed RHEL 5
+    
+    This reverts commit c1223abcd8b8a8faaba652a3029ff7bf8bf638e8.
+
+commit c1223abcd8b8a8faaba652a3029ff7bf8bf638e8
+Author: Charles Lowell <cowboyd@thefrontside.net>
+Date:   Sat Jun 5 11:07:04 2010 +0300
+
+    upgrade to V8 2.2.14
+
+commit 551b048cf1b288a1a954e09e0804322549954adf
+Author: Charles Lowell <cowboyd@thefrontside.net>
+Date:   Thu May 6 22:15:36 2010 -0500
+
+    remove 2.0.6 source
+
+commit 5c8c8c876a17fc3b6155b91aca067b9c1014a389
+Author: Charles Lowell <cowboyd@thefrontside.net>
+Date:   Thu May 6 22:12:33 2010 -0500
+
+    upgrade to v8 2.1.10
+
+commit 205c52c5bfaf9cd114c765d77e17f0aa5ccd1ecd
+Author: Charles Lowell <cowboyd@thefrontside.net>
+Date:   Thu Jan 28 21:37:03 2010 -0600
+
+    import v8 source
+    
+    move v8 src to google dir
+    
+    moving v8 source into main extension
+    
+    move google upstream source dir into v8 ext dir
+    
+    include v8 library in generated bundle
+    
+    prep for 0.4.7
+    
+    roll the upstream build into the main extension build
+    
+    Documentation was confusing the gem packager.
+    
+    simplify build instructions with bundled v8.
+    
+    Only install scons and build v8 if it has not been built already.
+    
+    Missing CVS.py from the scons library due to ignore patterns.
+    
+    Don't need libv8 anymore, only python 2.5 which is required to build it.

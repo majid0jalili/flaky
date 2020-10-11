@@ -1,0 +1,45 @@
+commit 74e091ca9f6e93bd95be65d132d2f8af3398b39a
+Author: Russel Waters <vaelstrom@gmail.com>
+Date:   Thu Mar 14 07:26:43 2019 -0400
+
+    Migrate Gtest to submodule (#1661)
+    
+    * core_test function entry
+    
+    * remove gtest directory
+    
+    * init gtest submodule @dea0216d
+    
+    * update gtest path
+    
+    * update submodule remote
+
+commit 12bd94be9adc8850281254c47f9b02dfc781b58b
+Author: androm3da <brian.cain@gmail.com>
+Date:   Sat Jan 6 13:04:37 2018 -0600
+
+    Add tests to travis (failures masked)
+
+commit fda5cae96163571b0926d21f967fc2c59ecee68e
+Author: Luke Alonso <lukea@nvidia.com>
+Date:   Thu Jan 4 23:14:08 2018 -0800
+
+    Update Dockerfile.
+
+commit 1895b603039047355a3ecdb8974651123cab7569
+Author: clemahieu <clemahieu@gmail.com>
+Date:   Thu Feb 2 20:12:48 2017 -0600
+
+    Removing the rest of cppnetlib.
+
+commit f4ec16c2c5c36a968dab832ea83727277a3e4fd2
+Author: clemahieu <clemahieu@gmail.com>
+Date:   Sat Apr 16 10:54:17 2016 -0500
+
+    Inboarding cpp-netlib
+
+commit fcafa5c41413f248ec7914009316370e588c9553
+Author: clemahieu <clemahieu@gmail.com>
+Date:   Sat Apr 16 10:24:41 2016 -0500
+
+    Inboarding gtest.

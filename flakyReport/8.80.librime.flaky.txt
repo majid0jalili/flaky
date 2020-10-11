@@ -1,0 +1,127 @@
+commit 02542e612f269ee58e972594a8cf8963749ab525
+Author: Chen Gong <chen.sst@gmail.com>
+Date:   Wed May 22 23:24:33 2019 +0800
+
+    chore(thirdparty): use opencc submodule
+
+commit 4f5b4f17c62c11d81b3e39647621508e44c0e6bc
+Author: Prcuvu <prcuvu@gmail.com>
+Date:   Thu Mar 28 00:31:30 2019 +0800
+
+    chore(thirdparty): use googletest submodule
+
+commit b1c25f99889ddfc4e4527406c38f55dfe3c5f4e5
+Author: Prcuvu <prcuvu@gmail.com>
+Date:   Wed Mar 27 22:40:30 2019 +0800
+
+    chore(thirdparty): use yaml-cpp submodule
+
+commit 533356ebddd86baf3154cf694557326d637bdbee
+Author: Prcuvu <prcuvu@gmail.com>
+Date:   Wed Mar 30 15:04:34 2016 +0800
+
+    Update googletest.
+
+commit e4a39cfbbb8fb5f8bed67059416578a35bb05987
+Author: Prcuvu <prcuvu@gmail.com>
+Date:   Wed Mar 30 14:39:50 2016 +0800
+
+    Update yaml-cpp.
+
+commit 6bcfba7e86d532b6eb50849c55a5c0f4d667079d
+Author: lotem <chen.sst@gmail.com>
+Date:   Fri May 15 11:00:52 2015 -0700
+
+    Squashed 'thirdparty/src/opencc/' changes from e684f54..fb96915
+    
+    fb96915 Merge pull request #112 from pprkut/lib_suffix
+    0184be7 Merge pull request #110 from lotem/msvc_fixes
+    bb89f80 Add support for specifying LIB_SUFFIX to cmake.
+    c19da40 Add 'sudo: required' to .travis.yaml
+    9fb28c6 Define DOpencc_BUILT_AS_STATIC while building OpenCC as static library.
+    6bd74b6 memmem() is a GNU extension; Use std::string::find() instead.
+    91daab9 MSVC requires BOM in source files that contain UTF-8 encoded Unicode strings.
+    ac52f06 Explicitly include <functional> for std::function template.
+    b19714d Merge pull request #106 from lotem/master
+    cfee115 Merge pull request #104 from songchenwen/master
+    4548ff6 Install t2tw.json, t2hk.json.
+    29fab3c Add Bitcoin phrase
+    30de3e2 Merge pull request #103 from kunki/master
+    876a748 add missing config files.
+    3b2a792 Merge pull request #102 from kunki/master
+    05fa82e 新增一百餘組簡繁關係
+    e94ef59 修正錯字「積『极』」
+    4e8c699 修正三組簡繁關係
+    891f678 Merge pull request #100 from kunki/master
+    cad640c 新增臺標字「晒」的轉換。
+    529d4f5 Merge pull request #99 from jakwings/tw2sp
+    b119895 Merge pull request #98 from kunki/master
+    e2d57ef Add missing configuration for TW2SP
+    f8b5a73 增補港標字。
+    3d228a7 Merge pull request #95 from XadillaX/master
+    a1945e1 update nan to 1.6.2 to adapt iojs
+    d0563e2 Better filtering in PhraseExtract
+    755df51 Unify PhraseExtract::CalculateSuffixEntropy and CalculatePrefixEntropy
+    0e652d0 Use UTF8StringSlice8Bit to store prefixes, suffixes, words in PhraseExtract
+    c3ab9a4 Make LengthType a template parameter to UTF8StringSlice
+    c9da6cb Reduce peak memory allocation of PhraseExtract
+    4e1a31f Add wordMinLength to PhraseExtract and move default filtering functions
+    6879cdc Optimize NextCharLengthNoException and PrevCharLength
+    bd378df Implement UTF8Util::GetByteMap
+    74e673b Use FNVHash instead of std::hash to hash UTF8StringSlice
+    3ab5c86 Add punctuation test
+    fc48e8f Use memmem to reduce std::string constructions in UTF8StringSlice::FindBytePosition
+    56828fc Use double array trie to store signals in PhraseExtract
+    482315c Encapsulate std::unordered_map with DictType
+    e50a459 Add command line parser to phrase_extract
+    3b24867 Add more unit tests to PhraseExtract
+    6a8be9b Sort wordCandidates by frequency,word
+    6915939 Implement EXPECT_VECTOR_EQ
+    e1bafa0 Make UTF8StringSlice printable to an ostream
+    1c37442 Unit test for PhraseExtract
+    62fea6b Move UTF8StringSliceHasher to UTF8StringSlice::Hasher
+    00c3fd6 Move PhraseExtract into libopencc
+    b431684 Compile all unit tests into one binary
+    f7ec08d Migrate all unittests to GTest
+    8f50fb2 Use GTest to run command conversion test
+    4344dcc Fix ctest
+    8df5e86 Move all executable code to src/tools and simplify CMakeLists.txt
+    8f51263 Use std::unordered_map in WordDetection
+    60a2080 Implement WordDetection algorithm
+    d189e44 Add ReverseCompare, FindBytePosition to UTF8StringSlice
+    cb38cce Rename UTF8StringSlice::operator++ to MoveRight and add MoveLeft
+    1a8e007 Fix build error "sorry, unimplemented: non-static data member initializers"
+    8cc5e74 Fix a bug of UTF8Util::TruncateUTF8 and add unit test
+    c6cefa4 Fix GTest CMake include path
+    a86790b 使用GTest測試
+    e7f2a77 無詞典分詞算法部分實現
+    a6465e0 Use clang-format
+    992d6bb 對詞典新增詞彙排序去重
+    59cfa93 Merge pull request #92 from PeterDaveHello/patch-2
+    9e8abc5 Update TWPhrasesIT.txt
+    a0b54df Merge pull request #91 from PeterDaveHello/patch-1
+    ef21164 Use svg instead of png to get better image quality
+    03ded91 Merge pull request #90 from kunki/master
+    e8934c1 增補12對簡繁轉換
+    fe3f1de 將「化學元素用字轉換」從異體字轉移到詞彙轉換
+    07a1481 Merge pull request #89 from kunki/master
+    267ee83 增補5對位於《通用規範漢字表》的簡繁轉換
+    c24292f 添加化學元素臺灣用字轉換
+    6bd485b Add a contributor
+    b79b4a7 Update Travis-CI script to support nan
+    06d6955 迁移到nan，以适应0.11+
+    97d6aa9 Merge pull request #83 from mxgit1090/patch-1
+    4492e16 修改字典錯字："氣泡跑需" -> "氣泡排序"
+    9873477 Separate SimpleConverter.hpp from opencc.h
+    
+    git-subtree-dir: thirdparty/src/opencc
+    git-subtree-split: fb9691581a29c346278fd48ad18a1889506bc2fb
+
+commit 6936ab074278edb4950802155cb88eac2e3c2e95
+Author: lotem <chen.sst@gmail.com>
+Date:   Fri Jul 11 19:49:13 2014 +0800
+
+    Squashed 'thirdparty/src/gtest/' content from commit c0b9b58
+    
+    git-subtree-dir: thirdparty/src/gtest
+    git-subtree-split: c0b9b58b972500e4228034e0e038e165b51f06d4

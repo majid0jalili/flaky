@@ -1,0 +1,32 @@
+commit 1139e12ef126609bc76d6d39a3f46edb1038f9d3
+Author: DrKLO <drklo.dev@gmail.com>
+Date:   Wed Sep 30 16:48:47 2020 +0300
+
+    Update to 7.1.0 (2090)
+
+commit 321b75636741cd9b64aaf04fe95b593e7c0cba7b
+Author: DrKLO <drklo.dev@gmail.com>
+Date:   Fri Aug 14 19:58:22 2020 +0300
+
+    Update to 7.0.0 (2060)
+
+commit fe599cd519185f8ec118a36bfd23b9ed4d23d829
+Author: DrKLO <drklo.2kb@gmail.com>
+Date:   Mon Aug 27 11:33:11 2018 +0300
+
+    Update to 4.9.1
+
+commit 6a1cf64f6f45ba0d0e7ff898e8a6c677ddc3ef33
+Author: DrKLO <drklo.2kb@gmail.com>
+Date:   Fri Mar 31 02:58:05 2017 +0300
+
+    Update to 3.18.0
+
+commit 55463a93db95dcc450c00af3918d9bbbebf4f8c1
+Author: DrKLO <drklo.2kb@gmail.com>
+Date:   Fri Jun 24 13:27:15 2016 +0300
+
+    Update to 3.10.1
+    
+    Thanks to
+    https://github.com/DrKLO/Telegram/pull/1412

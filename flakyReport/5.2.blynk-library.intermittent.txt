@@ -1,0 +1,11 @@
+commit a28d7076280ca31eccf10468acd70adb843d3f73
+Author: Volodymyr Shymanskyy <vshymanskyi@gmail.com>
+Date:   Mon Feb 16 15:49:51 2015 +0200
+
+    Weak linkage for handlers
+
+commit 0a12300fb1e0576e3698abe2cc1bcaa7681f6af3
+Author: Volodymyr Shymanskyy <vshymanskyi@gmail.com>
+Date:   Tue Feb 10 16:40:17 2015 +0200
+
+    Initial commit

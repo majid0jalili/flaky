@@ -1,0 +1,17 @@
+commit 62f135a97df1800020cfeb63fa38a0b3e39489be
+Author: Eric Fischer <enf@pobox.com>
+Date:   Fri Jul 21 12:28:14 2017 -0700
+
+    Exclude long attribute values from tilestats output, as specified
+
+commit 7b03e1ee8715325fe6b6d73a1d533098d8665a1f
+Author: Eric Fischer <enf@pobox.com>
+Date:   Wed Jul 19 13:09:47 2017 -0700
+
+    Include tilestats in the metadata table. (Not all tests are passing)
+
+commit eb8ab1dd588f517c940d255c394b858ea73f724a
+Author: Eric Fischer <enf@pobox.com>
+Date:   Thu May 18 14:33:38 2017 -0700
+
+    Fix crash with very long (>128K) attribute values

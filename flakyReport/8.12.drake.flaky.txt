@@ -1,0 +1,189 @@
+commit bc4638164b9994119f8b50b48d268c172e34bdfe
+Author: Russ Tedrake <russt@mit.edu>
+Date:   Thu May 7 19:42:07 2020 -0400
+
+    examples: make Acrobot swing-up with trajectory optimization SNOPT only (#13252)
+    
+    * examples: make Acrobot swing-up with trajectory optimization SNOPT only
+
+commit fd583c7006a307f470bedd22294129fdf8c7de20
+Author: Eric Cousineau <eric.cousineau@tri.global>
+Date:   Mon Mar 30 11:00:34 2020 -0400
+
+    jupyter_py: Add workaround / notes for common ZMQError flake on CI (#12958)
+
+commit 0034a0b2944ae3e279fe9aaca79de0c8e3e5b06c
+Author: Jeremy Nimmer <jeremy.nimmer@tri.global>
+Date:   Mon Feb 3 12:31:29 2020 -0500
+
+    examples: Remove deprecated valkyrie (#12664)
+
+commit 2757d5b81b6327bd1badc8d5cf2048519df4deb5
+Author: Eric Cousineau <eric.cousineau@tri.global>
+Date:   Tue Sep 3 12:00:36 2019 -0400
+
+    jupyter: Add support for running / testing notebooks (#11960)
+
+commit 831452df37dc3ecbbbec674f87e332a25ef7cae7
+Author: Eric Cousineau <eric.cousineau@tri.global>
+Date:   Fri Aug 30 17:42:12 2019 -0400
+
+    render: Mark OSPRay test as flaky (#11980)
+
+commit e128284d4da8c01344a3f795bc9e41b3c476cae1
+Author: Jeremy Nimmer <jeremy.nimmer@tri.global>
+Date:   Thu Aug 1 08:22:57 2019 -0400
+
+    lcm: Remove deprecated methods (2019-08) (#11840)
+
+commit aa2555251be45671b4e2a9e4e730b3e2f7b598eb
+Author: BetsyMcPhail <betsy.mcphail@kitware.com>
+Date:   Tue May 14 10:59:54 2019 -0400
+
+    Update buildcop playback about when to restart Mac nightly builds
+
+commit 8cc5011178f02016eccdb7e4c1a8bf21082de7ae
+Author: Jeremy Nimmer <jeremy.nimmer@tri.global>
+Date:   Fri Mar 29 16:34:45 2019 -0400
+
+    lcm: Add new APIs and discourage use of threads (#11041)
+    
+    Add DrakeLcmInterface::HandleSubscriptions to pump the receive queue on
+    demand (instead of relying on the thread to do it).
+    
+    Add new Subscriber sugar class to DrakeLcmInterface, where the user
+    doesn't have to write any lambdas at all.
+    
+    Add unsubscribe option to DrakeLcmInterface and its sugars.
+    Add queue_capacity option to DrakeLcmInterface and its sugars.
+    
+    Add a Doxygen warning to DrakeLcm's thread-management methods as well as
+    the LcmReceiveThread class.
+    
+    Condense the implementation of LcmReceiveThread to not duplicate logic
+    that's already available from the LCM upstream.
+    
+    Add DrakeLcm::get_lcm_url helper that reports the URL, even if it was
+    defaulted.
+
+commit 2fc80c6fdd2e975d171f60f66f482a2064be584f
+Author: Jamie Snape <jamie.snape@kitware.com>
+Date:   Mon Jan 14 10:41:26 2019 -0500
+
+    Mark tests that use IPOPT and cause issues on macOS as flaky
+
+commit 8f902382db56203e028ff9bedadbd88c2e47e18b
+Author: Jamie Snape <jamie.snape@kitware.com>
+Date:   Tue Dec 18 16:00:59 2018 -0500
+
+    Remove flaky test tags related to usage of non-mock LCM
+
+commit 450d88d28a3d8c4648f4cce7033011f1bc52f325
+Author: Eric Cousineau <eric.cousineau@tri.global>
+Date:   Mon Oct 22 16:24:01 2018 -0400
+
+    Increase test timeouts for frequently timed out tests
+
+commit e46cda3ee6341d45a4cf5f0a9cab27751a564726
+Author: Jeremy Nimmer <jeremy.nimmer@tri.global>
+Date:   Thu Sep 20 10:44:26 2018 -0400
+
+    automotive: Remove car_sim_lcm (#9474)
+    
+    This demo uses RigidBodyPlant, which is heading for deprecation.  We can
+    resurrect this demo using MultibodyPlant in the future, if we wish.  The
+    current code isn't very useful either as a standalone example, or a
+    reference for doing the Multibody porting, so it's not worth moving into
+    the attic, either.
+
+commit f97cd3d3bc16b25aaf09d9a8f5ead2eb413f92d5
+Author: Soonho Kong <soonho.kong@tri.global>
+Date:   Tue May 8 09:39:54 2018 -0400
+
+    Revise steering_command_driver_test.py
+
+commit 51c7cbb6050e6737d64928f928112fa0bfe8c869
+Author: Eric Cousineau <eric.cousineau@tri.global>
+Date:   Thu Jan 11 09:58:41 2018 -0500
+
+    call_python: Denote `call_python_full_test` as flaky as a stop-gap measure.
+
+commit f7e3131fb77f70ab19421d3e81aac3af18a69bd2
+Author: Eric Cousineau <eric.cousineau@tri.global>
+Date:   Fri Jan 5 13:28:58 2018 -0500
+
+    call_python: Ensure that the tests accommodate SIGPIPE failures on C++ side.
+
+commit 71a8ed2ba18bf90693b9a849752b3c4fbfc60dc7
+Author: Eric Cousineau <eric.cousineau@tri.global>
+Date:   Fri Dec 22 17:37:01 2017 -0500
+
+    call_python: Test plotting.
+
+commit 73a8da32cd41ff7fd023c3680f8250860cbd0e6b
+Author: Drake Refactor Bot <drake-refactor-bot@tri.global>
+Date:   Thu Dec 7 18:24:02 2017 -0500
+
+    Run tools/dev/6996-move
+
+commit dffddce9d0deeb265cffdaa66d9b13f77548d08b
+Author: Andrés Valenzuela <andres.valenzuela@tri.global>
+Date:   Mon Nov 27 12:48:56 2017 -0500
+
+    Changes to resolve *San failures.
+
+commit 5bf23963b29499291f3ff954cf06b11145834358
+Author: Mmanu Chaturvedi <mmanu.chaturvedi@kitware.com>
+Date:   Wed Nov 1 17:01:46 2017 -0400
+
+    Make dual_kuka_simulation_test flaky
+
+commit ec31b009c8bf5785228dfb7fe296f3eda01fa359
+Author: Mmanu Chaturvedi <mmanu.chaturvedi@kitware.com>
+Date:   Tue Oct 24 17:43:36 2017 -0400
+
+    Make tests with LCM self-test flaky
+
+commit 18ea84a364bb88baeccc33179a88c9ccff634bc7
+Author: Jeremy Nimmer <jeremy.nimmer@tri.global>
+Date:   Tue Oct 17 11:56:17 2017 -0400
+
+    Move /drake/doc to /doc
+
+commit 3b6b50cd6de9e49f66ceeaaf32b2d00453fb0927
+Author: Jeremy Nimmer <jeremy.nimmer@tri.global>
+Date:   Wed Oct 11 15:22:59 2017 -0400
+
+    Rename BUILD to BUILD.bazel
+    
+    Fully automatic change, via:
+    $ find . \
+      -name cc_toolchain -prune -o \
+      -name BUILD -print0 |
+      xargs -0 -n1 -I{} git mv {} {}.bazel
+    
+    We avoid cc_toolchain because bazel doesn't allow BUILD.bazel there.
+
+commit 93de8f7800a05cd7b68eff0e4a8466dfbee432cc
+Author: Jamie Snape <jamie.snape@kitware.com>
+Date:   Tue May 23 10:43:53 2017 -0400
+
+    Mark lcm_driven_loop_test as flaky
+
+commit 32358ea471267d23e74a6d7685c5cb1c78ad9b24
+Author: Lucy <lucy.gibson@tri.global>
+Date:   Fri Jan 6 16:12:18 2017 -0500
+
+    Add notes in Buildcop doc on the buildcop retrospective, Slack channel, etc. (#4692)
+    
+    * Add notes on the buildcop retrospective, Slack channel, other helpful info.
+    
+    * Fixes from code review.
+    
+    * Review fixes: whitespace.
+
+commit 14d5ba6fc1b1bc4e3b89bc14155957c154aa8898
+Author: David German <david.german@tri.global>
+Date:   Mon Aug 1 19:07:07 2016 -0400
+
+    Add a Drake build cop playbook.

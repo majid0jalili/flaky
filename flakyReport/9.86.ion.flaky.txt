@@ -1,0 +1,115 @@
+commit ea232d47116cac4d54d5536e6bc8ea88be7bdfe1
+Author: Ion Team <email>
+Date:   Wed Apr 4 14:39:07 2018 -0700
+
+    Update Ion release with initial Copybara export
+    
+      - 191649173 Automated g4 rollback of changelist 191329075. by Ion Team <email>
+      - 191544728 Remove implementation color read queries from GraphicsMan... by Ion Team <email>
+      - 191493250 Fix crash when using swiftshader GLES20 in mirth kml visu... by Ion Team <email>
+      - 191466160 Prevents Ion header conflict with existing bswap_* functi... by Ion Team <email>
+      - 191329075 Make ResourceHolder destruction more thread safe. by Ion Team <email>
+      - 191137301 Add enums for 3D ASTC texture compression formats. by Ion Team <email>
+      - 191125165 Disable VAOs by default on Android by Ion Team <email>
+      - 190988598 Fix Kokoro build by Ion Team <email>
+      - 190973385 Update to HEAD of github.com/harfbuzz/harfbuzz by Ion Team <email>
+      - 190965733 Make Ion load glMemoryBarrier by Ion Team <email>
+      - 190948760 Fix open source Bazel build Windows linker setting. by Ion Team <email>
+      - 190849695 Adds Bazel wrappers for Gyp output. by Ion Team <email>
+      - 190676832 Update command line for listing Harbuzz files and update ... by Ion Team <email>
+      - 190671572 Add Khmer shaper source file to Harfbuzz GYP file. by Ion Team <email>
+      - 190643071 Change Ion open source to use open source ABSL. by Ion Team <email>
+      - 190636681 Update harfbuzz to head of https://github.com/harfbuzz/ha... by Ion Team <email>
+      - 190140793 Slightly change Ion's dummy shaders to make WebGL happy. by Ion Team <email>
+      - 190138714 Remove compatibility virtual functions from glcontext.h by Ion Team <email>
+      - 189982746 Remove leftover Visual/MockVisual files. by Ion Team <email>
+      - 189971178 Remove obsolete function loading shims from msaa_shim. by Ion Team <email>
+      - 189776894 Remove two remaining mentions of Visual in Ion. by Ion Team <email>
+      - 189775444 Fixes missing includes building Ion using public Harfbuzz. by Ion Team <email>
+      - 189387443 Add missing locks to GetLastBoundUnit and SetLastBoundUnit. by Ion Team <email>
+      - 189091187 Fixes undefined reference to __atomic_is_lock_free. by Ion Team <email>
+      - 189087108 Excludes the opensource OpenCTM readme export from Copyba... by Ion Team <email>
+      - 189083865 Rename remaining uses of Visual to GlContext. by Ion Team <email>
+      - 189073092 Updates opensource build for ABSL and OpenCTM deps. by Ion Team <email>
+      - 188926303 Makes Ion match GLU[1] and Emscripten[2]. by Ion Team <email>
+      - 188795651 Rename remaining uses of Visual to GlContext within Ion. by Ion Team <email>
+      - 188418398 Remove fixed Renderer limit. by Ion Team <email>
+      - 188368352 Expand number of max Ion Renderers. by Ion Team <email>
+      - 187964107 Applied ClangTidy fixes to google3 paths matching 'geo/.*'. by Ion Team <email>
+      - 187947272 Replace naked isnan and isinf with explicit std:: versions. by Ion Team <email>
+      - 187943767 Automated g4 rollback of changelist 187933393. by Ion Team <email>
+      - 187933393 Automated g4 rollback of changelist 187915830. by Ion Team <email>
+      - 187930222 Fix Windows build error under Copybara export. by Ion Team <email>
+      - 187915830 Rename GraphicsManager::GlApi to GlFlavor. by Ion Team <email>
+      - 187823501 Applied ClangTidy fixes to google3 paths matching 'geo/.*'. by Ion Team <email>
+      - 187651160 Applied ClangTidy fixes to google3 paths matching 'geo/.*'. by Ion Team <email>
+      - 187637749 Add Copybara workflow for push to Github. by Ion Team <email>
+      - 187588274 Rename MockVisual to FakeGlContext. by Ion Team <email>
+      - 187528827 Applied ClangTidy fixes to google3 paths matching 'geo/.*'. by Ion Team <email>
+      - 187383473 Correctly detect resource index exhaustion. by Ion Team <email>
+      - 187381341 Fix Lexan warnings in fileutils.cc. by Ion Team <email>
+      - 187379675 LSC: Add namespace qualifiers to global names. by Ion Team <email>
+      - 187341597 Applied ClangTidy fixes to google3 paths matching 'geo/.*'. by Ion Team <email>
+      - 187169527 Make style advice against DISALLOW_COPY_AND_ASSIGN more p... by Ion Team <email>
+      - 187101306 Simplify AsmjsContext::GetProcAddress. by Ion Team <email>
+      - 187100640 Make zipasset_generator work with generated inputs. by Ion Team <email>
+      - 187092864 Fix warnings from a very aggressive-with-warnings build i... by Ion Team <email>
+      - 186852087 Rename Visual to GlContext. by Ion Team <email>
+      - 186698736 Only process uniforms which have changed since the last d... by Ion Team <email>
+      - 186690274 Change texture image unit management for better performan... by Ion Team <email>
+      - 186380790 Do not report WebGL 1.0 as 2.0. by Ion Team <email>
+      - 186046225 Fix socket_connection_test. by Ion Team <email>
+      - 186026320 Revert changes to datetime.cc by cl/186000282. by Ion Team <email>
+      - 186000282 Change snprintf and std::snprintf usages to absl::SNPrintF by Ion Team <email>
+      - 185550349 Optimize ResourceHolder::GetResource() by Ion Team <email>
+      - 185388074 Backport upstream fix to address integer overflow issue: by Ion Team <email>
+      - 185192000 Add GraphicsManager features kShadowSamplers and kTexture... by Ion Team <email>
+      - 184742225 Log warning when creating a shadermanager program with th... by Ion Team <email>
+      - 184623512 Add some missing 16 bit renderbuffer formats by Ion Team <email>
+      - 182836549 Add new warning to Ion's freetype2.gyp file needed after ... by Ion Team <email>
+      - 182820992 Updated freetype version from 2.6.1 to 2.8.1 in google3. by Ion Team <email>
+      - 182456334 Fix gyp build with tinyxml changes. by Ion Team <email>
+      - 182289059 Automated g4 rollback of changelist 181351752. by Ion Team <email>
+      - 182246496 Reversed the order MakeDirectory() checks for existing pa... by Ion Team <email>
+      - 182143634 Remove the SwiftShader workaround from GraphicsManager. by Ion Team <email>
+      - 182134284 Explictly mark default Vector constructors as noexcept. by Ion Team <email>
+      - 181621681 Remove ion::base::SetBreakHandler and RestoreBreakHandler. by Ion Team <email>
+      - 181481836 Added support for QCOM Texture based hardware foveation i... by Ion Team <email>
+      - 181470625 Remove ARCH_K8 from the asmjs defines. by Ion Team <email>
+      - 181395790 Turn off Secure SCL warnings in conversionutils.cc. by Ion Team <email>
+      - 181376401 Add rotation methods for ion image by Ion Team <email>
+      - 181351752 Automated g4 rollback of changelist 180616389. by Ion Team <email>
+      - 181295687 Fix callback function type. (Calling a function through a... by Ion Team <email>
+      - 180951477 Check for invalid (-1) integer values when querying enum ... by Ion Team <email>
+      - 180934768 Set swap interval correctly with ION_GFX_OGLES20=1. by Ion Team <email>
+      - 180933697 Blacklist sampler objects on SwiftShader by Ion Team <email>
+      - 180748857 Make FramebufferObject see R32f and Rg32f as color-render... by Ion Team <email>
+      - 180616389 Refactor scuba_test for easier use. by Ion Team <email>
+      - 179973138 Disable SharedPtr move constructors when reference tracki... by Ion Team <email>
+      - 179970691 Reformat TODO to allow Copybara scrubbing. by Ion Team <email>
+      - 179968396 ion: Add GraphicsManager::InitializeAllConstants to trigg... by Ion Team <email>
+      - 179839247 Fix Leakr warnings in some files. by Ion Team <email>
+      - 179781505 Fixed 5 ClangTidyLegacy findings in 2 paths: //depot/goog... by Ion Team <email>
+      - 179770176 ion: Remove extra space after void. by Ion Team <email>
+      - 179479235 Add a version of the Benchmark::Descriptor structure with... by Ion Team <email>
+      - 179478662 Improve documentation of StateTable. by Ion Team <email>
+      - 179444286 Suppress a warning. by Ion Team <email>
+      - 179272733 Fixed 2 ClangTidyReadability findings in 1 path: //depot/... by Ion Team <email>
+      - 179260145 Add an ION_NO_BASE_LOGGING preprocessor flag. by Ion Team <email>
+      - 179223782 Automated g4 rollback of changelist 178969301. by Ion Team <email>
+      - 179194017 Fixed 1 DeadCode finding in 1 path: //depot/google3/geo/r... by Ion Team <email>
+      - 179125012 Re-land: Dynamically load X11/GLX entry points in VisualGlx by Ion Team <email>
+      - 179117529 Add explanatory log to DCHECK in VisualMap. by Ion Team <email>
+      - 179056068 Fix to ion settings slider html tag. by Ion Team <email>
+      - 178969301 Look up ES 3 core functions correctly. by Ion Team <email>
+      - 178912877 Include base/base_config.h on non-Linux platforms if ION_... by Ion Team <email>
+      - 178825546 Provide a method for logging even in prod builds by defin... by Ion Team <email>
+      (And 2123 more changes)
+    
+    PiperOrigin-RevId: 191649173
+
+commit 9e659416fb04bb3d3a67df1e018d7c2ccab9d468
+Author: Craig Donner <cdonner@google.com>
+Date:   Tue Feb 9 11:29:06 2016 -0800
+
+    Initial commit of Ion.

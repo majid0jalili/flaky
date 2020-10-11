@@ -1,0 +1,65 @@
+commit 551237c20f081e87d8841baffdef9b78571b6886
+Author: Giuseppe Penone <giuspen@gmail.com>
+Date:   Sun Aug 9 16:47:38 2020 +0100
+
+    future becomes present
+
+commit 4b16224e9b4f2f31f8f249579e8e102d00b3bcea
+Author: Giuseppe Penone <giuspen@gmail.com>
+Date:   Sat Jun 20 14:34:16 2020 +0100
+
+    gtkmm - updated all spelling check languages for upcoming new pygtk2 and gtkmm3 versions
+
+commit ff5d59ca898f12a593242d2053cde3d3ed2d2d3e
+Author: Giuseppe Penone <giuseppe.penone@qsdsistemi.it>
+Date:   Wed Sep 3 15:01:04 2014 +0200
+
+    embedded file open and monitor for changes
+
+commit f333080fc4ca19e2680e68ec96541609b9d375b7
+Author: Giuseppe Penone <giuspen@gmail.com>
+Date:   Sat Aug 9 14:26:41 2014 +0200
+
+    it.po updated from Vincenzo Reale
+
+commit 1f3ed0feb2753253ddf2ae7fa5a5ce514c7a4b63
+Author: Giuseppe Penone <giuspen@gmail.com>
+Date:   Sun Jun 1 23:20:33 2014 +0200
+
+    exploring options for files embedding same as images
+
+commit c79cfdf377003f4518a56f394be5faaf2a8f97d8
+Author: Giuseppe Penone <giuspen@gmail.com>
+Date:   Sun Dec 1 22:17:07 2013 +0100
+
+    Inserita l'etichetta 0.31.0 per il changeset 2e1ea1259ef8
+
+commit fccccc28f112c34a36fe329972550fb82323fe2a
+Author: Giuseppe Penone <giuseppe.penone@qsdsistemi.it>
+Date:   Thu Nov 28 13:03:45 2013 +0100
+
+    bugfix: paste html from clipboard
+
+commit a96fd8b2f17ea7e7e8521ef5ffbd37df9a490097
+Author: Giuseppe Penone <giuspen@gmail.com>
+Date:   Sun Oct 6 23:49:41 2013 +0200
+
+    dialog_search out of glade WIP
+
+commit 9db4a5467e04daa6b3554d277f8f14fe37e2080e
+Author: Giuseppe Penone <giuseppe.penone@qsdsistemi.it>
+Date:   Fri Oct 4 13:01:54 2013 +0200
+
+    testing direct save as pdf
+
+commit 3ba2924b5bdae9e4baba001a9dfbe864e10e22e1
+Author: Giuseppe Penone <giuseppe.penone@qsdsistemi.it>
+Date:   Sat Jul 27 17:51:58 2013 +0200
+
+    added spell check for all supported languages but chinese
+
+commit b9ee9fbdd4ac69789f74aeb820c031d5b4f60a0c
+Author: Giuseppe Penone <giuseppe.penone@qsdsistemi.it>
+Date:   Sat Jul 27 16:43:43 2013 +0200
+
+    added italian dictionary for windows installation

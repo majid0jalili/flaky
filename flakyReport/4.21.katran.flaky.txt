@@ -1,0 +1,13 @@
+commit 6bf3728f5007b19b34b5cb7ab5d58b35c1e930e7
+Author: Zeyi (Rice) Fan <zeyi@fb.com>
+Date:   Mon Jul 6 16:00:45 2020 -0700
+
+    add retry flag to getdeps test
+    
+    Summary: This commit adds a flag `--retry` to getdeps and teach it to run retry failed test. This allows us to still pass the tests when there are some flaky tests presents.
+    
+    Reviewed By: wez
+    
+    Differential Revision: D22291063
+    
+    fbshipit-source-id: 572af48a52ceb4a9abbf530cc0154ded0120c0de

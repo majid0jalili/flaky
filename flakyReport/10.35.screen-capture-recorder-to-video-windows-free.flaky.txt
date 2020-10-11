@@ -1,0 +1,47 @@
+commit 43ce9fe938a2f22ba0b254a3d78f06b2f6c8a8c9
+Author: rogerdpack <rogerpack2005@gmail.com>
+Date:   Thu Dec 19 08:04:47 2013 -0700
+
+    bundle with mplayer also, why not LOL
+
+commit d49211cf576360e9a132a5034c03834c36a1bbe5
+Author: rogerdpack <rogerpack2005@gmail.com>
+Date:   Wed Oct 17 12:09:41 2012 -0600
+
+    wurking preview
+
+commit 3084cf0ede2e73caea78ff99fa53b7f703d40d95
+Author: rogerdpack <rogerpack2005@gmail.com>
+Date:   Fri Aug 31 15:21:51 2012 -0600
+
+    use mp4 by default
+
+commit 07aef530984f8ece55b8fa649251dd85fe55e3df
+Author: rogerdpack <rogerpack2005@gmail.com>
+Date:   Fri Apr 27 17:11:20 2012 -0600
+
+    some research on GetDIBits
+
+commit 371046c7231b4ea8d245c6c612904756e158ca3a
+Author: rogerdpack <rogerpack2005@gmail.com>
+Date:   Fri Sep 23 16:54:32 2011 -0600
+
+    init
+
+commit c1ea5092107b09a4a309362e6bddc1a43ad39cb7
+Author: rogerdpack <rogerpack2005@gmail.com>
+Date:   Wed Sep 7 20:30:02 2011 -0600
+
+    add some more dependencies <sigh>
+
+commit 7a184bb6defe106061ffe96db03607971be1c365
+Author: rogerdpack <rogerpack2005@gmail.com>
+Date:   Tue Sep 6 17:17:55 2011 -0600
+
+    cleanup
+
+commit fc0837c87c7fe84dd9f750eeaa5a1f849f3335af
+Author: rogerdpack <rogerpack2005@gmail.com>
+Date:   Tue Sep 6 16:28:01 2011 -0600
+
+    bundle ffmpeg

@@ -1,0 +1,134 @@
+commit 733fd79f46c29b7904c05741ece32a2cce61e4c2
+Author: Pseudonym <sudonim1@gmail.com>
+Date:   Tue Oct 11 18:52:05 2016 +0100
+
+    Removed internal iop event enum assignments which just confuse readers and
+    traces of an old hack.
+
+commit 70aba9d3ffda70157eaf46c25b4b95a412078c14
+Author: Miguel A. Colón Vélez <debian.micove@gmail.com>
+Date:   Tue Aug 25 09:00:12 2015 -0400
+
+    Update pthreads to 2.9.1
+    
+    - It adds support for x64.
+
+commit 24d5e59c32678d3eb44f7023ac48851bbb2a3bb9
+Author: Jonathan Li <jonathan.li@hotmail.co.uk>
+Date:   Mon Jun 29 10:07:36 2015 +0100
+
+    wxWidgets3.0: trim files and rename directory
+    
+    Delete files and directories that won't be used, and rename the
+    wxWidgets 3.0 directory to reduce confusion when doing maintenance
+    version upgrades.
+
+commit 2e791c762b888264da6e7bc7940f66b917f4ca74
+Author: Jonathan Li <jonathan.li@hotmail.co.uk>
+Date:   Mon Jun 29 09:49:11 2015 +0100
+
+    wxWidgets3.0: move libpng out, delete libjpeg
+    
+    Move libpng out of wxWidgets 3.0 so it's available to other projects.
+    Delete libjpeg since there's a newer copy already available in 3rdparty
+    (still outdated though).
+
+commit deb69c4c722753c1bfdbddee82e38436ba2595e2
+Author: Gregory Hainaut <gregory.hainaut@gmail.com>
+Date:   Tue Jul 1 23:21:03 2014 +0200
+
+    wx3.0: add a stripped down version of wx3.0
+    
+    Based on the debian version.
+    
+    Note: it can be surely stripped down further
+    
+    MS build script must be updated. Note: I keep wx original  script as reference
+
+commit 26fece951069c63e4623f7e9fda929fcbee99bf5
+Author: refraction <refraction@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Tue Jun 22 23:10:40 2010 +0000
+
+    Summary of fixes
+    Games
+    - Resident Evil Dead Aim flickering graphics fixed.
+    - Flatout games should now boot everytime (instead of randomly)
+    - Sega Superstar Tennis flashing fixed
+    - Destruction Derby graphics fixed (NTSC confirmed, PAL unsure)
+    - Tenchu Fatal Shadows flickering textures fixed, Issue 748
+    - Spyro Hero's Tail should boot again, Issue 746
+    
+    General Info
+    - General reworking of the GS paths with all paths prioritizing more correctly.
+    - XGKICK can stall if another GS transfer is in progress
+    - Major reworking of Path3 masking, could still be combined with normal Path3 transfers, but lets get it working first :P
+    - Taken in to account a few conditions which could have caused VIF to lock up/crash when stalling on ends.
+    - Unreversed GIF and SPR and VIF so its the normal way round
+    - all DMA paths should now resume correctly after being stopped by hardware
+    - GIF FIFO now actually transfers stuff :P
+    - VIF CMD's simulated by the length of the interrupts at the end.
+    
+    Phew, i think that's everything :S
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@3274 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit 0f9a600cbd1bbb6e334010a86b06ad318acfcd4e
+Author: Jake.Stine <Jake.Stine@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Wed Dec 2 14:21:54 2009 +0000
+
+    Fun little hack for Rama to play with, that should simulate the magic power of the PEOPS SPU2's "unstuck iop" spell.
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@2284 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit 7f00193900d3db5c301b01388f7c82d6febe2d4b
+Author: arcum42 <arcum42@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Fri Jun 26 00:30:19 2009 +0000
+
+    Various changes, mainly Gif related cleanup. Fixed SafeArray.h to work with Linux again while I'm at it...
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@1432 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit 480519efad41301c50e9320456db98ddbb9a9668
+Author: refraction <refraction@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Thu Jun 4 17:50:56 2009 +0000
+
+    Fix for Tekken Tag Issue 259
+    Removed the doubled up timings on SIF DMA cycles (should have been done when it was spotted really)
+    Put in a fix for Scratchpad reads which cause a VTLB error.
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@1323 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit 44378b31f7e41d7fae38b121c698f354bcc31be0
+Author: refraction <refraction@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Mon May 25 07:07:59 2009 +0000
+
+    Path3 Masking mystery solved, Simpsons (Issue 24) GT4 (Issue 211), tenchu and many many other path3 masking games should be fixed.  This will only work on MTGS.
+    Also semi-removed my gifsplit thing to resolve the tekken 5 menus Issue 209
+    
+    Note: GT4 is still missing its logo, this is down to a really bizzare timing issue i cant pinpoint.
+    
+    Removed redundant path3hack
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@1257 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit aa94c30dc357a19d01b4f389c801090b089fc59b
+Author: refraction <refraction@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Fri Feb 6 20:04:37 2009 +0000
+
+    Should be the last of the trunk, gotta finish the branches/tags, but thats the main bulk transferred.
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@426 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit 57616b8916bcc1b9be995bc7cde347da67aa1a0b
+Author: refraction <refraction@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Fri Feb 6 18:28:52 2009 +0000
+
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@407 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit a2791d843e1ec1d1a32810fadbb20cb3f9038fdd
+Author: laurence.muller <laurence.muller@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Thu Nov 6 23:27:06 2008 +0000
+
+    Using standard SVN folder structure
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@398 96395faa-99c1-11dd-bbfe-3dabce05a288

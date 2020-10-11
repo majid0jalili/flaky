@@ -1,0 +1,13 @@
+commit a01711148b91785b0707b305b172f6a1a18d5225
+Author: rdb <git@rdb.name>
+Date:   Thu Apr 2 13:18:47 2020 +0200
+
+    tests: add an assorted variety of unit tests
+    
+    I'm mostly trying to make sure we have over-coverage for a couple of places that are being hit intermittently by our current unit tests, generating noisy codecov reports.  If we make sure these places are hit always, we hopefully won't have codecov misreport lost/gained coverage for unrelated changes.
+
+commit d3389a556eb1bf840acf5add6430e7557cf75539
+Author: Darren Ranalli <github@dranalli.com>
+Date:   Tue Sep 16 22:07:59 2008 +0000
+
+    initial revision

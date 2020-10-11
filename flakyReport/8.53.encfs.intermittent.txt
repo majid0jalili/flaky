@@ -1,0 +1,8 @@
+commit 59d74aea1f11cd1fb0df3e1dea97f731bfd21dd0
+Author: Valient Gough <valient@gmail.com>
+Date:   Sat Aug 5 23:23:41 2017 -0700
+
+    Squashed 'vendor/github.com/muflihun/easyloggingpp/' content from commit 850ea2a9
+    
+    git-subtree-dir: vendor/github.com/muflihun/easyloggingpp
+    git-subtree-split: 850ea2a9f151ed648a989dda1cf44e503e45831f

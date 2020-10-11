@@ -1,0 +1,23 @@
+commit 8d83ffbf97d399b2d8d0da1894ea09dde1e0116a
+Author: William A Rowe Jr <wrowe@vmware.com>
+Date:   Thu Aug 27 17:50:52 2020 -0500
+
+    Change known-working test flags for windows (#12851)
+    
+    - Five tests appear now-passing
+    - Four more verified flaky
+    - Two are fail -> known flaky
+    - One flake is now known to fail
+    
+    Co-authored-by: Sunjay Bhatia <sunjayb@vmware.com>
+    Signed-off-by: Sunjay Bhatia <sunjayb@vmware.com>
+    Co-authored-by: William A Rowe Jr <wrowe@vmware.com>
+    Signed-off-by: William A Rowe Jr <wrowe@vmware.com>
+
+commit a119a0703de8de2b7351331aa502879a7e1044d7
+Author: Tony Allen <tallen@lyft.com>
+Date:   Tue Oct 1 10:32:16 2019 -0700
+
+    adaptive concurrency: Filter configuration and integration tests (#8244)
+    
+    Signed-off-by: Tony Allen <tallen@lyft.com>

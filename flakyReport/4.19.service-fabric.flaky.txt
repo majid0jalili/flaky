@@ -1,0 +1,19 @@
+commit 6f2a641bdfe4b7e7100780cd4a4473f8eda30d5c
+Author: sridhar madhugiri (msft) <sridmad@users.noreply.github.com>
+Date:   Thu May 2 19:12:10 2019 -0700
+
+    Update the repo with sources that match the latest 6.4 release (#317)
+    
+    Update the repo with sources that match the latest 6.4 release
+
+commit 7a2f3ec5df233d728ea22dbe388b103776bc06d2
+Author: Service Fabric Team Committer <noreply-sfteam@microsoft.com>
+Date:   Thu Aug 23 16:17:00 2018 -0700
+
+    Updating open source code with new snapshot, including the managed code and ktl
+
+commit 2e8c3d6699eb1d0d704ee24146356d343f295603
+Author: Service Fabric Team Committer <noreply-sfteam@microsoft.com>
+Date:   Wed Mar 14 20:26:05 2018 +0000
+
+    Initial open source commit of Service Fabric

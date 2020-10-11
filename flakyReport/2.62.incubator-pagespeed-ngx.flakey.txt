@@ -1,0 +1,46 @@
+commit 0290f52a8892c87eed4103e1990a07d0838fd05e
+Author: Otto van der Schaaf <oschaaf@we-amp.com>
+Date:   Wed Aug 20 20:32:09 2014 +0200
+
+    native fetcher: Support http keep-alive
+    
+    Based on @dinic his work, add keep-alive support for the native fetcher.
+    Adds a new option, usable at the http{} level in configuration:
+    
+    pagespeed NativeFetcherMaxKeepaliveRequests 50;
+    
+    The default value is 100 (aligned to nginx). Setting the value to 1 turns off
+    keep-alive requests altogether).
+    
+    Most notable changes:
+    - Request keep-alive by adding the appropriate request header
+    - Fixes connections getting reused while they are servicing other requests:
+    - Remove connection from the pool of available connections for keepalive when applicable
+    - Disable keepalive in more appropriate situations
+    - Response parsing fixes
+    - Remove connections that timeout from the k.a. pool
+    - Add a few sanity (D)CHECKS
+    - Emit debug messages for traceability
+    - Fix for ignoring ipv6 addresses returned from dns queries when ipv6 is enabled.
+    - Bump the fetch timeout in test configuration to deflake tests that require dns
+      lookups (which will be done via 8.8.8.8 currently for the native fetcher)
+
+commit 9bbe912bd7173da8c4844b84552d8af1692e5902
+Author: Otto van der Schaaf <oschaaf@gmail.com>
+Date:   Tue Nov 19 21:29:06 2013 +0100
+
+    Valgrind: Add an automated test
+    
+    This makes nginx run in the background under valgrind,
+    with both a master and a child process.
+    Valgrind errors will be redirected to `valgrind.log`.
+    When `USE_VALGRIND` is set, all system tests will be run under valgrind,
+    and at the end a new test is appended which ensures no valgrind errors
+    where encountered.
+    
+    It is also worth noting that:
+    - There is a new file, `valgrind.sup`, which contains a few suppressions.
+    - Some tests behave flakey under valgrind. For now these are appended
+      to the expected failures (when under valgrind only).
+    - 'Possibly lost' errors are all suppressed to get the amount of false
+      positives manageable.

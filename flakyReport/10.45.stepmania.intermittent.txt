@@ -1,0 +1,33 @@
+commit bfc167fe6d805b37622a96993d2aec5baddf2f52
+Author: Martin Kröning <mkroening@posteo.net>
+Date:   Wed Jun 24 00:41:52 2020 +0200
+
+    Replace libpng submodule with source (#2023)
+    
+    * Replace libpng submodule with source
+    
+    Taken from 505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca  libpng-1.6.37.tar.xz
+    
+    * Remove submodule-related config from CI
+
+commit 00793032b2fb62443b68df564541dde60b26cc38
+Author: Glenn Maynard <gmaynard@users.sourceforge.net>
+Date:   Tue Jan 21 07:04:53 2003 +0000
+
+    add m_iMusicWheelSwitchSpeed
+
+commit 8377d8260c264e3a13b3789a32d457259b82bc02
+Author: Glenn Maynard <gmaynard@users.sourceforge.net>
+Date:   Sun Jan 19 00:47:06 2003 +0000
+
+    Clapm the fast-moving wheel sound effects; bumps speed from 80fps
+    to 130fps for me.  (I think it was starting over a hundred at a time ...)
+    
+    The "random" effect was experimental.  I liked the bounce, but the
+    effect of pulling in random songs as it spun was hacky and not too
+    important (and a little buggy).
+    
+    Random is now like roulette, except 1: it's shuffled, 2: it moves in reverse,
+    and 3: it stops with a bounce instead of shifts, and 4: it spins twice as
+    fast.  Currently, the bounce is a little bumpy; that's loading the sample
+    music, I think.

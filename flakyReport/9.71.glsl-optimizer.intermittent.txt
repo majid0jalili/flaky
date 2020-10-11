@@ -1,0 +1,25 @@
+commit e4344161bde2e24fcfba65d30d58f087bd8bf94d
+Author: Ian Romanick <ian.d.romanick@intel.com>
+Date:   Wed Aug 24 15:21:58 2011 -0700
+
+    dri: Remove all DRI1 drivers
+    
+    Acked-by: Kristian Høgsberg <krh@bitplanet.net>
+    Acked-by: Marek Olšák <maraeo@gmail.com>
+    Acked-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+    Acked-by: Jakob Bornecrantz <jakob@vmware.com>
+    Acked-by: Dave Airlie <airlied@redhat.com>
+    Build-Tested-by: Jakob Bornecrantz <jakob@vmware.com>
+    Tested-by: Eugeni Dodonov <eugeni.dodonov@intel.com>
+
+commit f318acdd3a1690286056ec5881b72d3857b26ea6
+Author: Aras Pranckevicius <aras@unity3d.com>
+Date:   Mon Aug 9 11:06:42 2010 +0300
+
+    cleanup: remove most of Mesa code not needed for optimizer library
+
+commit e05ab2795b7463a053562b233d75e62f4138e0d3
+Author: Alan Hourihane <alanh@tungstengraphics.com>
+Date:   Thu Dec 4 13:27:05 2003 +0000
+
+    add tdfx DRI driver

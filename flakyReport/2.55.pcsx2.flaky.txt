@@ -1,0 +1,73 @@
+commit 9b110d8c3c6cdf2423bf2c2ad95f925eae3b7c7f
+Author: Jonathan Li <jonathan.li@hotmail.co.uk>
+Date:   Sat Jan 14 01:17:12 2017 +0000
+
+    plugins: Remove CDVDisoEFP
+    
+    Superseded by PCSX2 internal ISO reader and cdvdGigaherz.
+
+commit 0ad5abbbfcf8e8443731a202b397d00f070b1fab
+Author: Jonathan Li <jonathan.li@hotmail.co.uk>
+Date:   Sat Jan 14 01:16:52 2017 +0000
+
+    3rdparty: Remove bzip2
+    
+    Now unused.
+
+commit 7ffd3d3aeab6111bcbf3bd4c26e55d2f626e8741
+Author: Jake.Stine <Jake.Stine@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Tue Feb 24 02:08:37 2009 +0000
+
+    Restructured the build system from the ground up.  3rdparty libs have been moved back into a /3rdparty folder, and are compiled as libraries.  Most relevant plugins are part of the pcsx2_suite_2008.sln.  Revision tagging of filenames is still there, but is now disabled by default.  Pathnames with spaces shouldn't break the buildscripts anymore.  Removed tons and tons of files in an effort to simplify the repository and build system management.  So if a solution file you're used to using is missing, it's missing for a good reason (means the project can be built either from the Suite solution, or by double-clicking the project file from explorer, from which MSVC creates a new solution for you).
+    
+    I'll put up a wiki soon which covers new compilation features and stuff, like how to re-enable revision tagging, and how you can direct compiled exe/dlls to be copied to any destination of your choice (yay!) -- plus many other compiling tips (if I can remember them all! >_<)
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@581 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit 84099c097f7c5513e0fabce0493e2fcc76f7d572
+Author: Jake.Stine <Jake.Stine@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Mon Feb 16 04:32:03 2009 +0000
+
+    Added GSdx to the pcsx2_suite_2008.sln.  It defaults to SSE2, you'll have to manually configure the build targets to use SSSE3 or SSE4 (hopefully we'll find a better solution to that in the near future).
+    
+    Upgraded GSdx's use of svnrev to match other plugins in the pcsx2 repository; so that it no longer requires TortoiseSVN, and will also compile correctly from folders with spaces (ala '/program files/username/my documents/projects').
+    
+    Removed the /3rdparty and /common folders since they aren't used anymore, and it was potentially confusing or misleading to leave them in since they were out-of-date (they were once referenced by svn:externals, and we opted out of using those here due to slowness).
+    
+    SPU2-X: Fixed a minor overflow in the reverb that would cause infrequent crackles in a select few games.
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@503 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit 94cc1fd3293f23c674ae7cb0818914f5e8f806c3
+Author: refraction <refraction@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Fri Feb 6 20:30:21 2009 +0000
+
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@428 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit aa94c30dc357a19d01b4f389c801090b089fc59b
+Author: refraction <refraction@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Fri Feb 6 20:04:37 2009 +0000
+
+    Should be the last of the trunk, gotta finish the branches/tags, but thats the main bulk transferred.
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@426 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit 65424fa11b847ba4686fb5f2aa7929a309cb561e
+Author: refraction <refraction@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Fri Feb 6 19:52:59 2009 +0000
+
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@425 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit 5331a6caeb9dbe81e07e0d348d56b16fd4c797eb
+Author: refraction <refraction@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Fri Feb 6 19:45:43 2009 +0000
+
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@424 96395faa-99c1-11dd-bbfe-3dabce05a288
+
+commit a2791d843e1ec1d1a32810fadbb20cb3f9038fdd
+Author: laurence.muller <laurence.muller@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Thu Nov 6 23:27:06 2008 +0000
+
+    Using standard SVN folder structure
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/trunk@398 96395faa-99c1-11dd-bbfe-3dabce05a288

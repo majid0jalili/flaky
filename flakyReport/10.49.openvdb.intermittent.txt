@@ -1,0 +1,113 @@
+commit 2c3be9cb184cc96229f27f14421a21f3f7a1e175
+Author: Peter Cucka <peter.cucka@dreamworks.com>
+Date:   Mon Jun 24 13:13:46 2019 -0700
+
+    OVDB-44: Move documentation to a top-level doc/ directory.
+    
+    Squashed commit of the following:
+    
+    commit 751211235974595a0844061e6e1da7cee3451848
+    Author: Peter Cucka <peter.cucka@dreamworks.com>
+    Date:   Mon Jun 24 13:10:07 2019 -0700
+    
+        OVDB-44: Minor cleanup
+    
+        Signed-off-by: Peter Cucka <peter.cucka@dreamworks.com>
+    
+    commit 0ecb2b10d498732e3ae40fbcb045e3d4c82f01bd
+    Author: Peter Cucka <peter.cucka@dreamworks.com>
+    Date:   Mon Jun 24 13:06:51 2019 -0700
+    
+        OVDB-44: Removed obsolete file.
+    
+        Signed-off-by: Peter Cucka <peter.cucka@dreamworks.com>
+    
+    commit 5214588c210c31601a1d5e0d04e94143b256b42f
+    Author: Peter Cucka <peter.cucka@dreamworks.com>
+    Date:   Mon Jun 24 13:04:36 2019 -0700
+    
+        OVDB-44: Added some new-style openvdb and houdini_utils Doxygen links.
+    
+        Signed-off-by: Peter Cucka <peter.cucka@dreamworks.com>
+    
+    commit b1470f5c75c441547a568dd5639166443f332e5e
+    Author: Peter Cucka <peter.cucka@dreamworks.com>
+    Date:   Mon Jun 24 12:44:04 2019 -0700
+    
+        OVDB-44: Updated Makefile to reflect new doc/ directory structure.
+    
+        Signed-off-by: Peter Cucka <peter.cucka@dreamworks.com>
+    
+    commit c720f6843c98b568c05df8e802352163cd43e3a2
+    Author: Peter Cucka <peter.cucka@dreamworks.com>
+    Date:   Mon Jun 24 12:25:25 2019 -0700
+    
+        OVDB-44: Added support for openvdb_houdini Doxygen links.
+    
+        Signed-off-by: Peter Cucka <peter.cucka@dreamworks.com>
+    
+    commit d42d8572abc7105ea84b15a7ec706b6a8dfe1a15
+    Author: Peter Cucka <peter.cucka@dreamworks.com>
+    Date:   Mon Jun 24 11:20:25 2019 -0700
+    
+        OVDB-44: Simplified doc/ directory structure.
+    
+        Signed-off-by: Peter Cucka <peter.cucka@dreamworks.com>
+    
+    commit 475f2f832e0489cd970ed84fee60284fcc95d099
+    Author: Peter Cucka <peter.cucka@dreamworks.com>
+    Date:   Mon Jun 24 11:17:48 2019 -0700
+    
+        OVDB-44: Added preliminary openvdb_houdini documentation.
+    
+        Signed-off-by: Peter Cucka <peter.cucka@dreamworks.com>
+    
+    commit 1bd4aea6f21e2daf04666978676cd51e752a1d9c
+    Author: Peter Cucka <peter.cucka@dreamworks.com>
+    Date:   Fri Jun 21 15:04:17 2019 -0700
+    
+        OVDB-44: Moved documentation to a top-level doc/ directory.
+    
+        Signed-off-by: Peter Cucka <peter.cucka@dreamworks.com>
+
+commit 199a9b85b4925e3cf28453d30b8e96488582c3b7
+Author: OpenVDB-DevTeam <openvdb@gmail.com>
+Date:   Mon Apr 25 14:43:10 2016 -0700
+
+    bug fix
+
+commit 673b66d08b70007aa15f6f14dce6172403d621d7
+Author: OpenVDB-DevTeam <openvdb@gmail.com>
+Date:   Fri Apr 22 17:33:21 2016 -0700
+
+    various fixes
+
+commit 416502cdc96cbadd45d76a4d442511cec778168a
+Author: OpenVDB-DevTeam <openvdb@gmail.com>
+Date:   Wed Oct 29 11:00:39 2014 -0700
+
+    various fixes
+
+commit 59040dc36fa92f43ca1c5955df6c1d21c9f196dd
+Author: OpenVDB-DevTeam <openvdb@gmail.com>
+Date:   Thu Apr 18 13:27:59 2013 -0700
+
+    version 1.1.1
+
+commit d2d6dc017f9902b65c3bae1805a9e6f2d5077a0b
+Author: OpenVDB-DevTeam <openvdb@gmail.com>
+Date:   Tue Apr 16 19:23:25 2013 -0700
+
+    version 1.1.1
+
+commit c78012b2b8ed5eb6bcf63fc69743fd5f1473fe7f
+Author: OpenVDB-DevTeam <openvdb@gmail.com>
+Date:   Tue Apr 16 18:59:28 2013 -0700
+
+    restructure
+
+commit c42c9adb89e54525fa91fddbc87d8aa30e5b60bf
+Author: OpenVDB-DevTeam <openvdb@gmail.com>
+Date:   Fri Apr 12 12:38:07 2013 -0700
+
+    initial commit of version 1.1.1

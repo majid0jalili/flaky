@@ -1,0 +1,23 @@
+commit e269a1d15ad17dee98aba7967e5948ad72340afd
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Thu Nov 21 12:12:39 2013 +0100
+
+    Remove google breakpad for now
+
+commit db4a035406af496e3d2aeefb1f9956e9f58149d3
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Wed Nov 13 16:06:40 2013 +0100
+
+    Check in fresh google breakpad checkout, again
+
+commit 9aab28d292340d2f99a57f0d95a0a1725b279f0d
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Wed Nov 13 15:58:36 2013 +0100
+
+    Remove breakpad sources atm
+
+commit 33b4407e19166fbff05bad39118a3404e711966e
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Wed Nov 13 13:07:51 2013 +0100
+
+    add google-breakpad-read-only to third_party sources

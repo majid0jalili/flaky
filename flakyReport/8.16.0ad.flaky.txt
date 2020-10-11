@@ -1,0 +1,43 @@
+commit e948c5adb18596e6ba71afad61bbf8f5cf41887e
+Author: myconid <myconid@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Tue Aug 7 18:21:16 2012 +0000
+
+    Terrain/decal materials (includes triplanar/normal/specular/emissive mapping); custom alphamaps
+    
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@12306 3db68df2-c116-0410-a063-a993310a9797
+
+commit 08929b6389e21a24a3000d0b6f360a4f2fbaf793
+Author: philip <philip@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Wed Apr 6 22:08:51 2011 +0000
+
+    Renderer simplification: Remove non-FBO shadow mode.
+    
+    
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@9189 3db68df2-c116-0410-a063-a993310a9797
+
+commit 23acb60e81fb5ae6769870b94303b677b8df7117
+Author: jan <jan@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Sun Sep 2 21:44:56 2007 +0000
+
+    # win/macosx compat, add hooks to disable OpenGL feature usage
+    
+    config: add 2 parameters to allow disabling s3tc/auto mipmap gen
+    wpthread: add support for named semaphores (required for macosx compat)
+    openal, ogghack: remove direct use of __APPLE__ macro (replace with OS_MACOSX)
+    GraphicsSetupHandlers.cpp: fix incorrect usage of OS_ macros (they're always defined, so the test should be if their value is != 0)
+    
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@5316 3db68df2-c116-0410-a063-a993310a9797
+
+commit d1f144d9685bfd908c4d85191caa47ff15296972
+Author: nicolai <nicolai@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Sun Mar 26 17:36:33 2006 +0000
+
+    #Use EXT_framebuffer_object when available
+    
+    * noframebufferobject configuration in system.cfg can be used to
+      disable EXT_fbo (in case drivers are flaky etc.)
+    * shadow texture size now honours the OpenGL maximum texture size as reported
+      by the implementation
+    
+    
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@3693 3db68df2-c116-0410-a063-a993310a9797

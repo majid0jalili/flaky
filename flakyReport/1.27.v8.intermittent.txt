@@ -1,0 +1,77 @@
+commit a00eb6833ce7128483ed200db938d21e478adcb3
+Author: Michael Achenbach <machenbach@chromium.org>
+Date:   Tue Jun 27 09:21:27 2017 +0200
+
+    [build] Clean up lto, gold plugin and cfi from gyp files
+    
+    Bug: v8:6524
+    Change-Id: I8e440417eea59376c2fab659a86ad6570c7e018a
+    Reviewed-on: https://chromium-review.googlesource.com/549300
+    Reviewed-by: Peter Marshall <petermarshall@chromium.org>
+    Commit-Queue: Michael Achenbach <machenbach@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#46265}
+
+commit f09460389ba5f0990b11e245804d0b6151a5c52b
+Author: Michael Starzinger <mstarzinger@chromium.org>
+Date:   Thu Apr 13 11:25:11 2017 +0200
+
+    [asm.js] Test and fix "|0" annotation of calls.
+    
+    This fixes the validation of "|0" annotations of call sites that are
+    used to indicate a "signed" return type of functions. We use lookahead
+    during call validation and request deferred validation as part of the
+    actual OR-expression. Special care has to be taken to get precedence
+    levels of all involved operators right.
+    
+    R=clemensh@chromium.org
+    TEST=mjsunit/asm/call-annotation
+    BUG=v8:6183
+    
+    Change-Id: If0586f669e7cee26a13425b0fd9f41098e852d68
+    Reviewed-on: https://chromium-review.googlesource.com/475871
+    Commit-Queue: Michael Starzinger <mstarzinger@chromium.org>
+    Reviewed-by: Clemens Hammacher <clemensh@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#44639}
+
+commit 7494983788fa2baaa73552d3b40df91db1afb2bb
+Author: machenbach <machenbach@chromium.org>
+Date:   Fri Apr 29 06:00:57 2016 -0700
+
+    [build] Remove deprecated build files
+    
+    BUG=chromium:474921
+    LOG=n
+    TBR=jochen@chromium.org,jkummerow@chromium.org
+    
+    Review-Url: https://codereview.chromium.org/1936523002
+    Cr-Commit-Position: refs/heads/master@{#35907}
+
+commit 3bf44848c3043eba6d32ba948ca25d4181611c32
+Author: machenbach <machenbach@chromium.org>
+Date:   Fri Apr 29 03:08:53 2016 -0700
+
+    [gn] Move build to gypfiles
+    
+    This prepares for pulling chromium's build as dependency for
+    gn. After this, the files in build and gypfiles need to stay
+    in sync until chromium is updated.
+    
+    BUG=chromium:474921
+    LOG=n
+    
+    Review-Url: https://codereview.chromium.org/1848553003
+    Cr-Commit-Position: refs/heads/master@{#35898}
+
+commit 6d542bfcc2b6a2581e0e3c28daae8301da025fa6
+Author: pcc <pcc@chromium.org>
+Date:   Thu Jul 23 23:17:52 2015 -0700
+
+    [build] Disable linker threading in LTO builds, as it causes intermittent link failures.
+    
+    BUG=chromium:513074
+    R=bmeurer@chromium.org
+    LOG=n
+    
+    Review URL: https://codereview.chromium.org/1249273003
+    
+    Cr-Commit-Position: refs/heads/master@{#29827}

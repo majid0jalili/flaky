@@ -1,0 +1,16 @@
+commit 802e1b99b2e11fb30660d076951fbb79258e670d
+Author: Adam Cozzette <acozzette@google.com>
+Date:   Tue Feb 11 11:17:35 2020 -0800
+
+    Attempt to mitigate "docker pull" failures
+    
+    Lots of CI tests have been failing recently with error messages like
+    this from "docker pull":
+    
+      Error response from daemon: unexpected EOF
+    
+    This seems to be an issue affecting other projects as well:
+    https://forums.docker.com/t/docker-pull-causes-error-response-from-daemon-unexpected-eof/88608
+    
+    This commit tries to mitigate the problem by periodically retrying
+    failed Docker pulls.

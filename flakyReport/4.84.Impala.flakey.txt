@@ -1,0 +1,18 @@
+commit 9bc840dc85f6daa61a7c7222a8c6e022de31c144
+Author: Henry Robinson <henry@cloudera.com>
+Date:   Tue Nov 12 19:10:46 2013 -0800
+
+    Support for custom cluster configurations in some tests
+    
+    Test suites that derive from common.CustomClusterTestSuite have a brand
+    new cluster for every tests case, which they can configure as they wish
+    with custom arguments using the @with_args() decorator.
+    
+    A future improvement is to optionally only have one cluster per test
+    suite, to allow multiple tests to run more quickly if they share
+    configuration options.
+    
+    Change-Id: I6abd5740e644996d7ca2800edf4ff11b839d1bc4
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/882
+    Reviewed-by: Henry Robinson <henry@cloudera.com>
+    Tested-by: jenkins

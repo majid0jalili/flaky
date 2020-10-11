@@ -1,0 +1,15 @@
+commit 9add78aed6e5eea1e361e4563e0e2510fff3c690
+Author: Wez Furlong <wez@fb.com>
+Date:   Thu Jun 6 10:30:20 2019 -0700
+
+    getdeps: disable ccache on sandcastle
+    
+    Summary:
+    We sometimes see some flakeyness in our internal CI, so we can live
+    without it there.
+    
+    Reviewed By: pkaush
+    
+    Differential Revision: D15695124
+    
+    fbshipit-source-id: 1d76ae89e245d9c95937e8818826c544c0ae8fc3

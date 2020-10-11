@@ -1,0 +1,27 @@
+commit f79c33b523225c450c08b055650cfdb6d0b27e54
+Author: zirconium <zirconium@fivem.net>
+Date:   Mon Jan 27 16:06:53 2020 +0100
+
+    import partial checkout of Chromium source code
+    
+    This corresponds to a (patched) version of Chromium commit d92ba9a60a89b549b7240dbe2bad4bc216bb4521.
+
+commit 1323eb55bebf7aa87e6d05f568247e9747e3df52
+Author: NTAuthority <bas@dotbas.net>
+Date:   Fri May 22 05:50:22 2015 +0200
+
+    get rid of curl/liblzma deplibs (vendor migration)
+    
+    -------------
+    Created by MOE: https://github.com/google/moe
+    MOE_MIGRATED_REVID=940ed4f796ca2ff414e3c1a9fc3d2a1328998a40
+
+commit ee7080662f3a1ea00247f7f6e7c2f33d754046a2
+Author: NTAuthority <bas@fourdeltaone.net>
+Date:   Sat Jun 7 19:14:10 2014 +0200
+
+    initial updater; still uses precompiled libs rather than proper dependencies as I can't be bothered working those out right now; hopefully jenkins will properly build now with a BUILD_ID and proper header file so the /dev/ channel will work @fine
+    
+    -------------
+    Created by MOE: https://github.com/google/moe
+    MOE_MIGRATED_REVID=10e5eb1f2e9a48862ea309e0aebc09fe730633b2

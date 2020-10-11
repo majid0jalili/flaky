@@ -1,0 +1,23 @@
+commit a853ce145dcde8d58db0dda5151ed15095bf696d
+Author: Andrew Eikum <aeikum@codeweavers.com>
+Date:   Tue Jun 2 10:30:04 2020 -0500
+
+    lsteamclient: Import steamworks 1.48a and fix up networkingsockets versions
+
+commit 03ed34405a19faf5434aa1275083df0c2dd1ceaa
+Author: Andrew Eikum <aeikum@codeweavers.com>
+Date:   Fri Dec 6 14:19:37 2019 -0600
+
+    steamclient: import steamworks 1.47
+
+commit 7aa1b840d945b823034281e03df4bb32cd185ad4
+Author: Andrew Eikum <aeikum@codeweavers.com>
+Date:   Thu Aug 15 15:14:03 2019 -0500
+
+    lsteamclient: Import steamworks 1.45 and 1.46
+
+commit 528d5d26cfe2567398cde586a307a59746d219cd
+Author: Andrew Eikum <aeikum@codeweavers.com>
+Date:   Mon May 13 11:46:07 2019 -0500
+
+    lsteamclient: Add steamworks sdk 1.44 support

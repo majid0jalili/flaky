@@ -1,0 +1,11 @@
+commit a433a472220eeb3a5bbed91826212b5232b6e43f
+Author: Pierric Gimmig <pierric.gimmig@gmail.com>
+Date:   Sun Nov 11 23:38:57 2018 -0800
+
+    Removed asio, breakpad, capstone, freeglut, freetype-gl, glew, jquery and websocket from "external" directory.  These libraries will be installed by vcpkg in external/vcpkg.
+
+commit 62cf074a8b3b12c479bd8935dc32ca0c2c24d240
+Author: Pierric Gimmig <pierric.gimmig@gmail.com>
+Date:   Fri Sep 22 04:00:03 2017 -0400
+
+    Orbit initial commit

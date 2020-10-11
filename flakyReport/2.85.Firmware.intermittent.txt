@@ -1,0 +1,75 @@
+commit db87ba3a1cf81082226e0f2401dc185b59594993
+Author: Julian Oes <julian@oes.ch>
+Date:   Tue Jun 9 14:21:44 2020 +0200
+
+    systemcmds: add new failure command
+    
+    This adds a new systemcmd to inject failures into the system.
+
+commit d9102ce54c5c389d2dbf6f5b4368f81ab508a7b7
+Author: Daniel Agar <daniel@agar.ca>
+Date:   Thu Jun 18 11:11:34 2020 -0400
+
+    imu/invensense/icm20948: sync with other recent invensense improvements
+    
+     - clenaup ak09916 with simplifed setup and health check
+
+commit d313b0417a10f93445a2d0a296390590daca0fd0
+Author: Matthias Grob <maetugr@gmail.com>
+Date:   Thu Mar 12 11:28:03 2020 +0100
+
+    AttitudeControl: Take advantage of Quaternion.canonical()
+    
+    Introduced by @kamilritz in
+    https://github.com/PX4/Matrix/pull/116/
+
+commit c5520cbaca3f3fd94e23e4a5cdf4e2769c5097d4
+Author: Daniel Agar <daniel@agar.ca>
+Date:   Tue Nov 12 14:23:13 2019 -0500
+
+    mpu9250: start building "NuttX" driver for Linux and QuRT
+
+commit a08abccdd55dabba37c5df0eb5b62fddff3a5f47
+Author: Julian Oes <julian@oes.ch>
+Date:   Fri Nov 1 17:29:24 2019 +0100
+
+    mpu9250: fix mag spikes on fmu-v4pro
+    
+    This should fix spikes in the mag data on MPU9250 found inside Drotek
+    Pixhawk 3Pro.
+    
+    The problem turned out to be that we are not checking the DRDY bit
+    before reading the data. We presumably threw away most of the stale data
+    by doing a duplicate check, however, sometimes we might have run into a
+    race where the mag data was already being updated in the chip while
+    still being read.
+
+commit 23dd2e537b35520ef25a14536e58983849f5ae1d
+Author: Daniel Agar <daniel@agar.ca>
+Date:   Sun Apr 30 20:27:14 2017 -0400
+
+    fw_pos_control_l1 rename to match class
+
+commit ae2de675014c701b45710b646f3a816ad2222b73
+Author: Lorenz Meier <lm@inf.ethz.ch>
+Date:   Tue Jul 29 11:24:11 2014 +0200
+
+    Revert "Remove old TECS implementation - we can really only decently flight-test and support one."
+    
+    This reverts commit 503ded05394767d58359834e73bc63672b701dbe.
+    
+    Conflicts:
+    	mavlink/include/mavlink/v1.0
+    	src/modules/fw_pos_control_l1/fw_pos_control_l1_main.cpp
+
+commit 503ded05394767d58359834e73bc63672b701dbe
+Author: Lorenz Meier <lm@inf.ethz.ch>
+Date:   Sat Jun 28 12:35:04 2014 +0200
+
+    Remove old TECS implementation - we can really only decently flight-test and support one.
+
+commit 71ac33596836519a341001bb48a8835b8af75cd3
+Author: Lorenz Meier <lm@inf.ethz.ch>
+Date:   Wed Oct 16 21:43:11 2013 +0200
+
+    Small improvements to autoland, ensure that throttle can be shut down close to touch down. Depends on accurate land WP altitude

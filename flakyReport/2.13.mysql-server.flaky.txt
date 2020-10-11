@@ -1,0 +1,398 @@
+commit 000cb98131f9fa81725a4e4093a72d7784a7f4e2
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat Jun 6 12:04:01 2020 +0200
+
+    Bug #31432103   BUILD BREAK FOR 7.3 AND 7.4 COMMERCIAL WIN VERSION DUE TO TOO LONG FILE NAMES
+    
+    Remove dojo 1.15.3 source
+    
+    Approved by:  Dinesh Prakash <dinesh.prakash@oracle.com>
+    
+    Change-Id: I7e84a405e0210747fb2de2a957a27dc3cb26fca6
+
+commit b4fb2fc87685901b90cdb608191cc3a0c1e8130c
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat May 9 12:24:38 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - add new dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit c8c38e6075bd762508731110d47c588c7015e852
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Fri May 8 20:15:33 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - add new dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit 8a02af5c98bc532dfc6af321e3bb3c9fb802ff34
+Author: Grzegorz Szwarc <grzegorz.szwarc@oracle.com>
+Date:   Thu Apr 16 16:29:16 2020 +0200
+
+    Bug#31000511: BUNDLED PROTOBUF IS OUTDATED (BUNDLED: 3.6.1, CURRENT: 3.11)
+    
+    Description:
+    MySQL Server source includes protobuf source code in 'extra/protobuf'
+    folder. The bundle is set to version 3.6.1, still the current version
+    released is 3.11.4. The bundle should be keep at newest version, to
+    have all critical updates.
+    
+    RB: 24222
+    Reviewed-by: Lukasz Kotula <lukasz.kotula@oracle.com>
+    Reviewed-by: Tor Didriksen <tor.didriksen@oracle.com>
+    Reviewed-by: Andrzej Religa <andrzej.religa@oracle.com>
+    
+    Change-Id: Ia7482843e66b6f5c203947a079e1e755811d8ad7
+
+commit fd52f6471871a49fe0f69988e3ee486299ba4f11
+Author: Jusufadis Bakamovic <jusufadis.bakamovic@oracle.com>
+Date:   Fri Sep 27 15:22:25 2019 +0200
+
+    Bug #30314972 TEMPTABLE SE OUT OF MEMORY BY SHOW VARIABLES
+    
+    Problem:
+     * When temptable_max_ram limit is reached, server will report
+       Out-of-Memory to connected client(s) instead of falling back to
+       disk-based storage.
+    
+    Analysis:
+     * TempTable storage-engine has been (wrongly) reporting
+       Result::OUT_OF_MEMORY no matter what underlying operation failed.
+         * Underlying failures can be one of the following:
+           * Result::OUT_OF_MEMORY
+             * In event of RAM exhaustion.
+           * Result::RECORD_FILE_FULL
+             * In event of temptable_max_ram limit reached or MMAP-disk
+               exhaustion.
+           * Some other runtime exception (which is not of Result:: type)
+             * In event that something else throws, e.g. any of the steps
+               during the new temporary table instantiation.
+     * Optimizer only handles the Result::RECORD_FILE_FULL code-path
+       (aka HA_ERR_RECORD_FILE_FULL), but not the (unexpected)
+       Result::OUT_OF_MEMORY (aka HA_ERR_OUT_OF_MEM).
+     * MTR test against the Result::RECORD_FILE_FULL use-case silently
+       stopped working
+        * There is no failure but the test itself was not hitting the correct
+          code-path:
+            * TempTable SE was ought to be utilized but it stopped being so
+              after optimizer introduced new executor which in certain scenario
+              is skipping the materialization.
+    
+    Solution:
+     * Fix TempTable handler interface to distinguish between RAM- and
+       MMAP-related failures.
+     * Implement new suite of unit-tests to test this behavior at
+       TempTable::Handler interface level.
+     * Fix MTR test to make the Result::RECORD_FILE_FULL code-path gets
+       triggered again.
+     * Stabilize MTR test to make it future-proof by:
+       * Re-writing the SQL query which is more or less guaranteed to
+         result with TempTable utilization
+       AND
+       * Using EXPLAIN FORMAT=tree <stmt> to actually assert if TempTable
+         is not being utilized
+    
+    Reviewed-by: Marcin Babij <marcin.babij@oracle.com>
+
+commit a5cb5f3bc4b359a2c40c2e91d5e8eb4d4fae6a05
+Author: Maitrayi Sabaratnam <maitrayi.sabaratnam@oracle.com>
+Date:   Fri Sep 13 15:09:34 2019 +0200
+
+    Bug#27664092 - UNEXPECTED GCP STOP WHEN OTHER NODE SHUTS DOWN
+    
+    Problem: When a node is started or failed, max allowed GCP lags are
+    recalculated to take the change in number of data nodes into
+    account. However this may lead to an unintentional shutdown of a
+    healthy node as the threshold suddenly can decrease below the current
+    lag.
+    
+    Fix: Delay the recalculation of new max based on number of nodes until
+    a succesful GCP protocol round completes.
+    
+    Reviewed-by: Frazer Clement <frazer.clement@oracle.com>
+    (cherry picked from commit cd149b67a428ad75e24898121ef979ddecb40afd)
+
+commit dbd685fc2f2ed36e667c9b643e2ee751f7f0820d
+Author: Maitrayi Sabaratnam <maitrayi.sabaratnam@oracle.com>
+Date:   Fri Sep 13 15:09:34 2019 +0200
+
+    Bug#27664092 - UNEXPECTED GCP STOP WHEN OTHER NODE SHUTS DOWN
+    
+    Problem: When a node is started or failed, max allowed GCP lags are
+    recalculated to take the change in number of data nodes into
+    account. However this may lead to an unintentional shutdown of a
+    healthy node as the threshold suddenly can decrease below the current
+    lag.
+    
+    Fix: Delay the recalculation of new max based on number of nodes until
+    a succesful GCP protocol round completes.
+    
+    Reviewed-by: Frazer Clement <frazer.clement@oracle.com>
+
+commit 244d369e425b0ca4638d54700629b1851db26116
+Author: Nuno Carvalho <nuno.carvalho@oracle.com>
+Date:   Mon Jun 3 15:48:47 2019 +0200
+
+    BUG#28866495: CENTRALIZE THE LEAVE ON ERROR CODE FOR ALL COMPONENTS
+    
+    When a member in Group Replication is faced to a error it does the
+    following steps:
+     1) changes its state to ERROR;
+     2) leave the group;
+     3) on network failures will attempt to rejoin;
+     4) follows group_replication_exit_state_action.
+    While new features were added, several implementations of these
+    steps were introduced, which led to code duplication.
+    
+    This patch does merge all these implementations into a single one.
+    Also it obsoletes two error messages that are no more used.
+    
+    ReviewBoard: 22283
+
+commit c581a65b11f8ccc5cb85e9dabfab88aa92ac1a61
+Author: Nuno Carvalho <nuno.carvalho@oracle.com>
+Date:   Fri May 31 14:53:42 2019 +0200
+
+    WL#12895: Group Replication: Add OFFLINE_MODE to group_replication_exit_state_action
+    
+    The option group_replication_exit_state_action configures how Group
+    Replication behaves when a server leaves the group unintentionally:
+     1. after encountering an applier error;
+     2. after encountering an recovery error;
+     3. in the case of a loss of majority;
+     4. when another member of the group expels it due to a suspicion
+        timing out;
+     5. after an error on coordinated group changes[1];
+     6. after a primary election error;
+     7. after a clone provisioning error;
+     8. when automatic rejoin is enable, after its attempts are
+        exhausted unsuccessfully.
+    
+    This behavior can be:
+     * READ_ONLY    disable writes on the server, by enabling
+                    server super_read_only[2] option;
+     * ABORT_SERVER shutdown the server.
+    
+    After this worklog is implemented, a new behavior is added:
+     * OFFLINE_MODE close all connections and disallow new ones from
+                    users who do not have the CONNECTION_ADMIN or SUPER
+                    privilege, by enabling server offline_mode[3] option.
+                    OFFLINE_MODE includes the behaviour of READ_ONLY.
+    
+    This automatic connection closure will avoid user sessions to:
+    1) read stale data and 2) write data to orphans servers, without the
+    need to shutdown the server.
+    
+    USER INTERFACE
+    --------------
+    The DBA can specify the behaviour by setting the option:
+     - name: group_replication_exit_state_action
+     - values: { READ_ONLY, ABORT_SERVER, OFFLINE_MODE }
+     - default: READ_ONLY
+     - scope: global
+     - dynamic: yes
+     - replicated: no
+     - persistable: PERSIST, PERSIST_ONLY
+     - credentials: SYSTEM_VARIABLES_ADMIN
+     - description: The action that is taken when the server
+                    leaves the group unintentionally.
+                    Possible values are READ_ONLY,
+                    ABORT_SERVER and OFFLINE_MODE.
+    
+    ReviewBoard: 21931
+
+commit 67fc64a6e61085168f26f0e61ab06df67828d1ed
+Author: Maitrayi Sabaratnam <maitrayi.sabaratnam@oracle.com>
+Date:   Fri Feb 8 15:19:19 2019 +0100
+
+    Bug 22605467 - ALTER TABLESPACE: ADDING DATA FILE STALL AND CAN'T BE KILLED
+    
+    Problem: Creating many data files causes ndbmtd and the user
+    application to hang.
+    
+    Reason: Creating a data file gets pages from the disk page buffer
+    memory for extent headers during the commit phase.  An exhausted page
+    buffer causes the system deadlocks itself by attempting to commit
+    create-data-file query which is not commitable.
+    
+    Fix: Check if there is enough space for extent pages in the disk page
+    buffer during prepare phase. if not, return an error to the user.
+    
+    A new error code: 1517 - "Insufficient disk page buffer
+    memory. Increase DiskPageBufferMemory or reduce the data file size."
+    is introduced for this purpose.
+    
+    Reviewed-by : Frazer Clement <frazer.clement@oracle.com>
+
+commit 1a4d157ea46eb3d79be2d0bec20455db65f45706
+Author: Ricardo Ferreira E Ferreira <ricardo.e.ferreira@oracle.com>
+Date:   Wed Nov 28 11:34:51 2018 +0000
+
+    WL#11284: Group Replication: auto-rejoin member to group after a expel
+    
+    When in a group, a node can be expelled if it is not detected for some
+    time by other members. XCom states that a node is suspected dead by the
+    whole group and an internal algorithm determines that one node should
+    remove the failed node on behalf of the whole group.
+    
+    In real-world scenarios, this might happen quite frequently. For
+    instance, in network splits in which nodes that belong to a partition
+    that does not hold majority are expelled from the partition that holds
+    the majority. The system then proceeds to work with a newly reconfigured
+    group.
+    
+    In such hypothetical scenario, if the network reestablishment happens
+    quickly, the nodes that were expelled will be able to reconnect to the
+    old group, receive the view that expel them, and shoot themselves in the
+    head (to prevent inconsistency issues of rejoining indirectly via
+    Communication Layer, since the partition that proceeded might have, for
+    instance, more transactions than the nodes that resided in the split
+    partition).
+    
+    The goal of this WL is to make them safely rejoin the group if they are
+    out of it for a reasonably short time.
+
+commit 176371144ee7603434a8122906b5df70dcac528a
+Author: Pawel Mroszczyk <pawel.mroszczyk@oracle.com>
+Date:   Fri Oct 19 05:21:49 2018 -0400
+
+    CT for BUG#27326466 Router blocks for many seconds on shutdown on bad cluster connectivity
+    
+    This commit adds a component test to prove that the fix for BUG#27326466
+    (submitted earlier) really works.
+    
+    RB: 20766
+    Reviewed by: Jan Kneschke
+
+commit b9d3ce1b42fc4b007b411650ded4f00b8f57f29f
+Author: Pawel Mroszczyk <pawel.mroszczyk@oracle.com>
+Date:   Fri Oct 19 05:21:49 2018 -0400
+
+    CT for BUG#27326466 Router blocks for many seconds on shutdown on bad cluster connectivity
+    
+    This commit adds a component test to prove that the fix for BUG#27326466
+    (submitted earlier) really works.
+    
+    RB: 20766
+    Reviewed by: Jan Kneschke
+
+commit 4b624bb1582cce19c6caab1f3f56267781e5e747
+Author: Grzegorz Szwarc <grzegorz.szwarc@oracle.com>
+Date:   Fri Aug 24 16:43:35 2018 +0200
+
+    Bug #28351540: BUNDLED PROTOBUF IS OUTDATED
+    
+    Description:
+    ------------
+    MySQL Server source includes protobuf source code in 'extra/protobuf'
+    folder. The bundle is set to version 2.6.1, still it doesn't build
+    properly with ubsan and other sanitizers.
+    The sanitizer issues are fixed in pb 3.0+, thus as workaround server
+    is build with system protobuf. To fix the issue, the bundle should be
+    updated to one of recent versions.
+    
+    Fix:
+    ----
+    The bundle updated to version 3.6.1.
+    
+    - adding extra/protobuf/protobuf-3.6.1
+    - removing extra/protobuf/protobuf-2.6.1
+    - adjusting configuration for new version of protobuf
+    - remove directories and files
+       protobuf-3.6.1/benchmarks/
+       protobuf-3.6.1/conformance/
+       protobuf-3.6.1/editors/
+       protobuf-3.6.1/examples/
+       protobuf-3.6.1/objectivec/
+       protobuf-3.6.1/third_party/
+       protobuf-3.6.1/python/
+       protobuf-3.6.1/util/
+       protobuf-3.6.1/ar-lib
+       protobuf-3.6.1/test-driver
+    - disable configuration check of cmake's mimimum version
+    - disable configuration zlib check
+    - disable installation script
+    - fix minor compilation issues on SunPro 5.14.0
+    - fix minor issues to satisfy UBSAN
+    
+    Change-Id: Ie5532bacc0fb62d1ba4d524b31cbfd5fc5bb5e7d
+
+commit 6e2aebe903c3c5571800c7a35657c1475b3ad432
+Author: Magnus Blåudd <magnus.blaudd@oracle.com>
+Date:   Fri Dec 22 11:43:59 2017 +0100
+
+    Bug#27307940 MYSQL CLUSTER MTR TEST CLEANUP [noclose]
+    
+    The Bug#11747335 referenced from disabled.def is
+    already marked as closed. The test is testing
+    error messages from DDL commands when the cluster
+    is not connected, this is duplicatin testing of
+    ndb_global_schema_lock_error and thus test can be
+    removed.
+    
+    Change-Id: Ic9b0369d91c5ca3712ef34fa17b41f44e54661d1
+
+commit 03e9c3e4bfa6b086ae03cc52ccc3e48bfa314c9f
+Author: Martin Hansson <martin.hansson@oracle.com>
+Date:   Tue Oct 10 17:07:11 2017 +0200
+
+    WL#8987: Removed ICU files that are not needed.
+    
+    Change-Id: I1260455c3e211a470eba3ed7602a098b8abcc96c
+
+commit c2d070e97a8898a230840bbab5c3daaf30aaac0d
+Author: Martin Hansson <martin.hansson@oracle.com>
+Date:   Mon Aug 21 14:27:45 2017 +0200
+
+    WL#8987: ICU 59.1 source added almost without altering.
+    
+    Change-Id: Ifb24c1402db76704072460258fd2e5759d44595a
+
+commit 47dcae3be17a79a2373c50348ca0a93043cdb1fb
+Author: Anitha Gopi <anitha.gopi@sun.com>
+Date:   Mon Dec 20 19:49:35 2010 +0530
+
+    Bug #59055 : Remove ndb tests from repository. Removal of tests from sys_vars is pending. It has some issues that are yet to be resolved
+
+commit 52646a73db94a0d13e2dde562ab186446ad67451
+Author: Jonas Oreland <jonas@mysql.com>
+Date:   Wed Apr 28 12:31:34 2010 +0200
+
+    ndb - disable ndb_disconnect_ddl(bug#31853) - as testcase is flaky
+
+commit 8661497e9bde1f42674b9789799d81b0ea2ba0d0
+Author: msvensson@pilot.(none) <>
+Date:   Wed Jun 27 14:28:02 2007 +0200
+
+    WL#3933 Split main test suite to rpl, rpl_ndb and ndb
+     - Update mysql-test-run.pl to collect tests from several suites
+     - Group test into suites
+     - Add suite.opt file
+
+commit 8b5de073424513502e63e0e1912c14323ae14817
+Author: pekka@orca.ndb.mysql.com <>
+Date:   Mon Oct 16 16:13:03 2006 +0200
+
+    ndb - replace explain 'rows' by '#' in ndb*.test - stats are not deterministic
+
+commit a9ef0b4bf11c25b64c38aee037a03f0875b9003c
+Author: sasha@mysql.sashanet.com <>
+Date:   Fri Nov 24 19:49:13 2000 -0700
+
+    slave master.info FILE -> IO_CACHE
+    send_file() is more stack-friendly - changed large static buffer to alloc_root()
+    fixed my_b_seek() to work with WRITE_CACHE
+    test case to make sure the slave starts correctly after being stopped
+    truncated words file so the replication tests will take less time
+
+commit 24a7aae0f452f75cdfb09ccf1cec37d38d0f82a9
+Author: sasha@mysql.sashanet.com <>
+Date:   Fri Nov 17 23:35:40 2000 -0700
+
+    fixed bugs in delayed insert replication and when slave loses connection after Int_var but before Query
+    public test suite now tests replication code as well

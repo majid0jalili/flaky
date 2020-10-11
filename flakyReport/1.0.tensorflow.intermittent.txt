@@ -1,0 +1,78 @@
+commit 5574be6465472d32f5849e353b150d45eb7738f2
+Author: Allen Lavoie <allenl@google.com>
+Date:   Mon Aug 31 09:45:16 2020 -0700
+
+    Add BUILD rules for python/training and python/training/experimental
+    
+    There were a couple issues around op generation and strict dep checking.
+     - A genrule that needs to be in python/ was adding a file to python/training, apparently not OK across module boundaries. I've just stopped it from adding the file to python/training and added a Python redirect file for now.
+     - I've added rules for files that were globbed together previously, but strict dep checking means we still need to include these as srcs in the rule that previously had them. They're listed explicitly rather than globbed.
+    
+    Otherwise just moving rules, adding aliases, and running build_cleaner.
+    
+    PiperOrigin-RevId: 329320168
+    Change-Id: I8494424e332c3bc21263ce1f8caaf5bd4d32d26c
+
+commit 6c2bf6576321ad53ff1eb6d66b6efae2c93ef4e0
+Author: Mark Daoust <markdaoust@google.com>
+Date:   Mon Aug 27 11:57:42 2018 -0700
+
+    Moved tensorflow/docs_src to https://github.com/tensorflow/docs
+    
+    PiperOrigin-RevId: 210405729
+
+commit caf711b6be448d46354e0cbef23989fa837efcf7
+Author: Billy Lamberta <blamb@google.com>
+Date:   Sun Jul 8 22:21:35 2018 -0700
+
+    Delete doc files re-added in bad copybara sync.
+    
+    PiperOrigin-RevId: 203708965
+
+commit 90fc5e3819ed62e93228a9c2c29dede0f0f8cfd6
+Author: Anjali Sridhar <anjalisridhar@google.com>
+Date:   Fri Jul 6 13:50:29 2018 -0700
+
+    Allow is_initialized and initializer to be called on MirroredVariables and TowerLocalVariables.
+    
+    PiperOrigin-RevId: 203520287
+
+commit 602f8fad24eded4a7fcf5289840e2c646afc1bd0
+Author: Yifei Feng <yifeif@google.com>
+Date:   Fri Jul 6 13:31:44 2018 -0700
+
+    Merge changes from github.
+    
+    PiperOrigin-RevId: 203518000
+
+commit 2b13b7ac7253e6f0d7d96855b1b3e7fee49277a7
+Author: Billy Lamberta <blamb@google.com>
+Date:   Tue Jul 3 16:40:14 2018 -0700
+
+    Update docs_src in 1.9 to match master
+
+commit 6490e73017a67d005a5b8796a7916097ac6b1149
+Author: Billy Lamberta <blamb@google.com>
+Date:   Wed Jun 27 13:20:51 2018 -0700
+
+    Move old tutorials into their category directories
+
+commit a4ad92579f5f39d2b8a8d9722f3fa1696bce7374
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Nov 16 13:34:49 2017 -0800
+
+    Tag tensorflow/python:basic_session_run_hooks_test with "notsan".
+    
+    The test gets intermittent TSan warnings.
+    
+    PiperOrigin-RevId: 176011109
+
+commit 0c6fd1703eb8f990c8b071471b0105339ccf821d
+Author: Pete Warden <petewarden@google.com>
+Date:   Fri Aug 11 14:30:43 2017 -0700
+
+    Speech keyword detector tutorial
+    Adds a basic training script for a simple audio model to our examples.
+    See third_party/docs_src/tutorials/audio_recognition.md for full documentation
+    
+    PiperOrigin-RevId: 165025732

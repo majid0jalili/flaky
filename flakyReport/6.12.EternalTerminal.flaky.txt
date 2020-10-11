@@ -1,0 +1,25 @@
+commit 5c1b34ae08e0a84d52896348df08264a94ddfa64
+Author: Jason Gauci <jgmath2000@gmail.com>
+Date:   Mon Jan 28 13:17:58 2019 -0800
+
+    gtest -> Catch2 (#170)
+    
+    * Add catch2 + cxxopts + msgpack
+    
+    * gtest -> Catch2
+    
+    * Ci fixes
+
+commit 133b4394ba4eca4c36c43658f0aa10581d373784
+Author: Jason Gauci <jgmath2000@protonmail.com>
+Date:   Tue Sep 25 18:19:40 2018 -0700
+
+    Add tests and fix logic holes (#138)
+    
+    * Add ConnectionTest.  Change coverage tool to revert back to normal compile.
+    
+    * Add Flake test and fix some logic holes
+    
+    * Fix more logic holes
+    
+    * Cleanup

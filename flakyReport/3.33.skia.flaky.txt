@@ -1,0 +1,752 @@
+commit 15207b8567413b366885a168d8b0d6059fecce90
+Author: Brian Osman <brianosman@google.com>
+Date:   Wed Jun 17 10:37:16 2020 -0400
+
+    Disable program binary caching on AMD + ANGLE D3D9
+    
+    This should fix the flaky GM results that appeared when caching was
+    fixed/enabled recently.
+    
+    Bug: skia:10395
+    Change-Id: Idd35f6a57e94504d56186be3601b52728ada97e7
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/297018
+    Reviewed-by: Greg Daniel <egdaniel@google.com>
+    Commit-Queue: Brian Osman <brianosman@google.com>
+
+commit a1613c917e3c535a5f6623c3588d4552a97c749f
+Author: Eric Boren <borenet@google.com>
+Date:   Mon Mar 2 12:55:38 2020 -0500
+
+    [recipes] Move DM flags logic into gen_tasks_logic/dm_flags.go
+    
+    Change-Id: I294495f952c8310bf1518363778fda9690c8c83e
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/274202
+    Commit-Queue: Eric Boren <borenet@google.com>
+    Reviewed-by: Ben Wagner aka dogben <benjaminwagner@google.com>
+
+commit 43a8cc8010059b4ae34424dd7dbfc866b48fbea2
+Author: Eric Boren <borenet@google.com>
+Date:   Mon Mar 2 10:05:23 2020 -0500
+
+    [recipes] Reland DM recipe changes with fix
+    
+    Pass dm_properties separate from dm_flags so that the recipe can check
+    for properties with empty values.
+    
+    Aside: we should look into changing the way properties are passed into
+    DM (or not pass them at all).
+    
+    Change-Id: I47268506e63939e7a75256616bce947ada5e7e9a
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/274540
+    Reviewed-by: Kevin Lubick <kjlubick@google.com>
+    Reviewed-by: Ben Wagner aka dogben <benjaminwagner@google.com>
+    Commit-Queue: Eric Boren <borenet@google.com>
+
+commit 819f57813d18ac91933dfa92ef2eda4051a9c4e9
+Author: Eric Boren <borenet@google.com>
+Date:   Mon Mar 2 09:09:32 2020 -0500
+
+    [recipes] Revert DM changes due to broken result files
+    
+    Change-Id: I1a6410dc98deb0a0144118bdf52563115d91b75c
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/274539
+    Commit-Queue: Eric Boren <borenet@google.com>
+    Reviewed-by: Kevin Lubick <kjlubick@google.com>
+
+commit cd45dd2caf9030e2db6c02fc1de06c5ef87577d9
+Author: Eric Boren <borenet@google.com>
+Date:   Fri Feb 28 16:22:23 2020 -0500
+
+    [recipes] Move DM flags to a separate file
+    
+    This particular location was chosen because we can rely on it being
+    present in the recipe bundle. We'll soon run the script to generate
+    DM flags in gen_tasks, before finally porting the logic to Go inside
+    gen_tasks itself.
+    
+    Change-Id: I36ec481cdabffe8d1da662cc813dda43fe7b21f8
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/274053
+    Commit-Queue: Eric Boren <borenet@google.com>
+    Reviewed-by: Ben Wagner aka dogben <benjaminwagner@google.com>
+
+commit a5ec04d8fa087f6a657fcb57edaf171e57460c5e
+Author: Ravi Mistry <rmistry@google.com>
+Date:   Thu Jan 30 09:33:31 2020 -0500
+
+    Turn off failure comments from G3 bot
+    
+    Too noisy.
+    
+    Change-Id: I454573b92730854697147415333d1874d3c02bfa
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/267617
+    Reviewed-by: Eric Boren <borenet@google.com>
+    Commit-Queue: Ravi Mistry <rmistry@google.com>
+
+commit 68e470de86f0a8cea01f9d3bde39e8f70da17336
+Author: Ravi Mistry <rmistry@google.com>
+Date:   Fri Nov 22 15:00:12 2019 +0000
+
+    [G3 compile bot] Add comment to CL when there is an interesting failure
+    
+    Also, create and use new service account for the G3 compile bots.
+    
+    Interesting failure here refers to when the bot fails only because of
+    test failures and not:
+    * merge failures
+    * unknown failure reasons (eg: some flaky timeouts from the script running in borg)
+    * when the bot is not owned or approved by a Googler
+    
+    NoTry: true
+    Bug: skia:9631
+    Change-Id: I964fd7874269116cca0e25d1b516283a00d5133f
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/254278
+    Commit-Queue: Ravi Mistry <rmistry@google.com>
+    Reviewed-by: Eric Boren <borenet@google.com>
+
+commit 9c2b7cfe9080c6c4692234667a671db216a2e229
+Author: Kevin Lubick <kjlubick@google.com>
+Date:   Thu Nov 21 12:49:16 2019 -0500
+
+    [canvaskit] Try some things to reduce GPU test flakiness
+    
+    1) some flags that "The Internet" says may help
+    2) retry running the test script up to 3 times.
+    
+    I wasn't able to reproduce the crashes with a non-Docker
+    Chrome, only in the Docker container, which was
+    very hard to debug.
+    
+    Change-Id: I87f31c32f63b2770d8d5afa6a8e4b90c35dbf0bb
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/255820
+    Reviewed-by: Eric Boren <borenet@google.com>
+    Reviewed-by: Leandro Lovisolo <lovisolo@google.com>
+
+commit cd8b6d5c1cb87dc16df314f2a7a0248f3154f61a
+Author: Brian Salomon <bsalomon@google.com>
+Date:   Tue Aug 13 12:40:04 2019 -0400
+
+    Add tolerance to ProcessorCloneTest and dump images on failure.
+    
+    Change-Id: Id36aef0392f03aafe3f90d5d905b2b2f30a67c04
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/234317
+    Commit-Queue: Brian Salomon <bsalomon@google.com>
+    Reviewed-by: Michael Ludwig <michaelludwig@google.com>
+
+commit 789f2925e81baf708f81d1a55fb6160b840301a3
+Author: Chris Dalton <csmartdalton@google.com>
+Date:   Fri Jul 26 09:55:56 2019 -0400
+
+    Disable msaa ccpr on PowerVR again
+    
+    Bug: skia:9278
+    Change-Id: I3196ccabb5c8f685f050d881548592a7c16fbec2
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/230117
+    Reviewed-by: Eric Boren <borenet@google.com>
+    Commit-Queue: Chris Dalton <csmartdalton@google.com>
+
+commit 9dbbf887cee1c561b78334ec46a13bf30af59b40
+Author: Ravi Mistry <rmistry@google.com>
+Date:   Wed Jun 26 14:52:31 2019 +0000
+
+    [skottie-wasm-perf] Add retries when calling puppeteer
+    
+    NoTry: true
+    Bug: skia:9207
+    Change-Id: I8ff9d2211a268a2564b5752e7a72429380f007ce
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/223936
+    Reviewed-by: Ravi Mistry <rmistry@google.com>
+    Commit-Queue: Ravi Mistry <rmistry@google.com>
+
+commit adf18ce45a3c670f93242d90f6e42526901f51f4
+Author: Eric Boren <borenet@google.com>
+Date:   Mon Jun 24 14:53:47 2019 -0400
+
+    [infra] Add go_win asset, add InfraTests_Win bot
+    
+    NoTry: true
+    Bug: skia:9188
+    Change-Id: Ie41f5d4c84eb6f4a3689bdb767204b0403435e2a
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/221996
+    Commit-Queue: Eric Boren <borenet@google.com>
+    Reviewed-by: Ben Wagner aka dogben <benjaminwagner@google.com>
+
+commit ac55784e33638f02b108aa0b0809040acd3cb7bc
+Author: Hal Canary <halcanary@google.com>
+Date:   Fri May 3 11:48:07 2019 -0400
+
+    Tests: re-sort gni, file name convention
+    
+    Change-Id: I47c4b91805770bd68101e1503a8630243ef16c21
+    Reviewed-on: https://skia-review.googlesource.com/c/skia/+/212022
+    Commit-Queue: Herb Derby <herb@google.com>
+    Reviewed-by: Herb Derby <herb@google.com>
+    Auto-Submit: Hal Canary <halcanary@google.com>
+
+commit eea245c8962b56fbc4dadf2682b158a85ec99ff1
+Author: Ravi Mistry <rmistry@google.com>
+Date:   Tue Oct 9 10:31:11 2018 -0400
+
+    Turn down CT_* bots
+    
+    Specifically, turn down:
+    * Perf-Ubuntu14-Clang-GCE-CPU-AVX2-x86_64-Release-All-CT_BENCH_1k_SKPs
+    * Perf-Ubuntu14-Clang-Golo-GPU-QuadroP400-x86_64-Release-All-CT_BENCH_1k_SKPs
+    * Test-Ubuntu14-Clang-GCE-CPU-AVX2-x86_64-Debug-All-CT_DM_100k_SKPs
+    * Test-Ubuntu14-Clang-GCE-CPU-AVX2-x86_64-Debug-All-CT_DM_1m_SKPs
+    * Test-Ubuntu14-Clang-GCE-CPU-AVX2-x86_64-Debug-All-CT_IMG_DECODE_100k_SKPs
+    
+    Also deletes the no longer needed recipe_modules:
+    * ct
+    * isolate
+    * skia_swarming
+    * swarming
+    * swarming_client
+    
+    Bug: skia:8455
+    Bug: skia:6704
+    Change-Id: Ia4912830909081d060f7361706d16fd751b3bda0
+    Reviewed-on: https://skia-review.googlesource.com/c/160764
+    Commit-Queue: Ravi Mistry <rmistry@google.com>
+    Reviewed-by: Eric Boren <borenet@google.com>
+
+commit 314d3772a494c76773e88e31ee8f9be43e288714
+Author: Michael Ludwig <michaelludwig@google.com>
+Date:   Wed Oct 3 16:04:38 2018 -0400
+
+    Make ProcessorOptimizationValidationTest more forgiving
+    
+    Bug: skia:
+    Change-Id: I3ff965644a0a59af1e2a2b1ea226a1417a234ced
+    Reviewed-on: https://skia-review.googlesource.com/c/158342
+    Commit-Queue: Michael Ludwig <michaelludwig@google.com>
+    Reviewed-by: Brian Salomon <bsalomon@google.com>
+
+commit c7d057103e2fd0a69a1ff22147927025106494ca
+Author: Kevin Lubick <kjlubick@google.com>
+Date:   Fri Aug 31 10:03:23 2018 -0400
+
+    [PathKit] Move from experimental to modules
+    
+    Add in Code of Conduct and Contributing.md as well.
+    
+    Docs-Preview: https://skia.org/?cl=150901
+    Bug: skia:8216
+    Change-Id: Ia881124f653617ad0b7b91f40ba21de2c13220a6
+    Reviewed-on: https://skia-review.googlesource.com/150901
+    Reviewed-by: Joe Gregorio <jcgregorio@google.com>
+
+commit 5de5233463ddfae51965a116177b2ce62c883765
+Author: Cary Clark <caryclark@skia.org>
+Date:   Thu Aug 30 12:58:23 2018 -0400
+
+    remove scaling from pathops
+    
+    PathOps added a cheat some time ago to reduce
+    fuzzer bugs by scaling down very large paths,
+    with the hope that it would make the math more
+    sane.
+    
+    This had the side-effect of causing small edges
+    to disappear altogether if the bounds is large
+    enough.
+    
+    Removing the scaling causes a single regression to
+    one fuzz-generated bug. That path succeeeded with
+    scale by eliminating the troublesome tiny contour.
+    
+    Eliminating the scale may fix the CCPR-related bug
+    discovered by Flutter, or at least uncover the next
+    bug.
+    
+    I would expect more fuzzer bugs to appear with
+    this change; paths with large and small values will
+    no longer have the small values removed.
+    
+    R=csmartdalton@google.com,reed@google.com,bsalomon@google.com
+    
+    Bug: skia:8290
+    Change-Id: I3bfdb101c568e9cfa324858685eac1f9c368c291
+    Reviewed-on: https://skia-review.googlesource.com/150465
+    Commit-Queue: Cary Clark <caryclark@skia.org>
+    Reviewed-by: Kevin Lubick <kjlubick@google.com>
+    Reviewed-by: Brian Salomon <bsalomon@google.com>
+
+commit f14a3c059f8f155fea93dbf21c538fdcd53b1134
+Author: Kevin Lubick <kjlubick@google.com>
+Date:   Wed Aug 22 09:35:32 2018 -0400
+
+    [PathKit] Add asm.js build and test jobs
+    
+    Consolidates the karma files into one for docker/asmjs/wasm and all
+    combinations.
+    
+    The asm.js build seems to have some small imprecisions that we didn't
+    see as much as with WASM, probably due to JS limitations/differences
+    to c++'s floats.
+    
+    To address these, I've marked some (5) tests in PathOps* as flaky
+    because they fail on Release, Debug or Test versions of the asm.js build.
+    
+    Other then that, asm.js seems basically identical to the WASM.
+    
+    WASM is much smaller, 416k vs 877k and seems to load faster (not
+    measured).
+    
+    Note to reviewers:
+    example.html was copied from npm-wasm version, so doesn't need
+    further review.
+    
+    Bug: skia:8216
+    Change-Id: Ib92b90fa6c598de85a0be319d46b25693ae5aaa4
+    Reviewed-on: https://skia-review.googlesource.com/148396
+    Reviewed-by: Stephan Altmueller <stephana@google.com>
+
+commit 644d8e7175aec8367b39898159ac12425410790a
+Author: Kevin Lubick <kjlubick@google.com>
+Date:   Thu Aug 9 13:58:04 2018 -0400
+
+    [PathKit] Add PathOps Op and Simplify tests imported from the C++ tests.
+    
+    Because of https://skia-review.googlesource.com/c/skia/+/146165 and
+    https://skia-review.googlesource.com/c/skia/+/146100 we have a way
+    to turn PathOps tests into JSON, which has input paths (as Cmd arrays),
+    combination verb and expected output.
+    
+    In this CL, we make tests from the JSON, compare them to the expected
+    output and, optionally, create SVGs to visualize the difference if any.
+    
+    API changes (nothing breaking on release builds):
+     - Exposes SkRect as a JS Object.  No need to call delete() on this.
+     - expose path.getBounds() and path.computeTightBounds()
+     - Remove SkRegion exposure (debug/test only), which was going to be
+    used for this purpose, but the approach in this CL works fine.
+     - Add loadCmdsTypedArray(cmd) helper function to JS [see helper.js].
+    This was previously known as `floatTypedArrayFrom2D` in the
+    old shell.html, and is now exposed to avoid clients having to
+    implement this boilerplate by themselves.
+     - Add set/getFillType - mostly for testing the difference between
+    a Winding and an EvenOdd path.
+    
+    Bug: skia:8216
+    Change-Id: I2cd25ce2e1e7f285c79c596678678e62135963f0
+    Reviewed-on: https://skia-review.googlesource.com/146524
+    Reviewed-by: Cary Clark <caryclark@google.com>
+
+commit f39491272b13826d45692f3778275ddc824c1c8a
+Author: Cary Clark <caryclark@skia.org>
+Date:   Tue Aug 7 16:38:21 2018 -0400
+
+    add json dump to pathops unittest
+    
+    ./out/skia/pathops_unittest -J dump.json
+    will write all Op tests to a JSON file. Since this
+    will run single threaded, this can take a while,
+    and generates a 500M file.
+    A reasonable subset is
+    ./out/skia/pathops_unittest -J dump.json -m PathOpsOp$
+    around 275K.
+    
+    This is in service of pathkit.
+    
+    R=kjlubick@google.com
+    
+    Bug: skia:
+    Change-Id: I7e0771639e29755c00036f335a531403044d9d30
+    Reviewed-on: https://skia-review.googlesource.com/145737
+    Commit-Queue: Cary Clark <caryclark@skia.org>
+    Auto-Submit: Cary Clark <caryclark@skia.org>
+    Reviewed-by: Kevin Lubick <kjlubick@google.com>
+
+commit e7e6e22912cec1bd59348fd3889c7d8ae7b6bdc4
+Author: Ben Wagner <benjaminwagner@google.com>
+Date:   Fri May 25 09:47:37 2018 -0400
+
+    Retry ADB commands on all devices.
+    
+    Change-Id: Ieb289043bd871ec45c70339787ae45f09d3ac1dc
+    Reviewed-on: https://skia-review.googlesource.com/130128
+    Commit-Queue: Kevin Lubick <kjlubick@google.com>
+    Auto-Submit: Ben Wagner <benjaminwagner@google.com>
+    Reviewed-by: Kevin Lubick <kjlubick@google.com>
+
+commit 90f050387a5851943910f91dce2c01babf0d3896
+Author: Eric Boren <borenet@google.com>
+Date:   Thu May 24 09:14:18 2018 -0400
+
+    [recipes] Rename some modules and files
+    
+    - Move doxygen and binary size out of core and into their own modules.
+    - Rename core -> checkout since that's all it does, shorten method names.
+    - Rename flavors:
+      - Everything is GN, so remove GN/gn_ everywhere.
+      - Merge gn_flavor into default.
+      - Shorten file / module names.
+    
+    Bug: skia:6473
+    Change-Id: I8ac9ff9c9a267f366206b9991adfa5eb37126ca7
+    Reviewed-on: https://skia-review.googlesource.com/129176
+    Commit-Queue: Eric Boren <borenet@google.com>
+    Reviewed-by: Ben Wagner <benjaminwagner@google.com>
+
+commit d49665513b507b67ab8136259a48c36523364beb
+Author: Herb Derby <herb@google.com>
+Date:   Fri Mar 9 12:21:56 2018 -0500
+
+    Remove TLS glyph cache calls.
+    
+    Change-Id: Iafeb02d395cac81e8fe6d74c989a37607503919c
+    Reviewed-on: https://skia-review.googlesource.com/113208
+    Reviewed-by: Mike Reed <reed@google.com>
+    Commit-Queue: Herb Derby <herb@google.com>
+
+commit cf9365a0bc94e2550350dd652a8f2fd2ba80a7f8
+Author: Ben Wagner <benjaminwagner@google.com>
+Date:   Fri Sep 8 14:06:38 2017 -0400
+
+    Retry adb commands on flaky devices.
+    
+    
+    No-Try: true
+    Change-Id: I3519131cf064d0a9676abd0fb9d7e946646ce27f
+    Reviewed-on: https://skia-review.googlesource.com/43564
+    Reviewed-by: Kevin Lubick <kjlubick@google.com>
+    Commit-Queue: Ben Wagner <benjaminwagner@google.com>
+
+commit 1e75f2a1020cde6698420d5d088c5c42e7c037ac
+Author: Brian Osman <brianosman@google.com>
+Date:   Thu Sep 7 09:30:44 2017 -0400
+
+    Blacklist more flaky GMs in gltestthreading config
+    
+    Bug: skia:7011 skia:6544
+    Change-Id: Idacb5ff8090bea6ddbdef710bc0f4dbb8bd23549
+    Reviewed-on: https://skia-review.googlesource.com/43560
+    Commit-Queue: Brian Osman <brianosman@google.com>
+    Reviewed-by: Robert Phillips <robertphillips@google.com>
+
+commit eee3c09e96d0a925e1ecaec118cc3ac0294e86ea
+Author: Brian Osman <brianosman@google.com>
+Date:   Thu Jun 15 13:25:10 2017 -0400
+
+    Unit test to demonstrate Galaxy S6 MSAA readPixels bug
+    
+    After lots of tinkering, this is the smallest test case I've
+    found to reproduce the bug. Frequently, bitmap b4 will be
+    cleared to blue, but not contain the oval drawn right before.
+    Bitmap b5 will contain the oval, so the diff of the two
+    bitmaps will detect the error.
+    
+    There may be something else that can be removed, but I
+    haven't found it.
+    
+    Interesting note:
+    
+    In the original version, all surfaces were cleared to
+    black. When I started trying to change the clear colors to
+    figure out if we were getting an old surface, the bug went
+    away. In particular, the first clear color is irrelevant,
+    but the last three clears must all be the same color. If
+    any are different, the bug doesn't occur.
+    
+    Bug: skia:6653
+    Change-Id: Iacafcc140b60594fab208e82987b0f37416975f3
+    Reviewed-on: https://skia-review.googlesource.com/19817
+    Commit-Queue: Brian Osman <brianosman@google.com>
+    Reviewed-by: Robert Phillips <robertphillips@google.com>
+
+commit f94514b0ff8eccb2eaef8c77bee8c5f462b83b90
+Author: Eric Boren <borenet@google.com>
+Date:   Mon May 22 08:35:36 2017 -0400
+
+    [recipes] Copy file, isolate, swarming, swarming_client from build.git
+    
+    Rename swarming -> skia_swarming.
+    Some required heavy modification to remove other dependencies on modules
+    in build.git.
+    
+    Expected changes:
+    
+    - RECIPE_MODULE[build::<module>] -> RECIPE_MODULE[skia::<module>]
+    - No more runit; directly run through Python.
+    
+    Bug: skia:6628
+    Change-Id: I1b1370ed387966222ce10731771dbde9020cf542
+    Reviewed-on: https://skia-review.googlesource.com/17448
+    Commit-Queue: Eric Boren <borenet@google.com>
+    Reviewed-by: Ravi Mistry <rmistry@google.com>
+
+commit ccd0eeecae63d2c43ad96fbfc2417b812f0588f9
+Author: Eric Boren <borenet@google.com>
+Date:   Mon Dec 12 10:38:45 2016 -0500
+
+    Disable flaky GSStoreTest
+    
+    BUG=skia:6048
+    
+    Change-Id: I86abfc0059c6523db08e552df16e88ae71379ed7
+    Reviewed-on: https://skia-review.googlesource.com/5733
+    Reviewed-by: Mike Klein <mtklein@chromium.org>
+    Commit-Queue: Eric Boren <borenet@google.com>
+
+commit 78b35230aaa2620f826266e3f2385bf06eb881ed
+Author: Derek Sollenberger <djsollen@google.com>
+Date:   Thu Dec 1 14:37:41 2016 -0500
+
+    Archive or update unsupported Android scripts and third-party dependencies.
+    
+      - nothing uses ashmem;
+      - cpufeatures and native_app_glue are now pulled from the NDK;
+      - no bots use the scripts in platform_tools/android/bin;
+      - update scripts to work with GN instead of GYP.
+    
+    Change-Id: I14f47eeadb3047505e232dd10385f58ef12c73f4
+    Reviewed-on: https://skia-review.googlesource.com/5422
+    Reviewed-by: Mike Klein <mtklein@chromium.org>
+    Commit-Queue: Derek Sollenberger <djsollen@google.com>
+
+commit 63d14413beab9806a65267dcf1a3e77e4bb566d1
+Author: tomhudson <tomhudson@google.com>
+Date:   Mon Jul 11 10:26:56 2016 -0700
+
+    Remove obsolete bench analysis scripts
+    
+    R=bungeman@google.com
+    BUG=skia:5459
+    GOLD_TRYBOT_URL= https://gold.skia.org/search?issue=2125953002
+    
+    Review-Url: https://codereview.chromium.org/2125953002
+
+commit 0ff46c06b7035ca66a1a459f21160f1d5ba7fcb2
+Author: benjaminwagner <benjaminwagner@google.com>
+Date:   Fri Dec 11 11:26:44 2015 -0800
+
+    Change google3 sync scripts to sync latest rather than LKGR.
+    
+    This matches the behavior of the autoroller and is generally more useful.
+    
+    BUG=skia:
+    
+    Review URL: https://codereview.chromium.org/1508313004
+
+commit 787ca87b338a5fcd0612b70815cc7d5438c42983
+Author: benjaminwagner <benjaminwagner@google.com>
+Date:   Mon Aug 17 12:58:10 2015 -0700
+
+    Add files added to Skia HEAD in google3 to the Git repo.
+    
+    LICENSE is modified in google3 to mention some code copied from other projects.
+    
+    BUG=skia:
+    
+    Review URL: https://codereview.chromium.org/1291603003
+
+commit 1692bd12b529b573873dd96becce5b0aabf18bbd
+Author: bsalomon <bsalomon@google.com>
+Date:   Mon Jun 15 07:16:57 2015 -0700
+
+    Add markdown for GPU wrangler.
+    NOTRY=true
+    DOCS_PREVIEW= https://skia.org/?cl=1177313006
+    
+    TBR=rmistry@google.com
+    
+    Review URL: https://codereview.chromium.org/1177313006
+
+commit 38a017bf44aa1ad25291ad0cbb4ccbe8bd31ab0b
+Author: caryclark <caryclark@google.com>
+Date:   Wed May 13 10:13:17 2015 -0700
+
+    clean up tests
+    
+    Confirm that no path ops tests are flaky, and clean up errors around
+    that. The test framework was incorrectly checking for >= MAX_ERRORS for
+    failure and <= MAX_ERRORS for success.
+    
+    TBR=reed@google.com
+    
+    Review URL: https://codereview.chromium.org/1140563003
+
+commit bca19f77479adfd8ba2171753382bc8bf4c2b4ca
+Author: caryclark <caryclark@google.com>
+Date:   Wed May 13 08:23:48 2015 -0700
+
+    deal more consistently with unsortable edges
+    
+    Improve line/curve coincident detection and resolution. This fixed the remaining simple failures.
+    
+    When an edge is unsortable, use the ray intersection to determine the angles' winding.
+    
+    Deal with degenerate segments.
+    
+    TBR=reed@google.com
+    BUG=skia:3588,skia:3762
+    
+    Review URL: https://codereview.chromium.org/1140813002
+
+commit 624637cc8ec22c000409704d0b403ac1b81ad4b0
+Author: caryclark <caryclark@google.com>
+Date:   Mon May 11 07:21:27 2015 -0700
+
+    Path ops formerly found the topmost unprocessed edge and determined its angle sort order to initialize the winding. This never worked correctly with cubics and was flaky with paths consisting mostly of vertical edges.
+    
+    This replacement shoots axis-aligned rays through all intersecting edges to find the outermost one either horizontally or vertically. The resulting code is smaller and twice as fast.
+    
+    To support this, most of the horizontal / vertical intersection code was rewritten and standardized, and old code supporting the top-directed winding was deleted.
+    
+    Contours were pointed to by an SkTDArray. Instead, put them in a linked list, and designate the list head with its own class to ensure that methods that take lists of contours start at the top. This change removed a large percentage of memory allocations used by path ops.
+    
+    TBR=reed@google.com
+    BUG=skia:3588
+    
+    Review URL: https://codereview.chromium.org/1111333002
+
+commit f9c9d72e57e85bb1baa978fff0d13d58e670c624
+Author: mtklein <mtklein@chromium.org>
+Date:   Mon Dec 15 13:17:01 2014 -0800
+
+    Delete old bench expectation code.
+    
+    Just noticed these were still here.
+    
+    BUG=skia:
+    
+    Review URL: https://codereview.chromium.org/801373003
+
+commit 428b2a5a4f31334864b2834e8668e7498959580a
+Author: jvanverth <jvanverth@google.com>
+Date:   Mon Nov 10 12:12:55 2014 -0800
+
+    Re-enable no-longer-flaky GMs
+    
+    TBR=jcgregorio@google.com
+    
+    Review URL: https://codereview.chromium.org/684413004
+
+commit 3c10c0d444c2e690e89ab5c99387c22017170980
+Author: jvanverth <jvanverth@google.com>
+Date:   Fri Nov 7 14:57:13 2014 -0800
+
+    Reignore some tests that use distance fields
+    
+    NOTREECHECKS=true
+    NOTRY=true
+    
+    Review URL: https://codereview.chromium.org/708173002
+
+commit 2b8a3b8f26658e2933234e97d5d2c0b58935baf4
+Author: mtklein <mtklein@chromium.org>
+Date:   Wed Jun 25 09:14:28 2014 -0700
+
+    Focus disabled optimizations on just BGRAConvolve2D, and only 32-bit.
+    
+    Last CL accidentally disabled autovectorization on 64-bit builds too.
+    This fixes that.
+    
+    BUG=skia:2575
+    R=rmistry@google.com, mtklein@google.com
+    
+    Author: mtklein@chromium.org
+    
+    Review URL: https://codereview.chromium.org/353823005
+
+commit ec368cf4d6efec8354c2c316cabfb3f5d59643f8
+Author: mtklein <mtklein@chromium.org>
+Date:   Wed Jun 25 08:27:08 2014 -0700
+
+    Temporarily disable autovectorization in core for 32-bit Linux builds.
+    
+    BUG=skia:2575
+    R=rmistry@google.com, mtklein@google.com
+    
+    Author: mtklein@chromium.org
+    
+    Review URL: https://codereview.chromium.org/354833006
+
+commit 5ddea761a97d7ab41eecff630b602297ce7299d4
+Author: commit-bot@chromium.org <commit-bot@chromium.org@2bbb7eff-a529-9590-31e7-b0007b416f81>
+Date:   Wed May 21 21:12:11 2014 +0000
+
+    Adds bench rebase tools to experimental for version control and self update.
+    
+    BUG=skia:
+    NOTRY=true
+    R=kelvinly@google.com
+    TBR=kelvinly@google.com
+    
+    Author: bensong@google.com
+    
+    Review URL: https://codereview.chromium.org/296453016
+    
+    git-svn-id: http://skia.googlecode.com/svn/trunk@14833 2bbb7eff-a529-9590-31e7-b0007b416f81
+
+commit 8cb46b963a20e65a64086a1c3e105dc858f22fb3
+Author: commit-bot@chromium.org <commit-bot@chromium.org@2bbb7eff-a529-9590-31e7-b0007b416f81>
+Date:   Mon Apr 28 20:20:43 2014 +0000
+
+    Adds a blacklist of SKPs to exclude from bench expectations.
+    
+    BUG=skia:2469
+    NOTRY=true
+    NOTREECHECKS=true
+    R=caryclark@google.com
+    TBR=caryclark@google.com
+    
+    Author: bensong@google.com
+    
+    Review URL: https://codereview.chromium.org/260053007
+    
+    git-svn-id: http://skia.googlecode.com/svn/trunk@14422 2bbb7eff-a529-9590-31e7-b0007b416f81
+
+commit 517c1e2921bc20b8600061aa21a77a8810db597e
+Author: commit-bot@chromium.org <commit-bot@chromium.org@2bbb7eff-a529-9590-31e7-b0007b416f81>
+Date:   Wed Jan 22 22:57:19 2014 +0000
+
+    Chromium Codereview Comparison Script.
+    
+    This script takes two Codereview URLs, looks at the trybot results for
+    the two codereviews and compares the results.
+    
+    Motivation:  This should speed up the DEPS roll procedure.
+    
+    BUG=skia:2039
+    R=robertphillips@google.com, borenet@google.com
+    
+    Author: halcanary@google.com
+    
+    Review URL: https://codereview.chromium.org/143503003
+    
+    git-svn-id: http://skia.googlecode.com/svn/trunk@13144 2bbb7eff-a529-9590-31e7-b0007b416f81
+
+commit 6320e8f393539b7a536b32b5a072a474709da5ff
+Author: commit-bot@chromium.org <commit-bot@chromium.org@2bbb7eff-a529-9590-31e7-b0007b416f81>
+Date:   Wed May 29 13:26:32 2013 +0000
+
+    Remove dependency of gsutil to download ndk
+    
+    Currently we use gsutil to download ndk. However, it requires extra
+    steps to install, and is not convenient to configure (several steps to
+    enable Google storage), especially for developers behind proxy (need to
+    set config of boto). Chromium provides some python scripts to help
+    download nacl toolchains that can meet this need well. So this patch
+    basically borrows two python scripts from there, and makes some
+    according changes to remove the usage of gsutil. With new script, we may
+    also implement some advanced features, such as hash check, so that the
+    download would be more intelligent.
+    
+    BUG=
+    R=djsollen@google.com, borenet@google.com, reed@google.com
+    
+    Author: yang.gu@intel.com
+    
+    Review URL: https://chromiumcodereview.appspot.com/15951008
+    
+    git-svn-id: http://skia.googlecode.com/svn/trunk@9311 2bbb7eff-a529-9590-31e7-b0007b416f81
+
+commit f123ba9e21a6e19b67d9c3fc0ac337725a2f1737
+Author: epoger@google.com <epoger@google.com@2bbb7eff-a529-9590-31e7-b0007b416f81>
+Date:   Thu May 31 13:54:51 2012 +0000
+
+    Disable TLSTest for now, to work around http://code.google.com/p/skia/issues/detail?id=619
+    Review URL: https://codereview.appspot.com/6259056
+    
+    git-svn-id: http://skia.googlecode.com/svn/trunk@4090 2bbb7eff-a529-9590-31e7-b0007b416f81

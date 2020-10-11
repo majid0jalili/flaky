@@ -1,0 +1,11 @@
+commit 11f78c06977dc9ac7f814ad9d7e7b77dcd82699e
+Author: yinqiwen <yinqiwen@gmail.com>
+Date:   Wed Apr 17 15:38:55 2013 +0800
+
+    rm glog dependency
+
+commit c83a65bf9825792fcb3a73ef8d2476d5011a8671
+Author: yinqiwen <yinqiwen@gmail.com>
+Date:   Wed Apr 3 20:28:38 2013 +0800
+
+    update

@@ -1,0 +1,19 @@
+commit 89c0201bcb7482fd236c08ac6a7bd2228b4f0576
+Author: Paul Walker <paul@pwjw.com>
+Date:   Tue Feb 4 09:13:20 2020 -0500
+
+    Change / Upgrade the build process a bit
+    
+    1. Remove the transient files (Builds/ JuceLibraryCode/)
+    2. Add scripts to download juce and configure properly
+    3. Add vst3sdk as a git submodule
+    4. Modify Dexed.jucer to use this config
+    5. Modify .gitignore to ignore the now transient files
+    6. Re-set version at azure build
+    7. First azure-pipeline candidate
+
+commit 60bb86bd254b03e9293480a8f638b6e6c5c66780
+Author: Pascal Gauthier <asb2m10@gmail.com>
+Date:   Wed Dec 18 23:17:33 2019 -0500
+
+    Update to JUCE 5.4.5

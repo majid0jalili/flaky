@@ -1,0 +1,21 @@
+commit ef7262d4775bf6de750bc2a26dbf98368d7ec0c3
+Author: ted.mielczarek <ted.mielczarek@4c0a9323-5329-0410-9bdc-e9ce6186880e>
+Date:   Mon Dec 13 22:10:23 2010 +0000
+
+    allow passing info about known memory mappings to MinidumpWriter and ExceptionHandler
+    r=thestig at http://breakpad.appspot.com/242001/show
+    
+    git-svn-id: http://google-breakpad.googlecode.com/svn/trunk@741 4c0a9323-5329-0410-9bdc-e9ce6186880e
+
+commit de545c09d0363e6964822ec92529a80feaca152d
+Author: nealsid <nealsid@4c0a9323-5329-0410-9bdc-e9ce6186880e>
+Date:   Tue Mar 2 00:39:48 2010 +0000
+
+    ARM support, with some build system changes to support x86-64, arm, and i386 in an autoconf style build in Linux.  The O2 build for the unit tests is still broken but I'm checking this in to unblock people
+    
+    A=nealsid
+    R=ajwong, hannahtang, ted.mielczarek
+    
+    
+    
+    git-svn-id: http://google-breakpad.googlecode.com/svn/trunk@541 4c0a9323-5329-0410-9bdc-e9ce6186880e

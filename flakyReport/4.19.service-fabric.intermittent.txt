@@ -1,0 +1,45 @@
+commit cd10f3e8dea8722f75f7ae06a672510bfedc540e
+Author: Athinanthny Senthil <40613656+athinanthny@users.noreply.github.com>
+Date:   Mon Apr 20 13:19:29 2020 -0700
+
+    Create Service-Fabric-71-releasenotes.md
+
+commit 8d02ef6d5faea85bb3797d921dcfc7fcd60dada5
+Author: Nicolas Oman <v-nioma@microsoft.com>
+Date:   Thu Apr 16 10:58:23 2020 -0700
+
+    Delete Service-Fabric-71-releasenotes.md
+    
+    Deleting this, as it was published too early.
+
+commit c921082c639c2e9f5bb324acf431cba4cd3751f4
+Author: Nicolas Oman <v-nioma@microsoft.com>
+Date:   Thu Apr 16 01:27:11 2020 -0700
+
+    Create Service-Fabric-71-releasenotes.md
+
+commit 98e62a11920df4bf14df21e7e62b4a37883b7629
+Author: Nicolas Oman <v-nioma@microsoft.com>
+Date:   Tue Apr 14 14:58:56 2020 -0700
+
+    added release notes
+
+commit 6f2a641bdfe4b7e7100780cd4a4473f8eda30d5c
+Author: sridhar madhugiri (msft) <sridmad@users.noreply.github.com>
+Date:   Thu May 2 19:12:10 2019 -0700
+
+    Update the repo with sources that match the latest 6.4 release (#317)
+    
+    Update the repo with sources that match the latest 6.4 release
+
+commit 7a2f3ec5df233d728ea22dbe388b103776bc06d2
+Author: Service Fabric Team Committer <noreply-sfteam@microsoft.com>
+Date:   Thu Aug 23 16:17:00 2018 -0700
+
+    Updating open source code with new snapshot, including the managed code and ktl
+
+commit 2e8c3d6699eb1d0d704ee24146356d343f295603
+Author: Service Fabric Team Committer <noreply-sfteam@microsoft.com>
+Date:   Wed Mar 14 20:26:05 2018 +0000
+
+    Initial open source commit of Service Fabric

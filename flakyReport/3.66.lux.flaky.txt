@@ -1,0 +1,23 @@
+commit 2d8799171af29da387dedfffb3520f1674fe95a3
+Author: 216k155 <216k155@luxcore.io>
+Date:   Fri Nov 3 06:46:41 2017 -0700
+
+    Updated masternode configs
+
+commit 9d85d5655ec11d578e43f9f67ed4ec211e5606cd
+Author: 216k155 <216k155@luxcore.io>
+Date:   Fri Nov 3 00:58:31 2017 -0700
+
+    Fixed CPU threads exhausted
+
+commit 766f7ba2e65d423c37c2c1ae436f6fee88c4bd57
+Author: 216k155 <shacker@i2pd.net>
+Date:   Fri Oct 6 19:45:03 2017 +1100
+
+    Updated leveldb
+
+commit 3ae246e926d25a2668aa4598027bb179e2b58f6f
+Author: 216k155 <shacker@i2pd.net>
+Date:   Fri Oct 6 19:42:33 2017 +1100
+
+    updated nNonce

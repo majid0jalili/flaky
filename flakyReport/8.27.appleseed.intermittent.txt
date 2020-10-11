@@ -1,0 +1,23 @@
+commit 4e0e80c5d66999dad8b194245ed5760cbf1436ce
+Author: Francois Beaune <beaune@aist.enst.fr>
+Date:   Thu Feb 13 20:29:52 2014 +0100
+
+    removed third party libraries from repository.
+
+commit 26ca29471b3bff0531f32fc516965372b16dd315
+Author: Francois Beaune <beaune@aist.enst.fr>
+Date:   Wed Oct 12 19:33:12 2011 +0200
+
+    added HDF5 1.8.7 (http://www.hdfgroup.org/HDF5/).
+
+commit d1fdf8f3ca889042f79474de6c6917821fbca0d4
+Author: Francois Beaune <beaune@aist.enst.fr>
+Date:   Thu Mar 3 11:42:57 2011 +0100
+
+    boost sources are no longer included in appleseed's repository.
+
+commit 35ce58d4ac72f0e9a57141384c8b484fb2f0163f
+Author: Francois Beaune <beaune@aist.enst.fr>
+Date:   Sat Jul 3 19:27:43 2010 +0200
+
+    initial import.

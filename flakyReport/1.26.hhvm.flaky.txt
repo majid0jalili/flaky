@@ -1,0 +1,627 @@
+commit e4a2c3d76becc1e3961888f4807c74ccb6dfdef5
+Author: Alexey Toptygin <alexeyt@fb.com>
+Date:   Tue Oct 29 18:26:16 2019 -0700
+
+    Delete 3 scripts related to importing tests.
+    
+    Summary: We had some scripts laying around for importing spec tests, for finding files with non-ASCII characters in imported tests, and for fixing line endings in imported tests. We don't import tests any more, so delete these.
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D18214107
+    
+    fbshipit-source-id: 75e6ec3e1d30f34771ab230749dc241652b576c5
+
+commit e6f861c56ae9cfe460af6efa66dff3fe2bfc8de7
+Author: Waleed Khan <waleedk@fb.com>
+Date:   Mon Jun 17 16:39:59 2019 -0700
+
+    Delete test_one_hg_update_daemonized
+    
+    Summary: Seems to be flaky, even though dabek tried to fix it in D10511311.
+    
+    Differential Revision: D13867403
+    
+    fbshipit-source-id: a03d30cdc5356ad3ef9b343649d90641e26fd9bc
+
+commit 5e02fb9c6c892c3de5760603d462695ad58cbfac
+Author: Alexey Toptygin <alexeyt@fb.com>
+Date:   Fri Jan 25 17:01:54 2019 -0800
+
+    Delete framework tests.
+    
+    Summary:
+    The framework tests have been broken since pass-by-ref annotations became mandatory and return by ref became a parse error.
+    
+    Per conversation with Fred, we can't run composer, and can't fully run PHPUnit - these are unmaintainable.
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D13819734
+    
+    fbshipit-source-id: 738488c9b9c902d984b17e5f7a02a15480e8d8d5
+
+commit 416bae5879e35b2cca11fc3072ecc9d6d8b339c8
+Author: Kasper Kopec <kasper@fb.com>
+Date:   Fri May 25 20:02:03 2018 -0700
+
+    Ability to use workers while using workers
+    
+    Summary:
+    yodawg
+    
+    (Note: this ignores all push blocking failures!)
+    
+    Reviewed By: alexchow
+    
+    Differential Revision: D8087556
+    
+    fbshipit-source-id: 32f72fc0519d5bc0377872c482fc181b019ac950
+
+commit b1779738ec82509e4d353292448c71862e0e0628
+Author: Kasper Kopec <kasper@fb.com>
+Date:   Thu May 17 12:47:54 2018 -0700
+
+    Do not automatically restart full checks cancelled because of IDE edit commands
+    
+    Summary:
+    Here comes the big (?) disappointment of this diff stack: while we can do things during typechecking, the most important (?) and time sensitive sequence of IDE queries (edit + autocomplete) requires us to STOP typechecking (to apply the edit in thread safe way). We can do it, but there is a constant cost to starting and stopping those jobs, which can exceed the time Nuclide allots us to return the results and results in a very flaky experience.
+    
+    I tried a bunch of heuristics to try to automatically determine when to restart and none of them were particularly satisfying, so instead I opt to transfer this responsibility to the user - when you start editing files you cancel current recheck and it will be only restarted when you save any file again.
+    
+    Reviewed By: alexchow
+    
+    Differential Revision: D7944023
+    
+    fbshipit-source-id: 0af0123f00c1c0b971c55bef7cef8b57c6a1b701
+
+commit 79f98432bd993b96a4cce7753dbdd6406e97fa56
+Author: Eric Bluestein <ericblue@fb.com>
+Date:   Mon Apr 30 16:10:54 2018 -0700
+
+    Remove XDebug extension from HHVM
+    
+    Summary: This removes XDebug and corresponding support throughout the codebase.
+    
+    Reviewed By: mostafaeweda
+    
+    Differential Revision: D7647876
+    
+    fbshipit-source-id: 3856637c7c0b5033514be36f63ead8e4b3110c6c
+
+commit f4d06a8a70befbf1158e884f8b7ea90fe33f1f20
+Author: Alexey Toptygin <alexeyt@fb.com>
+Date:   Mon Feb 12 12:10:06 2018 -0800
+
+    Delete zend/bad and zend/flaky tests.
+    
+    Summary:
+    We don't run them now, and we don't intend to run them in the future.
+    Also delete scripts for importing these tests and moving them around.
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D6959408
+    
+    fbshipit-source-id: 310a37055ff42c2d95ab7c6b14fb759aa1bcd06a
+
+commit 4900f95b112b4cccd454b47e30533ac6f8977e2a
+Author: Jeremy Faller <jfaller@fb.com>
+Date:   Fri Sep 22 06:47:15 2017 -0700
+
+    Re-enable weakref_gc test with tighter skip conditions.
+    
+    Summary: This test might still be flaky as it triggers because of stale pointers.
+    
+    Reviewed By: edwinsmith
+    
+    Differential Revision: D5882090
+    
+    fbshipit-source-id: 6cceee33a0ebd397eca05529c3523bca949edc54
+
+commit 0afec29a136bc067d61ed19ae2c8e1599a0cc637
+Author: Jeremy Faller <jfaller@fb.com>
+Date:   Tue Sep 19 11:50:40 2017 -0700
+
+    Turn off weak-ref gc test.
+    
+    Summary: Test looks flaky. Never flaked for me, but HEAD seems to have a problem. Get build back to green, and research answer.
+    
+    Reviewed By: edwinsmith
+    
+    Differential Revision: D5861954
+    
+    fbshipit-source-id: 9728d26fdbd3ffdfa6e42c507ad35da66b4223b1
+
+commit f774a52e118c87c2c6c3dd67daf434e6d0166ee8
+Author: Alexander Chow <achow@fb.com>
+Date:   Thu Jun 22 12:56:58 2017 -0700
+
+    Provide mechanism in repo to toggle into faked Watchman Event Watcher behavior
+    
+    Summary:
+    This creates a mechanism for the repo itself to toggle the Watchman Event Watcher
+    behavior (disable it and have it always spit out a fake "Settled" message).
+    
+    A bug was actually fixed in D5185200 which would result in log-spam until hard
+    disk was full if a Hack client disconnected while it was in purgatory and the
+    Monitor attempted to send it a message later (the summary for that diff doesn't
+    mention fixing this bug - it fixed another bug - but it works). Purgatory usage was rare
+    but becomes common with use of the Informant with a Watchman Event Watcher
+    running.
+    
+    To avoid this, we need to disable the Watchman Event Watcher for older versions
+    of the Hack server. Of course this isn't really possible by making changes to
+    Hack itself. Here I add a file which acts as a toggle to enable/disable the
+    Watchman Event Watcher. When disabled, all messages are faked into a Settled
+    message instead.
+    
+    Reviewed By: dlreeves
+    
+    Differential Revision: D5298716
+    
+    fbshipit-source-id: 25cce95a3dcb9a2f97260c800b985667c9150ee7
+
+commit 2df2a4069009922f20e75680f77e3acc4b04f02f
+Author: Alexander Chow <achow@fb.com>
+Date:   Fri Jun 9 16:36:53 2017 -0700
+
+    Watchman event watcher clients wait for notification
+    
+    Summary:
+    Watchman event watcher clients wait for notification to
+    indicate the repo has settled.
+    
+    Previously, only 1 message would be sent and the connection would be closed. If the message was not a "settled" message, the client would have to repeatedly create a new connection until the "settled" message. This makes things a little easier on clients - they don't need to repeatedly create new connections anymore. They can just select on the connection until a new message has arrived.
+    
+    Also added docs.
+    
+    Reviewed By: dlreeves
+    
+    Differential Revision: D5144181
+    
+    fbshipit-source-id: 3fdfeba50a2b2c74f04f2bbf1fb3e20f22355ed9
+
+commit f07014dfea6579deb7ab4f7cd8e2845f42f6150c
+Author: Alexander Chow <achow@fb.com>
+Date:   Thu Jun 8 01:03:23 2017 -0700
+
+    Rewrite Watchman event watcher tests with decorator
+    
+    Summary: Rewrite Watchman event watcher tests with decorator
+    
+    Reviewed By: dlreeves
+    
+    Differential Revision: D5136686
+    
+    fbshipit-source-id: c4a90749b451065c4dace28c77193e6732d2b6f8
+
+commit b76079b831b98bdbc71e4ddd742b0d8d2f3e235a
+Author: Alexander Chow <achow@fb.com>
+Date:   Thu Jun 8 01:03:20 2017 -0700
+
+    Watchman event watcher listens in on port and provides status
+    
+    Summary: Watchman event watcher listens in on port and provides status
+    
+    Reviewed By: dlreeves
+    
+    Differential Revision: D5132753
+    
+    fbshipit-source-id: 41bd64ab72371f155045ec9174c7799ed820a389
+
+commit 23616a9edad4fd0a4eca29db4f65d0f95da755f2
+Author: Josh Watzman <jwatzman@fb.com>
+Date:   Fri Jan 30 16:23:04 2015 -0800
+
+    Delete FastCGI C++ tests
+    
+    Summary: These weren't testing a whole lot other than themselves, were
+    actively in the way of important fixes like D1816135, and were the only
+    other implementors of several abstract classes that would be good to
+    fold into their only implementors.
+    
+    {sync, type="parent", child="external", childrevid="32595", childdiffid="168867", parentdiffid="6331047"}
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D1816891
+
+commit 78bb532175e9be34447e24f6636e5da201b6e65f
+Author: Joel Marcey <joelm@fb.com>
+Date:   Thu Dec 18 08:52:32 2014 -0800
+
+    Add PHP lang spec tests to HHVM test suite
+    
+    Summary: We have wanted to do this for a while, so now I am. These are
+    the PHP lang spec tests. I used the PHP 5.x import script
+    as a model to get the tests. But we don't have `good`, `bad`, etc.
+    Instead we have a global `config.skipif` with the tests that are failing
+    and we put a comment as to why they are failing.
+    
+    Key file changes (other than new tests and expect files):
+    
+    ```
+    hphp/test/README.md
+    hphp/test/run
+    hphp/test/spec/.gitattributes
+    hphp/test/spec/.gitignore
+    hphp/test/tools/find_non_ascii_files.php
+    hphp/test/tools/import_spec_test.py
+    hphp/test/spec/config.skipif  (autogenerated by import_spec_test.py)
+    ```
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D1718437
+
+commit f85f68a63e41cf94c487521ee6864b9cae382da0
+Author: Paul Bissonnette <paulbiss@fb.com>
+Date:   Wed Aug 27 22:12:05 2014 -0700
+
+    Overhauled xdebug remote debugging testing
+    
+    Summary: This diff does several things:
+    * Moved remote debugging tests into a single folder (eliminates the need for a
+      bunch of the same ini files)
+    * Removed null characters as well as session-specific information from the
+      output of the server before displaying. This means expectf files will now show
+      up in phabricator, and most of the time out2expect.py is enough to generate
+      a .expectf file
+    * Changed remote_FOO.test -> FOO.php.test
+    * FOO.test.in files can have comments now (1st character on line must be #)
+    * Removed script status output, unecessary and it made writing expectfs a pain
+    * FOO.php files are all the same now, just a single line. The testing file is
+      determined automatically
+    
+    This was high-pri on my list of cleanup as the old way was awful and not very
+    maintainable. I have most of the commands implemented and wanted this before
+    I wrote tests.
+    
+    arc patch isn't happy with these binary files, but it's all just test motion and tests
+    are passing, so...
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1510839
+
+commit 2210b84411b55ed41f6873de62fd5a3a49a2c17a
+Author: James Reyes <jlreyes@fb.com>
+Date:   Sun Aug 10 22:42:16 2014 -0700
+
+    Implemented stating/stopping xdebug remote server
+    
+    Summary: This diff implements correctly starting/stopping the xdebug remote debug
+    server, including initializing/deinitializing the dbgp protocol. The xdebug
+    server supports all the configuration options available in php5 xdebug.
+    
+    A lot of this code started as the php5 xdebug code and so most of
+    the flow corresponds 1:1 to php5 xdebug. However, the code was very heavily
+    translated- all lines required some change of varying degree.
+    So feel free to bug me about style/structure as my goal is to keep this file
+    clean.
+    
+    What's missing is responding to commands. There are quite a few of these.
+    Before that, I need to refactor the debugging hook code to work with non-hphpd
+    debuggers.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1473636
+
+commit 9235ae86c95a5dfa184293ef84e4cec51615de72
+Author: Liran Nuna <liranuna@fb.com>
+Date:   Wed Jul 30 16:20:00 2014 -0700
+
+    Move flaky tests to their own directory
+    
+    Summary: This diff moves all bad tests that are maybe good and maybe pass but have issues running in parallel tests to a new directory called 'flaky'.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1466144
+
+commit fe34eb161ea60d1643c54358d036d93314914528
+Author: Liran Nuna <liranuna@fb.com>
+Date:   Mon Jul 28 15:22:02 2014 -0700
+
+    Import php tests from php 5.5.11
+    
+    Summary: This diff re-imports all the tests from PHP 5.5.11.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1432267
+
+commit e3fcbc666a313835b428110f2c1f123da6fe5cae
+Author: Simon Welsh <simon@simon.geek.nz>
+Date:   Fri May 23 12:43:15 2014 -0700
+
+    Convert ext/session to HNI
+    
+    Summary: Part of #1480
+    Closes #2332
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1338645
+    
+    Pulled By: @JoelMarcey
+
+commit c740ae1106403e3385cafedfef2ff1405749c1bb
+Author: Josh Watzman <jwatzman@fb.com>
+Date:   Fri May 9 13:20:30 2014 -0700
+
+    Move hphp/tools/import_zend_test.py
+    
+    Summary: Makes more sense over here.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1322104
+
+commit 4288eb0a376d1ef885ed50150279e3611a12963d
+Author: Alex Malyshev <alexanderm@fb.com>
+Date:   Mon Apr 7 11:40:25 2014 -0700
+
+    Move flakey curl tests from good to bad
+    
+    They're making travis super sad.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1260329
+
+commit 62e08dc0651af3de2b5813b611d16640c9306a65
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Mar 4 10:08:10 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 9657028414262cc0e3d2249da915175677b3cb92
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Mar 3 16:00:27 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit d4c8f296f43e6725cb683d8cd5c7c057bbebbc7c
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Feb 27 13:12:00 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 74723e8cc26b89f7e108eddf244eb5dac6ea2f22
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Feb 26 09:35:47 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1191750
+
+commit 48ad1c32a144f311b35eeb8ea3eb23e9db99c325
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Feb 25 13:13:22 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1189921
+
+commit 1d4e88b226f7d1d23ee858d6c3415bd6e676816f
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Feb 18 17:36:49 2014 -0800
+
+    Disable some flaky zend tests
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1179662
+
+commit f6880ce7c24b741c89c07577091505498f2c6271
+Author: Victor <victor@suumit.com>
+Date:   Tue Jan 28 22:37:18 2014 -0800
+
+    light refactoring / cleanup.
+    
+    [Framework tests] light refactoring / cleanup.
+    
+    Closes #1649
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1144909
+    
+    Pulled By: @JoelMarcey
+
+commit fd6d3c4dd265361bc829b7fd7f0a9ce66f90045e
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Jan 28 12:10:14 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1147082
+
+commit e31c664c02ea4e91d9161a365a7024b4bf7fe951
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Jan 21 10:08:39 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1135985
+
+commit 58ddd23cec4630b03c06b2c94cd00b5c5acc30ca
+Author: bsimmers <bsimmers@fb.com>
+Date:   Fri Jan 17 12:39:22 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1133886
+
+commit 186c74e761ebdde133e26164bacc034b5f007b25
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Fri Jan 3 13:24:36 2014 -0800
+
+    enable TestFastCGIProtocol
+    
+    The Server tests were the flakey ones, but both got disabled. Lets leave the unit tests around so I don't break stuff.
+    
+    Reviewed By: @scannell
+    
+    Differential Revision: D1115879
+
+commit ed492718fd6352b30aa61b729ec25205c857298d
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Dec 17 17:10:58 2013 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D1103516
+
+commit ac954c4d745831713f03ad6027ad8db72279a824
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Dec 16 12:04:43 2013 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1100222
+
+commit 29d01718247518afd5f97010b4f23f3eb6eadd9d
+Author: bsimmers <bsimmers@fb.com>
+Date:   Sat Dec 14 10:27:55 2013 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D1099379
+
+commit 7f74da5701fb48ac3ac430bb22836ecb3dec09a5
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Nov 21 13:47:24 2013 -0800
+
+    Disable flaky test/zend/good/ext/standard/tests/file/copy_variation16.php
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D1068500
+
+commit 68d745477c528d4719be331beeff171f871be650
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Nov 18 13:54:46 2013 -0800
+
+    Disable flaky Zend test
+    
+    Reviewed By: @dariorussi
+    
+    Differential Revision: D1061932
+
+commit c26c90206bd2e5fec478848dc45ba8be85a9b20b
+Author: bsimmers <bsimmers@fb.com>
+Date:   Fri Nov 15 13:15:48 2013 -0800
+
+    Disable flaky test/zend/good/ext/standard/tests/file/fileowner_basic.php
+    
+    Reviewed By: @dariorussi
+    
+    Differential Revision: D1059751
+
+commit cd6043108515730fce545925890d9da2c6ddda04
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Oct 3 09:40:33 2013 -0700
+
+    Disable a bunch of flaky tests
+    
+    These all failed one or more times on contbuild in the past day.
+    
+    Reviewed By: @scannell
+    
+    Differential Revision: D995196
+
+commit 4cebdbe47d650b3facb22d375b4764b3360d9921
+Author: Jordan DeLong <jdelong@fb.com>
+Date:   Sat Jun 15 18:15:55 2013 -0700
+
+    Remove the ImageSprite extension
+    
+    Believed to be unused now.
+
+commit 4795dcdc092af2b26f9753cbd1adad23a5e8183a
+Author: Jordan DeLong <jdelong@fb.com>
+Date:   Sat Jun 15 13:31:00 2013 -0700
+
+    Migrate TestExtFile to php
+    
+    I dropped a couple tests that did nothing
+    (e.g. clearstatcache) or almost nothing, or that 'tested' things that
+    almost all the tests do (e.g. unlink or fclose).  Dropped a few unixy
+    apis that really didn't test that they do anything.  Combined a few
+    tests also.
+
+commit 6fca89f259940d11cc91bebb06789f0c5cb7a6e8
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Jun 5 14:48:08 2013 -0700
+
+    Disable flaky zend test
+    
+    I've seen it failing on master intermittently
+
+commit e433cd193c642b2ee960e78522ea9406cc7b349d
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Sun May 19 01:45:33 2013 -0700
+
+    move compiled tests files into another dir
+    
+    I've been linking people to the README in this directory, but it is hard to see with all these files in here. What do people think about it moving a subdirectory? I don't love the name.
+
+commit eca135cb31b54c4e69fc09f73c8756846f18b935
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Sun Apr 21 12:55:46 2013 -0700
+
+    delete most PHP in C++
+    
+    Sadly I can't get TestDebugger, TestServer, TestExt, QuickTests, or TestPerformance as they are all unsuported by verify. Someday.
+
+commit e5804832140496e36a80f0ca12960c3fa34e8933
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Mar 14 12:12:35 2013 -0700
+
+    Disable flaky tests in TestExtFile and TestExtImageSprite
+
+commit 363d1bb20fe84b4cdc2dc0f4c7b1dd39d167a1f5
+Author: Jordan Delong <jdelong@fb.com>
+Date:   Sat Feb 2 10:44:12 2013 -0800
+
+    Code move src/ -> hphp/
+    
+    This change is mostly for FB internal organizational reasons.
+    Building is not effected beyond the fact that the target now
+    lands in hphp/hhvm/hhvm rather than src/hhvm/hhvm.
+
+commit dcd7a28fd42bcc3762bcde7be070242de73cbf65
+Author: Joel Pobar <joelp@fb.com>
+Date:   Thu Jun 7 15:48:55 2012 -0700
+
+    Updated to the latest bits, fixed the cmake scripts so that hhvm compiles
+    
+    Summary: Added plumbing to the cmake scripts to enable hhvm builds.
+    To build the VM, export USE_HHVM=1, and follow the wiki instructions
+    to do a clean build.

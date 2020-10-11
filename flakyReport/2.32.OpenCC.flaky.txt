@@ -1,0 +1,17 @@
+commit 430436622531684d84468fecec1d059b730b7741
+Author: Carbo Kuo <byvoid@byvoid.com>
+Date:   Sat May 9 18:27:30 2020 +0900
+
+    Add benchmark support. Run: make benchmark.
+
+commit b7bb0af1fb52afb52bc253203dd16402692f3f01
+Author: Carbo Kuo <byvoid@byvoid.com>
+Date:   Tue Apr 14 21:27:44 2020 +0900
+
+    Upgrade gtest to 1.11.0.
+
+commit a86790b9088bff053f4830478e132af3a96cc96f
+Author: Carbo Kuo <byvoid@byvoid.com>
+Date:   Sun Feb 8 15:11:08 2015 +0100
+
+    使用GTest測試

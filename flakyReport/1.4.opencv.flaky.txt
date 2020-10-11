@@ -1,0 +1,69 @@
+commit b8175f89769f8929ab302cd6a05f1e678ceab410
+Author: Vadim Pisarevsky <vadim.pisarevsky@gmail.com>
+Date:   Tue Nov 6 15:39:37 2018 +0300
+
+    removed the old C API for Haar-based object detection; use CascadeClassifier from now on
+
+commit caffbaafbe5f6f54878c63434da559988300a7f7
+Author: Maksim Shabunin <maksim.shabunin@itseez.com>
+Date:   Wed May 20 17:59:42 2015 +0300
+
+    Updated Manager for Android
+
+commit 20fef00a778e17aa5fdaf8ff71645db6df429ea4
+Author: Alexander Smorkalov <alexander.smorkalov@itseez.com>
+Date:   Fri May 17 17:15:20 2013 +0400
+
+    android -> plarforms/android
+
+commit 01570fa8006c5e2047e8fba563628afc07a2f058
+Author: Marina Kolpakova <no@email>
+Date:   Thu Jun 28 16:23:19 2012 +0000
+
+    merged Android Manager and new java layout
+
+commit 2984fa751e6a8d8896827ff0b0beef79b72be5ed
+Author: Andrey Pavlenko <no@email>
+Date:   Thu Jun 21 14:50:05 2012 +0000
+
+    adding OpenCV Manager
+
+commit 6f44457de8adf0bc8679285693cdab5ece9108bf
+Author: Vadim Pisarevsky <no@email>
+Date:   Wed Feb 9 22:03:01 2011 +0000
+
+    the combined cxts + gtest
+
+commit 23e83f8fc7f8a02f6ba268ac746b0f3e3eb2eb34
+Author: Vadim Pisarevsky <no@email>
+Date:   Wed Feb 9 21:58:31 2011 +0000
+
+commit e4b91918b13ea65ddd2005abb82a5c2c8d2eb339
+Author: Vadim Pisarevsky <no@email>
+Date:   Wed Feb 9 21:56:48 2011 +0000
+
+    the combined cxts + gtest
+
+commit 061b49e0b29b28a4d403fd6684c78ec63df272bf
+Author: Vadim Pisarevsky <no@email>
+Date:   Wed Feb 9 20:55:11 2011 +0000
+
+    reworked nearly all of the OpenCV tests (except for opencv_gpu tests) - they now use the Google Test engine.
+
+commit 97d9a672cc1d5993fde75fbe57c2f34f2e94a7af
+Author: Vadim Pisarevsky <no@email>
+Date:   Tue Dec 28 16:24:23 2010 +0000
+
+    moved gtest to modules; added some gtest-based tests
+
+commit fe8e4609f9a5387382f56a72970afe13118fc93b
+Author: Vadim Pisarevsky <no@email>
+Date:   Tue Sep 21 15:49:56 2010 +0000
+
+    added Google Test framework
+
+commit 127d6649a1c83397bf42799ac807af41aa507b30
+Author: Vadim Pisarevsky <no@email>
+Date:   Tue May 11 17:44:00 2010 +0000
+
+    "atomic bomb" commit. Reorganized OpenCV directory structure

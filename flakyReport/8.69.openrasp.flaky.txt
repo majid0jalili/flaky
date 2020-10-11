@@ -1,0 +1,32 @@
+commit e47a5c0b1cee3938fb4be77e594ca5a06981dc78
+Author: lanyuhang <lanyuhang@baidu.com>
+Date:   Mon Dec 30 17:58:54 2019 +0800
+
+    refactor(cloud): use go mod instead of go vendor
+
+commit 6bbcaae342045ad44a12cee81688192ad1eb5bd4
+Author: tangouyi <tangyouyi@baidu.com>
+Date:   Fri Jan 11 13:51:58 2019 +0800
+
+    refactor rasp-cloud code
+    add error alarm api
+    modify the config module
+
+commit f71d8b9a35b9b69b25c135f97da1665575d1e656
+Author: tangouyi <tangyouyi@baidu.com>
+Date:   Thu Nov 29 17:37:49 2018 +0800
+
+    moidify the go vendor
+
+commit 5647154314b0d8473b9949174d9bb8c06cb4607d
+Author: tangouyi <tangyouyi@baidu.com>
+Date:   Thu Nov 29 11:46:41 2018 +0800
+
+    modify the es alarm
+    add govendor
+
+commit e71be5582250190759b8f2e56d81c654aae90b52
+Author: tangouyi <tangyouyi@baidu.com>
+Date:   Mon Nov 26 19:55:28 2018 +0800
+
+    add vender for rasp cloud

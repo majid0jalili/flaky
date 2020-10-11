@@ -1,0 +1,24 @@
+commit 22a91a177dc734c7902ff3ba49a0ef649be60cc7
+Author: Peter Robinson <peter@greenfiresoftware.com>
+Date:   Sun May 6 19:40:07 2018 -0400
+
+    Added VS2017 and Removed VS2013 and VS2015
+    
+    VS2017 is fairly stable at this point and we will only be supporting the
+    latest version. So we have removed 2013 and 2015.
+
+commit 1d007c26a43c0b9a81cc54a8a6405e60ca496a7a
+Author: MelvMay-GG <melvm@garagegames.com>
+Date:   Thu Mar 28 12:25:53 2013 +0000
+
+    - TAML now supports writing and reading JSON.  By default it will use a schema that is strictly compatible with JSON RFC4627 (specifically the part about member names must be unique) however TAML does not care about this and it can be turned off with the console variable "$pref::T2D::JSONStrict" (set it to false).
+    - TAML adheres to unique member names by adding a suffix.  The member names that do this are the ones that represent children types or custom node names.  The JSON writer has a unique serial number which is increments during writing however you are free to configure the actual format by changing the following in the "tamlJSONWriter.cc" file (at the top): StringTableEntry JSON_RFC4627_NAME_MANGLING_FORMAT = StringTable->insert( "%s[%d]" );
+    - Taml also allows you to configure which characters are used to separate the type/node-name from the index again using an entry in the "tamlJSONWriter.cc": StringTableEntry JSON_RFC4627_NAME_MANGLING_CHARACTERS = StringTable->insert(" !$%^&*()-+{}[]@:~#|\\/?<>,.\n\r\t");
+    
+    - TAML already will auto-detects the file type by extension (the defaults are XML is ".taml", BINARY is ".baml") and JSON now has a default of ".json".  As always, you are free to changes these defaults in the C++ code or on a TAML per-instance basis.
+
+commit a20f2864a17f3696554382e5232e37d41ccb3db3
+Author: Mich <michaelp@garagegames.com>
+Date:   Tue Feb 5 00:01:17 2013 -0500
+
+    - First push of Torque 2D 2.0 (MIT)

@@ -1,0 +1,119 @@
+commit bf59c31255a768689e217ef301aa7130044dfc1e
+Author: Marc Alff <marc.alff@oracle.com>
+Date:   Wed May 30 13:44:42 2012 +0200
+
+    WL#6135 PERFORMANCE SCHEMA ENABLED BY DEFAULT
+    
+    Implementation continued, improved tests.
+
+commit 41dc6fb0bba53cf0949ccaa7c59b1ac5cb3b7540
+Author: Jimmy Yang <jimmy.yang@oracle.com>
+Date:   Fri Feb 24 22:55:15 2012 +0800
+
+    More transactional lock related changes. Removed the read transaction, so
+    that read and update share the same transactions. Fix an issue that
+    prevents old version data being returned, so that MVCC works on memcached
+    channel. Also consolidate connection init functions for simplicity.
+
+commit 7310af4ec499d7345e44b17efc73f7acfaf05ad7
+Author: Jimmy Yang <jimmy.yang@oracle.com>
+Date:   Wed Jan 18 19:59:53 2012 +0800
+
+    Resolve synchronization issues for concurrent execution of memcached commands
+    from multiple sessions. Mostly related to interaction of "flush_all"
+    command (truncate table) and other DML operations.
+
+commit 6e01be7552aa5c5fb854d30d5d8cb61c2729b292
+Author: Marc Alff <marc.alff@sun.com>
+Date:   Tue Nov 24 16:36:31 2009 -0700
+
+    WL#2373 Use cycle counter for timing
+
+commit 512cfd22ea77f8a4503729e72605d0e1d0271f97
+Author: Wen Xiong <wx228566@khepri35>
+Date:   Thu Mar 26 09:21:55 2009 +0100
+
+    ## Add online node test cases
+
+commit d2773d34f5efdc912ffdca2f638888ada1c66063
+Author: Magnus Svensson <msvensson@mysql.com>
+Date:   Fri Nov 14 09:45:32 2008 +0100
+
+    WL#4189 Add full backward compatibility to mysql-test-run.pl
+     - Add copy of mtr v1 and make it possible to run it using MTR_VERSION=1
+
+commit d918988baa943a18b17468f7cf2aa73833217f83
+Author: msvensson@pilot.mysql.com <>
+Date:   Wed Dec 12 18:19:24 2007 +0100
+
+    WL#4189
+     - dynamic configuration support
+     - safe process
+     - cleanups
+     - create new suite for fedarated
+
+commit ed055965bf2e4f04be61372bb81f67d51231ae33
+Author: msvensson@shellback.(none) <>
+Date:   Fri Sep 21 17:52:02 2007 +0200
+
+    - Increase default connect_timeout to avoid intermittent
+    disconnects when test servers are put under load
+
+commit 3b840adee7817d141fa9f5935b1d05243e6a8df4
+Author: andrey@lmy004. <>
+Date:   Wed Jul 5 17:12:50 2006 +0200
+
+    WL#3337 (Event scheduler new architecture)
+    Cleaned up the code a bit. Fixed few leaks.
+    This code still does not load events on server startup
+    from disk. The problem is that there is a need for a THD instance, which
+    does not exist during server boot. This will be solved soon.
+    Still Event_timed is used both for the memory queue and for exectution.
+    This will be changed according to WL#3337 probably in the next commit.
+
+commit b429d73d62791d05a6448135c78beb8966008888
+Author: andrey@lmy004. <>
+Date:   Mon May 22 20:46:13 2006 +0200
+
+    fix for bug #17619 Scheduler race conditions
+    - Scheduler is either initialized at server start or never.
+      Starting & stopping is now suspending & resuming.
+    - The scheduler has clear OO interface
+    - Now all calls to the scheduler are synchronous
+    - GLOBAL event_scheduler uses thd::sys_var_tmp (see set_var.cc)
+    - External API is encapsulated into class Events
+    - Includes fixes for all comments of Kostja's review of 19.05.2005
+    
+    Starting to merge into 5.1-release (5.1.10) and push
+
+commit b287b3ed4434e96f931b962d89c4691c997c03e8
+Author: lenz@mysql.com <>
+Date:   Mon Jul 15 11:53:05 2002 +0200
+
+     - removed the mit-pthreads subdirectory on Monty's request (mit-pthreads
+       is now available as a separate downloadable tarball instead)
+     - modified the RPM spec file according to discussions with Monty, Jani,
+       Heikki and David (corrected build options, updated Packager tag)
+
+commit a9ef0b4bf11c25b64c38aee037a03f0875b9003c
+Author: sasha@mysql.sashanet.com <>
+Date:   Fri Nov 24 19:49:13 2000 -0700
+
+    slave master.info FILE -> IO_CACHE
+    send_file() is more stack-friendly - changed large static buffer to alloc_root()
+    fixed my_b_seek() to work with WRITE_CACHE
+    test case to make sure the slave starts correctly after being stopped
+    truncated words file so the replication tests will take less time
+
+commit 24a7aae0f452f75cdfb09ccf1cec37d38d0f82a9
+Author: sasha@mysql.sashanet.com <>
+Date:   Fri Nov 17 23:35:40 2000 -0700
+
+    fixed bugs in delayed insert replication and when slave loses connection after Int_var but before Query
+    public test suite now tests replication code as well
+
+commit f4c589ff6c653d1d2a09c26e46ead3c8a15655d8
+Author: bk@work.mysql.com <>
+Date:   Mon Jul 31 21:29:14 2000 +0200
+
+    Import changeset

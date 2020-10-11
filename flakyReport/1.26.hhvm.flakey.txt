@@ -1,0 +1,474 @@
+commit 47a5ed93feffb8744357cf114b164075077a336d
+Author: Alexey Toptygin <alexeyt@fb.com>
+Date:   Fri May 15 11:14:13 2020 -0700
+
+    Remove broken, unused support for `run.php --typechecker`.
+    
+    Summary:
+    `./hphp/test/run --typechecker all` only ran 5 tests, they were all tests _of_ run.php, and they all failed. We are not seriously pursuing tyechecking of all our unit tests for now, so remove this unused, broken functionality (including not looking for expectations ending in .{typechecker|hhvm}.expect[f] any more).
+    
+    Also fix logic calling check_executable to produce proper error messages when the path doesn't exist.
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D21513501
+    
+    fbshipit-source-id: c7ea3d3a506ef7c177bd2d62503c3d159b98c716
+
+commit 5e02fb9c6c892c3de5760603d462695ad58cbfac
+Author: Alexey Toptygin <alexeyt@fb.com>
+Date:   Fri Jan 25 17:01:54 2019 -0800
+
+    Delete framework tests.
+    
+    Summary:
+    The framework tests have been broken since pass-by-ref annotations became mandatory and return by ref became a parse error.
+    
+    Per conversation with Fred, we can't run composer, and can't fully run PHPUnit - these are unmaintainable.
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D13819734
+    
+    fbshipit-source-id: 738488c9b9c902d984b17e5f7a02a15480e8d8d5
+
+commit a710517f424522da1d60cefec6b78158793b78a3
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Thu Jun 14 17:38:35 2018 -0700
+
+    Add call-time pass-by-reference annotations to test/run, make it hhvm-only
+    
+    Summary:
+    The warning is now on by default, so the annotations avoid lots of
+    spew. And since this is a Hack-only feature, change from <?php to <?hh. Then,
+    since we can't have a single correct hashbang that works internally and
+    externally, turn test/run into a bash script that finds an hhvm binary to use
+    from a number of common locations.
+    
+    Reviewed By: mxw, jano
+    
+    Differential Revision: D8426155
+    
+    fbshipit-source-id: 6a5fe169a26cbb68ed9a62bfa04f42fb805066e2
+
+commit 2091161ff24e6322c3ffc98cd62b744349ac5b22
+Author: Fred Emmott <fe@fb.com>
+Date:   Tue Jun 5 17:11:22 2018 -0700
+
+    Add `--vendor` option to `hphp/test/run`
+    
+    Summary:
+    We use hphp/test/run to test the docs.hhvm.com examples, including in `--typechecker` mode (which is not used elsewhere).
+    
+    We want to start using the HSL in these examples, which means we need to pull in extra code. Copying the HSL in is prohibitively slow - so:
+    - for runtime, pull in `$VENDOR/hh_autoload.php` to make the definitions available at runtime without copying in or needing to re-parse
+    - tell the typechecker to also pull in definitions from the vendor path
+    
+    Also, decrease the thread count for `--typechecker` mode as running it is basically burning my machine.
+    
+    Reviewed By: alexeyt
+    
+    Differential Revision: D8170605
+    
+    fbshipit-source-id: 53149cd11f992c20c842e42ffc7e3e8f8b9928a5
+
+commit f4d06a8a70befbf1158e884f8b7ea90fe33f1f20
+Author: Alexey Toptygin <alexeyt@fb.com>
+Date:   Mon Feb 12 12:10:06 2018 -0800
+
+    Delete zend/bad and zend/flaky tests.
+    
+    Summary:
+    We don't run them now, and we don't intend to run them in the future.
+    Also delete scripts for importing these tests and moving them around.
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D6959408
+    
+    fbshipit-source-id: 310a37055ff42c2d95ab7c6b14fb759aa1bcd06a
+
+commit 34b65c7c12006afddcb4b38895847f2e3778556e
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Fri Feb 9 10:50:56 2018 -0800
+
+    Add slim test to flaky list
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D6941280
+    
+    fbshipit-source-id: 8560f157ece82dae21f7cb3c916b4b13265e0e63
+
+commit af3471b40468023035d4308f7f73de80bdf03927
+Author: Fred Emmott <fe@fb.com>
+Date:   Wed Jun 7 18:38:18 2017 -0700
+
+    Add composer-in-php7-mode to HHVM test suite
+    
+    Summary:
+    99.09% pass, a few more symfony-passing-things-that-aren't-strings problems
+    similar to the SplFileInfo/dirname one though.
+    
+    refs #7869
+    
+    Depends on D5196198
+    
+    Reviewed By: mofarrell
+    
+    Differential Revision: D5202473
+    
+    fbshipit-source-id: e4e266c68075c83588771442f3aa7904d308d00b
+
+commit c6365e11c2565ac847e3dbd0875ee566b0f62f3f
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Oct 16 11:39:08 2015 -0700
+
+    flakeylist twig integration test
+    
+    Summary: Unable to repro or get reasonable debugging information, and the last
+    data set looks sane - suspect it's only failing because it's the last test.
+    
+    Reviewed By: mxw
+    
+    Differential Revision: D2550747
+    
+    fb-gh-sync-id: 7f8b46430e91e631830f495cf22d28a9905b0140
+
+commit 296bf05c32b43a16b36197bcb608c310ee66a940
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Aug 28 15:28:44 2015 -0700
+
+    Remove joomla and joomlacms from HHVM test suite
+    
+    Summary: The clownlists/flakeylists were already ridiculous, and I was about to add more to them.
+    
+    I am not aware of these catching a single legitimate failure, but there have been lots of false positives.
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D2394293
+
+commit 1bde6aa5e193353a7cf84cef02570af398472e72
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Aug 28 15:15:37 2015 -0700
+
+    Flakeylist Monolog\Handler\RotatingFileHandlerTest
+    
+    Summary: Writes to a fixed location without adequate guards, will
+    intermittently fail.
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D2393791
+
+commit efdb7ff71e42c7e93ffbcb3d5fd6c8243603c687
+Author: Bert Maher <bertrand@fb.com>
+Date:   Fri Apr 3 16:08:10 2015 -0700
+
+    flakeylist a few framework tests
+    
+    Summary: Just happened to look, and these have failed spuriously in the last 24
+    hours.
+    
+    Reviewed By: @fredemmott
+    
+    Differential Revision: D1967337
+
+commit 7c2021b3ba1987b06229b90c770c69442a44535b
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Tue Mar 24 14:41:30 2015 -0700
+
+    Remove zf2
+    
+    Summary: - no stable releases have resolveable dependencies
+     - the latest RC works, but has lots of *REALLY* slow tests. I gave up on --record after 1h. Not worth the time/CPU cost of running the tests.
+    
+    {sync, type="parent", child="external", childrevid="35841", childdiffid="186615", parentdiffid="6915420"}
+    
+    Reviewed By: @billf
+    
+    Differential Revision: D1939888
+
+commit dafc7ef466965dbb786de3ffb319bcdc509bd075
+Author: Bert Maher <bertrand@fb.com>
+Date:   Wed Feb 4 19:17:21 2015 -0800
+
+    Flakey list doctrine2/.../YamlClassMetadataExporterTest.php
+    
+    Summary: It failed spuriously on D1825103
+    
+    Reviewed By: @fredemmott
+    
+    Differential Revision: D1826049
+
+commit 1bb67dc135469d6dc3c368edafedd0b8ed5a3f3d
+Author: RyanCccc <chenrd769@gmail.com>
+Date:   Thu Dec 11 14:53:12 2014 -0800
+
+    Mock date/time functions in Isolation.php
+    
+    Summary: Mock date/time functions (e.g. time() ) so they never return the same value when calling multiple times.
+    By doing so, more flakey test cases can be found.
+    
+    Closes https://github.com/facebook/hhvm/pull/4384
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1719095
+    
+    Signature: t1:1719095:1418338273:e3867d429e3162f1110e96b1c16677da5872d8c0
+
+commit 8bb296bf2aa884c655cdf9ed51f9f01bc9553657
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Mon Oct 27 15:53:10 2014 -0700
+
+    Run a pile more OSS tests on every change
+    
+    Summary: watchtheworldburn
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1641924
+    
+    Signature: t1:1641924:1414612875:d23f5c48be39419e5b2d1fdb5b07fd545e9cdafc
+
+commit 314aeb03a14e0ce7efff06cbdf03cfac77c26be8
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Wed Aug 27 17:52:05 2014 -0700
+
+    fixup test README
+    
+    Summary: The main change is not telling people to put stuff in quick. Mentioned by@​TimSiebels in https://www.facebook.com/groups/hhvm.dev/permalink/280889192100187/?comment_id=281097032079403&offset=0&total_comments=15
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1522113
+
+commit 4b119c311e67a4c5f2b7ab64d4c87dec8a1ed8fc
+Author: Graham Campbell <graham@mineuk.com>
+Date:   Sun Aug 17 15:14:35 2014 -0700
+
+    Re-record zf2 tests and flakey list a file
+    
+    Summary: Additional follow up to #3454 in addition to #3455.
+    Closes https://github.com/facebook/hhvm/pull/3489
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1502579
+    
+    Pulled By: svcscm
+
+commit 4e2f63f032ef529eaa794537180775430e420619
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Mon Aug 11 11:01:11 2014 -0700
+
+    Flakeylist bad codeigniter test
+    
+    Summary: assert(time() === time()) is racey.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1489350
+
+commit 356f66a9957e9c715096c133b7f4823fbee69a1d
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Aug 6 16:39:37 2014 -0700
+
+    Flakeylist mediawiki base conversion test
+    
+    Summary: Becamse flakey with gmp extension. Same issue exists in PHP5 with gmp conversion - for example:
+    
+    ```
+    <?php
+    $in = '0x1234567890abhaer';
+    $gmp = gmp_init($in, 36);
+    $val = gmp_strval($gmp, 36);
+    var_dump(str_pad($val, strlen($in), '0', STR_PAD_LEFT));
+    ```
+    
+    https://bugzilla.wikimedia.org/show_bug.cgi?id=69249
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1482806
+
+commit 6532b42058c39c089b823ece0203c736d604bd9b
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Tue Jun 24 09:19:00 2014 -0700
+
+    re-enable mustache, mark the one failing test as flakey
+    
+    Summary: No change to expect file as when I removed it from clownlylist and re-recorded, the file was still disabled on disk (needed blowing away, etst runner has now been modified)
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1400141
+
+commit e67a3a3630f35b4a895140e98babefad6f0698fa
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Mon Jun 23 16:19:50 2014 -0700
+
+    Separate flakey from clowny tests
+    
+    Summary: - add --flakey option to run them anyway
+     - make it so you don't need to blow away framework_downloads/WHATEVER every time you remove something from the flakeylist/clownlist/blacklist or add --flakey
+    
+    The idea is that we will still run flakey tests for the charts on hhvm.com/frameworks/ , but we won't include them in our commit-blocking test runs.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1398512
+
+commit 99f751994d30dbc47d83586176f3f41d00313e1c
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Thu Jun 19 17:40:46 2014 -0700
+
+    Clownlist reactphp test
+    
+    Summary: found via https://gist.github.com/fredemmott/cf169e952163a7effcbe
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1393750
+
+commit 34d337ffa58b3752243e63502e0e6c6e7d30279d
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Mar 19 10:12:57 2014 -0700
+
+    Make Slim tests less flakey
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1227633
+
+commit c8d35832d928fc5d9233ed4cadf2a0446ac3fc2d
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Feb 20 09:10:35 2014 -0800
+
+    Disable Zend session tests
+    
+    This one directory has been responsible for at least five flaked out
+    test runs, all from different tests. It's time to start whitelisting
+    instead of blacklisting.
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1182490
+
+commit f6880ce7c24b741c89c07577091505498f2c6271
+Author: Victor <victor@suumit.com>
+Date:   Tue Jan 28 22:37:18 2014 -0800
+
+    light refactoring / cleanup.
+    
+    [Framework tests] light refactoring / cleanup.
+    
+    Closes #1649
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1144909
+    
+    Pulled By: @JoelMarcey
+
+commit 1563cfd1d115443687ee06bd17ca4ec106f4e73d
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Wed Dec 4 09:05:07 2013 -0800
+
+    import files even if they have an ini section
+    
+    I was lying a little bit and not importing these tests since they have no chance of passing since our INI story sucks. I think we shouldn't be cheating with our numbers and instead should have these and be able to work towards them passing.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1082559
+
+commit 1eb3cddaf784faf8f3c489b06e6325ed515abbb2
+Author: Joel Marcey <joelm@fb.com>
+Date:   Thu Oct 3 13:59:17 2013 -0700
+
+    Make OSS Test Script a real test runner - at least human runnable
+    
+    A bit of a redesign and better user-experience.
+    
+    This script runs one or more open source (oss) framework unit tests via PHPUnit. Run one or multiple tests by explicitly naming them at thecommand line, or specify --all to run all available tests. You will see various forms of output. The first time running a test suite for a framework, gray dots will appear to set the baseline for future runs. On subsequent runs, you will see green dots for tests that have the same status as the previous run. If something changes, you will see a red F if a test went from pass to something else. You will see a green F if a test went from something else to pass. You will see a blue F if a test stayed in the failing range, but went from something like E to I or F to S.
+    
+    The summary for a test show the overall pass percentage of the unit test suite, irrespective of previous runs. The output and diff files for a test suite will show what tests pass or fail, and have why they failed.
+    
+    Example output: P2777440
+    
+    Future: Add number of total tests to be run at beginning in a clean way; fbmakify the runner
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D991614
+
+commit 5b3b5880f5942a50308cdb967d5f3faedd75088c
+Author: Joel Marcey <joelm@fb.com>
+Date:   Tue Sep 17 17:39:06 2013 -0700
+
+    Write a script to help automate the running of PHP OSS Framework unit tests
+    
+    This is an initial verison of a script that will allow us to unit test all
+    of the OSS PHP frameworks that we care about for parity. A more detailed
+    summary is available at the top of the code, but here are some highlights:
+    
+    - Autodownload of frameworks; not added to our official repo
+    - Mulit-process test runs
+    - Full phpunit stats in a file after each run
+    - Summary file for all tests run showing pass percentage. Appended with latest
+      result for multiple test runs of a given framework. Initial inspiration for
+      this file was for our MPK TV parity chart population.
+    
+    Future:
+    
+    - Integration with our "test/run" infrastructure
+    - Special case frameworks that don't use PHPUnit
+    - Enhance the script to allow "diff" stats that specify what changed from the
+      previous run of a test of a framework to the current test (beyond pass
+      percentage). For example, what tests caused the pass percentage to increase
+      or decrease.
+    
+    New Files for this diff:
+    
+    - oss_framework_test_script: The script
+    - phpunit.phar: Used to actually run the phpunit tests for each framework
+    - composer.phar: Used for installing framework dependencies for phpunit
+    - sample_multiple_test_config.cfg: A sample configuration file to run multiple, but
+      not necessarily all testsi
+    
+    NOTE: I am only including 3 of the OSS frameworks as part of the code for this diff.
+    When this diff is accepted, I will send out another diff with the rest added. Having
+    just 3 makes for easier initial testing.
+    
+    Another note: I removed the comment that command_line_lib does not support options with
+    arguments. It does. I am using that functionality in this script.
+    
+    THANKS TO @ptarjan for process ideas from both running the tests and getting through
+    the proxy!
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D971897
+
+commit 363d1bb20fe84b4cdc2dc0f4c7b1dd39d167a1f5
+Author: Jordan Delong <jdelong@fb.com>
+Date:   Sat Feb 2 10:44:12 2013 -0800
+
+    Code move src/ -> hphp/
+    
+    This change is mostly for FB internal organizational reasons.
+    Building is not effected beyond the fact that the target now
+    lands in hphp/hhvm/hhvm rather than src/hhvm/hhvm.
+
+commit dcd7a28fd42bcc3762bcde7be070242de73cbf65
+Author: Joel Pobar <joelp@fb.com>
+Date:   Thu Jun 7 15:48:55 2012 -0700
+
+    Updated to the latest bits, fixed the cmake scripts so that hhvm compiles
+    
+    Summary: Added plumbing to the cmake scripts to enable hhvm builds.
+    To build the VM, export USE_HHVM=1, and follow the wiki instructions
+    to do a clean build.

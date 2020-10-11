@@ -1,0 +1,93 @@
+commit 5be1b8e6e044cbd13ccc3e8fbbeab00ec576784b
+Author: Nathan Woods <npwoods@mess.org>
+Date:   Sat Dec 31 09:07:40 2016 -0500
+
+    Introduced utf8proc and created wrapper code to expose a prettier API
+
+commit 29212523d201c4ac7a64a5f8e967d725be6d3b6d
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Sat Nov 12 10:16:38 2016 +0100
+
+    remove googletest (nw)
+
+commit 377472a6dd2c9bdff4d5667f5789c49aee2abb4c
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Fri Oct 7 14:43:09 2016 +0200
+
+    Added sol2 header only library as future replacement for luabridge (nw)
+
+commit c5f0d660c73a093207994d15abeb7466408c267f
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Sat Sep 3 14:42:01 2016 +0200
+
+    Update Google Benchmark (nw)
+
+commit cf6dc7d370407914020f3e623719f09c8668c692
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Sat Feb 27 16:28:05 2016 +0100
+
+    Placed SDL2 source since we need it on some platforms (nw)
+
+commit 4bff9fcca7c89e2a253ffe2dcce35d6276ef404b
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Sun Nov 8 13:43:04 2015 +0100
+
+    renamed m -> mm (nw)
+
+commit 7c19aac60e12d6f5ea301bdb34d7826a01e0b06f
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Sun Nov 8 12:56:12 2015 +0100
+
+    Rename *.c -> *.cpp in our source (nw)
+
+commit 15e68a47d94cb5d72afc3804889ba0a94f512518
+Author: Vas Crabb <vas@vastheman.com>
+Date:   Fri Oct 30 16:46:21 2015 +1100
+
+    Notes and copy/paste error (nw)
+
+commit 1fc48ce120a376c288daeeed98daccecf1b60d7b
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Wed Sep 30 17:21:14 2015 +0200
+
+    move mess into mame (nw)
+
+commit 70bddf12f5f92a71022c049fb6b8f4f8672af974
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Wed Sep 2 13:49:59 2015 +0200
+
+    Added GoogleTest and convert tests to us it (nw)
+
+commit 16193b5d26c048f7302eba90c5e7eacfd4f4bbec
+Author: Robbbert <robbbert@users.noreply.github.com>
+Date:   Thu Jul 31 10:46:15 2014 +0000
+
+    pps4 / gts1 : added notes
+
+commit 69faaf3aeb0ed3f8a95743053a3467f0f5a747f5
+Author: Miodrag Milanovic <mmicko@gmail.com>
+Date:   Thu May 8 07:39:04 2014 +0000
+
+    -Reorganized OSD, handling more sound output systems and debuggers, defaults left same as before [Miodrag Milanovic]
+    -Created osd_options as base option class for non-system specific options
+
+commit f499244d53ccb07ddf500c1393ae90ea9ad2e201
+Author: R. Belmont <rb6502@users.noreply.github.com>
+Date:   Mon Nov 25 03:46:58 2013 +0000
+
+    (MESS) DEC Rainbow updates: [Bavarese]
+    - rainbow.c: wired watchdog (MHFLU) and W18 (DSR). Dangerous W90 (PSU jumper) on PCB documented. Pallette handling changed, moved screen blank routine to vtvideo.c
+    - dec_lk201.c: keyboard matrix from LK-201-AA (VCB02) (original 8051 version)
+    - Vtvideo.c: monochrome palette with 4 intensities (instead of 3). Ironed out attribute bugs (-> truth table from VT100). Double-width, double-height corrected
+
+commit b53bb2c6acce9ab44b48d18c76a9059261e97548
+Author: R. Belmont <rb6502@users.noreply.github.com>
+Date:   Wed Jan 13 04:01:20 2010 +0000
+
+    SDLMAME initial import [R. Belmont, Couriersud]
+
+commit 7b77f1218624ea26dbb2efd85a19f795f5d4e02e
+Author: Aaron Giles <aaron@aarongiles.com>
+Date:   Mon Dec 17 15:19:59 2007 +0000
+
+    Initial checkin of MAME 0.121.

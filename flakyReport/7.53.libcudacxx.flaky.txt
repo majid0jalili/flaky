@@ -1,0 +1,21 @@
+commit 6c525a295a9832c4e1b023a35213342277a8d573
+Author: Michał 'Griwes' Dominiak <griwes@griwes.info>
+Date:   Tue Apr 2 17:00:15 2019 +0200
+
+    Make tests pass (and remove the last unsupported ones).
+    
+    This is the beginning of a history rewrite annotation.
+    This is a rewrite of a commit initially pointed to by submodule .upstream-tests when it was added.
+    Original hash: dotupstream-tests-rewritten-branch~147.
+
+commit cfefa3d20abad40fa182f2d71c6dcb0374c93769
+Author: Marshall Clow <mclow.lists@gmail.com>
+Date:   Wed Aug 29 23:02:15 2018 +0000
+
+    Last week, someone noted that a couple of the time_point member functions were not constexpr. I looked, and they were right. They were made constexpr in p0505, so I looked at all the other bits in that paper to make sure that I didn't miss anything else. There were a couple methods in the synopsis that should have been marked constexpr, but the code was correct.
+    
+    git-svn-id: https://llvm.org/svn/llvm-project/libcxx/trunk@340992 91177308-0d34-0410-b5e6-96231b3b80d8
+    
+    This is the beginning of a history rewrite annotation.
+    This is a rewrite of a commit initially pointed to by submodule libcxx when it was added.
+    Original hash: libcxx-rewritten-branch~113.

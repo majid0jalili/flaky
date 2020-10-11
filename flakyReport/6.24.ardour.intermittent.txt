@@ -1,0 +1,33 @@
+commit ef6b25432d9c46d71b08c0f7d5f2686df428c4e8
+Author: David Robillard <d@drobilla.net>
+Date:   Sun Nov 19 16:45:16 2006 +0000
+
+    Merged with trunk R1141
+    
+    
+    git-svn-id: svn://localhost/ardour2/branches/midi@1142 d708f5d6-7413-0410-9779-e7cbd77b26cf
+
+commit 2bf3ed423f7aecdaabf5fbb078d9e2f20d26880c
+Author: Paul Davis <paul@linuxaudiosystems.com>
+Date:   Thu Nov 16 18:42:48 2006 +0000
+
+    track naming patch from brian; slightly modified F11-bug workaround from brian; undo/redo items in edit menu now show operation to be undone/redone; canvas allocations now handled by an idle handler; region views respond to changes in fade/in/out curves ; undo/redo possible for some fade in/out operations; automation tracks extend to max_frames
+    
+    git-svn-id: svn://localhost/ardour2/trunk@1134 d708f5d6-7413-0410-9779-e7cbd77b26cf
+
+commit 7bd41538d951c3e476655df741adfbebbb990bde
+Author: David Robillard <d@drobilla.net>
+Date:   Tue Sep 19 03:29:16 2006 +0000
+
+    Merged with trunk R920.
+    
+    
+    git-svn-id: svn://localhost/ardour2/branches/midi@921 d708f5d6-7413-0410-9779-e7cbd77b26cf
+
+commit dc9484d1449d04923849316a3ac7c74c4c49ec23
+Author: Nick Mainsbridge <beatroute@iprimus.com.au>
+Date:   Sun Sep 10 17:49:03 2006 +0000
+
+    more fiddling about with placing bits of the scroll/zoom operation in the idle callback. fix some ruler bugs. overall this should be smoother.
+    
+    git-svn-id: svn://localhost/ardour2/trunk@912 d708f5d6-7413-0410-9779-e7cbd77b26cf

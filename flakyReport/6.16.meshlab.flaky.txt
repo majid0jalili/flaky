@@ -1,0 +1,29 @@
+commit 728b3baca156dc739be3a2753b0868ef1d1c8046
+Author: alemuntoni <muntoni.alessandro@gmail.com>
+Date:   Sun Apr 19 15:21:39 2020 +0200
+
+    moved bzip lib to plugins_unsupported/external
+
+commit 1f77f98e912f2d354e2224b0da96f45d55ee79aa
+Author: alemuntoni <muntoni.alessandro@gmail.com>
+Date:   Thu Jan 23 17:52:25 2020 +0100
+
+    meshlab_mini working on linux
+
+commit 9e251029bbd67f642da10f91f17bcd6e4221b964
+Author: alemuntoni <muntoni.alessandro@gmail.com>
+Date:   Thu Jan 23 17:52:25 2020 +0100
+
+    meshlab_mini working on linux
+
+commit 4a7731bd9fa6b841a8d139d0dae79666e6eb933b
+Author: Paolo Cignoni cignoni <paolo.cignoni@isti.cnr.it>
+Date:   Mon Sep 26 14:53:33 2011 +0000
+
+    add a few binaries to the lib/macx64 folder
+
+commit 03cc6a2bf94f062c60ef610baa116c43bb5665d7
+Author: Paolo Cignoni cignoni <paolo.cignoni@isti.cnr.it>
+Date:   Wed Mar 4 00:20:36 2009 +0000
+
+    Added base bzip2 library in the external folder

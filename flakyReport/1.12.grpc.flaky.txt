@@ -1,0 +1,4814 @@
+commit 98841a990d8b929891fd6ce517e66e28c80306aa
+Author: Mark D. Roth <roth@google.com>
+Date:   Fri Sep 25 07:39:23 2020 -0700
+
+    Implement DualRefCounted interface for objects needing strong and weak refs.
+
+commit 11abbd3828fee04285e97c08f200afa4bf979476
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Thu Sep 17 09:33:10 2020 -0700
+
+    Add parsing logic for GoogleMeshCaConfig
+
+commit 876021f31394d577d5e18769432ff15234bbe25d
+Author: “Mohan <mohanli@google.com>
+Date:   Thu Sep 10 10:17:50 2020 -0700
+
+    Fix two bugs for channelz_sampler_test
+
+commit cdda406115252be5dbb6a8b32d31bc680d2c8024
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Tue Sep 8 14:24:07 2020 -0700
+
+    Add certificate provider registry implementation
+
+commit 4039a8d40589f7fd02b799a086486b4e71dd601e
+Author: “Mohan <mohanli@google.com>
+Date:   Mon Aug 17 12:11:04 2020 -0700
+
+    Make minor changes to pass github check
+
+commit 1a275d7eab7cd63b47ca8f444ee9eae99409b236
+Author: ZhenLian <zhenlian@google.com>
+Date:   Tue Jul 21 17:24:21 2020 -0700
+
+    Add tls_certificate_distributor implementation
+
+commit 46d4a27cb660a523295b592e70f2e534c7eeb620
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Thu Aug 27 02:25:55 2020 -0700
+
+    Add a test which reproduces the original crash that is fixed by https://github.com/grpc/grpc/pull/23984
+
+commit 5820e833fc98a7778be218d0ce9dd2d83b28b2af
+Author: ashithasantosh <55257063+ashithasantosh@users.noreply.github.com>
+Date:   Mon Aug 17 17:57:19 2020 -0700
+
+    Add activation logic and endpoint getters.
+
+commit 55821f5cf80fd627b3eacf2c1294eea682e9928b
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Mon Aug 17 14:01:53 2020 -0700
+
+    Revert "Merge pull request #23786 from michaelywg/cel_create_activation"
+    
+    This reverts commit fe59761648a943db075b92d508ff94e6fbd4155f, reversing
+    changes made to 1856e224c3da4fac5ead03803c7e1f1bf610fb44.
+
+commit dbd15a9bc6de52e72f11cd493536f17775250e62
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Wed Aug 5 17:02:07 2020 +0200
+
+    regenerate projects
+
+commit 0f246b931e7e3976798c8f001e02dd649468fcd4
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Aug 13 12:55:06 2020 +0200
+
+    remove some unneeded Makefile targets
+
+commit b8771966f163fe0d3c8fb16746c1f4a4dc511e9f
+Author: Michael Wang <mywang@google.com>
+Date:   Fri Aug 14 00:20:06 2020 +0000
+
+    Added tests for eval_args address/port getters. Implemented said getters and CreateActivation.
+    
+    Added logging for unsupported attributes
+    
+    fixed make issues by moving grpc_authorization_engine under grpc
+    
+    changed inet_aton to inet_pton
+    
+    fixed issue leftover from initial implementation of evalargs
+
+commit 218c5fd235822fefaf4a4802b510d527239baba7
+Author: Karthik Ravi Shankar <karthikrs@google.com>
+Date:   Tue Aug 11 13:19:31 2020 -0700
+
+    Mark client_crash_test as flaky
+    
+    This test fails under asan.
+
+commit d0311ac81a596a2d2c6a65e2d3dcd2fe5b4fa906
+Author: Michael Wang <mywang@google.com>
+Date:   Tue Aug 4 18:23:21 2020 +0000
+
+    Basic class definition and constructor Cel eval engine
+    
+    Merge remote-tracking branch 'upstream/master' into celeval_constructor
+    
+    Iterate through policies and store CEL condition
+    
+    git push origin ce Merge remote-tracking branch 'upstream/master' into celeval_constructor
+    
+    added class and constructor comments for CelEvaluationEngine
+    
+    CelEvaluationEngine class and constructor
+    
+    Added cel_evaluation_engine to build
+    
+    ran clang_tidy_code.sh
+    
+    updated BUILD with cel_evaluation_engine
+    
+    added rbac.upb.h/cc to BUILD
+    
+    Rewrote cel_evaluation_engine code with upb conventions
+    
+    removed unnecessary deps for cel_evaluation_engine in BUILD
+    
+    Cel_evaluation_engine uses arenas to manage condition pointers
+    
+    Used upb::Arena instead of upb_arena*, added temp_arena to save memory
+    
+    Added action_allow_ member variable
+    
+    Added fullstops to comments
+    
+    initialize action_allow_
+    
+    changed variable names to be more clear
+    
+    removed unnecessary headers
+    
+    correctly initialize the action_allow_ variable
+    
+    changed constructor to use an initializer list
+    
+    ran clang_tidy and clang_format scripts
+    
+    added cel_engine_test
+    
+    resolved merge conflicts and rewrote cel engine constructor to use new map api
+    
+    changed variables to be more clear and made them const
+    
+    changed syntax.upb.h so the build succeeds
+    
+    changed syntax.upb.h so the build succeeds
+    
+    changed version of upb in bazel_dpes
+    
+    regenerated upb files with new upb version
+    
+    added TODO regarding two-policy design
+    
+    modified CelEvaluationEngine and tests to use two rbac policies
+    
+    Made test messages consistent and added a case with too many policies
+    
+    changed name from cel_engine to authorization_engine
+    
+    fixed merge issues and updated authorization engine to v3 rbac
+    
+    made constructor public and added namespace grpc_core
+
+commit 3021bc975a0ef311550a887a2644f5d3ce1e6a11
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Tue Aug 4 10:21:43 2020 -0700
+
+    Mark stranded_event_test as flaky
+
+commit 4fc875201dcbc085e889b5b593889be90e30ec64
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Jul 30 08:56:18 2020 +0200
+
+    get rid of unused run_tests.py --auto_set_flakes arg
+
+commit c35a37d6c27bf59096382f6a2d53ed49b8561b8b
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Jul 22 17:52:33 2020 -0700
+
+    Remove TargetAuthorityTable in favor of a per-address channel arg.
+
+commit bdfd96ad03cf64b509d48c3faf6242bbd041b539
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Wed Jul 15 01:00:23 2020 -0700
+
+    Remove MAX_EPOLL_EVENTS_HANDLED_EACH_POLL_CALL to ensure timely
+    processing of events
+
+commit 0af1907f5080ecd567889e2f0bf29e4299f1d64e
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Fri Jun 5 02:09:47 2020 -0700
+
+    Regenerate projects
+
+commit 38568317764e0935302b555f4efab566bffcdaab
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu May 28 03:20:11 2020 -0400
+
+    regenerate projects
+
+commit babda6469770e3df5ddd085a77016976fd804f53
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu May 28 03:17:11 2020 -0400
+
+    mark concurrent_connectivity_test as flaky
+
+commit b4441c9fba827c4b1aba33bce6acd39b1e3e4453
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu May 28 01:37:41 2020 -0400
+
+    regenerate projects
+
+commit f622a797d25a2a3112d737ad747788815a060106
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu May 28 01:34:19 2020 -0400
+
+    mark cancel_ares_query_test as flaky
+
+commit 5872d49c83f6ce1bcce2dfb2ebc600a5d8f572d1
+Author: yang-g <yangg@google.com>
+Date:   Thu May 14 12:24:40 2020 -0700
+
+    generate projects
+
+commit 92d31d6f99067971b6f655ffd1ba8d14dca52d47
+Author: Esun Kim <veblush@google.com>
+Date:   Sat Apr 25 20:49:37 2020 -0700
+
+    Remove the flaky flag from bm_opencensus_plugin
+
+commit 1be6f7aedbc2ca85cd74f2829e609af7bddeee73
+Author: Esun Kim <veblush@google.com>
+Date:   Sat Apr 25 17:43:24 2020 -0700
+
+    Remove flaky flag from channelz_test
+
+commit d74548e611c63acbd544035ac97391ddaf96a6aa
+Author: Mark D. Roth <roth@google.com>
+Date:   Mon Apr 27 12:28:28 2020 -0700
+
+    Remove StringViewToCString() and src/core/lib/gprpp/string_view.h
+
+commit 09b42371e7f8ff992bf82d353bf269c8d6411f6f
+Author: Mark D. Roth <roth@google.com>
+Date:   Thu Apr 23 11:24:41 2020 -0700
+
+    Remove grpc_core::InlinedVector<> and grpc_core::Optional<>.
+
+commit 635e7a2088bd82fcc32e4154a354bcd1e4ddc2b5
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Apr 23 12:02:59 2020 -0400
+
+    dont run resource_quota_server test case under epoll1
+
+commit e26ec7742384c14b97190e35aed6eb824d7b9fc1
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Tue Apr 14 18:23:00 2020 -0700
+
+    revert auto changes
+
+commit 2723a1bae63152aa8523913cd6024ff217f57932
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Tue Apr 14 01:09:26 2020 -0700
+
+    Add a new type of error, GRPC_ERROR_EOS for failing writes when end of stream has been received
+
+commit d7a62868c8704e11fd13ad92bfb28e596c668568
+Author: Mark D. Roth <roth@google.com>
+Date:   Tue Apr 14 09:04:09 2020 -0700
+
+    Mark client_channel_stress_test as manual.
+
+commit 697f411fef03c1ef296f0e4efa686e3621213f05
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Apr 9 10:05:07 2020 -0400
+
+    mark client_channel_stress_test as flaky
+
+commit 06c6fa73b08e7cdb3010891d28e160cfda4306e3
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Apr 9 08:55:07 2020 -0400
+
+    avoid too long name for retry_exceeds_buffer_size_in_initial_batch
+
+commit 719ec593d05b228828402ea708e93ed9e7760c1b
+Author: Vijay Pai <vpai@google.com>
+Date:   Wed Apr 8 10:31:33 2020 -0700
+
+    Regen projects
+
+commit 527509abc40b74e2e95ed19ec99cd06175fb3fd8
+Author: Vijay Pai <vpai@google.com>
+Date:   Wed Apr 8 10:09:00 2020 -0700
+
+    Unmark flaky on streaming_pump
+
+commit 576f79dff0e425b509283addb1f2a87209c9eab3
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Fri Apr 3 07:34:54 2020 +0200
+
+    cleanup gen_build_yaml.py for end2end tests
+
+commit 9a9fe5b3619a9947ab8e58a4f7a7314f6d4b7be1
+Author: Muxi Yan <mxyan@google.com>
+Date:   Thu Apr 2 12:27:39 2020 -0700
+
+    build_projects
+
+commit d18091014c9c8e23bd31026bf4a3408764eb38b1
+Author: Muxi Yan <muxi@users.noreply.github.com>
+Date:   Thu Apr 2 12:18:49 2020 -0700
+
+    Mark completion_queue_threading_test flaky
+
+commit 41cfae42345f32d0278e932039dc8a1a38006884
+Author: Mark D. Roth <roth@google.com>
+Date:   Thu Apr 2 08:13:26 2020 -0700
+
+    Revert "Merge pull request #19693 from apolcyn/control_plane_creds"
+    
+    This reverts commit 162fccdb90b9fec5801584b751f0f33af2795449, reversing
+    changes made to 228e7557fafb41ba4dcd3da7a55be9786573af13.
+
+commit 423a209f57ec99068e7821abc268be89d7a3fd40
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Fri Mar 27 09:41:45 2020 +0100
+
+    avoid too long test names on RBE Windows
+
+commit c9ae8ed9c78848694006dabce772fa152d533274
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Wed Mar 18 05:13:04 2020 -0400
+
+    regenerate projects
+
+commit 6738f420fd797d334448b7cb6c7966d114ae3fce
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Wed Mar 18 05:10:22 2020 -0400
+
+    mark channelz_test as flaky
+
+commit b24ddc02fd1d3b185edcb8e7cbe5d8765be54472
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Tue Mar 17 06:26:09 2020 -0400
+
+    regenerate projects
+
+commit 2e266a82d979144da4bda840b7dfce21cf2ae216
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Tue Mar 17 06:24:25 2020 -0400
+
+    mark end2end test as flaky
+
+commit e863750403e7373e1b793f6367462edf99825e9d
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Tue Mar 17 05:34:19 2020 -0400
+
+    regenerate projects
+
+commit a791e16983e4ea211232ec2fbac4030cb8b666a7
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Tue Mar 17 05:32:17 2020 -0400
+
+    mark more tests as flaky
+
+commit 548e989515421e323da525b0326ee059494d897f
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 04:11:11 2020 -0400
+
+    mark some fixtures as flaky with resource_quota_server test
+
+commit 8b663c86b697d6ae8053ca57483ac3adf7b6d7f9
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 03:53:21 2020 -0400
+
+    support marking end2end fixture-test pairs as flaky
+
+commit bf206eb4fa3c11835227a5310de9ef66d9e3f9ae
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 03:31:41 2020 -0400
+
+    regenerate projects
+
+commit 5a92850ca6fa72cd69d40cdb4c7b242c993e9476
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 03:28:45 2020 -0400
+
+    regenerate projects
+
+commit bda2519eeb968991abf87a48be447752295985dc
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 03:14:00 2020 -0400
+
+    mark client_lb_end2end_test as flaky
+
+commit 29528fc026a15d7c4e877cf0bd061c0a62df9b4c
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 03:07:25 2020 -0400
+
+    bm_metadata is not flaky anymore
+
+commit 7622a2de3878a1098ff98ee3885c815d76707f6a
+Author: Lidi Zheng <lidiz@google.com>
+Date:   Fri Mar 13 15:56:25 2020 -0700
+
+    Improve readability & fix a deadlock issue in _test_base
+
+commit 8fc872ed2e05281f5433924a43e27f30c8bd4e49
+Author: Lidi Zheng <lidiz@google.com>
+Date:   Wed Mar 11 14:24:04 2020 -0700
+
+    Enforce one cq and support many-thread many-loop env
+    
+    - Label channel_argument_test as flaky
+    
+    - Add compatibility test
+    
+    - Add many-loop test case
+
+commit 8655e5e7455a03603bc87a4ce189c4886776df8c
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Mar 12 05:58:52 2020 -0400
+
+    regenerate projects
+
+commit 99922fcdf0a4d74ff0f3d6cc49620bf443107417
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Mar 12 05:58:21 2020 -0400
+
+    bazel tests marked as flaky should not run under run_tests.py
+
+commit b3082413431bb851d8389cf2cd3b617a6819c680
+Author: Esun Kim <veblush@google.com>
+Date:   Tue Mar 3 10:37:45 2020 -0800
+
+    Fix clang-tidy issues
+
+commit e00bec7bbb451c8c108993cf6a425079a5605cc1
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Sun Mar 1 22:29:27 2020 -0500
+
+    mark grpclb_end2end_test as flaky
+
+commit e482b79ee88877331af10e6b9ca711af06816ab9
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Tue Feb 25 13:58:25 2020 -0800
+
+    Change grpclb policy to use internal connectivity state watch API
+
+commit cbb0ef271776168bef7a74df2cebb6f67381bedd
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Feb 27 22:01:00 2020 -0500
+
+    try marking some offenders as flaky
+
+commit 176f4cc4e4d76234c2435899cfaebaf04d55dd4e
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Feb 27 21:59:40 2020 -0500
+
+    support Flaky=True for grpc_cc_tests
+
+commit c6fa7eefb97d43ddbf8c7931b5dc72894ca08f1a
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Mon Feb 24 15:26:48 2020 -0800
+
+    testing with locks in ws
+    
+    Remove no_logging and add missing mu locks
+
+commit 3c87fb610f447b90bcbd535cfb5e19df77fe1a57
+Author: Matthew Stevenson <mattstev@google.com>
+Date:   Thu Feb 27 10:01:14 2020 -0800
+
+    Add comments to TlsFetchKeyMaterials API and add a test file for the TLS credentials options.
+
+commit 612c743f54f15731f0fcb1295c02629877000ee2
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Wed Feb 26 20:12:27 2020 -0800
+
+    Remove the flakiness of disappearing_server end2end test. Fix #21221
+
+commit 3bb4d312dfdcf5e7583bec8e6467670b6e3eb0d3
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Fri Jan 31 17:36:53 2020 +0100
+
+    regenerate projects
+
+commit 41ac287f7b597589224d6053832c976c8240cc9f
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Fri Jan 31 17:36:37 2020 +0100
+
+    generate build metadata from bazel BUILD
+
+commit 01e87e2d937e2026a3cee24394f4157c1d56c38a
+Author: Mark D. Roth <roth@google.com>
+Date:   Tue Feb 4 15:21:27 2020 -0800
+
+    Remove old JSON API
+
+commit 380eb750ece1395c24f720b353a9ed028c1303ac
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Jan 29 14:52:19 2020 -0800
+
+    New JSON API
+
+commit 6f5b4624af18fe86b59f6ec425b39a0a7e5efa97
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Thu Jan 23 13:10:55 2020 -0800
+
+    Delete api_fuzzer
+
+commit 618771dc6aa33c38fe4499fee2c3acebef96b04d
+Author: Zhen Lian <zhenlian@google.com>
+Date:   Fri Dec 20 10:02:34 2019 -0800
+
+    [Exposing ALTS Context 2/2] Utility Wrapper Class
+    
+    This PR contains:
+    
+    1. An ALTS context exposed for users to use, and a GetAltsContextFromAuthContext() function to get ALTS context from an AuthContext. Functionality-wise this part is similar with a previous PR https://github.com/grpc/grpc/pull/21536, but in this PR, we adjusted the code structure and made some minor changes to better suit function clientAuthzCheck()
+    2. A clientAuthzCheck() function for users to check if the server is authorized
+
+commit b341ddf72b0e6b5afc99ab3e614e76b683e30134
+Author: Guantao Liu <guantaol@users.noreply.github.com>
+Date:   Mon Dec 16 15:29:27 2019 -0800
+
+    Revert "[Exposing ALTS Context 2/2] Utility Wrapper Class"
+
+commit 98391c8f76c0eee8f98ebb7899bf9cf088db9f9b
+Author: Zhen Lian <zhenlian@google.com>
+Date:   Thu Dec 12 13:12:55 2019 -0800
+
+    [Exposing ALTS Context 2/2] Utility Wrapper Class
+
+commit 96d2517d2ad6cf7dffbdd0f439aaa04ee81fdf10
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Dec 9 17:31:49 2019 +0100
+
+    fixes in prepare_build_macos_rc
+
+commit 68df397aa2e8c8a6cba4535ca78afa882926c94b
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Dec 4 13:03:55 2019 -0800
+
+    Remove vtables from JSON library
+
+commit d969d8c7066335613c3f82cef5c29941e8ad72bf
+Author: Guantao Liu <guantaol@google.com>
+Date:   Thu Nov 14 16:26:38 2019 -0800
+
+    Fix build rules.
+
+commit 19d1776c0d6b26611a5035d42ea7de558e4cbf3c
+Author: Guantao Liu <guantaol@google.com>
+Date:   Mon Dec 2 16:57:17 2019 -0800
+
+    Rebase the workspace to fix the submodule discrepancy.
+
+commit e3095a15ce107f8b6615585b64d4e37f25428d3d
+Author: Nicolas Noble <nicolasnoble@users.noreply.github.com>
+Date:   Tue Nov 26 10:32:24 2019 -0800
+
+    Revert "[Exposing ALTS Context 2/2] Provide a Utility Function to Get Context"
+
+commit fe9576c86129632051bb92ebb99a7ed294a586ba
+Author: Zhen Lian <zhenlian@google.com>
+Date:   Mon Nov 11 18:51:51 2019 -0800
+
+    [Exposing ALTS Context 2/2] Provide a Utility Function to Get Context
+
+commit d4d9e4599089f8143566b41a48972155768240ea
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Fri Nov 22 13:24:05 2019 -0800
+
+    Use std::function instead of grpc_closure
+
+commit b48fcfbc09126018ecd4dee2f22d7c0c29d133b3
+Author: Guantao Liu <guantaol@google.com>
+Date:   Thu Nov 14 16:26:38 2019 -0800
+
+    Fix build rules.
+
+commit 8c58f224de9e11a3aeb353f7f378e4472754b4d4
+Author: Guantao Liu <guantaol@google.com>
+Date:   Thu Nov 14 16:10:34 2019 -0800
+
+    Bare bones of the libuv EventManager.
+
+commit 3351fa4a7e4677f7b1a759d4add0bdad69bcdd0d
+Author: Mikko Rantanen <jubjub@jubjubnest.net>
+Date:   Wed Oct 30 18:43:06 2019 +0200
+
+    Re-generate build files with the new test
+
+commit 3a519a0b64038073540c83722256ba57c20e728d
+Author: Esun Kim <veblush@google.com>
+Date:   Wed Nov 6 13:30:09 2019 -0800
+
+    Replaced grpc_core New & Delete with C++ new & delete
+
+commit 81df105ac89467ba2b9d150e73709f0a7f0ffa05
+Author: Esun Kim <veblush@google.com>
+Date:   Wed Oct 2 17:18:41 2019 -0700
+
+    Deprecate gpr_get/set_allocation_functions
+
+commit 6bb86298792acd10362c214fb9348bfe62fc2b86
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Thu Oct 10 23:38:44 2019 -0700
+
+    Add tests that expose a race and lock cycle in alts client, fix TSAN issues
+
+commit 9a276c07fa4ed002e1feaaff33fd3fbc2ed28430
+Author: Mark D. Roth <roth@google.com>
+Date:   Tue Oct 15 07:33:53 2019 -0700
+
+    Revert "Merge pull request #20593 from grpc/revert-20380-xds_client_bootstrap"
+    
+    This reverts commit 0bd5efa55f9b4d35e0007fb9d512c24ccd4fbeac, reversing
+    changes made to f92c283a5d6b77d77ae3d879ac13adb4e19a3a94.
+
+commit 13abbd9a757f450e6d0672fd19d16a5e8eac9be5
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Mon Oct 14 16:51:32 2019 +0200
+
+    Revert "xds client bootstrap file"
+
+commit 2afaec231d4680bd8a4c478d3e662b1f10395830
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Oct 9 14:06:48 2019 -0700
+
+    xds client bootstrap file
+
+commit 1743519aa900055aa6d02d5961c64ab294dc501f
+Author: Esun Kim <veblush@google.com>
+Date:   Tue Sep 24 11:32:35 2019 -0700
+
+    Activate C++ stdlib
+
+commit 673e0cec336f5dfa2a1ba0015eacc0c69f0fae63
+Author: Hope Casey-Allen <hcaseyal@google.com>
+Date:   Tue Sep 24 10:53:18 2019 -0700
+
+    Fix
+
+commit 0f116eb28262d947ae8b73718254a2e83bd048ae
+Author: Hope Casey-Allen <hcaseyal@google.com>
+Date:   Tue Sep 24 10:53:18 2019 -0700
+
+    Fix
+
+commit 41986e8ed8c9da70ad6909ac376280512f386e3b
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Wed Aug 14 12:08:24 2019 -0700
+
+    Added test for timer wakeups
+
+commit 6189d347247583d22b64336ea152194840600722
+Author: Matthew Stevenson <mattstev@google.com>
+Date:   Tue Aug 20 14:50:35 2019 -0700
+
+    Revert "Forgot to autogenerate files and run clang_format/tidy_code"
+    
+    This reverts commit 9295e4ebb3ae5698fd6a13c7a1e96b79c19bc123.
+
+commit 9295e4ebb3ae5698fd6a13c7a1e96b79c19bc123
+Author: Matthew Stevenson <mattstev@google.com>
+Date:   Tue Aug 20 14:41:38 2019 -0700
+
+    Forgot to autogenerate files and run clang_format/tidy_code
+
+commit 4e61956ef4320176ae555b567829c6a87a407543
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Mon Aug 19 16:08:57 2019 -0700
+
+    Add run: false to grpclb_fallback_test
+
+commit feb263ba6d3c8b17e72b9221e42ab926654ad901
+Author: Esun Kim <veblush@google.com>
+Date:   Thu Aug 15 12:56:41 2019 -0700
+
+    Add check_attrs & clean-up build.yaml
+
+commit ae863630d5f96c9581d050c08ad47dd58562b16f
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Mon Aug 12 14:12:13 2019 -0700
+
+    Add spiffe client-side credential reload
+
+commit be4e684a8259acb8132652d12aa3d511f76c3e09
+Author: Esun Kim <veblush@google.com>
+Date:   Fri Jul 12 15:41:50 2019 -0700
+
+    Migrated tsi/alts from nanopb to upb
+
+commit 6898c23a5d22486e3204129ff2c1e856f9332ca0
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Thu Jul 18 21:36:23 2019 -0700
+
+    Add experimental control plane creds C-core API
+
+commit c6bc2b1875d283d237b64a7ec9b153fd1a98b845
+Author: Yunjia Wang <yunjiaw@google.com>
+Date:   Fri Jul 19 10:23:22 2019 -0700
+
+    Add threadpool benchmark and build files
+
+commit 4999420c7d980189ecc11d5e58a9387ef7573400
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Thu Jul 11 16:11:15 2019 -0700
+
+    Add a test client for certain grpclb fallback scenarios
+
+commit 410451c126e970513a90827503775b3417a7939a
+Author: Yunjia Wang <yunjiaw@google.com>
+Date:   Mon Jul 1 14:02:58 2019 -0700
+
+    Add threadpool implementation
+
+commit dbf88dd66f0c45f2f3ce3d5209d9cd4ef180367d
+Author: Soheil Hassas Yeganeh <soheil@google.com>
+Date:   Thu Jun 27 11:15:31 2019 -0400
+
+    Revert "Revert "Introduce string_view and use it for gpr_split_host_port.""
+    
+    This reverts commit 80c177d4c40ef85eb8ec37f9d4bfa030361958e1.
+
+commit 0d2c622f9ee747e7a21447c257e5f88825006216
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Thu Jun 27 00:42:41 2019 -0700
+
+    Fix DNS resolver cooldown
+
+commit 80c177d4c40ef85eb8ec37f9d4bfa030361958e1
+Author: Soheil Hassas Yeganeh <soheil@google.com>
+Date:   Wed Jun 26 16:22:13 2019 -0400
+
+    Revert "Introduce string_view and use it for gpr_split_host_port."
+
+commit ef0f9bf7ec0ffec47554fd1eb9790835c2183728
+Author: Soheil Hassas Yeganeh <soheil@google.com>
+Date:   Thu Jun 20 23:19:34 2019 -0400
+
+    Introduce string_view and use it for gpr_split_host_port.
+
+commit 4fc02c6bf546fd85076c9cd555eb91f4d04408bd
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Mon Jun 17 16:30:06 2019 -0700
+
+    add tests for bad stream IDs
+
+commit e60c43ff3ec55c67f99aa8dcece7eae8de177946
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Fri Jun 14 16:13:19 2019 -0700
+
+    Add out of bounds frame tests
+
+commit 9df04d95a2227eb65ea65601f7d8b0eaa902c231
+Author: Yunjia Wang <yunjiaw@google.com>
+Date:   Fri Jun 14 15:52:36 2019 -0700
+
+    merge upstream/master
+
+commit 94e7edad99a0087fd12587b2e8967489ad2db5fa
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Tue Jun 11 15:07:12 2019 -0700
+
+    Add Delegating Channel
+
+commit 070902b871ea7c7149f9746bb2464da5e5dc94cf
+Author: Na-Na Pang <ladynana@google.com>
+Date:   Wed May 8 15:51:58 2019 -0700
+
+    Merge bm_callback_cq to bm_cq
+
+commit db1ccad0399fd57bcf0ad3b6c3d40b3a47979abc
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Thu May 2 18:03:02 2019 -0700
+
+    Service Config Changes to set channel in transient failure on invalid service config
+
+commit 5748665bc546f8839ead6b5a92525960ff011ee7
+Author: Na-Na Pang <ladynana@google.com>
+Date:   Thu May 2 17:21:55 2019 -0700
+
+    Add callback completion queue and modify callback streaming ping pong
+
+commit 1518ecbd76040fa1b9157a53e735c7e2e7c95c64
+Author: Esun Kim <veblush@google.com>
+Date:   Mon Apr 15 10:48:30 2019 -0700
+
+    Added new configuration system to core/grp.
+    
+    More generic configuration system is introduced in order to i) unify the
+    way how modules access the configurations instead of using low-level
+    get/setenv functions and ii) enable the customization for where configuration
+    is stored. This could be extended to support flag, file, etc.
+    
+    Default configuration system uses environment variables as before so
+    basically this is expected to work just as it did. This behavior can
+    change by redefining GPR_GLOBAL_CONFIG_DEFINE_*type* macros.
+    
+    * Migrated configuration
+    
+    GRPC_CLIENT_CHANNEL_BACKUP_POLL_INTERVAL_MS
+    GRPC_EXPERIMENTAL_DISABLE_FLOW_CONTROL
+    GRPC_ABORT_ON_LEAKS
+    GRPC_NOT_USE_SYSTEM_SSL_ROOTS
+
+commit ac3a91edf8d15a405fffba7e1acb55d5a0c47796
+Author: yang-g <yangg@google.com>
+Date:   Mon Apr 29 15:47:58 2019 -0700
+
+    Support accepting external connections.
+
+commit bbd4eb5028438ab84a50c2371874707615b94578
+Author: Na-Na Pang <ladynana@google.com>
+Date:   Fri Apr 26 09:52:12 2019 -0700
+
+    Add microbenchmark for callback unary ping pong and bidistreaming ping pong
+
+commit 6929cdd65454f0e77d5ad931209a4207ae15331c
+Author: yang-g <yangg@google.com>
+Date:   Tue Apr 16 14:16:55 2019 -0700
+
+    initial
+
+commit ef4508ca0d9ce71dc6140b0b599758ddef5e350d
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Tue Apr 16 11:09:30 2019 -0700
+
+    fix memory leaks in ssl credential reload.
+
+commit 390078b7a8a82b15de1c52a22e3e2d98b5843f24
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Thu Apr 4 18:55:10 2019 -0700
+
+    Add tests for new service config mechanism
+
+commit ba00d3c91448900db36b9cac22171de75f103c35
+Author: Moiz Haidry <mhaidry@google.com>
+Date:   Fri Mar 29 12:50:54 2019 -0700
+
+    Added a locality map class that maintains a child policy per locality. This is used by the xds lb policy to manage multiple localities. Also added a grpc_core::Map which is a templatized map, that is used by the locality map to maintain this info
+
+commit 271807df79b2f2dc7c7b6d18367f52fb6d906d78
+Author: Adam Langley <agl@imperialviolet.org>
+Date:   Tue Mar 19 11:16:24 2019 -0700
+
+    Build BoringSSL tests as BoringSSL does.
+    
+    BoringSSL builds its crypto_test and ssl_test as single targets, while
+    gRPC was building them with a target per file. This no longer works with
+    tip-of-tree BoringSSL.
+    
+    This change aligns gRPC with the way that BoringSSL builds its tests.
+    The changes to boringssl/gen_build_yaml.py were done by hand, all other
+    changes result from generate_projects.sh.
+
+commit b017c801b683d47160bdb3f98c19124fcbd1fc0a
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Thu Mar 14 15:24:48 2019 -0700
+
+    Add SPIFFE security stack to gRPC core
+
+commit c9421eeb8518cdf4abe2960a87a89f9f2f9f49b5
+Author: Mark D. Roth <roth@google.com>
+Date:   Tue Mar 12 13:15:45 2019 -0700
+
+    Fix state reported by pick_first when we receive a GOAWAY with a pending subchannel list.
+
+commit abcd5861ebd4867516aea2e12567bb8f423c18d5
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Thu Mar 7 14:49:24 2019 -0800
+
+    Nuking the poll-cv polling engine
+
+commit a6596b2fd51993e9001af5c35512eca1efd07e38
+Author: yang-g <yangg@google.com>
+Date:   Wed Mar 6 15:43:12 2019 -0800
+
+    Fix fuzzer test
+
+commit 94c38ee0a13d0e2fc0931c56db7dfcede6200da1
+Author: yang-g <yangg@google.com>
+Date:   Tue Mar 5 14:34:24 2019 -0800
+
+    Add fuzzer test case
+
+commit e889fda4828872915229af82c286ae2be613f731
+Author: Juanli Shen <juanlishen@google.com>
+Date:   Tue Mar 5 13:29:55 2019 -0800
+
+    Use real resolver in xds lb channel
+
+commit a04b0646de2c80f76f52af443d31b369d26e1452
+Author: Mark D. Roth <roth@google.com>
+Date:   Mon Mar 4 14:38:02 2019 -0800
+
+    Don't use a separate call context for subchannel calls.
+
+commit b31f402b469ceeec2a9f7d70c596a1c03351d795
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Tue Feb 19 10:46:05 2019 -0800
+
+    Add flaky_network_test after fixing internal build failures.
+    
+    Re-add flaky_network_test along with a couple of new testcases.
+
+commit cecea9c5921c98a43d4a34b3ad1c8e8bdb4eedbb
+Author: hcaseyal <hcaseyal@gmail.com>
+Date:   Fri Feb 15 13:36:02 2019 -0800
+
+    Revert "Added test for RPCs over a flaky network"
+
+commit 485bc78ba325ce0b3a4ce55187a7560f4d6732d3
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Thu Feb 7 16:53:24 2019 -0800
+
+    Added flaky_network_test
+
+commit 817c28f22fb39bc4c278cae65588a4009b6c4261
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Feb 7 18:33:02 2019 +0100
+
+    scaffolding for flaky network test
+
+commit f919ace038044b4ee88fa0fb77c87ac8a19d1f06
+Author: Vijay Pai <vpai@google.com>
+Date:   Thu Feb 7 08:34:54 2019 -0800
+
+    Add a microbenchmark for immediately-firing alarms
+
+commit bca92b2b7e2f2fcd2ede72e37d02e3787ed6bce3
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Thu Jan 24 18:30:01 2019 -0800
+
+    Added test for wall-clock time change on the client
+
+commit 6b19927bc4cfeffc617509681d1e5b9d097ac252
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Thu Jan 3 13:27:20 2019 -0800
+
+    Bad connection test
+
+commit 9df6023dca89a288ad2650ca1cc1bc6bd3dccb2b
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Fri Jan 18 14:48:12 2019 -0800
+
+    Move Optional to gprpp, and reviewer comments
+
+commit 95965f71d3e99f6baa4a237e0a7046d51cd0441f
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Fri Jan 11 10:40:20 2019 -0800
+
+    Remove network_status_tracker
+    
+    Remove network_status_tracker and its unit test as it does nothing. We
+    can add tests for network status change in another commit.
+
+commit 00763bc3eaff1523a70e5e791924c16abd2fe526
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Mon Jul 30 17:22:25 2018 -0700
+
+    Support named scope id's with ipv6 resolver on posix
+
+commit 2e017da58aeb335e79f7bbf0797aad45a59d293b
+Author: Soheil Hassas Yeganeh <soheil@google.com>
+Date:   Fri Dec 21 18:14:08 2018 -0500
+
+    Add microbenchmarks for grpc_timer
+    
+    This helps assessing upcoming changes.
+
+commit 0531d3d3adfd12e1d9aeaa49fb19096b4c1fb5d9
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Sun Dec 16 14:50:26 2018 -0800
+
+    extend local credentials to support tcp loopback
+
+commit ca4e55e6caae393e33784d51f1e9d2352608c4dc
+Author: Vijay Pai <vpai@google.com>
+Date:   Fri Dec 14 13:03:22 2018 -0800
+
+    Benchmark to show that byte buffer copy is size-independent
+
+commit ac10426163534bdf4bc9603edf00056a4893ebfd
+Author: Vijay Pai <vpai@google.com>
+Date:   Mon Oct 29 02:10:27 2018 -0700
+
+    Add server_interceptors_end2end_test to build.yaml
+
+commit 2976ef129c345e8294d76a3f99581cc71404348c
+Author: Juanli Shen <juanlishen@google.com>
+Date:   Thu Oct 25 14:33:19 2018 -0700
+
+    Fix OOM by expanding resource quota coverage
+
+commit 25f4346ac1fb3c8e0acc3ea57f4acba9843a8e14
+Author: Vijay Pai <vpai@google.com>
+Date:   Tue Oct 23 19:26:58 2018 -0700
+
+    Remove inproc_nosec_test since inproc is inherently secure
+
+commit 6e00b3bb88655742cdb6d17d8ea5d7bb0cffc95d
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Tue Oct 23 11:22:09 2018 -0700
+
+    Use InProc Channel for callback tests
+
+commit 9b83b7d19e0a3e14dbfca2f40fa8157547c190f4
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Mon Oct 22 02:42:03 2018 -0700
+
+    Adding intercepted channel
+
+commit be18cedf90c61352b52039c6298347fe1c321494
+Author: Vijay Pai <vpai@google.com>
+Date:   Fri Sep 21 23:26:46 2018 -0700
+
+    Delete epollsig poller and tests using it
+
+commit 964d679edc32b0f7316cacdb0652477d607f6de5
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Tue Aug 21 08:00:49 2018 -0700
+
+    Resolve ip literals and Windows localhost manually when using c-ares
+
+commit 8bf52535d1008a3f38e70d1387846f0e942761b5
+Author: Vijay Pai <vpai@google.com>
+Date:   Tue Aug 21 14:32:13 2018 -0700
+
+    Provide a generic client-side unary callback API
+
+commit 8d47cd4992c3c3546bef23568fde5fe132144666
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Mon Aug 27 14:56:01 2018 -0700
+
+    Revert "Revert "Fathom tcp changes""
+
+commit 97ba943f179cf6eda6f1a85abee01d459f507673
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Mon Aug 27 12:43:20 2018 +0200
+
+    Revert "Fathom tcp changes"
+
+commit 9c5bde5e4e2cc0c81c3c6411b3aa922d3e995a54
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Sun Aug 26 03:50:39 2018 -0700
+
+    More commits
+
+commit 72695b886e3064cc846e3fe391d63e4fc21f5623
+Author: Vijay Pai <vpai@google.com>
+Date:   Tue Aug 21 08:51:19 2018 -0700
+
+    Add an inproc-based non-polling test of core callback API
+
+commit bcd747d42d11c92c3d37aef8d8b45a043ff5d79c
+Author: tdbhacks <aburaggina@google.com>
+Date:   Fri Jul 20 16:41:44 2018 -0700
+
+    Added system roots feature to load roots from OS trust store
+    
+    Added a flag-guarded feature that allows gRPC to load TLS/SSL
+    roots from the OS trust store. This is the Linux-specific
+    implementation of such feature.
+
+commit 9896c641860a70e41b006a982e44f40bb3f41053
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Fri Jul 27 01:38:26 2018 -0700
+
+    Revert "Merge pull request #16158 from apolcyn/revert_windows_breakage"
+    
+    This reverts commit d9e8f86675cf923714b3ead4b06087e14a88c08c, reversing
+    changes made to 04847aeb1e62bc528d88fa3c47daa24a4cf629b3.
+
+commit f34c65393622878e9610939193fd9c754b7c0a74
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Thu Jul 26 14:32:07 2018 -0700
+
+    Revert "Merge pull request #15797 from apolcyn/windows_compile_and_sort"
+    
+    This reverts commit ae8d3efc3a360b289f0b33e1c53c8c73960cb31f, reversing
+    changes made to e41215e181564a61320b9b69ae5feb7f7c3625fe.
+
+commit 1b1d5e52e7aa0ecdd455ad084aa7930ea89bbfd1
+Author: Alex Polcyn <apolcyn@google.com>
+Date:   Sat Jun 16 04:08:55 2018 +0000
+
+    Get c-ares to compile and do address sorting on windows
+
+commit c194528844ece0d18035a29453c0dd53c0bc738b
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Mon Jul 16 22:24:53 2018 -0700
+
+    Adds C++ Channelz Service
+
+commit f0397933b007e2614ba38fc98f0ee6391a2eea9d
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Thu May 31 19:39:52 2018 -0700
+
+    Fathom TCP level changes. TracedBuffer for keeping track of all buffers
+    to be traced. Adding tests for Fathom and TracedBuffer. A lot more.
+    Please read PR description.
+
+commit c5f1eda10f7c04368450b757bda7fe4b58d62844
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Mon Jul 2 13:29:27 2018 -0700
+
+    implement loca credentials
+
+commit f5f1d57d7abdd68c9037576729e3e85437aaa833
+Author: Juanli Shen <juanlishen@google.com>
+Date:   Thu Jun 21 22:44:05 2018 -0700
+
+    Add load reporting filter
+
+commit 77472309d5a01eca98a95858270388d941e7eb89
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Wed Jun 13 15:58:17 2018 -0700
+
+    Add channel creation benchmark
+
+commit fba01d86e724136ce33a8bff9c5c307029fd4559
+Author: Juanli Shen <juanlishen@google.com>
+Date:   Wed Jun 20 15:28:31 2018 -0700
+
+    Remove load data store targets from build.yaml
+
+commit bacd625d375471d34ec6afd127bac6feb06e4ec8
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Mon Jun 18 18:40:39 2018 -0700
+
+    Add end2end test for codegen_generic
+
+commit 16ad9b828073579d0c6364570a3803b26e7fb39d
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Sat Jun 16 12:14:30 2018 -0700
+
+    Added a test to catch such things in future
+
+commit 2bf8ef24a10989b13e3aeb1810336b2b263d32c0
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Wed Jun 13 14:20:48 2018 -0700
+
+    Remove check for whether channel is secure/insecure. Always prefer 'https_proxy' and fallback on 'http_proxy'
+
+commit 84328e733d62e21cd2573cfda5d2126f568b59ac
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Mon Jun 11 14:12:48 2018 -0700
+
+    No need to fallback on https_proxy for insecure connections
+
+commit 1b9a7faa71d1e927edf91ee0491207a7bb16b39c
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Fri Jun 8 14:04:22 2018 -0700
+
+    Prefer using https_proxy for secure channels and http_proxy for insecure channels
+
+commit 68eff58df61bfde1b438d109c197f1a260230a68
+Author: Ian Haken <ihaken@netflix.com>
+Date:   Thu Oct 26 14:34:15 2017 -0700
+
+    Create verify_peer_options when creating ssl credentials in order to expose a verification callback option.
+    
+    These options are not yet exposed to languages outside of core.
+
+commit d93589a0a1733b7a786b692c2d09c6f6a2958ba4
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Sun Jun 10 22:37:10 2018 -0700
+
+    Don't proxy no_error_on_hotpath
+
+commit d2e357b10d087075e582434292ea05766cc9cc53
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Fri Jun 8 14:19:46 2018 -0700
+
+    Revert "Merge pull request #15685 from grpc/revert-15435-fix_shutdown_closed_socket"
+    
+    This reverts commit 8b5e45a35b83908d7a5f1dae6f412929f70c90ef, reversing
+    changes made to 2ea5e1d1dee3d7d7219051723290293901e37fbc.
+
+commit 61278f3aa72b8032f54728e6847b9655acb38ed2
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Fri Jun 8 11:11:59 2018 +0200
+
+    Revert "Fix shutdown of closed fd when c-ares opens a second fd"
+
+commit b8a52e0cf3e271f80b32f16783c76c065f5c2167
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Thu Jun 7 18:58:03 2018 -0700
+
+    Add new end2end test for channelz
+
+commit a94896ffea2353dd02efc00543d0368539e0f77a
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Thu Jun 7 16:08:48 2018 -0700
+
+    Add no_error_on_hotpath test
+
+commit c3c6e064b33ab8b7a2d3cf5a56171029d0bb1edc
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Wed May 9 11:10:21 2018 -0700
+
+    Add basic support for GetChannel
+
+commit 96dbfe1664dfe37380d28a66bc2a582476427466
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Thu May 17 13:51:16 2018 -0700
+
+    Fix shutdown of closed fd when c-ares opens a second fd
+
+commit 272cdca728d4c691cee1e2f0d2a55fe7ad78f036
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon May 21 20:01:20 2018 +0200
+
+    regenerate projects
+
+commit 16b42ca9aae34a32187888783464cd8e692dc45e
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Fri May 11 11:59:38 2018 -0400
+
+    Add skeleton gtest file
+
+commit 41e4cedb7012a55376322b142d74eae5e86b95e3
+Author: Vizerai <jsking@google.com>
+Date:   Fri Apr 13 18:19:21 2018 -0700
+
+    Adding opencensus grpc plugin.
+    
+    Rebasing to merge commits.
+
+commit ac8b72f75b2fbd215dbffa286b7b893b9fb061e7
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Fri May 4 17:18:27 2018 -0700
+
+    Add a test that tcp server posix consumes socket mutators
+
+commit 2f777f77b15a836d105bad0d0a292b7706dfa915
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Tue May 8 10:40:49 2018 -0700
+
+    regenerate projects
+
+commit cc93663910cd17f6d1faeef020ec0b3fc27df263
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Tue May 8 10:15:03 2018 -0700
+
+    Add ALTS fuzzer
+
+commit a0aab7ebcc4e3af28f9dde745bf1800094b085a7
+Author: Juanli Shen <juanlishen@google.com>
+Date:   Tue May 1 10:30:54 2018 -0700
+
+    Add load data store
+
+commit 38ab21ee0996a54c682488bcf43ecf5ba0f7f24a
+Author: kpayson64 <kpayson@google.com>
+Date:   Thu Mar 8 15:47:40 2018 -0800
+
+    Add exec_ctx check to fork handlers
+
+commit 5947d337fd94d156ba937555fb5492df24d7f3ba
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Wed Apr 25 11:03:16 2018 +0200
+
+    run_tests.py --auto_set_flakes should be disabled by default
+
+commit de077acf5da5c720253ab1232d90872a494a64ce
+Author: Mark D. Roth <roth@google.com>
+Date:   Thu Apr 12 08:05:44 2018 -0700
+
+    Fix retry code handling of internally triggered recv_trailing_metadata.
+
+commit a368348f4843784234bb7d7a5718b2c88ce4fce0
+Author: Hope Casey-Allen <hcaseyal@google.com>
+Date:   Mon Apr 9 15:50:31 2018 -0700
+
+    Update unit testing documentation
+
+commit 04c7634d6b1f888965c58964080984f78ab00de2
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Tue Apr 3 10:44:14 2018 +0200
+
+    regenerate projects
+
+commit d3ace6cf29778e26c97d0de138dcdd30afac07e5
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Mar 29 10:13:14 2018 -0700
+
+    Fix authority fuzzing failures
+
+commit 9db86fcc6366a472abd50699719e4631c2df5393
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Mar 28 07:42:20 2018 -0700
+
+    Convert retry throttle code to C++ and add tests.
+
+commit 861363d618a279fa3de9ea8cf0702276b4f8bd83
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Mon Mar 26 15:57:33 2018 -0700
+
+    added call_host_override test
+
+commit 690dde672a877083e29ee5af0b8252697aa48fa0
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Wed Oct 18 00:20:33 2017 -0700
+
+    Add address sorting submodule for use in c-ares wrapper
+
+commit 99d0cee31bdbc29c63170dfb2100c10da3a6eba7
+Author: Ruslan Nigmatullin <elessar@dropbox.com>
+Date:   Tue Mar 20 09:18:29 2018 -0700
+
+    regenerate projects
+
+commit ac08180ab3e2ef9126271c524d45fa5d1e8d6413
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Mon Feb 5 21:46:40 2018 +0100
+
+    Revert "Disabled the json_run_localhost:*_low_thread_count family of tests"
+
+commit 3b42f83068618d5888b870874937a185803a2db1
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Mon Mar 19 13:22:35 2018 -0700
+
+    Revert "Revert "Channel Tracing Implementation; Part 1""
+    
+    This reverts commit f2bea3725f8218777268decfd37c7b543f839d9f.
+
+commit f2bea3725f8218777268decfd37c7b543f839d9f
+Author: Noah Eisen <ncteisen@gmail.com>
+Date:   Mon Mar 19 12:05:18 2018 -0700
+
+    Revert "Channel Tracing Implementation; Part 1"
+
+commit ba46afe3e2b4e8dc00fec8347979f2ad9c1427dd
+Author: Vijay Pai <vpai@google.com>
+Date:   Thu Mar 15 11:16:58 2018 -0700
+
+    Delete status_test that has no coverage; replace with static_asserts
+
+commit c7c0d69d8b411f1c5102bfd186aa2f6992c2e59c
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Sat Mar 10 17:27:15 2018 -0800
+
+    Secure channels: use the right authority
+
+commit 04fb58efbd62e11466b79dbdf4f1433cc2c75a89
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Thu Mar 8 06:49:24 2018 -0800
+
+    Add ALTS code to grpc/core
+
+commit ae277dd000254c2df9f6cc51dbb70dff1ea55aa2
+Author: Sree Kuchibhotla <sreecha@users.noreply.github.com>
+Date:   Wed Mar 7 14:35:36 2018 -0800
+
+    Revert "Add ALTS C stack to gRPC core"
+
+commit d606e36061c721ca5d71603dac3a0ff9eb63f7f3
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Wed Mar 7 21:21:38 2018 +0100
+
+    regenerate projects
+
+commit 97a3dbeb36c0f444b2e0d510bf43551bb546e1b6
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Wed Mar 7 00:00:14 2018 -0800
+
+    Move C++ to util, call it from core test
+
+commit 07ed0396a900d01dc2b2142892417254e52eca77
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Tue Mar 6 21:44:08 2018 -0800
+
+    Add JsonProtoTest
+
+commit eaf64866777a42996835606e9c3626c974e728c5
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Tue Mar 6 21:40:45 2018 -0800
+
+    Add ALTS code to grpc/core
+
+commit 396d49d95842b42ee2537f54a12919aff47a0401
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Feb 28 16:06:30 2018 -0800
+
+    Introduce a 'weak' and mutable version of slice hash table
+
+commit 718c8341ca8dcad17d93dc9e20c289c48b7ece34
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Feb 28 13:00:04 2018 -0800
+
+    Retry support.
+
+commit 249a1d71046b9829f115301226772ff50040ccc7
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Feb 15 16:04:28 2018 -0800
+
+    Removed outdated grpclb_test
+
+commit 9f3f4837af81e2b8d404513c88823bc92142307f
+Author: Noah Eisen <ncteisen@google.com>
+Date:   Tue Feb 13 17:03:06 2018 -0800
+
+    Add repro
+
+commit b5aec72e7d6491150d2fbc4d560c676f240d8397
+Author: Noah Eisen <ncteisen@google.com>
+Date:   Tue Feb 13 16:42:41 2018 -0800
+
+    Add fuzz repro
+
+commit 2ee8cb998bf3fb607a74bdf69fdc873a4f6aa582
+Author: Noah Eisen <ncteisen@google.com>
+Date:   Tue Feb 13 16:29:40 2018 -0800
+
+    Add fuzz repro
+
+commit c7f026142d81477ca209b04ac0955e9be44607a5
+Author: Noah Eisen <ncteisen@google.com>
+Date:   Tue Feb 13 15:51:51 2018 -0800
+
+    Add repro
+
+commit 132efa0c9bf8ba974619d171c586fb809225929d
+Author: Vijay Pai <vpai@google.com>
+Date:   Fri Feb 9 15:28:14 2018 -0800
+
+    Add non-blocking test
+
+commit ba1c61450092dbde06ae4fc003f9e71b91ad332d
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Thu Feb 8 12:26:16 2018 -0800
+
+    running generate_projects script
+
+commit 1b0168e207189e86e1e284d3a97112f3ba53dcf0
+Author: Matt Kwong <mattkwong@google.com>
+Date:   Wed Jan 31 11:34:48 2018 -0800
+
+    Add BoringSSL tests
+
+commit 956fe5e0895fec024878489d236dba162c4b3012
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Tue Jan 30 15:47:20 2018 -0800
+
+    Added tests, supporting c-ares as well as std resolver.
+
+commit a110c74c58916730aba94020b9ebd474f207b388
+Author: Matt Kwong <mattkwong@google.com>
+Date:   Fri Sep 22 14:31:22 2017 -0700
+
+    Update BoringSSL to latest chromium-stable ref
+
+commit 1dc0833bed2b62c520c1382462413c8054aed595
+Author: Ken Payson <kpayson@google.com>
+Date:   Thu Jan 25 16:52:51 2018 -0800
+
+    Don't segfault on header replay
+
+commit 98cd36e2c3198af8f11712ff6dc08c14c9582f6c
+Author: yang-g <yangg@google.com>
+Date:   Thu Jan 18 15:34:01 2018 -0800
+
+    Add a test
+
+commit 1791df0a72cd6457f152172b65515196df6663fc
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Fri Jan 19 18:23:20 2018 -0800
+
+    Bad client changes to make large metadata test to work again
+
+commit 2b226adf60eac113e6c2780aa551c775e72511d6
+Author: Vijay Pai <vpai@google.com>
+Date:   Thu Jan 11 16:11:35 2018 -0800
+
+    Remove alarm from core, implement in C++ layer only
+
+commit 33cb50096ce04612479e8a64626e5ddc200c6db1
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Jan 16 13:16:21 2018 -0800
+
+    Add fuzzed example that found this crash
+
+commit b353297b4394a6c5fadd04ce778bed480d6d5782
+Author: Ken Payson <kpayson@google.com>
+Date:   Thu Jan 11 20:25:30 2018 -0800
+
+    Revert "Revert "Set error status correctly on server side""
+    
+    This reverts commit 951f84aea00a1f8a65cf160d7d8f342c30593000.
+
+commit 951f84aea00a1f8a65cf160d7d8f342c30593000
+Author: David G. Quintas <dgq@google.com>
+Date:   Thu Jan 11 15:32:34 2018 -0800
+
+    Revert "Set error status correctly on server side"
+
+commit 324703db51b43e150d9d8ffbcceb9d2096e26a9f
+Author: Mark D. Roth <roth@google.com>
+Date:   Thu Jan 11 07:41:31 2018 -0800
+
+    Fix existing ref counting classes and add new ones.
+
+commit c6406f32f626bcad9aee9582132f06bc68f4e0e5
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Jan 10 14:47:37 2018 -0800
+
+    Implement InlinedVector independently of absl.
+
+commit 8fc3715a17a1b764143d0b37652a07a45d1cdf01
+Author: Vijay Pai <vpai@google.com>
+Date:   Mon Dec 18 14:33:51 2017 -0800
+
+    Catch exceptions from sync method handlers without crashing server
+
+commit 6535cfd14001a433f1af5da8476b9b1247fce689
+Author: Ken Payson <kpayson@google.com>
+Date:   Thu Jan 4 12:56:52 2018 -0800
+
+    Set error status correctly on server side
+
+commit 7d9b6358b507aef4188739c46db1ad3f39a5bf98
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Thu Dec 28 15:04:48 2017 -0800
+
+    Initial commit
+    
+    Picks up work from https://github.com/grpc/grpc/pull/10259.
+    A merge was impossible due to the many sweeping changed that
+    have occured since I last touched that PR (c++-ization, exec_ctx,
+    reorganitation of filters, etc).
+
+commit 251af24c548b633e2977def85e36d7420966ba9e
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Mon Dec 18 13:38:10 2017 -0800
+
+    Disabled the json_run_localhost:*_low_thread_count family of tests
+
+commit d09c80231fe26188d1d465bf63a8e6dd3ea4fa45
+Author: Ken Payson <kpayson@google.com>
+Date:   Wed Dec 13 11:52:58 2017 -0800
+
+    Add back 1_cq qps test
+
+commit e204e5e4971fb288537d90991a8739f8bc9fb82c
+Author: Mark D. Roth <roth@google.com>
+Date:   Tue Dec 5 08:27:17 2017 -0800
+
+    Apply #13336 to v1.8.x branch.
+
+commit cf9ca843eb3dec132195e8a8b21f33a7525d2197
+Author: Mark D. Roth <roth@google.com>
+Date:   Tue Nov 28 08:24:35 2017 -0800
+
+    Add ReferenceCountedPtr class.
+
+commit 70db663ae8773dc45464c904603a3e73045b45c5
+Author: Mark D. Roth <roth@google.com>
+Date:   Mon Nov 27 14:53:26 2017 -0800
+
+    Add ReferenceCounted base class.
+
+commit 891254292e4a68dd9a3b31f8faf729aaeca8ccc9
+Author: Vijay Pai <vpai@google.com>
+Date:   Wed Nov 22 10:22:28 2017 -0800
+
+    Remove lockfree stack, again
+
+commit b9f34acfe51fe5740186103a3929657fd89e7c42
+Author: Mark D. Roth <roth@google.com>
+Date:   Tue Nov 21 15:47:12 2017 -0800
+
+    Add test for handshake timeout.
+
+commit 2d6390549df85cf49234ef269a46c18cbe474233
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Nov 16 14:39:35 2017 -0800
+
+    Big refactoring
+
+commit e5d2139e1ea5d3671c1a5c40e3255340b3987f7b
+Author: Juanli Shen <juanlishen@google.com>
+Date:   Tue Nov 14 16:07:23 2017 -0800
+
+    Add client channel stress test
+
+commit 3f6b10afba43e2855efd2fbeb3f1f4ea6c2a9657
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Sat Oct 28 16:57:29 2017 -0700
+
+    Use existing read buffer in security handshaker if present
+
+commit 348b334f4b3545a89372652b47ee7030502910d0
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Nov 13 15:16:03 2017 -0800
+
+    Back-out absl dependency for now
+
+commit 4d9c98b14690c508f0e877439c0a53e61f596733
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Thu Nov 9 12:43:15 2017 -0800
+
+    split POC into real test
+
+commit 69f3767a3e0c9eb1b6467e8932b9796109c7deda
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Nov 1 13:45:01 2017 -0700
+
+    Many improvements to detect flakes script
+
+commit 38007753b00d9106d515fc26d34fb5cc011a12be
+Author: murgatroid99 <mlumish@google.com>
+Date:   Wed Oct 18 11:24:17 2017 -0700
+
+    Remove src/node and references to it
+    
+    This removes all of the node code and tests from the repo, along with the
+    scripts for running Node unit tests, performance tests, and artifact builds.
+    The scripts for running tests from the grpc-node repository are untouched.
+
+commit 9b9a44e4dd1087a1cbdde3a3884cc7beea031d58
+Author: Justin Burke <burkej@google.com>
+Date:   Tue Oct 3 18:09:41 2017 -0700
+
+    Expose conversion of grpc to tsi cert pairs
+
+commit bb7d088ed2ea79bdad2917b7be86bad622d1f790
+Author: Vizerai <jsking@google.com>
+Date:   Mon Oct 23 12:06:29 2017 -0700
+
+    Cleaning up census code.
+
+commit 088112fea12ec364990909cda3a96e7d792480b3
+Author: Vijay Pai <vpai@google.com>
+Date:   Thu Aug 24 10:42:27 2017 -0700
+
+    Create inproc version of QPS test and add a few simple tests of this to standard testing suite.
+
+commit af6bb8515f807592577e77d0027453d6c0b1ef31
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Tue Oct 17 19:06:42 2017 -0700
+
+    Disabling large_metadata_bad_client_test as per #11745
+
+commit 77013000e7fb7740a6e6f7cf76eb47f8a282baf2
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 16 16:11:37 2017 -0700
+
+    Working benchmark parallelization
+
+commit fdfab883c3875e29d4607ad37c0b05b691a96b46
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 16 15:41:48 2017 -0700
+
+    Fix merge
+
+commit 4581816115d4b84cbddadea3c355c52f79c61b81
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Thu Oct 12 16:22:34 2017 -0700
+
+    Add cpp_protobuf_async_unary_75Kqps_600channel_60Krpcs_300Breq_50Bresp
+
+commit 4f0cd0e82c425533bef9f7ab8119cc542bcc9a41
+Author: Vijay Pai <vpai@google.com>
+Date:   Fri Sep 22 23:34:43 2017 -0700
+
+    Add flow control to inproc transport so send needs a matching recv; fix
+    some tests that assumed some sends could always go out
+
+commit fed13916b0f62198992220eefa742e8b3e02cc99
+Author: Vijay Pai <vpai@google.com>
+Date:   Wed Oct 11 00:07:00 2017 -0700
+
+    Move h2_ssl_cert_test out of end2end fixtures, use gtest
+
+commit e757adc3520e39a3f8fbaffac66f6bd13efb27ca
+Author: Adele Zhou <adelez@google.com>
+Date:   Mon Oct 9 17:40:03 2017 -0700
+
+    Added allow_flakes flag and set to True by default.
+
+commit b7a8cace34551eef286acd761c9b8e5de1747894
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Oct 5 09:50:18 2017 -0700
+
+    Add abseil to core, use it for InlinedVector
+
+commit 27bf05d003f48e6f95b836a5e5450e4bb787f9ef
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Mon Aug 7 18:09:11 2017 -0700
+
+    Add tests for c-ares wrapper using a local DNS server.
+
+commit f7617bb8f6bd4b6993d6cf5bf70a14a5819f5fd6
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Sep 13 09:47:28 2017 -0700
+
+    Really use measured CPU costs (with a small delta) for run_tests
+
+commit 9992bdb74ec2a39b7d8cd867ee4f3b3f96d151bb
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Sep 6 15:00:31 2017 -0700
+
+    Query CPU cost of tests and feed that into test runner
+
+commit 97ec5eb61e9c2995387668c094d89389facb0878
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Sep 1 12:57:36 2017 -0700
+
+    Add stats test
+
+commit 243fe9d43c6bed0168670255d8208795c8438a79
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Aug 24 14:16:37 2017 -0700
+
+    Added way to remove filters from channel stack builder
+
+commit 7fab9bf3bb42cc5d6fdd73cd9033700daeaba177
+Author: Yihua Zhang <yihuaz@google.com>
+Date:   Tue Aug 22 12:32:43 2017 -0700
+
+    Add TSI test library and SSL and fake TSI tests
+
+commit c5fd890b1331834a681a8ba61bb12518548588dc
+Author: Matt Kwong <mattkwong@google.com>
+Date:   Thu Aug 10 13:39:21 2017 -0700
+
+    Don't rerun flakes when uploading results to BQ
+
+commit 2f39486facffb6605ce645492a332ef003ad4af8
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Aug 2 21:36:35 2017 -0700
+
+    Added flake detection script
+
+commit 3aaa5ea028bed4e66aca701b4129fdc8ad3f86de
+Author: jiangtaoli2016 <jiangtao@google.com>
+Date:   Wed Aug 2 13:36:50 2017 -0700
+
+    minor fix
+
+commit fa759d7ae5d46c702a8a927669bf83648877fbfb
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Tue Aug 1 13:08:26 2017 +0200
+
+    auto_set_flakes also reruns tests that timeout
+
+commit 686437ada973113285f3d2c31a54305aeb5a9248
+Author: Noah Eisen <ncteisen@google.com>
+Date:   Mon Jul 31 16:11:05 2017 -0700
+
+    Add repro
+
+commit 627a5824c3cbf37d38869238e5382f4ace6d6370
+Author: Muxi Yan <mxyan@google.com>
+Date:   Fri Jul 28 09:09:01 2017 -0700
+
+    clang-format and generate project
+
+commit 5794061764976c4771f69a3193cd38b3cdba193e
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Jul 26 14:29:52 2017 -0700
+
+    Improvements to grpc_byte_stream API and handling.
+    
+    - Add shutdown() method (to be used in forthcoming call combiner code).
+    - Use a vtable instead of storing method pointers in each instance.
+    - Check all callers of pull() to make sure that they are properly
+      handling errors.
+    - Clarify ownership rules and attempt to adhere to them.
+    - Added a new grpc_caching_byte_stream implementation, which is used in
+      http_client_filter to avoid having to read the whole send_message byte
+      stream before passing control down the stack.  (This class may also be
+      used in the retry code I'm working on separately.)
+    - As part of this, did a major rewrite of http_client_filter, which
+      made the code more readable and fixed a number of potential bugs.
+    
+    Note that some of this code is hard to test right now, due to the fact
+    that the send_message byte stream is always a slice_buffer stream, for
+    which next() is always synchronous and no destruction is needed.
+    However, some future work (specifically, my call combiner work and
+    Craig's incremental send work) will start leveraging this.
+
+commit c62ce80b805837dc2246b453a4a8b76c886cb6a3
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Thu Jul 20 16:48:01 2017 -0700
+
+    Test credentials are passed with channel arg. Renamed macros and refactored code as per suggestions. Renamed test to proxy_auth and changed it to use simple_request instead of a payload.
+
+commit f7350ea6b7b58d632bf4a8aafaa0354e022d9c0b
+Author: Yash Tibrewal <yashkt@google.com>
+Date:   Wed Jul 19 10:26:41 2017 -0700
+
+    Adding connect auth feature. Proxy-Authorization header is being inserted when user creds are present in uri
+
+commit 3d7d5f4ed222b687ecbd03c172e1042b7d460304
+Author: Vijay Pai <vpai@google.com>
+Date:   Thu May 4 10:02:24 2017 -0700
+
+    Create inproc transport, add relevant tests, exclude irrelevant tests
+
+commit 0696611fb574e4d186ac8824ddeb37e8fd7838cf
+Author: Mark D. Roth <roth@google.com>
+Date:   Fri Jul 14 07:18:39 2017 -0700
+
+    Do not return calls on server when request proto fails to deserialize.
+
+commit 59827dd739c398b045e13206a5797e35ee218926
+Author: Muxi Yan <mxyan@google.com>
+Date:   Wed Jul 12 12:33:55 2017 -0700
+
+    generate project
+
+commit 7e4c1dd4c9613aa7303592dfa766595b9eb6eeec
+Author: Noah Eisen <ncteisen@google.com>
+Date:   Mon Jul 10 16:03:22 2017 -0700
+
+    Add fuzzer repro
+
+commit a4710a090d595e49ce5a4771c0b50c7d8aec21a5
+Author: Ken Payson <kpayson@google.com>
+Date:   Mon Jul 10 16:49:59 2017 -0700
+
+    Revert "Remove lockfree-stack implementation that is no longer used"
+    
+    This reverts commit 3d04e025bcffd1e583d502de4ee26625ea866b21.
+
+commit c1f837ce796b6cd8e46da9a97df2e3f8f267639f
+Author: Muxi Yan <mxyan@google.com>
+Date:   Thu May 4 18:17:13 2017 -0700
+
+    Make stream compression module
+
+commit d19c112db066c35b461ad3e5c992d9b7727545d6
+Author: Muxi Yan <mxyan@google.com>
+Date:   Fri Jun 23 17:00:20 2017 -0700
+
+    Add test
+
+commit 3d04e025bcffd1e583d502de4ee26625ea866b21
+Author: Vijay Pai <vpai@google.com>
+Date:   Wed Jun 7 12:45:26 2017 -0700
+
+    Remove lockfree-stack implementation that is no longer used
+
+commit f8d6fb7a94f3ff57f01322f87c34a48667f124ae
+Author: Ken Payson <kpayson@google.com>
+Date:   Thu Jun 15 17:32:49 2017 -0700
+
+    Update boringssl
+
+commit 4536138eefe7903095314f50ba6550f721b46753
+Author: Ken Payson <kpayson@google.com>
+Date:   Wed Jun 14 15:12:52 2017 -0700
+
+    disable unconstrained_1cq test
+
+commit d16abf80a2198999c520582ef7d1cca0c90a9d1f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Jun 7 08:58:55 2017 -0700
+
+    Refine import, flags
+
+commit 336c21eb454ff64facf3215178bf409f59fe8d9d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Jun 6 15:23:10 2017 -0700
+
+    Use bigquery data to inform flakiness
+
+commit faafa4d1cb32574d9a7fd50eb52becf5eabab6ce
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Tue Jun 6 14:52:17 2017 -0700
+
+    Added ability to query BQ for flakes info to run_tests.py
+
+commit 4b07aab51363243d3c3a04876a91dd4c68581a89
+Author: Vijay Pai <vpai@google.com>
+Date:   Wed Feb 22 15:30:16 2017 -0800
+
+    Support multiple threads per cq sharing, add tests
+
+commit c3b1f18a7e7f443329f95ff25485c503ab76cc69
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Tue Apr 18 13:51:36 2017 -0700
+
+    get rid of connectivity state watchers right after timeout
+
+commit 29ff4665a85ffb37acd812cbb7ca0ed516269168
+Author: Muxi Yan <muxi@users.noreply.github.com>
+Date:   Mon May 15 10:27:55 2017 -0700
+
+    Revert "Revert "Implement Server Backward Compatibility""
+
+commit 7edcce2147470bfbca3097a85ac9ce917c48878b
+Author: Nicolas Noble <nicolasnoble@users.noreply.github.com>
+Date:   Fri May 12 15:35:20 2017 -0700
+
+    Revert "Implement Server Backward Compatibility"
+
+commit edc06e77a47a9e24be6b050412a482b7eb5ffddb
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu May 11 21:50:13 2017 +0200
+
+    make one Node artfact build exclusive
+
+commit bf5a5f92bea2bfcae4c97185b92b277b34d8638c
+Author: Muxi Yan <mxyan@google.com>
+Date:   Tue May 9 18:09:58 2017 -0700
+
+    Add a separate test case for workaround_cronet_compression
+
+commit f6f28a781d34024d6311932f6f84111a481e82dc
+Author: Vijay Pai <vpai@google.com>
+Date:   Mon May 8 15:13:32 2017 -0700
+
+    Add 2 new scenarios for better bw measurement
+
+commit eea8cf0fe3a836b78e9ba122a01f6f1552ad8402
+Author: Vijay Pai <vpai@google.com>
+Date:   Thu Mar 23 16:19:00 2017 -0700
+
+    Add QPS tests for one-sided streaming
+
+commit 0359e1260f99387c79d1ef67de0447b1208fb785
+Author: Vizerai <jsking@google.com>
+Date:   Fri Apr 28 20:06:58 2017 -0700
+
+    initial commit
+
+commit 5109b38d4b9f5471febb89b0811e096823b2f4c7
+Author: Muxi Yan <mxyan@google.com>
+Date:   Fri Apr 28 18:01:11 2017 -0700
+
+    Add end2end test for workarounds
+
+commit 04911ca202e96da6a136fd38bdaec3b41f052499
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Apr 27 16:31:14 2017 -0700
+
+    New version of grpclb end2end test
+
+commit f5521c33f9094f2f1e416764c4d2020237d65bc6
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Wed Apr 26 14:18:39 2017 -0700
+
+    Revert "Merge branch 'master' into v1.3.x"
+    
+    This reverts commit 79759fea1abd09102d38af3e13a84b69e898124b, reversing
+    changes made to dc36f4df6aba60275a31227e1d29c4d20b6cadca.
+
+commit 6b42bfde1f710edc5856a3934894aa80d311d0e6
+Author: Noah Eisen <ncteisen@google.com>
+Date:   Mon Apr 24 16:36:11 2017 -0700
+
+    Add fuzzer to corpus
+
+commit 5e17e4430cebe6d1a1a96988a86eb6bd8c56fac5
+Author: Noah Eisen <ncteisen@google.com>
+Date:   Thu Apr 20 12:35:27 2017 -0700
+
+    Add fuzz test
+
+commit 143cfa779255ca550767e467e89acf9e65ebd43a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Apr 20 11:32:40 2017 -0700
+
+    Disable compression+resource_quota_server tests
+
+commit 0c0b89a88ba6544e42cca43913ed65dea64bff3a
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Apr 19 13:28:24 2017 -0700
+
+    Change hash table to use linear probing and add unit test.
+    Also add some missing rules in test/core/slice/BUILD.
+
+commit 53af23cfbf3b1fd4579ec084dbcb7b89a7ae2e96
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Sat Apr 15 10:29:46 2017 -0700
+
+    Improvements to Fake Resolver
+
+commit 6163da513578c2526c3b1de16a3deb8c913e2c34
+Author: yang-g <yangg@google.com>
+Date:   Thu Apr 13 09:39:42 2017 -0700
+
+    Disallow empty method slice in api_fuzzer
+
+commit f3d9b4808a5645ad2ff5d0fee4085bb06cb83419
+Author: yang-g <yangg@google.com>
+Date:   Wed Apr 12 15:21:56 2017 -0700
+
+    Fix buffer overflow https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=973
+
+commit eceec8eaf6f38766364b203e92ccb6b25028b89b
+Author: yang-g <yangg@google.com>
+Date:   Mon Apr 10 11:58:44 2017 -0700
+
+    Add helper function to supply and parse error_details from Status.
+
+commit c6ec1155d026c91b1badb07ef1605bb747cff064
+Author: Noah Eisen <ncteisen@google.com>
+Date:   Wed Apr 5 16:10:13 2017 -0700
+
+    Fix error overflow bug
+
+commit 3c754e471619f20ceba807a35b40b2decbcb54b3
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Tue Apr 4 13:49:08 2017 -0700
+
+    Microbenchmark for measuring impact of multiple threads calling cq_next
+
+commit af5c505fc196e09233f8de70e9e850807aac003e
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Tue Feb 28 16:24:00 2017 -0800
+
+    Add bad_ping test, fix ping test
+
+commit 45a9abae95ef46d234fc194fbfaac11746c74ff7
+Author: Vijay Pai <vpai@google.com>
+Date:   Mon Feb 27 13:30:37 2017 -0800
+
+    Add option to limit # of messages per stream with tests
+
+commit 494e72d6b4ad057bcbcf67d808fc0639c2a8724b
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 3 08:43:22 2017 -0700
+
+    Add a minimal stack test
+
+commit 4dabb9a5b088ff66419440f0328ecff76332cb26
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Fri Mar 31 15:43:08 2017 -0700
+
+    Remove ctags file checked in by accident
+
+commit b3d70102a59d02e238417f2d8fc4eaea66bad028
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 31 14:17:09 2017 -0700
+
+    Memory allocator for C++ in core
+
+commit 47fc606d11bcb6468b6de8f959b80fb767376bb0
+Author: Vijay Pai <vpai@google.com>
+Date:   Fri Mar 31 11:03:16 2017 -0700
+
+    Performance model of coordinator-worker use case
+
+commit 46df13b4a31c576f59fc7d00ecd201ec805cb116
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Mar 30 17:57:06 2017 +0200
+
+    add 1mb ping pong scenarios
+
+commit 228a5142c198be0e29908776e57260ef661e3dc5
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Mar 30 19:43:00 2017 -0700
+
+    Don't assert over invalid channel args
+
+commit fde5dbb6815314abac889faa7915191457d275e1
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Mar 30 11:39:30 2017 -0700
+
+    Fixed oss-fuzz/961
+
+commit 05222512d7d8e3fe544b24468406be085388f8a6
+Author: Vijay Pai <vpai@google.com>
+Date:   Tue Feb 21 23:52:29 2017 -0800
+
+    Add C++ large message tests to PRs and master
+
+commit 3835d1378809a4658d9d5192982e1437a406623c
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Wed Mar 29 11:38:58 2017 -0700
+
+    Fix the test condition for max_connection_idle test
+
+commit aab6992c006be6fb80df73fd9f218365099c016d
+Author: yang-g <yangg@google.com>
+Date:   Tue Mar 28 22:58:56 2017 -0700
+
+    Remove call from sibling list when it is not first child.
+
+commit b2caafc911af90de5f4f896f2f4daf567ab8da70
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Wed Mar 29 01:54:08 2017 -0700
+
+    Add max_connection_idle test
+
+commit 22321fc7e58cd097d930a4c90fac656b98787c9d
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Tue Mar 28 19:10:09 2017 -0700
+
+    Add max_connection_age end2end test
+
+commit fdd908b01a35346cf252c43a1281a42b8d7c241c
+Author: yang-g <yangg@google.com>
+Date:   Tue Mar 28 09:49:54 2017 -0700
+
+    Clamp memory usage estimate
+
+commit 7cd4f6890bec05ec3233724a10a5bab29c14e6ad
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Mon Mar 27 19:15:47 2017 -0700
+
+    Add fuzzer bug
+
+commit c88fd35f979e18a74c9ffb761379f49a12db4cbb
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Tue Mar 21 16:10:36 2017 -0700
+
+    Add reproduction
+
+commit 18f09a01f659e9004740766dfc5ab46e2aeea00e
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Feb 23 17:10:04 2017 -0800
+
+    Add benchmark suite for chttp2
+
+commit 9202b3fdfdaf890752d7472692296490ec55c750
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Mar 12 22:30:38 2017 -0700
+
+    Arena allocator for grpc
+
+commit 7e43bfa1fa6a6b6099699baf9819f9572d9e84d2
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 10 14:01:02 2017 -0800
+
+    Fix fuzzing detected error
+
+commit a582defdad755f76b55f9e7f4dc3614bb18452b7
+Author: Vijay Pai <vpai@google.com>
+Date:   Thu Mar 9 05:47:46 2017 -0800
+
+    Temporarily disable resource quota QPS tests
+
+commit c945c12b47d2a30f12f1108fccbe6272a08da5e6
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Mar 9 08:35:14 2017 -0800
+
+    Revert "Revert "Split bm_fullstack into pieces, reuse infrastructure across other microbenchmarks""
+    
+    This reverts commit 0cb7fef40669789c8720427c70b892a41e27bbdf.
+
+commit 0cb7fef40669789c8720427c70b892a41e27bbdf
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Thu Mar 9 11:05:36 2017 +0100
+
+    Revert "Split bm_fullstack into pieces, reuse infrastructure across other microbenchmarks"
+
+commit 12352b2c5c4f1876586fec8148d4b2405d0c7e36
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Jan 10 15:16:14 2017 -0800
+
+    Add test of server builder, including channel args
+
+commit 1128d462c395d064a620c9e62cf29f152cbce33a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 3 16:46:54 2017 -0800
+
+    Pollset benchmark
+
+commit 52bd441b25879ec1b164d684c3cde76c74200bba
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 3 10:52:22 2017 -0800
+
+    Get back trickle
+
+commit 12d22e472beecc5307e2dff0b7255c2ba9b4f879
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 3 10:14:20 2017 -0800
+
+    Further splitting
+
+commit 62ac65b1833673365011cf861aa243112530c331
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 3 09:57:43 2017 -0800
+
+    Split bm_fullstack unary ping pong out
+
+commit 295df6da9aa8f6a51cd050ddf92f047d9179d9f2
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Mar 1 11:28:24 2017 -0800
+
+    Add a slice type that shares a refcount with a transport stream
+
+commit edbf2b9d13445221c9d8858c00cea02435570fe0
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Feb 27 07:24:00 2017 -0800
+
+    Add a spinlock type.
+    
+    Useful for situations where we need to repeatedly trylock, not useful
+    for cases where we need to lock (due to spinning).
+    
+    Add a variant of sync_test to test it (with the same tests we run for
+    gpr_mu).
+    
+    Add a benchmark to bm_closure to demonstrate single threaded performance.
+
+commit 990d9fe1460d0f274857a5aaa8fe28f4b3852d9b
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Sun Feb 26 16:54:18 2017 -0800
+
+    Client-side keepalive ping
+    
+    Based on soltanmm-google's #9114
+
+commit 3da3ce3c29ab169faa7670f471eeaebcdbc19d6e
+Author: ncteisen <ncteisen@gmail.com>
+Date:   Fri Feb 17 09:51:25 2017 -0800
+
+    Add error test
+
+commit a9d8a157be8afa34e7d8bc92e6110ea226a4509f
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Wed Feb 15 15:27:44 2017 -0800
+
+    Add parse_address_test
+
+commit 2f792d9d16dc36fbfde05ef5a0873a0d2dc39649
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Feb 22 16:26:33 2017 -0800
+
+    Initial http2 benchmarks
+
+commit bcd5f12e4bca2ed2c00cddb5ffd046aef6f4fb31
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Feb 22 14:32:56 2017 -0800
+
+    Fixed Heap-buffer-overflow in parse_unix via clusterfuzz
+
+commit e8543571170a66064072cbb25fc09aec3bfc285d
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Tue Feb 21 10:44:02 2017 -0800
+
+    Reintroduced golden_file_test
+
+commit 1f980cf7bbf4c7893936604dd5d5aadbd8cbe9aa
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Fri Feb 17 16:43:26 2017 -0800
+
+    Removed useless cpp/codegen/golden_file_test
+
+commit 1191b7202d86f01857f74d0709792fb74eac5a37
+Author: murgatroid99 <mlumish@google.com>
+Date:   Wed Feb 8 11:56:52 2017 -0800
+
+    Improve Node and libuv testing and test coverage
+    
+    Allow Node tests to run with or without UV, change default version to 7, add some portability tests. Also make some more core tests work with libuv
+
+commit 448191cb9ad4826b7604b40828fdd432dbe77e4f
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Fri Feb 17 09:37:50 2017 -0800
+
+    Temporarily disable lb policies test
+
+commit 264307fa3d846bf0a2cfd94c140ca64014407e43
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Feb 16 09:07:45 2017 -0800
+
+    Add benchmarks for grpc_error
+
+commit fd044b8b22485db379c950ac016e1753da45e08c
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Feb 15 16:15:48 2017 -0800
+
+    Call creation benchmark
+
+commit dc6ac1a55fe9e91e552505c1cf45cf44466151e5
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Feb 14 15:06:47 2017 -0800
+
+    Add failing test
+
+commit 14ae5381af80f5a1fc30e6e88f94cfbe314d54f8
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Feb 14 12:43:50 2017 -0800
+
+    Add microbenchmark of single-threaded CQ operations
+
+commit b3f34b6c2b24cbe3deac6c4efef0978fc9dc7c73
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Feb 13 10:29:33 2017 -0800
+
+    Add benchmarks of closures, combiners, exec_ctx primitives
+
+commit 1dcd922ce65a00892e0815262b8446af06ad882b
+Author: Mark D. Roth <roth@google.com>
+Date:   Thu Feb 9 09:40:07 2017 -0800
+
+    Remove initial_connect_string hack.
+
+commit 5f3cfe960f708a397c4465a3064072dd3b2d7bb7
+Author: Harvey Tuch <htuch@google.com>
+Date:   Fri Jan 20 11:02:11 2017 -0500
+
+    Fix read from uninitialized memory bug in GrpcBufferWriter.
+    
+    This commit fixes an issue in which the following sequence of operations
+    leads to use of uninitialized memory:
+    
+    1. Caller invokes GrpcBufferWriter::Next(), and then makes use of 8191
+       bytes in the returned buffer (which is 8192 bytes in size).
+    
+    2. Caller then returns the unused single byte via
+       GrpcBufferWriter::BackUp(). This method invokes
+       g_core_codegen_interface->grpc_slice_split_tail(), which causes
+       backup_slice_ to be a grpc_slice with one byte.
+    
+    3. At the next invocation of GrpcBufferWriter::Next(), a reference to
+       the single byte grpc_slice is returned to the caller.
+    
+    The problem here is that the returned reference is to the inlined buffer
+    in the grpc_slice, which is resident in slice_, not the location of the
+    buffer inside slice_buffer_ after
+    g_core_codegen_interface->grpc_slice_buffer_add() in
+    GrpcBufferWriter::Next(). As a result, any data the caller writes to the
+    returned void* data is lost.
+    
+    The solution is to avoid inlined backup slices.
+
+commit b0fd02ed069c67df3d045fdf1131e6f429941263
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Feb 3 15:58:24 2017 -0800
+
+    Add examples from fuzzer server
+
+commit 239af8b9fc800f04bde455479c003dcecebee409
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Feb 1 10:21:42 2017 -0800
+
+    Fix fuzzing detected crash
+
+commit f4484cdbab0aab69417954f819d8f9e8c3d1718a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Feb 1 08:28:40 2017 -0800
+
+    Dont crash on API errors
+
+commit ed277efbf796d5816f40d7cfcb2644097a315cd5
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Feb 1 08:13:28 2017 -0800
+
+    Fix bug in api_fuzzer
+    
+    If the slices to unref array was expanded after returning a pointer to a
+    slice, that pointer becomes invalidated. Instead, allocate and store
+    pointers to slices in that array to keep stability.
+
+commit b23f4b7db947a558971cc58d663c21ad7e9e38ee
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Jan 31 15:50:45 2017 -0800
+
+    Mark hybrid tests as flaky
+
+commit 9a3997c8537d168f4b869c3912994c2dc6f476ba
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Jan 30 13:22:33 2017 -0800
+
+    Add a test verifying number of writes per RPC is reasonable
+    
+    Mostly this is code copied from bm_fullstack and rephrased as a test.
+    I'm resisting the urge to unify it however, as I expect this code will evolve differently over time.
+
+commit 004a81936c5dcc26f984f5a315a7cc186b0cbe45
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Jan 30 08:32:31 2017 -0800
+
+    Fix bugs in api_fuzzer
+
+commit fa6a71d6e560851d84e35cdaee17b06818a5acc8
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Jan 30 08:17:38 2017 -0800
+
+    Fix fuzzing detected failure
+    
+    If both :authority and host appear in client initial headers, we either
+    leak (in opt builds) or crash (in dbg).
+
+commit 0ed9fd4fefc832a4fa8019e377ed350cca6c72bf
+Author: yang-g <yangg@google.com>
+Date:   Thu Jan 26 15:33:39 2017 -0800
+
+    update submodules
+
+commit 4c26fdfe10be53a43da378eb1264e944b97ee730
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Jan 21 15:07:26 2017 -0800
+
+    Expand corpora
+
+commit b39942f06fe0b256c5053b93084216625a38938e
+Author: Stanley Cheung <stanleycheung@google.com>
+Date:   Thu Jan 12 21:31:07 2017 -0800
+
+    Update boringssl to latest chromium-stable
+
+commit e6f01f6b962c4063956e737d6c8c01e27560d4b8
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Mon Oct 24 15:56:35 2016 -0700
+
+    Add resolve_address_posix_test
+
+commit c1002c9f22e7bddc9d71831a6c20e0cb844f7846
+Author: Matt Kwong <mattkwong@google.com>
+Date:   Fri Jan 13 17:26:11 2017 -0800
+
+    Add api-fuzzer corpus
+
+commit 6fb04d6924b3714baa95b69d51fa40c082578124
+Author: Yuxuan Li <yuxuanli@google.com>
+Date:   Fri Nov 18 18:08:36 2016 -0800
+
+    memory usage profiling for client call, client channel, server creation, server call and server channel.
+    
+    fix bug. server: snapshot pass by pointer
+
+commit dc739bd659384252ae31234a439f1abcd7a512ff
+Author: Muxi Yan <mxyan@google.com>
+Date:   Thu Jan 5 21:04:40 2017 -0800
+
+    Remove packet coalescing testing on chttp2
+
+commit 2ef5a647bfb2bc9390a14be843647c2fb7841b36
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Jan 5 10:33:47 2017 -0800
+
+    Add a test of finishing buffering with EOS
+
+commit 4e6247a23cf94bc363abb2e8eb0d2b03195b9c5d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Jan 5 10:17:01 2017 -0800
+
+    Fix sequential write buffering
+
+commit 8803ae8c3a643f35d15c9269872d3c1fd2cc8409
+Author: Muxi Yan <mxyan@google.com>
+Date:   Tue Jan 3 21:16:05 2017 -0800
+
+    build changes
+
+commit c8b0fba95350235c51fb7cf3fe0f0889fb89f2c4
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Wed Jan 4 23:32:27 2017 +0100
+
+    Forgot to git add these.
+
+commit 3d5592cea87e58f89fec1b579460b10820a9f5fc
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Wed Jan 4 23:23:40 2017 +0100
+
+    Moving message_size_filter properly.
+
+commit ad327642192363808c378b775ddcd34b86294443
+Author: yang-g <yangg@google.com>
+Date:   Mon Dec 12 14:32:09 2016 -0800
+
+    sync test pass
+
+commit 5c79a3199c1b47d1a2d3ff4dc5636c9c90ca2a7f
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Tue Dec 20 11:02:50 2016 +0100
+
+    cleanup tools/run_tests directory
+
+commit 70a85ad6178260253136688a4f6bb3244aee927f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Dec 12 06:40:23 2016 -0800
+
+    Revert "Handle (and test) short call deadlines"
+
+commit ef8ef3b8f3c6226de34d311de8ec9918dfcc6ba9
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Fri Dec 9 23:03:33 2016 -0800
+
+    Tests for pollset_set.
+
+commit 94601669683024e895c6e8c52d50c036510b5aaf
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Fri Dec 9 13:58:24 2016 -0800
+
+    Short deadlines: set Status on deadline
+
+commit 8bebcbcf7c7d6c3cf5f8586e9f092cf3aff5877d
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Thu Dec 8 14:18:00 2016 -0800
+
+    Remove pollset_set_test for now and send it in a separate PR
+
+commit c991e80e077872b052de15ddcd0bc489bfa65197
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Nov 28 16:18:07 2016 -0800
+
+    Limit outstanding rpc count for synchronous {client,server} tsan tests
+
+commit d7425740045acb658c365f905c4988460628ef33
+Author: Muxi Yan <mxyan@google.com>
+Date:   Wed Nov 23 15:29:44 2016 -0800
+
+    Fix breaking generate_project.py
+
+commit 878ff0835dc94c99609d8a3c93fc346ea36e18e4
+Author: Muxi Yan <mxyan@google.com>
+Date:   Wed Nov 23 15:27:56 2016 -0800
+
+    Revert "Missed file"
+    
+    This reverts commit 10790401dd7f1faa4aa2ab5d4801b91d788d3e2d.
+
+commit bc0bfff7ddbea84cd7ee3629743d276ff9f40741
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Tue Nov 22 12:41:29 2016 -0800
+
+    pollset_set test
+
+commit 10790401dd7f1faa4aa2ab5d4801b91d788d3e2d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Nov 1 13:25:04 2016 -0700
+
+    Missed file
+
+commit 3d88341c54ce8532066194383083ef61a766aa87
+Author: Mark D. Roth <roth@google.com>
+Date:   Mon Nov 7 13:42:54 2016 -0800
+
+    Populate latency field in final_info.
+
+commit 0e44a258cb532274aa67b09f0fbdffd75d6a6441
+Author: Mark D. Roth <roth@google.com>
+Date:   Mon Nov 7 11:26:05 2016 -0800
+
+    Fix C++ filter API and add test for it.
+
+commit 6ab2ccd4372df54c2efb6741529b65c190ba0573
+Author: yang-g <yangg@google.com>
+Date:   Mon Nov 7 10:11:34 2016 -0800
+
+    regenerate projects
+
+commit 7bc42d2b9caf4860a55605c5e2b42214fdcc396d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Nov 1 13:25:04 2016 -0700
+
+    Missed file
+
+commit 3a41bbbe9bf3da96a7aead551b43f72bd470d1c0
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 13:16:13 2016 -0700
+
+    Expand corpus
+
+commit d6e10baf6093b2278bc1026a04f4394dffc4cea2
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 12:12:29 2016 -0700
+
+    Expand corpus, fix crash
+
+commit 28fb56f4cc4e71b9f9a1eba31b1fe8cbc8c78734
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 09:26:32 2016 -0700
+
+    Initial test fix
+
+commit baa19130da1c7e7b549b4df9c8eefcdb97f7281f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 08:44:35 2016 -0700
+
+    Expand corpora
+
+commit 1954876a0a325537e7781977dcb44cd38e0d544f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 08:32:18 2016 -0700
+
+    Expand corpora
+
+commit 83f7057e20579479c0984daa6d73991034c285e3
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 08:18:58 2016 -0700
+
+    Expand corpora
+
+commit 77f98a83ddd22ee15329b60e1337c04db2d66d1a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 08:06:50 2016 -0700
+
+    Fix bad memory usage
+
+commit 0fbfa5bf2f87210636a47ff6b04791b14c268f60
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 07:51:03 2016 -0700
+
+    Expand corpora
+
+commit cbdc9b7ff1ee478e24a844400e48ad2e4153426d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 07:32:34 2016 -0700
+
+    Expand api corpus
+
+commit b0416df4041a4dd4dde8a0bb000e3f3400bc5c34
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 07:30:57 2016 -0700
+
+    Expand client corpus
+
+commit bb6061b3e6d86c290ea5e969d6b409a4e20a7a7d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Oct 31 07:28:25 2016 -0700
+
+    Fix corpus directories for http fuzzers
+
+commit 6476170c4bf90c8e29e9d26049f0cffe15c51709
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Oct 27 10:16:11 2016 -0700
+
+    Mark disappearing_server as flaky: this was always so, but is more pronounced now - and will be fixed with retries
+
+commit e127a39f45577fcfba1f1f0faa1d60c516c39908
+Author: Mark D. Roth <roth@google.com>
+Date:   Thu Oct 27 08:27:15 2016 -0700
+
+    Change tests to use channel args instead of fake_resolver query args.
+
+commit fb752d46b69d164a1896915fa026662e783d98a4
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Oct 26 16:55:23 2016 -0700
+
+    Always run the benchmarks as tests
+
+commit 5282cdb025d222c5bdf6069ae06ea8b568c4baf6
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Oct 26 16:40:27 2016 -0700
+
+    Run benchamrks to ensure zero bitrot
+
+commit c3350541e37144693da076b13d6ce5a3a3223564
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Oct 26 16:19:01 2016 -0700
+
+    Generate build files
+
+commit 452287607fd2d838e1f5dd7f009cbf7ad95e2346
+Author: Mark D. Roth <roth@google.com>
+Date:   Wed Oct 26 14:54:56 2016 -0700
+
+    Add test for setting LB policy via C++ API.
+
+commit a83ee60b932a5cbb0a575f18036fc2a88bd7ed55
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Tue Oct 25 11:54:52 2016 -0700
+
+    New streaming scenario
+
+commit 8cdf17a620a2d0909c1785717d5b3d8cff1248fd
+Author: Harvey Tuch <htuch@google.com>
+Date:   Tue Oct 11 10:04:53 2016 -0400
+
+    Introduce a grpc-exp ALPN protocol identifier.
+    
+    This patch introduces an additional ALPN protocol, grpc-exp, intended to
+    take preference to h2 and indicate to the server that the connection
+    contains only gRPC traffic. This allows servers and intermediate boxes
+    to distinguish gRPC from other HTTP/2 traffic.
+    
+    The choice of grpc-exp as a protocol identifier indicates that this
+    scheme is currently experimental and should not be relied upon. The
+    protocol is not in the IANA TLS registry.
+    
+    This patch also introduces client/server handshake tests that validate
+    the preferential treatment of grpc-exp in an end-to-end manner.
+
+commit dd2fa6482a945c17eba4c37ff42a8af0e9c4fa26
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Oct 20 15:46:32 2016 -0700
+
+    Add pid controller test
+
+commit 9e0066b0c9a7e71e9b2ba14cf0049ca0dbfccc96
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Oct 20 14:04:18 2016 -0700
+
+    Add estimator test
+
+commit 674c66cd3794396a54c73866f2223eb60c5c8b6b
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Oct 20 13:08:52 2016 -0700
+
+    Bad ssl tests converted
+
+commit fab4ab4e3a9f34bbed9333762c241e3dda708ebd
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Oct 20 12:36:42 2016 -0700
+
+    Bad client tests converted
+
+commit 53432aff759f011db7b8b64784d3b3f479109c47
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Thu Oct 20 11:42:53 2016 -0700
+
+    Run generate_projects.sh
+
+commit c4292fb971b88f4ff1a0166998d1cf5e6c66efa8
+Author: yang-g <yangg@google.com>
+Date:   Thu Oct 13 16:54:08 2016 -0700
+
+    Add a simple test
+
+commit 8f7739bcd6f14e18e2f342cba8e940942f37a48b
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Thu Oct 13 15:12:55 2016 -0700
+
+    Rename GrpcRpcManager -> ThreadManager
+
+commit c009174ea79f7727e9f8329dc853655e377880ce
+Author: Muxi Yan <mxyan@google.com>
+Date:   Wed Oct 12 18:39:33 2016 -0700
+
+    Add authority_not_supported unit test to tests.json
+
+commit a4f708a4c4af88e114209eb29f625c4d4d935bb4
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Tue Oct 11 18:36:24 2016 -0700
+
+    Introduce grpc_socket_mutator
+
+commit 929f4c652f5b57de016cb2cafbf81139cae30e3f
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Mon Oct 10 16:02:43 2016 -0700
+
+    Add tos configuration in channel args
+
+commit d195cf589d3f03b4f08017f3e2885c2c2fff125b
+Author: kpayson64 <kpayson@google.com>
+Date:   Sun Oct 9 18:04:00 2016 -0700
+
+    Add condition variable polling engine
+
+commit 95c7143704794912094e7f19e6c595af076a543a
+Author: Mark D. Roth <roth@google.com>
+Date:   Tue Oct 4 10:03:05 2016 -0700
+
+    Ran generate_projects.sh.
+
+commit 931a26bf5b58c131ec2255742f4072990a252794
+Author: Garrett Casto <gcasto@chromium.org>
+Date:   Tue Oct 4 09:18:29 2016 -0700
+
+    Add C++ Api
+
+commit af42900b3dc26672dc393c2eb3ea56fec9e0d960
+Author: Stanley Cheung <stanleycheung@google.com>
+Date:   Tue Oct 4 00:49:05 2016 -0700
+
+    generate_projects.sh out of sync on master
+
+commit ec393343eebbd8a32f05e9d90d92d7325d986b9d
+Author: Mark D. Roth <roth@google.com>
+Date:   Mon Oct 3 13:14:56 2016 -0700
+
+    Add h2_fake_resolver end2end test fixture.
+
+commit dc61b343eb17747bcb8b3ca9418f10222de42868
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Sep 29 16:04:58 2016 -0700
+
+    regenerated projects
+
+commit fc80671df6f2320bc7a0c55e56c3afe92454e609
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Sep 29 15:36:54 2016 -0700
+
+    regenerated projects
+
+commit 58c23dab39daa38c6fc603499d29cdb997c4516c
+Author: Mark D. Roth <roth@google.com>
+Date:   Thu Sep 29 07:32:10 2016 -0700
+
+    Ran generate_projects.sh.
+
+commit 0c80c7d12c7affaea272c127bb6cad10c5f07a44
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Sep 28 16:30:55 2016 -0700
+
+    Collecting failure status progress
+
+commit 42ee4d86b9fb3d47f6aa59fca5a2e2b0da1f092d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Sep 28 13:19:43 2016 -0700
+
+    Refine test scenario list for buffer pools
+
+commit a22510cb945151227af4b2b0a17df04c3fe6c851
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Sep 28 11:37:24 2016 -0700
+
+    Merge
+
+commit 69a1f6600534bda7d7d9f35222740e49746aed11
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Sep 28 10:24:21 2016 -0700
+
+    Complete integration test for buffer pools
+
+commit a6136157c2f1e4b37ce8c91cdc0b6fa55fc3c05f
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Tue Sep 27 17:12:35 2016 -0700
+
+    Regenerate tests.json since it was out of sync
+
+commit 82509936ae1de5620825e8a5b27c34b47d9f1af8
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Sep 27 15:49:15 2016 -0700
+
+    Stub out end2end tests
+
+commit 91bb6241abb40af0374036a0dc488dd26639a8ec
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Sep 27 12:46:08 2016 -0700
+
+    Reduce # of benchmarks run as Jenkins unit tests
+
+commit 012372f04488abc66a2c843cd312ee7865011b8e
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Sep 26 10:23:34 2016 -0700
+
+    Cleanup test, check fail fast or not
+
+commit 76b3e26d938a925532522fa276736bfcea442624
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Sep 23 09:59:30 2016 -0700
+
+    Add fuzzer detected failure
+
+commit 3f665f5fefb4ec7687f44d8a60eb660bee1f3e6c
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Sep 23 09:52:26 2016 -0700
+
+    Add fuzzer detected failure
+
+commit ca30eb9931aa84056382c7bd3acf7edd3eb3f5d0
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Sep 22 15:04:04 2016 -0700
+
+    Add (empty) buffer pool test
+
+commit 601cff401888db49b3b37c7dcd66195898ff0f46
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Sep 19 07:30:45 2016 -0700
+
+    More programmatically generate scenarios
+
+commit bf4939fd2264c571a3618ea5a3cd1d371bf209a9
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Sep 16 13:41:00 2016 -0700
+
+    Extend sweeps further, add streaming
+
+commit 8c985c286640a2f1c94cd89aa7324ce357a3d742
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Sep 16 11:25:32 2016 -0700
+
+    Allow more sync threads
+
+commit abfd37fc86df4112120781c0a960baafdef3244f
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Sep 15 18:17:25 2016 +0200
+
+    regenerate to fix santity test
+
+commit 31caabdead52000354c4fdd88b68bb3041ca8c4a
+Author: Ken Payson <kpayson@google.com>
+Date:   Sat Aug 6 21:27:29 2016 -0700
+
+    Add shim to support condition variable wakeup fds where pipe/eventfd is not available
+
+commit 86cf6dcb1cda3aefa3e789e68ce825b9e3e381f4
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Sep 13 10:33:29 2016 -0700
+
+    Remove some scenarios we can't run yet
+
+commit 1423a63db9b23d9edf06a9bda7c827f61e86a783
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Sep 13 09:54:21 2016 -0700
+
+    Lets not do payload sweeps just yet
+
+commit c5aa7005386a3a17c748bddf1514d6438ff30773
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Sep 13 09:36:09 2016 -0700
+
+    Significantly increase sweep space
+
+commit 57726ca5a9c08ba17c882a798b93e03d333edd9f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Sep 12 11:59:45 2016 -0700
+
+    Revert "Revert "Grand unified closures""
+
+commit 537f7c2a136641487febeac89a25e430029eb40c
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Sep 12 11:56:39 2016 -0700
+
+    Revert "Grand unified closures"
+
+commit 12d1fc61d85bc06b2f291f341d112f94ea1dee13
+Author: Vizerai <jsking@google.com>
+Date:   Fri Sep 9 14:22:19 2016 -0700
+
+    initial commit of tracing context files
+
+commit 426dcde78f7205e5d4fbe7cc6ce57f2780b2a30c
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Sep 7 15:43:10 2016 -0700
+
+    Fix merge
+
+commit ecb12511edcf750ca8c2a8329c9211ab309d9590
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Sep 5 14:58:07 2016 -0700
+
+    Fix fuzzing detected failure
+
+commit b85448407ecfd4e633886fa04bb3f334b5064a47
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Aug 31 12:58:26 2016 -0700
+
+    Fuzzer found crash
+
+commit 916079de1bbb815d28ce8d10367308fc13cf2a35
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Tue Aug 30 15:52:09 2016 -0700
+
+    Add no-logging test
+
+commit 015180a8f4774bf7ba3420aae5a6836e996e9ed5
+Author: Makarand Dharmapurikar <makarandd@makarand-linux.mtv.corp.google.com>
+Date:   Mon Aug 29 12:32:53 2016 -0700
+
+    end-to-end test for cacheable requests.
+
+commit 1c7a84202f954e9d4fe328a5fd4eaf8439d894ef
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Aug 18 11:13:11 2016 -0700
+
+    Add a strict and a permissive decoder, allow different reserved alphabets
+
+commit 17ed6b17c7ebc4d70da020b6f785db22c835c722
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Aug 18 09:33:33 2016 -0700
+
+    Percent encoding routines
+
+commit 29ca79be8939c0386f1c7b17ba66cc3b105c7fc1
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Mon Jul 25 12:00:08 2016 -0700
+
+    Command processing, validation
+
+commit a3ef601ca95b9c193039144ad54ebfa80f8b882b
+Author: Mark D. Roth <roth@google.com>
+Date:   Mon Jul 25 11:16:07 2016 -0700
+
+    Basic proof-of-concept test.  Needs more work to run stand-alone.
+
+commit 5ca7e47493899b69126a2ef331936bcba37ee545
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Jul 19 09:25:49 2016 -0700
+
+    Merge pull request #6737 from ctiller/delayed-write
+    
+    Delay beginning most writes until we enter poll()
+
+commit 8600438d547ccbc7895435b67c99a74c4d399f08
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Mon Jul 18 22:27:39 2016 -0700
+
+    Add more functionality (no cq integration yet) and add a dummy test
+
+commit 4f2d9ae8e254d24727a0b1b817e2e3fde0006c81
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Jul 17 14:07:18 2016 -0700
+
+    Add sync variants of important tests, add sweeps across different channel counts
+
+commit 824363dc2f521d0712ab7d6bc03f15939ea51aa5
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Jul 13 23:09:34 2016 -0700
+
+    Simplified LR filter
+
+commit 01c4d995d35958c64e65feb8193c5ce2e0845758
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Jul 7 20:11:27 2016 -0700
+
+    Added new features to load reporting.
+    
+    - Propagation of (rpc) method name.
+    - Invocation of the hook at (call, channel) x (creation, destruction)
+    - Added enum to identify the source of invocation.
+    - Fixed testing. Went from test fixture to simple test.
+
+commit f975f74c016d5850d10644c4865e76e05e4b7815
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Jul 1 14:56:27 2016 -0700
+
+    Refactor workqueues a little to make them great again
+
+commit eda85c6765bf9b201fe5fa3185b704490f14026e
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Jul 1 12:45:19 2016 -0700
+
+    Expunge all references to zookeeper
+
+commit cea0004a5309c874280951358de177f01dd93896
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Jun 27 11:32:08 2016 -0700
+
+    Annotate error.c for timing, remove broken test
+
+commit 5d11e43ce34b371fb0ab1fa69e541a4d513025b8
+Author: Mark D. Roth <roth@google.com>
+Date:   Thu Jun 23 13:14:05 2016 -0700
+
+    Added test for filter whose call initialization fails, and fixed bugs
+    uncovered by the test.
+
+commit 39f9ac9b2a51fdcdbd3693d8a04eec3473eb9438
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Thu Jun 16 16:53:59 2016 -0700
+
+    Test polling island merges
+
+commit 0579cfc334794a32e243e971f77e01b5fd8f3c55
+Author: Makarand Dharmapurikar <makarandd@makarand-linux.mtv.corp.google.com>
+Date:   Mon Jun 20 15:45:24 2016 -0700
+
+    more files after running build.yaml changes through
+
+commit fa1f74e2267d8dfe97d617357033d2a0bf8423be
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Jun 20 11:11:44 2016 -0700
+
+    Fix errored streams prematurely terminating, add a test
+
+commit 78a73333b705a9d184da7f3174533500d05b2a21
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Jun 20 08:24:44 2016 -0700
+
+    Fix memory leak upon receiving two RST_STREAMs
+
+commit 955a364e340cc1954938ae2269693b0a57bec389
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Fri Jun 17 13:48:03 2016 -0700
+
+    Add bad_server_response_test
+
+commit 2e12db9c319bcbdbb2fa570149f88e4b496b558c
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Thu Jun 16 16:53:59 2016 -0700
+
+    Test polling island merges
+
+commit c459ecf7c9beac5e861ade0dd4686348c1bbfdc6
+Author: Mark D. Roth <roth@google.com>
+Date:   Thu Jun 16 09:17:49 2016 -0700
+
+    - fix build problems
+    - make changes suggested by reviewer
+    - add test (not working yet)
+
+commit 3fb8f7360b033874978e517043c7eec59e295e42
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Jun 15 22:53:08 2016 -0700
+
+    gRPC LB policy
+
+commit fb2a5df57eb6abcc27bff77d6e13ad4c4ce7f594
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Jun 13 15:30:55 2016 +0000
+
+    Corpus
+
+commit dbaf05e13d1f98db9329f3e04d80d1b90e9ee231
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Jun 12 22:16:56 2016 -0700
+
+    Add a test of connecting many times in a row
+
+commit 08f9a9bbf93cc4b1586167c49da17490cf7983e4
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Jun 10 20:57:05 2016 +0000
+
+    fuzzer corpus
+
+commit eca1f715a92b1a3381020f2b527ebafedeb26743
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Jun 10 18:38:52 2016 +0000
+
+    fuzzer corpus
+
+commit 1281e7ca2cc579de6ababf808fd508d81365fa67
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Jun 10 18:24:18 2016 +0000
+
+    fuzzer corpus
+
+commit 8da8511762f9b59d4715abf4861a4578e04530cd
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Jun 10 09:13:10 2016 -0700
+
+    Expand corpus, make one-shot runners not self-check leaks (to give ASAN a chance)
+
+commit e4e865f0c08485d26562f91071169880b0feab4f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Jun 10 00:29:59 2016 -0700
+
+    Fix fuzzing detected bug
+
+commit 46cc2acc3e0b33b469ad1461a33d92985082d52a
+Author: Adam Michalik <xyzzyz@google.com>
+Date:   Mon May 16 11:12:04 2016 -0700
+
+    add tests
+
+commit 4c11a20bf0b6b1d64a2800bcb06f76404294aa84
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Mon Jun 6 09:23:25 2016 -0700
+
+    Remove unused files
+
+commit 4aaba75a822c6dde718d7fe646f7671b4f64d8a0
+Author: Alistair Veitch <aveitch@google.com>
+Date:   Thu Jun 2 17:11:46 2016 -0700
+
+    initial implementation of resource handling
+
+commit 6ae6fc7a797d1629fb8ceba4c5b8792f7c24c4a3
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Jun 1 16:28:00 2016 -0700
+
+    Fix server side memory leak
+    
+    If clients send GOAWAY followed by HEADER
+
+commit 894900734662b7012d7b858db716c3cc1e9f8179
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Wed Jun 1 08:52:43 2016 -0700
+
+    Add a epoll_test.c file to experiment. REMOVE this from the final
+    commit
+
+commit 825cd4533ce658a82621d2776d3bcf50c159f254
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon May 23 15:54:38 2016 -0700
+
+    Cleanup redundant tests
+
+commit 28f6c01d76e1b669363f8658d2e41300a881b76f
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Sun May 22 21:23:43 2016 -0400
+
+    Revert "Revive C++ large-message throughput tests"
+
+commit 3fe694fa35a35f753249ea55a43de3bd01c053d5
+Author: vjpai <vpai@google.com>
+Date:   Thu May 19 17:51:45 2016 -0700
+
+    Revive throughput tests .
+
+commit 2bcf78d63243634cee97af1d3592e0c77dc82661
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed May 18 14:22:01 2016 +0000
+
+    Expand corpus
+
+commit 534fd0aa1efbba9da2852d4fb3ecfe9248ad7245
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue May 17 08:47:04 2016 -0700
+
+    Regen projects
+
+commit 680822fdc68e1c51b4d72da89be7ae7e2c8af481
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon May 16 10:20:31 2016 -0700
+
+    Expand corpus
+
+commit d982bba41d8676f33431d540d8a4b0c15e426f1c
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Thu May 12 18:53:52 2016 -0700
+
+    Add base64 decoder
+
+commit f707d62db625e3929680d165f2fbc67f9c8d3f9c
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri May 6 14:26:12 2016 -0700
+
+    Convert tests to new error scheme
+
+commit c45cd2d2ef42aad241c623e7e0e267f6eaf03d17
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu May 5 17:34:46 2016 -0700
+
+    regenerate tests.json
+
+commit c84ed6813e24b6d64d2eea7e39188ddae11528c6
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Wed May 4 16:30:11 2016 -0700
+
+    Proto server reflection
+
+commit 8a1d8052eb8629643333ca4449180e27f65aa8dc
+Author: Mark D. Roth <roth@google.com>
+Date:   Tue May 3 10:44:56 2016 -0700
+
+    Added bad_client test to check that the server rejects requests with too
+    much metadata and refuses to send responses with too much metadata.
+
+commit 18879dcff91209abb0e5851b2e78efbecf341a6b
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon May 2 22:13:48 2016 -0700
+
+    Add cacheline padding, and a test
+
+commit a26637fdca19a6981cf8ea7e1bb0193c6addd2a4
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon May 2 13:36:36 2016 -0700
+
+    Add a test and make things compile
+
+commit 4bb11ac72ade5c76c4b24c9a8a8636e9a52be003
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Mon May 2 09:20:21 2016 -0700
+
+    Turned load reporting into a plugin
+
+commit e98b494db77f9b10522cf6a8238deb8d7bd55345
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Apr 30 14:11:33 2016 -0700
+
+    Fix bug where max_frame_size was ignored
+    
+    Also add corpus entries that helped diagnose this bug
+
+commit a42ec2134117f4a4db994467edcff52e6f347f3d
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Fri Apr 29 13:03:06 2016 -0700
+
+    Server builder plugin
+
+commit b41363e88eb78123926e760e45a981add977140f
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Fri Apr 29 00:41:21 2016 -0700
+
+    all good! missing end2end test for new lr filter
+
+commit 068d143c8e93f0db051e2a216b2f46b382a2a0ff
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Apr 26 20:37:10 2016 -0700
+
+    Expand corpora
+
+commit d5c6eca64b4f6a36b2477e06e7e6f80e2992907d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 23:10:47 2016 -0700
+
+    Expand corpus
+
+commit d2906ad80cc4dedd017fa4f4992c20fdffb8c238
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 22:45:28 2016 -0700
+
+    Fix bug
+
+commit a803fac758665a4f350b663bf56da7a48078fe29
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 21:58:15 2016 -0700
+
+    Expand corpus
+
+commit 1596abbd0351aad8904810e57db07c25e9d075f8
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 14:40:26 2016 -0700
+
+    Expand corpus
+
+commit 55cbf1da370d9548508cee89bfc184831a5078f1
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 13:51:29 2016 -0700
+
+    Expand corpus
+
+commit eb48a813221f15f7a672e76ad12207df5d9106f3
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 13:49:26 2016 -0700
+
+    Expand corpus
+
+commit 1c2df50a9b1658bcc168660773165f820bee2a49
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 13:35:29 2016 -0700
+
+    Expand corpus
+
+commit 60beb8615466bd790f52244b4bda6d6d2e24aef7
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 13:11:26 2016 -0700
+
+    Expand corpus
+
+commit 839b65cee785b7eb4c2ea754a0cee69f4d13cd47
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 11:51:44 2016 -0700
+
+    Expand corpus
+
+commit a92ebc8352019091fa54d1f569aab0bc449c7946
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 11:43:24 2016 -0700
+
+    Fix test bugs, expand corpus
+
+commit 29c20851aa6fc50357c9d48ac7f066be9dea9371
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 10:50:13 2016 -0700
+
+    Expand corpus
+
+commit 1d11798c78226ab99d3e9e60c223c9ab3e38ac42
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 24 10:34:36 2016 -0700
+
+    Expand corpus
+
+commit 62759c42bcca8df9083dffa7c087e000508f2035
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Apr 23 14:08:14 2016 -0700
+
+    Expand corpus
+
+commit 2fd159508fab3df3eff2e67c7c73f8a6330cc4fb
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Apr 23 13:34:05 2016 -0700
+
+    Expand corpus
+
+commit c2c0f53e4eb7fe8906df55d984fdb36dc58b649f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Apr 23 13:30:33 2016 -0700
+
+    Expand corpus
+
+commit e8bb40d152884b37591f5b1db62ec6fdde093638
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Apr 23 13:16:25 2016 -0700
+
+    Expand corpus
+
+commit af4063ba911cc7867b4ca776a8f0b60835b6818b
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Apr 23 12:35:12 2016 -0700
+
+    Expand corpus
+
+commit 4b3ce7e964a07d3dd194785c7e7f2814d6c941d4
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Apr 23 12:33:54 2016 -0700
+
+    Expand corpora
+
+commit 8b5a364551d7e1ce072dd78d8ded7d54913624d0
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Fri Apr 22 16:19:52 2016 -0700
+
+    regenerate tests.json
+
+commit 83a156491c75076754d15f67b143beda137ce472
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Apr 22 16:09:22 2016 -0700
+
+    Expand corpus
+
+commit 3ecf26d67e4e52200cb79293fb9120313baad23f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Apr 22 15:25:03 2016 -0700
+
+    Fail if fuzzer takes > 2 minutes
+
+commit 497f101d32807e5b7858e4c075ea83bb9ed5f968
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Apr 22 15:08:28 2016 -0700
+
+    Expand api corpus
+
+commit b907fd425b49dedcba7c7e207fb6e53c7d3da2fd
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Apr 21 23:58:41 2016 -0700
+
+    Expand corpus
+
+commit 4c79cb206d68959f7c1f8701c2076abd90f3f8ad
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Apr 21 23:44:55 2016 -0700
+
+    Expand corpus
+
+commit 4f92a2abb8d1c2fddce0a195a4401eb6a10b2bfc
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Apr 21 23:32:33 2016 -0700
+
+    Expand corpus
+
+commit 88b9e4803ceb6d434c3b59ed0fe8e87f41681dd2
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Apr 21 15:09:56 2016 -0700
+
+    fix boringssl
+
+commit 5421b7999dde772fb2559246d2ae6e13b65d7b46
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Apr 21 14:51:06 2016 -0700
+
+    Initial corpus
+
+commit 75576b6da6a52cdae5d5548c4d768207df91cb5b
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Wed Apr 20 18:47:14 2016 -0700
+
+    regenerate tests.json
+
+commit 2a52203af9099e0328f95abc923153d3e219ba2e
+Author: itessier <itessier@google.com>
+Date:   Tue Apr 19 17:38:51 2016 -0700
+
+    Update boringssl to latest chromium-stable.
+    
+    This also fixes the x25519_NEON symbol error when importing the gRPC
+    Python modules on ARM.
+    
+    Change-Id: Id98cf6b0f9a3a8f5b88204bd0a6ad2346182ba3d
+
+commit cd4e0b8a676dd739c2d57c9010c0e12573d8695a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Apr 19 17:15:09 2016 -0700
+
+    Expand server/client corpora
+
+commit dba4c5fd0144b68916b4dc2bbbd02d12c2e12041
+Author: Deepak Lukose <deepaklukose@google.com>
+Date:   Fri Mar 25 12:54:25 2016 -0700
+
+    Add various options to verify ssl/tls client cert including letting the
+    application handle the authentication.
+
+commit 2e3e0039b30edaf89fb93bfb2c1d0909098519fa
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 18 07:54:53 2016 -0700
+
+    Expand corpus, fix crash
+
+commit 53b28fba881515ee5c796c961103c9169b6ac379
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Apr 15 14:17:23 2016 -0700
+
+    Expand corpus
+
+commit 796cdc78eb67e0845ff90b8dd50ff3c3e2cc0212
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Apr 15 14:15:21 2016 -0700
+
+    Expand corpus
+
+commit b8aa58b2cd32339b77fa2d2a7f38629a02d9c5e1
+Author: yang-g <yangg@google.com>
+Date:   Thu Apr 14 15:50:50 2016 -0700
+
+    Add a test
+
+commit 62c7a5a69975209cf056008ab5d8389dff8f485f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 13 22:25:03 2016 -0700
+
+    Channel establishment
+
+commit 06ae32e7f87d7ae62b984765ffecdda7354fc296
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 13 16:47:27 2016 -0700
+
+    Expand corpus
+
+commit fc98f926101b28ee8bd1241bab96173c6bbebf20
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 13 08:45:06 2016 -0700
+
+    API fuzzer
+
+commit eca0bcec2d5f46d209c9c88a7f0aade7476198ba
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 11 23:23:49 2016 -0700
+
+    Expand corpus
+
+commit d2f6baa4fe4662f9c4d274bf3658ab4555e18641
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 11 23:16:45 2016 -0700
+
+    Expand corpus
+
+commit 100115e8d4b0c881e9ef719194dbcaad8a5ddad5
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 11 23:12:36 2016 -0700
+
+    Expand corpus
+
+commit 4e8e23d3399554d4132f6564c48384744abc8e0a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 11 22:49:46 2016 -0700
+
+    Expand corpus
+
+commit 811d0f205ce4d1d0d0b2af8ba9a4ea54fe591307
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 11 22:00:35 2016 -0700
+
+    Expand corpus
+
+commit 0ef45543fd393d14e7d337fd4aa018d1013572c5
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 11 21:59:25 2016 -0700
+
+    Expand corpus
+
+commit 15572f054a73b56e13d28f59cddd5fd9114cf530
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 11 21:54:18 2016 -0700
+
+    Expand corpus
+
+commit ec55c985ae417f4b09a0adcc631ad684a4106bbb
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 11 21:01:41 2016 -0700
+
+    Regen projects
+
+commit 1bca98966fa51dcb778aef54024d10fa8f4876ce
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Apr 9 14:31:33 2016 -0700
+
+    Expand server corpus
+
+commit 67a9934ea5f3d96a2b4dc51c31fe92cc338921bc
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Apr 8 22:52:10 2016 -0700
+
+    Expand uri corpus
+
+commit 3a43cc06a8ee61b028fd21f3d18954eab421cd9c
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Fri Apr 8 16:59:51 2016 -0700
+
+    Added codegen_test_full
+    
+    Which makes sure target that depend on both codegen and grpc build.
+
+commit ea4b259aa4c4b1be8eb730aae6c183ff4f8f5927
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Apr 8 15:49:55 2016 -0700
+
+    Expand server corpus
+
+commit 1583d069557e4a8eadd5318e16433c1c09e2a66a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 6 21:54:21 2016 -0700
+
+    Fix build
+
+commit 862c8e9e50f9832b97745baeaf954e346e43f832
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Apr 6 16:30:51 2016 -0700
+
+    Load Reporting hook and filter skeleton
+
+commit 0bda0b3e558dd1b88455a8d5656cb9f739ca331a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Mar 3 12:51:53 2016 -0800
+
+    Configure performance scenarios with json
+    
+    Run those json configurations as part of presubmits
+
+commit bf2e73d8ae1bd7f318087077c45b67c4a422d3f7
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Mon Apr 4 18:03:47 2016 -0700
+
+    Added fuzzers for load_balancer_api parsing functions
+
+commit 76210ed42323e06970b0231ea4e197f8f1c3c9a3
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 4 22:33:11 2016 -0700
+
+    Expand corpus
+
+commit 494efaf1227f425af992f97d02c1166a59f09b65
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 4 22:09:07 2016 -0700
+
+    More corpus
+
+commit d5b6d4e7de4fcd2d9e1e5a5d68480753a37024a2
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 4 20:47:34 2016 -0700
+
+    Expand corpus
+
+commit 3726c102671eaea0b35451e89636aac55390d54c
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 4 20:46:26 2016 -0700
+
+    Missed file
+
+commit b4e4ffb7c221071a69dd246c2cd5314ecc069f97
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 4 19:13:56 2016 -0700
+
+    Expand corpus, found a leak!
+
+commit e25efc15ca60325d2d7b611893d933cff966e53f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 4 15:40:52 2016 -0700
+
+    Expand corpus
+
+commit fd114961bf9da5bfb31325b0de03d3513a7a4474
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 4 14:19:11 2016 -0700
+
+    Expand corpus
+
+commit 49fe21c23eeaa6f9df2c0296813860d612f4c2fe
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 4 14:12:57 2016 -0700
+
+    Expand corpus
+
+commit a446ee2f58e520ee43f298f6d815f3c36e4a753e
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 4 13:09:30 2016 -0700
+
+    Add test to verify bad behavior
+
+commit 9790c4e7a3f639423861f563bbfce64e88063396
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 3 19:37:02 2016 -0700
+
+    x
+
+commit e05b46446eee74a5af408c31450cd94e9f629caf
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 3 19:31:21 2016 -0700
+
+    Revert "Revert "x""
+    
+    This reverts commit 688b0243e0c6e0a3f0171d7da388c2cfaefddfc0.
+
+commit 688b0243e0c6e0a3f0171d7da388c2cfaefddfc0
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 3 19:29:20 2016 -0700
+
+    Revert "x"
+    
+    This reverts commit 029fbbde638b56d783bed2d41563983075521610.
+
+commit 029fbbde638b56d783bed2d41563983075521610
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 3 13:34:15 2016 -0700
+
+    x
+
+commit 2d8d13a5726ae673d6fc90d6f92b5c2a384d3131
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Apr 3 13:04:41 2016 -0700
+
+    Server fuzzer progress
+
+commit 307a7207a00b1ea34f6f5edbfd3e46faf7222aaf
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sat Apr 2 07:40:39 2016 -0700
+
+    Add a failing test due to a head of line blocking bug in the server
+
+commit 5d28d9f63bf9bed97f6f9338668f97020ed40766
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Wed Mar 30 07:40:08 2016 +0200
+
+    Added a few more corpora.
+
+commit f05837ab8202b87e14039b9d50a71cb7d47ffe80
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Mar 29 20:42:29 2016 -0700
+
+    Run fuzzer corpus entries as unit tests
+
+commit 1b7195870e4aa1204d0193c3b45cd26bac90a2d5
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Mar 24 09:06:13 2016 -0700
+
+    Initial goaway test
+
+commit a5abbd2c03a46bccfef1539953af02efc449ed94
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Mar 22 06:56:00 2016 -0700
+
+    Mark mlog_test as flaky
+
+commit fb349b9f7150c20a98565bfffdceaab6b50a92a2
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Mon Mar 21 15:37:20 2016 -0700
+
+    removed uchannels
+
+commit 58270d546137c3e7335e34a44bf272c4a460f40a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 18 15:57:49 2016 -0700
+
+    Revert "Revert "Factor out backoff code into a separate library (to be re-used elsewhere)""
+
+commit 108cecb8264a482cc6f7e153d2791b34cb338885
+Author: David G. Quintas <dgq@google.com>
+Date:   Fri Mar 18 15:05:00 2016 -0700
+
+    Revert "Factor out backoff code into a separate library (to be re-used elsewhere)"
+
+commit 3d62fc68349a5ef31b9c2b0250818343bf9cca68
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Mar 15 09:57:26 2016 -0700
+
+    Reference github boringssl, move to chromium-stable branch head
+
+commit 57e2743b6580ae19326ceccb5ac9ed88e0691a94
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 11 16:53:58 2016 -0800
+
+    Add contributed test
+
+commit c72cc42238e914953ae6cf69c1c78a87a302afd5
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 11 10:54:36 2016 -0800
+
+    Build out backoff as a library
+
+commit e91ef68d2a9077641d6ece47b388e523942164fe
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Mar 11 08:59:17 2016 -0800
+
+    Add failing test
+
+commit df5231ec09caf2422f939a5a910854033b81e015
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Mar 10 07:00:47 2016 -0800
+
+    Implement tests
+
+commit 7885ea5e313b6bb59647881bf15c505aed66c98f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Mar 10 06:53:29 2016 -0800
+
+    Add a place for tests
+
+commit 4ac52fa6ddc9a114a6979a09a1749ee870227e3c
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Sun Mar 6 20:31:39 2016 -0800
+
+    WIP. Added codegen_test
+
+commit b38197e0ccd1af098855f4a036ff55b58ceced38
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Feb 26 10:14:54 2016 -0800
+
+    Progress on poll() based poller
+
+commit 253bd5016709f5a070ac792597ccf9f11cd29852
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Feb 25 12:30:23 2016 -0800
+
+    Allow selecting poll strategy, start to stub ev_poll_posix.c
+
+commit a75d18adddde7ceac333af0fca7bcc8d754b4339
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Feb 25 08:45:00 2016 -0800
+
+    Make out private bits private
+
+commit de676268aae52a1b7500d7021b102cf737bdf8d6
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Feb 19 12:28:34 2016 -0800
+
+    Reinstate sockpair tests
+
+commit 178edfae2be7014abce0998ca6c34babc65df499
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Feb 17 20:54:46 2016 -0800
+
+    Decouple filter selection from channel construction
+    
+    Allow plugins to extend the set of filters used by gRPC core:
+    - plugins at construction time can register against the 'channel_init' system to be allowed to mutate a new channel_stack_builder type
+    - channel_stack_builder provides a central and rather dynamic place to construct the list of filters required by a channel stack
+    - ultimately we construct the channel stack in the fashion we always have
+    
+    This is also a prerequisite step to allowing filters to be implemented from wrapped languages.
+
+commit eb841e20108e0e54f99800f099c044f9f183a632
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Feb 11 15:49:16 2016 -0800
+
+    Revert "Revert "Proto API for LB request/responses""
+
+commit c35e2c582fcb075b973856b3c09c1e91de4b7eae
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Feb 11 15:45:03 2016 -0800
+
+    Revert "Proto API for LB request/responses"
+
+commit 1132c6b7db990d83fd178c927c39d0b67fa02778
+Author: Vijay Pai <vpai@google.com>
+Date:   Thu Feb 11 06:05:24 2016 -0800
+
+    Simplify and properly implement openloop testing.
+    Revive it in tests as well
+
+commit 04e992a7508f8ebd8a996b718631140f629e52d8
+Author: vjpai <vpai@google.com>
+Date:   Wed Feb 10 16:58:38 2016 -0800
+
+    Make C++ alarm class usable and testable - there were some build issues and
+    it was not actually even included in the library or the test suite.
+
+commit 1298afd10e5ac6bdf2a80a86d363954910407af5
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Feb 9 12:29:17 2016 -0800
+
+    Get compilation working again
+
+commit da179ce5987e80b76676e5f870cf73fe0fe8874d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Feb 9 12:01:53 2016 -0800
+
+    Rollback gpr deletion
+
+commit 85afe71d4c6f8228f3daeab2ebcebef00bb53bef
+Author: Alistair Veitch <aveitch@google.com>
+Date:   Tue Feb 2 17:58:15 2016 -0800
+
+    initial commit
+
+commit 75d5c0f024438944425cf1bd3163b07c6f6e55b5
+Author: Alistair Veitch <aveitch@google.com>
+Date:   Tue Feb 2 09:43:02 2016 -0800
+
+    post merge
+
+commit d5d83aa33f0bab183ea64dea877abf6cdb0ec65a
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Sun Jan 31 06:21:49 2016 +0100
+
+    Fixing, using and testing alarm code.
+
+commit 366c531f3db4458c4cdd907a5e82c7be5dfd8762
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Fri Jan 29 15:12:51 2016 -0800
+
+    updated projects
+
+commit 4dc269ed98c1a6fc766aa4d83f9f552e474fb818
+Author: Vijay Pai <vpai@google.com>
+Date:   Fri Jan 22 11:19:30 2016 -0800
+
+    Merge async client thread stress test into main thread stress test so as to
+    improve code reuse
+
+commit abd5aa402fc52f6899c48c7d3269deee6616a58c
+Author: Vijay Pai <vpai@google.com>
+Date:   Thu Jan 21 17:48:29 2016 -0800
+
+    Introduce thread stress test using async client. The server is still sync
+    for now. This will increase our coverage of concurrent execution cases in C++
+    since we don't currently have any coverage for multithreaded async execution using
+    a common completion queue.
+    
+    In this test, 100 client threads initiate 1000 RPCs each, then join, and then
+    100 client threads come along to proces those RPC completion events as they come back.
+
+commit ec0d07f58e054e0043168e8aba8f6755ac8706ca
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Jan 14 13:59:40 2016 -0800
+
+    Woops
+
+commit be5a2c4f04f55177b1dee369977d86d1befb9d57
+Author: yang-g <yangg@google.com>
+Date:   Thu Jan 14 13:11:15 2016 -0800
+
+    working test
+
+commit e50c6c2f5ed36d8559de5c23364f7e0d656daab8
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Jan 13 16:02:00 2016 -0800
+
+    WIP. Added ChannelInterface
+
+commit bb30d2591fc52c5bacc309c107077d92d5afc70a
+Author: Alistair Veitch <aveitch@google.com>
+Date:   Tue Jan 12 17:36:05 2016 -0800
+
+    initial commit
+
+commit af2e1cf080037d44a641c69f5b566675bb9876c2
+Author: Vijay Pai <vpai@google.com>
+Date:   Mon Jan 11 09:54:23 2016 -0800
+
+    Fix bugs and include build files
+
+commit 207b07165e6e6cec776aa32059df1d2f21a22203
+Author: murgatroid99 <mlumish@google.com>
+Date:   Fri Jan 8 12:52:53 2016 -0800
+
+    Update after cloning boringssl
+
+commit d609c6385ca0748a5336b18efff15d7064f3da5c
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Mon Jan 4 15:39:27 2016 -0800
+
+    remove unused code
+
+commit 1b38bb4bc745cf9f7ee18728d96698d3652dad9d
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Mon Dec 14 17:22:38 2015 -0800
+
+    initial version of run stress tests script
+
+commit ab23045414dbe120fa307b8c07ca6f3f73b3dbe5
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon Jan 4 08:18:43 2016 -0800
+
+    Add a test that public headers compile as C99
+
+commit 0fe5ee7be3ffc6386a6e0aefc40342cf64f44062
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Dec 22 12:50:36 2015 -0800
+
+    BoringSSL integration: non-vsprojects changes
+
+commit 83399c99e57de0dfaa435c7039a93daac4184dbc
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon Dec 14 13:34:44 2015 -0800
+
+    Add a test that reproduces server partial message read bug
+
+commit 7bbedf20ea80a2f45ba98f4de039f24b79d584c0
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Sun Dec 13 20:02:31 2015 -0800
+
+    Dont run the servers as tests
+
+commit abd20f3c69b3f2e32cf46bc82f26632c2413fdad
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Sun Dec 13 11:48:59 2015 -0800
+
+    Add tests for failed SSL connections: bad cert, and bad alpn config
+
+commit 11c320da083946e89c7c173e37156ec37af3e6ac
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Sat Dec 12 01:47:36 2015 +0100
+
+    Increasing json code coverage.
+
+commit 48ec8062497ecece119d0df61d0bfdca93e11502
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Fri Dec 11 14:04:59 2015 -0800
+
+    Done!
+
+commit 147c4f46628c80b3ebf4c331e38c7285db30c194
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri Dec 11 12:32:39 2015 -0800
+
+    Add dns resolver test
+
+commit 27493204fcf8d46a2656d6fab181e11bdfbc1881
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri Dec 11 11:30:26 2015 -0800
+
+    Add tests for socket utilities
+
+commit 795764bf3afcc482917b250193166667e26185c0
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri Dec 11 08:56:09 2015 -0800
+
+    Hit a few more paths in http_server_filter.c, sockaddr_resolver.c
+
+commit b8bd62e9757151fa469929574231f0194ff35bfc
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Thu Dec 10 15:51:15 2015 -0800
+
+    Add a test for sockaddr_resolver
+
+commit f218c8bf0d7cfef5e9412fa656f0e433104650df
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Thu Dec 10 14:57:56 2015 -0800
+
+    Add tests for pipe usage
+
+commit c3d94fb82ac2553b74d108b2a224c085768f24dc
+Author: yang-g <yangg@google.com>
+Date:   Thu Dec 10 14:38:00 2015 -0800
+
+    add tests for public server apis
+
+commit d482e59d3a05edc0797cbc49639ee7a320e82055
+Author: yang-g <yangg@google.com>
+Date:   Thu Dec 10 14:04:00 2015 -0800
+
+    add a test for secure_channel_create and fix cleanup code
+
+commit c586f4e9be9209324dc4c3828e1309566456caa5
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Dec 10 10:26:05 2015 -0800
+
+    Expand census coverage: make this a fixture instead of a simple test
+
+commit 3b66ab9f9e16dae7d006e3abac947e11a45d9002
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Wed Dec 9 19:42:22 2015 -0800
+
+    Window overflow test
+
+commit a5aa19b8b6c8ce2c2ce9baa8b0108e91b9c330b1
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Dec 9 14:17:52 2015 -0800
+
+    PR comments
+
+commit 179e6febd237ea387a0075f405a503e841d1a721
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Wed Dec 9 11:09:47 2015 -0800
+
+    Add a test for grpc_connectivity_state_name
+
+commit fe9a975655735507b901787232a593122d01bce9
+Author: yang-g <yangg@google.com>
+Date:   Wed Dec 9 10:47:18 2015 -0800
+
+    Add a test for failing to add a port
+
+commit c0ed509d93d2f265cb157468214d328ac4e26d03
+Author: yang-g <yangg@google.com>
+Date:   Wed Dec 9 08:48:08 2015 -0800
+
+    Add test for un-resolvable target
+
+commit 2a2bee9c22d32704097d8fc45c5dabf5cdfb6406
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Dec 9 08:32:58 2015 -0800
+
+    Basic server request bad_client template
+
+commit cc0535d25e5d0e10a4c3ef7bd4451aa2555f8c20
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Dec 8 15:14:47 2015 -0800
+
+    Add a test of httpcli over ssl
+
+commit eda1e9bc39276cea62c72752ea01f90b584bb509
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Tue Dec 8 10:37:56 2015 -0800
+
+    Unknown frame test
+
+commit a1fecbceb55ad8b3f0e97a88ef3b228152826877
+Author: yang-g <yangg@google.com>
+Date:   Mon Dec 7 15:46:49 2015 -0800
+
+    generate projects
+
+commit 26dab31f6ec8c6b6ede97aa00eaaa4b68d6363a7
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon Dec 7 14:43:47 2015 -0800
+
+    Start of ping sketch
+
+commit 8ab91b29fee03fdf1856d37e146708020db8cc43
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon Dec 7 11:28:51 2015 -0800
+
+    Add test of varint encoding for hpack
+
+commit 077f6f80f0b549b1a78f5605ca1f513fcc062dd3
+Author: yang-g <yangg@google.com>
+Date:   Mon Dec 7 11:22:51 2015 -0800
+
+    some tests
+
+commit 535701c5bd8e36a2be5db16c42964515982e78b6
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Dec 7 10:09:44 2015 -0800
+
+    Add bad hpack frame tests
+
+commit c6dea80061e74ab78ef7be3df4f64611e9435377
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Wed Nov 25 09:21:48 2015 -0800
+
+    Exclude some tests that could no longer work
+
+commit fba79f213f94c69c3b095ea44f059bfa04d623d5
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Nov 23 11:06:55 2015 -0800
+
+    AVL: creation, destroy, add
+
+commit 8e15925fd947ab451de7ba26bc12878ae860fe88
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Nov 11 03:32:43 2015 +0000
+
+    Fix bugs, make tests robust
+
+commit 027a74cd3b3ce350ba5890d0fd8f6399a200227f
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Tue Nov 10 08:37:46 2015 +0000
+
+    First round changes to handle dynamic hpack table size
+
+commit c9fca1813a76995eae8afaf4ff86ab375f182ef1
+Author: yang-g <yangg@google.com>
+Date:   Fri Nov 6 16:41:33 2015 -0800
+
+    refacto of the reconnect tcp server to a general purpose test tcp server to be reused by the set_initial_string_test
+
+commit f8603adba192d1d89aec5f5860033041ec383984
+Author: vjpai <vpai@google.com>
+Date:   Wed Nov 4 12:49:33 2015 -0800
+
+    Secure performance testing for C++ is in the hizzouse!
+
+commit 49433744ee6fd18af09ee755e0fe553310b9a1f3
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Tue Nov 3 23:50:00 2015 -0800
+
+    Proto API for LB request/responses
+
+commit 32bd81d2058d70be256f0dce2d1bfa2b5818bb8f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Nov 3 13:02:07 2015 -0800
+
+    Add a test for cancel_with_status
+
+commit 1726e83fe2111f21126c21e0b227bfe39dd5617d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Nov 3 12:45:11 2015 -0800
+
+    Add a test with a large negative deadline
+    
+    Mirrors a node test, and fix a bug that it found
+
+commit ca1593a955d267d2158966618e943955e827296a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Nov 2 14:08:33 2015 -0800
+
+    stream_op cleanup: build system changes
+
+commit 895a2dfe77f2ac2f851cf2d264ad5328789b0303
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Tue Oct 27 21:27:10 2015 +0100
+
+    Disabling qps openloop's test.
+
+commit eed7fd4c1c952d69daa9969c4c5662bb0785631e
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Mon Oct 26 15:15:37 2015 -0700
+
+    File changes after re-running generate_projects.sh after my previous commit: 117c8af8d327455e6
+
+commit dcfb3fe4822fb87b68174747421fe2ddbb6d772a
+Author: Alistair Veitch <aveitch@google.com>
+Date:   Tue Oct 20 17:01:59 2015 -0700
+
+    add CPU tests
+
+commit fbc376f935b1d779fb6595d1ef97c169ffd7a47c
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Fri Oct 16 10:56:31 2015 -0700
+
+    Interop stress tests
+
+commit 728a6104d5ec0a4bbcee7f836ce14431086202cd
+Author: Sree Kuchibhotla <sreek@google.com>
+Date:   Fri Oct 16 10:56:31 2015 -0700
+
+    Interop stress tests
+
+commit 7fd0fd5023a74aa02a43f4a956b59e4965e651ce
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Wed Oct 7 17:41:08 2015 -0700
+
+    C++ Alarm implementation (with tests).
+
+commit 7b1bd2c2713c9d505094ab728a08d4c94f15c6fa
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Mon Oct 5 18:22:10 2015 -0700
+
+    μChannels implementation.
+
+commit f747bbc04327c9ef02690cd7466ec6786967c4fe
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Sun Oct 4 23:09:47 2015 -0700
+
+    s/grpc_alarm/grpc_timer && s/grpc_cq_alarm/grpc_alarm
+
+commit 91ad018c0026dc231e73ede1db17ef5e329d453c
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Oct 1 09:22:03 2015 -0700
+
+    Build and run per-language containers for interop tests
+
+commit d4509a16b38dc6e4a0dacbdad074accfe7894696
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Sep 28 09:18:40 2015 -0700
+
+    Default to no-flakes, allow enabling them
+
+commit 7bedba8c45e996aaa1718b02457a644219ff7ea0
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Thu Sep 24 08:22:43 2015 -0700
+
+    Disable zookeeper test for now
+
+commit ba496454b2f0909a64845f1305f3b0a81073a4f1
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Sep 21 17:15:19 2015 -0700
+
+    Fixes
+
+commit 73b6606629bb65551bc804fa9e96b43ee3aa6583
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Sep 9 09:34:46 2015 -0700
+
+    Workqueue: interface, test, and posix implementation
+
+commit 4fb049b647489509c98bcfacbe9ba8cae5ed913d
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Sep 3 17:26:06 2015 -0700
+
+    Added round robin LB policy.
+
+commit 1ebb7c885e55e16c8b65b7cb5c9ea08038cd67f4
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Aug 31 15:53:36 2015 -0700
+
+    Hand-written changes
+
+commit ae69ad1bcf0322200ebeed5476ee9978101beeb7
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Aug 27 09:06:31 2015 -0700
+
+    Add a portable test of endpoint pairs
+
+commit 2ded19b84f4fea6e27afd33b4d1e066bdcc70609
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Wed Aug 26 16:39:17 2015 -0700
+
+    Update projects
+
+commit 8fd915ab8dfaf2a451fc46ecf225ea4d4400c64b
+Author: Julien Boeuf <jboeuf@google.com>
+Date:   Wed Aug 19 21:18:14 2015 -0700
+
+    Adding grpc::string_ref class.
+    
+    - Strict subset of
+      http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3442.html
+    - Useful to avoid unnecessary string copies.
+
+commit e8a7e30a751a9ba0aca79e4fa3b0fcd51d98c4e0
+Author: Vijay Pai <vpai@google.com>
+Date:   Mon Aug 24 10:52:33 2015 -0700
+
+    Eliminate public thread-pool interface
+
+commit a4c4f02a63eb70fcd21a102cde9aa536dcd17f67
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Fri Aug 21 00:05:42 2015 -0700
+
+    Added C API functions for compression args handling (w/ tests)
+
+commit e50e5cbde2f77166b9f557938252de6792557f84
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Aug 18 12:44:57 2015 -0700
+
+    Add a timeout to shutdown to forcefully end calls
+
+commit bb3aed0ef9dd41849e50faec1c83e67948e30adc
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Thu Aug 13 22:41:33 2015 +0200
+
+    Removing gpr_cancelable.
+
+commit 17effabe42b0dcd72aeb689916536bf9a6733d69
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Aug 4 08:19:36 2015 -0700
+
+    Add proxy tests to end2end suite
+    
+    Currently the oauth2 variant of these tests is disabled. Will work with
+    @jboeuf to figure out how to turn them on.
+
+commit 8e04d4107ef07c5914b84f14d4f1b0771090c1b0
+Author: Hongwei Wang <hongweiw@google.com>
+Date:   Fri Jul 31 15:12:51 2015 -0700
+
+    Add zookeeper end-to-end test
+
+commit a7957f50af10954e2f266e979638ef13ac7c4460
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Wed Jul 29 18:48:38 2015 -0700
+
+    Exclude uds from default hostname tests
+
+commit 5ddbb9d405c01564b935e9ab81ae2833124e0b12
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Jul 29 15:58:11 2015 -0700
+
+    Allow specific pollers to be woken
+    
+    Currently, if two threads call grpc_completion_queue_pluck on the same
+    completion queue for different tags, there is a 50% chance that we
+    deliver the completion wakeup to the wrong poller - forcing the correct
+    poller to wait until its polling times out before it can return an event
+    up to the application.
+    
+    This change tweaks our polling interfaces so that we can indeed wake a
+    specific poller.
+    
+    Nothing has been performance tuned yet. It's definitely sub-optimal in a
+    number of places. Wakeup file-descriptors should be recycled. We should
+    have a path that avoids calling poll() followed by epoll(). We can
+    probably live without it right at the second though.
+    
+    This code will fail on Windows at least (I'll do that port when I'm in the office and have a Windows
+    machine).
+
+commit c4b56b67a29b3c1e3c8c219c22c5e7ec4625b478
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Thu Jul 23 17:44:11 2015 -0700
+
+    Make passing NULL for host not crash
+
+commit b28456b1e46085bd35b6389b03e6d4de8866bdaf
+Author: vjpai <vpai@google.com>
+Date:   Thu Jul 23 14:17:10 2015 -0700
+
+    Add dynamic thread pool and initial port of test
+
+commit 8ec09f6530938c6126a6579ce85ee07dbf71d785
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Tue Jul 21 17:18:36 2015 -0700
+
+    Added tests (and bugfix) for grpc_compression_algorithm_parse
+
+commit 7ef7232dd9eba4be7d81b59a6bb59c4fd634ea08
+Author: yang-g <yangg@google.com>
+Date:   Thu Jul 16 21:00:51 2015 -0700
+
+    split iterator into its own file
+
+commit 1ada6ad8e57e9033f9cc9a6b0082e27a413e9584
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Jul 16 16:19:14 2015 -0700
+
+    Added connectivity tests, fixed bugs
+
+commit 143e7bf0cfcbfd60422f4e8f15e6b5c18259c8cd
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Jul 13 08:41:49 2015 -0700
+
+    Introduce a clock type field onto gpr_timespec.
+    
+    Use it to validate that arithmetic on time types makes even some vague
+    kind of sense.
+
+commit 887f86bd21e87d8a3e71f325f470811b8609c899
+Author: Vijay Pai <vpai@google.com>
+Date:   Fri Jul 10 17:12:10 2015 -0700
+
+    Debug and add in generated build files
+
+commit 6953529365ee07f6cece0290f490144a0bf24999
+Author: Robbie Shade <rjshade@google.com>
+Date:   Fri Jul 10 14:27:34 2015 -0400
+
+    Updated build.json, regenerated project files.
+
+commit 69cb6b41c895e9d0236f0f8c3ec982e9e1697aa2
+Author: jboeuf <jboeuf@users.noreply.github.com>
+Date:   Thu Jul 9 14:18:45 2015 -0700
+
+    Backport of pull request #2313 into release-0_10.
+
+commit 8068f869747529fe800586bd2a7cb34b0573dcae
+Author: yang-g <yangg@google.com>
+Date:   Mon Jul 6 15:05:48 2015 -0700
+
+    Add a unit test
+
+commit feca1bf06cf6ffd8d45b86c1c51f798bad9c52f4
+Author: Julien Boeuf <jboeuf@google.com>
+Date:   Mon Jun 22 16:46:20 2015 +0200
+
+    Adding JWT verifier.
+    
+    Still missing:
+    - Caching of the already checked JWTs (although it could be done at an
+      upper layer).
+    - Caching of the jwks_uri to avoid 2 roundtrips for each verification.
+
+commit ee98d84a02266acd7da5ed769a7eb3f18599d914
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon Jun 29 08:45:55 2015 -0700
+
+    Add an fd conservation test to verify that fds actually close
+
+commit 1aa041ab1a167c6ae3cb675c5fb444fab4edbb6f
+Author: Masood Malekghassemi <soltanmm@users.noreply.github.com>
+Date:   Thu Jun 25 18:02:18 2015 -0700
+
+    BLARGHAFLARGHAAHAJHAKJHATJHKAYMNHZIYRN
+
+commit 3bc8ebd48eceab0fc9fe2ef4f7a94c1f937172ba
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Jun 24 15:41:15 2015 -0700
+
+    Implementation work for client_config
+    
+    - uri parsing
+    - dns resolution
+
+commit dd2ebee8482e0cda41811ddb4a1e1a576ee98363
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Tue Jun 23 18:42:17 2015 -0700
+
+    Added compression text fixture.
+
+commit 89c5a5623377e7d4d253c7a304bc726357c6ef0e
+Author: Yang Gao <yangg@google.com>
+Date:   Mon Jun 22 16:31:11 2015 -0700
+
+    Add const to ByteBuffer methods and add tests
+
+commit f74a49ed1400762af07bd65e3cad99e65cf7f6c0
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Thu Jun 18 17:22:45 2015 -0700
+
+    WIP. Need to merge and add more tests.
+
+commit a701ade70abee86105bfc38f3426d1c3d40ba206
+Author: Julien Boeuf <jboeuf@google.com>
+Date:   Thu Jun 18 15:23:40 2015 +0200
+
+    Fixing ssl auth context.
+
+commit 1d5aca5de05d16968f0f1e208a9aa10d7c06caac
+Author: David Garcia Quintas <dgq@google.com>
+Date:   Sun Jun 14 14:42:04 2015 -0700
+
+    Added flags support to grpc_op.
+    
+    Which includes its propagation to grpc_ioreq and validation mechanisms for checking that only known bits are set ot in).
+    Also added an internal flag (GRPC_WRITE_INTERNAL_COMPRESS) mask for its use in signaling compressed messages.
+
+commit 372fd8791ba8b6ecc3935305b8b90d13d29c06a8
+Author: Vijay Pai <vpai@google.com>
+Date:   Mon Jun 8 13:30:08 2015 -0700
+
+    Revert "Revert "Open loop sync/async multithreaded testing""
+
+commit d55636d813761b8d3b218e7be65cf0b396744633
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon Jun 8 10:12:46 2015 -0700
+
+    Revert "Open loop sync/async multithreaded testing"
+
+commit fb613730660697f86ea30666351fb65bf72f1e8b
+Author: vjpai <vpai@google.com>
+Date:   Mon Jun 8 00:54:03 2015 -0700
+
+    Add a new test for qps openloop to make sure this code gets exercised
+    regularly.
+    Also, convert qps_test to test, from benchmark
+
+commit aa4548ddf051680a402c0c430284d852d4ca352e
+Author: vjpai <vpai@google.com>
+Date:   Mon Jun 8 00:54:03 2015 -0700
+
+    Add a new test for qps openloop to make sure this code gets exercised
+    regularly.
+    Also, convert qps_test to test, from benchmark
+
+commit 3c26d09a7f1e3f936effc06c9d9db895d730406e
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri Jun 5 14:48:30 2015 -0700
+
+    Add a test of bad settings frame (and fix a bug!)
+
+commit b5075e3754954c6644ee6b54b9755c38cec3902f
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri Jun 5 13:00:46 2015 -0700
+
+    Add working tests for httpcli
+
+commit 1a6f755c1f00323a991101f4508ade0beb772b3d
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri May 29 13:56:44 2015 -0700
+
+    Make it possible to run with poll() instead of epoll()
+    
+    Mostly to facilitate testing, but maybe in the future we want to work on
+    Linux systems with broken epoll support?
+
+commit 7a1b41523792465530d4a8bc4bfebb71c3d67e08
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Wed May 27 16:41:55 2015 -0700
+
+    Re-enable some tests
+
+commit 2d8b52bdc76b3183b05e4d960c7e6239e0b45d0d
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Tue May 26 17:06:55 2015 -0700
+
+    Mark tests not flaky
+
+commit 9686dabd044666f32cbc30f7551caf81a05124e2
+Author: Alistair Veitch <aveitch@google.com>
+Date:   Tue May 26 14:26:47 2015 -0700
+
+    Initial refactoring and context API changes
+
+commit ba3c3cd36c06c88b5663d61f44accb9b5d88d77c
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Tue May 26 06:28:10 2015 -0700
+
+    Add testing of bad client behavior
+    
+    This test will become a suite over coming weeks.
+    Spin up a server, and send some illegal data to it, and probe that the correct behavior occurs.
+
+commit 4251d561c6d849a13078bcb878a3fd345590a325
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Fri May 22 19:43:39 2015 +0200
+
+    Don't run flaky tests on make test.
+
+commit 84d964a8df03b4bb40e7d510f517fc65633e03f8
+Author: Julien Boeuf <jboeuf@google.com>
+Date:   Wed Apr 29 11:31:06 2015 -0700
+
+    API for auth context and server-side secure transport only impl.
+    
+    Still TODO:
+    - a way to plug a metadata processing (somewhat elsewhere but did not
+      one to overload this already large PR).
+    - plug-in the auth context on the client side.
+    - Better end to end testing.
+
+commit 7a29098b714e25313f3ed2f3b00768b11a46fb4a
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Tue May 19 12:49:54 2015 -0700
+
+    Send RST_STREAM when closing from the server without getting a client half-close first
+
+commit 7a317e5c7714c869f2a49c7e073a057bc9b13b82
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Tue May 19 09:38:29 2015 -0700
+
+    Add crashing client test
+
+commit eadd9a3b8c8e5935edba1bb0dd86f31ca250d3a4
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon May 18 14:52:12 2015 -0700
+
+    Add testing for GRPC_TRACE
+
+commit de91fc1d67582dcfef82489d7dc9ab7548539d3c
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon May 18 14:42:15 2015 -0700
+
+    Run qps smoke tests on Travis
+
+commit fff495e90885ce9d2838e38e57a41fe5cdaef9be
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri May 15 15:11:09 2015 -0700
+
+    Fix test, readd it to build
+
+commit fbac5f17b71cb2fc6b3b8f377dc1b896fdf952e0
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri May 15 14:20:44 2015 -0700
+
+    Crash handling test
+
+commit d7f768b2b2a6fc1d0dfd209dcdb35ba38fee227b
+Author: Julien Boeuf <jboeuf@google.com>
+Date:   Fri May 8 16:37:16 2015 -0700
+
+    Addressing comments.
+
+commit 9f218ddd9db5049d0ba92334f1e0a329171343c9
+Author: Julien Boeuf <jboeuf@google.com>
+Date:   Thu Apr 23 10:24:02 2015 -0700
+
+    Adding support for per call credentials in core.
+
+commit 0c23320c8a967acc035ed05a93c6e709aaf9662c
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Wed May 6 07:42:43 2015 -0700
+
+    Split thread stress from end2end to improve parallelism
+
+commit 196ade3e4d03fa550bf0adf3a114988061e3cf0f
+Author: Yang Gao <yangg@google.com>
+Date:   Tue May 5 13:31:12 2015 -0700
+
+    add a test using the mock interfaces
+
+commit 93ec3712e6eb15168e0f679b198cbb1d5dacaa97
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue May 5 09:41:03 2015 -0700
+
+    Enable test that got forgotten
+
+commit 26839c7da95c095755e1f5bd05e0d97c94b3daa5
+Author: Yang Gao <yangg@google.com>
+Date:   Mon May 4 13:49:38 2015 -0700
+
+    Add a c test for max message length
+
+commit 434a36bf4ad4ce5a46bf2c59389b437126faa358
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon May 4 09:49:22 2015 -0700
+
+    Add test for >16777215 sequence numbered streams
+
+commit 581737ce2764b5752a0cd5c8df9e880ecf348fe1
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 29 16:13:15 2015 -0700
+
+    Kill thread stress test - to be replaced with something new
+
+commit 0ced984233c06d20b76974ad2303534df596dcad
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 29 15:02:07 2015 -0700
+
+    Kill echo test
+
+commit 8ad26f7f74ffa4487a4758b38598bc7858168551
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 29 14:46:13 2015 -0700
+
+    Remove test for an old API corner case
+
+commit af20b7108b05c06d4a0c6f681db4d0da002edca7
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Apr 28 14:06:15 2015 -0700
+
+    Remove legacy tests
+
+commit 3e3e0ad348ef997995e5021d2f542d54271eb882
+Author: zeliard <spacesun@naver.com>
+Date:   Mon Apr 27 14:56:34 2015 +0900
+
+    merge from upstream (grpc) master
+
+commit 436f964a8051f440d4bc7ac85cc4198feb9ea7d1
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Fri Apr 24 19:58:12 2015 +0200
+
+    Flagging a few census tests as flaky.
+
+commit b8137b343f476b7d6f0e255bf1ce0510e4e1941b
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Fri Apr 24 01:44:28 2015 +0200
+
+    Flagging some tests as flaky.
+
+commit 522528182a8cd31919bccca3db13314dba6993c3
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 22 14:03:06 2015 -0700
+
+    Update flaky bit for unsecure tests
+
+commit c8b357f7c806be2306390fa7c2432b93c3cbf859
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon Apr 20 16:36:52 2015 -0700
+
+    Run capable test suites against grpc_unsecure
+
+commit 8fddccb12c5338e5824fad6a3d2659ce4eeefe08
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Apr 17 16:09:30 2015 -0700
+
+    Mark large requests tests flaky (they are buggy)
+
+commit 4e99edb642f77ba662408c78176841cc60b21c52
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Apr 16 14:49:05 2015 -0700
+
+    Kill transport end2end tests: not useful
+
+commit 6902ad2e9c1e409b37b9b21a95e69a89b2be402f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Apr 16 08:01:49 2015 -0700
+
+    Switching to batch oriented metadata passing
+
+commit 08453374b2c58813201739bf4e69383235804a29
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri Apr 10 16:05:38 2015 -0700
+
+    Introduce ahead-of-time registration of (method,host) pairs
+
+commit 084ef5267213b6b87e913ec5e9af738fde016c8f
+Author: Yang Gao <yangg@google.com>
+Date:   Wed Apr 15 11:34:15 2015 -0700
+
+    Remove outdated protos
+
+commit 6dfa7e6ea3dbe23923b2a32b0c976d5004a0d11d
+Author: Vijay Pai <vpai@google.com>
+Date:   Mon Apr 13 10:41:40 2015 -0700
+
+    Move files to a new "profiling" directory to better distinguish from census
+    statistics
+
+commit d180e03d2015e050f2ab9149ced59ea4ba303c70
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Apr 13 10:10:07 2015 -0700
+
+    Update build files
+
+commit 8cca9abeda9fb68ddee8a5a34f0ffacf9fe883f5
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri Apr 10 10:39:38 2015 -0700
+
+    Thread local storage for grpc
+
+commit 0ff7e692b0070bf8da1a6e983ce58bbf9cc003e8
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 8 15:57:17 2015 -0700
+
+    Better defaulting of attributes
+
+commit b946b5ea740be453fe50d334161fbe03adc204de
+Author: Yang Gao <yangg@google.com>
+Date:   Fri Mar 27 13:20:59 2015 -0700
+
+    Refactor and add a unit test
+
+commit cdb2a6e071dd57c1cf6f3658d3954bf959519be5
+Author: Yang Gao <yangg@google.com>
+Date:   Fri Mar 20 23:55:04 2015 -0700
+
+    Protect on some overflow scenarios, add a test and build/run the test
+
+commit 0cb6c25e711ea32b4f2be1126cf0270837e0bc5f
+Author: Yang Gao <yangg@google.com>
+Date:   Wed Mar 11 00:30:57 2015 -0700
+
+    A first test with typed async client and untyped service for a simple rpc
+
+commit c9f660daf88913092966772d41d932ecfea619e3
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Mar 3 11:01:48 2015 -0800
+
+    Add a test that bad hostnames fail
+
+commit 45115845cc116022647e62b2e7627b261a6c4f4b
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Mar 2 10:05:10 2015 -0800
+
+    Mark fling_*test non-flaky
+    
+    Also, make the flaky: tag a little more visible in build.json
+
+commit f5065c5b65035eb0999877391cf8dfd634ad4a5f
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Fri Feb 27 16:17:39 2015 -0800
+
+    Enable asan for C core
+    
+    Also speed up a test, and disable some rarely touched but long running tests
+
+commit 9db7c3b174b9a630899439a0fb3e965b8bd5060d
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Fri Feb 27 06:03:00 2015 +0100
+
+    Adding flaky attribute for tests.

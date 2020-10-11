@@ -1,0 +1,35 @@
+commit 8ee8a89c3cf289e4b33069f3cc5dab5166ad2f82
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Fri Jul 11 22:54:49 2014 +0300
+
+    Update poco libraries to 1.4.6p4
+
+commit 1976dc10d65a7cc5a470aace7e2ee7f7e077a03f
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Fri Jan 24 15:33:22 2014 +0200
+
+    Upgrade POCO to 1.4.6p2
+
+commit 32685550436929ecd9c574485e73c95c99e034a9
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Mon Sep 9 01:53:14 2013 +0300
+
+    poco-1.4.6p1-all
+
+commit 2e21938ed302398b5beb4bc31e5ccd075aff905c
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Mon Sep 9 01:47:01 2013 +0300
+
+    remove unstable poco
+
+commit baa5046470b01ed8122df6a873f748a161304094
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Sat Sep 7 01:04:40 2013 +0300
+
+    Simpler folder structure
+
+commit e9a5cee174dd24b9150e3399416fb88f4bfef373
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Sat Sep 7 00:35:49 2013 +0300
+
+    POCO libraries source code

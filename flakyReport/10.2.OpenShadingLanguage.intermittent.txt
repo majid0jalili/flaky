@@ -1,0 +1,31 @@
+commit 28baad82d4335e1a883b58703b734ab2e1f5330c
+Author: Larry Gritz <lg@larrygritz.com>
+Date:   Thu Feb 13 15:43:02 2014 -0800
+
+    Support for MCJIT
+    * Link against MCJIT libraries from LLVM
+    * Amend LLVM_Util to have a debug mode.
+    * Some incidental movement of BackendLLVM methods from llvm_instance.cpp
+      to backendllvm.cpp.
+    * Some minor changes to LLVM_Util to support MCJIT.
+    * Moved some non-essential (and unlikely to inline) functions from
+      llvm_opt.cpp to other cpp files. This helps reduce the dependencies
+      for llvm_ops.cpp, reduce the amount of bitcode to process, and was
+      intended to fix some MCJIT issues.
+    * Various fixes to make it all work, MCJIT seems a little fragile about
+      predigested bitcode.
+    
+    Currently, this code uses ParseBitcodeFile rather than getLazyBitcodeModule
+    when MCJIT is enabled, since MCJIT appears to have a bug that causes it to
+    not correctly find the symbols in the module when using lazy deserialization.
+
+commit e24bb98061709bf7a0b78c10c5755436ebf2c57d
+Author: Larry Gritz <lg@larrygritz.com>
+Date:   Mon Jan 13 12:30:00 2014 -0800
+
+    Defensive programming to be sure getcwd exists!
+    
+    In rare circumstances, we're hitting an assertion inside LLVM that can
+    only happen if a call to getcwd() fails. This stupid bit of code is to
+    try to catch it in the act and figure out exactly what's going
+    wrong. Should not bother anybody not at SPI.

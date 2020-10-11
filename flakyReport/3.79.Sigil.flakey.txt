@@ -1,0 +1,29 @@
+commit 7cca9b68375b7735a16f96c49cc60e34b959b7ea
+Author: John Schember <john@nachtimwald.com>
+Date:   Sun Mar 29 19:45:40 2015 -0400
+
+    Rework build structure.
+
+commit b36d25cf3e0905a1232c7780083b9330c59a8a3b
+Author: Kevin Hendricks <kevinhendricks@users.noreply.github.com>
+Date:   Mon Mar 23 14:12:15 2015 -0400
+
+    Finale removal of Xerces - Sigil is now a Xerces free zone
+
+commit 4d02e96c59bbdd5d919b008fc463c54bcb16e35d
+Author: John Schember <john@nachtimwald.com>
+Date:   Tue Jan 31 21:07:33 2012 -0500
+
+    Fix issue 1214: Dictionary files do not include hypen files or GB files.
+
+commit 54dea6bc1fd32f34cae1564ccd81d7be5f9c453f
+Author: John Schember <john@nachtimwald.com>
+Date:   Fri Dec 30 20:26:11 2011 -0500
+
+    Use better en dict which supports fancy quotes. Remove 50 line check limit for getting dictionary encoding because some have it much later in the file.
+
+commit 5d2a37311c17f7b38c4d3e38931e9908ce6dae06
+Author: Strahinja Markovic <devnull@localhost>
+Date:   Thu Sep 9 19:49:54 2010 +0200
+
+    Adding the Xerces sources

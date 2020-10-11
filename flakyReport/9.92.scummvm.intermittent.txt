@@ -1,0 +1,46 @@
+commit 101e03e4c0030c4bd58d59918004eaab3a028d52
+Author: Vhati <tvtronix@yahoo.com>
+Date:   Tue Nov 27 19:40:39 2018 -0500
+
+    SCI32: Fix QFG4 great hall entry from barrel room (#1384)
+    
+    Fixes a doorMat region that prematurely kicked hero back to the previous
+    room, bug #10731
+
+commit 4f807ee53e8a5a8f92b234e405337aecf9c77afc
+Author: Filippos Karapetis <bluegr@gmail.com>
+Date:   Fri Nov 1 14:53:43 2013 +0200
+
+    SCUMM: More renaming for players
+    
+    Rename "player" directory to "players", and reintroduce the "player_"
+    file prefix. This has been done after sev's request.
+    "players/player_foo.*" is more descriptive, and avoids potential name
+    clashes in libraries
+
+commit 651bf899399de2b5c2d8e62a5bb4964b037950d2
+Author: Filippos Karapetis <bluegr@gmail.com>
+Date:   Fri Nov 1 06:57:20 2013 +0200
+
+    SCUMM: Move all players to a separate "player" directory
+    
+    There are 34 player .cpp/.h player files, so they have been placed in
+    their own directory, to logically separate them from the rest of the
+    engine
+
+commit 26ee630756ebdd7c96bccede0881a8c8b98e8f2b
+Author: Max Horn <max@quendi.de>
+Date:   Sat Feb 11 22:45:04 2006 +0000
+
+    Moved engines to the new engines/ directory
+    
+    svn-id: r20582
+
+commit e7c6ea42aed7b2749638513803b8988c1d1cace4
+Author: Travis Howell <kirben@scummvm.org>
+Date:   Wed Feb 9 00:36:15 2005 +0000
+
+    Patch from Quietust:
+    Add comments and misc changes to Amiga V2 player.
+    
+    svn-id: r16759

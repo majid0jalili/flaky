@@ -1,0 +1,17 @@
+commit d86146c96b732e0a87ce2e961afed3cc604ffaf9
+Author: Бранимир Караџић <branimirkaradzic@gmail.com>
+Date:   Tue Feb 4 21:33:12 2020 -0800
+
+    Updated spirv-tools.
+
+commit bc4abb561c01f19696195a532741c0f376985a9f
+Author: Бранимир Караџић <branimirkaradzic@gmail.com>
+Date:   Wed Dec 11 21:24:31 2019 -0800
+
+    Stripped unnecessary files.
+
+commit 172b7c506b3f5181bcae3f41cf73b63281c4aab9
+Author: Branimir Karadžić <branimirkaradzic@gmail.com>
+Date:   Tue Apr 10 19:44:28 2018 -0700
+
+    Added SPIRV-Tools.

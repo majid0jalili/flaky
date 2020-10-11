@@ -1,0 +1,11 @@
+commit 551237c20f081e87d8841baffdef9b78571b6886
+Author: Giuseppe Penone <giuspen@gmail.com>
+Date:   Sun Aug 9 16:47:38 2020 +0100
+
+    future becomes present
+
+commit 4b16224e9b4f2f31f8f249579e8e102d00b3bcea
+Author: Giuseppe Penone <giuspen@gmail.com>
+Date:   Sat Jun 20 14:34:16 2020 +0100
+
+    gtkmm - updated all spelling check languages for upcoming new pygtk2 and gtkmm3 versions

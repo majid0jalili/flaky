@@ -1,0 +1,26 @@
+commit 957e917a84ac9979f18145a4d0b53386f5ce4fd9
+Author: antirez <antirez@gmail.com>
+Date:   Tue Mar 31 17:56:04 2020 +0200
+
+    Redis 6.0-RC3.
+
+commit 09a263e6076b3fd0fe3b094a2bfad7f93fc997d6
+Author: John Sully <john@csquare.ca>
+Date:   Fri Feb 1 14:45:39 2019 -0500
+
+    Squashed 'deps/memkind/src/' content from commit bb9f19dd1
+    
+    git-subtree-dir: deps/memkind/src
+    git-subtree-split: bb9f19dd1b3ed6cc5e1b35919564ccf6f4b32f69
+
+commit 08e1c8e820031751bd58736cc334dda1bc55cb5c
+Author: antirez <antirez@gmail.com>
+Date:   Thu May 24 17:17:37 2018 +0200
+
+    Jemalloc upgraded to version 5.0.1.
+
+commit 3c098ab96f5555a00f46ecaf1adecca8b24e5fb0
+Author: antirez <antirez@gmail.com>
+Date:   Thu May 24 17:17:37 2018 +0200
+
+    Jemalloc upgraded to version 5.0.1.

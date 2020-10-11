@@ -1,0 +1,564 @@
+commit e50a877df74f2d5558f9962089bcac0883e4aa38
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Sat Sep 5 18:42:29 2020 +0200
+
+    tests: remove pipelining tests
+    
+    Remove the tests 530, 584, 1900, 1901, 1902, 1903 and 2033. They were
+    previously disabled.
+    
+    The Pipelining code was removed from curl in commit 2f44e94efb3df8e,
+    April 2019.
+    
+    Closes #5921
+
+commit 61aab81c5ce1eb3546357adb86b33e74484a2b11
+Author: Marc Hoersken <info@marc-hoersken.de>
+Date:   Sat Aug 29 09:56:22 2020 +0200
+
+    docs: add description about CI platforms to CONTRIBUTE.md
+    
+    Reviewed-by: Daniel Stenberg
+    Reviewed-by: Marcel Raad
+    Reviewed-by: Jay Satiro
+    
+    Closes #5882
+
+commit 7fb33ee871a04d2e4f6ffedba0808635efb1ef53
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Jun 24 11:44:22 2020 +0200
+
+    RELEASE-NOTES: synced
+
+commit 4bd09877e31845172b27d0d6af7d0adec009d41f
+Author: Marc Hoersken <info@marc-hoersken.de>
+Date:   Thu May 28 22:11:32 2020 +0200
+
+    azure: use matrix strategy to avoid configuration redundancy
+    
+    This also includes the following changes:
+    
+    - Use the same timeout for all jobs on Linux (60 minutes)
+      and Windows (90 minutes)
+    - Use CLI stable apt-get install -y instead of apt install
+      which warns about that and run apt-get update first
+    - Enable MQTT for Windows msys2 builds instead of
+      legacy msys1 builds
+    - Add ./configure --prefix parameter to the msys2 builds
+    - The MSYSTEM environment variable is now preset inside
+      the container images for the msys2 builds
+    
+    Note: on Azure Pipelines the matrix strategy is basically
+    just a simple list of job copies and not really a matrix.
+    
+    Closes #5468
+
+commit b995bb58cbd976280b132ee2148376fadd071063
+Author: Jay Satiro <raysatiro@yahoo.com>
+Date:   Sat Apr 4 16:16:18 2020 -0400
+
+    tool: Add option --retry-all-errors to retry on any error
+    
+    The "sledgehammer" of retrying.
+    
+    Closes https://github.com/curl/curl/pull/5185
+
+commit ad6416986755e417c66e2c646d532561b445a5b5
+Author: Peter Wu <peter@lekensteyn.nl>
+Date:   Sun May 10 02:12:12 2020 +0200
+
+    CMake: fix runtests.pl with CMake, add new test targets
+    
+      * runtests.pl:
+        - Fix out-of-tree build under CMake when srcdir is not set. Default
+          srcdir to the location of runtests.pl.
+        - Add a hack to allow CMake to use the TFLAGS option as documented
+          in tests/README and used in scripts/travis/script.sh.
+      * Bump CMake version to 3.2 for USES_TERMINAL, dropping Debian Jessie
+        support (no one should care, it is already EOL.).
+      * Remove CTest since it defines its own 'test' target with no tests
+        since all unittests are already broken and not built by default.
+      * Add new test targets based on the options from Makefile.am. Since
+        new test targets are rarely added, I opted for duplicating the
+        runtests.pl options as opposed to creating a new Makefile.inc file.
+        Use top-level target names (test-x) instead of x-test since that is
+        used by CI and others.
+    
+    Closes #5358
+
+commit d1ef10b1d3ccb3d4cfcae163568ce09d9f48c921
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Thu May 7 10:12:33 2020 +0200
+
+    RELEASE-NOTES: synced
+
+commit 7e8a1a087528cb265bae5c9fe346489871b5daa2
+Author: Marc Hoersken <info@marc-hoersken.de>
+Date:   Tue Mar 24 18:24:52 2020 +0100
+
+    CI: remove default Ubuntu build from GitHub Actions
+    
+    We are already running a very similar Ubuntu build on Travis CI.
+    The macOS variant of this default build is kept on Github Actions.
+
+commit 840df8b0d99797569f4964037441129c7777cf9a
+Author: Marc Hoersken <info@marc-hoersken.de>
+Date:   Tue Mar 24 18:18:15 2020 +0100
+
+    CI: migrate macOS jobs from Azure and Travis CI to GitHub Actions
+    
+    Reduce workload on Azure Pipelines and Travis CI while
+    consolidating macOS jobs onto less utilized GitHub Actions.
+    
+    Reviewed-by: Daniel Stenberg
+    
+    Closes #5124
+
+commit 3c9066fce54b78cc8b46e82eba033aaa373cdef1
+Author: Marc Hoersken <info@marc-hoersken.de>
+Date:   Tue Mar 17 10:36:25 2020 +0100
+
+    tests: make Python-based servers compatible with Python 2 and 3
+    
+    Update smbserver.py and negtelnetserver.py to be compatible with
+    Python 3 while staying backwards-compatible to support Python 2.
+    
+    Fix string encoding and handling of echoed and transferred data.
+    
+    Tested with both Python 2.7.17 and Python 3.7.7
+    
+    Reported-by: Daniel Stenberg
+    Assisted-by: Kamil Dudka
+    Reviewed-by: Marcel Raad
+    
+    Fixes #5104
+    Closes #5110
+
+commit d83402813b624d9067416bea2e7feb70a358cf65
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Mon Mar 16 22:21:37 2020 +0100
+
+    CI: stop ignoring 323, it is disabled
+
+commit f093dcc390faa1fb63e962fb136d1e9760719a7d
+Author: Marc Hoersken <info@marc-hoersken.de>
+Date:   Sat Feb 22 14:20:57 2020 +0100
+
+    ci/tests: Add Windows builds via Azure Pipelines using Docker
+
+commit 9434864770406cc9663437063ecab91820fdd4fe
+Author: Jay Satiro <raysatiro@yahoo.com>
+Date:   Sat Dec 28 01:56:05 2019 -0500
+
+    travis: Fix error detection
+    
+    - Stop using inline shell scripts for before_script and script sections.
+    
+    Prior to this change Travis could ignore errors from commands in inline
+    scripts. I don't understand how or why it happens. This is a workaround.
+    
+    Assisted-by: Simon Warta
+    
+    Ref: https://github.com/travis-ci/travis-ci/issues/1066
+    
+    Fixes https://github.com/curl/curl/issues/3730
+    Closes https://github.com/curl/curl/pull/3755
+
+commit 69ed88f474b8158e0e0d53181c203ceebde29b88
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Fri Dec 13 15:15:56 2019 +0100
+
+    azure: add a torture test on mac
+    
+    Uses --shallow=25 to keep it small enough to get through in time.
+    
+    Closes #4712
+
+commit ec3758b95f98954b43af6367e7f27baee0d9f307
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Tue Dec 10 12:47:46 2019 +0100
+
+    azure: add a torture test
+    
+    Skipping all FTP tests for speed reasons.
+    
+    Closes #4697
+
+commit 83c0e96057a6cc61282512dd9204cd78e6c89543
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Tue Dec 10 09:36:46 2019 +0100
+
+    travis: remove "coverage", make it "torture"
+    
+    The coveralls service and test coverage numbers are just too unreliable.
+    Removed badge from README.md as well.
+    
+    Fixes #4694
+    Closes #4695
+
+commit 275e02bdea73801f134519eed8c2473663823383
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Mon Dec 9 11:43:29 2019 +0100
+
+    azure: add libssh2 and cmake macos builds
+    
+    Removed the macos libssh2 build from travis
+    
+    Closes #4686
+
+commit 9e891ff54de34d0e4c9aec502eb53e5b64a6dd1f
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Mon Dec 9 10:08:46 2019 +0100
+
+    azure: add a vanilla macos build
+    
+    Closes #4685
+
+commit 3b8bbbbd1609c638a3d3d0acb148a33dedb67be3
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Tue Dec 3 23:21:09 2019 +0100
+
+    azure: add more builds
+    
+    ... removed two from travis (that now runs on azure instead)
+    
+    Closes #4671
+
+commit ab712afa8fb9d2bf7850aa8d031937ca515efa01
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Tue Dec 3 19:30:08 2019 +0100
+
+    github action/azure pipeline: run 'make test-nonflaky' for tests
+    
+    To match travis and give more info on failures.
+
+commit 1d642f055021fff8a838c5308931ef907cef2ec9
+Author: Dan Fandrich <dan@coneharvesters.com>
+Date:   Thu Oct 17 10:24:28 2019 +0200
+
+    travis: Add an ARM64 build
+    
+    Test 323 is failing for some reason, so disable it there for now.
+
+commit 6ab569ce0b2f2418b591eb5f28539447debb14a7
+Author: Yiming Jing <jingyiming@baidu.com>
+Date:   Tue Apr 30 15:46:46 2019 -0700
+
+    travis: upgrade the MesaLink TLS backend to v1.0.0
+    
+    Closes #3823
+    Closes #3776
+
+commit 60034228255894fcea57950b3b39bfe6f5fca580
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Fri Apr 12 10:07:45 2019 +0200
+
+    travis: remove mesalink builds (temporarily?)
+    
+    Since the mesalink build started to fail on travis, even though we build
+    a fixed release version, we disable it to prevent it from blocking
+    progress.
+    
+    Closes #3767
+
+commit 9a36c0ae21d675587d4e2a52c50a6ce8a2150770
+Author: Dan Fandrich <dan@coneharvesters.com>
+Date:   Sat Feb 9 10:04:39 2019 +0100
+
+    cirrus: Added FreeBSD builds using Cirrus CI.
+    
+    The build logs will be at https://cirrus-ci.com/github/curl/curl
+    
+    Some tests are currently failing and so disabled for now. The SSH server
+    isn't starting for the SSH tests due to unsupported options used in its
+    config file. The DICT server also is failing on startup.
+
+commit 29db6bbf90d4eda95217fbc116026b4e699bf647
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Thu Nov 1 11:02:49 2018 +0100
+
+    version: bump for next cycle
+
+commit 803d23807340ce1403032578bc74fc0cc9e30742
+Author: Marcel Raad <Marcel.Raad@teamviewer.com>
+Date:   Tue Oct 2 17:47:39 2018 +0200
+
+    AppVeyor: run test suite
+    
+    Use the preinstalled MSYS2 bash for that.
+    Disable test 1139 as the CMake build doesn't generate curl.1.
+    
+    Ref: https://github.com/curl/curl/issues/3070#issuecomment-425922224
+    Closes https://github.com/curl/curl/pull/3100
+
+commit 66b3c186fa9a06d313501c80f02e7125acb78c3d
+Author: Yiming Jing <jingyiming@baidu.com>
+Date:   Mon Sep 10 13:11:59 2018 -0700
+
+    travis: build the MesaLink vtls backend with MesaLink 0.7.1
+
+commit 82846a456a8e2f904353e5575a1e9e0744a56359
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Sat Sep 8 22:45:45 2018 +0200
+
+    RELEASE-NOTES: synced
+
+commit c497472c8b519346fa82dd780f94454cf47886f0
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Sep 5 11:36:58 2018 +0200
+
+    test1452: mark as flaky
+    
+    makes it not run in the CI builds
+    
+    Closes #2941
+
+commit 3b6802cb97a0d4c2f7b8171ba069ada4662e5354
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Thu May 17 09:42:44 2018 +0200
+
+    bump: start working on the pending 7.61.0
+
+commit 3c42fb8d46e1e0833854a1000b63d6eea71315c2
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Tue Apr 24 16:16:25 2018 +0200
+
+    travis: add a build using WolfSSL
+    
+    Assisted-by: Dan Fandrich
+    
+    Closes #2528
+
+commit 39dc0bca5b5124ec5b3e9aac391ad380cf5be6b7
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Fri Mar 16 08:28:20 2018 +0100
+
+    RELEASE-NOTES: toward 7.60.0
+
+commit 634f72fed425376ac395426081011a80c93c447d
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Thu Mar 15 08:21:26 2018 +0100
+
+    test1208: marked flaky
+    
+    It fails somewhere between every 3rd to 10th travis-CI run
+
+commit bb5017704ad6f43c2450945ae9d7d15227eef0a9
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Thu Sep 7 12:42:30 2017 +0200
+
+    travis: add build with iconv enabled
+    
+    ... to verify it builds and works fine.
+    
+    Ref: https://curl.haxx.se/mail/lib-2017-09/0031.html
+    
+    Closes #1872
+
+commit 270494e1a09dd2dc6504150220c492406be62e79
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Mon Nov 27 19:55:25 2017 +0100
+
+    travis: add boringssl build
+    
+    Uses a separate build without --enable-debug and no valgrind.
+    
+    The debug option causes far too many warnings in boringssl's headers
+    (C++ comments, trailing commas etc).  Valgrind triggers some false
+    positive errors in thread-local data used by boringssl.
+    
+    Closes #2118
+
+commit 0b664ba968437715819bfe4c7ada5679d16ebbc3
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Fri Nov 10 08:52:45 2017 +0100
+
+    wildcardmatch: fix heap buffer overflow in setcharset
+    
+    The code would previous read beyond the end of the pattern string if the
+    match pattern ends with an open bracket when the default pattern
+    matching function is used.
+    
+    Detected by OSS-Fuzz:
+    https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=4161
+    
+    CVE-2017-8817
+    
+    Bug: https://curl.haxx.se/docs/adv_2017-ae72.html
+
+commit f0364f7e3191c930008de0736ae00ef28d42bd91
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Oct 25 23:53:30 2017 +0200
+
+    curl_fnmatch: return error on illegal wildcard pattern
+    
+    ... instead of doing an infinite loop!
+    
+    Added test 1162 to verify.
+    
+    Reported-by: Max Dymond
+    Fixes #2015
+    Closes #2017
+
+commit 6746f8aa97b517aa201fcf7f40d9efcbec65ef35
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Mon Oct 23 13:33:04 2017 +0200
+
+    RELEASE-NOTES: clean slate towards 7.57.0
+
+commit dd97fd3bb3e365681de3b3254169bea3608688ea
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Sun Oct 8 17:27:57 2017 +0200
+
+    RELEASE-NOTES: synced with a4c1c75da30af1
+
+commit 0af5ac27c3d818f0a962de1e1029c0af7d497080
+Author: Dan Fandrich <dan@coneharvesters.com>
+Date:   Fri Oct 6 23:04:40 2017 +0200
+
+    tests: added flaky keyword to tests 587 and 644
+    
+    These are around 5% flaky in my Linux x86 autobuilds.
+
+commit 47e4a6fa1ce32f2237f646e8d40ec39dcee6f38c
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Sun Aug 13 00:00:39 2017 +0200
+
+    test2032: mark as flaky (again)
+
+commit be2a4c1784927ddba35e3908a1f912f5be4d6d8b
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Fri Aug 11 23:53:47 2017 +0200
+
+    test2033: this went flaky again
+    
+    Suspicion: when we enabled the threaded resolver by default.
+
+commit 01811b67405c54960c2175075691f59a0d066068
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Fri Jun 16 17:30:39 2017 +0200
+
+    http-proxy: fix chunked-encoded CONNECT responses
+    
+    Regression since 5113ad0424.
+    
+    ... and remove 'flaky' from test 1061 again
+    
+    Closes #1579
+
+commit f94fcdba6eae7c2f14cb207fc6008bdc79a86d62
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Thu Jun 15 23:47:42 2017 +0200
+
+    tests: stabilize test 2032 and 2033
+    
+    Both these tests run the same underlying test code: libntlmconnect.c -
+    this test code made some assumptions about socket ordering when it used
+    curl_easy_fdset() and when we changed timing or got accidental changes
+    in libcurl the tests would fail.
+    
+    The tests verify that the different transfers keep using the same
+    connections, which I now instead made sure by adding the number of bytes
+    each transfer gets and then verifies that they always get the same
+    amount as when these tests worked.
+    
+    Closes #1576
+
+commit 6c218252dfd0c1b755b19d3a542950379f7f75eb
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Fri Jun 16 09:16:28 2017 +0200
+
+    test1061: mark as flaky
+    
+    Fails intermittently on travis builds since a few days. Likely due to
+    5113ad0424.
+
+commit e100afb4d8697e9c5f0e4b34b3b6f2b45337e442
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Tue Jun 6 14:40:36 2017 +0200
+
+    travis: let some builds *not* use --enable-debug
+    
+    typecheck-gcc and other things require optimized builds
+    
+    Closes #1544
+
+commit 7bbb78c7418518fda812831b8899cda0fafa2ef8
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Sat Jun 3 23:27:13 2017 +0200
+
+    travis: add coverage, distcheck and cmake builds
+    
+    Closes #1534
+
+commit f6e0f4556eabc8c2629d16ae599a153392d30d05
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Fri Jun 2 00:59:35 2017 +0200
+
+    build: provide easy code coverage measuring
+    
+    Closes #1528
+
+commit d88d054e947cb948e5da1a3ebe9cd21858f154d0
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Apr 19 23:16:10 2017 +0200
+
+    bump: start working on next release
+
+commit 396f34250deeca97be9d065750a5b4c70b4abd2c
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Mar 29 09:50:23 2017 +0200
+
+    RELEASE-NOTES: synced with 556c51a2df
+
+commit 5091e18e89b721318d982170a84d0d468f58d4bb
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Mar 22 10:55:10 2017 +0100
+
+    travis: run tests-nonflaky instead of tests-full
+
+commit 207f588987855e4ab8bc836c7f45d5323f1f69e5
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Mar 22 10:48:20 2017 +0100
+
+    make: introduce 'test-nonflaky' target
+    
+    Running this in the root build dir will invoke the test suite to only
+    run tests not marked as 'flaky'.
+
+commit 96d6942b2d55ea617e0c9d204f97e4aabca9ad27
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Mar 22 08:55:02 2017 +0100
+
+    test2033: flaky
+
+commit dacfecb7b676b6ace6d707d65fefdadd28301bd4
+Author: Dan Fandrich <dan@coneharvesters.com>
+Date:   Mon Dec 5 21:38:15 2016 +0100
+
+    test2032: Mark test as flaky
+
+commit ef02da315604acd72c39264e732661a2aea2c583
+Author: Dan Fandrich <dan@coneharvesters.com>
+Date:   Sat May 23 16:27:49 2015 +0200
+
+    test1510: another flaky test
+
+commit 382cee0a7714f091ee9b6143a92abe7e7a3d7cd8
+Author: Dan Fandrich <dan@coneharvesters.com>
+Date:   Sun Oct 26 13:48:46 2014 +0100
+
+    Added the "flaky" keyword to a number of tests
+    
+    Each shows evidence of flakiness on at least one platform on
+    the autobuilds. Users can use this keyword to skip these tests
+    if desired.
+
+commit a22c478ed7bb8f3ec7c6afba9aab74b7028eb551
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Oct 2 15:30:15 2013 +0200
+
+    KNOWN_BUGS: #84: CURLINFO_SSL_VERIFYRESULT
+    
+    CURLINFO_SSL_VERIFYRESULT is only implemented for the OpenSSL and NSS
+    backends and not for any other!

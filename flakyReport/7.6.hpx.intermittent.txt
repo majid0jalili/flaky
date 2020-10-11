@@ -1,0 +1,17 @@
+commit de5b6c7e088617665af43c97c59100ab475137b1
+Author: Bryce Adelstein-Lelbach <blelbach@cct.lsu.edu>
+Date:   Tue Jul 3 21:51:28 2012 +0000
+
+    Move spellcheck into it's own directory
+    
+    
+    
+    git-svn-id: https://svn.cct.lsu.edu/repos/projects/parallex/trunk/hpx@8305 5079c8e4-9419-0410-93bb-9e5ee278c886
+
+commit 0a47f9f66faad322509d8257588118fe4e562cc4
+Author: Andrew Kemp <akemp@cct.lsu.edu>
+Date:   Tue Jul 3 00:05:04 2012 +0000
+
+    Adding the spell checking program.
+    
+    git-svn-id: https://svn.cct.lsu.edu/repos/projects/parallex/trunk/hpx@8287 5079c8e4-9419-0410-93bb-9e5ee278c886

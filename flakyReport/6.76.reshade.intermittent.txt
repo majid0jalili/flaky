@@ -1,0 +1,11 @@
+commit 611372d458d16a368939c82538a50bbb5d19e710
+Author: crosire <crosiredev@gmail.com>
+Date:   Tue Oct 27 16:53:14 2015 +0100
+
+    Rearranged dependencies and source code directory structure
+
+commit 879d39681cd5665552abffbe2c86a58d18118a63
+Author: crosire <crosiredev@gmail.com>
+Date:   Mon Nov 3 17:13:05 2014 +0100
+
+    Converted submodules to subtrees

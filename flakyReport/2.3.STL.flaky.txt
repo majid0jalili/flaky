@@ -1,0 +1,10 @@
+commit a099e85ce37b2bf1a680506ee44489e24c5cb05b
+Author: Adam Bucior <35536269+AdamBucior@users.noreply.github.com>
+Date:   Wed Apr 8 21:23:05 2020 +0200
+
+    P0674R1 make_shared() For Arrays (#309)
+    
+    Fixes #33.
+    
+    Co-authored-by: Gianni Weinand <t-giwein@microsoft.com>
+    Co-authored-by: Stephan T. Lavavej <stl@microsoft.com>

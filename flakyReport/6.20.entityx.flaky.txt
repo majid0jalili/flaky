@@ -1,0 +1,13 @@
+commit 498df9f08e86d73ceb09746d1f63b4e0bd6c656f
+Author: Alec Thomas <alec@swapoff.org>
+Date:   Tue Mar 4 13:04:49 2014 +1100
+
+    Switch to Catch testing framework.
+
+commit 800ca63c81d3501b84eb625a273847b2ad6e1f19
+Author: Alec Thomas <alec@swapoff.org>
+Date:   Mon Apr 1 23:41:51 2013 -0400
+
+    Include gtest (as per gtest recommendations).
+    
+    See https://groups.google.com/forum/?fromgroups=#!topic/googletestframework/Zo7_HOv1MJ0

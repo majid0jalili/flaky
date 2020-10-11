@@ -1,0 +1,23 @@
+commit 3c3c05204fdd0d8e237b27fa92cec264f8993c51
+Author: samuele3hu <qingkui.hu@cocos2d-x.org>
+Date:   Mon Aug 11 12:54:30 2014 +0800
+
+    Split files in lua-bindings/script into different module and adjust related project
+
+commit 650a88a8b180699a30059063a1dfeb442388dde9
+Author: James Chen <jianhua.chen@cocos2d-x.org>
+Date:   Mon Mar 10 14:04:58 2014 +0800
+
+    Re-add lua bindings codes.
+
+commit c2acfea63391d90b4db4133c197124272d8a8d2b
+Author: James Chen <jianhua.chen@cocos2d-x.org>
+Date:   Wed Feb 26 21:17:17 2014 +0800
+
+    issue #4116: Delete non-scripting files.
+
+commit a4d028e905c31a8884bed780b158683370e4b500
+Author: samuelhu <qingkui.hu@cocos2d-x.org>
+Date:   Tue Oct 29 11:40:41 2013 +0800
+
+    issue #3409:Add XMLHttpRequest lua binding and corresponding test sample

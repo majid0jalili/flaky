@@ -1,0 +1,32 @@
+commit ad214c03560d721d9b8bbff03835fc7fa4884943
+Author: Gordon MacPherson <gordon@gordonite.tech>
+Date:   Fri Aug 30 02:21:40 2019 +0100
+
+    Assimp FBX Import support
+    
+    Issues fixed:
+    - Updated assimp to latest and backported fixes into godot.
+    - Fixed file scale being ignored from FBX file.
+    - Fixed bone removal
+    - Implemented proper armature binding
+    - Fixed recursion not always going through the entire path
+    - Implemented assimp global scaling system
+    - Fixed assimp global scale process to support unit conversion
+    - Implemented proper fbx scaling
+    - Fixed asserts caused by missing faces in some models which could crash
+    - Fixed valid bone removal
+    - Fixed root node being overwriten by assimp which caused data loss
+    - Fixed armature construction so that it works with multiple roots
+    - Implemented basic support for FBX standard materials
+    - Refactoring to improve code quality and improve function reuse.
+    - Simplified node creation from assimp scene into subsections: create_light, create_mesh, create_bone.
+    - Creating meshes is now done after hierarchy is created so that the skeleton is always available.
+    - Added support to assimp to support file scale in all formats which call SetFileScale.
+    - Many other fixes provided into assimp.
+    
+    Known issues:
+    - FBX pivots from Maya do not currently work. (workaround: for now use blender import and export to remove pivot tracks)
+    - Hierarchy creates an extra node for each mesh - this was done intentionally but we intended to do a pass to remove these as they're a required node.
+    - When an animated mesh has not executed any animation the rest pose is wrong.
+    
+    Co-authored-by: K. S. Ernest (iFire) Lee <ernest.lee@chibifire.com>

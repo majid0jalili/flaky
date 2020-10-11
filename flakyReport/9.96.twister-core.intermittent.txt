@@ -1,0 +1,31 @@
+commit 0b41bdd249f7460e1d6f95716be6d3447be3ac8e
+Author: Shift <shift.rus@gmail.com>
+Date:   Wed Jan 8 20:43:48 2014 +0400
+
+    Remove Bitcoin docs
+
+commit b8b2302d5925877196f66e336b2f2c89ef78305a
+Author: Miguel Freitas <miguel@mf.site>
+Date:   Sun Jul 28 20:41:06 2013 -0300
+
+    added libtorrent (svn rev 8690)
+
+commit 7772821a696645bd2f88c82652119c0986ab0453
+Author: fanquake <fanquake@gmail.com>
+Date:   Wed Jul 10 16:01:57 2013 +0800
+
+    Remove readme-qt.rst and update documentation for readme-qt.md
+
+commit 00a887450364bd5b096978291b6a6e0f47181d75
+Author: super3 <me@super3.org>
+Date:   Sun Jun 16 06:29:23 2013 -0400
+
+    Markdown Cleanup - Part 2
+    
+    Now everything is in markdown...
+
+commit 6c33ec404530419ef78d075be92cf0408323bf84
+Author: Chris Moore <dooglus@gmail.com>
+Date:   Mon Oct 24 16:21:28 2011 -0700
+
+    Warn about the qt-at-spi bug in Ubuntu 11.10.

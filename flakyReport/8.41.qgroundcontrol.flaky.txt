@@ -1,0 +1,63 @@
+commit 75195f8e716079d41a7dcda7852bbccd0557b1c6
+Author: DonLakeFlyer <don@thegagnes.com>
+Date:   Tue Jul 7 10:30:43 2020 -0700
+
+    Retry sync for all boards
+
+commit d03135b1b7bbf88045d7ba7729357a03e6568cd1
+Author: Daniel Agar <daniel@agar.ca>
+Date:   Sat May 21 23:09:49 2016 -0400
+
+    reenable tests on windows (#3370)
+    
+    * enable TCPLinkTest
+    * enable FileManagerTest
+
+commit dd0cbb5bc51b4f821f8e03e582f8f39e6c1dca5c
+Author: Don Gagne <don@thegagnes.com>
+Date:   Sun Nov 29 12:12:14 2015 -0800
+
+    Delay autoconnect till second pass
+    
+    This guarantees we are past bootloader on all OS. Window tends to not
+    detect bootloader, connect to it and then get confused.
+
+commit 193e7f8b16b5d5a40320ab1a480cafdeb8a1794a
+Author: Don Gagne <don@thegagnes.com>
+Date:   Sat Oct 31 10:44:34 2015 -0700
+
+    Centralize unit test declaration location
+    
+    Also turn on MavlinkLogTest
+
+commit 028c7009829bb839d08ab712e5cf9ebd90adb26e
+Author: Don Gagne <don@thegagnes.com>
+Date:   Fri Nov 28 14:24:03 2014 -0800
+
+    New Unit Testing framework
+    
+    Allows for UI unit tests to be written:
+    - Ability to respond to expected message boxes
+    - Ability to fail test if unexpected message boxes occurs
+
+commit e30ff43ddc5dab64a1741c6d7b364cb4f20cdc0c
+Author: Don Gagne <don@thegagnes.com>
+Date:   Fri Oct 31 11:36:18 2014 -0700
+
+    Remove TCPLink unit test
+    
+    This test is too flaky to run in TeamCity reliably.
+
+commit 33b2346ed43fb3fc0682371b681fedef8bd90e3a
+Author: LM <lm@student.ethz.ch>
+Date:   Tue Apr 24 16:44:35 2012 +0200
+
+    Updated to most recent python generator for MAVLink
+
+commit 84fcead86944add3d0f1a4112da774cbe4d2a21b
+Author: oberion <dabuuschti@hotmail.de>
+Date:   Tue Nov 22 15:31:34 2011 +0100
+
+    Working mavlink generator under windows
+    
+    Added a mavgen.exe file which converts the xml into the header files. Only mavlink v1.0 is tested so far. the fixed headers in files/mavlink_generator/C should always be updated to the newest versions.

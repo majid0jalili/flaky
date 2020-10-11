@@ -1,0 +1,92 @@
+commit b924c2d52d1734c63661486e9887d2e7021c099c
+Author: Jamie Newbon <jamie@symless.com>
+Date:   Tue Jun 30 16:53:04 2020 +0100
+
+    #6661 Removed stored version of gtest and gmock
+
+commit f7b87e0670b5494a116411e4b42134afc4c6ec81
+Author: Andrew Nelless <andrew@symless.com>
+Date:   Thu Feb 9 22:30:42 2017 +0000
+
+    Remove version number from gtest/gmock paths
+
+commit d37920364d849464503d7edfbdea9367539e5901
+Author: Andrew Nelless <andrew@symless.com>
+Date:   Tue Dec 13 19:54:17 2016 +0000
+
+    Unzip GTest and GMock and remove zip handling code
+
+commit 1f50d1b36c53f21b59cf5e629bbb58af52645e4e
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Tue Mar 18 11:01:47 2014 +0000
+
+    removed ext files so they can be zipped.
+
+commit 50a4f310c9744d9ca24e4b5c3ddb84c96743a4a6
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Wed Feb 26 16:52:54 2014 +0000
+
+    moved tools to ext - makes more sense, as it contains external libs, not tools
+
+commit 34a87502f665bc6cc191c6bd22f5e04e95c3f120
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Sun Jul 15 21:16:03 2012 +0000
+
+    * fixed version detection (we were using \d not \d+)
+    * added missing copyright to nsh files
+    * removed binary (and updated nsh files to handle missing files)
+
+commit 2374675c43ee5b8bbe42cc61a0579d659f9081da
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Sat Jun 30 19:50:32 2012 +0000
+
+    added restart hint message box for synrgyhk.dll install failure
+    added project sponsor toolbar to installer (with option to skip)
+
+commit 488241850c2023a6593491ceed360a8092601f86
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Sun Jun 10 16:50:54 2012 +0000
+
+    moving 1.4 to trunk
+
+commit e65886857d2d43a29871094b247dec1d39f4d405
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Wed Oct 5 00:10:22 2011 +0000
+
+    removed trunk; please commit to (and build patches against) release branches instead.
+
+commit ae7a1f70e74794bd5bb0b80c6a57886593e03dc7
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Sat May 7 02:01:16 2011 +0000
+
+    new version of gtest and first commit of gmock
+
+commit 0aa76fd05fd021211af69f496f05cf7826e569c8
+Author: Nick Bolton <nick@synergy-project.org>
+Date:   Mon Apr 25 16:20:49 2011 +0000
+
+    created tools dir and moved gtest and build into there, and trimmed some CMakeLists.txt files
+
+commit 2da69a87595c868379dc61c613a5aa9d7e4f5938
+Author: BostonVaulter <BostonVaulter@gmail.com>
+Date:   Sat Jan 29 07:22:55 2011 +0000
+
+    Committing a clean version of google test
+
+commit 98c68897d8eac3f7aad5b6a7c3f142b4b28e948a
+Author: Sorin Sbarnea <sorin-dot-sbarnea@gmail.com>
+Date:   Wed Oct 21 16:25:08 2009 +0000
+
+    Changes from mercurial repository.
+
+commit 958fa80d1d7ec091a1dba77aa80f00b6226cd1dc
+Author: Sorin Sbarnea <sorin-dot-sbarnea@gmail.com>
+Date:   Fri Feb 27 11:54:59 2009 +0000
+
+    Initial commit of the synergy trunk sources from sf.net
+
+commit b876f8b98e583098fd362fa2a98c7647f8d50142
+Author: crs <cschoeneman@gmail.com>
+Date:   Tue May 4 20:53:41 2004 +0000
+
+    Updated documentation files.

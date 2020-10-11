@@ -1,0 +1,47 @@
+commit 72f59a4c026affb45eef46f7a9b2e3c4bf5a8732
+Author: Álvaro Alonso <aalonsog@dit.upm.es>
+Date:   Tue Nov 20 10:14:07 2012 +0100
+
+    Deleted node_modules from git
+
+commit c49df9b81df09977ac08ad7859f7d626badddc90
+Author: Álvaro Alonso <aalonsog@dit.upm.es>
+Date:   Thu Nov 15 12:04:07 2012 +0100
+
+    Deleted test folder from master
+
+commit fe61fd950e773dd4aa9ddb98518f2896f5e2d6cf
+Author: Álvaro Alonso <aalonsog@dit.upm.es>
+Date:   Tue Jul 24 11:18:18 2012 +0200
+
+    New file structure in test
+
+commit e4fc0f3570366ccb6daa2adb9a27e096174fcbfd
+Author: Álvaro Alonso <aalonsog@dit.upm.es>
+Date:   Tue Jul 24 11:17:18 2012 +0200
+
+    New erizoTest supporting streaming and videoconference
+
+commit c996a485d4bf8a8a1f1ec11b302adcc2c81f1b19
+Author: Álvaro Alonso <aalonsog@dit.upm.es>
+Date:   Wed Jul 11 12:43:22 2012 +0200
+
+    Added socket.io module
+
+commit eeb8f6382d02922e5b0ff6592ff9415ee5d18f95
+Author: aalonsog <aalonsog@dit.upm.es>
+Date:   Tue Jul 10 11:02:44 2012 +0200
+
+    New structure
+
+commit 9f51986b2389abb58cf15cee7b9e6459b981ecc9
+Author: aalonsog <aalonsog@dit.upm.es>
+Date:   Tue Jul 10 11:01:48 2012 +0200
+
+    New structure
+
+commit 1982426f4e2cd39e028f6ef9310a8ddbc3717398
+Author: Pedro Rodriguez <prodriguez@dit.upm.es>
+Date:   Mon Jul 9 16:31:15 2012 +0200
+
+    initial commit

@@ -1,0 +1,5 @@
+commit e60969f67fe20a2b8845d41a0deff63beba4fd6d
+Author: fukasawa <masahiro_fukasawa@dwango.co.jp>
+Date:   Thu Mar 24 00:50:22 2016 +0900
+
+    moved to libpng and libtiff to thirdparty

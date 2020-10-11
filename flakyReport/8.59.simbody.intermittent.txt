@@ -1,0 +1,185 @@
+commit eb8813ad60f611edd4669beb7502b3a6383cf788
+Author: Michael Sherman <msherman@stanford.edu>
+Date:   Mon Dec 1 16:39:42 2014 -0800
+
+    Adding skeletal changelog and contributing .md files; not done yet.
+    Deleted the old ChangeLog.txt which was way out of date.
+
+commit 6bc7165970eace60633affef0a6470433c877ad1
+Author: Michael Sherman <msherman@stanford.edu>
+Date:   Sun Sep 28 19:23:59 2014 -0700
+
+    Beginning to reorganize examples:
+    - Combined SimTKmath and SimTKsimbody examples
+    - Moved all examples to top level examples subdirectory rather than under individual libraries
+    - Fixed CMake files as needed
+
+commit b4cc99dbb206f04e6dabc69ebc1b58bdffc721e3
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Tue Jul 30 05:07:32 2013 +0000
+
+    Enhancements to mobilizer locking that permit impulse calculations:
+    - added lockAt() methods that work like lock() but take a specified value rather than extracting the value from the current state
+    - added a new torque-limited motor example variant to show how that can be done using intermittent prescribed motion, with lockAt() used to perform impulse analysis (impacts)
+
+commit e8eca6f097bd3c917063697018c48cfcd8c2faa4
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Mon Jun 10 22:22:32 2013 +0000
+
+    - Updated the controller-based implementation of the torque limited motor. Now properly resets the integrated torque when requested and matches the constraint-based example closely to permit direct comparison of the two methods.
+    - Minor tweaks to the constraint-based example.
+
+commit 53e83def6f99782323dc7b8312987b59f0f7ee98
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Mon Jun 10 19:31:11 2013 +0000
+
+    Reorganized and cleaned up intermittent constraint-based torque limited motor example.
+    - Now switches to torque-limited mode whenever user changes desired speed.
+    - Simplified control flow in integrator loop.
+    - Separated max step size, display update, and user polling rates.
+    - Added missing comments and made style improvements.
+
+commit 909e55fc7dfd33e673b59bff1255f378a7df219c
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Thu Jun 6 05:24:06 2013 +0000
+
+    Added alternate torque limited, speed controlled motor using PI controller rather than a constraint.
+
+commit f02c45695c2927dc76bf381f9578b84d93feaf98
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Tue Jun 26 17:17:09 2012 +0000
+
+    Deleted ".doc" form of Simbody Theory Manual; now converted to ".docx".
+
+commit 9d064f9f4040d07d0dbb0c1dfb4d312515aa2163
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Wed Jun 20 23:30:15 2012 +0000
+
+    Update 3.0 changelog.
+
+commit 640579aea867046fa9a8d7b12dcfaa298e73d677
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Wed Dec 22 02:30:57 2010 +0000
+
+    Move Simbody files down a level.
+
+commit c01b0fdba3d031f7a3075efc83b8d4b752214661
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Thu Aug 12 23:02:41 2010 +0000
+
+    Restore names to non version numbered.
+
+commit 644018c6ef7c1ee3a47e1e9bd6ddf9a8d3195d7c
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Mon Aug 9 23:12:02 2010 +0000
+
+    Added version number to doc file name to make it easier to handle in simtk.org's Documents tab lists.
+
+commit 52fa8d47622b29c2dfef4230e0bfac89a76015f1
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Tue Jun 22 23:57:19 2010 +0000
+
+commit 69b3c2f9622d08dfe37f4e7c903ab4a09235e7e4
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Thu Jan 7 05:38:39 2010 +0000
+
+    removed 2.0 branch (now 2.0.1)
+
+commit f21ead31dd6a9013bdc53b6ccc031c1f395c8c42
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Thu Jan 7 05:38:06 2010 +0000
+
+    created 2.0.1 branch by renaming 2.0
+
+commit b4827832a10b90442be24798291e9cba119563dc
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Mon Dec 28 01:12:53 2009 +0000
+
+    Updated for 2.0 release (copied from trunk).
+
+commit f5336d7aa52d5cf504cd4c05abb38f09d3973355
+Author: Christopher Bruns <christopher.bruns@gmail.com>
+Date:   Mon Dec 14 20:30:18 2009 +0000
+
+    Create release 2.0 branch based on 1.6 branch
+
+commit 143ea46c4a5afebd1aa5ce3e6b9b62206336eff0
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Thu Jun 18 22:49:31 2009 +0000
+
+    This branch is for the SimTK Core 1.6 release for which the primary goal is to support OpenSim 2.0.
+
+commit 2d6033c4d1150878fb74a5b3e0c30bf71e3cf6ea
+Author: Ayman Habib <ahabib@stanford.edu>
+Date:   Tue Jan 13 00:07:29 2009 +0000
+
+    Branch of simbody 1.5 branch to include more fixes for OpenSim 1.8
+
+commit 14126d615e1cb345fdbbdce7d66c71e05ef229c5
+Author: Peter Eastman <peter.eastman@gmail.com>
+Date:   Fri Aug 15 17:04:02 2008 +0000
+
+    Created branch for patches to 1.5
+
+commit 62c2629a7b1af07a20b0853e8087af065a2ce6a4
+Author: Christopher Bruns <christopher.bruns@gmail.com>
+Date:   Wed Mar 5 23:00:14 2008 +0000
+
+    Create branch for version 1.1
+
+commit 8c3a1c2c5ba48f029286d5c3a98f8ade7e88a802
+Author: Ajay Seth <aseth@stanford.edu>
+Date:   Tue Jul 3 18:13:59 2007 +0000
+
+    Branch created for OpenSim 1.0 release.
+
+commit 9d7cac6242bb82aeb70b018dc07c01011e2f94de
+Author: Randy Radmer <radmer@gmail.com>
+Date:   Wed Jun 20 19:50:10 2007 +0000
+
+    Setup test branch for improper torsion dev code
+
+commit b0286698555fef636155ed9f2c9ac1b4d9f34a7b
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Tue Dec 21 21:41:21 2010 +0000
+
+    Changing all "Visualization" names to "Visualizer". First the directory ...
+
+commit 6806dc887e2cbf46f897f6a36db28f3ec390ef97
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Mon Dec 13 02:48:39 2010 +0000
+
+    - separate System "up" direction from ground height; allow any axis or negative axis direction as "up" in Visualizer
+    - replace obsolete Transform::T() method with p() (for position)
+    - switch to unambiguous notation for transforms for camera, ground plane, etc.
+    (note: Visualizer is still not mining the System for default up direction and background)
+
+commit 823b3c01b8490f4fd6948afc6f2221fde1f63acc
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Mon Nov 29 06:42:45 2010 +0000
+
+    Real time visualizer is now functional. Default is 30fps pass-through mode.
+
+commit 45f1d65b8baed7e08a89102e0b2ce2552cc505f4
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Wed Jul 22 05:19:48 2009 +0000
+
+    I completed a pass through the theory manual.
+
+commit 122f2b8826b3d6ae9a6ebc6c07480a8afb6b1375
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Tue Dec 30 18:00:20 2008 +0000
+
+    Changed fine names from SimbodyUserGuide to SimbodyTheoryManual to reflect content.
+
+commit 42c7307655632d9eda6f0073e74049a38879f9c5
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Sat Jul 8 00:46:21 2006 +0000
+
+    Installed Hunt & Crossley doc as an appendix in the Simbody manual.
+
+commit 60ee0bfab8d9ef28551bdd7f0ad1769a6037fc01
+Author: Michael Sherman <sherm1@gmail.com>
+Date:   Wed Jun 28 21:32:33 2006 +0000
+
+    Better technical description of Simbody equations and coordinate projection scheme.

@@ -1,0 +1,31 @@
+commit b9a4d71c23bab77fa0264573c2a35dc89662971f
+Author: Prcuvu <prcuvu@gmail.com>
+Date:   Tue Oct 1 14:37:46 2019 +0800
+
+    Add FFmpeg 2.1.3 Windows x64 libraries and auto copy binaries on configuration
+
+commit fdac0835b8950f593f9c60255718b0b723b3e05f
+Author: Jason Felds <jafelds@gmail.com>
+Date:   Sun Oct 4 11:41:25 2015 -0400
+
+    Use ffmpeg 2.1.3 on Windows.
+    
+    Once again, thanks to Zeranoe's builds.
+
+commit f61cd1cfbb837c7253fd0e70d8cd62465161a0ed
+Author: Ben "root" Anderson <roothorick@gmail.com>
+Date:   Thu Oct 24 11:36:49 2013 -0500
+
+    First wave of pack-in libs
+
+commit 80057f53cd867f58eccf861ca6c534c8f1b4225b
+Author: Devin J. Pohly <djpohly@gmail.com>
+Date:   Mon Jun 10 15:38:43 2013 -0400
+
+    smsvn -> ssc-hg glue: rearrange directory structure
+
+commit 476c27474d95d93590958060bb5285c01d08cacf
+Author: Glenn Maynard <gmaynard@users.sourceforge.net>
+Date:   Wed Jan 26 22:07:59 2005 +0000
+
+    working on timeout filesystem layer (not done)

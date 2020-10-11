@@ -1,0 +1,68 @@
+commit 88ca9138f1f1596bd2e4066aef51754f9d42dd5d
+Author: drmeister <chris.schaf@verizon.net>
+Date:   Tue Oct 20 15:11:22 2015 -0400
+
+    removed boost_build_v2 directory replaced by tools/boost_build
+
+commit 5081757e91fc254ebc833605f35cf3eb9ef167b8
+Author: Chris Schafmeister <chris.schaf@verizon.net>
+Date:   Sun Jul 6 15:37:19 2014 -0400
+
+    added boost build v2 to clasp build system
+
+commit 936dc9ace6e9eaa423f50eaee84aa41a379c709d
+Author: Chris Schafmeister <chris.schaf@verizon.net>
+Date:   Fri Jul 4 11:20:31 2014 -0400
+
+    removed externals
+
+commit 6df423c4a73917d97e8a880dcc43fb666981ef05
+Author: Chris Schafmeister <chris.schaf@verizon.net>
+Date:   Fri Jul 4 10:57:34 2014 -0400
+
+    removed a boehm and boostbuild2 dependent libraries from this tree
+
+commit f1a964df660d7b5b5553a1b4dfc45913688083a8
+Author: Chris Schafmeister <chris.schaf@verizon.net>
+Date:   Thu Jul 3 01:30:30 2014 -0400
+
+    moved boostbuild2 and boehm into src
+
+commit 0395e7ed3933344866726936032cd07a76c537f7
+Author: Chris Schafmeister <chris.schaf@verizon.net>
+Date:   Thu Jun 19 18:51:13 2014 -0400
+
+    Moved old boehm directory into externals
+
+commit 2b8c61b6df666b1551fe022e4805e8d29084fd31
+Author: Chris Schafmeister <chris.schaf@verizon.net>
+Date:   Wed Jun 18 18:26:45 2014 -0400
+
+    Added boehm directly
+
+commit 302b9b58324145dd4e196d429e556f1f2c26d22a
+Author: Christian Schafmeister <meister@temple.edu>
+Date:   Wed Jun 18 17:24:39 2014 -0400
+
+    Squashed 'externals/ecl/' content from commit d9e3be4
+    
+    git-subtree-dir: externals/ecl
+    git-subtree-split: d9e3be460591c60a40736cacc1ebd77b3674b4b8
+
+commit b0314d3502225939ba69a4a01c5f5d2f28316ecf
+Author: Christian Schafmeister <meister@temple.edu>
+Date:   Wed Jun 18 16:58:03 2014 -0400
+
+    Squashed 'externals/boostbuild2/' content from commit 8058472
+    
+    git-subtree-dir: externals/boostbuild2
+    git-subtree-split: 80584727afe758aaa04a86d198a9daccd16e4687
+
+commit 927cc4acae2dd652d8f459cb253931c36d200657
+Author: Christian Schafmeister <meister@temple.edu>
+Date:   Wed Jun 18 16:53:06 2014 -0400
+
+    Squashed 'externals/boost/' content from commit f72119a
+    
+    git-subtree-dir: externals/boost
+    git-subtree-split: f72119ab640b564c4b983bd457457046b52af9ee

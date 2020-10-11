@@ -1,0 +1,19 @@
+commit 78ab619b350ac5553579bbd1cdd7cdc483894f6e
+Author: Vitaly Slobodin <vitaliy.slobodin@gmail.com>
+Date:   Wed Oct 7 01:38:17 2015 +0300
+
+    Removed bundled QtWebkit copy
+
+commit 0aa74a27d5cf3a3c3090fb4420af2ef954cf687c
+Author: Vitaly Slobodin <vitaliy.slobodin@gmail.com>
+Date:   Wed Oct 7 00:59:55 2015 +0300
+
+    Removed bundled QtBase copy
+
+commit cf12fc4a236e071382e9e6b9c391b606eac17ea1
+Author: Vitaliy Slobodin <vitaliy.slobodin@gmail.com>
+Date:   Thu Jul 24 10:25:46 2014 -0700
+
+    Long live PhantomJS 2!
+    
+    https://github.com/ariya/phantomjs/issues/10448

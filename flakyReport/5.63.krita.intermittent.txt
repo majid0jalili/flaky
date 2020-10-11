@@ -1,0 +1,45 @@
+commit b46898a0c821e0a6b19fb298aea675bd730968bc
+Author: Boudewijn Rempt <boud@valdyas.org>
+Date:   Mon Jan 25 18:19:54 2016 +0100
+
+    Move kritaimage to libs
+    
+    This shows up a bunch of other problems with alien includes. Some
+    tests have been disabled (marked "kisdoc") because they needed
+    kritaui.
+
+commit 07f5adde58829bfd155d5857f57ffaa6c8b2b9a4
+Author: David Faure <faure@kde.org>
+Date:   Wed May 10 10:41:32 2006 +0000
+
+    krita/core -> krita/image
+    and perl -pi -e 's,\${KDE4_INCLUDE_DIR} \${QT_INCLUDES},\${KDE4_INCLUDES},' **/*.txt
+    
+    svn path=/trunk/koffice/; revision=539314
+
+commit 129d9ef695551ffb74939f0d0aaccacf494ae771
+Author: Boudewijn Rempt <boud@valdyas.org>
+Date:   Thu Oct 6 22:05:01 2005 +0000
+
+    * Clean all #includes in headers
+    * Remove all but two of the subdirs in krita/core in preparation for more
+      file shuffling -- I will take Jesper Pedersen's lessons to heart and
+      separate interface and implementation for core and plugins
+    * Remove all necessity for plugins to include headers from the tiles
+      directory (tested for performance consequences, the current scheme
+      is even slightly faster)
+    * clean up convolution by removing the old matrix class
+    * clean up Makefile.am's by only linking with the necessary libs, not
+      always with kofficecore and kopainter.
+    
+    svn path=/trunk/koffice/; revision=467944
+
+commit f2886d6d514cf9bdd17618f1599409bf23521324
+Author: Casper Boemann <cbr@boemann.dk>
+Date:   Fri Jan 28 12:16:22 2005 +0000
+
+    fixed undo and reimplemented redo
+    EXCEPT screenupdate not fixed yet so users need to
+    manually redisplay view
+    
+    svn path=/trunk/koffice/; revision=383207

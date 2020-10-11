@@ -1,0 +1,23 @@
+commit fae2474cb2fff88c6b1775720705b56e6ac170fe
+Author: Ben Jackson <puremourning@gmail.com>
+Date:   Tue Mar 13 01:54:50 2018 +0000
+
+    Ability to turn off retries when writing new tests
+
+commit 56662ec92bb34e85f08456dfb07ce454a1e0c642
+Author: micbou <contact@micbou.com>
+Date:   Tue Jan 23 18:10:03 2018 +0100
+
+    Drop Vagrant setup
+
+commit 5068d181b70f8603c5fa6edf4254723bba2779ca
+Author: Ben Jackson <puremourning@gmail.com>
+Date:   Tue Mar 29 00:54:27 2016 +0100
+
+    Add instructions on debugging python layer
+
+commit dbae8e8631728af7c6ec11ad36a1856ad88c7e2c
+Author: Strahinja Val Markovic <val@markovic.io>
+Date:   Tue May 13 14:06:02 2014 -0700
+
+    Moving cpp code to ycmd folder

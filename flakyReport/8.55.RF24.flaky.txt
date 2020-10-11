@@ -1,0 +1,70 @@
+commit 4cf0fb0c5adc305d40547f42366161e809122b94
+Author: TMRh20 <tmrh20@gmail.com>
+Date:   Tue Mar 18 07:07:03 2014 -0600
+
+    High Speed Data Transfers/Optimization
+    
+    Changes:
+    
+    - Enable PTX at radio begin, in standby-I mode
+    - Enable PTX at radio stopListening(); in standy-I mode
+    
+    - Radio startListening
+    - removed delay. What is there to wait for when the radio will just be
+    listening anyway?
+    
+    - Radio powerUp
+    - radio will need to be powered up after configuration
+    - radio will not power down unless instructed to
+    - need to issue radio.txStandBy(); when finished transmitting to engage
+    standby-I mode
+    
+    - Added txStandBy() to drop to standBy-I mode if not switching to RX
+    mode
+    
+    - Radio Write: Sped up
+    - radio previously did not use standby mode effectively, after TX
+    sending of each packet, the radio is
+    powered down introducing a 1.5ms delay in addition to the 130us delay
+    from standby.
+    - No observe-tx code, a simple NOP cmd is sent to get the status info
+    - No millis() timeout, hanging condition should only occur because of
+    faulty code
+    - Simplified whatHappened() code
+    - Flush TX FIFO if MAX_RT met as lib does not support re-transmit
+    instead of flush every time.
+    - Remove ack size monitoring
+    - No powerdown needed,
+    
+    - Added writeClear() function for writes that need the interrupt flags
+    cleared (ack payloads, etc). Same as write() otherwise
+    
+    - Radio startWrite: Sped up
+    - Enable PTX mode is now done in stopListening() code. Enter TX mode by
+    writing CE high.
+    This brings the data transfer capabilities up to a reasonable level
+    - No need to power up, already in Standby-I mode
+    - No need for delayMicroseconds() in write functon.
+    - No need for delay after writing CE high
+    - Does not enter Standby-I mode be default. It is up to the MCU to call
+    the new txStandBy() function to enter standby-I mode from PTX if not
+    switching back to PRX
+    
+    - Radio available:
+    - Now checks the FIFO buffer instead of the interrupt flag (no missed
+    data)
+    - Moved clearing of interrupt flags to Read()
+    
+    - Radio read:
+    - No longer returns any value - use available to check for more data
+    
+    - Radio isAckPayloadAvailable() now checks the FIFO directly
+    
+    - Radio getDynamicPayloadSize() - Per the datasheet, added fix to flush
+    corrupted packets
+
+commit c5823c2605e80ffd73e31d6a5b6a76249be13228
+Author: maniacbug <maniacbug@ymail.com>
+Date:   Wed Jun 29 21:38:17 2011 -0700
+
+    Made timeouts more explicit in write()

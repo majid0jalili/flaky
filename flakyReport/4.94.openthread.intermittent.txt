@@ -1,0 +1,21 @@
+commit 9905c3fee138a7aa756ca544252186cad80decd3
+Author: Jonathan Hui <jonhui@nestlabs.com>
+Date:   Tue Jun 20 02:37:49 2017 -0700
+
+    Update nlbuild-autotools to v1.4. (#1905)
+    
+    1.4 (2017-06-15)
+    
+        * Remove package archives and prebuilt in-package binaries.
+        * Ensure that GNU tool build process is completely self-sufficient
+          and has no dependencies on installed host binaries.
+        * Add support for generating versioned core and prebuilt package binary
+          distirubtions.
+        * Ensure that 'bootstrap' can work with either prebuilt in-package
+          binaries or with installed host binaries.
+
+commit 4f9945c533c3a4ffbfb8ce8b2d7eedade33a533a
+Author: Jonathan Hui <jonhui@nestlabs.com>
+Date:   Tue May 10 20:48:47 2016 -0700
+
+    Initial commit

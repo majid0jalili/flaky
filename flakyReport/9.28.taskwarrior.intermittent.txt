@@ -1,0 +1,11 @@
+commit 039c3119ffc2ca00ba8151ce4e07f2730010904f
+Author: Paul Beckingham <paul@beckingham.net>
+Date:   Mon Jun 2 10:54:54 2008 -0400
+
+    - problem on Solaris 10 fixed, docs updated
+
+commit 8a0b8e03286813b8655b768b4e2d09d4451a1b60
+Author: Paul Beckingham <paul@beckingham.net>
+Date:   Fri May 30 21:22:22 2008 -0400
+
+    - Updated all documents.

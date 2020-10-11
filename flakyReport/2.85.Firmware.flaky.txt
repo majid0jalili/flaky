@@ -1,0 +1,31 @@
+commit faccb0d948b4756336d378a273fd734b69e4bf09
+Author: Daniel Agar <daniel@agar.ca>
+Date:   Mon Sep 28 16:41:28 2020 -0400
+
+    Jenkins: HIL script minor improvements
+    
+     - periodically send newline while checking for output or command completion (back to nsh prompt)
+     - mtd test
+     - fix adc test (now board_adc)
+
+commit 7354e3989335dfb38cc41216182f48fe84d165c7
+Author: Daniel Agar <daniel@agar.ca>
+Date:   Sun Jul 26 19:36:44 2020 -0400
+
+    Jenkins HIL remove mRo Control Zero
+    
+    - there are issues with the particular harware on the rack (an early prototype)
+
+commit 27cf3c7c75c35aaab6967567dfa139afe262bcf5
+Author: Daniel Agar <daniel@agar.ca>
+Date:   Tue Jun 23 23:04:35 2020 -0400
+
+    Jenkins hardware add mRo Ctrl Zero F7
+
+commit d927d80509d58eca9d0d2d90d742df5134c8b75a
+Author: Daniel Agar <daniel@agar.ca>
+Date:   Sat Jun 20 18:07:55 2020 -0400
+
+    Jenkins hardware ignore nxp_fmuk66-v3 status failures
+    
+     - this particular hardware on the test rack has a flaky console

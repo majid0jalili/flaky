@@ -1,0 +1,11 @@
+commit 50eb71d994ca4f6e42310e51153f615c5d65549d
+Author: Takayama Fumihiko <tekezo@pqrs.org>
+Date:   Tue May 17 23:31:03 2016 +0900
+
+    remove Pods from Tests
+
+commit 759852aa54ec230f82177a6c2d799ab4b64f6e03
+Author: Takayama Fumihiko <tekezo@pqrs.org>
+Date:   Thu Mar 24 22:08:27 2016 +0900
+
+    add Pods/ into repo

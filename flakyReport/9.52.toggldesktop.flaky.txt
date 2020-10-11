@@ -1,0 +1,75 @@
+commit e2a9b316a605e572e70279fb75425f47d66dbd7e
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Sat Aug 30 04:36:13 2014 +0300
+
+    remove gmock, its unused
+
+commit 72f045bdb0883f5c4fe307e5428c635805503fd7
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Sat Aug 30 04:14:17 2014 +0300
+
+    Update googletest sources
+
+commit b460f075644b206f70a200a083c1d1eeb08e26b5
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Mon Jul 28 13:49:21 2014 +0300
+
+    Use plcrashreporter without version number (osx)
+
+commit 34b004c8c8dd698a9f545b8965eb0a5a4d5b93bb
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Tue Mar 18 17:52:08 2014 +0200
+
+    update plcrashreporter
+
+commit e269a1d15ad17dee98aba7967e5948ad72340afd
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Thu Nov 21 12:12:39 2013 +0100
+
+    Remove google breakpad for now
+
+commit db4a035406af496e3d2aeefb1f9956e9f58149d3
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Wed Nov 13 16:06:40 2013 +0100
+
+    Check in fresh google breakpad checkout, again
+
+commit 9aab28d292340d2f99a57f0d95a0a1725b279f0d
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Wed Nov 13 15:58:36 2013 +0100
+
+    Remove breakpad sources atm
+
+commit 33b4407e19166fbff05bad39118a3404e711966e
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Wed Nov 13 13:07:51 2013 +0100
+
+    add google-breakpad-read-only to third_party sources
+
+commit 79f6336f024e82968fbb9477c3d4e9eb1ef9dd75
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Wed Oct 9 12:52:22 2013 +0300
+
+    Revert "add https://github.com/boredzo/iso-8601-date-formatter.git to third_party"
+    
+    This reverts commit cbf4e00571447038041d2322b3ea75aacdcc3ad8.
+    
+    It has no ARC support, remove.
+
+commit cbf4e00571447038041d2322b3ea75aacdcc3ad8
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Wed Oct 9 12:34:26 2013 +0300
+
+    add https://github.com/boredzo/iso-8601-date-formatter.git to third_party
+
+commit d6db0b11cec022b0649a9c5ac5a469d021930bea
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Sun Sep 29 23:04:31 2013 +0300
+
+    add gmock to thid_party
+
+commit 9aebde30fb39eab08fe85effebd94fb652d455b3
+Author: Tanel Lebedev <tanel.lebedev@gmail.com>
+Date:   Tue Sep 10 18:47:47 2013 +0300
+
+    googletest read only checkout

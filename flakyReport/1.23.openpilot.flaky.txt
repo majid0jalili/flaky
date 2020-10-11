@@ -1,0 +1,17 @@
+commit 87f9e14e9c566da064bad2f17b1302763bb574d3
+Author: Adeeb <8762862+quillford@users.noreply.github.com>
+Date:   Mon Jan 20 12:56:14 2020 -0800
+
+    speed up car model test (#977)
+
+commit c0bfbc12c7b5c90df06baf89ffc551e4cbf3a6b8
+Author: George Hotz <geohot@gmail.com>
+Date:   Fri Jan 17 11:16:14 2020 -0800
+
+    selfdrive/test
+
+commit da6863f427d5d5204f297bf5aeb5cb04d6364802
+Author: George Hotz <geohot@gmail.com>
+Date:   Fri Jan 17 10:37:11 2020 -0800
+
+    bring over phonelibs minus frida-gum and qsml

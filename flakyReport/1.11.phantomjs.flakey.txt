@@ -1,0 +1,25 @@
+commit a4cfc7140a1f3c1d5054ffa4cd69224776a392c9
+Author: Zack Weinberg <zackw@panix.com>
+Date:   Tue Oct 20 22:16:48 2015 -0400
+
+    Delete the now-unused src/breakpad directory.
+
+commit 78ab619b350ac5553579bbd1cdd7cdc483894f6e
+Author: Vitaly Slobodin <vitaliy.slobodin@gmail.com>
+Date:   Wed Oct 7 01:38:17 2015 +0300
+
+    Removed bundled QtWebkit copy
+
+commit cf12fc4a236e071382e9e6b9c391b606eac17ea1
+Author: Vitaliy Slobodin <vitaliy.slobodin@gmail.com>
+Date:   Thu Jul 24 10:25:46 2014 -0700
+
+    Long live PhantomJS 2!
+    
+    https://github.com/ariya/phantomjs/issues/10448
+
+commit 0fa15e51c9d159d0c8d9962bf7c184060c01cab4
+Author: Jon Leighton <j@jonathanleighton.com>
+Date:   Tue Jun 5 21:43:38 2012 +0100
+
+    Import Google Breakpad

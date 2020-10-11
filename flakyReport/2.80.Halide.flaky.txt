@@ -1,0 +1,181 @@
+commit 00aa24622b969ef090afaba845ea88f86df45284
+Author: Alex Reinking <alex.reinking@gmail.com>
+Date:   Tue Sep 8 13:36:00 2020 -0700
+
+    Select changes from refactor/autoschedulers for packaging.
+    
+    Also includes a handful of style normalizations that will be distracting while reviewing that PR...
+
+commit 9e780afccdb792681fed99062a726ce96309d05e
+Author: Steven Johnson <srj@google.com>
+Date:   Wed Jun 10 17:22:27 2020 -0700
+
+    Enable verbosity in apps builds
+    
+    Hoping this will help us track down flaky Windows failures.
+
+commit 7cb397bef54dae2e981cdcae5f2bbd67a945f22a
+Author: Alex Reinking <alex.reinking@gmail.com>
+Date:   Tue Jun 2 16:03:14 2020 -0700
+
+    Make all tests compile with threads to silence clang's errors and GCC's warnings.
+
+commit 8562e927ba066f183dca912a7d4db9a7390e34f3
+Author: Steven Johnson <srj@google.com>
+Date:   Thu Mar 19 10:13:49 2020 -0700
+
+    Convert perf failures in tutorial and auto_schedule to warnings
+    
+    Addresses Issue #4589, Issue #4749
+
+commit 04b97a5b5446817286535529a66d60e9ce560c5a
+Author: Steven Johnson <srj@google.com>
+Date:   Wed Mar 18 11:55:35 2020 -0700
+
+    Add GitHub Action to do build-and-test
+
+commit cc046f0495f6fe50feb139c2628edd64ca2e406b
+Author: Steven Johnson <srj@google.com>
+Date:   Thu Feb 6 14:48:51 2020 -0800
+
+    Skip flaky test for auto_schedule/histogram (https://github.com/halide/Halide/issues/4589)
+
+commit 4057b851635ed55e3882513159f8a8271debadba
+Author: Steven Johnson <srj@google.com>
+Date:   Wed Nov 13 15:11:59 2019 -0800
+
+    Update WebAssembly support
+    
+    - require V8 7.5 as baseline (rather than 7.3)
+    - add half-float glue code
+    - blacklist correctness_atomics from wasm testing
+    - Update readme
+
+commit eb7d5d60d95ed919c27aacf800cc630450c4e294
+Author: Steven Johnson <srj@google.com>
+Date:   Mon Sep 23 14:40:41 2019 -0700
+
+    Upgrade Travis builds to LLVM9+8 (Issue #4262)
+    
+    Previouslt it was LLVM8+7, except we deliberately skipped LLVM7 because it was known to have flaky prebuilts.  https://github.com/halide/Halide/issues/4262
+
+commit b292ab5daef4a8fff1a52ca5b7b16e31381c4424
+Author: Steven Johnson <srj@google.com>
+Date:   Fri Mar 15 11:33:32 2019 -0700
+
+    Experimental support for WebAssembly
+
+commit 9b7f63f2535dced1d2b7e53feb7bbd3f6ab66f04
+Author: Steven Johnson <srj@google.com>
+Date:   Fri Mar 22 11:58:49 2019 -0700
+
+    Avoid possible UB in Simplify_Div
+    
+    If the div operation produces unbounded results, we can leave the bounds set with values of INT64_MAX or INT64_MIN; code downstream (eg Simplify_Add) can use these values in way that will cause overflow, and even though the resulting values are (apparently) never used, this triggers failures in UBSAN/ASAN builds. Neuter to zero for cleanliness.
+
+commit 3643ab7e61cd0ef2109a52c9349d1edc35fa66e6
+Author: Steven Johnson <srj@google.com>
+Date:   Thu Mar 21 12:32:54 2019 -0700
+
+    Upgrade of Travis, v2
+    
+    - Upgrade Trusty -> Xenial (14.04 -> 16.04)
+    - Add LLVM8 to test matrix
+    - Use the Travis+Xenial default of gcc5.4 instead of gcc4.8 (which we no longer build or test with anywhere else)
+
+commit 70d3ea618737e141f8d251ed66b18d6cb898ac06
+Author: Rodrigo Benenson <rodrigo.benenson@gmail.com>
+Date:   Mon Jun 22 21:41:45 2015 +0200
+
+    Removed old swig python bindings. Renamed boost_python_bindings as python_bindings.
+    
+    
+    Former-commit-id: f750ef77005d4a7a18740671d67fb01301078b4f
+
+commit 0b9e05c7bb360de9133e9ada87575e09a2fdc109
+Author: Rodrigo Benenson <rodrigo.benenson@gmail.com>
+Date:   Wed Jun 17 14:42:36 2015 +0200
+
+    Ported lesson_11_cross_compilation.py, but does not passes yet.
+    
+    
+    Former-commit-id: 74dbd33aec2b761d7175340bc5d4fb7a296784a3
+
+commit 611743978859af7487c00eaeba0b89a76c399f63
+Author: Andrew Adams <andrew.b.adams@gmail.com>
+Date:   Mon Nov 3 17:13:10 2014 -0800
+
+    WIP change to improve life for non-native-width vectors.
+    
+    
+    Former-commit-id: 3b909d52f586a2389e3152a8eb7b91007a40c1b1
+
+commit 59f72c74763e7a67854de15a6754c18fb8a6ccf2
+Author: Andrew Adams <andrew.b.adams@gmail.com>
+Date:   Thu Aug 21 14:13:35 2014 -0700
+
+    Add a tutorial on cross-compilation.
+    
+    
+    Former-commit-id: 0211b47fb50cb620271644122f28d13864c184ac
+
+commit 46d5e28a31d5ec6083a7be2d22010c4f5af2bfff
+Author: Andrew Adams <andrew.b.adams@gmail.com>
+Date:   Wed Aug 14 10:35:59 2013 -0700
+
+    Split tests into correctness and performance
+    
+    This lets you parallelize the correctness tests for faster testing.
+    
+    
+    Former-commit-id: 021200f19fd64fce766b220c005f30785a7b7788
+
+commit e950a43d1130fa083f710da289a133ee68b6cd26
+Author: Jonathan Ragan-Kelley <jrk@csail.mit.edu>
+Date:   Thu May 23 22:55:07 2013 -0400
+
+    Promote C++ compiler to root
+    
+    This commit promotes the C++ compiler rewrite, which had been living
+    under the `cpp/` subdirectory, to the top level of the repository,
+    replacing everything from the original OCaml version.
+    
+    
+    Former-commit-id: b8f7e92661ca65cce18cdee40ad5ee6b493f7b13
+
+commit 265a5b12196227d39deaf501a1c1734ce7dd0b0f
+Author: Jonathan Ragan-Kelley <jrk@csail.mit.edu>
+Date:   Mon May 6 13:47:08 2013 -0400
+
+    Refactor JITCompiledModule support for platform specialization
+    
+    Add lazy CUDA symbol initialization hooks
+    
+    Former-commit-id: 227dc9759881f4aa027feb46f51c83928617b4bf
+
+commit c70d497bd25a59fa6694f34ddda6176f4d8d733e
+Author: Andrew Adams <abadams@calculon.(none)>
+Date:   Wed Dec 19 13:39:03 2012 -0500
+
+    Rebuilt cpp Makefile and directory structure
+    
+    
+    Former-commit-id: b0f2740d6d17b62727aa2c428b38adc0c2b0a666
+
+commit bfed8d26220a830f191f524963afe22496e09c3d
+Author: Andrew Adams <abadams@calculon.(none)>
+Date:   Mon Dec 17 12:56:02 2012 -0500
+
+    Added initial versions of tests
+    
+    
+    Former-commit-id: 4a8f66a44269710a94a942405fa9872cb2c95a22
+
+commit d0f9c798cc28c0befae90cf1237d6c9c95d6e631
+Author: Andrew Adams <abadams@calculon.(none)>
+Date:   Fri Sep 14 11:32:04 2012 -0400
+
+    simd_op_test compiles things with correct mattrs when not using avx
+    
+    
+    Former-commit-id: 067dd372ce6a3586b97d6592f2f8e2f8f80e9f3b

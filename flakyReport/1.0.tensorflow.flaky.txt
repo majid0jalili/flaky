@@ -1,0 +1,5050 @@
+commit aa2d75059f160b53592e99e054119a06b424aecf
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Oct 1 11:03:50 2020 -0700
+
+    Fix nightly release TF to build with CC_OPT as -mavx and no CUDA / ROCM.
+    
+    PiperOrigin-RevId: 334852871
+    Change-Id: Ib647157b2051790733a18ab3c646f7b520b1cb19
+
+commit 3cbb50768909c585d33e99ba10172d1c44c04d6f
+Author: Sanjoy Das <sanjoy@google.com>
+Date:   Tue Sep 15 11:02:26 2020 -0700
+
+    Delete SYCL support
+    
+    See discussion here:
+    https://github.com/tensorflow/tensorflow/issues/41809#issuecomment-688021592
+    
+    Fixes #41809.
+    
+    PiperOrigin-RevId: 331808169
+    Change-Id: Ib0861cf250c92c20f0e8a22adce89a4dc4d3548a
+
+commit 84ff8673dca1a9b764069e189415bf76b34623d9
+Author: Allen Lavoie <allenl@google.com>
+Date:   Tue Sep 15 10:23:53 2020 -0700
+
+    Fix a memory leak when creating UninitializedVariables (as SavedModel loading code does)
+    
+    This is the same shared_name kernel caching issue we fixed for regular tf.Variable.
+    
+    Adds a test using the C++ memory checker; the Python checker complains about a weakref being allocated each time, so I'm just using the C++ checker for now.
+    
+    Does not test on GPUs, since that appears to still leak memory (could be an infra issue).
+    
+    PiperOrigin-RevId: 331798116
+    Change-Id: I59f7912621b7d20b6fcf19f87d3f27e60d56fec3
+
+commit f810fc966ac8240f3bfdefaf1842737ed613638a
+Author: Jay Shi <xiaojies@google.com>
+Date:   Tue Sep 15 09:05:41 2020 -0700
+
+    Fix a memory leak when creating UninitializedVariables (as SavedModel loading code does)
+    
+    This is the same shared_name kernel caching issue we fixed for regular tf.Variable.
+    
+    Adds a test using the C++ memory checker; the Python checker complains about a weakref being allocated each time, so I'm just using the C++ checker for now.
+    
+    PiperOrigin-RevId: 331780966
+    Change-Id: I694d328beb5cb61cdc292c880c63b0bfa33ad68a
+
+commit 40fb595cc20858841a77364c37c78aaa5833a631
+Author: Allen Lavoie <allenl@google.com>
+Date:   Mon Sep 14 17:51:12 2020 -0700
+
+    Fix a memory leak when creating UninitializedVariables (as SavedModel loading code does)
+    
+    This is the same shared_name kernel caching issue we fixed for regular tf.Variable.
+    
+    Adds a test using the C++ memory checker; the Python checker complains about a weakref being allocated each time, so I'm just using the C++ checker for now.
+    
+    PiperOrigin-RevId: 331668444
+    Change-Id: I9a72a7ca289d8c025b00f4260d1a5fda98cc0bd6
+
+commit 8680b12729083b01149c88fb8917a25e0e22e182
+Author: Chenkai Kuang <chenkai@google.com>
+Date:   Wed Sep 2 17:01:55 2020 -0700
+
+    Fix msan and tsan test failures. They failed because there is no barrier between enable_collective_ops and the first collective ops invocation (we are using pool runner which reuses runtime state). enable_collective_ops and collective params resolution, which can be triggered by other participants in their first collective invocation, have shared states (collective_executor_mgr more specifically) that are not guarded by mutex.
+    
+    PiperOrigin-RevId: 329817350
+    Change-Id: Icb1a7944da56e26f9b86ae0deb705467b328aad4
+
+commit b07ee90c0272f485350b3b716ae53301dc40d002
+Author: Zhenyu Tan <tanzheny@google.com>
+Date:   Wed Sep 2 09:30:40 2020 -0700
+
+    Internal Cleanup
+    
+    PiperOrigin-RevId: 329727989
+    Change-Id: Ifce65782c39d1596d80db10ac5edc8bb89726d63
+
+commit 6245e7dc98ba2c9a3b40c8fa5a5283804f3d8c1d
+Author: Chenkai Kuang <chenkai@google.com>
+Date:   Tue Sep 1 21:14:17 2020 -0700
+
+    Rewrite some collective ops tests in cross_device_ops_test using MultiProcessPoolRunner.
+    
+    New tests total execution time: ~30s.
+    
+    Tests cases that are covered:
+     - all_reduce dense
+     - all_reduce sparse (fixed length and variable length)
+     - batch all_reduce dense
+     - batch all_reduce sparse
+    
+    Move all other existing tests to tensorflow/python/distribute/v1_graph_test/cross_device_ops_test.py. Note that not all those tests are graph tests, there will be a followup CL to move eager tests back.
+    
+    PiperOrigin-RevId: 329640472
+    Change-Id: I29a29d60fde5966fcc4efada230b18120ef38a2e
+
+commit 5574be6465472d32f5849e353b150d45eb7738f2
+Author: Allen Lavoie <allenl@google.com>
+Date:   Mon Aug 31 09:45:16 2020 -0700
+
+    Add BUILD rules for python/training and python/training/experimental
+    
+    There were a couple issues around op generation and strict dep checking.
+     - A genrule that needs to be in python/ was adding a file to python/training, apparently not OK across module boundaries. I've just stopped it from adding the file to python/training and added a Python redirect file for now.
+     - I've added rules for files that were globbed together previously, but strict dep checking means we still need to include these as srcs in the rule that previously had them. They're listed explicitly rather than globbed.
+    
+    Otherwise just moving rules, adding aliases, and running build_cleaner.
+    
+    PiperOrigin-RevId: 329320168
+    Change-Id: I8494424e332c3bc21263ce1f8caaf5bd4d32d26c
+
+commit d4e7fede79868114c3d74f7eba8d8209f508dbc0
+Author: Yuefeng Zhou <yuefengz@google.com>
+Date:   Fri Aug 21 15:41:16 2020 -0700
+
+    Fix test flakiness.
+    
+    PiperOrigin-RevId: 327886890
+    Change-Id: Iff29a6a3aa093cf660a0194441418be651342c72
+
+commit 2dae6b39672362ad86da11754feba0b02af9d2bc
+Author: Mehdi Amini <aminim@google.com>
+Date:   Thu Aug 20 21:39:46 2020 -0700
+
+    Disable flaky test: //third_party/tensorflow/python/keras/distribute:multi_worker_tutorial_test
+    
+    PiperOrigin-RevId: 327753644
+    Change-Id: I36498f8677e890cb3146f7f2bf43aa0029bdaf99
+
+commit cb4191a2067d61f23267ae493ab3e5e32185b3ae
+Author: Mehdi Amini <aminim@google.com>
+Date:   Thu Aug 20 15:06:33 2020 -0700
+
+    Disable flaky test //tensorflow/python/keras/distribute:parameter_server_training_test
+    
+    PiperOrigin-RevId: 327705903
+    Change-Id: I8f4a170ad14f458a537e1169b10724d68107080c
+
+commit 90fee7bb9d14e769b13ebc90fec6ba2e1b9a850c
+Author: Pete Warden <petewarden@google.com>
+Date:   Wed Jul 29 15:40:48 2020 -0700
+
+    Speed up Arduino build presubmit and use mirror for dependency downloads
+    The changes to slim down the number of build targets reduces the overall time for the Arduino build script by 4 minutes on my workstation. The switch to using our own mirror to cache download dependencies should also help with build speed and reliability, though this is harder to measure since it depends on network conditions.
+    
+    PiperOrigin-RevId: 323883386
+    Change-Id: I42aca54177e6bb2cb21c8451f86e630fbc811c1e
+
+commit d2ba64c7292d3c7503579e5da243e4f2bd36b8f7
+Author: Advait Jain <advaitjain@google.com>
+Date:   Thu Jul 23 11:02:22 2020 -0700
+
+    Disable Arduino from the Micro Kokoro build.
+    
+    PiperOrigin-RevId: 322822173
+    Change-Id: I3d91ddc4b9a5ca9f82a16a965f502a4d182dd47f
+
+commit b4cb31ff3d2910aa5c9c7fe7825c527fb91ac000
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Wed Jul 15 09:34:09 2020 -0700
+
+    Enable previously disabled test which no longer flakes
+    
+    PiperOrigin-RevId: 321376476
+    Change-Id: I2a02ccd79e7a495004137b080dd7f15ae9032b39
+
+commit 16c746192d3a28a498e2ab2dae8df8f4555b9dd5
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Tue Jul 14 09:19:02 2020 -0700
+
+    Disable flaky ASAN test.
+    
+    Fails due to gRPC timeout
+    
+    PiperOrigin-RevId: 321171451
+    Change-Id: I9f38d3dec54dbe46c47251cc44a4e65ff7dc2f58
+
+commit ddf7b6108cc0a0eba025cf617e1feec39c76543b
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Tue Jul 14 06:19:33 2020 -0700
+
+    Disable another failing test
+    
+    PiperOrigin-RevId: 321145376
+    Change-Id: Ib575d5de487fd3747e1c5580555e907887906fd9
+
+commit 395380e82d2b49d20b8cb46eaef98fc640a2cb58
+Author: Katherine Tian <kattian@google.com>
+Date:   Tue Jul 14 04:02:58 2020 +0000
+
+    most pr edits
+
+commit 811976aa13d6375050484f463661c8cfa5ba8d78
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Mon Jul 13 11:44:23 2020 -0700
+
+    Disable failing test to have dashboard green
+    
+    PiperOrigin-RevId: 321000289
+    Change-Id: I7c4fce03a6ae620dadb2c94f9286124e968c22f9
+
+commit 6ffe7a2ecd7f275723eebc406ac6498c0632d5e9
+Author: Kibeom Kim <kkb@google.com>
+Date:   Fri Jul 10 17:32:11 2020 -0700
+
+    Disable flaky test //third_party/tensorflow/core/grappler/optimizers:remapper_test_gpu FuseConv2DWithBiasAndActivationOnGPU
+    
+    PiperOrigin-RevId: 320706567
+    Change-Id: I7cd8c82204a07f84ca0f65dfa22568944b3c8e07
+
+commit 6c292dc103a0867bc78d26be282dfcd769757520
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Thu Jul 9 19:17:03 2020 -0700
+
+    Disable test that fails due to gRPC port collisions.
+    
+    PiperOrigin-RevId: 320527546
+    Change-Id: I0eb53ed0a42685c299e319fe0bf04821eeb6417f
+
+commit 112a49004434fb77f6752221db246242477a2d8f
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Wed Jul 8 16:56:56 2020 -0700
+
+    Disable test which has flaky timeouts and breaks build
+    
+    PiperOrigin-RevId: 320294143
+    Change-Id: I21b1aee398fda5282f815fc84a8e65baa2a8541a
+
+commit 0e1ba4145096be86dfa1f32ebd6e0c11156491b1
+Author: Christian Sigg <csigg@google.com>
+Date:   Wed Jul 1 04:44:37 2020 -0700
+
+    Bump minimum supported cuDNN version to 7.3.
+    
+    Remove code to support older versions.
+    
+    PiperOrigin-RevId: 319202156
+    Change-Id: I297d7950a93b6b802d07ae0f89232f26a5f2592e
+
+commit 6e39967e512ecafa376e372935ebcead391835db
+Author: Sanjoy Das <sanjoy@google.com>
+Date:   Thu Jun 25 20:15:50 2020 -0700
+
+    Some refactoring groundwork towards an LHLO backend for XLA GPU; NFC
+    
+      1. Rename partition_assignment to launch_dimensions
+      2. Make launch_dimensions not depend on stream executor
+      3. Make XLA GPU IR emitters not depend on se::DeviceDescription
+    
+    PiperOrigin-RevId: 318400758
+    Change-Id: Ie4c7f2334b7e922e1c607f2bd6a89a693377fb96
+
+commit 5f9ae657edf18cedbf514a325727264a823b0136
+Author: Rick Chao <rchao@google.com>
+Date:   Mon Jun 22 15:28:57 2020 -0700
+
+    Fix tsan failure in multi_process_runner_test.
+    
+    PiperOrigin-RevId: 317747609
+    Change-Id: I8bf2e493431a69a0cf581012666045df2879055e
+
+commit 43442a2c7f449fb979c26e543976a087fddad96c
+Author: Katherine Tian <kattian@google.com>
+Date:   Mon Jun 22 16:43:58 2020 +0000
+
+    initial map ops set up
+
+commit c42314ef70f9e093e53cb85d0dac19535bd677ae
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Jun 16 10:29:33 2020 -0700
+
+    fix flaky test multi_process_runner_test on tensorflow msan TAP. allow more margin of errors.
+    
+    PiperOrigin-RevId: 316708284
+    Change-Id: I3ab912bd7a546bbedf5ed7825fa4b345e92880d8
+
+commit afc69d0f046ad49df69c8f89207014f87d470571
+Author: Ran Chen <crccw@google.com>
+Date:   Thu Jun 11 18:20:01 2020 -0700
+
+    Re-enable combinations_test : )
+    
+    PiperOrigin-RevId: 316017340
+    Change-Id: I8c4bc128de4897b3914cadf995bbd7a9c2bdf00d
+
+commit ed39014cf6c7e0fcd7a08ce445a52ec27949c251
+Author: Ken Franko <kfranko@google.com>
+Date:   Thu May 21 15:56:56 2020 -0700
+
+    Don't disable all TPU tests just the ones that fail.
+    
+    * Skips a test that segfaults sometimes when run on TPUs.
+    * Skips a test on TPU that fails with a different error message.
+    
+    PiperOrigin-RevId: 312757787
+    Change-Id: I662c28c55a9f3f907c7f6a8f217506bb17c3a8c7
+
+commit 4829f33e1faafcdd435aa88dc313a71716bdffe9
+Author: Yash Katariya <yashkatariya@google.com>
+Date:   Wed May 20 15:14:01 2020 -0700
+
+    Fix the formatting of TensorArray. __doc__ indents anything after the first line doc. Dedent the rest of the doc after the first line so that it is formatted properly on the site.
+    
+    PiperOrigin-RevId: 312564525
+    Change-Id: Icecb785b3914267411c3693d70b8daba3e06454d
+
+commit 714092f36095ec762a5806fbe3c0fad7ec162e8e
+Author: Yifei Feng <yifeif@google.com>
+Date:   Mon May 18 18:36:37 2020 -0700
+
+    Disable flaky tensorflow/c/eager:c_api_test
+    
+    PiperOrigin-RevId: 312195494
+    Change-Id: I7cbd78f2142ef586e6ca78da73c2cf53304ae3b6
+
+commit bb15c97379f197a6a46ec1446d8fb0b292b860ba
+Author: Scott Zhu <scottzhu@google.com>
+Date:   Tue May 12 17:16:41 2020 -0700
+
+    Restructure the Keras class hierarchy for Network, Model and Sequential.
+    
+    The intention of this change is to reduce the code complexity within Keras class, especially for Network, which currently contains logic for both subclass Model and functional Model.
+    
+    After this change, the subclass model and functional model become individual class and become self contained.
+    
+    1. Model is now the base class for subclass model. It doesn't contains network structure management, and the topology will be created within __init__ and __call__, which is for user to implement. It also contains compile/fit/eval/predict, which is the basic functionality for model training.
+    
+    2. Functional is created based on existing Network class. It extends the Model, which allows it leverage compile/fit/eval/predict. In addition, it also take input/output as init parameter and manage the network topology.
+    
+    3. Sequential model is now a subclass of Functional, since it will use Functional's method to manage it topology (layer stacking).
+    
+    Model(input, output) will create a Functional under the hood, and behave the same way as before.
+    
+    PiperOrigin-RevId: 311232972
+    Change-Id: I6dd32e089cd294d35d5a1f3684e1a1ae1a0ab320
+
+commit dd00d506b334c53fc912d2a8866af2ded2538b6c
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Wed May 6 09:32:44 2020 -0700
+
+    Disable flaky test
+    
+    PiperOrigin-RevId: 310167666
+    Change-Id: I5e97c9c51323643bcd75465e39ef7690868695e0
+
+commit 9d15d759881ed8a2490ad861b268a8cbbf4c8a83
+Author: Yuefeng Zhou <yuefengz@google.com>
+Date:   Tue May 5 16:04:04 2020 -0700
+
+    Deflake cross_device_ops test.
+    
+    PiperOrigin-RevId: 310039394
+    Change-Id: I1d0ac7506996d00283323c86de74c6dbbe01bd00
+
+commit 1fd3d693a959ccd37e42d20fdb5ee66333452767
+Author: Haoyu Zhang <haoyuzhang@google.com>
+Date:   Fri May 1 12:26:47 2020 -0700
+
+    Fix flakiness in c_api_remote_test.
+    
+    PiperOrigin-RevId: 309452719
+    Change-Id: I1ac91638464b2a3a1914cee5cadb0353b307e6df
+
+commit ac54b6e7f15131c1256324dc01ef3d1f3d69c499
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Thu Apr 30 19:42:45 2020 -0700
+
+    Disable flaky guitar test
+    
+    PiperOrigin-RevId: 309346828
+    Change-Id: I13b7651af2532e7cab78bfbefc61d69ea7b2de5b
+
+commit fa5194b3b5d7f12d29e7d33697456e9655eb4352
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Thu Apr 30 19:09:00 2020 -0700
+
+    Disable flaky test on TSAN
+    
+    PiperOrigin-RevId: 309344029
+    Change-Id: I2aab1976de7d95f05c07869be1bae6fae70fc7d1
+
+commit 614c73e266fe03499f3189a5dd9d69c56da605b2
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Thu Apr 30 11:16:37 2020 -0700
+
+    Disable flaky ASAN test
+    
+    PiperOrigin-RevId: 309263028
+    Change-Id: I7726bc763c7630c5c513fceb19e240161c376bc4
+
+commit 3fe0a527bab363a346058c817ded7a2843921254
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Thu Apr 30 11:11:28 2020 -0700
+
+    Disable flaky ASAN test
+    
+    PiperOrigin-RevId: 309262013
+    Change-Id: I10559a0ce2516f7bf0059c9e0c2ba5058e8ccc8f
+
+commit 8865f0c60aa0b5aeec76f946409ee09477874768
+Author: Andrew Audibert <aaudibert@google.com>
+Date:   Thu Apr 23 13:22:49 2020 -0700
+
+    [tf.data service] Make master the source of truth for jobs finishing.
+    
+    Previously, workers would independently determine that a job has finished when all of their current tasks finished. This creates a race with adding a new task. With this change, the master becomes the source of truth for job completion. When a worker finishes a task, it notifies the master, and the master marks a job as finished when all of its tasks are finished. Once a job is finished, no more tasks can be added to it.
+    
+    With this change, we can avoid a race condition in testAddWorkerMidJob, where the job might end before the worker joins.
+    
+    PiperOrigin-RevId: 308116355
+    Change-Id: Ia575a183ce23d9a3695241f6125b8d64f1024cb0
+
+commit 86fd9187431a0e7f6f6532beaddec420f9c433a8
+Author: Kibeom Kim <kkb@google.com>
+Date:   Tue Apr 21 18:10:38 2020 -0700
+
+    Move tfrt_enabled target duplication logic to tf_py_test
+    
+    The tfrt_enabled target duplication logic was initially added to cuda_py_test,
+    but there are tests that directly use tf_py_test, so add to tf_py_test instead.
+    
+    PiperOrigin-RevId: 307719942
+    Change-Id: I90bb1009c5cadf1a5a0a3d036a3a174d31b84eac
+
+commit b3f04ee2e6ef2e33ef1152d38d88394f0162b4f9
+Author: Andrew Audibert <aaudibert@google.com>
+Date:   Tue Apr 21 13:12:45 2020 -0700
+
+    [tf.data service] Add tests for starting/restarting workers mid-job.
+    
+    To make the tests run in a reasonable amount of time, this CL introduces a new "task_refresh_interval_ms" attribute. This attribute is intended for internal use only, and we may stop respecting it in the future, e.g. if the client switches from a polling model to a callback model for receiving task updates from the master.
+    
+    PiperOrigin-RevId: 307666532
+    Change-Id: I3159b3c741e5ba9df6c7c797344a649f5639614d
+
+commit 496be7c37547d6a59add81d3fa45bc7d02ebe607
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Mon Apr 13 14:38:38 2020 -0700
+
+    Disable flaky test
+    
+    PiperOrigin-RevId: 306311793
+    Change-Id: I467e510316979c3af905464050e4a1393692527a
+
+commit c7d0948b92330a1d771dc193a9cd15010d4f0347
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Mon Apr 13 14:26:00 2020 -0700
+
+    Disable flaky test
+    
+    PiperOrigin-RevId: 306309137
+    Change-Id: Icd4c28aa18b03492379ced02232bb1dbe4b0f833
+
+commit 78322c781f59e87d1f10aa497a4e21665bc7e7b5
+Author: Jacques Pienaar <jpienaar@google.com>
+Date:   Sat Apr 11 17:59:23 2020 -0700
+
+    Avoid creating op that could reuse address of already mapped op
+    
+    Else we end up with having the same pointer/index into op or val mapper corresponding to different instructions. This is a simple workaround as I ran into some other failures with a more comprehensive fix.
+    
+    PiperOrigin-RevId: 306071146
+    Change-Id: I30f757a8904312eda041289c6fcc16cf44c38f73
+
+commit 9a9a4bfec64cec8a12d31809404ece94a4f55771
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Fri Apr 10 18:54:17 2020 -0700
+
+    Disable flaky test on GPU
+    
+    PiperOrigin-RevId: 305984429
+    Change-Id: I73fd812385a6a7f87a9a0b8419b98c63d93994e2
+
+commit f7a63abf4c65649f86e507e4685c56675bc9e9d7
+Author: Shanqing Cai <cais@google.com>
+Date:   Fri Apr 10 11:05:59 2020 -0700
+
+    [tfdbg2] Separate keras-dependent tests from dumping_callback_test
+    
+    Also re-enables tensorflow/python/debug:dumping_callback_test as a whole
+    while disabling `testMultiThreadedDumpingWithDifferentSettings` which is
+    flaky on GPU.
+    
+    PiperOrigin-RevId: 305907532
+    Change-Id: I35080c775b9a8c23324a6a0081f6a43e6c1d6d57
+
+commit fbfb7e412c88174141549d3be78003645d91fae3
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Fri Apr 10 10:19:47 2020 -0700
+
+    Disable flaky test
+    
+    PiperOrigin-RevId: 305897991
+    Change-Id: Iee5d4f7838702547b18e84579f6e816fad6b4b2d
+
+commit aa15cad52c141688b0fc6b97002af110ff576681
+Author: Jacques Pienaar <jpienaar@google.com>
+Date:   Thu Apr 9 18:05:47 2020 -0700
+
+    Disable another flaky on Mac test
+    
+    Likely this failure is related to previous one.
+    
+    PiperOrigin-RevId: 305799628
+    Change-Id: I4c2a695a347ee86e350d318adb5a9ecd1a5d3fdc
+
+commit 97d5010a8fab6c9125516f2eb404a0c4543c955a
+Author: Scott Zhu <scottzhu@google.com>
+Date:   Wed Apr 8 10:27:04 2020 -0700
+
+    Move keras related eager memory test to keras
+    
+    PiperOrigin-RevId: 305504849
+    Change-Id: If783553d443ad4c900eebbb72970ea582cf801a5
+
+commit 896efbf1570568d02e2a171da361a529c6562379
+Author: Akshay Modi <nareshmodi@google.com>
+Date:   Tue Apr 7 16:09:50 2020 -0700
+
+    Remove use of multiprocessing in testFlush
+    
+    The test was disabled in a variety of places due to multiprocessing being
+    flaky, so this seemed like an improvement.
+    
+    PiperOrigin-RevId: 305360413
+    Change-Id: I5e383bebec23c8546d1b58cd7524e020d975591b
+
+commit 3376402afdb00ac37e024de70b59fae3ca31c6ce
+Author: Benoit Jacob <benoitjacob@google.com>
+Date:   Fri Apr 3 11:09:17 2020 -0700
+
+    Reference ruy from its new location as a separate GitHub project.
+    
+    PiperOrigin-RevId: 304653289
+    Change-Id: I2a3ce84177665a4d7f455d455c0e7d71d48a68e9
+
+commit d0a0a22b983782fa76397c667ac0be2446a19599
+Author: Benoit Jacob <benoitjacob@google.com>
+Date:   Fri Mar 27 18:58:51 2020 -0700
+
+    Move ruy's code to a ruy/ subdirectory.
+    
+    The motivation is that having source files in the repository root runs into a number of corner cases with copybara setups and with external CMake build systems, so enclosing all code in ruy/ avoids that while generally making our setup much more similar to that of other related projects (TensorFlow, IREE).
+    
+    PiperOrigin-RevId: 303448881
+    Change-Id: Id099055cba4d3c50ae60171d645614b57a8d3ee7
+
+commit ac3f66b6549d672ffd63d24712a1b51806cf37d6
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Mon Mar 23 18:21:18 2020 -0700
+
+    Adds tolerance arguments to pfor test functions.
+    
+    PiperOrigin-RevId: 302563427
+    Change-Id: I68165eb6052edfaf477ebea28bcc8f664cf8234f
+
+commit 1a71a3ac1c67b7c438d875240e3c128498071146
+Author: Tres Popp <tpopp@google.com>
+Date:   Mon Mar 16 10:24:06 2020 -0700
+
+    Add xla versions of tensorflow python tests.
+    
+    These tests are marked as manual, so they will not run automatically in testing.
+    This is in consideration of test timing and resource utilization, but these tests are expected to be passing.
+    
+    PiperOrigin-RevId: 301185842
+    Change-Id: I7967440ffa8cd149d43a702ab11c5a3f19cc98a4
+
+commit 17e51b2a8bf5ca50d0817c0ae89bee903fe5ff36
+Author: Rick Chao <rchao@google.com>
+Date:   Tue Mar 3 17:00:59 2020 -0800
+
+    Add support for multi_process_runner to stream stdout and stderr from subprocesses to parent's stdout. This simplifies the code and replaces the old way of overriding sys.stdout and sys.stderr which don't effectively collect logging.* logs.
+    
+    Allow collecting all subprocesses' stdout and stderr in a list returned by MultiProcessRunner (as an option).
+    
+    Add support for terminating all subprocesses from the parent process with kill signal.
+    
+    Add support to have subprocesses exit upon chief's exit. This cleans up some ad-hoc logic to workaround previous problems.
+    
+    Use terminate_all for max_run_time argument, which is much more reliable than subprocesses terminating themselves. All above eliminates current flakiness due to race conditions and lingering subprocesses.
+    
+    The goal of this is better and easier debugging of multi worker training such as MWMS and PS strategies.
+    
+    PiperOrigin-RevId: 298727640
+    Change-Id: Ifcfcdac970e3d7c59441bea33ab948e583649863
+
+commit dba16b1aaac7246976b53b9f16451b1b2dee9501
+Author: Scott Zhu <scottzhu@google.com>
+Date:   Wed Feb 26 11:22:08 2020 -0800
+
+    Disable flaky test.
+    
+    PiperOrigin-RevId: 297405706
+    Change-Id: Ie5818fd1facf75c6662ae7b06585a7b29a1b1ebc
+
+commit 049867522eaaf844f366d09cfe7e73d4ce6b0460
+Author: George Karpenkov <cheshire@google.com>
+Date:   Fri Feb 21 10:38:57 2020 -0800
+
+    Disable a flaky test
+    
+    PiperOrigin-RevId: 296464897
+    Change-Id: Ic15088d64e5219839b9929c7aa78119f25f986b0
+
+commit ff3251654cb8ceef2fc38a71fd2dd46b9120bc24
+Author: Zhenyu Tan <tanzheny@google.com>
+Date:   Fri Feb 14 15:25:25 2020 -0800
+
+    Internal tests cleanup.
+    
+    PiperOrigin-RevId: 295239739
+    Change-Id: Iedbaa1cfb14cd8b071f3df488a4b4dfc9f212627
+
+commit edcebf35c9003c5f0cbe7101320c403de8fa489e
+Author: Ran Chen <crccw@google.com>
+Date:   Fri Feb 7 10:57:58 2020 -0800
+
+    Enable optimizer_v2_test except for flaky and broken ones
+    
+    Let the good tests running.
+    
+    PiperOrigin-RevId: 293849209
+    Change-Id: I59091ec7fc47f09d536629b4dae830c4ca7186ea
+
+commit 846cbda3e83c4740fb7e55cead3880c9b30bd274
+Author: Mehdi Amini <aminim@google.com>
+Date:   Wed Jan 29 15:51:28 2020 -0800
+
+    Add TODO next to disabled test
+    
+    PiperOrigin-RevId: 292235488
+    Change-Id: I41e8fc0f77e49239699c14ac612efc23f9efc7e1
+
+commit 8c6713c89c7978f3e5bf95b3ba963582d62f2ac0
+Author: Anna R <annarev@google.com>
+Date:   Wed Jan 22 17:54:39 2020 -0800
+
+    Update thread utilization async in map_and_batch dataset.
+    
+    PiperOrigin-RevId: 291070968
+    Change-Id: Ibc416c6a60fdbf6c72e5beeb09a79966e1e07382
+
+commit 2ff1473ea4e4b0d848a318a0c521e21283bd1253
+Author: Andrew Audibert <aaudibert@google.com>
+Date:   Wed Jan 22 14:13:34 2020 -0800
+
+    Update thread utilization async in map_and_batch dataset.
+    
+    PiperOrigin-RevId: 291028139
+    Change-Id: Ibc80a9e482c40675c405c6c73f4937f6cf1ea39a
+
+commit d68c5ec7b7f8381c2323bb73d36a095cc238d71b
+Author: Andrew Audibert <aaudibert@google.com>
+Date:   Wed Jan 22 13:30:43 2020 -0800
+
+    Update thread utilization async in parallel map dataset.
+    
+    PiperOrigin-RevId: 291018717
+    Change-Id: Ie1441cd733bb5d41c3ea99236d01b0c2d412d10c
+
+commit b527487d19c1f07a65ca038a302d81630da71769
+Author: Andrew Audibert <aaudibert@google.com>
+Date:   Fri Jan 17 13:46:01 2020 -0800
+
+    Skip flaky thread_utilization stats test
+    
+    PiperOrigin-RevId: 290334009
+    Change-Id: Ie8a7e1b24606288dc274ef34081d3b8731da6990
+
+commit b0f057d1b4ef78f0bba7e8893debe6b4310711ee
+Author: Benoit Jacob <benoitjacob@google.com>
+Date:   Tue Jan 14 10:28:47 2020 -0800
+
+    Remove ruy's dependency on the gemmlowp profiler.
+    
+    Introduce the 'ruy profiler', a more modern descendent of it (pure C++11, correct, tested including under TSan, more useful features including formatted parametrized labels and better reporting of multi-thread profiles, treeview-manipulation API, more documentation, more accurate).
+    
+    Port ruy to using the ruy profiler (TFLite should follow). Add per-GEMM-shape profiling labels, now very easy thanks to formatted parametrized labels, previously too cumbersome to do to be submitted so we had to keep unsubmitted patches for that common profiling need.
+    
+    PiperOrigin-RevId: 289680118
+    Change-Id: I205d3c7d5fbf05deb4a53c82d48acde8e0c49286
+
+commit 543db6fc6713ed9ba19cf798a92f4bd2f4ad9ba2
+Author: Eugene Kuznetsov <eugene.kuznetsov@amd.com>
+Date:   Mon Dec 23 23:08:44 2019 -0800
+
+    Enabling tests affected by support of complex GEMM and GEMV
+
+commit 3f4768769389da1aea110b0852c3021086652389
+Author: Tim Shen <timshen@google.com>
+Date:   Thu Oct 31 16:45:34 2019 -0700
+
+    [XLA] Change cudnn-conv-algorithm-picker to gpu-conv-algorithm-picker in tests.
+    
+    PiperOrigin-RevId: 277828247
+    Change-Id: Ie48d3707ecf1d705085a33bb8b62b201863200c5
+
+commit abf3efdec0bb593240b932f423a2dc66ee950e30
+Author: Berkin Ilbeyi <berkin@google.com>
+Date:   Thu Oct 31 12:07:08 2019 -0700
+
+    [XLA:GPU] Disable flaky test.
+    
+    PiperOrigin-RevId: 277773524
+    Change-Id: If19a6a782be271bb640424fe5290478e789ce03e
+
+commit 7519f112e4d796f046b59ed706f4106199a766bd
+Author: Hye Soo Yang <hyey@google.com>
+Date:   Thu Oct 17 09:09:52 2019 -0700
+
+    Migrate TensorFlow release build scripts to opensource.
+    
+    PiperOrigin-RevId: 275271585
+    Change-Id: I09e1267fdab15af69565890c2332b766ede06d7c
+
+commit e10ec20a746d77d05ca79cc6dce60890bd7bc903
+Author: Evgenii Zheltonozhskii <zheltonozhskiy@gmail.com>
+Date:   Thu May 2 19:45:19 2019 +0300
+
+    Initial implementation of general eigenvalue decomposition
+
+commit 04e1b5b36c9a1ce4bfe0d82d99b89fe8ac810f0a
+Author: Jeremy Lau <lauj@google.com>
+Date:   Fri Sep 27 12:42:51 2019 -0700
+
+    Temporarily disable a failing test.
+    
+    PiperOrigin-RevId: 271627099
+
+commit 885eaf4216d6748a60cbdbb0c9364330c4965bfa
+Author: Haoyu Zhang <haoyuzhang@google.com>
+Date:   Thu Sep 26 17:23:11 2019 -0700
+
+    Internal change
+    
+    PiperOrigin-RevId: 271467793
+
+commit 184521d2fe45de59e870b4d426eb48e8d9e18780
+Author: Gaurav Jain <gjn@google.com>
+Date:   Wed Sep 25 00:41:25 2019 -0700
+
+    Re-enable //tensorflow/c/eager:c_api_test_gpu test target
+    
+    PiperOrigin-RevId: 271070068
+
+commit ffc25308ce2be84240ec90502b38800bc5a4dd60
+Author: Gunhan Gulsoy <gunan@google.com>
+Date:   Wed Sep 18 08:59:39 2019 -0700
+
+    [2.0] rm -rf tensorflow/contrib
+    
+    PiperOrigin-RevId: 269816906
+
+commit d76f811172b23bae73029d62057f9fb3b6abf318
+Author: Mehdi Amini <aminim@google.com>
+Date:   Sat Sep 14 22:39:08 2019 -0700
+
+    Internal Build Change
+    
+    PiperOrigin-RevId: 269142623
+
+commit 7672a5deeffa8344454a25f4f3695df90ed3c044
+Author: Akshay Modi <nareshmodi@google.com>
+Date:   Wed Sep 11 13:34:15 2019 -0700
+
+    Disable tf_record_multiprocessing_test in some places
+    
+    PiperOrigin-RevId: 268530281
+
+commit abaf7ecd910abc80f3330af5f297409943e36eff
+Author: Mehdi Amini <aminim@google.com>
+Date:   Mon Sep 9 12:37:18 2019 -0700
+
+    Exclude python/eager/memory_tests:memory_tests_gpu from continuous integration: it is flaky at the moment
+    
+    PiperOrigin-RevId: 268053311
+
+commit e017dbc41d0964c00ce8c30b2c0a6a3e4debf889
+Author: Yifei Feng <yifeif@google.com>
+Date:   Mon Aug 19 22:24:31 2019 -0700
+
+    Add windows pip integration build script.
+    
+    PiperOrigin-RevId: 264315421
+
+commit 9e3794ffb184eecc297b9be8f52d4d6a6c5d7e85
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Fri Aug 9 16:00:48 2019 -0700
+
+    A ragged to dense op for directly calculating tensors.
+    
+    Eventually should be integrated into RaggedTensor.to_tensor.
+    
+    PiperOrigin-RevId: 262651646
+
+commit 5add9adce2b2740241f88ee33c698a2acde0c927
+Author: Akshay Modi <nareshmodi@google.com>
+Date:   Mon Jul 8 14:33:06 2019 -0700
+
+    Disable flaky test on cuda_on_cpu tap as well
+    
+    PiperOrigin-RevId: 257057057
+
+commit 80ccee5ef7f49032750cbbad014d144ec5d343eb
+Author: Bixia Zheng <bixia@google.com>
+Date:   Tue Jul 2 14:11:25 2019 -0700
+
+    [XLA] Increase the shard count for random_ops_test and enable the test.
+    
+    Re-enable the test to run with asan config or for tap.
+    
+    PiperOrigin-RevId: 256236016
+
+commit 0d6c6332066bcab36f696baee488c3047533ad5f
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Tue Jul 2 11:35:47 2019 -0700
+
+    Completely disable flaky tensorflow/compiler/tests:random_ops_test_cpu
+    
+    PiperOrigin-RevId: 256206425
+
+commit 7eb39699ad942e7d198c7b7fce904a10ac0946a4
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Tue Jul 2 10:53:44 2019 -0700
+
+    Disable flaky test tensorflow/compiler/tests:random_ops_test_cpu for asan
+    
+    PiperOrigin-RevId: 256197322
+
+commit 291377fca108dd6f8fde26b29c28092759d83967
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Tue Jul 2 10:29:30 2019 -0700
+
+    Disable flaky test tensorflow/python/saved_model/load_test_xla_gpu.
+    
+    Bazel test times out so just disable it on GPU, requiring it to run on other configs.
+    
+    PiperOrigin-RevId: 256191705
+
+commit 6163599cbe573eb9d417dee608d1e7965c713add
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Mon Jul 1 14:32:55 2019 -0700
+
+    Disable flaky kernel_tests:transpose_op_test
+    
+    PiperOrigin-RevId: 256034420
+
+commit f53e0d350223dc7ef75382bf92dc7f627862e62f
+Author: Mihai Maruseac <mihaimaruseac@google.com>
+Date:   Fri Jun 28 10:44:47 2019 -0700
+
+    As c/eager:c_api_test_gpu became flaky, disable it and wait for quick fix
+    
+    PiperOrigin-RevId: 255628319
+
+commit bdadd0a4fe5016d5740b01df3112f882f356654a
+Author: Akshay Modi <nareshmodi@google.com>
+Date:   Wed Jun 26 11:57:11 2019 -0700
+
+    Stop sharding the memory tests, use different files instead.
+    
+    Keeping all tests in a single file led to timeouts.
+    
+    PiperOrigin-RevId: 255234617
+
+commit 6ef355326b65d251302921b6d7ed7e79632f4a3e
+Author: Amit Patankar <amitpatankar@google.com>
+Date:   Tue Jun 25 15:40:18 2019 -0700
+
+    Disable the linear_operator_toeplitz_test on GPUs as it is flaky.
+    
+    PiperOrigin-RevId: 255063022
+
+commit 713b18b46fa3863caa81899bf43fa23601af0ca2
+Author: Deven Desai <deven.desai.amd@gmail.com>
+Date:   Fri Jun 14 20:47:45 2019 +0000
+
+    [ROCm] Adding + Removing  no_rocm tag from Python unit tests
+    
+    This commit
+     * adds the `no_rocm` tag to python unit tests that are currently failing with the `--config=rocm` build
+     * removes the `no_rocm` tag from python unit tests that are now passing with the `--config=rocm` build
+
+commit 71f9f0cf0502656473dea3613133a137c22a45ab
+Author: Gunhan Gulsoy <gunan@google.com>
+Date:   Wed Jun 12 21:16:40 2019 -0700
+
+    Create rbe bazel build config using Goocle RBE service.
+    
+    PiperOrigin-RevId: 252958517
+
+commit 87aaed125a6833d432fa0b42ad3d835871140410
+Author: Adrian Kuegel <akuegel@google.com>
+Date:   Fri May 24 01:19:11 2019 -0700
+
+    Change the condition related to the accepted error tolerance.
+    
+    Use the condition from the paper:
+    http://www.netlib.org/lapack/lawnspdf/lawn15.pdf
+    (however apply square on both sides of the comparison)
+    
+    With this change, we can enable the tests on CPU and GPU backends.
+    
+    PiperOrigin-RevId: 249792805
+
+commit 9cc84f78b8c002d8e49b3ab261259bbf864c8d80
+Author: Shining Sun <shiningsun@google.com>
+Date:   Wed May 22 12:36:28 2019 -0700
+
+    Move estimator tests to tensorflow_estimator repo
+    
+    PiperOrigin-RevId: 249498827
+
+commit 1335070f82352ace4e69f87e24b505bb0ff1c182
+Author: Adrian Kuegel <akuegel@google.com>
+Date:   Mon May 6 00:44:13 2019 -0700
+
+    Directly sort into descending order instead of using Neg().
+    
+    Now that the TPU backend supports any comparator computation,
+    this workaround is not needed anymore.
+    
+    PiperOrigin-RevId: 246780480
+
+commit 3908ff3b2c74c0e7499252cb4796d81f990884e6
+Author: Scott Zhu <scottzhu@google.com>
+Date:   Mon Apr 29 13:12:14 2019 -0700
+
+    Internal cleanup
+    
+    PiperOrigin-RevId: 245809228
+
+commit a04ae1adffb2c50b0bd09bba6d88139d990883c3
+Author: Peter Buchlovsky <petebu@google.com>
+Date:   Thu Apr 25 08:33:30 2019 -0700
+
+    Ignore order of results when testing InputFnIterator returning a Callable.
+    
+    PiperOrigin-RevId: 245240539
+
+commit f6c6a420461795560ac4fe454036b6dace4e4c9f
+Author: Shining Sun <shiningsun@google.com>
+Date:   Tue Apr 2 18:16:03 2019 -0700
+
+    Move distribute tests out of contrib dir.
+    
+    PiperOrigin-RevId: 241643770
+
+commit 093f2278aa4a95d5baec7a2a7d618d23f36cf32b
+Author: Sanjoy Das <sanjoy@google.com>
+Date:   Tue Mar 19 13:44:36 2019 -0700
+
+    Automated rollback of commit 3e98ebd9f506f9d97942fb6ca5c22c797f37589d
+    
+    PiperOrigin-RevId: 239260223
+
+commit 3e98ebd9f506f9d97942fb6ca5c22c797f37589d
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Mar 19 10:46:20 2019 -0700
+
+    Enable XLA:GPU tests on Tensorflow unit tests.
+    
+    PiperOrigin-RevId: 239223111
+
+commit 949474a44831bc28bac8a97bdafd1f7dc6589a97
+Author: Peng Wang <wangpeng@google.com>
+Date:   Mon Mar 18 18:28:46 2019 -0700
+
+    A continuing partial implementation of RFC "Random numbers in TensorFlow 2.0" (https://github.com/tensorflow/community/blob/master/rfcs/20181217-tf2-random-numbers.md):
+    
+    In this change:
+    - CPU and GPU kernels for op 'StatefulRandomInt' and 'StatefulRandomFullInt'.
+    
+    To be done:
+    - ops for other distributions;
+    - other RNG algorithms;
+    - batch seeds;
+    - initializers ('RandomUniform', etc.);
+    
+    PiperOrigin-RevId: 239104292
+
+commit b6c921581486d27a89aeede7f15acac6b1cc9593
+Author: Peng Wang <wangpeng@google.com>
+Date:   Mon Mar 11 17:57:00 2019 -0700
+
+    Added op 'NonDeterministicInts' to non-deterministically seed a `random.Generator` when seed=None, and made sure that `random.Generator` can be created within tf.function.
+    
+    PiperOrigin-RevId: 237924503
+
+commit c98847eba25db120f9d11387262b64d6150f558e
+Author: Jeffrey Poznanovic <Jeffrey.Poznanovic@amd.com>
+Date:   Fri Mar 8 14:04:43 2019 -0600
+
+    Removed exhaustive arg lists from tf_cuda_* and cuda_py_* in tensorflow.bzl.  Replaced with *args, **kwargs
+
+commit 12606ff846566dd842444f27f7fed4f911a58580
+Author: Peng Wang <wangpeng@google.com>
+Date:   Mon Mar 4 12:06:05 2019 -0800
+
+    A continuing partial implementation of RFC "Random numbers in TensorFlow 2.0" (https://github.com/tensorflow/community/pull/38):
+    
+    In this change:
+    - XLA kernel (TF-XLA bridge) for op `StatefulStandardNormalV2` with ThreeFry algorithm.
+    
+    To be done:
+    - ops for other distributions;
+    - other RNG algorithms;
+    - batch seeds;
+    - initializers ('RandomUniform', etc.);
+    - changing `non_deterministic_seed`'implementation to be an op, and other changes to make most code in stateful_random_ops.py tf.function-compatible.
+    
+    PiperOrigin-RevId: 236699104
+
+commit fff6696b9fcedded21a5f48e5f1cdc372865fe02
+Author: Gunhan Gulsoy <gunan@google.com>
+Date:   Wed Feb 20 15:28:43 2019 -0800
+
+    Let configure script set TF test options in bazelrc
+    
+    PiperOrigin-RevId: 234881690
+
+commit ee46b37963e54713e119294f8f657926fa537d53
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Feb 19 00:21:22 2019 -0800
+
+    Fix flakiness in random_gamma_test.
+    
+    Set random seeds and increase the number of random samples.
+    
+    PiperOrigin-RevId: 234553193
+
+commit 4a1d3bad15a9fb5280e5d9cf11ae23491a5bb7e5
+Author: Priya Gupta <priyag@google.com>
+Date:   Fri Feb 15 17:44:38 2019 -0800
+
+    Disable flaky dist strat input tests with callable input.
+    
+    PiperOrigin-RevId: 234245019
+
+commit 95fd0fa9f2eed0beda9923f27d37270e0b5d9353
+Author: Shanqing Cai <cais@google.com>
+Date:   Wed Feb 13 18:42:52 2019 -0800
+
+    tfdbg: de-flake and re-enable a test in source_remote_test
+    
+    For some reason, the debug grpc server startup is sometimes
+    delayed in Python3. Adding polling of test server to fix that.
+    
+    PiperOrigin-RevId: 233873150
+
+commit 21a83324df6f33ccb9c276d4a28f83902d990899
+Author: Jeff Poznanovic <jeffrey.poznanovic@amd.com>
+Date:   Wed Feb 13 18:04:49 2019 -0700
+
+    Add no_rocm tag to self_adjoint_eig_op_test_gpu
+    
+    The kernel_tests:self_adjoint_eig_op_test_gpu unit test fails occasionally on ROCm.  Disabling / tagging as "no_rocm" (and flaky).
+
+commit 71e62242b58e03bcc566bce6f46374dec0f00dc4
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed Feb 13 12:31:46 2019 -0800
+
+    Disable flaky test.
+    
+    PiperOrigin-RevId: 233807324
+
+commit 142bd9fc372e0f33af738ce01cf38c8757176465
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed Feb 13 12:26:26 2019 -0800
+
+    Disable flaky test.
+    
+    PiperOrigin-RevId: 233806315
+
+commit 82812551bd02474c8de10ac92fd34abb71afd257
+Author: Eugene Brevdo <ebrevdo@google.com>
+Date:   Fri Jan 25 14:20:30 2019 -0800
+
+    Disable flaky test method in stage_op_test_gpu.
+    
+    PiperOrigin-RevId: 230967998
+
+commit 2d58c2502f8971bc9af65c4f8270512f7c53fd2a
+Author: Thomas O'Malley <omalleyt@google.com>
+Date:   Mon Jan 14 11:19:51 2019 -0800
+
+    Modify flaky topology_test
+    
+    PiperOrigin-RevId: 229218301
+
+commit f1102cacd4a3cb8eb9bb11af42b5e20a4f6f4162
+Author: Rohan Jain <rohanj@google.com>
+Date:   Wed Dec 19 18:23:07 2018 -0800
+
+    Moving the repeat after the sloppy parallel interleave to make sure that each epoch is fully done before moving on. This removes the flakiness of the tests as well.
+    
+    PiperOrigin-RevId: 226266737
+
+commit 306919b06b9fe34af9f1dcfe0dcfe31ef27852ef
+Author: Sourabh Bajaj <sourabhbajaj@google.com>
+Date:   Wed Dec 19 07:59:41 2018 -0800
+
+    Keras + Distribution Strategy: Use a slightly lower tolerance for correctness test for default distribution strategy as the weights have more variance whenever the training is run on GPUs.
+    
+    PiperOrigin-RevId: 226173270
+
+commit 627fd023a0899d43f1129d9852b4ece72567c8b9
+Author: Priya Gupta <priyag@google.com>
+Date:   Tue Dec 18 22:22:30 2018 -0800
+
+    Keras + Distribution Strategy: Use a slightly lower tolerance for correctness test for default distribution strategy as the weights have more variance whenever the training is run on GPUs.
+    
+    PiperOrigin-RevId: 226117010
+
+commit af92068a66f0f089be46d40ca00b4c3ce2e7c5ab
+Author: Sourabh Bajaj <sourabhbajaj@google.com>
+Date:   Tue Dec 18 21:34:17 2018 -0800
+
+    Migrate from creating two models in Keras with Distribution strategy to a single model created with the Distribution Strategy scope.
+    
+    PiperOrigin-RevId: 226113167
+
+commit 0b2eafafb0ddf3e8968728fed310d4fb8ffde10d
+Author: Priya Gupta <priyag@google.com>
+Date:   Tue Dec 18 19:41:57 2018 -0800
+
+    Disable keras correctness test for default distribution strategy.
+    
+    PiperOrigin-RevId: 226103886
+
+commit faa7db2df4b467cc97fab6184faa6de5ea88f7f0
+Author: Priya Gupta <priyag@google.com>
+Date:   Thu Dec 6 22:36:48 2018 -0800
+
+    TF MirroredStrategy: Respect control_dependencies added in replica context during a merge_call.
+    Also enable keras metrics correctness which was broken due to this issue.
+    
+    PiperOrigin-RevId: 224463968
+
+commit 9caf68cf7b47fb94ac4f574772bf5efdb5785555
+Author: Steve Nesae <snease@ambiqmicro.com>
+Date:   Tue Nov 6 12:47:02 2018 -0600
+
+    Ambiq squashed commits
+
+commit caad5b172e4c9900ea302b6680cbf0d9caba48a7
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Nov 27 17:58:30 2018 -0800
+
+    Add a warning against calling _tf_sess() in user code.
+    
+    PiperOrigin-RevId: 223090908
+
+commit 01d93ae56215226d4ab44391f6df35e6e77228b1
+Author: Jianwei Xie <xiejw@google.com>
+Date:   Sat Nov 10 09:43:40 2018 -0800
+
+    Add numerical correctness check for Keras/DS with numpy as inputs.
+    
+    PiperOrigin-RevId: 220940350
+
+commit c3b42c815ca49461bb667b667546690e0d4200d2
+Author: Michael Case <mikecase@google.com>
+Date:   Wed Oct 17 20:40:09 2018 -0700
+
+    Automated rollback of commit 20f03388ac28fdf5ad33adb87d95346209ef0052
+    
+    PiperOrigin-RevId: 217636584
+
+commit 20f03388ac28fdf5ad33adb87d95346209ef0052
+Author: Gunhan Gulsoy <gunan@google.com>
+Date:   Thu Oct 11 11:32:59 2018 -0700
+
+    Automated rollback of commit 0d054f20851f6156b1af26c35e68f6083bca8e13
+    
+    PiperOrigin-RevId: 216732038
+
+commit 0d054f20851f6156b1af26c35e68f6083bca8e13
+Author: Michael Case <mikecase@google.com>
+Date:   Thu Oct 11 09:14:14 2018 -0700
+
+    Have TensorFlow opensource code use tensorflow_estimator module if available.
+    
+    PiperOrigin-RevId: 216706771
+
+commit cee6187a7d8aec61655546b6df6f84fecf21cc0a
+Author: Todd Wang <toddwang@gmail.com>
+Date:   Sat Oct 6 14:08:08 2018 -0700
+
+    Mark tensorflow/contrib/tpu:datasets_test flaky (#22799)
+    
+    It fails 1/1000 runs in OSS builds.
+    
+    PiperOrigin-RevId: 216050192
+
+commit e93a18954689b6d522560f5273f6d3320d545b2e
+Author: Todd Wang <toddw@google.com>
+Date:   Sat Oct 6 13:49:25 2018 -0700
+
+    Mark tensorflow/contrib/tpu:datasets_test flaky
+    
+    It fails 1/1000 runs in OSS builds.
+    
+    PiperOrigin-RevId: 216050192
+
+commit 508b8cdf758a6302f7b8537b3d5af49a4e547bd3
+Author: Jeffrey Poznanovic <Jeffrey.Poznanovic@amd.com>
+Date:   Thu Oct 4 12:49:15 2018 -0700
+
+    Updated terminology changes in bazel scripts (now simplified and backward compatible)
+
+commit f2a577888be8368121fe7ce16d4b72f91f53be60
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Mon Sep 17 18:45:55 2018 -0700
+
+    Break cwise_opt_test.py into 3 files to speed up testing, since we are up against the 50 shard limit.
+    
+    PiperOrigin-RevId: 213377776
+
+commit ed7dcd42076afe778e3ead8f86708cabd4e8ce10
+Author: Tim Shen <timshen@google.com>
+Date:   Thu Sep 6 18:42:06 2018 -0700
+
+    Zero out the result buffer for strided conv backward filter for NHWC layouts.
+    cuDNN 7.1.4 and 7.2 has non-determinisic bug if the buffer is not zeroed.
+    
+    PiperOrigin-RevId: 211905127
+
+commit ca94990804cf5326c0f6f46d75c96e0f0e240366
+Author: Yuefeng Zhou <yuefengz@google.com>
+Date:   Fri Aug 24 19:14:44 2018 -0700
+
+    Add an option to RunConfig and train_and_evaluate to run distribute coordinator.
+    This is necessary to run multi-worker MirroredStrategy and CollectiveAllReduceStrategy with estimator.
+    
+    PiperOrigin-RevId: 210192378
+
+commit 1326f33515dac82fbdd7ef502d1df5e96986fc12
+Author: Yuefeng Zhou <yuefengz@google.com>
+Date:   Thu Aug 16 12:25:17 2018 -0700
+
+    Use distribution strategy to configure distribute coordinator.
+    Add session_creator and a couple properties to worker context which then are used to configure monitored sessions.
+    
+    PiperOrigin-RevId: 209026599
+
+commit 2beb3a9d8b9df294e7635cc23d195a76fd78de79
+Author: Yuefeng Zhou <yuefengz@google.com>
+Date:   Fri Jul 27 14:58:10 2018 -0700
+
+    Add distribute_coordinator: a unified and split client for distributed traning.
+    
+    PiperOrigin-RevId: 206378953
+
+commit 26e531ee70f0b7efbb8f1452a40d5e926b7f38c0
+Author: Nick Felt <nickfelt@google.com>
+Date:   Tue Jul 24 12:50:46 2018 -0700
+
+    Automated rollback of commit 568727eed199dba04e37f500265b50f96fed455e
+    
+    PiperOrigin-RevId: 205875586
+
+commit 568727eed199dba04e37f500265b50f96fed455e
+Author: Nick Felt <nickfelt@google.com>
+Date:   Tue Jul 24 09:49:47 2018 -0700
+
+    Add v2 summary support to Estimator.train() and MonitoredSession hooks
+    
+    This change makes Estimator.train() support v2 summaries (tf.contrib.summary.*) out-of-the-box, to match the support for v1 summaries.  Estimator.train() will now handle the boilerplate necessary to initialize a file writer and enable summary writing every N steps, and will ensure that its own automatically exported summaries (for loss and global_step/sec) get written to the same underlying events file.
+    
+    As part of this change, tf.train.SummarySaverHook, tf.train.CheckpointSaverHook, tf.train.StepCounterHook, and tf.train.ProfilerHook have also been adapted to write summaries using the v2 summary system (via a compatibility layer), instead of using FileWriterCache.
+    
+    A couple additional smaller changes are:
+    - the 'session' parameter to FileWriter() can now be a callable returning a tf.Session instance.
+    - the introduction of tf.contrib.summary.record_summaries_if() which takes a boolean tensor for direct control of tf.contrib.summary.should_record_summaries().
+    - EstimatorSpec.train_op, besides a tf.Operation, is now allowed to be any Tensor-equivalent object rather than just a tf.Tensor.
+    
+    PiperOrigin-RevId: 205843986
+
+commit 12f51c2873354577dcea167823d5a4c4dee5dbce
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Mon Jul 23 22:29:55 2018 -0700
+
+    Add LinearOperatorZeros.
+    
+    PiperOrigin-RevId: 205777765
+
+commit 646c179b2ca8e3366d2b0d27f5f14839aa49e658
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Mon Jul 16 14:02:31 2018 -0700
+
+    Re-enable some flaky tests that were affected by low
+    precision of fused winograd implementation of convolution backprop.
+    
+    PiperOrigin-RevId: 204803121
+
+commit 274cce5990ff279e2ce293ae9ce1c1d0445d3242
+Author: Dan Moldovan <mdan@google.com>
+Date:   Fri Jul 13 19:59:51 2018 -0700
+
+    Broad refactor (part 7): Swap in the new CFG implementation, along with the new directives support. Simplify the process by which transformers are applied and their testing.
+    
+    Changes to converters:
+     * all tests have been refactored to use the new helpers; functionally they remain the same
+     * several converters have been renamed to be more consistent with the overall naming patterns: single_return.py -> return_statements.py; list_comprehension.py -> list_comprehensions.py; if_exp.py -> conditional_expressions.py
+     * conditional expression converter has been rewritten to use local functions instead of lambdas, which are not yet supported by the static analyzers
+     * the handling of if statements in control_flow.py now uses both the liveness and reaching definitions analyses to more robustly detect output variables
+     * a new directives.py converter is introduced, that transforms user directives (see lang/directives.py) into AST annotations and removes the function calls from the code
+     * list_comprehensions.py is slightly refactored for better readability; it is still not yet enabled
+     * slices.py and lists.py now use the new directives mechanism to obtain list type information
+     * side_effects_guards_test.py has been refactored to avoid flakiness
+    
+    Changes to AG core:
+     * conversion.py now uses the helpers from converter.py and removes the redundant function
+     * converter_testing.py now offers a more unified helper that can be used to test most use cases with less boilerplate
+     * the new directives module now completely replaces the obsolete type_hints.py
+    
+    Changes to static analysis:
+     * activity.py no longer considers index mutation to modify the parent (e.g. a[0] = 1 is not considered to modify a)
+     * activity.py no longer detects the local symbol changes (the IS_MODIFIED_SINCE_ENTRY annotation), which is now handled by reaching_definitions.py
+     * activity.py marks the created field as obsolete, to be removed once the loops in control_flow are migrated to use the dataflow analyses
+     * the obsolete annos.py extension has been removes in favor of the consolidated tags in anno.py
+     * the new CFG implementation now completely replaces the old version
+     * live_values.py and type_info.py also use the symbol definitions from reaching_definitions.py
+    
+    PiperOrigin-RevId: 204563046
+
+commit 6a948cb2f1ea06270b7fd223ba4c8501b831f838
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Mon Jul 2 15:51:29 2018 -0700
+
+    Add support for "parallel for" abstraction, optimized via graph rewrite. This
+    enables applications like auto-batching, jacobians, per-example gradients.
+    
+    PiperOrigin-RevId: 203026617
+
+commit 7d9621e4626b4ec3553c16fe803c21c25dd06c30
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed Jun 27 20:05:29 2018 -0700
+
+    Update LinearOperator tests to use array_ops.placeholder_with_default.
+    
+    PiperOrigin-RevId: 202412660
+
+commit 11157efc4e94a7c70ff7532d7bb835fb5d9d19da
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Jun 26 23:58:04 2018 -0700
+
+    Fix Windows GPU Build
+    
+    PiperOrigin-RevId: 202260254
+
+commit fc36d23f9c54fde92b8102cd4d38a0e1da202ee2
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed Jun 27 20:05:29 2018 -0700
+
+    Update LinearOperator tests to use array_ops.placeholder_with_default.
+    
+    PiperOrigin-RevId: 202412660
+
+commit cbcbc29bf5d44a5c8a92e69d487283071d532738
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Jun 26 23:58:04 2018 -0700
+
+    Fix Windows GPU Build
+    
+    PiperOrigin-RevId: 202260254
+
+commit 544436bbdf279dd4be68ad71536ea0488258aa07
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Jun 26 06:00:17 2018 -0700
+
+    Automated g4 rollback of changelist 202000826
+    
+    PiperOrigin-RevId: 202115471
+
+commit aedd096b83886e0ea99611cc5488284a98fb9b01
+Author: Alexandre Passos <apassos@google.com>
+Date:   Mon Jun 25 12:39:33 2018 -0700
+
+    Uses resource variables by default for the global step.
+    
+    Relnotes: hooks will now see deterministically the value of the global
+      step before updating instead of the value after updating.
+    PiperOrigin-RevId: 202000826
+
+commit a7fcc5da93988b6cbb1f64fcee1e7862d1f788ab
+Author: Younghee Kwon <youngheek@google.com>
+Date:   Fri Jun 15 11:31:55 2018 -0700
+
+    contrib.timeseries: sets the predictions dict in EstimatorSpec for evaluation op.
+    
+    PiperOrigin-RevId: 200747192
+
+commit cb2c5be3eb7788af429c0be6945c705847383a4e
+Author: Akshay Modi <nareshmodi@google.com>
+Date:   Wed Jun 13 12:00:41 2018 -0700
+
+    Add a test that checks memory usage by running a model 100k times.
+    
+    PiperOrigin-RevId: 200430314
+
+commit 6aeab4f5402f56e4b30540db0847256362c15e32
+Author: Akshay Modi <nareshmodi@google.com>
+Date:   Mon Jun 11 10:42:15 2018 -0700
+
+    Don't call back into python during insert (which will leave the set in a broken condition if the runtime decides to let another thread run).
+    
+    Thank you for finding the bug. The watched_variables_ set should not really require a lock since all our functions hold the GIL (verified by looking at the generated SWIG). The reason that there was a concurrent access to the set is that the insert was calling back into python (which might release the GIL and let another thread run, which will also attempt to insert a variable and break the set).
+    
+    I included the lock to be safe though, since its non-trivial to verify without looking at the generated swig wrappers that the GIL is held.
+    
+    PiperOrigin-RevId: 200074843
+
+commit 8c649dd05d97c015150abcffc2641076668966e5
+Author: Akshay Modi <nareshmodi@google.com>
+Date:   Wed Jun 6 18:12:02 2018 -0700
+
+    Automated g4 rollback of changelist 199476694
+    
+    PiperOrigin-RevId: 199565455
+
+commit 30947aa455449215dc31c13e635bbd207795e18e
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed Jun 6 09:26:39 2018 -0700
+
+    Automated g4 rollback of changelist 199140117
+    
+    PiperOrigin-RevId: 199476694
+
+commit 1a9f69583876c50c98fc3ccd9ded1f81731a9492
+Author: Peter Hawkins <phawkins@google.com>
+Date:   Mon Jun 4 09:00:06 2018 -0700
+
+    Disable flaky test tensorflow/contrib/distribute/python:minimize_loss_test_gpu from continuous builds.
+    
+    PiperOrigin-RevId: 199140117
+
+commit 75a7b910904cc8993713cd6283beaeacc915a2a5
+Author: Peter Hawkins <phawkins@google.com>
+Date:   Fri Jun 1 06:06:34 2018 -0700
+
+    Mark tensorflow/python/kernel_tests/linalg:linear_operator_identity_test as optonly due to flakiness.
+    
+    PiperOrigin-RevId: 198862313
+
+commit 8d1d8c1b436b84eeaede95c6ed53308a8a97cb08
+Author: Peter Hawkins <phawkins@google.com>
+Date:   Thu May 31 19:23:17 2018 -0700
+
+    Disable tensorflow/contrib/stat_summarizer:stat_summarizer_test from continuous build due to flakiness.
+    
+    PiperOrigin-RevId: 198817129
+
+commit 217d73ceba3248c3570be72300a7234d2cef142b
+Author: Peter Hawkins <phawkins@google.com>
+Date:   Thu May 31 17:17:13 2018 -0700
+
+    Mark tensorflow/contrib/learn:estimator_test as optonly because it is flaky due to timeouts without optimization.
+    
+    PiperOrigin-RevId: 198804880
+
+commit bab1cf5d49a4ab8c5ea8930612a9ba1d5b0d5ef3
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue May 22 19:07:13 2018 -0700
+
+    Internal Change
+    
+    PiperOrigin-RevId: 197661636
+
+commit 4d134bad0403ebb5722144d8f859a04a5f21efc2
+Author: Derek Murray <mrry@google.com>
+Date:   Tue May 22 13:14:18 2018 -0700
+
+    Move executor_test.cc to tensorflow/core/common_runtime/.
+    
+    PiperOrigin-RevId: 197611583
+
+commit 294e9a1ba1916933b1f932381f082a7d20482ddb
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed May 9 14:41:23 2018 -0700
+
+    Run tensorflow/python/kernel_tests:conv2d_backprop_filter_grad_test only when omptimzing to avoid flaky timeouts
+    
+    PiperOrigin-RevId: 196031762
+
+commit 7f21edc8239c1f90ce438e1a14dc5560e01d4f65
+Author: Jacky <jackkykokoko@gmail.com>
+Date:   Wed Apr 25 17:38:49 2018 +0800
+
+    add suppress regeneration back
+
+commit 9fe297ffa8133309fe548df3a0208d0ff9305a66
+Author: Justin Lebar <jlebar@google.com>
+Date:   Wed Apr 18 13:46:37 2018 -0700
+
+    Internal-only change.
+    
+    PiperOrigin-RevId: 193409980
+
+commit 65cb41eb36412114cdef85de1c3958e2db9831ac
+Author: Igor Saprykin <isaprykin@google.com>
+Date:   Mon Apr 16 11:27:09 2018 -0700
+
+    Remove the hidden replicate_model_fn copy from core.
+    
+    PiperOrigin-RevId: 193070799
+
+commit b9b90965de4e475ccff8a571de016026447ee1df
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Apr 3 13:53:00 2018 -0700
+
+    Disabled some tests on Windows
+    
+    PiperOrigin-RevId: 191494857
+
+commit f270e43f886cc39bc4c0fb11e147b9c38853b3a4
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Fri Mar 30 12:26:21 2018 -0700
+
+    Disable tsan for tensorflow/python/estimator:replicate_model_fn_test
+    
+    It gets flaky failures.
+    
+    PiperOrigin-RevId: 191100692
+
+commit 54cc8b35f1062f385f0e97c397e1ae96c91c9f62
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Mon Mar 26 13:30:17 2018 -0700
+
+    Global rename of py2tf to autograph
+    
+    PiperOrigin-RevId: 190515509
+
+commit b57af1577f4a6e4181227d105c68463538b8f9ef
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Mar 22 13:05:30 2018 -0700
+
+    Disable testing flaky tensorflow/contrib/eager/python/examples/spinn:spinn_test under py3
+    
+    PiperOrigin-RevId: 190112748
+
+commit aeb9f62e237ae1274482acca2fa09db34aef42d4
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Mar 22 10:17:18 2018 -0700
+
+    Omit tensorflow/python/estimator:replicate_model_fn_test from asan builds.
+    It gets flaky timeouts.
+    
+    PiperOrigin-RevId: 190084932
+
+commit bac72dc5a59b844d908d3badf77d62a8a93e2c3a
+Author: Shanqing Cai <cais@google.com>
+Date:   Tue Mar 13 17:11:56 2018 -0700
+
+    tfdbg: split session_debug_grpc_test
+    
+    * so that the test sizes are medium for both the existing session_debug_grpc_test
+      and the new grpc_large_data_test
+    
+    Also in this CL
+    * Consolidate the functions for creating no-grappler-rewrite ConfigProtos
+      in one place: in session_debug_testlib.py
+    
+    PiperOrigin-RevId: 188955135
+
+commit 075aa8aa5a73113935e5a0962166bfb012e1a86e
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Feb 20 11:40:04 2018 -0800
+
+    Temporarily disable flaky test.
+    
+    PiperOrigin-RevId: 186336341
+
+commit 3b316fc9d9468d957d4866e0397d4455bd3516bb
+Author: JackyKo <jackkykokoko@gmail.com>
+Date:   Sat Jan 27 12:26:21 2018 +0800
+
+    add version
+
+commit 83ea281804d90f5487b18f6af5eb9dd30b14d9fb
+Author: Gunhan Gulsoy <gunan@google.com>
+Date:   Thu Jan 25 22:32:15 2018 -0800
+
+    For windows cmake build turn on CMAKE_SUPPRESS_REGENERATION to avoid flaky
+    build failures.
+    
+    PiperOrigin-RevId: 183341561
+
+commit 94bdd184edb386d7a2682b4f5f4048785c48afeb
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Jan 18 11:42:09 2018 -0800
+
+    Enable a no longer flaky test.
+    
+    PiperOrigin-RevId: 182412902
+
+commit 09a6446b4e61f5fc8aa8fcf3f5824ef6660e7fc2
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Jan 18 11:42:09 2018 -0800
+
+    Enable a no longer flaky test.
+    
+    PiperOrigin-RevId: 182412902
+
+commit 3d4aa4eacd4beca250ed52cc284e9caa7fb45e22
+Author: Yifei Feng <yifeif@google.com>
+Date:   Tue Dec 12 02:02:28 2017 -0800
+
+    Disable flaky //tensorflow/contrib/learn:dnn_linear_combined_test
+    
+    PiperOrigin-RevId: 178734940
+
+commit b1c64c61ad15ee90ae64a0b49f79646508a180d2
+Author: Derek Murray <mrry@google.com>
+Date:   Fri Dec 8 16:34:00 2017 -0800
+
+    [tf.data] Move tests from python/kernel_tests to python/data/kernel_tests.
+    
+    This makes it easier to run all core tf.data tests with a single command, i.e.:
+    
+    bazel test //tensorflow/python/data/...
+    
+    PiperOrigin-RevId: 178444314
+
+commit 6cc7e387fc1b642d363b6a18877a411382a82fa5
+Author: Peter Hawkins <phawkins@google.com>
+Date:   Mon Nov 27 14:06:23 2017 -0800
+
+    [TF:XLA] Implement StatelessRandomUniform and StatelessRandomNormal using the ThreeFry counter-based PRNG.
+    
+    Extend stateless ops to allow 32-bit integer seeds, with a 64-bit default.
+    
+    PiperOrigin-RevId: 177068747
+
+commit 5dc9d20f9717f7c097188b3ce7ec1ca1d127afd6
+Author: Gunhan Gulsoy <gunan@google.com>
+Date:   Thu Nov 16 15:08:35 2017 -0800
+
+    Disable non-hermetic testcase in gcs_dns_cache_test.
+    
+    PiperOrigin-RevId: 176027515
+
+commit 355e25ebcab64e833dfc987638c3e6c79d838266
+Author: Benoit Steiner <bsteiner@google.com>
+Date:   Tue Oct 24 19:47:46 2017 -0700
+
+    Merge changes from github.
+    END_PUBLIC
+    
+    ---
+    Commit 9f8523640 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update ops-related pbtxt files.
+    
+    PiperOrigin-RevId: 173145770
+    
+    ---
+    Commit 01b6b0638 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Cut tracing memory cost
+    
+    PiperOrigin-RevId: 173144626
+    
+    ---
+    Commit 5e23e0e67 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Erase cloned instructions on the fly when merging fusion nodes.
+    
+    This avoids the awkward situation where an RNG which is clearly eligible for fusion becomes ineligible mid-fusion because it suddenly has an extra (dead) user.
+    
+    PiperOrigin-RevId: 173141716
+    
+    ---
+    Commit 1038927c0 authored by Saurabh Saxena<srbs@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add SerializeIterator op that serializes an IteratorResource into a variant tensor.
+    Add DeserializeIterator op that builds IteratorResource from a variant tensor.
+    Move BundleReaderWrapper and BundleWriterWrapper from dataset.h to iterator_ops.cc.
+    Add generic key-value store interfaces IteratorStateReader and IteratorStateWriter for reading/writing state of iterators.
+    Get rid of IteratorBundleReader and IteratorBundleWriter.
+    
+    PiperOrigin-RevId: 173140858
+    
+    ---
+    Commit 57f3e529d authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Internal change
+    
+    PiperOrigin-RevId: 173136642
+    
+    ---
+    Commit 0e56ffb7b authored by Shanqing Cai<cais@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix breakages in OSS builds
+    
+    See example breakages logs at:
+    http://ci.tensorflow.org/job/tensorflow-cl-cpu-python3-pip/10847/console
+    http://ci.tensorflow.org/job/tensorflow-cl-gpu/11008/console
+    
+    1. CL/172477381 added the no_oss tag to tests with oss_serial tags, which broke the logic of OSS_SERIAL tests in pip.sh and run_pip_test.sh. This CL fixes that.
+    
+    2. The nccl_kernels BUILD target in contrib/nccl/BUILD was missing some dependencies. This CL adds the missing ones.
+    
+    Fixes: #13918
+    PiperOrigin-RevId: 173133914
+    
+    ---
+    Commit 3ed049b67 authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Allows calling keras layers in eager mode.
+    
+    PiperOrigin-RevId: 173129805
+    
+    ---
+    Commit 4ec6f2b07 authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Switching contrib.summaries API to be context-manager-centric
+    
+    PiperOrigin-RevId: 173129793
+    
+    ---
+    Commit 03b02ffc9 authored by Justine Tunney<jart@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Put Bazel mirror URLs first
+    
+    PiperOrigin-RevId: 173127955
+    
+    ---
+    Commit 46ab25e4d authored by David Majnemer<majnemer@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Add support for convolutions with no spatial dimensions
+    
+    PiperOrigin-RevId: 173126950
+    
+    ---
+    Commit fc56349b7 authored by Derek Murray<mrry@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [tf.data] Convert dataset arguments to tensors as early as possible.
+    
+    This change raises a `TypeError` earlier if (for example) the `batch_size`
+    argument to `Dataset.batch()` has the incorrect type.
+    
+    PiperOrigin-RevId: 173126678
+    
+    ---
+    Commit 4f7503a87 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    K-FAC: Support for registering multiple minibatches with register_fully_connected()
+    
+    PiperOrigin-RevId: 173121735
+    
+    ---
+    Commit 2845bfcd6 authored by Tim Harley<tharley@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Avoid listing all modified Enter/RefEnter nodes on INFO, use VLOG(1) instead.
+    
+    Leave a single, simple, message on INFO.
+    
+    PiperOrigin-RevId: 173121726
+    
+    ---
+    Commit 434695921 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    K-FAC: _check_registration() supports multiple towers.
+    
+    PiperOrigin-RevId: 173115870
+    
+    ---
+    Commit 670dddf4a authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Multi-minibatch support for
+    tf.contrib.kfac.fisher_blocks.FullyConnectedKFACBasicFB.
+    
+    PiperOrigin-RevId: 173109677
+    
+    ---
+    Commit dc13a8e2f authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix import of meta graphs with partitioned variables into a scope.
+    
+    Saver inspects SliceInfo to decide the variable name when creating a
+    checkpoint. Before this fix even if a partitioned variable ("weights")
+    was imported into a scope "a" it would still be checkpointed as ("weights")
+    instead of ("a/weights") since import_scoped_meta_graph was not adjusting
+    the SliceInfo.
+    
+    WARNING: if you use import_meta_graph on graphs with partitioned_variables WITH an import_scope argument AND then create a Saver to write/read checkpoints this change
+    may break your checkpoint loading.
+    PiperOrigin-RevId: 173105796
+    
+    ---
+    Commit eea089bdb authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    K-FAC: Multi-tower support for ConvDiagonalFB.
+    
+    PiperOrigin-RevId: 173105412
+    
+    ---
+    Commit 9b9cbbe2a authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Add int64 Tperm type support for `Transpose` (#13909)
+    
+    * Add int64 Tperm type support for `Transpose`
+    
+    This fix adds int64 Tperm support for `Transpose`. In
+    `array_ops.cc`, `Transpose` and `ConjugateTranspose`
+    have been specified as accepting int32 and int64 perm
+    types. However, only int32 kernels has been registered.
+    
+    This fix adds the int64 perm support by removing
+    the constraint on Tperm, resolve the type at runtime,
+    and copying the data type accordingly to correctly handle
+    the int64/int32 types.
+    
+    Additional tests have been added as well.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add test cases for int64 of perm in Transpose.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add namespace to hide PermutationHelper
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Enable use_gpu=True for perm type test.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * extra // namespace annotation
+    
+    * Adding a comment about int32 casting that should be safe.
+    
+    Permutations only contain values that refer to dimensions, and the maximum number of dimensions we have is 254, so an int32 is always safe here.
+    
+    ---
+    Commit ac0004e71 authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Add int64 shape support on GPU for stateless random ops. (#13908)
+    
+    * Add int64 shape support on GPU for stateless random ops.
+    
+    This fix adds int64 shape support on GPU for stateless random ops
+    `StatelessRandomUniform`, `StatelessRandomNormal`, `StatelessTruncatedNormal`.
+    
+    The int64 shape for stateless random ops is already supported on CPU
+    with int32/int64 processed properly through `MakeShape`.
+    
+    However, on GPU a type constraint `.TypeConstraint<int32>("T")`
+    has been improperly added. Such a type constraint actually prevents
+    an int64 shape type to run on GPU. (As a comparision, no type constraint
+    on CPU).
+    
+    This fix removes the type constraint and allows int64 shape to be run on GPU.
+    
+    This fix also adds test cases for int64 shape support on stateless random ops.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add test cases for int64 shape support for stateless random ops.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add int32 to shape types tested.
+    
+    ---
+    Commit 0d437c3be authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Add int64 padding support for MirrorPad (#13907)
+    
+    * Add int64 padding support for MirrorPad
+    
+    This fix adds int64 padding support for `MirrorPad`.
+    In the `array_ops.cc` the `MirrorPad`/`MirrorPadGrad`
+    has been specified as supporting int64 padding. The related
+    kernels does not have the int64 padding registered though.
+    This fix adds the int64 padding support. This fix also adds
+    additional test cases for coverage.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Update template for CPU and GPU support of int64 paddings.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add int64 padding support for MirrorPad
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Put eigen header first like before, just in case.
+    
+    ---
+    Commit 690003cc0 authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Add `int64` type `multiples` support for `tf.tile` (#13884)
+    
+    * Add `int64` type `multiples` support for `tf.tile`
+    
+    In the doc of `tf.tile` (tf.tile.__doc__) both `int32`
+    and `int64` are supported for `multiples`. However, the kernel
+    for `int64` is not registered yet.
+    
+    This fix adds the support of `int64` `multiples` so that the
+    behavior matches the description of the docs.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Update functors for int64 multiples support in `tf.tile`
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Update test cases for int64 of multiples in `tf.tile`
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add GPU and non GPU tests
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * format with clang-format -i
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Move Tmultiples after T (as it is  auxilliary)
+    
+    And use `use_gpu=True`
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    ---
+    Commit fd8d517b9 authored by Yunxing Dai<yunxing@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add tests for convolution 1D
+    RELNOTES: n/a
+    
+    PiperOrigin-RevId: 173060283
+    
+    ---
+    Commit 40c475b48 authored by formath<jinpengliu@163.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    add segment_reduction_ops to tf_op_files (#13901)
+    
+    ---
+    Commit bfa4ec194 authored by Tayo Oguntebi<10927929+tayo@users.noreply.github.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Update node_def.proto comments (#13874)
+    
+    The device field had outdated comments.
+    
+    Note: We could consider adding tpu as an example here, e.g. "gpu" | "cpu" | "tpu".  Thoughts?
+    ---
+    Commit c9cb5a58d authored by formath<jinpengliu@163.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    protobuf lib path bug fix for benckmark on osx (#13878)
+    
+    ---
+    Commit 1c1dad105 authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Add int64 axis support for reduction ops. (#13891)
+    
+    * Add int64 axis support for reduction ops.
+    
+    This fix is a follow up to PR 13863. In PR 13863 the
+    program crash is fixed if int64 axis is passed to reduction ops,
+    e.g. reduce_sum, reduce_max, etc. However, 13863 does not
+    process the case of int64 support, it merely fixes the crash.
+    
+    This fix adds the support for int64 axis of reduction ops.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add int64 axis support for mean, prod, sum
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add int64 axis support for min and max.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add int64 axis support for reduce_all and reduce_any
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add test cases for int64 axis support of reduce_any and reduce_all
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    ---
+    Commit 17096081e authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Improve resize_bicubic performance by reorganizing loops (#13840)
+    
+    * Improve resize_bicubic performance by reorganizing loops
+    
+    This fix tries to address the issue raised in 13693 where
+    performance of `resize_bicubic` is not on par with opencv.
+    
+    This fix rearranges the loops so that it is the same for
+    num_channel=40 and num_channel=3:
+    
+    Pre-fix:
+    ```
+    CHANNEL=40
+    opencv: 145.08ms
+    tf: 314.26ms
+    
+    CHANNEL=3
+    opencv: 11.95ms
+    tf: 8.95ms
+    ```
+    
+    Post-fix:
+    ```
+    CHANNEL=40
+    opencv: 144.25ms
+    tf: 214.55ms
+    
+    CHANNEL=3
+    opencv: 11.78ms
+    tf: 14.07ms
+    ```
+    
+    This fix fixes 13693.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Keep special handling of `num_channels=3` for `resize_bicubic`
+    
+    This commit keeps special handling of `num_channels=3` for
+    `resize_bicubic`:
+    Without special handling:
+    ```
+    opencv: 11.78ms
+    tf: 14.07ms
+    ```
+    With special handling:
+    ```
+    opencv: 11.74ms
+    tf: 9.46ms
+    ```
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Expand Benchmark test for resize_bicubic
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Update from review feedback.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    ---
+    Commit b927df57f authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Update protobuf.cmake to b04e5cba356212e4e8c66c61bbe0c3a20537c5b9 (#13893)
+    
+    This fix tries to address the issue raised in 8187 where
+    protobuf.cmake used different version as bazel.
+    
+    The reason for discrepancy was due to the fact that a customerized
+    protobuf was needed with Windows patch. Since the patch has been
+    merged in (https://github.com/google/protobuf/pull/2203),
+    it makes sense to update protobuf.cmake so that the same version
+    of cmake is used.
+    
+    This fix fixes 8187.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    ---
+    Commit d1183ca6a authored by Vijay Vasudevan<vrv@google.com>
+    Committed by GitHub<noreply@github.com>:
+    Give each variable a unique name in accumulate_n_v2_eager_test. (#13886)
+    
+    ---
+    Commit a69945810 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update pin for bazel-toolchains to latest version
+    
+    PiperOrigin-RevId: 173002530
+    
+    ---
+    Commit 9d55c249c authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Fix doc in TF_CALL_ when invoked in mobile platform (#13881)
+    
+    * Fix doc in TF_CALL_ when defined(IS_MOBILE_PLATFORM) && !defined(__ANDROID_TYPES_FULL__)
+    
+    This is a small doc fix that includes bool as part of the types
+    that is supported in mobile (IS_MOBILE_PLATFORM && !__ANDROID_TYPES_FULL__),
+    as bool is clearly invoked in the following define.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Also add bool to android full version.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    ---
+    Commit ba49d8583 authored by Bjarke Hammersholt Roune<broune@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Slight change to reduce_test to avoid generating inf, which was triggering an inf detector unnecessarily.
+    
+    PiperOrigin-RevId: 172965466
+    
+    ---
+    Commit 93e8f3c67 authored by Anna R<annarev@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Adding Python ApiDef overrides.
+    
+    PiperOrigin-RevId: 172960496
+    
+    ---
+    Commit 0d6a2e353 authored by Anna R<annarev@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Internal change.
+    
+    PiperOrigin-RevId: 172960439
+    
+    ---
+    Commit 62df65c72 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add dtype argument to Mean and Accuracy object-oriented metrics.
+    
+    PiperOrigin-RevId: 172957714
+    
+    ---
+    Commit d7409d32b authored by Simone Cirillo<my.accounts@gmx.se>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Fix import of spatial_softmax from tensorflow.contrib.layers (#13833)
+    
+    ---
+    Commit df8bce63d authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Fix crash when `int64` axis is passed to `tf.reduce_sum` (#13863)
+    
+    * Fix crash when `int64` axis is passed to `tf.reduce_sum`
+    
+    This fix tries to fix the crash triggered by `int64` axis passed
+    to `tf.reduce_sum`:
+    ```
+    ubuntu@ubuntu:~/tensorflow2$ (cd && python)
+    Python 2.7.12 (default, Nov 19 2016, 06:48:10)
+    [GCC 5.4.0 20160609] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import tensorflow as tf
+    >>> v = tf.reduce_sum([1,2,3], tf.constant(0, tf.int64))
+    2017-10-20 15:55:06.993430: F tensorflow/core/framework/tensor.cc:601] Check failed: dtype() == expected_dtype (9 vs. 3)
+    ubuntu@ubuntu:~/tensorflow2$
+    ```
+    
+    The issue is caused by the fact that shape inference in `common_shape_fns.cc`
+    only assumes int32 without proper handling of diffent types. In `math_ops.cc`
+    both int32 and int64 are mentioned.
+    
+    NOTE that this fix does not address the issue that int64 is not supported.
+    To allow int64 axis it is more than adding a template in `ReductionOp` as the type
+    of the axis seems to be decided by some other ways in Eigen.
+    
+    This fix merely fixed the crash so that an error message will return without
+    exit from the python program "No OpKernel was registered to support Op 'Sum' with these attrs".
+    
+    Still, I think its worth to at least allow the program to continue in case of unsupported kernel.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Update implementation with a template helper function.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    ---
+    Commit 29c7b4658 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Adding the Stanford Tensorflow class to community resources.
+    
+    PiperOrigin-RevId: 172956049
+    
+    ---
+    Commit f758b24a8 authored by Alexandre Passos<apassos@google.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Variable name for the eager test (#13873)
+    
+    ---
+    Commit a5fe66b15 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Removed some unnecessary broadcasts in binary ops where only one input needs
+    broadcasting (which is a fairly common case, even in the fallback path).
+    
+    PiperOrigin-RevId: 172950493
+    
+    ---
+    Commit c77090a0a authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Fix issues where int64 crops could not be passed to batch_to_space. (#13862)
+    
+    * Fix issues where int64 crops could not be passed to batch_to_space.
+    
+    This fix tries to address the issue where int64 `crops` could
+    not be passed to `batch_to_space` even though both int32 and
+    int64 are specified as supported in the docs (tf.batch_to_space.__doc__)
+    
+    The reason is that BatchToSpace kernel puts a constraint of int32 to crops
+    data types.
+    
+    This fix removed the constraint so that int64 `crops` could be supported.
+    
+    NOTE: Just removing the constraint should work and it is not necessary
+    to add specification to the kernel class template, as `SubtleMustCopyFlat`
+    called in the class already correctly handled both int32 and int64 cases.
+    Besides, other data types (e.g., float or double) will not be passed to the
+    kernel as they are guarded by the specification in `array_ops.cc`.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Also remove int64/int32 type constraints for SpaceToBatch kernels
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Add test cases for int64 crops of batch_to_space and space_to_batch
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Fix test failures.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    ---
+    Commit 494837936 authored by Joshua V. Dillon<jvdillon@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Make `tf.contrib.distributions` quadrature family accept a `Tensor` for
+    `quadrature_grid_and_probs` argument.
+    
+    PiperOrigin-RevId: 172950094
+    
+    ---
+    Commit 9c825d32c authored by Jinze Bai<baijinze1994@163.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Merge two GPU kernel launching to one in DiagOp. (#13859)
+    
+    ---
+    Commit c0ca50a47 authored by Yan Facai (???)<facai.yan@gmail.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    ENH: add Relu6GradGrad (#13268)
+    
+    * ENH: add Relu6GradGrad
+    
+    * TST: add test case
+    
+    * CLN: import nn_grad
+    
+    * TST: add init value
+    
+    ---
+    Commit 8ff33271e authored by Justin Lebar<jlebar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Dump the computation's SessionModule as part of the tf_compile rule.
+    
+    PiperOrigin-RevId: 172946149
+    
+    ---
+    Commit ebcae4a5e authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add streaming_precision_recall_at_equal_thresholds
+    
+    This helper method computes streaming tp, fp, tn, fp, precision, and recall for the user in a way that exhibits O(T + N) time and space complexity (instead of O(T * N)), where T is the number of thresholds and N is the size of the predictions tensor.
+    
+    Thanks to Frank Chu for the efficient algorithm!
+    
+    PiperOrigin-RevId: 172946073
+    
+    ---
+    Commit ccfd9c1e5 authored by Sanjoy Das<sanjoy@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Log Hlo IR during AOT compilation
+    
+    PiperOrigin-RevId: 172944165
+    
+    ---
+    Commit 985031a10 authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Allows tfe.enable_eager_execution(device_policy=tfe.DEVICE_POLICY_WARN).
+    
+    PiperOrigin-RevId: 172943398
+    
+    ---
+    Commit 703182d85 authored by Mingxing Tan<tanmingxing@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add performance guide for fused decode_and_crop_jpeg optimization.
+    
+    PiperOrigin-RevId: 172943116
+    
+    ---
+    Commit 66b1f4383 authored by Francois Chollet<fchollet@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Make Network compatible with eager mode. Currently it only allows to instantiate a Network in eager mode using the regular Keras API, and call it on eager tensors.
+    
+    PiperOrigin-RevId: 172942569
+    
+    ---
+    Commit 41df2cec2 authored by ashankar<ashankar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Testing pending CL: 172939383
+    
+    ---
+    Commit 37fd95179 authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Simplifies capturing code in graph_callable to use recent function improvements.
+    
+    PiperOrigin-RevId: 172937003
+    
+    ---
+    Commit d1e7382af authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    BEGIN_PUBLIC
+    Automated g4 rollback of changelist 172924803
+    
+    PiperOrigin-RevId: 173347587
+
+commit f4db3b27430479cccb51518952102d63a3ebc916
+Author: gunan <gunan@google.com>
+Date:   Wed Oct 18 20:47:56 2017 -0700
+
+    Disable flaky tests in cmake build. (#13816)
+
+commit a86a589c8b329176bfbb64552405644cb641d99e
+Author: Gunhan Gulsoy <gunan@google.com>
+Date:   Tue Oct 17 09:39:50 2017 -0700
+
+    Disable flaky cluster tests in opensource.
+    
+    PiperOrigin-RevId: 172477381
+
+commit e3b8d3cc2a0099fecdc103f8422b34eda1eaee1f
+Author: michelleirvine <michelleirvine@google.com>
+Date:   Mon Oct 16 16:00:55 2017 -0700
+
+    Update README.md (#13688)
+    
+    * Update README.md
+    
+    Update information about local builds and TensorFlow's CI system.
+    
+    * Update README.md
+    
+    * Update README.md
+    
+    * Update README.md
+
+commit 578b9a29b252b4cbd57c2f6bdd9eaef4aae3e207
+Author: Jianwei Xie <xiejw@google.com>
+Date:   Wed Oct 4 18:24:54 2017 -0700
+
+    Adds integration test for tf.estimator.train_and_evaluate.
+    
+    PiperOrigin-RevId: 171094690
+
+commit e55574f28257bdacd744dcdba86c839e661b1b2a
+Author: drpngx <drpngx@users.noreply.github.com>
+Date:   Fri Sep 15 19:38:25 2017 -0700
+
+    Branch 168917534 (#13077)
+    
+    * Use HLO name, rather than pointer address, for profile counter name.
+    
+    This removes a source of nondeterminism in IR generation.
+    
+    PiperOrigin-RevId: 168779489
+    
+    * Eager gradient tape doesn't keep tensors alive.
+    
+    PiperOrigin-RevId: 168782341
+    
+    * Add missing back-quote
+    
+    PiperOrigin-RevId: 168785422
+    
+    * Add in a comment that I forgot to add to a previous commit; NFC.
+    
+    PiperOrigin-RevId: 168786760
+    
+    * Update ops-related pbtxt files.
+    
+    PiperOrigin-RevId: 168787665
+    
+    * Go: Update generated wrapper functions for TensorFlow ops.
+    
+    PiperOrigin-RevId: 168788051
+    
+    * Fix typo "comptuation" (computation)
+    
+    PiperOrigin-RevId: 168799777
+    
+    * Fix a bug in export GTFlow model to shared format with sparse float split
+    
+    PiperOrigin-RevId: 168802503
+    
+    * Add signature def utility functions for inspection of input and output types and shapes.
+    
+    PiperOrigin-RevId: 168820997
+    
+    * Apply const qualifiers whenever appropriate.
+    
+    PiperOrigin-RevId: 168824461
+    
+    * TFE: Clearer error message when enable_eager_execution is called more than once
+    
+    PiperOrigin-RevId: 168834147
+    
+    * [tf.contrib.data] Add colocation constraints between Iterator and Datasets.
+    
+    This restores the colocation behavior that was present when Dataset
+    objects were passed as DT_RESOURCE tensors, and avoids the (currently
+    not supported) case where TensorFlow may attempt to split the dataset
+    pipeline across devices.
+    
+    PiperOrigin-RevId: 168841061
+    
+    * Optimize C++ kernels for the matrix_band_part op, which is used in various ops operating on triangular or banded matrices:
+     * Add benchmark for matrix_band_part.
+     * Implement simple optimized CUDA kernel instead of calling Eigen generator.
+     * Parallelize CPU kernel for matrix_band_part.
+     * Support on-the-fly transposition in the underlying functors (to be used for future QR op in followup).
+    
+    Benchmarks:
+    
+    First column is of the form {device}_{shape}_{num_lower,num_upper}
+    
+    Test case                        Before       After    Speedup
+    cpu_(10,16,16)_(-1,-1)          5.6505e-05  6.2108e-05  -9.92%
+    cpu_(10,16,16)_(-1,0)           0.00010848  0.00010908  -0.55%
+    cpu_(10,16,16)_(0,-1)            0.0001055  0.00011396  -8.02%
+    cpu_(10,16,16)_(2,2)              0.000108  0.00011706  -8.39%
+    cpu_(10,101,101)_(-1,-1)        0.00013697  6.0558e-05 +55.79%
+    cpu_(10,101,101)_(-1,0)         0.00054002  0.00017703 +67.22%
+    cpu_(10,101,101)_(0,-1)         0.00051188  0.00017607 +65.60%
+    cpu_(10,101,101)_(2,2)          0.00050449  0.00016904 +66.49%
+    cpu_(10,256,256)_(-1,-1)        0.00032043  5.6028e-05 +82.51%
+    cpu_(10,256,256)_(-1,0)           0.001335   0.0004015 +69.93%
+    cpu_(10,256,256)_(0,-1)          0.0013521  0.00038862 +71.26%
+    cpu_(10,256,256)_(2,2)            0.001269  0.00039959 +68.51%
+    cpu_(10,1000,1000)_(-1,-1)       0.0090729  6.3419e-05 +99.30%
+    cpu_(10,1000,1000)_(-1,0)          0.01712   0.0047594 +72.20%
+    cpu_(10,1000,1000)_(0,-1)         0.016647   0.0046474 +72.08%
+    cpu_(10,1000,1000)_(2,2)          0.012737   0.0041161 +67.68%
+    cpu_(10,1024,1024)_(-1,-1)       0.0093709  5.8889e-05 +99.37%
+    cpu_(10,1024,1024)_(-1,0)         0.017075   0.0051999 +69.55%
+    cpu_(10,1024,1024)_(0,-1)         0.016867    0.004617 +72.63%
+    cpu_(10,1024,1024)_(2,2)          0.013191    0.003759 +71.50%
+    cpu_(10,2048,2048)_(-1,-1)        0.028427  6.2466e-05 +99.78%
+    cpu_(10,2048,2048)_(-1,0)         0.048134    0.017642 +63.35%
+    cpu_(10,2048,2048)_(0,-1)         0.048773    0.017558 +64.00%
+    cpu_(10,2048,2048)_(2,2)          0.036153    0.015452 +57.26%
+    cpu_(10,10,4,4)_(-1,-1)         5.8055e-05  5.8055e-05  +0.00%
+    cpu_(10,10,4,4)_(-1,0)          0.00015557   0.0001564  -0.54%
+    cpu_(10,10,4,4)_(0,-1)          0.00015855  0.00015199  +4.14%
+    cpu_(10,10,4,4)_(2,2)           0.00016379  0.00018096 -10.48%
+    cpu_(10,10,10,10)_(-1,-1)       6.0558e-05  6.0558e-05  +0.00%
+    cpu_(10,10,10,10)_(-1,0)          0.000368  0.00038695  -5.15%
+    cpu_(10,10,10,10)_(0,-1)        0.00036263  0.00038612  -6.48%
+    cpu_(10,10,10,10)_(2,2)         0.00038648  0.00042963 -11.17%
+    cpu_(10,10,16,16)_(-1,-1)       6.9022e-05  5.7578e-05 +16.58%
+    cpu_(10,10,16,16)_(-1,0)         0.0005815   0.0001874 +67.77%
+    cpu_(10,10,16,16)_(0,-1)        0.00059354   0.0001924 +67.58%
+    cpu_(10,10,16,16)_(2,2)         0.00062239  0.00019097 +69.32%
+    cpu_(10,10,101,101)_(-1,-1)     0.00014806  6.2823e-05 +57.57%
+    cpu_(10,10,101,101)_(-1,0)       0.0039785  0.00078249 +80.33%
+    cpu_(10,10,101,101)_(0,-1)       0.0040585  0.00076556 +81.14%
+    cpu_(10,10,101,101)_(2,2)        0.0039514  0.00077307 +80.44%
+    cpu_(10,10,256,256)_(-1,-1)      0.0026824  6.0558e-05 +97.74%
+    cpu_(10,10,256,256)_(-1,0)        0.017269   0.0031619 +81.69%
+    cpu_(10,10,256,256)_(0,-1)        0.020287   0.0030774 +84.83%
+    cpu_(10,10,256,256)_(2,2)         0.011919   0.0026599 +77.68%
+    cpu_(10,10,1000,1000)_(-1,-1)     0.065783  5.6982e-05 +99.91%
+    cpu_(10,10,1000,1000)_(-1,0)        0.1361    0.054533 +59.93%
+    cpu_(10,10,1000,1000)_(0,-1)        0.1397    0.053405 +61.77%
+    cpu_(10,10,1000,1000)_(2,2)        0.10173    0.048561 +52.26%
+    cpu_(10,10,1024,1024)_(-1,-1)     0.066231  7.5579e-05 +99.89%
+    cpu_(10,10,1024,1024)_(-1,0)       0.13615    0.059931 +55.98%
+    cpu_(10,10,1024,1024)_(0,-1)       0.13745    0.064931 +52.76%
+    cpu_(10,10,1024,1024)_(2,2)        0.10493    0.054258 +48.29%
+    cpu_(10,10,2048,2048)_(-1,-1)      0.23487  6.6042e-05 +99.97%
+    cpu_(10,10,2048,2048)_(-1,0)       0.41014     0.24283 +40.79%
+    cpu_(10,10,2048,2048)_(0,-1)       0.43621     0.26393 +39.49%
+    cpu_(10,10,2048,2048)_(2,2)        0.29919     0.22302 +25.46%
+    
+    gpu_(10,16,16)_(-1,-1)          0.00010753  0.00010753  +0.00%
+    gpu_(10,16,16)_(-1,0)           0.00011253  0.00012445 -10.59%
+    gpu_(10,16,16)_(0,-1)           0.00012493  0.00013399  -7.25%
+    gpu_(10,16,16)_(2,2)              0.000108  0.00011754  -8.83%
+    gpu_(10,101,101)_(-1,-1)        0.00011849  8.7976e-05 +25.75%
+    gpu_(10,101,101)_(-1,0)         0.00012743  0.00012243  +3.93%
+    gpu_(10,101,101)_(0,-1)         0.00012958  0.00012362  +4.60%
+    gpu_(10,101,101)_(2,2)          0.00011504  0.00011504  +0.00%
+    gpu_(10,256,256)_(-1,-1)        0.00013447  9.7513e-05 +27.48%
+    gpu_(10,256,256)_(-1,0)         0.00018752  0.00014746 +21.36%
+    gpu_(10,256,256)_(0,-1)         0.00017798  0.00016904  +5.02%
+    gpu_(10,256,256)_(2,2)           0.0001514  0.00013697  +9.53%
+    gpu_(10,1000,1000)_(-1,-1)       0.0005095  9.8586e-05 +80.65%
+    gpu_(10,1000,1000)_(-1,0)       0.00088501  0.00056589 +36.06%
+    gpu_(10,1000,1000)_(0,-1)       0.00090456  0.00055242 +38.93%
+    gpu_(10,1000,1000)_(2,2)        0.00080955  0.00049639 +38.68%
+    gpu_(10,1024,1024)_(-1,-1)      0.00050902  9.7036e-05 +80.94%
+    gpu_(10,1024,1024)_(-1,0)       0.00098789  0.00058246 +41.04%
+    gpu_(10,1024,1024)_(0,-1)            0.001  0.00059545 +40.46%
+    gpu_(10,1024,1024)_(2,2)        0.00082254  0.00049961 +39.26%
+    gpu_(10,2048,2048)_(-1,-1)        0.001495  9.8944e-05 +93.38%
+    gpu_(10,2048,2048)_(-1,0)         0.003535   0.0017736 +49.83%
+    gpu_(10,2048,2048)_(0,-1)        0.0034965   0.0017921 +48.75%
+    gpu_(10,2048,2048)_(2,2)         0.0027704   0.0015399 +44.41%
+    gpu_(10,10,4,4)_(-1,-1)         0.00011086  9.1076e-05 +17.85%
+    gpu_(10,10,4,4)_(-1,0)           0.0001235  0.00013411  -8.59%
+    gpu_(10,10,4,4)_(0,-1)          0.00011849   0.0001204  -1.61%
+    gpu_(10,10,4,4)_(2,2)           0.00010896  0.00013256 -21.66%
+    gpu_(10,10,10,10)_(-1,-1)       0.00010657  9.5844e-05 +10.07%
+    gpu_(10,10,10,10)_(-1,0)        0.00011754  0.00013602 -15.72%
+    gpu_(10,10,10,10)_(0,-1)        0.00011909  0.00012004  -0.80%
+    gpu_(10,10,10,10)_(2,2)         0.00013196  0.00011349 +14.00%
+    gpu_(10,10,16,16)_(-1,-1)       0.00012898  0.00010705 +17.01%
+    gpu_(10,10,16,16)_(-1,0)        0.00014353  0.00012338 +14.04%
+    gpu_(10,10,16,16)_(0,-1)        0.00011599  0.00012493  -7.71%
+    gpu_(10,10,16,16)_(2,2)         0.00011539  0.00011349  +1.65%
+    gpu_(10,10,101,101)_(-1,-1)     0.00014699  0.00010252 +30.25%
+    gpu_(10,10,101,101)_(-1,0)       0.0002141  0.00015497 +27.62%
+    gpu_(10,10,101,101)_(0,-1)       0.0002017  0.00015843 +21.45%
+    gpu_(10,10,101,101)_(2,2)       0.00018394  0.00015402 +16.27%
+    gpu_(10,10,256,256)_(-1,-1)     0.00032747  9.0003e-05 +72.52%
+    gpu_(10,10,256,256)_(-1,0)      0.00074494  0.00040746 +45.30%
+    gpu_(10,10,256,256)_(0,-1)      0.00072503  0.00042391 +41.53%
+    gpu_(10,10,256,256)_(2,2)       0.00061846  0.00038004 +38.55%
+    gpu_(10,10,1000,1000)_(-1,-1)    0.0032645  0.00010896 +96.66%
+    gpu_(10,10,1000,1000)_(-1,0)      0.007543   0.0038971 +48.34%
+    gpu_(10,10,1000,1000)_(0,-1)      0.006058   0.0039405 +34.95%
+    gpu_(10,10,1000,1000)_(2,2)       0.005198    0.003448 +33.67%
+    gpu_(10,10,1024,1024)_(-1,-1)    0.0034155  9.1434e-05 +97.32%
+    gpu_(10,10,1024,1024)_(-1,0)      0.007099    0.004158 +41.43%
+    gpu_(10,10,1024,1024)_(0,-1)      0.006843    0.003849 +43.75%
+    gpu_(10,10,1024,1024)_(2,2)       0.005506   0.0031376 +43.02%
+    gpu_(10,10,2048,2048)_(-1,-1)     0.013119  0.00010097 +99.23%
+    gpu_(10,10,2048,2048)_(-1,0)      0.028533    0.015175 +46.81%
+    gpu_(10,10,2048,2048)_(0,-1)      0.028458    0.014926 +47.55%
+    gpu_(10,10,2048,2048)_(2,2)       0.022175    0.011797 +46.80%
+    
+    PiperOrigin-RevId: 168849471
+    
+    * * dataset_ops.read_batch_features() now discards keys for keyed Dataset.
+    * dataset_ops.read_batch_features() ignores unnecessary repeat() when num_repeat == 1.
+    
+    PiperOrigin-RevId: 168855155
+    
+    * Migrate TFGAN eval to opensource.
+    
+    PiperOrigin-RevId: 168855880
+    
+    * [XLA] Remove superfluous locking from xla::ComputationBuilder.
+    
+    The class is thread compatible, not thread-safe. It is illegal to call non-const methods of the class concurrently. So the mutex is pointless.
+    
+    Also mark a couple of accessors const.
+    
+    PiperOrigin-RevId: 168857132
+    
+    * Add ConvertGraphDefToXla to convert from GraphDef to xla::Computation.
+    
+    The main logic is simply refactored from tfcompile, with some minor cleanups
+    along the way.
+    
+    PiperOrigin-RevId: 168857174
+    
+    * Bugfix to tf.contrib.seq2seq beam_search_ops: GPU edge case of seq_len == 0.
+    
+    PiperOrigin-RevId: 168862288
+    
+    * [tf.contrib.data] Add `batch_and_drop_remainder` transformation.
+    
+    This transformation, which is designed for use with `Dataset.apply()`,
+    acts like the default of behavior of `tf.train.batch()`, which will
+    truncate a finite input source if its number of elements is not an
+    exact multiple of the batch size. A benefit of using this
+    transformation is that it gives a statically known shape to the output
+    elements, because they are all exactly `batch_size` in the 0th
+    dimension.
+    
+    PiperOrigin-RevId: 168863148
+    
+    * Minor renaming from tfcompile.Config to tf2xla.Config in comments.
+    
+    PiperOrigin-RevId: 168863860
+    
+    * Certain ops don't need eager gradients to keep their inputs / outputs alive.
+    
+    PiperOrigin-RevId: 168864350
+    
+    * [XLA] Add S64 while loop test.
+    
+    PiperOrigin-RevId: 168865653
+    
+    * tfdbg: fix a bug in list_inputs and list_outputs
+    
+    wherein a tensor name like "x:1" fails to be processed because it were not converted to the node name ("x" in this example) first.
+    
+    Also simplify analyzer_cli_test.py a little through a new helper function.
+    
+    PiperOrigin-RevId: 168867948
+    
+    * Adds multi_label_head in tf.contrib.estimator
+    
+    PiperOrigin-RevId: 168873313
+    
+    * Script that generates __init__.py files based on tf_api_names annotations.
+    
+    PiperOrigin-RevId: 168878737
+    
+    * Fixing the build command.
+    
+    PiperOrigin-RevId: 168881605
+    
+    * Make sure all checked threads are joined before they are terminated.
+    
+    PiperOrigin-RevId: 168884294
+    
+    * Output metrics in train mode for multihead.
+    
+    This is to be consistent with other heads who output the metric tensors in train mode. Outputting the metric tensors allow us for example to plot the metrics on the training set (and compare them to the metircs on the eval set).
+    
+    PiperOrigin-RevId: 168884726
+    
+    * Automated g4 rollback of changelist 168458634
+    
+    PiperOrigin-RevId: 168887778
+    
+    * Adds DNNEstimator to tf.contrib.estimator.
+    
+    PiperOrigin-RevId: 168887825
+    
+    * [tf.contrib.data] Expose `tf.contrib.data.batch_and_drop_remainder()`.
+    
+    PiperOrigin-RevId: 168888592
+    
+    * disabling timeout test in opensource build
+    
+    PiperOrigin-RevId: 168890483
+    
+    * Add ops that perform color transforms (including changing value, saturation and hue) in YIQ space.
+    
+    PiperOrigin-RevId: 168897736
+    
+    * Update the minimum requirement of espsilon for batch norm.
+    
+    PiperOrigin-RevId: 168897907
+    
+    * Adding support for capture-by-value.
+    
+    PiperOrigin-RevId: 168903482
+    
+    * disabling failing tsan test
+    
+    PiperOrigin-RevId: 168903876
+    
+    * disable asan for test timeout
+    
+    PiperOrigin-RevId: 168903999
+    
+    * Internal change.
+    
+    PiperOrigin-RevId: 168910187
+    
+    * Fix broken test: tensorflow/contrib/eager/python:datasets_test
+    
+    PiperOrigin-RevId: 168914742
+    
+    * [XLA:CPU] Implement map fusion.
+    
+    PiperOrigin-RevId: 168915358
+    
+    * Merge changes from github.
+    END_PUBLIC
+    
+    I also integrated #13073 by hand to make TAP happy.
+    
+    ---
+    Commit 92362d0f0 authored by Skye Wanderman-Milne<skyewm@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add WhileContext class and add plumbing for creating them.
+    
+    This change introduces WhileContext, which stores information about a
+    while loop and will be used in future changes to generate while loop
+    gradient graphs. Exit nodes in a while loop now have a pointer to
+    their associated WhileContext. This will be used to retrieve the
+    context for a given loop.
+    
+    This change adds an optional parameter to BuildWhileLoop() to create a
+    WhileContext for the while loop (currently this is always true, but
+    gradients will generate while loops without associated contexts). This
+    change also adds a as-yet-unused option to BuildWhileLoop() to return
+    the predicate output.
+    
+    PiperOrigin-RevId: 168562303
+    
+    ---
+    Commit a4f6e7c1a authored by RJ Ryan<rjryan@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add mel-scale conversion matrix support to tf.contrib.signal.
+    
+    PiperOrigin-RevId: 168560255
+    
+    ---
+    Commit b00b6d23c authored by Henry Tan<henrytan@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix a segmentation fault caused by invalid log directory in InternalFlush().
+    
+    PiperOrigin-RevId: 168557063
+    
+    ---
+    Commit 2bc7a155a authored by Yong Tang<yong.tang.github@outlook.com>
+    Committed by Rasmus Munk Larsen<rmlarsen@google.com>:
+    Add uint16 support for tf.decode_raw (#12719)
+    
+    * Add uint16 support for tf.decode_raw
+    
+    This fix tries to address the request raised in 10124 where
+    uint16 support for tf.decode_raw is needed. tf.decode_raw
+    already support half, float32, float64, int8, int16, int32, int64,
+    uint8. And uint16 was not supported.
+    
+    This fix adds uint16 support for tf.decode_raw.
+    
+    This fix fixes 10124.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    * Fix test failure caused by uint16 support of decode_raw and add unit tests.
+    
+    Signed-off-by: Yong Tang <yong.tang.github@outlook.com>
+    
+    ---
+    Commit 009285c09 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Remove benchmark for TensorShapeOld.
+    
+    PiperOrigin-RevId: 168551108
+    
+    ---
+    Commit dc1eda8a6 authored by Peter Hawkins<phawkins@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Fix CHECK-failure crash if a non-tuple was passed to GetTupleElement.
+    
+    PiperOrigin-RevId: 168550703
+    
+    ---
+    Commit 010922ed9 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Go: Update generated wrapper functions for TensorFlow ops.
+    
+    PiperOrigin-RevId: 168549989
+    
+    ---
+    Commit c8a6131e9 authored by Mark Daoust<markdaoust@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    make `tf.sets` examples executable
+    
+    Fixes #12969
+    
+    PiperOrigin-RevId: 168549712
+    
+    ---
+    Commit bece65c6f authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Use a map instead of a vector of Children() in the BeamEntry.
+    
+    The assumption is that since the entries are sparse (they are all populated, but most are never Active()), using the map will save memory and make iterating over the Children() more efficient.
+    
+    PiperOrigin-RevId: 168548814
+    
+    ---
+    Commit 0d5ab82ce authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update ops-related pbtxt files.
+    
+    PiperOrigin-RevId: 168548642
+    
+    ---
+    Commit 3331c574b authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Implementing gradients for tf.image.resize_bicubic.
+    
+    PiperOrigin-RevId: 168547412
+    
+    ---
+    Commit 4982ef0fa authored by Martin Wicke<wicke@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add the ability to warn only once if deprecated functionality is used, and make that the default.
+    
+    PiperOrigin-RevId: 168545655
+    
+    ---
+    Commit 99423416a authored by Peter Hawkins<phawkins@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Make shape inference error messages for the While HLO more readable. Build the error lazily.
+    
+    PiperOrigin-RevId: 168531083
+    
+    ---
+    Commit d10374e45 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Discard some unneccessary logging commands.
+    
+    PiperOrigin-RevId: 168500721
+    
+    ---
+    Commit 83cbabb85 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix wrong format of logging message.
+    
+    PiperOrigin-RevId: 168497373
+    
+    ---
+    Commit eec4f1b3a authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Go: Update generated wrapper functions for TensorFlow ops.
+    
+    PiperOrigin-RevId: 168494944
+    
+    ---
+    Commit 69301f352 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update ops-related pbtxt files.
+    
+    PiperOrigin-RevId: 168494220
+    
+    ---
+    Commit 9d56f419c authored by Mingxing Tan<tanmingxing@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add crop_and_decode_jpeg_op that combines the crop and decode for better
+    performance.
+    
+    PiperOrigin-RevId: 168493125
+    
+    ---
+    Commit 48ddf64d0 authored by Chris Leary<leary@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Make large params test only run in opt builds.
+    
+    PiperOrigin-RevId: 168491913
+    
+    ---
+    Commit 11d3ac29d authored by Chris Leary<leary@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Add tests for large numbers of parameter / return values and while loops.
+    
+    PiperOrigin-RevId: 168487225
+    
+    ---
+    Commit 3cd6bdef5 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Added test cases on R4 slice.
+    
+    PiperOrigin-RevId: 168482049
+    
+    ---
+    Commit 46a81b5c3 authored by Jacques Pienaar<jpienaar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add cast S64 to F32 test.
+    
+    PiperOrigin-RevId: 168473650
+    
+    ---
+    Commit 59bdf598d authored by Derek Murray<mrry@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add an automatically-generated "tensorflow.python.platform.build_info" script.
+    
+    The motivation for this script is to provide better tools for
+    diagnosing load-time errors (such as the ones that plague the Windows
+    build due to DLL issues). Note that the script is intended to be
+    self-contained, so that it is possible to import it without loading
+    the entire TensorFlow runtime.
+    
+    This generated script currently contains a single symbol,
+    `is_cuda_build`, which records whether the build has GPU support or not.
+    
+    PiperOrigin-RevId: 168471034
+    
+    ---
+    Commit c3b86347f authored by Olivia Nordquist<nolivia@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    reenabling tests that are passing
+    
+    PiperOrigin-RevId: 168466361
+    
+    ---
+    Commit c728665ec authored by Henry Tan<henrytan@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add const qualifiers whenever appropriate.
+    
+    PiperOrigin-RevId: 168465926
+    
+    ---
+    Commit bf96fcd13 authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Use the scalar cache in MeanGrad.
+    
+    PiperOrigin-RevId: 168462267
+    
+    ---
+    Commit 1cada9ea2 authored by Olivia Nordquist<nolivia@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    reenabling test that passed after 100 runs w/o timing out
+    
+    PiperOrigin-RevId: 168458634
+    
+    ---
+    Commit 00c865566 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Generate error (instead of segfault) when trying to copy string tensor
+    to GPU in EagerTensor constructor.
+    
+    PiperOrigin-RevId: 168457320
+    
+    ---
+    Commit 655f26fc7 authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Resurrects autograd-free eager gradients.
+    
+    PiperOrigin-RevId: 168448557
+    
+    ---
+    Commit 8f37f3002 authored by Peter Hawkins<phawkins@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [TF:XLA] Cleanups to handling of arguments during XLA compilation:
+    * combine resource kinds in XlaCompiler::Argument::Kind, use a separate XlaResource::Kind field to distinguish different kinds of resource.
+    * merge XlaContext::HandleOrConstant and XlaExpression, which were almost identical.
+    * remove XlaContext::Argument; instead, build XlaExpressions directly from XlaCompiler and add them to the XlaContext.
+    
+    PiperOrigin-RevId: 168439341
+    
+    ---
+    Commit 7f5346a80 authored by Gunhan Gulsoy<gunan@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Reduce cmake log mess.
+    
+    * Echo off for the .bat scripts.
+    * TF cmake: disable warnings in some of the patched projects (gif,jpeg,lmdb).
+    
+    PiperOrigin-RevId: 168432070
+    
+    ---
+    Commit 2ad85aa4d authored by Mark Heffernan<meheff@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Use xla/tests:xla_internal_test_main for all tests under tf/compiler/xla
+    and remove any main() definitions in tests. This enables use of flags
+    in all tests.
+    
+    PiperOrigin-RevId: 168424796
+    
+    ---
+    Commit cd377811d authored by Henry Tan<henrytan@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Comment and error message consistency cleanup.
+    
+    PiperOrigin-RevId: 168422582
+    
+    ---
+    Commit 7c19b82af authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update tf.sparse_reset_shape so that when shrinking the shape of an empty
+    sparse tensor, the result has a shape of all zeros.
+    
+    PiperOrigin-RevId: 168419639
+    
+    ---
+    Commit fcacb40d4 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    FirstReadyManager for scheduling nodes in VirtualScheduler.
+    The current FIFOManager may yield inefficient scheduling; _Recv pushed to the
+    FIFO blocks other nodes that can run before _Recv due to the node order in FIFO.
+    FirstReadyManager picks a node with the earliest time_ready in the queue,
+    avoiding this problem.
+    
+    Also, fixed VirtualPlacer to properly set device when Node's device name does not
+    include job name and to set GPU:0 as default device.
+    
+    PiperOrigin-RevId: 168418455
+    
+    ---
+    Commit 7e47624f5 authored by Asim Shankar<ashankar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    eager: Initial support for iteration over tf.contrib.data.Dataset objects.
+    
+    TODO:
+    - Support function-valued operation attributes in eager
+      (Required for MapDataset, FilterDataset etc. which encode the
+      per-element computation in a TensorFlow function)
+    PiperOrigin-RevId: 168418250
+    
+    ---
+    Commit b0a397fce authored by Asim Shankar<ashankar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    eager: Remove unnecessary TFE_Context argument to TFE_OpSetDevice.
+    
+    PiperOrigin-RevId: 168417999
+    
+    ---
+    Commit 86211d554 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Graph transform to flatten atrous (dilated) convolutions (i.e., a sequence of SpaceToBatchND-Conv-BatchToSpaceND ops) to a regular Conv op with upsampled filters.
+    
+    PiperOrigin-RevId: 168414124
+    
+    ---
+    Commit 3438981ca authored by David G. Andersen<dga@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Apply exported symbol filtering to the c++ API analogously to
+    what is filtered for the C API.
+    Fixes bug reported in comments on #1924
+    
+    PiperOrigin-RevId: 168413719
+    
+    ---
+    Commit 7e023d865 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA:CPU] Remove code from parallel CPU backend outlining that was causing unnecessary copies to be inserted, and which is no longer necessary since we added co-located buffer support for kCall.
+    *) All bitcast copy is no longer necessary as CopyInsertion will insert copies
+    at the root of the computation for a parameter which is live-out.
+    *) Copy if root does not define buffer no longer necessary because colocated
+    assignment looks at points-to set of root instruction.
+    
+    PiperOrigin-RevId: 168412076
+    
+    ---
+    Commit 5da4df92c authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Simplify some code in grappler_item_builder.cc, no change in logic.
+    
+    PiperOrigin-RevId: 168409110
+    
+    ---
+    Commit 82ec6241a authored by drpngx<drpngx@users.noreply.github.com>
+    Committed by GitHub<noreply@github.com>:
+    Add six and numpy imports
+    ---
+    Commit 9c4ce2452 authored by Mark Heffernan<meheff@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add flag parsing to more tests in xla/service specifically those which build
+    HLO graphs. This enables, for example, dumping of the graphs with
+    --xla_generate_hlo_graph. Also remove some superfluous tensorflow test_main
+    dependencies.
+    
+    PiperOrigin-RevId: 168406746
+    
+    ---
+    Commit d4efa695c authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Relax the feed_nodes collection check, which triggers a false positive in some modes where the feed node collection is auto-generated. Keep it as a warning to help correct user-provided feed node lists.
+    
+    PiperOrigin-RevId: 168396408
+    
+    ---
+    Commit cbc46a856 authored by Changming Sun<chasun@microsoft.com>
+    Committed by gunan<gunan@google.com>:
+    Add a missing template explicit instantiation of SetZeroFunctor (#12791)
+    
+    ---
+    Commit 7bb08f5bf authored by Kevin Slagle<kjslag@gmail.com>
+    Committed by drpngx<drpngx@users.noreply.github.com>:
+    fix ExponentialMovingAverage documentation so that ExponentialMovingAverage.apply is evaluated within control_dependencies (#12987)
+    
+    ---
+    Commit e6b011763 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Extend c++ gradient_checker to complex types.
+    
+    PiperOrigin-RevId: 168392949
+    
+    ---
+    Commit 4086219a4 authored by Lyndon White<oxinabox@ucc.asn.au>
+    Committed by drpngx<drpngx@users.noreply.github.com>:
+    Correct minor typo in substr docs example (#12991)
+    
+    ---
+    Commit f63aa7f49 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Migrate core TFGAN functions to opensource.
+    
+    PiperOrigin-RevId: 168391923
+    
+    ---
+    Commit bc6b60f1b authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix tuple_losses bug caused by Python bug.
+    
+    PiperOrigin-RevId: 168386341
+    
+    ---
+    Commit 7a8c63da3 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Migrate `leaky_relu` to `nn_ops.py`. Will be used for TFGAN.
+    
+    PiperOrigin-RevId: 168386268
+    
+    ---
+    Commit f7ba16fdf authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Do not export from eval on train data steps.
+    
+    PiperOrigin-RevId: 168374021
+    
+    ---
+    Commit 9b9e54b34 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Adding NCCL sum op, register all_sum gradient.
+    Streamlining nccl test.
+    
+    PiperOrigin-RevId: 168347428
+    
+    ---
+    Commit bc300318e authored by Gunhan Gulsoy<gunan@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update gemmlowp hash as the commit history seems to have changed in the
+    repository.
+    
+    PiperOrigin-RevId: 168343607
+    
+    ---
+    Commit 1e96d54d9 authored by gunan<gunan@google.com>
+    Committed by GitHub<noreply@github.com>:
+    Also accept non-k8 CPU types in build pip package. (#12975)
+    
+    * Also accept non-k8 CPU types in build pip package.
+    Fixes #12735
+    
+    * Make the script work with `set -e`.
+    
+    ---
+    Commit c0a4c7ffc authored by Chris Leary<leary@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Fix bug in ShapeUtil::ShapeIs that would lead to type inference errors.
+    
+    PiperOrigin-RevId: 168323589
+    
+    ---
+    Commit 4af9be964 authored by Amy<amy@infosleuth.net>
+    Committed by drpngx<drpngx@users.noreply.github.com>:
+    support passing in a source url to the mnist read_data_sets function, to make it easier to use 'fashion mnist' etc. (#12983)
+    
+    ---
+    Commit 9f848734f authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Tweak layer a bit to be eager friendly.
+    
+    PiperOrigin-RevId: 168312865
+    
+    ---
+    Commit 60f15462b authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Change conv_input_scale and side_input_scale from attributes to inputs for improved flexibility, in fused_conv2d_bias_activation op.
+    
+    PiperOrigin-RevId: 168311988
+    
+    ---
+    Commit 4b4e10f9c authored by Jianwei Xie<xiejw@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Adds dict support of eval metrics.
+    
+    PiperOrigin-RevId: 168310444
+    
+    ---
+    Commit ab7f22de6 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Move FusedConvBiasActivationShape out of common_shape_fns.cc to a lambda inside the op.
+    
+    PiperOrigin-RevId: 168300911
+    
+    ---
+    Commit 3a98035fa authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Augment metadata output with source-line info, as before.
+    
+    PiperOrigin-RevId: 168292527
+    
+    ---
+    Commit 349188152 authored by Yao Zhang<yaozhang@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Enable fused batch norm, which is 15-20% faster for training and inference.
+    
+    PiperOrigin-RevId: 168288154
+    
+    ---
+    Commit 08587d45b authored by Yuefeng Zhou<yuefengz@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Added back persistent memory tracking in queue op. The new tracking logic has avoided the crash in previous implementation:  the queue_ passed to CreateTypedQueue may be unreffed if the resource is already created by another resource op that shares the same resource name and type.
+    
+    PiperOrigin-RevId: 168284509
+    
+    ---
+    Commit 733063d55 authored by Amit Patankar<amitpatankar@google.com>
+    Committed by Amit Patankar<amitpatankar@google.com>:
+    Fixing awkward wording.
+    
+    ---
+    Commit c7ad6bfef authored by Amit Patankar<amitpatankar@google.com>
+    Committed by Amit Patankar<amitpatankar@google.com>:
+    Removing accidental hash.
+    
+    ---
+    Commit 53dbc761a authored by Amit Patankar<amitpatankar@google.com>
+    Committed by Amit Patankar<amitpatankar@google.com>:
+    Adding Windows self check script to docs.
+    
+    ---
+    Commit ed1135994 authored by Andrew Harp<andrewharp@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add -latomic flag to benchmark_model target to fix Android x86 build.
+    
+    PiperOrigin-RevId: 168281337
+    
+    ---
+    Commit c0348bb55 authored by Anna R<annarev@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update tf_export.py to take constant name as an argument instead of a constant.
+    
+    PiperOrigin-RevId: 168280613
+    
+    ---
+    Commit c3d19e40a authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Cleanup training_ops to reduce code redudancy.
+    
+    PiperOrigin-RevId: 168280069
+    
+    ---
+    Commit 123fb01ee authored by Yao Zhang<yaozhang@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Set fused=False for batch norm, because the test assumes no bessel's
+    correction. Fused=True would add bessel's correction to variance.
+    
+    PiperOrigin-RevId: 168274392
+    
+    ---
+    Commit f0e8c545e authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Switch resource variables from copy-on-read to copy-on-write.
+    
+    RELNOTES: Change the signature of (C++) GetInputTensorFromVariable in
+    training_op_helpers to support new copy-on-write semenatics of resource
+    variables.
+    PiperOrigin-RevId: 168273249
+    
+    ---
+    Commit 495cc8e47 authored by Yuan (Terry) Tang<terrytangyuan@users.noreply.github.com>
+    Committed by drpngx<drpngx@users.noreply.github.com>:
+    Minor wording change in timeseries module's README (#12938)
+    
+    * Minor wording change in timeseries module's README
+    
+    * Address comments
+    
+    ---
+    Commit f13b876ed authored by Amit Patankar<amitpatankar@google.com>
+    Committed by Amit Patankar<amitpatankar@google.com>:
+    Making the default build from source version 1.4.0dev. The whl files that are built will be 1.3.0devDDMMYYYY.
+    
+    ---
+    Commit 2356c0ff4 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Delete ScopedTFStatus to avoid leaking it for long running trainers(1+day).
+    
+    PiperOrigin-RevId: 168259652
+    
+    ---
+    Commit e15f4cae2 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Don't remove all aliases from linalg namespace.
+    Get rid of redundant aliases.
+    
+    PiperOrigin-RevId: 168257658
+    
+    ---
+    Commit c58082642 authored by postBG<profile2697@gmail.com>
+    Committed by drpngx<drpngx@users.noreply.github.com>:
+    Fix minor typo in Programmers guide (#12965)
+    
+    * Fix minor typo in Programmers guide
+    
+    * change to "this"
+    
+    ---
+    Commit 509372c2e authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add a lot of operations' flops calculations
+    
+    PiperOrigin-RevId: 168256746
+    
+    ---
+    Commit 80ed8afc0 authored by Francois Chollet<fchollet@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add Flatten to core layers.
+    
+    PiperOrigin-RevId: 168254118
+    
+    ---
+    Commit a6223c01a authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix locking of variables in SparseProximalGradientDescent,
+    AdagradDA, SparseAdagradDA.
+    
+    PiperOrigin-RevId: 168252530
+    
+    ---
+    Commit abde00830 authored by Olivia Nordquist<nolivia@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    adding InputTensor class for symmetry with OutputTensor
+    
+    PiperOrigin-RevId: 168250085
+    
+    ---
+    Commit 0451032ca authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Fix variable naming style guide violation.
+    
+    PiperOrigin-RevId: 168245542
+    
+    ---
+    Commit a202a5a94 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update ops-related pbtxt files.
+    
+    PiperOrigin-RevId: 168245371
+    
+    ---
+    Commit f93e354cb authored by Derek Murray<mrry@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [tf.contrib.data] Switch backend Dataset representation to DT_VARIANT.
+    
+    This change introduces a new `DatasetWrapper` type that wraps a
+    `DatasetBase*` and can be stored in a DT_VARIANT tensor. All Dataset
+    ops now consume and produce DT_VARIANT instead of DT_RESOURCE, and the
+    underlying implementation is simplified because the `DatasetWrapper`
+    can be passed directly by value without using the `ResourceMgr`.
+    
+    PiperOrigin-RevId: 168240571
+    
+    ---
+    Commit a4042cd2a authored by Jianwei Xie<xiejw@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Introduces the placeholder for _TrainingExecutor, which serves the implementation of tf.estimator.train_and_evaluate.
+    
+    PiperOrigin-RevId: 168240151
+    
+    ---
+    Commit 10ba148f7 authored by Peter Hawkins<phawkins@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Switch control_flow_ops library to use Resource variants of Stack operators, instead of deprecated Ref variants.
+    
+    PiperOrigin-RevId: 168234822
+    
+    ---
+    Commit ca43fe82b authored by Ali Yahya<alive@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    TFE: Improves the interfaces of tape.watch_variable() and implicit_grad().
+    
+    tape.watch_variable() replaces tape.watch() and now is called on ResourceVariable objects instead of their underlying handles.
+    
+    implicit_grad() now returns a list of (gradient, variable) pairs to be consistent with tf.Optimizer's interface.
+    
+    PiperOrigin-RevId: 168232055
+    
+    ---
+    Commit b72862dfc authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    internal change
+    
+    PiperOrigin-RevId: 168225993
+    
+    ---
+    Commit da3280f4d authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Re-enable tsan for sdca_estimator_test.
+    
+    PiperOrigin-RevId: 168186374
+    
+    ---
+    Commit c936c1155 authored by Yifei Feng<yifeif@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix pip tests for contrib/gan.
+    - Add *_impl.py so tests can still access removed symbols.
+    - Add /python directory layer to make *_impy.py and __init__.py not in the same dir.
+    
+    PiperOrigin-RevId: 168161722
+    
+    ---
+    Commit ce9a2b00f authored by Toby Boyd<tobyboyd@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Performance guide update
+    
+    PiperOrigin-RevId: 168159289
+    
+    ---
+    Commit 3bce4f9a0 authored by Shanqing Cai<cais@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    TFE: expose tfe.num_gpus()
+    
+    PiperOrigin-RevId: 168154345
+    
+    ---
+    Commit 67a7cbc28 authored by Jianwei Xie<xiejw@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Changed the default eval throttle secs from 2 min to 10 mins.
+    
+    PiperOrigin-RevId: 168120323
+    
+    ---
+    Commit 92bed178f authored by Eugene Brevdo<ebrevdo@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Reduce cmake log mess.
+    
+    * Echo off for the .bat scripts.
+    * TF cmake: disable warnings in some of the patched projects (gif,jpeg,lmdb).
+    
+    PiperOrigin-RevId: 168119914
+    
+    ---
+    Commit 702d59582 authored by joshkyh<joshkyh@users.noreply.github.com>
+    Committed by Yifei Feng<fengyifei2026@gmail.com>:
+    Corrected hyperlink for audio training tutorial (#12923)
+    
+    ---
+    Commit 877c9deca authored by Frank Chen<frankchn@gmail.com>
+    Committed by Yifei Feng<fengyifei2026@gmail.com>:
+    Reverse change eb75ded6 so that internal tests will pass. (#12933)
+    
+    As support for int64 global steps is not ready in TPUs, I am reversing this change so that our internal performance and regression tests will pass.
+    ---
+    Commit 665966438 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Re-enable grpc_session_test.
+    
+    PiperOrigin-RevId: 168078694
+    
+    ---
+    Commit 405def792 authored by Chris Leary<leary@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Switch CallInliner to use CallGraph::VisitNodes.
+    
+    PiperOrigin-RevId: 168078645
+    
+    ---
+    Commit aba3466f1 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Exposes Head and factory methods in tf.contrib.estimator.
+    
+    PiperOrigin-RevId: 168071246
+    
+    ---
+    Commit b76565b39 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Some profiler fixes and cleanup.
+    
+    PiperOrigin-RevId: 168069346
+    
+    ---
+    Commit 32ffc5a81 authored by Jonas<sauercrowd@users.noreply.github.com>
+    Committed by Yifei Feng<fengyifei2026@gmail.com>:
+    Just a dot in order to be consistent (#12919)
+    
+    added a dot to the `7` to make clear it's a float (like every other number)
+    ---
+    Commit 0753b0c79 authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Scope the scalar cache in the context.
+    
+    PiperOrigin-RevId: 168065417
+    
+    ---
+    Commit 48deb206b authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Migrate TFGAN features to third_party.
+    
+    PiperOrigin-RevId: 168060880
+    
+    ---
+    Commit d2ae1311f authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fixing an issue in the BUILD file of the LSH ops.
+    
+    PiperOrigin-RevId: 168056645
+    
+    ---
+    Commit 2f440eda4 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Expose NumpyReader for reading timeseries data.
+    
+    PiperOrigin-RevId: 168055838
+    
+    ---
+    Commit be1916ce7 authored by Daniel Grazian<dgr@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Added functionality to allow `SqlDataset` to interpret a database column as various numeric types, including several integer types and `dtypes.float64`.
+    
+    PiperOrigin-RevId: 168055827
+    
+    ---
+    Commit fa2000a0b authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Supporting nightly windows pip packages.
+    
+    PiperOrigin-RevId: 168054959
+    
+    ---
+    Commit a263ea626 authored by Asim Shankar<ashankar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    eager: Treat eager tensors as constants during graph construction.
+    
+    Unless capturing is explicitly enabled.
+    
+    PiperOrigin-RevId: 168052675
+    
+    ---
+    Commit 6e402d0d2 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Make TODO a bit more specific.
+    
+    PiperOrigin-RevId: 168051381
+    
+    ---
+    Commit c779384bc authored by Daniel Grazian<dgr@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Added code example to the doc string for `SqlDataset`.
+    
+    PiperOrigin-RevId: 168049037
+    
+    ---
+    Commit ff6dd474a authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Use self._in_graph_mode consistently in ResourceVariable
+    instead of sometimes getting it from the context.
+    
+    Also: fix formatting of a comment and use a more precise test to detect
+    if initial_value is set.
+    PiperOrigin-RevId: 168047258
+    
+    ---
+    Commit f331f528b authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Removes "fast paths" which are not fast in eager mode.
+    
+    PiperOrigin-RevId: 168046278
+    
+    ---
+    Commit 86f1713e5 authored by Jianwei Xie<xiejw@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Introduces TrainSpec and EvalSpec.
+    
+    PiperOrigin-RevId: 168040435
+    
+    ---
+    Commit c8b9e92f0 authored by Asim Shankar<ashankar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    eager: Move "register_function" to context.py
+    
+    This will allow function registration from other
+    modules without having to import "function.py".
+    (And besides, the function really does belong on the context).
+    
+    PiperOrigin-RevId: 168040411
+    
+    ---
+    Commit 74137f994 authored by Shanqing Cai<cais@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix signed int overflow issue in tensor_id.cc
+    
+    When a node name has a long numeric suffix, e.g.,
+    "foo/y_0/gradient_debug_09684b60f2184c67b744721915034528" (as has happened with tfdbg GradientsDebugger),
+    
+    the parsing algorithm in ParseTensorName() may experience signed int overflow. Replacing the types with "unsigned int" resolves the issue.
+    
+    PiperOrigin-RevId: 168039195
+    
+    ---
+    Commit 450c3b562 authored by Rohan Jain<rohanj@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Using rendezvous manager to pass args / rets between devices during function remote execution. This enables CPU->GPU remote device executions now.
+    
+    PiperOrigin-RevId: 168038285
+    
+    ---
+    Commit 82cc6529f authored by Jianwei Xie<xiejw@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fixes the wording about StopIteration.
+    
+    PiperOrigin-RevId: 168034451
+    
+    ---
+    Commit fb5588002 authored by Gunhan Gulsoy<gunan@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add a statement on install/index.md on what os are supported.
+    
+    PiperOrigin-RevId: 168032996
+    
+    ---
+    Commit f83f6b9ef authored by Chris Leary<leary@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Handle higher-order HLOs (e.g. While) in CallInliner and test.
+    
+    PiperOrigin-RevId: 168029345
+    
+    ---
+    Commit 8988ae365 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    BEGIN_PUBLIC
+    Automated g4 rollback of changelist 167916124
+    
+    PiperOrigin-RevId: 168916710
+    
+    * Update ops-related pbtxt files.
+    
+    PiperOrigin-RevId: 168917157
+    
+    * Go: Update generated wrapper functions for TensorFlow ops.
+    
+    PiperOrigin-RevId: 168917534
+
+commit f9ab7c9cba8ed9a96df049d27b4faf7b8fc93ff4
+Author: Gunhan Gulsoy <gunan@google.com>
+Date:   Fri Sep 15 13:59:45 2017 -0700
+
+    Make sure all checked threads are joined before they are terminated.
+    
+    PiperOrigin-RevId: 168884294
+
+commit 05c491d30888088873fedfbe81bca378c8c3fc87
+Author: Benoit Steiner <bsteiner@google.com>
+Date:   Tue Aug 1 16:16:52 2017 -0700
+
+    Merge changes from github.
+    END_PUBLIC
+    
+    ---
+    Commit e62de3f78 authored by Kay Zhu<kayzhu@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Handle Reverse in HloEvaluator.
+    
+    Also move HandleCopy to outer visitor instead, since it can be implemented
+    as a type-agnostic copy instead.
+    
+    PiperOrigin-RevId: 163866499
+    
+    ---
+    Commit 96675956e authored by Asim Shankar<ashankar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    C API: Avoid converting uninitialized tensorflow::Tensor to TF_Tensor*
+    
+    And return error messages instead of CHECK failing when the conversion
+    fails.
+    
+    PiperOrigin-RevId: 163863981
+    
+    ---
+    Commit 9593704b2 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix framework import function dependency.
+    
+    PiperOrigin-RevId: 163863883
+    
+    ---
+    Commit 66f148542 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Improve performance of compilation by ~8% by speeding up the
+    hlo rematerialization pass.
+    
+    Changes:
+    . Wrap each HloInstruction* inside an Item structure that keeps
+      associated data.  This allows us to get rid of a bunch of
+      hash tables indexed by HloInstruction*.
+    * Switch to an intrusive linked list (instead of std::list) so
+      that we can avoid a hash table that maps to std::list::iterator.
+    * Use inlined vector in a few places.
+    PiperOrigin-RevId: 163848365
+    
+    ---
+    Commit 6d77a0129 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Hide NonMaxSuppression and NonMaxSuppressionV2 ops and add a python wrapper that sets a backwards compatible default value for iou_threshold.
+    
+    PiperOrigin-RevId: 163844703
+    
+    ---
+    Commit 1a4499607 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix: add GDN to __init__. Also put it in alphabetical order.
+    
+    PiperOrigin-RevId: 163842410
+    
+    ---
+    Commit db0e1c6c8 authored by Benoit Steiner<bsteiner@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Don't force inlining of functions marked no-inline
+    
+    PiperOrigin-RevId: 163842238
+    
+    ---
+    Commit 18718b6f7 authored by Benoit Steiner<bsteiner@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Misc grappler improvements:
+     * Avoid copying optimized graphs since that takes time.
+     * Avoid optimizing a pruned graph, since it's already been pruned there isn't much to gain
+    
+    PiperOrigin-RevId: 163842122
+    
+    ---
+    Commit 90abbf684 authored by Benoit Steiner<bsteiner@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Use OP_REQUIRES instead of an assertion to validate op arguments
+    
+    PiperOrigin-RevId: 163841759
+    
+    ---
+    Commit 203c3f5fd authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Infer unknown shapes for functions in C++
+    
+    As we are implementing function support through C API, the new code path
+    runs shape inference of Operations representing functions, but we don't
+    yet support shape inference for functions.
+    
+    Before this change, adding a function NodeDef would result in error.
+    This change pairs all functions with a shape inference function that
+    sets all output shapes to unknown.
+    
+    PiperOrigin-RevId: 163830793
+    
+    ---
+    Commit 3cc5fc088 authored by Chris Leary<leary@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Implement MirrorPad op.
+    
+    Addresses #11890
+    
+    * Improves the shape inference error message for concatenate.
+    * Adds a helper to Literal that gets an integral value converted to int64.
+    
+    PiperOrigin-RevId: 163829437
+    
+    ---
+    Commit c7b674fa2 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    flatten_up_to should return values, not keys
+    
+    PiperOrigin-RevId: 163809688
+    
+    ---
+    Commit 6209b4b52 authored by Asim Shankar<ashankar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Minor refactoring the TF_Tensor <-> PyArray conversion functions.
+    
+    PiperOrigin-RevId: 163802822
+    
+    ---
+    Commit 618f913bb authored by Yao Zhang<yaozhang@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Speed up topological sort by avoiding copies. The speedup is about 10-20%.
+    
+    PiperOrigin-RevId: 163800134
+    
+    ---
+    Commit 6446895aa authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Remove and replace broken giflib download link
+    
+    PiperOrigin-RevId: 163796393
+    
+    ---
+    Commit 9d5613088 authored by Chris Leary<leary@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA:CPU] Atomically enqueue tuple buffers for outfeed.
+    
+    Previously it was possible that a distinct thread could hop in between the
+    buffer enqueues done by a tuple-outfeeding thread. This changes the sequence to
+    enqueue all the tuple buffers as an atomic unit.
+    
+    PiperOrigin-RevId: 163781804
+    
+    ---
+    Commit b882d686f authored by Bjarke Hammersholt Roune<broune@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Allow cost estimates to differ per backend and include the estimates into the HLO profile. Add a summary table for what categories have the most opportunity for optimization left in them.
+    
+    PiperOrigin-RevId: 163780413
+    
+    ---
+    Commit 14b736761 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Pass stats_collector when using SymbolicGradientOp.
+    
+    PiperOrigin-RevId: 163773897
+    
+    ---
+    Commit 5202a5b6c authored by RJ Ryan<rjryan@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fix some typos in StreamExecutor's cuFFT support.
+    
+    PiperOrigin-RevId: 163771825
+    
+    ---
+    Commit edac90c7c authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add support to generate pprof results to tf.profiler
+    
+    A fun thing is, it can not only profile time,memory
+    but also parameters, etc.
+    
+    PiperOrigin-RevId: 163767517
+    
+    ---
+    Commit 78a90370e authored by Eli Bendersky<eliben@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Refactor CreateModuleConfig to share code between multiple call-sites.
+    
+    Previously Service, LocalService and CompileOnlyService had their own code to
+    create a new HloModuleConfig, with much repetition (and some ommissions);
+    collect all these uses in a single method.
+    
+    PiperOrigin-RevId: 163766869
+    
+    ---
+    Commit 6150611ae authored by Anna R<annarev@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Internal change.
+    
+    PiperOrigin-RevId: 163765028
+    
+    ---
+    Commit 9e7875437 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add the option of including Shape, ShapeN, Size and Rank in the standard TensorFlow constant propagation pass, when the inputs to those Ops have sufficiently known static shape.
+    
+    PiperOrigin-RevId: 163762750
+    
+    ---
+    Commit 8b1365bb4 authored by Yuefeng Zhou<yuefengz@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Infer output shape for restore op.
+    
+    PiperOrigin-RevId: 163762216
+    
+    ---
+    Commit 2e2a8536d authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update WorkerCacheLogger::RecordDataTransfer to not modify the details if provided.
+    
+    PiperOrigin-RevId: 163761089
+    
+    ---
+    Commit d03ba54f7 authored by Yangzihao Wang<yangzihao@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Use BlasGemv() when autotune is not set.
+    
+    PiperOrigin-RevId: 163754092
+    
+    ---
+    Commit 724884f1c authored by Justin Lebar<jlebar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Show layouts in HLO graph dump.
+    
+    Layouts are displayed as e.g. "f32[100,200]{0,1}".  But constants used
+    to be displayed as e.g. "f32[]{42}".  To avoid ambiguity, constants are
+    now displayed as e.g. "42 (f32[])".
+    
+    Also gets rid of the xla_hlo_graph_layout flag, which is no longer
+    necessary since we're now showing layouts unconditionally.
+    
+    PiperOrigin-RevId: 163753637
+    
+    ---
+    Commit 84c2757a6 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Move Grappler test GraphDefs to separate files
+    
+    PiperOrigin-RevId: 163751948
+    
+    ---
+    Commit 0b3a25d68 authored by Asim Shankar<ashankar@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Make TF_RESOURCE memory handling consistent with other types.
+    
+    TF_Tensor's are backed by a contiguous memory region for all
+    but TF_RESOURCE tensors. The memory management of TF_RESOURCE
+    tensors required keeping a backing tensorflow::ResourceHandle*
+    object alive for the lifetime of the TF_Tensor object.
+    
+    This change removes that discrepancy, making the memory backing
+    TF_RESOURCE tensors self-contained. This simplifies use of TF_RESOURCE
+    tensors in the C API (as users of the C API do not need to worry about
+    a tensorflow::ResourceHandle object and its lifetime). In doing so, this
+    moves a string memory copy from the TF_Tensor <-> Numpy conversion
+    to the C API from the Python session helper.
+    
+    Unfortunately, I couldn't figure out how to add a simple unittest in
+    c_api_test.cc. The more comprehensive tensorflow/python/kernel_tests/session_ops_test.py
+    does cover the changed lines though.
+    
+    Additionally, avoid an unnecessary copy when creating TF_STRING or TF_RESOURCE
+    tensors (as eigen alignment is not a requirement for them).
+    
+    PiperOrigin-RevId: 163751880
+    
+    ---
+    Commit 1333e7745 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Allow one tensor to be the input to the estimator.
+    
+    PiperOrigin-RevId: 163747076
+    
+    ---
+    Commit 104f349e9 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update Conv2DShape function to handle filters that have data NCHW_VECT_C layout.
+    
+    PiperOrigin-RevId: 163746769
+    
+    ---
+    Commit efb7fb8e5 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Use XLA_VLOG_LINES() in literal_test_util to avoid truncation of large tensors.
+    
+    PiperOrigin-RevId: 163745522
+    
+    ---
+    Commit 043505a09 authored by Suharsh Sivakumar<suharshs@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    MasterSession should throw error if use_per_session_threads or session_inter_op_thread_pool is set.
+    
+    PiperOrigin-RevId: 163743936
+    
+    ---
+    Commit 6ba02f0e9 authored by Artem Belevich<tra@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Added HasAllocationAt() helper function.
+    
+    PiperOrigin-RevId: 163742985
+    
+    ---
+    Commit 18304683e authored by Justine Tunney<jart@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Pin tensorflow to tensorflow-tensorboard 0.1.x
+    
+    This change will be cherry-picked into the 1.3.0 release.
+    
+    PiperOrigin-RevId: 163742463
+    
+    ---
+    Commit 3445dd0ed authored by Justine Tunney<jart@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Make 'import tensorflow' go faster
+    
+    It now takes about 400ms rather than 800ms, if the file system cache is warm.
+    
+    Most of the latency was due to parsing text_format OpList protocol buffers in
+    our generated sources. We now use a binary representation, while preserving the
+    text proto as a comment for readability.
+    
+    Note: This change does not improve the latency of dereferencing tf.contrib,
+    which takes about 340ms.
+    PiperOrigin-RevId: 163739355
+    
+    ---
+    Commit c215c55d5 authored by Neal Wu<wun@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add missing py_binary for mnist_deep.py
+    
+    PiperOrigin-RevId: 163737503
+    
+    ---
+    Commit b663c9899 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Make non-iterable input to `stratified_sample` produce better error message.
+    
+    PiperOrigin-RevId: 163735979
+    
+    ---
+    Commit 122750a87 authored by Peter Hawkins<phawkins@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [SE] Make ExecutorCache thread-safe, change ExecutorCache::Insert to ExecutorCache::GetOrCreate. Add support for creating Executors for different device ordinals in parallel.
+    [XLA] Create Executors in parallel.
+    
+    PiperOrigin-RevId: 163734988
+    
+    ---
+    Commit 7ebed6678 authored by Frank Chen<frankchn@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add __init__.py to the contrib/cluster_resolver directory so that the Cluster Resolver classes within this are visible to open source TensorFlow users.
+    
+    PiperOrigin-RevId: 163733781
+    
+    ---
+    Commit 21faf19d0 authored by Shanqing Cai<cais@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Upgrade pip version to 9.0.1; Prettier format of log text
+    
+    * Upgrade pip version used in virtualenv created by the test-on-install to latest (9.0.1).
+    * Highlight step titles of pip builds with bold font.
+    
+    PiperOrigin-RevId: 163732825
+    
+    ---
+    Commit 5887cc10e authored by Kay Zhu<kayzhu@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] In LiteralUtil::StridedConfig: choose the larger dimension between the
+    source and destination shapes' minor-most dimension index.
+    
+    PiperOrigin-RevId: 163732014
+    
+    ---
+    Commit f9c644693 authored by Peter Hawkins<phawkins@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [TF:XLA] Disable sanitizers for depthwise conv test to fix test flakiness.
+    
+    PiperOrigin-RevId: 163727765
+    
+    ---
+    Commit 6263539a1 authored by Allen Lavoie<allenl@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Grappler memory optimization: allow inputs to gradients with non-standard names to be recomputed
+    
+    Includes Python tests for name-scoped gradients.
+    
+    PiperOrigin-RevId: 163720208
+    
+    ---
+    Commit 4ac195669 authored by Benoit Steiner<benoitsteiner@users.noreply.github.com>
+    Committed by GitHub<noreply@github.com>:
+    Branch 163695881 (#11913)
+    
+    * Prevent ctc_loss op from segfaulting when given empty batch.
+    
+    PiperOrigin-RevId: 163663460
+    
+    * New "SavedModel: Practical Uses" and "SavedModel: Architecture" documents.
+    
+    PiperOrigin-RevId: 163669809
+    
+    * Minor cleanup
+    
+    PiperOrigin-RevId: 163685423
+    
+    * Add regression variance over individual trees to TensorForest inference.
+    
+    PiperOrigin-RevId: 163695881
+    
+    ---
+    Commit b876065af authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    graph_to_function_def gets its own file
+    
+    PiperOrigin-RevId: 163709410
+    
+    ---
+    Commit 29550762b authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fixes unit tests for inverse hyperbolic functions that were failing because numeric gradients were computed too close to a branch cut (for complex arguments) or singularity (for real arguments) where the function is not differentiable (See, e.g., http://mathworld.wolfram.com/BranchCut.html). This change moves the test points away from the branch cut/singularity.
+    
+    Improves precision of double precision numerical gradients by using a smaller step size delta (the optimal for symmetric difference approximation with functions computed with O(epsilon) error is epsilon^(1/3), so for double64 it is ~1e-5).
+    
+    PiperOrigin-RevId: 163706297
+    
+    ---
+    Commit 99b190a1f authored by Peter Hawkins<phawkins@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [TF:XLA] Add implementation of depthwise convolution.
+    
+    This implementation expands the depthwise convolution kernels into a regular convolution kernel, which may not scale to large feature depths.
+    
+    PiperOrigin-RevId: 163705408
+    
+    ---
+    Commit f6f07b027 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Allow kernel unit tests to run on GPU
+    
+    PiperOrigin-RevId: 163705027
+    
+    ---
+    Commit 4ec29c5d9 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Avoid direct access to Node::def() where some other method works.
+    
+    PiperOrigin-RevId: 163704839
+    
+    ---
+    Commit 153be4d26 authored by Luke Iwanski<luke@codeplay.com>
+    Committed by Benoit Steiner<benoitsteiner@users.noreply.github.com>:
+    [OpenCL] Stats tracking (#11523)
+    
+    * Adds stat tracking to the SYCL allocator
+    
+    The SYCLAllocator will now find the max allocation size on construction,
+    and keep track of the allocation stats, as given in AllocationStats.
+    
+    * [OpenCL] Adds buffer size tracking to SYCL allocator (#114)
+    
+    The SYCL buffers underlying tensors already keep track of their sizes,
+    so we can easily provide this tracking information for debugging
+    purposes.
+    
+    ---
+    Commit 8d642672f authored by Amit Patankar<amitpatankar@google.com>
+    Committed by Amit Patankar<amitpatankar@google.com>:
+    Disabling gmm_test.py on Windows builds as it's flaky on GPU nightly builds.
+    
+    ---
+    Commit 1560c55d2 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add regression variance over individual trees to TensorForest inference.
+    
+    PiperOrigin-RevId: 163695881
+    
+    ---
+    Commit 15e928d51 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Minor cleanup
+    
+    PiperOrigin-RevId: 163685423
+    
+    ---
+    Commit f9c758719 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    New "SavedModel: Practical Uses" and "SavedModel: Architecture" documents.
+    
+    PiperOrigin-RevId: 163669809
+    
+    ---
+    Commit f19bb3beb authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Prevent ctc_loss op from segfaulting when given empty batch.
+    
+    PiperOrigin-RevId: 163663460
+    
+    ---
+    Commit 454fe936c authored by Taehoon Lee<taehoonlee@snu.ac.kr>
+    Committed by Taehoon Lee<taehoonlee@snu.ac.kr>:
+    Fix typos
+    
+    ---
+    Commit e17650b69 authored by Frank Chen<frankchn@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    This adds the cluster_resolver module to contrib/__init__.py so that it is actually visible to open source TensorFlow users.
+    
+    PiperOrigin-RevId: 163636676
+    
+    ---
+    Commit 926c0f6ee authored by ??<awsomekde@gmail.com>
+    Committed by GitHub<noreply@github.com>:
+    fix minor typo
+    ---
+    Commit 00d3126a3 authored by Yao Zhang<yaozhang@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Change const nodes to variables in the test, so that they are not optimized
+    away by the grappler constant folding pass.
+    
+    PiperOrigin-RevId: 163602405
+    
+    ---
+    Commit 1c7c9c716 authored by Aditya Dhulipala<aditya.d@hotmail.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Minor typo correction (#11874)
+    
+    ---
+    Commit f91a3546e authored by Sergii Khomenko<x-sam@brainscode.com>
+    Committed by Vijay Vasudevan<vrv@google.com>:
+    Fix a minor typo (#11873)
+    
+    ---
+    Commit adf5d1bc0 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    BEGIN_PUBLIC
+    Automated g4 rollback of changelist 163510186
+    
+    PiperOrigin-RevId: 163902859
+
+commit 8d642672faac20f7b4e2d49e7130cd36c3e2d2c1
+Author: Amit Patankar <amitpatankar@google.com>
+Date:   Mon Jul 31 09:09:42 2017 -0700
+
+    Disabling gmm_test.py on Windows builds as it's flaky on GPU nightly builds.
+
+commit 0cac938e510800cb36a29eb476fc47096c71ccb4
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Fri Jul 21 11:54:34 2017 -0700
+
+    Re-enable rendezvous_test.
+    
+    PiperOrigin-RevId: 162767573
+
+commit 90d6421c5e0898fb840197d9533c2f8ba1a7c651
+Author: Shanqing Cai <cais@google.com>
+Date:   Mon Jul 10 19:22:04 2017 -0700
+
+    Merge changes from github.
+    END_PUBLIC
+    
+    ---
+    Commit d0f53f77f authored by Penghao Cen<scorpiocph@gmail.com>
+    Committed by Shanqing Cai<cais@google.com>:
+    Minor fix typo (#11323)
+    
+    ---
+    Commit 02fcf564e authored by Chris Song<sjhshy@gmail.com>
+    Committed by Chris Song<sjhshy@gmail.com>:
+    Fix misspells.
+    
+    ---
+    Commit 764c9b6b4 authored by Louis Tiao<ltiao@users.noreply.github.com>
+    Committed by GitHub<noreply@github.com>:
+    Fixed typo in docstring
+    ---
+    Commit f8cd1283e authored by Shanqing Cai<cais@google.com>
+    Committed by Shanqing Cai<cais@google.com>:
+    Chaser
+    
+    ---
+    Commit 01383b946 authored by Shanqing Cai<cais@google.com>
+    Committed by Shanqing Cai<cais@google.com>:
+    Adapt TensorFlowTestCase.setUp() to new reset_default_graph() semantics
+    
+    Avoid calling reset_default_graph() directly to prevent exceptions in
+    cases where test methods error out from within nested graph contexts,
+    which can leave _default_graph_stack non-empty in certain Python
+    versions.
+    
+    ---
+    Commit 0ffc37890 authored by Amit Patankar<amitpatankar@google.com>
+    Committed by Amit Patankar<amitpatankar@google.com>:
+    Removing second declaration of functions.
+    
+    ---
+    Commit f9c9cacb0 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Refactor ElementalIrEmitter's slice index finding code into
+    IrArray::Index::SourceIndexOfSlice().
+    
+    PiperOrigin-RevId: 161140653
+    
+    ---
+    Commit ba297aec9 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Update ops-related pbtxt files.
+    
+    PiperOrigin-RevId: 161138258
+    
+    ---
+    Commit 68d666737 authored by Alexandre Passos<apassos@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fixes a reentrant lock issue with tensors using ndarray memory which uses tensor memory.
+    
+    PiperOrigin-RevId: 161137788
+    
+    ---
+    Commit a2ee8bca3 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add support for int8 x int8 -> int32 matrix multiplication via cublasGemmEx to stream_executor.
+    
+    PiperOrigin-RevId: 161137741
+    
+    ---
+    Commit 755fa7b50 authored by Mark Daoust<markdaoust@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Block generate_test, and docs generating from running in python3.
+    
+    - Doc generation is currently unsupported in python3
+    
+    - These both end in errors in python 3.5.1+
+    
+    PiperOrigin-RevId: 161137467
+    
+    ---
+    Commit 97cbcac45 authored by Peter Hawkins<phawkins@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [TF:XLA] Fix failure in functionalize_control_flow rewrite for Enter nodes that are unused. Make sure we ignore such nodes without producing an error.
+    
+    PiperOrigin-RevId: 161136545
+    
+    ---
+    Commit dabcb60bc authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    [XLA] Add reasonable error messages to Builder::Build for bad parameter numbers.
+    
+    PiperOrigin-RevId: 161136262
+    
+    ---
+    Commit 0cbd249e8 authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Add complex tensors support to `matrix_determinant`.
+    
+    PiperOrigin-RevId: 161132422
+    
+    ---
+    Commit 335f1f14d authored by A. Unique TensorFlower<gardener@tensorflow.org>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Extend static shape inference for SparseTensors with dense_shapes constructed using slicing.
+    
+    PiperOrigin-RevId: 161132391
+    
+    ---
+    Commit 53604916e authored by Jianwei Xie<xiejw@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Fixed the missing labels test in TPUEstimator.
+    
+    PiperOrigin-RevId: 161131282
+    
+    ---
+    Commit 9f57dc8dd authored by Bruno Rosa<bruno.rosa@eldorado.org.br>
+    Committed by Bruno Rosa<bruno.rosa@eldorado.org.br>:
+    Use mcpu instead of march for ppc64le
+    
+    march is not support by gcc on ppc64le
+    
+    ---
+    Commit 7d5c74a9c authored by Skye Wanderman-Milne<skyewm@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Move duplicate detection logic from Graph to FunctionLibraryDefinition
+    
+    Turns out this is more useful, since there are many function libraries
+    that don't belong to a graph. This will be used in a future
+    change. Note that this maintains the current behavior of Graph.
+    
+    In addition, updates FunctionDefsEqual() to handle unset attr entries
+    (I ran into this when using this in said future change).
+    
+    PiperOrigin-RevId: 161126628
+    
+    ---
+    Commit 2caec3af1 authored by Shanqing Cai<cais@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Disable more timeseries py tests failing in OSS PIP GPU builds
+    
+    PiperOrigin-RevId: 161124799
+    
+    ---
+    Commit 0b5cce367 authored by Eugene Brevdo<ebrevdo@google.com>
+    Committed by TensorFlower Gardener<gardener@tensorflow.org>:
+    Get TopK op working on GPU again.  Extend using cub's radix sort.
+    
+    1. Undo rollback of Andreas Kirsch's initial implementation.
+    2. Use cub segmented radix sort if Andreas' heap-based impl
+       for large k and small num_cols (thresholds of k=100, n=1000
+       determined empirically).
+    3. Use cub segmented radix sort if k == num_cols (this case is always faster).
+    4. Added benchmarks.
+    
+    Benchmarks show that the GPU implementation is up to 3x slower for small k but
+    can be 10x faster for large num_cols and k.
+    
+    Benchmarks:
+    
+    Benchmark: m_128_n_10_k_5_use_gpu_False          wall_time: 0.000166 s   Throughput: 0.0077 GB/s
+    Benchmark: m_128_n_10_k_5_use_gpu_True   wall_time: 0.000796 s   Throughput: 0.00161 GB/s
+    Benchmark: m_128_n_10_k_9_use_gpu_False          wall_time: 0.00017 s    Throughput: 0.00751 GB/s
+    Benchmark: m_128_n_10_k_9_use_gpu_True   wall_time: 0.000796 s   Throughput: 0.00161 GB/s
+    Benchmark: m_128_n_10_k_10_use_gpu_False         wall_time: 0.00017 s    Throughput: 0.00753 GB/s
+    Benchmark: m_128_n_10_k_10_use_gpu_True          wall_time: 0.000775 s   Throughput: 0.00165 GB/s
+    Benchmark: m_128_n_100_k_1_use_gpu_False         wall_time: 0.000155 s   Throughput: 0.0826 GB/s
+    Benchmark: m_128_n_100_k_1_use_gpu_True          wall_time: 0.000796 s   Throughput: 0.0161 GB/s
+    Benchmark: m_128_n_100_k_50_use_gpu_False        wall_time: 0.000247 s   Throughput: 0.0519 GB/s
+    Benchmark: m_128_n_100_k_50_use_gpu_True         wall_time: 0.0008 s     Throughput: 0.016 GB/s
+    Benchmark: m_128_n_100_k_99_use_gpu_False        wall_time: 0.000261 s   Throughput: 0.049 GB/s
+    Benchmark: m_128_n_100_k_99_use_gpu_True         wall_time: 0.000794 s   Throughput: 0.0161 GB/s
+    Benchmark: m_128_n_100_k_100_use_gpu_False       wall_time: 0.000239 s   Throughput: 0.0536 GB/s
+    Benchmark: m_128_n_100_k_100_use_gpu_True        wall_time: 0.000777 s   Throughput: 0.0165 GB/s
+    Benchmark: m_128_n_1000_k_1_use_gpu_False        wall_time: 0.000324 s   Throughput: 0.395 GB/s
+    Benchmark: m_128_n_1000_k_1_use_gpu_True         wall_time: 0.000916 s   Throughput: 0.14 GB/s
+    Benchmark: m_128_n_1000_k_10_use_gpu_False       wall_time: 0.00042 s    Throughput: 0.305 GB/s
+    Benchmark: m_128_n_1000_k_10_use_gpu_True        wall_time: 0.000902 s   Throughput: 0.142 GB/s
+    Benchmark: m_128_n_1000_k_500_use_gpu_False      wall_time: 0.0011 s     Throughput: 0.116 GB/s
+    Benchmark: m_128_n_1000_k_500_use_gpu_True       wall_time: 0.00097 s    Throughput: 0.132 GB/s
+    Benchmark: m_128_n_1000_k_990_use_gpu_False      wall_time: 0.00133 s    Throughput: 0.0962 GB/s
+    Benchmark: m_128_n_1000_k_990_use_gpu_True       wall_time: 0.000993 s   Throughput: 0.129 GB/s
+    Benchmark: m_128_n_1000_k_1000_use_gpu_False     wall_time: 0.00102 s    Throughput: 0.126 GB/s
+    Benchmark: m_128_n_1000_k_1000_use_gpu_True      wall_time: 0.000964 s   Throughput: 0.133 GB/s
+    Benchmark: m_128_n_10000_k_10_use_gpu_False      wall_time: 0.002 s      Throughput: 0.64 GB/s
+    Benchmark: m_128_n_10000_k_10_use_gpu_True       wall_time: 0.00288 s    Throughput: 0.445 GB/s
+    Benchmark: m_128_n_10000_k_100_use_gpu_False     wall_time: 0.00233 s    Throughput: 0.549 GB/s
+    Benchmark: m_128_n_10000_k_100_use_gpu_True      wall_time: 0.00325 s    Throughput: 0.394 GB/s
+    Benchmark: m_128_n_10000_k_5000_use_gpu_False    wall_time: 0.0127 s     Throughput: 0.101 GB/s
+    Benchmark: m_128_n_10000_k_5000_use_gpu_True     wall_time: 0.00381 s    Throughput: 0.336 GB/s
+    Benchmark: m_128_n_10000_k_9900_use_gpu_False    wall_time: 0.015 s      Throughput: 0.0853 GB/s
+    Benchmark: m_128_n_10000_k_9900_use_gpu_True     wall_time: 0.00438 s    Throughput: 0.292 GB/s
+    Benchmark: m_128_n_10000_k_10000_use_gpu_False   wall_time: 0.0104 s     Throughput: 0.123 GB/s
+    Benchmark: m_128_n_10000_k_10000_use_gpu_True    wall_time: 0.00427 s    Throughput: 0.3 GB/s
+    Benchmark: m_128_n_100000_k_100_use_gpu_False    wall_time: 0.0148 s     Throughput: 0.865 GB/s
+    Benchmark: m_128_n_100000_k_100_use_gpu_True     wall_time: 0.0262 s     Throughput: 0.488 GB/s
+    Benchmark: m_128_n_100000_k_1000_use_gpu_False   wall_time: 0.0201 s     Throughput: 0.636 GB/s
+    Benchmark: m_128_n_100000_k_1000_use_gpu_True    wall_time: 0.0263 s     Throughput: 0.486 GB/s
+    Benchmark: m_128_n_100000_k_50000_use_gpu_False          wall_time: 0.214 s      Throughput: 0.0599 GB/s
+    Benchmark: m_128_n_100000_k_50000_use_gpu_True   wall_time: 0.0322 s     Throughput: 0.398 GB/s
+    Benchmark: m_128_n_100000_k_99000_use_gpu_False          wall_time: 0.262 s      Throughput: 0.0489 GB/s
+    Benchmark: m_128_n_100000_k_99000_use_gpu_True   wall_time: 0.0377 s     Throughput: 0.34 GB/s
+    Benchmark: m_128_n_100000_k_100000_use_gpu_False         wall_time: 0.118 s      Throughput: 0.108 GB/s
+    Benchmark: m_128_n_100000_k_100000_use_gpu_True          wall_time: 0.0365 s     Throughput: 0.351 GB/s
+    
+    END_PUBLIC
+    
+    BEGIN_PUBLIC
+    BEGIN_PUBLIC
+    Automated g4 rollback of changelist 157169178
+    
+    PiperOrigin-RevId: 161476569
+
+commit 1b7d13181843631f59c515a00a73c21711ec5802
+Author: Allen Lavoie <allenl@google.com>
+Date:   Wed Jul 5 15:31:54 2017 -0700
+
+    Initial commit of time series models
+    
+    PiperOrigin-RevId: 161014271
+
+commit af23ae65db2585f4a18d0bc5f21f15e94805aa4f
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Jul 4 10:19:42 2017 -0700
+
+    Migrating tfprof python API to tensorflow/python/profiler
+    Migrating tfprof c++ to tensorflow/core/profiler
+    
+    API changes:
+    New tf.profiler namespace.
+    
+    Within tf.profiler namespace:
+    tf.profiler.advise  # One-shot advise function
+    tf.profiler.profile  # One-shot profile function
+    tf.profiler.Profiler  # Multi-step profile/advise class
+    tf.profiler.write_op_log  # Write profile for offline analysis
+    
+    PiperOrigin-RevId: 160901831
+
+commit 62c1104e766c15c71f1fa53145503899eb470d62
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Jun 29 14:03:26 2017 -0700
+
+    Renable a subset of test cases in run_metadata_test.py
+    
+    The flaky test case is due to RunMetadata randomly missing
+    gpu kernel execution time, the reason of which is still being
+    investigated. Enable the test to avoid other behaviors got
+    broken as well.
+    
+    PiperOrigin-RevId: 160570056
+
+commit 56605777aec87e762b9f549648f1ec104d14cd5d
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Jun 27 17:32:30 2017 -0700
+
+    Enable tfprof on Windows
+    
+    PiperOrigin-RevId: 160351254
+
+commit 458f94c128fa5f72085be9a2489765615e1951a7
+Author: Wei Ho <weiho@google.com>
+Date:   Wed May 31 17:07:05 2017 -0700
+
+    Open-source skip-gram ops
+    
+    PiperOrigin-RevId: 157655970
+
+commit 9a47c258c9c2286ae2c14a0da6458055f3b691d3
+Author: Eugene Brevdo <ebrevdo@google.com>
+Date:   Wed May 17 08:37:12 2017 -0700
+
+    [TF cmake] Bugfix: lazy import of portpicker in test_util.
+    
+    Also remove a test that relies on it from the cmake tests: tensor_array_ops_test.py
+    
+    PiperOrigin-RevId: 156311187
+
+commit eef5ba595d201c7caa104437fc29353063cc0cfd
+Author: Peter Hawkins <phawkins@google.com>
+Date:   Mon May 15 11:08:13 2017 -0700
+
+    Mark flaky test as flaky.
+    
+    PiperOrigin-RevId: 156076909
+
+commit 692fad20f913ffa2cb874a87578ecabb03cc4557
+Author: Dan Ringwalt <ringwalt@google.com>
+Date:   Fri May 5 09:09:05 2017 -0800
+
+    Merge changes from github.
+    Change: 155209832
+
+commit 6a1825e2369d2537e15dc585705c53c4b763f3f6
+Author: admcrae <admcrae6@gmail.com>
+Date:   Wed Apr 26 22:32:51 2017 -0400
+
+    Implement atan2 (#9276)
+    
+    * Add atan2 ops.
+    
+    * Correct arguments from copied code.
+    
+    * Fixed CUDA define, changes arguments and docstring.
+    
+    * Added some tests for atan2.
+    
+    * Fixed inf for python 2.
+    
+    * Add atan2 to public API.
+    
+    * Modify argument names and docstring.
+
+commit ef2f8891ad409e41f4f9b8e9cfd86b519adb6da6
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Fri Apr 7 14:17:57 2017 -0800
+
+    Fix race due to unsafe buffer forwarding in maxpooling second order gradients added in #6664.
+    Re-enable previously flaky tests.
+    Clean up a few minor things in maxpooling_op_gpu.cu.cc
+    Change: 152550050
+
+commit f0d1d69e098458c95e07e37b93bb8ee38b2b7294
+Author: Gunhan Gulsoy <gunan@google.com>
+Date:   Thu Apr 6 16:03:16 2017 -0800
+
+    Disable failing test cases in pooling_ops_test.
+    Change: 152447322
+
+commit d8d0bab6301ea7a4f32eb5cc6b13d1d495aa5e7a
+Author: Shanqing Cai <cais@google.com>
+Date:   Mon Mar 20 12:46:32 2017 -0800
+
+    tfdbg: improve file paths & causality check under suboptimal timestamp resolution
+    
+    Older versions of Windows (e.g., Windows 7) have lower temporal resolution in timestamps than other platforms. On such Windows machines, multiple dumps of the same or different tensors may end up with the same timestamp, causing
+    1) failures in the causality check in the constructor of DebugDumpDir,
+    2) occasional overwriting of previous tensor dumps and core metadata files,
+    3) loss of ordering information for debug watches of a tensor that is dumped multiple times during a Session::Run() call, e.g., due to While loops.
+    
+    This CL addresses those two issues:
+    1) DebugDumpDir._validate_dump_with_graphs now examines tensor dumps of the same timestamp to take into account the possibility of timestamp collision during dependency validation.
+    2) During the dumping of tensors, file path collisions are checked and if they occur, an index suffix (e.g., "-1", "-2") is appended to the file path.
+    3) The core metadata Events files now include session_run_count in their names, to avoid collision due to same timestamps.
+    Change: 150670298
+
+commit 9142d6164b1be58b2e2adf6ba7be6e46a942ff5a
+Author: Shanqing Cai <cais@google.com>
+Date:   Mon Mar 20 12:46:32 2017 -0800
+
+    tfdbg: improve file paths & causality check under suboptimal timestamp resolution
+    
+    Older versions of Windows (e.g., Windows 7) have lower temporal resolution in timestamps than other platforms. On such Windows machines, multiple dumps of the same or different tensors may end up with the same timestamp, causing
+    1) failures in the causality check in the constructor of DebugDumpDir,
+    2) occasional overwriting of previous tensor dumps and core metadata files,
+    3) loss of ordering information for debug watches of a tensor that is dumped multiple times during a Session::Run() call, e.g., due to While loops.
+    
+    This CL addresses those two issues:
+    1) DebugDumpDir._validate_dump_with_graphs now examines tensor dumps of the same timestamp to take into account the possibility of timestamp collision during dependency validation.
+    2) During the dumping of tensors, file path collisions are checked and if they occur, an index suffix (e.g., "-1", "-2") is appended to the file path.
+    3) The core metadata Events files now include session_run_count in their names, to avoid collision due to same timestamps.
+    Change: 150670298
+
+commit 35a4183cf261a3893549c7877f63fc415e8287ed
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Mon Mar 13 09:15:40 2017 -0800
+
+    Add an arg to fix the global_step increment bug for DNNLinearCombined estimators.
+    Change: 149956102
+
+commit 45208ae00457d92ae4bb5889a35597a155074457
+Author: Derek Murray <mrry@google.com>
+Date:   Fri Jan 20 11:10:24 2017 -0800
+
+    Avoid opening multiple servers in the same test where possible.
+    
+    This reduces flaky failures in //tensorflow/python:server_lib_test, which
+    appear to be aggrevated by shared state in the gRPC layer.
+    Change: 145104957
+
+commit 1e67c90e2caceeff82d09793d1ef5fa0300d219b
+Author: Peter Hawkins <phawkins@google.com>
+Date:   Mon Jan 9 12:04:37 2017 -0800
+
+    Initial open-source release of XLA: Accelerated Linear Algebra.
+    
+    XLA is a compiler-based linear algebra execution engine that targets CPUs, GPUs and custom accelerators.
+    
+    XLA is still experimental; we are releasing it early to get the community involved.
+    Change: 143990941
+
+commit 2e4869af1afe55135d522142be3a2a483162a1b1
+Author: Martin Wicke <wicke@google.com>
+Date:   Wed Dec 14 15:46:53 2016 -0800
+
+    Merge changes from github.
+    Change: 142074581
+
+commit d08a5c073e5f187ec75cb927cf9a2309e4076538
+Author: Yun Peng <pcloudy@google.com>
+Date:   Thu Dec 8 09:36:25 2016 +0000
+
+    Run GPU tests on Windows with Bazel
+
+commit 54e5000e0b980abe905900599c4493fadae34a15
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Nov 17 15:37:00 2016 -0800
+
+    Merge changes from github.
+    Change: 139516555
+
+commit 65a9005b9d9033cefe306b05ee3eddb0e993d207
+Author: luke <luke@codeplay.com>
+Date:   Fri Nov 4 14:21:47 2016 +0000
+
+    Added target for sycl_py_test.
+
+commit b309148f5e9a6766bfc6f68972138a52d095cd5f
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed Oct 12 08:50:32 2016 -0800
+
+    Move DNNSampledSoftmaxClassifier to an internal location.
+    Change: 135927818
+
+commit 2098b9abcf20d2c9694055bbfd6997bc00b73578
+Author: Yifei Feng <fengyifei2026@gmail.com>
+Date:   Wed Oct 5 09:55:48 2016 -0700
+
+    Branch 135176011 (#4771)
+    
+    * Adds a test tf.Assert inside a function.
+    Change: 134855633
+    
+    * Remove non-batch methods from operator_pd_cholesky if they have been merged with batch.
+    Recent changes to tensorflow linear algebra Ops merged batch/non-batch Ops.
+    This makes their separation un-necessary in OperatorPDCholesky.  Note that OperatorPDBase will still "dispatch based on batch"
+    since [non]batch-specific implementations still exist for matmul, and will probably
+    exist for some subset of Ops/Operators.
+    
+    OperatorPDBase calls the _batch* method if the non-batch method does not exist, so this change will leave the _batch* methods as-is.
+    Change: 134859101
+    
+    * Allow tf.py_func to have no return values.
+    Change: 134873490
+    
+    * Update ops-related pbtxt files.
+    Change: 134874339
+    
+    * Allow graph to be passed in to write_graph.
+    Change: 134894910
+    
+    * Update generated Python Op docs.
+    Change: 134896141
+    
+    * Increase tolerance in resample_test to reduce flakes.
+    Change: 134906739
+    
+    * Clean up of _inner_flatten.
+    Change: 134977904
+    
+    * Update typings version, definitions for polymer and fix `gulp compile`
+    Change: 134979996
+    
+    * Move inspector panel to its own component.
+    
+    This reduces the complexity of `Projector` by delegating work to the `InspectorPanel`.
+    
+    Also related:
+     - Add an option to search by other metadata fields.
+     - Introduce shared css styles used by every component.
+     - Move data querying methods (findNeighbors, queryByField, etc) to data.ts. These methods are used by anyone that has access to the dataset (e.g. both the projector and the inspectorPanel use it).
+    Change: 134989405
+    
+    * Created a tensorboard endpoint data/logdir for obtaining the logdir.
+    Change: 135001927
+    
+    * numpy meshgrid parity
+    Change: 135002812
+    
+    * tensor_bundle interface: accept StringPiece everywhere.
+    
+    This facilitates the callers in that when passing "char*", "string", or
+    "StringPiece" no explicit conversions are needed.
+    Change: 135007288
+    
+    * tfdbg: 1st check-in of curses UI and a demo
+    
+    To run the demo, do:
+    
+    ./configure
+    bazel build tensorflow/python/debug:debug_fibonacci && bazel-bin/tensorflow/python/debug/debug_fibonacci
+    
+    Barebone/backbone implementation of the curses-based command-line UI for tfdbg.
+    
+    The fibonacci_network demo constucts a simple TF graph that computes the fibonacci sequence, wraps a tf.Session object with a CLI debugger wrapper session and calls its run() method. which leads to launching of the curses CLI.
+    
+    The CLI debugger wrapper implements the BaseDebugWrapperSession.
+    
+    The UI currently has only minimalist command set including
+      ni: inspect node info
+      lt: list all dumped tensors
+      li: list node inputs
+      lo: list node output recipients
+      pt: print tensor.
+    
+    Currently supported UI features:
+      * command history navigation using Up/Down keys: with or without prefix
+      * scroll large output with PgUp/PgDown/Home/End keys
+      * terminal resize response
+    
+    See CLI help output for more information.
+    Change: 135010660
+    
+    * Add comment that argument can be either dense Tensor or SparseTensor.
+    Change: 135010699
+    
+    * Move MonitoredSession and related utilities from tf.contrib.learn to tf.train
+    Change: 135010812
+    
+    * Update generated Python Op docs.
+    Change: 135011886
+    
+    * Documentation fixes for tf.contrib.rnn.
+    Change: 135017686
+    
+    * Fix bug in pylint whitelist error check. Fix the pylint errors it missed
+    before.
+    Change: 135020083
+    
+    * Update generated Python Op docs.
+    Change: 135021476
+    
+    * Fix bug when changing distance metric in the inspector panel.
+    Change: 135023065
+    
+    * Expose MetricSpec.
+    Change: 135032476
+    
+    * Fixing tf.gfile's file writing in append mode. Earlier, append was the same as write mode. Now we distinguish between the two.
+    Change: 135033928
+    
+    * * Supports defining overloaded functions. I.e., defers the
+      instantiation of the function definition until all input types are known.
+    * for convenience, adds more convert_to_tensor calls.
+    * adds None checking for better error reporting.
+    * cleanup function_test a bit so that it uses tf.logging.info consistently.
+    * changes the convention for coming up a function's name:
+      * if func_name is explicitly given, stick with it.
+      * otherwise, come up a name based on the python function info and a hash of the
+        function definition.
+    * uses __doc__ to fill in func's op def description in the proto.
+    Change: 135036941
+    
+    * Adding a ConditionalAccumulator class, which allows us to accumulate non-stale
+    gradients. Also adds SparseConditionalAccumulator, which supports IndexedSlices.
+    Change: 135037419
+    
+    * Implement gradients for ndtr, log_ndtr. This avoids automatic differentiation going through several tf.select code-paths.
+    Change: 135038724
+    
+    * Update ops-related pbtxt files.
+    Change: 135039308
+    
+    * Update generated Python Op docs.
+    Change: 135039979
+    
+    * Add regression signature to half_plus_two model.
+    Change: 135041920
+    
+    * Made _Transformer logging less verbose
+    Change: 135048006
+    
+    * Add warning to os_setup for dev setup. Fixes #2844 (well, documents the failure at least).
+    Change: 135050562
+    
+    * Use BlockingCounter to do some minor cleanups.
+    Change: 135051470
+    
+    * Documented the `data/logdir` endpoint in http_api.md.
+    Change: 135052793
+    
+    * Added a const version of the functors specialized to process complex numbers on CUDA devices.
+    Change: 135053757
+    
+    * Parallelize AvgPool on CPU.
+    
+    Benchmark                          Base (ns)  New (ns) Improvement
+    ------------------------------------------------------------------
+    BM_AvgPool_32_112_112_64_3_3_2_VALID_4 30417641  10925222    +64.1%
+    BM_AvgPool_32_56_56_192_3_3_2_VALID_4 16509939   7054348    +57.3%
+    BM_AvgPool_32_28_28_352_3_3_2_VALID_4  6494974   2527951    +61.1%
+    BM_AvgPool_32_14_14_576_3_3_2_VALID_4  2050825    853309    +58.4%
+    BM_AvgPool_32_112_112_64_3_3_2_SAME_4 31002019   9790387    +68.4%
+    BM_AvgPool_32_56_56_192_3_3_2_SAME_4 17234631   6463952    +62.5%
+    BM_AvgPool_32_28_28_352_3_3_2_SAME_4  7171668   3067244    +57.2%
+    BM_AvgPool_32_14_14_576_3_3_2_SAME_4  2685654   1175420    +56.2%
+    Change: 135053961
+    
+    * minor changes in tf.learn.
+    Allow specifying saving checkpointing every N steps instead of every N secs, which is already supported by basic_session_run_hooks.CheckpointSaverHook but not supported by learn.RunConfig and estimator.
+    Change: 135055051
+    
+    * Update generated Python Op docs.
+    Change: 135057486
+    
+    * Cleanups to distributions tests.
+      - Remove hack for sampling in beta test. Gamma sampler does not emit 0s any more.
+      - Change tests to camel case..
+    Change: 135065764
+    
+    * Show search results in the inspector panel.
+    Change: 135104864
+    
+    * Get rid of vz-projector.ts's concept of 'highlighted points' and 'color accessors', moving slowly towards a model where we don't call accessors in inner loops. Visualizers have direct access to the selected points and neighbors, and can decide their own semantics for display. Projector now prepares a color array of unselected points, which the visualizers use to render. 3D labels are rendered with unselected point colors. Add the HoverContext for observing and reporting hover events.
+    Change: 135109425
+    
+    * Migrating skflow examples to the tensorflow/examples/learn directory. Fixes #3364.
+    Change: 135109832
+    
+    * tfdbg: CLI demo: debug_mnist
+    
+    To run the demo, do:
+    bazel build -c opt tensorflow/python/debug:debug_mnist && bazel-bin/tensorflow/python/debug/debug_mnist --debug
+    
+    See the doc file at: tensorflow/python/debug/examples/README.md for more details.
+    
+    Other related and supporting changes:
+      * Move function "parse_node_or_tensor_name" from analyzer_cli.py to debug_data.py. Also moved related unit tests.
+      * Add title bar to CursesUI
+      * Add the predicate (filter) function has_inf_or_nan to module debug_data. Also added unit tests.
+      * analyzer_cli.py: Add methods "add_tensor_filter" and "get_tensor_filter" to support filtering of dumped intermediate tensors.
+      * local_cli.py: Add flag to on-run-start command "run", e.g., "run -f has_inf_or_nan", along with supporting logic for the run-till-a-tensor-filter-is passed mode.
+      * local_cli.py: Improved on-run-start summary lines for feed and fetch.
+    Change: 135115989
+    
+    * Update left navigation for Python API.
+    Change: 135121210
+    
+    * Fix ZeroInitializerOp for GPUs
+    
+    Also changed it to use the C++ shape inference function.
+    Change: 135123217
+    
+    * Use softplus in bernoulli.
+    Change: 135125153
+    
+    * Automated rollback of change 135036941
+    Change: 135125564
+    
+    * Get dnn_sampled_softmax_classifier_test to start running open source tests again. This change simply relaxes the testing criteria for a couple of tests so that everything can run in opensource tests regularly.
+    Change: 135126062
+    
+    * Made the h2 in the graph panel only appear if there is a title. This removes a little white space at the top that is not draggable. Updated screen diff integration tests.
+    Change: 135126088
+    
+    * Improved documentation of session_creator of MonitoredSession.
+    Change: 135127073
+    
+    * Fix compilation error on some non-standard toolchains
+    Change: 135127376
+    
+    * Add an internal-only C++ wrapper around function_ops.
+    Change: 135130656
+    
+    * Move the left hand side projections panel to its own polymer component, vz-projector-projections-panel, and wire scatter plot updates through the vz-projector.
+    Change: 135130797
+    
+    * Update generated Python Op docs.
+    Change: 135131860
+    
+    * enable tile for complex inputs in gpu, github issue #2577
+    Change: 135135194
+    
+    * Taking //tensorflow/examples/learn:examples_test out as it is too long for
+    'larget' test and breaking OSS builds.
+    Change: 135138752
+    
+    * Disable dnn_test.
+    Change: 135139116
+    
+    * Fix missing close-quote in markdown for tf.contrib.distributions.Distribution
+    Change: 135140486
+    
+    * Update generated Python Op docs.
+    Change: 135142722
+    
+    * Convert sample_rate attribute for AudioSummary into an input.
+    
+    This is helpful for graphs that consume or generate audio with variable sample rates. Adds an AudioSummaryV2 op and marks AudioSummary as deprecated. The same AudioSummaryOp kernel handles both AudioSummary and AudioSummaryV2.
+    Change: 135148773
+    
+    * Update ops-related pbtxt files.
+    Change: 135152974
+    
+    * Update generated Python Op docs.
+    Change: 135153503
+    
+    * * Supports defining overloaded functions. I.e., defers the
+      instantiation of the function definition until all input types are known.
+    * for convenience, adds more convert_to_tensor calls.
+    * adds None checking for better error reporting.
+    * cleanup function_test a bit so that it uses tf.logging.info consistently.
+    * changes the convention for coming up a function's name:
+      * if func_name is explicitly given, stick with it.
+      * otherwise, come up a name based on the python function info and a hash of the
+        function definition.
+    * uses __doc__ to fill in func's op def description in the proto.
+    Change: 135156837
+    
+    * Improve UI of inspector panel (neighbors + search results).
+    
+    - React when hovering over results
+    - Improve layout for long text by overflowing text with '...'
+    - On mouse hover, show the full text (title attribute on anchor).
+    - Remove dead code in vz-projector-data-panel.html
+    Change: 135165962
+    
+    * go: Add a README.md with installation instructions.
+    
+    The Go API is still decidedly an "alpha version" and the
+    installation process would ideally be much smoother. But
+    the instructions included here are at least functional.
+    
+    Another step towards #10
+    Change: 135166392
+    
+    * Add tf.contrib.distributions to API leftnav
+    Change: 135167978
+    
+    * Change to use existing macros.
+    Change: 135176011
+
+commit 21d53c17d4137a8c4de8c2306af39225c217a417
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Tue Oct 4 09:56:10 2016 -0800
+
+    Get dnn_sampled_softmax_classifier_test to start running open source tests again. This change simply relaxes the testing criteria for a couple of tests so that everything can run in opensource tests regularly.
+    Change: 135126062
+
+commit 999b794c137d12d73adbf41dcbe9383a0cd94769
+Author: Martin Wicke <wicke@google.com>
+Date:   Wed Sep 21 13:16:48 2016 -0800
+
+    Merge changes from github.
+    Change: 133874452
+
+commit 63263dff15cf4e18469bc1ffcada7f3c58b53f21
+Author: Eugene Brevdo <ebrevdo@google.com>
+Date:   Tue Sep 20 13:54:47 2016 -0800
+
+    Enable pass-through of flaky tag to tf_py_test and friends.
+    Change: 133758126
+
+commit a0d929df36ca7d6f72184371f6c3d6d877dded3e
+Author: Martin Wicke <martin.wicke@gmail.com>
+Date:   Tue Sep 20 14:45:36 2016 -0700
+
+    Disable flaky rendezvous_test (#4491)
+
+commit 236a1c7f7d577d9758d06a6c382035065075578d
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Fri Sep 16 12:22:55 2016 -0800
+
+    De-flake learn tests.
+    
+    - Removed score assertions from nonlinear_test. These will never be stable until we can make TF deterministic, and even if we could they wouldn't be particularly useful tests for an inherently stochastic system.
+    
+    - Removed saver_test. It wasn't testing anything useful.
+    
+    - Removed early_stopping_test in favor of a better unit test for ValidationMonitor.
+    Change: 133420080
+
+commit cb9d147e9c788cc60ebb255fd26971719c7e2db2
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Sep 15 15:25:23 2016 -0800
+
+    Modify a flaky test in dnn_sampled_softmax_classifier_test.py
+    Change: 133323098
+
+commit f48649d7d3ba18d33234452af3bcbf220279ca0c
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed Sep 14 15:36:57 2016 -0800
+
+    Deep Neural Network estimator for large multi-class multi-label problems.
+    
+    The Training is sped up using Candidate Sampling. Evaluation and Inference
+    use full softmax.
+    Change: 133191169
+
+commit 323b57de58194202ba619a1301762f1e39189a6a
+Author: Derek Murray <mrry@google.com>
+Date:   Thu Jul 28 18:58:07 2016 -0800
+
+    Split TSAN-incompatible saver unit test into a separate target.
+    Change: 128770169
+
+commit 35f66e516a02aa46ae0380d66c5a17e3f42b9504
+Author: A. Unique TensorFlower <nobody@tensorflow.org>
+Date:   Fri Jun 10 06:59:30 2016 -0800
+
+    Eliminate gpu_allocator_retry_test flakiness by no longer relying on real
+    race conditions for testing, but instead forcing parallel threads to strictly
+    alternate so that the interesting 'race' conditions deterministically arise.
+    Change: 124560962
+
+commit 54cf1600b98127d5076def3c567cda1e087c1761
+Author: Illia Polosukhin <ilblackdragon@gmail.com>
+Date:   Mon Jun 6 16:31:38 2016 -0800
+
+    * Fixes #2487 - enabling saving summaries on evaluation when feed_dict or 1 epoch using readers.
+    
+    * Improving PrintTensor monitor, to support tags for printed tensor (e.g. passing {'loss': loss_op} will now display loss = %f instead of full name of the op).
+    
+    * Improving ValidationMonitor to support various metrics, minimization/maximization, naming to run multiple validations.
+    
+    * Make sure early_stopping test actually early stops. Updated example as well.
+    Note, test is unstable, so exact number of steps it stops are non reproducible. See stability tests for more examples of issues.
+    
+    * Added GraphDump monitor for in-depth debugging.
+    
+    * Added stability test to make sure the same model trained on the same data given exactly the same results. Note: it's all super unstable, increased tolerance to just make it pass. Possibly issues with numerical stability in TF.
+    
+    * Changed max_steps in graph_actions.train into steps, which adds that many steps to the training (instead of just defining max steps). For Estimator this returns previous logic, where fit(..., steps=100) followed by fit(..., steps=100) will result in 200 steps trained.
+    Change: 124197624
+
+commit a0d21ec39cc3f18781d2d37798aa328e12f92844
+Author: Derek Murray <mrry@google.com>
+Date:   Tue Mar 15 15:59:05 2016 -0800
+
+    Disable //third_party/tensorflow/core/distributed_runtime:master_test.
+    
+    This test is flaky. We need a more robust solution for starting
+    multiple processes and connecting them; `PickUnusedPortOrDie()` is not
+    robust to multiple concurrent tests on the same host. A possible
+    approach would be to add a portserver, or add a handshake between the
+    parent test process and the server processes.
+    Change: 117293607
+
+commit 207d0e314ea2b473fd2f3ab72b0aeed7914880d2
+Author: Martin Wicke <martin.wicke@gmail.com>
+Date:   Mon Feb 15 00:46:18 2016 -0800
+
+    Add tf.image.draw_bounding_box and tf.image.sample_distorted_bounding_box.
+    Change: 114664952
+
+commit f3a77378b4c056e76691c5eba350a022c11e00d4
+Author: Martin Wicke <wicke@google.com>
+Date:   Sun Feb 14 22:18:58 2016 -0800
+
+    Add tf.image.draw_bounding_box and tf.image.sample_distorted_bounding_box.
+    Change: 114664952

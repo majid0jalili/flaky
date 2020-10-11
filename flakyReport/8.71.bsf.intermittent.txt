@@ -1,0 +1,28 @@
+commit f83b6692723c6bd4d3ec7eef70432a1d04816340
+Author: BearishSun <bearishsun@gmail.com>
+Date:   Tue May 31 11:07:37 2016 +0200
+
+    Moved third party licenses into the dependency distribution package where they belong
+
+commit 8daebe5b25e3c79a62a3d5c6bba4c2d3f9225a46
+Author: BearishSun <bearishsun@gmail.com>
+Date:   Sat Apr 16 16:51:11 2016 +0200
+
+    Moved dependencies to more appropriate folders and updated VS projects accordingly
+    Moved License to Documentation sub-folder
+    Minor manual updates
+
+commit e51296663c8b88a32bd620c185fde4108f60032f
+Author: Marko Pintera <bearishsun@gmail.com>
+Date:   Mon Jun 30 18:10:52 2014 +0200
+
+    FBX importer fixed and working
+    Added 3rd party license texts
+
+commit 5922ea0d3e66a907f2cb49031a4feafb15cbc259
+Author: Marko Pintera <bearishsun@gmail.com>
+Date:   Thu Jun 19 14:09:32 2014 +0200
+
+    Added Banshee and 3rd party licenses
+    Added BC4, 5, 6, 7 texture formats
+    Included NVTT library in BansheeCore

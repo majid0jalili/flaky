@@ -1,0 +1,17 @@
+commit 18d43eeff5b3dda65748528e4dd30407f1dd60f9
+Author: Eric <maozongwu@dync.cc>
+Date:   Wed May 31 22:02:57 2017 +0800
+
+    Reuse FFMpeg replace of OpenH264 to decode h264 data, because OpenH264 not surpport HighProfile.
+
+commit 4e39a3bf39df5acbf73d21cc67dbf5d82da8ff47
+Author: mtdxc <mtdxc@126.com>
+Date:   Sat Dec 3 12:47:39 2016 +0800
+
+    删除FFMpeg依赖
+
+commit f415652cfadafcc8b8ec25166b9bad6334750370
+Author: DyncEric <liutao6982@gmail.com>
+Date:   Sun Oct 16 10:59:55 2016 +0800
+
+    Add FFMpeg dll for Windows

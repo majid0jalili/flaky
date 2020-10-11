@@ -1,0 +1,100 @@
+commit 8447d196a8d2385d8dd742c5d6a8ac62de9a59fe
+Author: Alexander Rukletsov <alexr@apache.org>
+Date:   Fri Aug 4 19:56:30 2017 +0200
+
+    Updated health-checks.md to include description of generalized checks.
+    
+    Review: https://reviews.apache.org/r/61434
+
+commit f70838adb8fad717c616846a0527ece1325548f6
+Author: Alexander Rukletsov <alexr@apache.org>
+Date:   Fri Dec 9 04:20:16 2016 +0100
+
+    Added comments around some health check limitations.
+    
+    Review: https://reviews.apache.org/r/54570
+
+commit c235f7c1e2680e3c6fb844dda48cbd950bab739d
+Author: Kapil Arya <kapil@mesosphere.io>
+Date:   Tue Apr 19 22:49:59 2016 -0400
+
+    Moved stout from libprocess/3rdparty/ to 3rdparty/.
+    
+    Review: https://reviews.apache.org/r/46529
+
+commit 4c75b1a919e2ffaa9ab97973edfd8df335f5f911
+Author: Till Toenshoff <toenshoff@me.com>
+Date:   Wed Jun 24 19:50:57 2015 +0200
+
+    Added Path::dirname() and Path::basename().
+    
+    Introducing Path::dirname() and Path::basename() as a thread safe
+    replacement of the respective system functions. Also contains new
+    tests covering corner cases.
+    
+    Review: https://reviews.apache.org/r/34256
+
+commit d289b02c35812a8621fbea4790fb6b5f1d2103d3
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Thu Mar 1 07:41:21 2012 +0000
+
+    Removed old Hadoop.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1295447 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 0a889fa62ffd47c7445cd9c3dcd1dfbf4824c68f
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Thu Feb 9 00:51:23 2012 +0000
+
+    Replaced third_party directories with tar.gz versions in order to support 'make dist' (contributed by Charles Reiss). Also removed '--no-recursive' for bootstrap so older machines that don't have a modern enough version of autoconf/autoreconf can run bootstrap.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1242195 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 4b66c44a01a7d394358681900fe9c5dd4589a565
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 08:12:18 2011 +0000
+
+    Moved third_party out of src.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131987 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 6168de123773c2cd97d1194603283ea168994289
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 06:23:20 2011 +0000
+
+    Replaced old Hadoop port with new one (which is for Hadoop 0.20.2 and
+    uses a custom scheduler).
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131923 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 9e4b96d1e52898adc0fcdd3313909b7883d3ab68
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 05:22:30 2011 +0000
+
+    new version of zookeeper that compiles on lucid
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131735 13f79535-47bb-0310-9956-ffa450edef68
+
+commit a704cdbf4bcaef3aa33b2fb15ef25506071f3872
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 04:52:55 2011 +0000
+
+    Newer version of zookeeper added.. should have the bugfix that allows many connections from the same node
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131655 13f79535-47bb-0310-9956-ffa450edef68
+
+commit fec06d980120ce546a60a1be4aa314eac9b4ea83
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 03:14:00 2011 +0000
+
+    Zookeeper added to third party. configure.ac and configure will run the zookeeper configure. Added code for leader election in C++. Makefile.in updated to compile with the Zookeeper libraries.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131517 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 9bc36de05a9542a319d348505a1838f9190a6c21
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 03:04:24 2011 +0000
+
+    Initial commit.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131516 13f79535-47bb-0310-9956-ffa450edef68

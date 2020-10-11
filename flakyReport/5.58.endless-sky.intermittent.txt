@@ -1,0 +1,93 @@
+commit ea1dc717fb0749c193d006b7b3d281fef827d65b
+Author: Amazinite <jsteck2000@gmail.com>
+Date:   Wed Mar 11 10:12:07 2020 -0400
+
+    refactor(organization): Added subfolders to data (#4895)
+
+commit f23745bdfc0ffe298c291ef2b303a2993ec42883
+Author: AdamKauffman <53800031+AdamKauffman@users.noreply.github.com>
+Date:   Fri Feb 14 13:30:59 2020 -0800
+
+    refactor(main): Extract SDL window initialization & management into separate class (#4472)
+    
+    * Move SDL_Window setup from main in to a standalone class
+    
+    Tested, working. Only behavior change so far is moving the window loading up in the load order in an attempt to get visual to the user as quickly as possible.
+    I modeled the new class after how the Audio class is handled.
+    
+    * Update GameWindow.cpp
+    
+    Added comments. Moved code to more logical order of operations. Removed the Win32 exception on cleanup operations. Added explicit call to hardware acceleration.
+    
+    * Update project.pbxproj
+    
+    Thanks to @Fzzr for testing on Mac and providing an updated XCode project file.
+    
+    * Cleanup unused MonitorHz
+    
+    Minor edits. Ignore the .gitignore
+    
+    * Make it unchanged.
+    
+    Remove my edit.
+    
+    * Comment editing for readability
+    
+    This makes more sense to a noob.
+    
+    * Update in response to feedback
+    
+    * Resolve issues introduced with that last patch
+    
+    Missing (), and missing ;
+    Forgot to update my .h file
+    
+    * New module missing
+    
+    You will need these if compiliing on Windows.
+    
+    * Fix fullscreen regression
+    
+    Move comment to own line
+    Remove old comment
+    Add missing whitespace
+    
+    * Remove commented code
+    
+    * style: reorder methods, includes
+
+commit a150aded5c35ac2c0bda9ce0f1a0a5915061ed43
+Author: Michael Zahniser <mzahniser@gmail.com>
+Date:   Sat Aug 27 19:38:33 2016 -0400
+
+    Updating the changelog with another month of activity.
+
+commit f534be9cacdfe6bedb19f76e6264d4e32913b94b
+Author: Michael Zahniser <mzahniser@gmail.com>
+Date:   Wed Apr 22 18:09:30 2015 -0400
+
+    Updated the startup code to display errors in message boxes instead of just the command line, and also to only require OpenGL 3.0 instead of 3.3.
+
+commit 896ce688d423c197b68fe4e19d8729c9cb05cff7
+Author: Michael Zahniser <mzahniser@gmail.com>
+Date:   Tue Apr 21 21:49:54 2015 -0400
+
+    Added proper cleanup code in all the places where the program can bail out when starting up, so it will quit cleanly instead of crashing.
+
+commit 4159a17379a19b879fc771fd0bff9e079d1c7903
+Author: Michael Zahniser <mzahniser@gmail.com>
+Date:   Mon Apr 20 18:04:16 2015 -0400
+
+    Moved all the source code files into a "source" folder to clean up the root folder.
+
+commit d94e2e7655cd8e4c7f970e46a1202c3857e9d7d6
+Author: mzahniser@gmail.com <mzahniser@gmail.com@d00857da-6ca9-0267-48c4-95db20019e50>
+Date:   Mon Mar 2 03:29:26 2015 +0000
+
+    Continuing to work on the Pug endgame plot line.
+
+commit 2382b47d9d3a2acd64c790c96ad8b6c64d27d223
+Author: mzahniser@gmail.com <mzahniser@gmail.com@d00857da-6ca9-0267-48c4-95db20019e50>
+Date:   Tue Dec 23 01:59:45 2014 +0000
+
+    Added a Code::Blocks project for building the code on Windows (and made a few changes to support it).

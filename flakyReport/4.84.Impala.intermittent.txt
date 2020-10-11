@@ -1,0 +1,157 @@
+commit 7b857365861d41f443898d03443af7a9d0fe23cf
+Author: Tim Armstrong <tarmstrong@cloudera.com>
+Date:   Thu Nov 15 14:42:26 2018 -0800
+
+    IMPALA-7857: log more information about statestore failure detection
+    
+    This adds a couple of log messages for state transitions in the
+    statestore's failure detector.
+    
+    Testing:
+    Ran test_statestore.py and checked for presence of new log messages.
+    
+    Added a new tests to test_statestore that exercises handling of
+    intermittent heartbeat failures (required to produce one of the new log
+    messages).
+    
+    Change-Id: Ie6ff85bee117000e4434dcffd3d1680a79905f14
+    Reviewed-on: http://gerrit.cloudera.org:8080/11937
+    Reviewed-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+    Tested-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+
+commit e4ae605b083ab536c68552e37ca3c46f6bff4c76
+Author: Fredy Wijaya <fwijaya@cloudera.com>
+Date:   Thu Jul 12 17:01:13 2018 -0700
+
+    IMPALA-7295: Remove IMPALA_MINICLUSTER_PROFILE=2
+    
+    This patch removes the use of IMPALA_MINICLUSTER_PROFILE. The code that
+    uses IMPALA_MINICLUSTER_PROFILE=2 is removed and it defaults to code from
+    IMPALA_MINICLUSTER_PROFILE=3. In order to reduce having too many code
+    changes in this patch, there is no code change for the shims. The shims
+    for IMPALA_MINICLUSTER_PROFILE=3 automatically become the default
+    implementation.
+    
+    Testing:
+    - Ran core and exhaustive tests
+    
+    Change-Id: Iba4a81165b3d2012dc04d4115454372c41e39f08
+    Reviewed-on: http://gerrit.cloudera.org:8080/10940
+    Reviewed-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+    Tested-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+
+commit 59129cdacf2a8b0b49f769cfe0e8c5724342fcf4
+Author: Joe McDonnell <joemcdonnell@cloudera.com>
+Date:   Thu May 3 16:56:05 2018 -0700
+
+    IMPALA-6972: Disable parallel dataload on MINICLUSTER_PROFILE=2
+    
+    There is a Hive bug in Hive 1.1.0 that can result
+    in a NullPointerException when doing parallel Hive
+    operations (see IMPALA-6532). Since dataload goes
+    parallel on Hive loads starting with IMPALA-6372,
+    dataload can hit this error on Hive 1.1.0 (i.e.
+    IMPALA_MINICLUSTER_PROFILE=2). This is impacting
+    builds on the 2.x branch.
+    
+    This disables parallel dataload for IMPALA_MINICLUSTER_PROFILE=2.
+    
+    IMPALA_MINICLUSTER_PROFILE=3 uses a newer version
+    of Hive that has a fix for this, so this continues
+    to use parallel dataload for that case.
+    
+    Parallelism can be reenabled when Hive 1.1.0 gets the
+    fix from Hive 2.1.1.
+    
+    Change-Id: I90a0f2b3756d7192fa7db2958031b8c88eb606e6
+    Reviewed-on: http://gerrit.cloudera.org:8080/10306
+    Reviewed-by: Philip Zeyliger <philip@cloudera.com>
+    Tested-by: Impala Public Jenkins <impala-public-jenkins@cloudera.com>
+
+commit 3be0f122a5bb5d3549d9240b95a5d29b4a21b1a2
+Author: Jim Apple <jbapple@cloudera.com>
+Date:   Tue Nov 8 16:49:18 2016 -0800
+
+    IMPALA-3398: Add docs to main Impala branch.
+    
+    These are refugees from doc_prototype. They can be rendered with the
+    DITA Open Toolkit version 2.3.3 by:
+    
+    /tmp/dita-ot-2.3.3/bin/dita \
+      -i impala.ditamap \
+      -f html5 \
+      -o $(mktemp -d) \
+      -filter impala_html.ditaval
+    
+    Change-Id: I8861e99adc446f659a04463ca78c79200669484f
+    Reviewed-on: http://gerrit.cloudera.org:8080/5014
+    Reviewed-by: John Russell <jrussell@cloudera.com>
+    Tested-by: John Russell <jrussell@cloudera.com>
+
+commit 2ab130aa0a0d8b974a618899d162cd1d1fbd765d
+Author: Juan Yu <jyu@cloudera.com>
+Date:   Thu Jun 9 11:51:22 2016 -0700
+
+    IMPALA-3575: Add retry to backend connection request and rpc timeout
+    
+    This patch adds a configurable timeout for all backend client
+    RPC to avoid query hang issue.
+    
+    Prior to this change, Impala doesn't set socket send/recv timeout for
+    backend client. RPC will wait forever for data. In extreme cases
+    of bad network or destination host has kernel panic, sender will not
+    get response and RPC will hang. Query hang is hard to detect. If
+    hang happens at ExecRemoteFragment() or CancelPlanFragments(), query
+    cannot be canelled unless you restart coordinator.
+    
+    Added send/recv timeout to all RPCs to avoid query hang. For catalog
+    client, keep default timeout to 0 (no timeout) because ExecDdl()
+    could take very long time if table has many partitons, mainly waiting
+    for HMS API call.
+    
+    Added a wrapper RetryRpcRecv() to wait for receiver response for
+    longer time. This is needed by certain RPCs. For example, TransmitData()
+    by DataStreamSender, receiver could hold response to add back pressure.
+    
+    If an RPC fails, the connection is left in an unrecoverable state.
+    we don't put the underlying connection back to cache but close it. This
+    is to make sure broken connection won't cause more RPC failure.
+    
+    Added retry for CancelPlanFragment RPC. This reduces the chance that cancel
+    request gets lost due to unstable network, but this can cause cancellation
+    takes longer time. and make test_lifecycle.py more flaky.
+    The metric num-fragments-in-flight might not be 0 yet due to previous tests.
+    Modified the test to check the metric delta instead of comparing to 0 to
+    reduce flakyness. However, this might not capture some failures.
+    
+    Besides the new EE test, I used the following iptables rule to
+    inject network failure to verify RPCs never hang.
+    1. Block network traffic on a port completely
+      iptables -A INPUT -p tcp -m tcp --dport 22002 -j DROP
+    2. Randomly drop 5% of TCP packets to slowdown network
+      iptables -A INPUT -p tcp -m tcp --dport 22000 -m statistic --mode random --probability 0.05 -j DROP
+    
+    Change-Id: Id6723cfe58df6217f4a9cdd12facd320cbc24964
+    Reviewed-on: http://gerrit.cloudera.org:8080/3343
+    Reviewed-by: Juan Yu <jyu@cloudera.com>
+    Tested-by: Internal Jenkins
+
+commit 9d0173c6475069634f5eef0ba8b16f391f163b37
+Author: Henry Robinson <henry@cloudera.com>
+Date:   Mon Jul 14 13:31:05 2014 -0700
+
+    [CDH5] Disable ACL tests
+    
+    The tests pass every time locally (in a 60 minute run), but fail
+    intermittently on our build machines.
+    
+    Change-Id: I62d5ea0df8c42728a538b29bd16006be3179bfd3
+    Reviewed-on: http://gerrit.ent.cloudera.com:8080/3489
+    Reviewed-by: Ishaan Joshi <ishaan@cloudera.com>
+    Tested-by: jenkins
+
+commit 15658f384b0b78da6495289b458b4da3b779113f
+Author: ishaan <ishaan@cloudera.com>
+Date:   Wed Mar 20 12:15:19 2013 -0700
+
+    Include targeted performance tests in experiments and add a new query

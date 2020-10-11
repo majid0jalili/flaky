@@ -1,0 +1,21 @@
+commit 2bd6eb1f03f02bcc5f46ddae241bc1831fb34262
+Author: Daniel Rosser <danoli3@gmail.com>
+Date:   Fri Jun 20 22:24:04 2014 +1000
+
+    Android Windows missing zip fix
+    
+    Fixes #2997
+    
+    Adds a `windows/` folder to
+    `libs/openFrameworksCompiled/project/android/`
+    Which includes the required files for
+    http://gnuwin32.sourceforge.net/packages/zip.htm
+    - zip.exe
+    - bzip2.dll
+    - zip32z64.dll
+    
+    Modifications have been made to `config.android.default.mk` for windows
+    to point to the zip in the directory to compress the resources.
+    
+    - Tested on Windows 7 with master / Eclipse
+    - Tested on OSX / Eclipse

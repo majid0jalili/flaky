@@ -1,0 +1,61 @@
+commit 077fe576288bfaa1aadc42596b3594c65ecf16e2
+Author: Alexey Serbin <aserbin@cloudera.com>
+Date:   Thu Jul 5 13:39:06 2018 -0700
+
+    [raft_consensus-itest] fix TestElectionMetrics flake
+    
+    This patch fixes flakiness in the RaftConsensusITest.TestElectionMetrics
+    scenario.  The original TestElectionMetrics scenario was split into
+    two parts TestElectionMetricsPart[1,2] to separate tests that assume
+    no leader election happen and depend on the leader failure detection
+    mechanism, correspondingly.
+    
+    Prior to this patch, the TestElectionMetrics scenario could fail if a
+    leader election happened inadvertently.
+    
+    Before (1 out of 12 failed):
+      http://dist-test.cloudera.org/job?job_id=aserbin.1530681412.7635
+    
+    After  (not a single failure in 1K run):
+      http://dist-test.cloudera.org/job?job_id=aserbin.1530918429.120803
+    
+    Change-Id: I073c9989a6d5d5dc1eb104120a89d38cfce2ac6e
+    Reviewed-on: http://gerrit.cloudera.org:8080/10887
+    Tested-by: Alexey Serbin <aserbin@cloudera.com>
+    Reviewed-by: Will Berkeley <wdberkeley@gmail.com>
+    Reviewed-by: Attila Bukor <abukor@cloudera.com>
+
+commit a66585398e3873a3b8a38f6a3a1becb644979a50
+Author: Alexey Serbin <aserbin@cloudera.com>
+Date:   Tue Feb 13 16:45:32 2018 -0800
+
+    KUDU-2274 [itest] stress test for replica replacement
+    
+    This is a stress test for the automatic replica replacement in Kudu.
+    
+    Parameters of the test are configurable via run-time gflags, so it's
+    possible to run it in a 'standalone' mode, targeting it to be a sort
+    of an endurance test.
+    
+    This test reproduces the race described in KUDU-2274: it triggers
+    DCHECK() assertions added in 194fd8b169f29aafbd78a47709ac51d2e8354a1a
+    before the relevant fixes for KUDU-2274 were checked in.
+    
+    Change-Id: I036a882f7e9132a5c26013227c50c0699b59ed6e
+    Reviewed-on: http://gerrit.cloudera.org:8080/9255
+    Tested-by: Kudu Jenkins
+    Reviewed-by: Mike Percy <mpercy@apache.org>
+
+commit 46a886cd22e86d3fdfee62aa6115054138db3a33
+Author: Alexey Serbin <aserbin@cloudera.com>
+Date:   Mon May 1 14:16:12 2017 -0700
+
+    [kudu-jepsen] added more info on troubleshooting
+    
+    Added more information on distinguishing 'errors' from 'failures' in the
+    kudu-jepsen test output.
+    
+    Change-Id: I9b97b744d969b73ede2fcb7a3509915b130c655b
+    Reviewed-on: http://gerrit.cloudera.org:8080/6774
+    Tested-by: Kudu Jenkins
+    Reviewed-by: David Ribeiro Alves <davidralves@gmail.com>

@@ -1,0 +1,11 @@
+commit b16346e8e65a09ef0f00f5d0f8e1314c2c4d7d05
+Author: Michi Henning <michi@zeroc.com>
+Date:   Mon May 16 05:37:41 2005 +0000
+
+    Added KNOWN_ISSUES.txt.
+
+commit 3d0a7efb304604a4a9e7e567a867ca8b51db4e63
+Author: Michi Henning <michi@zeroc.com>
+Date:   Tue Jul 20 03:59:09 2004 +0000
+
+    *** empty log message ***

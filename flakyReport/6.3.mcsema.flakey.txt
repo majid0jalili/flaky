@@ -1,0 +1,68 @@
+commit bcda6a120a67a4aa101c9aadb1dcfa93db993def
+Author: Peter Goodman <peter.goodman@gmail.com>
+Date:   Thu Feb 23 13:23:31 2017 -0500
+
+    Llvm38 (#112)
+    
+    * - Upgrade to official llvm 3.8
+    - remove boost
+    - unify all cmake files into a single cmake file
+    - use official protobuf
+    - start factoring out x86-specific stuff to eventually make an arm port easier
+    - simplify the CLI; now use mcsema-lift, with -arch, -os, -cfg, -entrypoint, and -o. No more having to specify the target triple.
+    - moves source code slightly closer to our style guide
+    
+    Note:
+    - lifted bitcode is not quite right in some cases, so this isn't a stable branch!
+    - TODO: re-add test cases to discover source of stability problems.
+    
+    * Some minor fixes, one to make sure xmm regs in the state struct are properly aligned
+    
+    * Added missing std defs for option parsing. This makes /bin/ls work properly :-)
+    
+    * Remove old cmake files
+    
+    * Minor changes to get_cfg.py and raiseX86.cpp in relation to those changes. Those changes don't fix anything, the purpose was to make symbol names for things match between python and cpp. E.g. get_cfg would name things like dta_0xf00, sub_0xf00, ext_... And it seems that it was dta_ instead of data_ for a reallly flaky and dumb reason but oh well. I also fixed a subtle bug related to saving and restoring of callee saved registers on elf 64. I have not made related changes to elf 32 or pe 32/64, though those may be necessary.
+    
+    * Minor fix
+    
+    * Adding mcsema-disass, which is a nice wrapper around get_cfg.py.
+    
+    * Working on readme and cleaning out (currently) unused stuff from the repo
+    
+    * Renaming mc-sema dir to mcsema
+    
+    * new travis file
+    
+    * Updates to bootstrap and build process
+    
+    * Minor bootstrap fixes
+    
+    * Well, don't have windows working yet but this is kind of progress I think
+    
+    * Travis should work now
+    
+    * Updating protobuf-cmake files so we can generate a VS2015 solution
+    
+    * Removing and adding some choco packages from README
+    
+    * Bootstrap now builds protobuf and generates protobuf files
+    LLVM should now be built on Windows
+    
+    * Adding Win32 specific compiler options
+    
+    * Renamed ConstantInt to CreateConstantInt to satisfy MSVC
+    
+    * Build Release LLVM to not have linking conflicts of MD vs MDd
+    
+    * Added some missing instructions
+    
+    * Adding changes to generate runtimes
+    
+    * Windows bootstrap works.
+
+commit 565dd4c8d749f734d72c2c3f0a8130f77f03618e
+Author: Andrew Ruef <andrew@trailofbits.com>
+Date:   Tue Aug 5 11:22:32 2014 -0400
+
+    i push the button

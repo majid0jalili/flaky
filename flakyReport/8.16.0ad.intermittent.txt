@@ -1,0 +1,54 @@
+commit 80c7086eb1981d4031540dd9c0923ae787c56257
+Author: Itms <Itms@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Fri Sep 2 16:17:31 2016 +0000
+
+    SpiderMonkey 38 upgrade: 04/35
+    
+    Add SM38 includes and precompiled files.
+    
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@18658 3db68df2-c116-0410-a063-a993310a9797
+
+commit dbd7dc5095c13ebabe2bad9a06ddfce60af3ae6e
+Author: michael <michael@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Sat Dec 28 02:17:08 2013 +0000
+
+    Trimmed the descriptions for most of the random maps, per Josh's request.
+    
+    
+    
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@14412 3db68df2-c116-0410-a063-a993310a9797
+
+commit f856c62627db46cb1f304adf330e632f15dac851
+Author: ben <ben@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Tue May 28 04:30:28 2013 +0000
+
+    Remove old bundled copy of Boost
+    
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@13435 3db68df2-c116-0410-a063-a993310a9797
+
+commit d1cbea0f772c036d6649a173fc16079c5b4c61a7
+Author: ben <ben@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Sun Feb 3 23:49:29 2013 +0000
+
+    NOTE: Requires update-workspaces!
+    Adds build script for OS X dependencies, fixes #1112. OS X builds no longer use MacPorts/Homebrew, check BuildInstructions.
+    Adds build script for OS X bundles. Adds OS X icon and DMG background image.
+    Moves bundled libraries to libraries/source.
+    Moves most headers and precompiled static libs for Windows to libraries/win32.
+    Updates Premake and packaging scripts to support this.
+    
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@13148 3db68df2-c116-0410-a063-a993310a9797
+
+commit d2f8a7eb1d352ef93a49bfdbac20ff8a8baa1be6
+Author: ben <ben@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Wed Jan 2 04:35:52 2013 +0000
+
+    Add subset of Boost 1.51.0 from BoostPro, for Windows builds
+    
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@13033 3db68df2-c116-0410-a063-a993310a9797
+
+commit 9c7e3a353eacf3aa5d83c66fd3f2c657496e3c9f
+Author: Spahbod <Spahbod@3db68df2-c116-0410-a063-a993310a9797>
+Date:   Mon Jul 2 07:43:44 2012 +0000
+
+    git-svn-id: http://svn.wildfiregames.com/public/ps/trunk@12053 3db68df2-c116-0410-a063-a993310a9797

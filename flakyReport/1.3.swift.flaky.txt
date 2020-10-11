@@ -1,0 +1,79 @@
+commit 9cd06f7109e59e41835e4465ffd9c96baddf68ed
+Author: Pavel Yaskevich <pyaskevich@apple.com>
+Date:   Mon Aug 10 17:23:42 2020 -0700
+
+    [TypeChecker] NFC: Clarify another flaky conformance diagnostic (only on iOS 386 simulator)
+
+commit 0d2e4ce76f3987ce3973e95aa44b5fc98980b3b4
+Author: Pavel Yaskevich <pyaskevich@apple.com>
+Date:   Thu Jul 16 14:43:56 2020 -0700
+
+    [TypeChecker] NFC: Adjust flaky ambiguous operator diagnostic (rdar://problem/65688291)
+
+commit 171502174613ec1709b2bd16b8e2f5ffa26996fd
+Author: Pavel Yaskevich <pyaskevich@apple.com>
+Date:   Sat Jun 27 11:36:48 2020 -0700
+
+    [TypeChecker] NFC: Clarify flaky diagnostic XFAIL
+    
+    Instead of XFAILing whole `test/Constraints/operator.swift`
+    let's adjust diagnostic responsible for flakiness.
+
+commit 149331d0244c52c1025b9eb88793255521b575fe
+Author: Kita, Maksim <kitaetoya@gmail.com>
+Date:   Sat Nov 23 20:03:43 2019 +0300
+
+    [SILGen]: SR-11803. Inject "willThrow" hooks after foreign error propagation.
+
+commit 214598d268cb83d14b4938ffc764318010f5ca45
+Author: Brent Royal-Gordon <brentdax@apple.com>
+Date:   Fri Oct 18 14:28:00 2019 -0700
+
+    Fix flaky Driver tests
+    
+    Several Driver tests create a hard link to the compiler in a temporary directory, then invoke it thorugh that hard link to see how it locates items in the resource directory. This pattern can tickle a system-load-dependent macOS bug involving invocations of freshly-created hard links, causing rare test failures in CI or on contributors’ machines.
+    
+    This change avoids the OS bug by always copying instead of hard linking. We already fall back to copying on Windows, so all tests should pass with a copy anyway. Removing this workaround will be tracked by rdar://problem/53507844.
+
+commit 77a0923ca6ed4e753c0a688c286a64844cadca9e
+Author: Joe Groff <jgroff@apple.com>
+Date:   Tue Aug 28 13:34:28 2018 -0700
+
+    SILGen: Emit convenience initializers as allocating entry points.
+    
+    And only dispatch designated inits by their allocating entry points. rdar://problem/29634243
+
+commit ff4832f8ea993a0bc52295468be11466984cfec0
+Author: Michael Gottesman <mgottesman@apple.com>
+Date:   Thu Aug 31 10:33:51 2017 -0700
+
+    [silgen] Add a test for objc factory constructors.
+    
+    While updating DI for ownership, I noticed that we were closing a borrow scope too early in the DI version of this test file. While trying to find why I missed it earlier, I noticed that (AFAICT) we don't have a specific SILGen test for this behavior.
+    
+    This commit adds the missing test with the ownership verifier disabled. I am
+    going to fix it in a subsequent commit.
+    
+    rdar://31521023
+
+commit bd35b4789c1b94cbaa46974a297f342349662c83
+Author: Andrew Trick <atrick@apple.com>
+Date:   Fri Dec 11 15:51:47 2015 -0800
+
+    Move test/SILOptimizer files to reflect lib/SILOptimizer.
+
+commit 4bedf4562b1a7be145093950ed678b0241153fe3
+Author: Slava Pestov <spestov@apple.com>
+Date:   Sun Oct 11 02:11:15 2015 +0000
+
+    Use the 'self consumed' analysis to eliminate releases of consumed self
+    
+    Previously, SILGen would store a null pointer into the self box upon
+    encountering a constructor delegation that consumes self. This was a
+    constant source of bugs. Now, use the new analysis to make this use
+    DI information instead, emitting an extra bit at runtime if necessary.
+    
+    Also re-organize the DI tests for initializers, and add CHECK: lines
+    instead of just asserting we don't crash or diagnose.
+    
+    Swift SVN r32604

@@ -1,0 +1,64 @@
+commit ff44571b9dc76c934bd920d6c3aee95f076888d9
+Author: Angelo Salese <angelosa@users.noreply.github.com>
+Date:   Sun Mar 7 14:00:38 2010 +0000
+
+    Implemented default EEPROMs to the following drivers [David Haywood]
+    * deco_mlc.c
+    * esd16.c
+    * gijoe.c
+    * konamigx.c
+    * moo.c
+    * mystwarr.c
+    * rabbit.c
+    * rungun.c
+    * tmnt.c
+    * vendetta.c
+    * xexex.c
+    
+    new clones
+    -----------
+    Lethal Enforcers II: The Western (ver JAA) [David Haywood]
+    Fantastic Journey (ver AAA) [David Haywood, Tirino73]
+
+commit ce8e7c07ab99f5254b53edd9613f4abe67543077
+Author: Angelo Salese <angelosa@users.noreply.github.com>
+Date:   Sun Jul 5 13:56:07 2009 +0000
+
+    New games added or promoted from NOT_WORKING status
+    ---------------------------------------------------
+    Tokimeki Mahjong Paradise - Dear My Love [David Haywood, Angelo Salese]
+    Tokimeki Mahjong Paradise - Doki Doki Hen [David Haywood, Angelo Salese]
+    
+    changes:
+    
+    - split tmmjprd / tmpdoki from rabbit.c as it uses the graphic chip in a very different way, and having them together was making it more difficult to make progress on [David Haywood]
+    - changed them to use custom rendering code instead of tilemaps, as they can address tile data at a sub-tile level, this fixes the girls in the intro [David Haywood]
+    - added inputs [Angelo Salese]
+    - added some notes about a hang, and possible reason [David Haywood]
+    - marked the graphic roms of tmpdoki as BAD as it appears to be using tiles which are not present in the tmmjprd roms for the title screen [David Haywood]
+
+commit e26f80fde075643afc9d994385c116630b669142
+Author: Aaron Giles <aaron@aarongiles.com>
+Date:   Mon Apr 21 00:00:55 2008 +0000
+
+    (from Mariusz Wojcieszek)
+    
+    Attached is diff which makes Touchmaster games playable.
+    
+    General changes:
+    - Added preliminary 68681 DUART (machine\68681.c)
+    - Moved Microtouch touch screen controller emulation to separate module (machine\microtch.c)
+    
+    New games added or promoted from NOT_WORKING status
+    ---------------------------------------------------
+    Touchmaster [Mariusz Wojcieszek]
+    Touchmaster 3000 [Mariusz Wojcieszek]
+    Touchmaster 4000 [Mariusz Wojcieszek]
+    Touchmaster 5000 [Mariusz Wojcieszek]
+    Touchmaster 7000 [Mariusz Wojcieszek]
+
+commit 7b77f1218624ea26dbb2efd85a19f795f5d4e02e
+Author: Aaron Giles <aaron@aarongiles.com>
+Date:   Mon Dec 17 15:19:59 2007 +0000
+
+    Initial checkin of MAME 0.121.

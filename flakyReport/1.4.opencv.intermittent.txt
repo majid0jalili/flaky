@@ -1,0 +1,5 @@
+commit 0831bd39904d8203d6b5ce77650171cbc3e53ed2
+Author: Alexander Alekhin <alexander.alekhin@itseez.com>
+Date:   Thu Dec 10 13:48:15 2015 +0300
+
+    libpng: update 1.6.19 - November 12, 2015

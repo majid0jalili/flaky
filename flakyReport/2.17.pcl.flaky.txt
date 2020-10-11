@@ -1,0 +1,17 @@
+commit a0889bab85a2205a8c45026e67f56de331d2409a
+Author: Jochen Sprickerhof <git@jochen.sprickerhof.de>
+Date:   Sun Jun 8 15:16:40 2014 +0200
+
+    Replace gtest with sytem version
+    
+    - Add new FindGtest.cmake to find installed versions.
+    - Add libgtest-dev for Travis
+
+commit 9a5eb756f3436b21dd5dfe9a91799958474944af
+Author: Radu B. Rusu <radu.b.rusu@gmail.com>
+Date:   Fri Jul 6 05:07:20 2012 +0000
+
+    * adding the GTest 1.6.0 source tree in trunk. To be used for unit testing without linking to a precompiled libgtest.a
+    
+    
+    git-svn-id: svn+ssh://svn.pointclouds.org/pcl/trunk@6186 a9d63959-f2ad-4865-b262-bf0e56cfafb6

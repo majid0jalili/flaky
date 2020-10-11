@@ -1,0 +1,15 @@
+commit 3c815464224f00f3f2f426382ea9ebbc9c957329
+Author: Igor Canadi <icanadi@fb.com>
+Date:   Wed Feb 26 14:41:18 2014 -0800
+
+    [CF] Make LogDeletionTest less flakey
+    
+    Summary: Retry GetSortedWalFiles() and also wait 20ms before counting number of log files. WaitForFlush() doesn't necessarily wait for logs to be deleted, since logs are deleted outside of the mutex.
+    
+    Test Plan: column_family_test
+    
+    Reviewers: dhruba, haobo
+    
+    CC: leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D16371

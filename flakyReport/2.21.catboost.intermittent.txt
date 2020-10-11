@@ -1,0 +1,7 @@
+commit 181bfa11dc30df94149287a60fb230fd0c43eaba
+Author: Dmitriy Kruchinin <kruch.dmitriy@gmail.com>
+Date:   Thu May 30 21:50:56 2019 +0300
+
+    Train with text features
+    
+    ref:56fa8094c7bf2eaf23f258496e4fe2463cd2b650

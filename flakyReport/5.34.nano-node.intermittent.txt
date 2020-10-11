@@ -1,0 +1,79 @@
+commit 6f0fbbff5360f03b5cef7f74848fe8452ad0b3bf
+Author: Guilherme Lawless <guilherme@nano.org>
+Date:   Wed Apr 29 14:46:53 2020 +0100
+
+    Fix minor test-specific intermittent failures (#2748)
+    
+    * Fix intermittent failures in websocket.active_difficulty test
+    
+    * Fix intermittent failures in websocket.bootstrap_exited test due to attempt finishing immediately
+    
+    * Fix work_watcher.propagate by allowing higher max work generation difficulty
+    
+    * Apply similar fix to node_telemetry.remove_peer_different_genesis_udp as the tcp version in https://github.com/nanocurrency/nano-node/pull/2738
+    
+    * Move node_telemetry.all_peers_use_single_request_cache to slow_tests as it takes too long
+    
+    * Fix intermittent failure in active_transactions.activate_dependencies due to the election being removed before full cementing (still in conf height processor)
+    
+    * Don't check network size, peers are added for exclusion but they can still reconnect via UDP; explicitly request telemetry to make the test faster (UDP does not request telemetry on connection
+
+commit 370134027367b641ba885ba8a1f3826d8727ee07
+Author: Guilherme Lawless <guilherme@nano.org>
+Date:   Tue Apr 28 15:15:21 2020 +0100
+
+    Fix node.fork_invalid_block_signature intermittent failures, re-enable on windows CI (#2743)
+
+commit 7966efd6527892f4afbb85610558cb61c4b66234
+Author: Guilherme Lawless <guilherme@nano.org>
+Date:   Tue Apr 28 11:05:42 2020 +0100
+
+    Fix system.generate_send_new intermittent failures (#2742)
+    
+    This is likely due to wallet rep counts not updating quick enough on CI due to online weight fluctuating very heavily in this test, causing votes to not be generated. Waiting for the online weight to stabilize by waiting on a voting rep should fix it.
+    
+    Ran CI twice and didn't trigger whereas it would trigger often without this change.
+
+commit 7e51c04e52d62dc0819583e0891d910af45501fa
+Author: Wesley Shillingford <wezrule@hotmail.com>
+Date:   Wed Apr 8 09:06:22 2020 +0100
+
+    Incorrect cemented count during conf height algo transition (#2664)
+    
+    * Incorrect cemented count during transition in some circumstances
+    
+    * Better test name
+    
+    * Update test to use new construct after merge
+
+commit 45f66d2bd69c6fe74232e6b6c473618ea521b003
+Author: Wesley Shillingford <wezrule@hotmail.com>
+Date:   Tue Apr 7 16:21:21 2020 +0100
+
+    Using relaxed atomics for counts not involved in control flow in conf height processor (#2651)
+    
+    * Using relaxed atomics for counters in conf height processor
+    
+    * Set memory order for pending_writes_size (Serg review)
+    
+    * Missed modifying confirmed_iterated_pairs_size
+    
+    * Use relaxed atomic wrapper
+    
+    * SFINAE out most invalid types
+    
+    * Using incorrect compare_exchange
+    
+    * Add missing type helper alias
+
+commit da9671e0ec5b6b3c53bdee2e538059c7857f3741
+Author: Wesley Shillingford <wezrule@hotmail.com>
+Date:   Wed Feb 26 20:39:27 2020 +0000
+
+    Reduce active mutex locking with election winner details (#2600)
+    
+    * Reduce active mutex locking with election winner details
+    
+    * Make sure root is removed before accessing election
+    
+    * Serg comment on existing code

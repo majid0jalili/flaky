@@ -1,0 +1,41 @@
+commit 7744ba8ae51c6f776693ddbf06862157ed8e9702
+Author: jacobkahn <jacobkahn1@gmail.com>
+Date:   Tue Aug 18 15:10:31 2020 -0700
+
+    Rename 'tests' directories to 'test' throughout
+
+commit c09b78d21a1c4a2d19e27c05bee9e71c35fc3577
+Author: jacobkahn <jacobkahn1@gmail.com>
+Date:   Wed Aug 12 08:41:03 2020 -0700
+
+    tasks namespace --> app, speech_recognition --> asr
+
+commit 765963c20977a2798cc318c9fc4617e6eac1c482
+Author: Qiantong Xu <qx57@cornell.edu>
+Date:   Tue Jun 30 16:03:02 2020 -0700
+
+    place tests in the right place
+
+commit afd46aa82b72064d8f0b477f99a99a5d62d270da
+Author: Tatiana Likhomanenko <antares@fb.com>
+Date:   Tue Aug 18 19:40:41 2020 -0700
+
+    move out all from tasks/speech_recognition/src into tasks/speech_recognition
+
+commit 3cebc6cece5c2aaaee5bfce695bbb2846a1bd248
+Author: Tatiana Likhomanenko <antares@fb.com>
+Date:   Tue Aug 18 19:38:52 2020 -0700
+
+    move wav2letter into tasks/speech_recognition
+
+commit 95936a9201d38cc79d1443521739fbf4cc37b054
+Author: Tatiana Likhomanenko <antares@fb.com>
+Date:   Tue Aug 18 19:37:44 2020 -0700
+
+    wav2letter migration into flashlight
+
+commit 8f292506ef9e02144ce8c6af27fe0287f871f774
+Author: Vineel Pratap <vineelkpratap@fb.com>
+Date:   Fri Dec 21 11:48:11 2018 -0800
+
+    Initial Commit

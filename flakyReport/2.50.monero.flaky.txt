@@ -1,0 +1,19 @@
+commit 84c5a9ba481d7a33cc0fd0ca43867b61d127d907
+Author: anonimal <anonimal@i2pmail.org>
+Date:   Wed Jun 28 21:07:24 2017 +0000
+
+    Unbound: remove unbound from in-tree source
+    
+    We'll instead use a git submodule to pull from our unbound repo.
+
+commit 9ef094b356b4da7542c3cab898dac7e135b76903
+Author: Riccardo Spagni <ric@spagni.net>
+Date:   Sun Oct 5 23:44:31 2014 +0200
+
+    added unbound to external deps
+
+commit 296ae46ed8f8f6e5f986f978febad302e3df231a
+Author: Antonio Juarez <antonio.maria.juarez@live.com>
+Date:   Mon Mar 3 22:07:58 2014 +0000
+
+    moved all stuff to github

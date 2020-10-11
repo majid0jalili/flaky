@@ -1,0 +1,58 @@
+commit 2ff18bc948a40b4c2a5f49ff4315f4e27ef56558
+Author: Daniel Büchele <danielbuechele@fb.com>
+Date:   Wed Feb 28 03:37:14 2018 -0800
+
+    remove old docs folder
+    
+    Summary: removing the old `docs` folder as we are switching to `gh-pages` branch.
+    
+    Reviewed By: emilsjolander
+    
+    Differential Revision: D7110147
+    
+    fbshipit-source-id: a27e6fc3a115f2f62b8a0dd5833d872e24698021
+
+commit bbdb62e654bf19c2a6f91e3ae6910040cb3583cc
+Author: Emil Sjölander <emilsj@fb.com>
+Date:   Mon Feb 19 02:55:30 2018 -0800
+
+    Use absolute paths in links
+    
+    Summary: allow-large-files
+    
+    Reviewed By: danielbuechele
+    
+    Differential Revision: D7023260
+    
+    fbshipit-source-id: a797d09b61530b13da10e02c21acef13c508470c
+
+commit e024943c4bd248c8e4714bb001c994764ef4caf2
+Author: Daniel Büchele <danielbuechele@fb.com>
+Date:   Mon Feb 19 02:08:18 2018 -0800
+
+    bugfixes
+    
+    Summary:
+    - adds favicon
+    - adds page titles
+    - fixes bug in react native code gen
+    
+    allow-large-files
+    
+    Reviewed By: emilsjolander
+    
+    Differential Revision: D7013492
+    
+    fbshipit-source-id: d29a56a7caddf0da4fb19a0ba443c6906ccfff56
+
+commit bdc37b07971b645718d2d7400afa19d47056ef0f
+Author: Emil Sjölander <emilsj@fb.com>
+Date:   Fri Feb 16 09:03:21 2018 -0800
+
+    shipit
+    
+    Reviewed By: danielbuechele
+    
+    Differential Revision: D7010371
+    
+    fbshipit-source-id: 9a111010755ee134bded7500c461342b944b4d62

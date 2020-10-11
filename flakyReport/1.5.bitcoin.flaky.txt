@@ -1,0 +1,14 @@
+commit 14feda0814a9fecf2138041f7d36fe1ab338797f
+Author: Wladimir J. van der Laan <laanwj@protonmail.com>
+Date:   Sun Nov 24 11:12:36 2019 +0100
+
+    doc: Add historical release notes for 0.19.0.1
+    
+    Add historical release notes for 0.19.0.1. And replace 0.19.0's release
+    notes with a short explanation.
+
+commit fec230edcc2ae0ec4fd3811185ad3b1802a5c90b
+Author: fanquake <fanquake@gmail.com>
+Date:   Fri Nov 8 16:19:03 2019 -0500
+
+    doc: add historical 0.19.0 release notes

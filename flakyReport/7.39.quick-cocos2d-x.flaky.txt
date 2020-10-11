@@ -1,0 +1,5 @@
+commit 4188cb842a12e03522601c97e3c2380439e49626
+Author: dualface <dualface@gmail.com>
+Date:   Sat Apr 5 15:45:12 2014 +0800
+
+    merge cocos2d-x 2.2.3

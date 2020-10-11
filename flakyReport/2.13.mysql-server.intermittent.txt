@@ -1,0 +1,328 @@
+commit 3fdef64d8a30a74d81ee757a63e8cd264d80a9d8
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat Jun 6 12:10:35 2020 +0200
+
+    Bug #31432103   BUILD BREAK FOR 7.3 AND 7.4 COMMERCIAL WIN VERSION DUE TO TOO LONG FILE NAMES
+    
+    Add prebuild version of dojo 1.15.3
+    
+    Approved by:  Dinesh Prakash <dinesh.prakash@oracle.com>
+    
+    Change-Id: If0cf5aa7d60410ce7302ec56650bd6733bfcb3e2
+
+commit 000cb98131f9fa81725a4e4093a72d7784a7f4e2
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat Jun 6 12:04:01 2020 +0200
+
+    Bug #31432103   BUILD BREAK FOR 7.3 AND 7.4 COMMERCIAL WIN VERSION DUE TO TOO LONG FILE NAMES
+    
+    Remove dojo 1.15.3 source
+    
+    Approved by:  Dinesh Prakash <dinesh.prakash@oracle.com>
+    
+    Change-Id: I7e84a405e0210747fb2de2a957a27dc3cb26fca6
+
+commit b4fb2fc87685901b90cdb608191cc3a0c1e8130c
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat May 9 12:24:38 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - add new dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit d4b9c26350128363e03829dc775c44705b4e5a6a
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat May 9 12:07:34 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - remove old dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit c8c38e6075bd762508731110d47c588c7015e852
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Fri May 8 20:15:33 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - add new dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit 5567fc4b39d36ccb4262dd9f795051743431c790
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Fri May 8 13:20:12 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - remove old dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit c575d2e2aaf8cbf8d9933a104eb034abb2d40a4c
+Author: Mikael Ronström <mikael.ronstrom@oracle.com>
+Date:   Thu May 23 09:46:26 2019 +0200
+
+    WL#11018: Install Dojo 1.8.14 with bug fix
+    
+    Reviewed-by: Mikael Ronström <mikael.ronstrom@oracle.com>
+
+commit a515f338d3fc29a82b469eb4d78774d8d6e4c7f9
+Author: Mikael Ronström <mikael.ronstrom@oracle.com>
+Date:   Thu May 23 09:43:43 2019 +0200
+
+    WL#11018: Remove old dojo
+    
+    Reviewed-by: Mikael Ronström <mikael.ronstrom@oracle.com>
+
+commit 1efd16d75aa2046b2736125b581952b541042d05
+Author: Debarun Banerjee <debarun.banerjee@oracle.com>
+Date:   Fri May 17 18:11:07 2019 +0530
+
+        Backport 8.0 wl#11636 InnoDB: Clone Remote provisioning
+        RB 21407
+        Reviewed-by: Pawel Olchawa <pawel.olchawa@oracle.com>
+                     Annamalai Gurusami <annamalai.gurusami@oracle.com>
+    
+        Backport 8.0 wl#9211 InnoDB: Clone Replication Coordinates
+        RB 21417
+        Reviewed-by: Pawel Olchawa <pawel.olchawa@oracle.com>
+                     Pedro Figueiredo <pedro.figueiredo@oracle.com>
+    
+        Backport 8.0 wl#9682  InnoDB: Support cloning encrypted and compressed database
+        RB 21409
+        Reviewed-by: Mayank Prasad <mayank.prasad@oracle.com>
+                     Kevin Lewis <kevin.lewis@oracle.com>
+
+commit e9eab70b637a36819c8be21c6378ee0a08a83547
+Author: Tor Didriksen <tor.didriksen@oracle.com>
+Date:   Fri Jan 27 11:10:15 2017 +0100
+
+    Bug#25460467 OPT_TRACE.SECXXX TESTS FAIL WHEN CHANGING DEFAULT CHARACTER SET
+    
+    Tests opt_trace.secXXX_prot fail with result
+    conents mismatch when changing default character set.
+    
+    Fix: create database somedb character set latin1;
+    
+    Also add new .cnf files for utf8mb4 based on the default ones for latin1
+
+commit 45c7885e8fcb98dc71f8225e1a956bb6829664d2
+Author: Deepa Dixit <deepa.dixit@oracle.com>
+Date:   Mon Mar 21 11:02:53 2016 +0530
+
+    WL#8795: EVALUATE DEFAULTS SET BY MTR AND CHANGE THEM TO USE SERVER DEFAULTS
+             WHERE POSSIBLE
+    
+    Description:
+    ============
+    mysql-test-run.pl (MTR) has a configuration file mysql-test/include/default_mysqld.cnf
+    which sets values for various server variables. Some of them maybe needed to run tests
+    with limited resources available on PB2, while some others maybe there due to legacy
+    reasons that are not valid anymore.
+    
+    The settings made by MTR were evaluated to assess whether they were needed. Then,
+    the setting of variables to non-server-default values were removed from default_mysqld.cnf.
+    The tests run by MTR were modified or recorded accordingly.
+    
+    Reviewed-by: Anitha Gopi <anitha.gopi@oracle.com>
+    Reviewed-by: Sayantan Dutta <sayantan.dutta@oracle.com>
+    Reviewed-by: Parveez Baig <parveez.baig@oracle.com>
+    RB: 11707
+
+commit 493f4867b69ade494455caae4f9801cb3e61cebb
+Author: Sivert Sorumgard <sivert.sorumgaard@oracle.com>
+Date:   Thu Jan 7 16:21:47 2016 +0100
+
+    WL#9071: Remove mysql_install_db and server --bootstrap option
+    
+    This patch has three logical parts:
+    
+    1. Remove the 'mysql_install_db' executable and all references to it from
+       elsewhere. Remove associated MTR tests, unit tests, comments mentioning
+       it, as well as additional source code used only by that executable.
+    
+       Rewrite 'scripts/mysqld_multi.sh' to use 'mysqld --initialize' rather
+       than 'mysql_install_db'.
+    
+       Note: Usage of 'mysql_install_db' from MySQL Cluster test environment
+             will be fixed by  Cluster devs outside the scope of this WL.
+    
+    2. Remove the deprecated '--bootstrap' option, and the '--install-server'
+       option (which has not been released). Replace the variables
+       representing these options by the variable representing the
+       '--initialize' option.
+    
+       Update or remove tests and scripts referring to these variables.
+    
+    3. Remove support for MTR_VERSION=1. This is dependent on the
+       deprecated '--bootstrap' option, and is therefore removed.
+
+commit c7a720bff393442dddd59243fe62176fe37754ae
+Author: Jon Olav Hauglid <jon.hauglid@oracle.com>
+Date:   Thu Sep 24 12:46:44 2015 +0100
+
+    Bug#21881278: SWITCH MYSYS LIBRARY FROM C TO C++
+    
+    This patch switches all mysys/ files from .c to .cc.
+    By doing this we get stricter compile checks (e.g. type checks)
+    and it makes it possible to use C++ features for future
+    bug fixes and extensions inside mysys.
+
+commit b890823b287cee10592b8c6e1cdd4e12e08c51f3
+Author: Jon Olav Hauglid <jon.hauglid@oracle.com>
+Date:   Thu Apr 18 08:59:43 2013 +0200
+
+    Bug#16629996: Remove more unused #ifdefs
+    
+    Additional patch.
+    
+    This patch removes the following #ifdefs which were never set:
+    - DONT_HAVE_TO_BE_INITALIZED
+    - HAVE_AIOWAIT
+    - HAVE_CLOSE_SERVER_SOCK
+    - HAVE_CRYPTED_FRM
+    - HAVE_DARWIN_THREADS
+    - HAVE_EMBEDDED_PRIVILEGE_CONTROL
+    - HAVE_FILE_VERSIONS
+    - HAVE_GETTIMEOFDAY_H
+    - HAVE_LINUXTHREADS
+    - HAVE_SETUPTERM
+    - HAVE_SYS_VADVICE_H
+    - HAVE_TIME
+    - HAVE_VIDATTR
+    
+    This patch also removes #ifdefs HAVE_FTIME and HAVE_SYS_TIMEB_H.
+    According to the man page about ftime "This function is obsolete.
+    Don't use it". Including the header file gave compilation warnings
+    on FreeBSD. The one remaining use of ftime() has been replaced
+    with gettimeofday().
+
+commit ff03c0c45c8a315125cf328d6de034fe3f639b42
+Author: Dyre Tjeldvoll <Dyre.Tjeldvoll@oracle.com>
+Date:   Mon Feb 4 14:45:26 2013 +0100
+
+    Adding mcc dir to 7.3
+
+commit bf59c31255a768689e217ef301aa7130044dfc1e
+Author: Marc Alff <marc.alff@oracle.com>
+Date:   Wed May 30 13:44:42 2012 +0200
+
+    WL#6135 PERFORMANCE SCHEMA ENABLED BY DEFAULT
+    
+    Implementation continued, improved tests.
+
+commit 41dc6fb0bba53cf0949ccaa7c59b1ac5cb3b7540
+Author: Jimmy Yang <jimmy.yang@oracle.com>
+Date:   Fri Feb 24 22:55:15 2012 +0800
+
+    More transactional lock related changes. Removed the read transaction, so
+    that read and update share the same transactions. Fix an issue that
+    prevents old version data being returned, so that MVCC works on memcached
+    channel. Also consolidate connection init functions for simplicity.
+
+commit 7310af4ec499d7345e44b17efc73f7acfaf05ad7
+Author: Jimmy Yang <jimmy.yang@oracle.com>
+Date:   Wed Jan 18 19:59:53 2012 +0800
+
+    Resolve synchronization issues for concurrent execution of memcached commands
+    from multiple sessions. Mostly related to interaction of "flush_all"
+    command (truncate table) and other DML operations.
+
+commit 6e01be7552aa5c5fb854d30d5d8cb61c2729b292
+Author: Marc Alff <marc.alff@sun.com>
+Date:   Tue Nov 24 16:36:31 2009 -0700
+
+    WL#2373 Use cycle counter for timing
+
+commit 512cfd22ea77f8a4503729e72605d0e1d0271f97
+Author: Wen Xiong <wx228566@khepri35>
+Date:   Thu Mar 26 09:21:55 2009 +0100
+
+    ## Add online node test cases
+
+commit d2773d34f5efdc912ffdca2f638888ada1c66063
+Author: Magnus Svensson <msvensson@mysql.com>
+Date:   Fri Nov 14 09:45:32 2008 +0100
+
+    WL#4189 Add full backward compatibility to mysql-test-run.pl
+     - Add copy of mtr v1 and make it possible to run it using MTR_VERSION=1
+
+commit d918988baa943a18b17468f7cf2aa73833217f83
+Author: msvensson@pilot.mysql.com <>
+Date:   Wed Dec 12 18:19:24 2007 +0100
+
+    WL#4189
+     - dynamic configuration support
+     - safe process
+     - cleanups
+     - create new suite for fedarated
+
+commit ed055965bf2e4f04be61372bb81f67d51231ae33
+Author: msvensson@shellback.(none) <>
+Date:   Fri Sep 21 17:52:02 2007 +0200
+
+    - Increase default connect_timeout to avoid intermittent
+    disconnects when test servers are put under load
+
+commit 3b840adee7817d141fa9f5935b1d05243e6a8df4
+Author: andrey@lmy004. <>
+Date:   Wed Jul 5 17:12:50 2006 +0200
+
+    WL#3337 (Event scheduler new architecture)
+    Cleaned up the code a bit. Fixed few leaks.
+    This code still does not load events on server startup
+    from disk. The problem is that there is a need for a THD instance, which
+    does not exist during server boot. This will be solved soon.
+    Still Event_timed is used both for the memory queue and for exectution.
+    This will be changed according to WL#3337 probably in the next commit.
+
+commit b429d73d62791d05a6448135c78beb8966008888
+Author: andrey@lmy004. <>
+Date:   Mon May 22 20:46:13 2006 +0200
+
+    fix for bug #17619 Scheduler race conditions
+    - Scheduler is either initialized at server start or never.
+      Starting & stopping is now suspending & resuming.
+    - The scheduler has clear OO interface
+    - Now all calls to the scheduler are synchronous
+    - GLOBAL event_scheduler uses thd::sys_var_tmp (see set_var.cc)
+    - External API is encapsulated into class Events
+    - Includes fixes for all comments of Kostja's review of 19.05.2005
+    
+    Starting to merge into 5.1-release (5.1.10) and push
+
+commit b287b3ed4434e96f931b962d89c4691c997c03e8
+Author: lenz@mysql.com <>
+Date:   Mon Jul 15 11:53:05 2002 +0200
+
+     - removed the mit-pthreads subdirectory on Monty's request (mit-pthreads
+       is now available as a separate downloadable tarball instead)
+     - modified the RPM spec file according to discussions with Monty, Jani,
+       Heikki and David (corrected build options, updated Packager tag)
+
+commit a9ef0b4bf11c25b64c38aee037a03f0875b9003c
+Author: sasha@mysql.sashanet.com <>
+Date:   Fri Nov 24 19:49:13 2000 -0700
+
+    slave master.info FILE -> IO_CACHE
+    send_file() is more stack-friendly - changed large static buffer to alloc_root()
+    fixed my_b_seek() to work with WRITE_CACHE
+    test case to make sure the slave starts correctly after being stopped
+    truncated words file so the replication tests will take less time
+
+commit 24a7aae0f452f75cdfb09ccf1cec37d38d0f82a9
+Author: sasha@mysql.sashanet.com <>
+Date:   Fri Nov 17 23:35:40 2000 -0700
+
+    fixed bugs in delayed insert replication and when slave loses connection after Int_var but before Query
+    public test suite now tests replication code as well
+
+commit f4c589ff6c653d1d2a09c26e46ead3c8a15655d8
+Author: bk@work.mysql.com <>
+Date:   Mon Jul 31 21:29:14 2000 +0200
+
+    Import changeset

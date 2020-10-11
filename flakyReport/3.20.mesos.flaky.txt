@@ -1,0 +1,814 @@
+commit 48922e02ddac1ff5726d7a07e799c1475be65175
+Author: Andrei Sekretenko <asekretenko@apache.org>
+Date:   Thu May 7 15:33:14 2020 +0200
+
+    Updated CHANGELOG for 1.10.0.
+
+commit fd1765df5fa1efc19542930fe705dac74b631009
+Author: Qian Zhang <zhq527725@gmail.com>
+Date:   Mon Aug 26 19:47:16 2019 -0700
+
+    Updated CHANGELOG for 1.9.0.
+
+commit 9aac730672232435dfab788e9542cde0cd93dfd7
+Author: Chun-Hung Hsiao <chhsiao@mesosphere.io>
+Date:   Thu Apr 11 09:04:02 2019 -0700
+
+    Added MESOS-9712 to the 1.8.0 CHANGELOG.
+
+commit 2fc47846a1d146843e66b4548bc9db82f39b0041
+Author: Benno Evers <bevers@mesosphere.com>
+Date:   Fri Apr 5 22:58:51 2019 +0200
+
+    Updated CHANGELOG for 1.8.0.
+
+commit ede2a94ebaf9710516816bae7d012d926c533a59
+Author: Benno Evers <bevers@mesosphere.com>
+Date:   Thu Feb 28 18:02:56 2019 +0100
+
+    Added unit tests for offer operation feedback metrics.
+    
+    This adds a set of checks to verify the metrics introduced
+    in the previous commit are working as intended.
+    
+    Review: https://reviews.apache.org/r/70117
+
+commit 15ddab8eda31e313f81cb019c22fbeb80ff6bcd1
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Tue Mar 19 00:28:48 2019 -0700
+
+    Added a blog post for 1.5.3 release.
+
+commit 8101febb2a3500698e39c227c464a1bfe2797420
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Tue Mar 5 21:56:48 2019 -0800
+
+    Fixed 1.5.3 CHANGELOG.
+
+commit a9f28a619144cea1740ed19fa3b8d184f460580d
+Author: Meng Zhu <mzhu@mesosphere.io>
+Date:   Tue Feb 26 19:52:54 2019 -0800
+
+    Updated the website for the 1.4.3 release.
+
+commit 53d99735229d377f47582d93df2435b8f7970778
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Wed Jan 30 11:37:42 2019 -0800
+
+    Added MESOS-9533 to 1.4.3 CHANGELOG.
+
+commit 3acd35c9fa58f1888efa70dc9c118a9b923cc052
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Wed Jan 30 11:37:26 2019 -0800
+
+    Added MESOS-9533 to 1.5.3 CHANGELOG.
+
+commit 16eff2bb1c1acf1bd5022e585f06ef8e12cdc569
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Wed Jan 30 11:37:09 2019 -0800
+
+    Added MESOS-9533 to 1.6.2 CHANGELOG.
+
+commit 94796bcab7b1382ead699278e4dfb9505d9dd017
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Wed Jan 30 11:06:21 2019 -0800
+
+    Added MESOS-9533 to 1.7.2 CHANGELOG.
+
+commit 85e8a9547cbfd2b0d182ea75563a4eedcb1001f6
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Thu Jan 24 15:48:47 2019 -0800
+
+    Added MESOS-9532 to 1.4.3 CHANGELOG.
+
+commit 93937d985fa67060bab8507a9085ef4ec57cdabe
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Thu Jan 24 15:48:10 2019 -0800
+
+    Added MESOS-9532 to 1.5.3 CHANGELOG.
+
+commit fbef548c3baec4e7beee06afc2989a44519999f4
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Thu Jan 24 15:46:05 2019 -0800
+
+    Added MESOS-9532 to 1.6.2 CHANGELOG.
+
+commit 9a04f395ae1c5018be437aed1338e9142f8055c5
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Thu Jan 24 15:45:24 2019 -0800
+
+    Added MESOS-9532 to 1.7.2 CHANGELOG.
+
+commit d592e72a3e88585978ebfd46bbc03d63573eb3a7
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Thu Jan 24 14:58:54 2019 -0800
+
+    Added the blog post for 1.5.2 release.
+
+commit 1e8ebcb8cf1710052c1ae14e342c1277616fa13d
+Author: Chun-Hung Hsiao <chhsiao@mesosphere.io>
+Date:   Fri Dec 21 10:06:01 2018 -0800
+
+    Updated the CHANGELOG for the 1.7.1 release.
+
+commit d1219ad94383aa0e2756e85fd98f21a467ec651e
+Author: Alexander Rukletsov <alexr@apache.org>
+Date:   Tue Sep 18 20:12:46 2018 +0200
+
+    Added MESOS-8545 and MESOS-9131 to the 1.5.2 CHANGELOG.
+
+commit c1e209e4630700eacbb740ffc62b567bfbdf8d39
+Author: Alexander Rukletsov <alexr@apache.org>
+Date:   Tue Sep 18 19:59:50 2018 +0200
+
+    Added MESOS-8545 and MESOS-9131 to the 1.6.2 CHANGELOG.
+
+commit 628f1a0f1e4d2ea70a00a9543924210dfd10a20d
+Author: Alexander Rukletsov <alexr@apache.org>
+Date:   Tue Sep 18 19:47:38 2018 +0200
+
+    Added MESOS-8545 and MESOS-9131 to the 1.7.1 CHANGELOG.
+
+commit 52be35f47caea2712a0b13d7f963f7236533a2f1
+Author: Andrei Budnik <abudnik@mesosphere.com>
+Date:   Thu Sep 6 13:41:06 2018 +0200
+
+    Fixed `LaunchNestedContainerSessionsInParallel` test.
+    
+    Previously, we sent `ATTACH_CONTAINER_OUTPUT` to attach to a
+    short-living nested container. An attempt to attach to a terminated
+    nested container leads to HTTP 500 error. This patch gets rid of
+    `ATTACH_CONTAINER_OUTPUT` in favor of `LAUNCH_NESTED_CONTAINER_SESSION`
+    so that we can read the container's output without using an extra call.
+    
+    Review: https://reviews.apache.org/r/68236/
+
+commit f844aacb230d212ea73653456f6ad623f5db6452
+Author: Chun-Hung Hsiao <chhsiao@mesosphere.io>
+Date:   Tue Aug 21 17:04:46 2018 -0700
+
+    Updated the 1.7.0 CHANGELOG.
+
+commit d95a16e03d27a2b6575148183e53a3b4507a16c1
+Author: Andrei Budnik <abudnik@mesosphere.com>
+Date:   Mon Aug 20 16:22:33 2018 +0200
+
+    Added `LaunchNestedContainerSessionInParallel` test.
+    
+    This patch adds a test which verifies that launching multiple
+    short-lived nested container sessions succeeds. This test
+    implicitly verifies that agent correctly detects `mnt` namespace
+    of a command executor's task. If the detection fails, the
+    containerizer launcher (aka `nanny`) process fails to enter `mnt`
+    namespace, so it prints an error message into stderr for this
+    nested container.
+    
+    This test is disabled until we fix MESOS-8545.
+    
+    Review: https://reviews.apache.org/r/68256/
+
+commit 33b9f66c7a27016309bfb6c1434178ebb6c9a180
+Author: Chun-Hung Hsiao <chhsiao@mesosphere.io>
+Date:   Mon Aug 13 16:23:17 2018 -0700
+
+    Updated the 1.7.0 CHANGELOG.
+
+commit cf3b4352bcf31c8bbd326e4e24046f49e7d839e1
+Author: Greg Mann <gregorywmann@gmail.com>
+Date:   Fri May 4 15:33:51 2018 -0700
+
+    Added unresolved critical issues to the 1.6 CHANGELOG.
+    
+    Review: https://reviews.apache.org/r/66969/
+
+commit 10f0345d2642bbe94d1e5c9aec6c04e96b490ec6
+Author: Chun-Hung Hsiao <chhsiao@apache.org>
+Date:   Fri May 4 14:16:29 2018 -0700
+
+    Added MESOS-8649, MESOS-8793 and MESOS-8874 to the 1.6.0 CHANGELOG.
+    
+    Review: https://reviews.apache.org/r/66968/
+
+commit b1ac4bc9153c4cb2b06bd0933f974efdb280cdd2
+Author: Greg Mann <greg@mesosphere.io>
+Date:   Fri May 4 14:16:28 2018 -0700
+
+    Updated the 1.6 CHANGELOG.
+    
+    Review: https://reviews.apache.org/r/66963/
+
+commit df89829de5f6accffe92c74476cce319307422c2
+Author: Eric Mumau <ermumau@microsoft.com>
+Date:   Tue Apr 10 16:04:33 2018 -0700
+
+    Windows: Changed `SLEEP_COMMAND` to use `ping`.
+    
+    We have gone back to `ping` as the `sleep` command on Windows, because
+    PowerShell is too slow to startup, and can crash when the machine is
+    overloaded. This time, however, the output of `ping` is redirected to
+    `NUL` so that the tests aren't spammed with spurious output when
+    sleeping.
+    
+    Review: https://reviews.apache.org/r/66415/
+
+commit 117744d190f0f518b3725556dd155d2e8678ec26
+Author: Armand Grillet <agrillet@mesosphere.io>
+Date:   Fri Mar 23 19:40:20 2018 -0700
+
+    Removed non minified third party JS library files.
+    
+    Review: https://reviews.apache.org/r/66256/
+
+commit c9881001a74c679443d512422d712478c09450b5
+Author: Gilbert Song <songzihao1990@gmail.com>
+Date:   Wed Jan 17 15:48:51 2018 -0800
+
+    Updated the CHANGELOG for 1.5.0 release.
+    
+    Review: https://reviews.apache.org/r/65203
+
+commit b4cf87ba7cf32aee7e71ec2ca921006c914517f2
+Author: Andrew Schwartzmeyer <andrew@schwartzmeyer.com>
+Date:   Fri Oct 20 12:46:21 2017 -0700
+
+    Windows: Ported `Cpu` and `Mem` isolator tests.
+    
+    These test the limitation and usage reporting of the new Windows `Cpu`
+    and `Mem` isolators.
+    
+    Review: https://reviews.apache.org/r/63277
+
+commit 1b5a4e77e55f5c8665526294626a66905569a284
+Author: Alexander Rojas <alexander@mesosphere.io>
+Date:   Wed Oct 18 12:11:40 2017 +0200
+
+    Upgrades AngularJS used by Mesos WebUI to version 1.2.32.
+    
+    The version of AngularJS distributed with Mesos (1.2.3) was found to
+    have security issues which have been addressed in latter versions.
+    
+    Review: https://reviews.apache.org/r/63102
+
+commit 5125b80ea50b5babd7636234605b66c627780834
+Author: Kapil Arya <kapil@mesosphere.io>
+Date:   Mon Sep 11 15:19:58 2017 -0400
+
+    Updated changelog to 1.4.0-rc5.
+
+commit 5ca68ee08b4bd884005fd985a5455b337bfea053
+Author: Michael Park <mpark@apache.org>
+Date:   Tue May 2 16:40:00 2017 -0700
+
+    CHANGELOG for 1.3.0 release.
+    
+    Review: https://reviews.apache.org/r/58942
+
+commit 4f8a2c1bc5db433c3be22014e175600b3435a2d4
+Author: Adam B <adam@mesosphere.io>
+Date:   Thu Feb 16 01:47:16 2017 -0800
+
+    Updated CHANGELOG for Mesos 1.2.0 release.
+    
+    Review: https://reviews.apache.org/r/56742
+
+commit baf9adde459caf00e35f16aeb791b2d1ac57515d
+Author: Till Toenshoff <toenshoff@me.com>
+Date:   Tue Oct 18 17:28:23 2016 +0200
+
+    Updated CHANGELOG in preparation for 1.1.0.
+    
+    Review: https://reviews.apache.org/r/52985/
+
+commit 7b35cd98a3fa9cf3fbb74b3d44bcdc0d90a0220a
+Author: Vinod Kone <vinodkone@gmail.com>
+Date:   Fri Jul 22 11:41:37 2016 -0700
+
+    Updated CHANGELOG for 1.0.0-rc3.
+
+commit 5db0458cb0b51907a25f18e4939f49f38b29b926
+Author: Neil Conway <neil.conway@gmail.com>
+Date:   Tue Jul 19 10:59:14 2016 -0700
+
+    Removed the `os::sleep` from `Clock::settle`.
+    
+    `Clock::settle` is used to wait until all pending libprocess events
+    have been handled. Test cases should typically use it only when there is
+    no other way to achieve the proper synchronization between two events.
+    
+    Previously, `Clock::settle` also contained an `os::sleep` call to
+    workaround broken test cases that assumed `settle` provided stronger
+    guarantees than described above (e.g., some test cases assumed that
+    doing `http::get` followed by a `Clock::settle` ensured that the remote
+    side of the HTTP connection will have seen the request). Currently,
+    there are relatively few such test cases, so it is better to fix those
+    test cases (or add a `sleep` call to them) and remove the `sleep` from
+    `Clock::settle`.
+    
+    Review: https://reviews.apache.org/r/50187/
+
+commit a7adef8a040102bc358ccf8d5c424468c26a5af4
+Author: Vinod Kone <vinodkone@gmail.com>
+Date:   Thu Jul 7 17:21:19 2016 -0500
+
+    Updated CHANGELOG for 1.0.0.
+
+commit c1589151cde6757316f74ed5c2ee32fb0c2b572f
+Author: Adam B <adam@mesosphere.io>
+Date:   Wed Jun 1 00:08:53 2016 -0700
+
+    Updated CHANGELOG for 1.0.0.
+
+commit 60dec41750e54991c77f4a4bcd881734e4cc7ad8
+Author: Michael Park <mpark@apache.org>
+Date:   Fri Feb 26 21:03:30 2016 -0800
+
+    Updated CHANGELOG for 0.26.1-rc1 release.
+
+commit 6480c5b7ae140b9a8cbb93eeb24564c58d7a0303
+Author: Michael Park <mpark@apache.org>
+Date:   Fri Feb 26 21:32:54 2016 -0800
+
+    Updated CHANGELOG for 0.25.1-rc1 release.
+
+commit d33cbbafd277213c0ccbde671cd33fe6aea3d41b
+Author: Michael Park <mpark@apache.org>
+Date:   Fri Feb 26 21:58:59 2016 -0800
+
+    Updated CHANGELOG for 0.24.2-rc1 release.
+
+commit 3ef4d3eb472958fa04a95de81a9914e9ad4d63c0
+Author: Jie Yu <yujie.jay@gmail.com>
+Date:   Tue Apr 5 13:12:20 2016 -0700
+
+    Updated the CHANGELOG for 0.28.1.
+    
+    Review: https://reviews.apache.org/r/45773
+
+commit a706954d7c420943ea3ff80edc00aa5f5ec3e971
+Author: Vinod Kone <vinodkone@gmail.com>
+Date:   Thu Mar 3 16:39:05 2016 -0800
+
+    Updated CHANGELOG for 0.28.0.
+
+commit 9f88e031905618be169244f8117ab250164aeae9
+Author: Michael Park <mpark@apache.org>
+Date:   Wed Jan 27 20:02:21 2016 -0800
+
+    Updated CHANGELOG for 0.27.0-rc2 release.
+
+commit 0bdb03239ff4e799a825b011e09c806d59cfb93f
+Author: Timothy Chen <tnachen@apache.org>
+Date:   Tue Jan 26 21:34:39 2016 -0800
+
+    Updated CHANGELOG for 0.27.0 release.
+
+commit 376ca5bb14471aac5791d01b5b5c267310b9e75c
+Author: Till Toenshoff <toenshoff@me.com>
+Date:   Tue Dec 22 11:41:15 2015 +0100
+
+    Fixed 0.27.0 CHANGELOG.
+    
+    Review: https://reviews.apache.org/r/41445/
+
+commit 5c0e4dc974014b0afd1f2752ff60a61c651de478
+Author: Till Toenshoff <toenshoff@me.com>
+Date:   Fri Nov 27 17:06:33 2015 +0100
+
+    Updated CHANGELOG for 0.26.0-rc2.
+    
+    Review: https://reviews.apache.org/r/40777
+
+commit 6267a925e4906b96a4e72d5e9db4d25beb9b51a8
+Author: Niklas Q. Nielsen <niklas@mesosphere.io>
+Date:   Mon Oct 5 14:42:00 2015 -0700
+
+    Added missing entries for Mesos 0.25.0 CHANGELOG.
+
+commit 00b3c7e72944f77d22c2135dce8adbf0c5125c0f
+Author: Vinod Kone <vinodkone@gmail.com>
+Date:   Tue Aug 18 12:35:54 2015 -0700
+
+    Updated CHANGELOG for 0.24.0.
+
+commit 5133ddb8b4f59b7cbb72b007396f61b14bcd84d2
+Author: Vinod Kone <vinodkone@gmail.com>
+Date:   Fri Aug 14 17:36:44 2015 -0700
+
+    Added CHANGELOG for 0.24.0.
+
+commit 00a466e8af9884a1f27b114f97b75fa4fcf3cc8f
+Author: Adam B <adam@mesosphere.io>
+Date:   Fri Jul 17 15:43:57 2015 -0700
+
+    Updated CHANGELOG for 0.23.0-rc4
+
+commit 45363984cd9c8736511221a3a2bd2d36e9a9b396
+Author: Adam B <adam@mesosphere.io>
+Date:   Fri Jul 3 11:18:54 2015 -0700
+
+    Updated CHANGELOG for 0.23.0.
+    
+    Copied in contents of JIRA Release Notes, categorized.
+    
+    Review: https://reviews.apache.org/r/36152
+
+commit ce5097ff876ee7fcdfb6615b64de6564b5920f21
+Author: Bernd Mathiske <bernd@mesosphere.io>
+Date:   Fri Jun 26 10:55:52 2015 +0200
+
+    Disabled DISABLED_HttpCachedRecovery.
+    
+    Disabled fetcher cache test HttpCachedRecovery and added a TODO to debug its flakiness (MESOS-2871).
+    
+    Review: https://reviews.apache.org/r/35917
+
+commit ab48d54c0250bffc5542bf68afd648e6a12025ad
+Author: Alexander Rukletsov <rukletsov@gmail.com>
+Date:   Tue Apr 21 12:11:37 2015 -0700
+
+    Refactored TestAllocator and allocator text fixture.
+    
+    TestAllocator owns a pointer to a real allocator. Each test should
+    instantiate and destroy Allocator instances explicitly to avoid not
+    expected calls.
+    
+    Review: https://reviews.apache.org/r/31263
+
+commit c9a1e0aeed3e45b29eb88f406c854c89533b9139
+Author: Niklas Nielsen <nik@qni.dk>
+Date:   Tue Mar 17 16:13:49 2015 -0700
+
+    Updated changelog for 0.22.0.
+    
+    Review: https://reviews.apache.org/r/31324
+
+commit be6246a11276074dfb60a892a890b80cb7cd37cd
+Author: Alexander Rukletsov <alex@mesosphere.io>
+Date:   Thu Feb 12 11:44:16 2015 -0800
+
+    Removed unnecessary lifecycle method from MasterAllocatorTest.
+    
+    TestAllocator does not cause GMOCK warnings for unused method calls
+    any more. Hence there is no need for stopping allocation explicitly.
+    
+    Review: https://reviews.apache.org/r/29927
+
+commit 2b51582a6f6bd3ae431cc4c16ba098656fbd7ef3
+Author: Alexander Rukletsov <alex@mesosphere.io>
+Date:   Thu Feb 12 11:42:05 2015 -0800
+
+    Refactored the allocator interface to support general implementations.
+    
+    Introduced a basic Allocator interfaced. This interface does not
+    require allocators to be based on libprocess processes. For allocators
+    that do implement allocation logic via an internal libprocess process,
+    a special wrapper is provided. Allocator users and tests are updated
+    to use Allocator type instead of AllocatorProcess.
+    
+    Review: https://reviews.apache.org/r/29890
+
+commit a7733493dc9e6f2447f825671d8a745602c9bf7a
+Author: Ian Downes <idownes@twitter.com>
+Date:   Wed Nov 5 10:26:15 2014 -0800
+
+    CHANGELOG and docs/upgrades.md for 0.21.0.
+    
+    Review: https://reviews.apache.org/r/27633
+
+commit 3b9b4256a787162ced363976a589b143ce023797
+Author: Adam B <adam@mesosphere.io>
+Date:   Wed Sep 17 12:40:06 2014 -0700
+
+    Added CHANGELOG for 0.20.1.
+
+commit 0386b6ef3fa4fea20d1f5de7b6c8c02b1e21967e
+Author: Vinod Kone <vinodkone@gmail.com>
+Date:   Wed Aug 27 15:53:07 2014 -0700
+
+    Fixed signal handling in libprocess.
+    
+    Review: https://reviews.apache.org/r/25128
+
+commit 1f695fa2dd676a66c8dbe1d3d41fe4ecc958b5ea
+Author: Vinod Kone <vinodkone@gmail.com>
+Date:   Wed Aug 27 15:47:27 2014 -0700
+
+    Fixed signal handling for stout.
+    
+    Review: https://reviews.apache.org/r/25126
+
+commit 2f864bbda93365232ded37a04573566109b6e0d6
+Author: Jie Yu <yujie.jay@gmail.com>
+Date:   Sat Aug 16 22:52:36 2014 -0700
+
+    Added CHANGELOG for 0.20.0.
+
+commit da720a8121168869f90b7224bd1db5dca7729f0f
+Author: Jie Yu <yujie.jay@gmail.com>
+Date:   Sat Aug 16 21:50:41 2014 -0700
+
+    Disabled glog signal handler for libprocess tests.
+    
+    Review: https://reviews.apache.org/r/24784
+
+commit ba693cb51bc44c62cc2536e0607369ab0f5d5c2a
+Author: Jie Yu <yujie.jay@gmail.com>
+Date:   Sat Aug 16 21:50:28 2014 -0700
+
+    Disabled glog signal handler for stout tests.
+    
+    Review: https://reviews.apache.org/r/24783
+
+commit b002d03393652cab67e0f0f2c4209819f6ac0d66
+Author: Benjamin Mahler <bmahler@twitter.com>
+Date:   Fri May 30 17:19:26 2014 -0700
+
+    Updated the CHANGELOG for 0.19.0.
+    
+    Review: https://reviews.apache.org/r/22099
+
+commit 57b57a2baf664539b6fb6c06a7a034a6b39c05d2
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Thu Feb 13 15:16:28 2014 -0800
+
+    Updated CHANGELOG for 0.18.0.
+
+commit 1be1db939363fccb9d5d85002e5ca5a5c3a0ec3b
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Tue Jan 28 15:44:23 2014 -0800
+
+    Updated the CHANGELOG for 0.17.0.
+    
+    From: Jie Yu <yujie.jay@gmail.com>
+    Review: https://reviews.apache.org/r/17474
+
+commit 80676beaceccf775fe9fcf15033057ecedbb5cce
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Thu Jan 23 10:29:19 2014 -0800
+
+    Updated CHANGELOG for 0.16.0.
+
+commit 9cbb81ba4c17b4f6e88ef20d47c9158d0a5ea5c6
+Author: Ross Allen <rossgit@gmail.com>
+Date:   Fri Dec 6 13:33:35 2013 -0800
+
+    Upgraded UI Bootstrap to 0.7.0, Angular to 1.2.3.
+    
+    * Re-implemented the dialog service since it was removed in 0.6.0.
+    
+    Angular UI 0.5.0 fixed a major performance problem with the collapse
+    directive[1] that was polling the scrollHeight of its element and
+    forcing unnecessary layouts.
+    
+    [1] https://github.com/angular-ui/bootstrap/commit/a72c635c7669933204c17bf85cfe3d4fc350c73a
+    
+    Review: http://reviews.apache.org/r/16264
+
+commit 0548f0be38ddcc948e783038d289dc1fa3a7a7c3
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Tue Nov 12 15:53:01 2013 -0800
+
+    Updated CHANGELOG for 0.15.0-rc4.
+
+commit 605ffc9c407c2bc088eb61893557cf8b75185709
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Sat Nov 2 12:14:13 2013 -0700
+
+    Updated CHANGELOG for 0.15.0-rc3.
+
+commit 224e2743920f8fa07453b0a241ed70b991715256
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Mon Oct 28 13:44:49 2013 -0700
+
+    Updated CHANGELOG for 0.15.0.
+
+commit 74381902b71ae1e9a55a6f03bfef5fe0737adc7b
+Author: Benjamin Mahler <bmahler@twitter.com>
+Date:   Wed Oct 9 15:51:47 2013 -0700
+
+    Added 0.12.1 to the CHANGELOG.
+
+commit 4cb7b74d10099f8f89a9871090fe2b5eb20ab62c
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Thu Sep 19 14:00:10 2013 -0700
+
+    Updated CHANGELOG and docs for 0.14.0.
+
+commit c291838d269a6dc8b144514423383e12450f2952
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Fri Aug 16 14:21:44 2013 -0700
+
+    Updated CHANGELOG for 0.14.0.
+    
+    Review: https://reviews.apache.org/r/13625
+
+commit 5852eb931dd7f69d2dfed2252fe60973e327657f
+Author: Benjamin Mahler <bmahler@twitter.com>
+Date:   Thu Jul 18 16:19:21 2013 -0700
+
+    Organized WebUI static assets into directories.
+    
+    All static assets were previously in a single folder, except for
+    unused Bootstrap files. This makes template files more apparent
+    since they are the only files in the root of /static.
+    
+    JavaScript lives in /js
+    CSS lives in /css
+    Images live in /img
+    Icons live in /ico
+    Objects (e.g. Flash) live in /obj
+    
+    Original review: https://reviews.apache.org/r/12607/
+    
+    From: Ross Allen <ross+rb@mesosphe.re>
+    Review: https://reviews.apache.org/r/12733
+
+commit 71ad8ba0a4b7f7f7461a51cec618677d3ed9a574
+Author: Benjamin Hindman <benh@twitter.com>
+Date:   Mon Jul 8 17:40:49 2013 -0700
+
+    Upgrade Angular to full release v1.0.7.
+    
+    The full version of Angular included two breaking changes:
+        * $defer was renamed to $timeout
+        * For route providers, the 'template' key was renamed to 'templateUrl'
+    
+    This address one point of MESOS-282: "-Upgrade angular.js (it has
+    breaking changes from our current version, so non-trivial) to use the
+    full angular-ui.js"
+    
+    From: Ross Allen <reallen@gmail.com>
+    Review: https://reviews.apache.org/r/12285
+
+commit 4ce4f2dc6a8d47ab331a693ee802b9fdec20eab2
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Mon Jun 10 14:47:35 2013 -0700
+
+    Updated CHANGELOG for 0.13.0.
+
+commit 9438fd5d3b7e52c03077d78099bcba979f688465
+Author: Vinod Kone <vinod@twitter.com>
+Date:   Tue May 21 19:39:26 2013 -0700
+
+    Updated CHANGELOG.
+
+commit 72f30a86e91580fe50a11d576422cb0f3caffca6
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Tue May 15 19:12:15 2012 +0000
+
+    Added a javascript based webui using Twitter Bootstrap and AngularJS (contributed by Jonathan Fuchs, https://reviews.apache.org/r/5105).
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1338838 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 1ca82d4a5e78bba92a7131d3b0c3b9e0337c035f
+Author: Matei Alexandru Zaharia <matei@apache.org>
+Date:   Fri Mar 30 05:38:39 2012 +0000
+
+    Removed the unzipped version for protobuf-2.4.1.
+    
+    
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1307279 13f79535-47bb-0310-9956-ffa450edef68
+
+commit fa5e74474094f9314d339c1d9c6415d4bade23d8
+Author: Matei Alexandru Zaharia <matei@apache.org>
+Date:   Fri Mar 30 05:11:17 2012 +0000
+
+    MESOS-174. Upgrade protobuf dependency to 2.4.1.
+    
+    
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1307261 13f79535-47bb-0310-9956-ffa450edef68
+
+commit d289b02c35812a8621fbea4790fb6b5f1d2103d3
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Thu Mar 1 07:41:21 2012 +0000
+
+    Removed old Hadoop.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1295447 13f79535-47bb-0310-9956-ffa450edef68
+
+commit ac7535d4aaa54c2100c5ae8c678c712ceea01099
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Wed Feb 22 23:16:45 2012 +0000
+
+    Updated libprocess to use autotools and corresponding changes.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1292579 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 0a889fa62ffd47c7445cd9c3dcd1dfbf4824c68f
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Thu Feb 9 00:51:23 2012 +0000
+
+    Replaced third_party directories with tar.gz versions in order to support 'make dist' (contributed by Charles Reiss). Also removed '--no-recursive' for bootstrap so older machines that don't have a modern enough version of autoconf/autoreconf can run bootstrap.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1242195 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 37f2a2a4201c429def0ddcca536be2837b0d3631
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Mon Oct 31 18:50:38 2011 +0000
+
+    Removing gmock-1.5.0.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1195611 13f79535-47bb-0310-9956-ffa450edef68
+
+commit f9551fa1110d91be8fd89b2eb66a91a02bb0c160
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Mon Oct 31 18:49:26 2011 +0000
+
+    Still needed to fix a conflict after merge with gitub via strategy recursive option ours.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1195609 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 242eb811b668e9e6e2a00d1bedddec8c1062b228
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 09:13:44 2011 +0000
+
+    Added gmock.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1132269 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 91df19465d993c6977cf15a68d75943712d81bed
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 09:00:55 2011 +0000
+
+    Updated to protocol buffers. (This is a massive commit, for which I apologize.)
+    
+    In addition to updating the code to use protocol buffers:
+    
+    (1) A new Java implementation is included (because getting protocol
+    buffers to work was too hard so it was finally time to leave SWIG
+    behind).
+    
+    (2) The C API has been dropped (and is waiting for someone who wants
+    to do it and maintain it).
+    
+    (3) The Python API has been broken. We plan on supporting it, but not
+    right now.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1132205 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 512f836f5b27eb130339e6931415d68d3d87f63b
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 08:45:22 2011 +0000
+
+    Testing upgrade, now complete with gmock.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1132109 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 4b66c44a01a7d394358681900fe9c5dd4589a565
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 08:12:18 2011 +0000
+
+    Moved third_party out of src.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131987 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 6168de123773c2cd97d1194603283ea168994289
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 06:23:20 2011 +0000
+
+    Replaced old Hadoop port with new one (which is for Hadoop 0.20.2 and
+    uses a custom scheduler).
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131923 13f79535-47bb-0310-9956-ffa450edef68
+
+commit dc980d08169336b32cb475c31883172900fdcf89
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 05:32:17 2011 +0000
+
+    Upgraded Google Test to version 1.5.0.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131792 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 9e4b96d1e52898adc0fcdd3313909b7883d3ab68
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 05:22:30 2011 +0000
+
+    new version of zookeeper that compiles on lucid
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131735 13f79535-47bb-0310-9956-ffa450edef68
+
+commit a704cdbf4bcaef3aa33b2fb15ef25506071f3872
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 04:52:55 2011 +0000
+
+    Newer version of zookeeper added.. should have the bugfix that allows many connections from the same node
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131655 13f79535-47bb-0310-9956-ffa450edef68
+
+commit fec06d980120ce546a60a1be4aa314eac9b4ea83
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 03:14:00 2011 +0000
+
+    Zookeeper added to third party. configure.ac and configure will run the zookeeper configure. Added code for leader election in C++. Makefile.in updated to compile with the Zookeeper libraries.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131517 13f79535-47bb-0310-9956-ffa450edef68
+
+commit 9bc36de05a9542a319d348505a1838f9190a6c21
+Author: Benjamin Hindman <benh@apache.org>
+Date:   Sun Jun 5 03:04:24 2011 +0000
+
+    Initial commit.
+    
+    git-svn-id: https://svn.apache.org/repos/asf/incubator/mesos/trunk@1131516 13f79535-47bb-0310-9956-ffa450edef68

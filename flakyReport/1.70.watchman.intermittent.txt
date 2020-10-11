@@ -1,0 +1,115 @@
+commit 863fef331b2ac2bdd4d35d184348749990e0b5e6
+Author: Wez Furlong <wez@fb.com>
+Date:   Mon Jul 13 18:46:05 2020 -0700
+
+    watchman: revert docusaurus docs changes
+    
+    Summary:
+    This reverts the website dir back to the state prior to D20623790 (https://github.com/facebook/watchman/commit/fccc57f6243e81d39be2cda24f3b856c0e254332)
+    
+    We've had a lot of trouble around the migration and are spending a lot of
+    time trying to dig in and understand why it's not working out and it
+    simply isn't a good use of time right now.
+    
+    We can re-evaluate migrating to docusaurus once it has stabilized some more.
+    
+    Reviewed By: genevievehelsel
+    
+    Differential Revision: D22482188
+    
+    fbshipit-source-id: ec3457ad7f5c941b2ac2105c740b395596446ddf
+
+commit fccc57f6243e81d39be2cda24f3b856c0e254332
+Author: fanny <fanny.vieira@ccc.ufcg.edu.br>
+Date:   Tue Mar 24 09:39:46 2020 -0700
+
+    Migration of docs to Docusaurus (#788)
+    
+    Summary:
+    ## Motivation
+    
+    Hello there, as discussed in https://github.com/facebook/watchman/issues/787  we would like to dogfood docusaurus v2 for watchman. The development experience for v2 is much better because client side rendering is also enabled. The website is also seems to be very performant (its a single page app now but also staticly rendered for SEO)
+    
+    ## Demo
+    
+    ![0F6EF9E0-BFB8-4065-A7B4-420E53E28C59_1_105_c](https://user-images.githubusercontent.com/14113480/77130096-529c3000-6a35-11ea-82b7-41f7e641f210.jpeg)
+    
+    ## How to Test
+    `cd website && npm install && npm start`
+    
+    cc yangshun
+    Pull Request resolved: https://github.com/facebook/watchman/pull/788
+    
+    Test Plan:
+    built and deployed with:
+    
+    ```
+    $ cd website
+    $ yarn
+    $ GIT_USER=wez USE_SSH=true yarn run deploy
+    $ hg purge --all  # yarn adds a bunch of stuff to an offline mirror
+    ```
+    
+    alternatively:
+    
+    ```
+    $ cd website
+    $ npm install
+    $ GIT_USER=wez USE_SSH=true npm run deploy
+    ```
+    
+    Visible at https://facebook.github.io/watchman/
+    
+    Reviewed By: fanny
+    
+    Differential Revision: D20623790
+    
+    Pulled By: wez
+    
+    fbshipit-source-id: 1b7d2064b60e80a7bb76666faab61d02fea24db6
+
+commit ae2dfffdcc630a78c9bbcc25c309c69240a019b4
+Author: Wez Furlong <wez@fb.com>
+Date:   Thu Jun 6 10:30:20 2019 -0700
+
+    getdeps: disable ccache on sandcastle
+    
+    Summary:
+    We sometimes see some flakeyness in our internal CI, so we can live
+    without it there.
+    
+    Reviewed By: pkaush
+    
+    Differential Revision: D15695124
+    
+    fbshipit-source-id: 1d76ae89e245d9c95937e8818826c544c0ae8fc3
+
+commit 5e99349a22daab444e2f78761603a6b9b620fa1f
+Author: Wez Furlong <wez@fb.com>
+Date:   Thu Jun 8 15:02:47 2017 -0700
+
+    some doc updates
+    
+    Summary:
+    Update the gemfile stuff such that the website can be
+    regenerated on current systems.
+    
+    Flesh out some release notes for the upcoming release.
+    
+    Promote windows to beta.
+    
+    fbshipit-source-id: 5647fdda32facb13264c8ef0bb5dda4905428a50
+
+commit ebaba2dc5a1a0358958502abf458b60eeefe9b42
+Author: Wez Furlong <wez@fb.com>
+Date:   Sun May 22 08:39:37 2016 -0700
+
+    import libart as a third party dependency
+    
+    Summary: pulling in the BSD licensed Adaptive Radix Tree implementation
+    from https://github.com/armon/libart.git at the current head revision
+    d639b9207c1d8e6b65892276f6bd1d080bd261ec
+    
+    I didn't include its bundled dependency on check; I will port its tests
+    to use our test infrastructure in the following diff that integrates
+    it into our build system.

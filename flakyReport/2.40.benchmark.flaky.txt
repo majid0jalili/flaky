@@ -1,0 +1,5 @@
+commit 756f069918f7791110c867064e225b467f3a45bf
+Author: Eric Fiselier <eric@efcs.ca>
+Date:   Sat Sep 3 00:06:51 2016 -0600
+
+    Increase complexity_test.cc runtime to attempt to avoid appveyor failures

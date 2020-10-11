@@ -1,0 +1,228 @@
+commit 854b5ea45f7a8dee11e6fd63b72d795b3705ac2e
+Author: Ben Harrison <bnh@fb.com>
+Date:   Fri May 24 10:10:18 2019 -0700
+
+    Delete some obsolete "stream wrapper" support.
+    
+    Reviewed By: alexeyt
+    
+    Differential Revision: D15354634
+    
+    fbshipit-source-id: c0bc33aef7c317435f22e6af3267c60b93b02ccb
+
+commit 5e02fb9c6c892c3de5760603d462695ad58cbfac
+Author: Alexey Toptygin <alexeyt@fb.com>
+Date:   Fri Jan 25 17:01:54 2019 -0800
+
+    Delete framework tests.
+    
+    Summary:
+    The framework tests have been broken since pass-by-ref annotations became mandatory and return by ref became a parse error.
+    
+    Per conversation with Fred, we can't run composer, and can't fully run PHPUnit - these are unmaintainable.
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D13819734
+    
+    fbshipit-source-id: 738488c9b9c902d984b17e5f7a02a15480e8d8d5
+
+commit 34b65c7c12006afddcb4b38895847f2e3778556e
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Fri Feb 9 10:50:56 2018 -0800
+
+    Add slim test to flaky list
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D6941280
+    
+    fbshipit-source-id: 8560f157ece82dae21f7cb3c916b4b13265e0e63
+
+commit c6365e11c2565ac847e3dbd0875ee566b0f62f3f
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Oct 16 11:39:08 2015 -0700
+
+    flakeylist twig integration test
+    
+    Summary: Unable to repro or get reasonable debugging information, and the last
+    data set looks sane - suspect it's only failing because it's the last test.
+    
+    Reviewed By: mxw
+    
+    Differential Revision: D2550747
+    
+    fb-gh-sync-id: 7f8b46430e91e631830f495cf22d28a9905b0140
+
+commit 738d98caea9a636515c29defb95c0150663121f7
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Sep 26 12:56:20 2014 -0700
+
+    Dont init request-local stream wrappers in Stream::getWrapper
+    
+    Summary: Causes intermittent SIGSEGV with StatCache.
+    
+    Reviewed By: @markw65
+    
+    Differential Revision: D1581335
+
+commit 9b62841f76c4c3a08f16fb3ab46deb26b93507af
+Author: Jordan DeLong <jdelong@fb.com>
+Date:   Wed Jul 16 14:48:02 2014 -0700
+
+    Remove temporary hacks relating to the closure naming race
+    
+    Summary: We believe this was fixed.  Leaving the assertions about unique
+    classes actually being unique, but we don't need to merge closure use var types
+    into a list of closures anymore.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1439704
+
+commit e67a3a3630f35b4a895140e98babefad6f0698fa
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Mon Jun 23 16:19:50 2014 -0700
+
+    Separate flakey from clowny tests
+    
+    Summary: - add --flakey option to run them anyway
+     - make it so you don't need to blow away framework_downloads/WHATEVER every time you remove something from the flakeylist/clownlist/blacklist or add --flakey
+    
+    The idea is that we will still run flakey tests for the charts on hhvm.com/frameworks/ , but we won't include them in our commit-blocking test runs.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1398512
+
+commit addd0e8e19c4c4cef111b4603a6879f7a360c05b
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Apr 16 11:25:06 2014 -0700
+
+    Clownlist joomla JForm* tests
+    
+    These are all flakey tests.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1279871
+
+commit 89c954cb375c5e95ec1de93567975a24291f8a22
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Apr 9 13:42:56 2014 -0700
+
+    clownlist a joomla test thats also in joomlacms
+    
+    Already in the Joomla clownlist, exact same test. Hangs the runner and is generally flakey.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1267270
+
+commit 90cb332a0dff2eabd9d374d158bcebf93458b545
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Mar 28 12:24:19 2014 -0700
+
+    Clownlist a frequently-hanging joomla test
+    
+    Frequently blocks test runs
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1246671
+
+commit 6e9cc9c4d092b63a6f74f7c4b851e26b5779df39
+Author: Jordan DeLong <jdelong@fb.com>
+Date:   Sat Feb 1 13:21:10 2014 -0800
+
+    Support to infer return types and parameter reffiness for overridden methods
+    
+    Adds a res::Func mode that represents a "FuncFamily", which
+    is just a set of possible functions it could call.  Return types and
+    parameter reffiness in this mode turns into loops over the possible
+    functions.
+    
+    This code is disabled because it causes a perf regression.
+    
+    To compute the possible functions in a family, when the index is
+    initially built, this adds a pass to instantiate all possible
+    combinations of the classes so we can see all possible subclasses.
+    This could have other uses later, too.  (This costs about 6 seconds
+    for create_index on www in dbg so I think it's ok not to parallelize
+    or whatnot for now.)
+    
+    Reviewed By: @dariorussi
+    
+    Differential Revision: D1157919
+
+commit 0b8bec7835d99cfb6e97227bd9cdd2bbf79c5d51
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Fri Jan 3 18:03:37 2014 -0800
+
+    import segfaulting tests
+    
+    The test runner is now much more resiliant than it used to be, so it can endure a segfault or two. Having the tests is better than not.
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D1116517
+
+commit 2589e072fbea3a90551483c88809b98847befc2a
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Wed Apr 24 12:14:58 2013 -0700
+
+    mark 3 tests as segfaulting
+
+commit 363d1bb20fe84b4cdc2dc0f4c7b1dd39d167a1f5
+Author: Jordan Delong <jdelong@fb.com>
+Date:   Sat Feb 2 10:44:12 2013 -0800
+
+    Code move src/ -> hphp/
+    
+    This change is mostly for FB internal organizational reasons.
+    Building is not effected beyond the fact that the target now
+    lands in hphp/hhvm/hhvm rather than src/hhvm/hhvm.
+
+commit e064a3a577c6a507277834de2bf6b61883a50683
+Author: myang <myang@2248de34-8caa-4a3c-bc55-5e52d9d7b73a>
+Date:   Wed Feb 3 19:28:34 2010 +0000
+
+    speed up bind function for Variant
+    
+    Summary: The bind function for Variant is frequently called. For instance,
+             every rvalAt returns a Variant and therefore involves a call to
+             bind(). I did some manual inline to speed up bind especially when
+             the type is primitive. For the following test case, the speed up is
+             about 12.6%.
+             <?php
+             function foo($a) {
+               for ($i = 0; $i < 10000; $i++) {
+                 for ($j = 0; $j < 10000; $j++) {
+                   $b = $a[0];
+                 }
+               }
+             }
+             $a = array(1, 2, 3);
+             foo($a);
+    
+             time test.old
+    
+             real    0m3.990s
+             user    0m3.948s
+             sys     0m0.009s
+             time test.new
+    
+             real    0m3.487s
+             user    0m3.447s
+             sys     0m0.008s
+    
+    Reviewed By: hzhao
+    
+    Test Plan: This change passed fast_tests and slow_tests
+               Also made www and browsed the site
+    
+    Revert: OK
+    
+    DiffCamp Revision: 87941
+    
+    git-svn-id: http://svn.facebook.net/hiphop/fbomb/branches/hphp-dev/fbcode/hphp@21199 2248de34-8caa-4a3c-bc55-5e52d9d7b73a

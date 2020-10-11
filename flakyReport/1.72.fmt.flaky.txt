@@ -1,0 +1,29 @@
+commit abd93d824a4d274bf8fada798de76f08f101cdca
+Author: vitaut <victor.zverovich@gmail.com>
+Date:   Wed Feb 10 07:16:49 2016 -0800
+
+    Move gmock into test/
+
+commit c76b22405df7addaa5a4e5ae4ef8104531d92108
+Author: Victor Zverovich <victor.zverovich@gmail.com>
+Date:   Wed Sep 17 08:01:42 2014 -0700
+
+    Replace GTest with GMock (includes GTest)
+
+commit 6a37965710fd4c1932645ec96e44100168928952
+Author: Victor Zverovich <victor.zverovich@gmail.com>
+Date:   Thu Aug 7 06:47:51 2014 -0700
+
+    Replace gtest with fused version.
+
+commit 7bde2b3c25f1d3fc4763a0ad1c8128170aceb6bb
+Author: Victor Zverovich <victor.zverovich@gmail.com>
+Date:   Thu May 1 17:14:35 2014 -0700
+
+    Replace a fused version of gtest with a stripped down one.
+
+commit 5e3e7fe7d3e1f85121fbf6926a9865f324a03247
+Author: Victor Zverovich <victor.zverovich@gmail.com>
+Date:   Thu Apr 17 20:59:06 2014 -0700
+
+    Add a fused version of gtest.

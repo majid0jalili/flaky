@@ -1,0 +1,214 @@
+commit 9426d3025431ed070bfde47226bf7eb76f60bc22
+Author: Zeyi (Rice) Fan <zeyi@fb.com>
+Date:   Mon Jul 6 16:00:45 2020 -0700
+
+    add retry flag to getdeps test
+    
+    Summary: This commit adds a flag `--retry` to getdeps and teach it to run retry failed test. This allows us to still pass the tests when there are some flaky tests presents.
+    
+    Reviewed By: wez
+    
+    Differential Revision: D22291063
+    
+    fbshipit-source-id: 572af48a52ceb4a9abbf530cc0154ded0120c0de
+
+commit e5ccead7a0afa72e623db0e34eb5c040d60def1b
+Author: Dan Melnic <dmm@fb.com>
+Date:   Thu Mar 12 11:14:29 2020 -0700
+
+    Add ThreadWheelTimekeeperHighRes class
+    
+    Summary: Add ThreadWheelTimekeeperHighRes class
+    
+    Reviewed By: LeeHowes
+    
+    Differential Revision: D20355093
+    
+    fbshipit-source-id: b76563a3706d7732b490a88096fed484954820e5
+
+commit 425c8833753c98d2ddb099452537a8857fd185cc
+Author: Adam Simpkins <simpkins@fb.com>
+Date:   Thu Feb 1 18:52:36 2018 -0800
+
+    remove duplicate FunctionSchedulerTest
+    
+    Summary:
+    FunctionSchedulerTest.cpp was unfortunately copied into folly twice in separate
+    locations.  D1845525 moved it into `folly/test`, D2051557 moved it into
+    `folly/experimental/test`
+    
+    The version in `folly/experimental/test` has had several updates and new tests
+    added; the version in `folly/test` has had no significant changes since it was
+    first added.
+    
+    This diff deletes the older copy in `folly/test`
+    
+    Differential Revision: D6880255
+    
+    fbshipit-source-id: 8a4d5f6421ec18b319ffd76f98915e925b407468
+
+commit caed689d47d9e82e697050effe386a5ebcb6233b
+Author: Adam Simpkins <simpkins@fb.com>
+Date:   Thu Feb 1 13:13:22 2018 -0800
+
+    cmake: mark the async_test as BROKEN for now
+    
+    Summary:
+    Disable running the async_test in open source builds.  A few of the tests
+    functions in this binary are flaky.
+    
+    Additionally, this test consistently hangs in Travis CI builds.  It hangs in
+    `AsyncSocketTest.ServerAcceptOptions`; I suspect it never sees the socket
+    accept event and therefore never breaks out of the loop.  I suspect that even
+    if we fixed this test other subsequent tests would also hang.  We should
+    ideally update all of the tests to always have their own internal event base
+    loop timeout rather than potentially looping forever, so it could at least run
+    other test functions after a hang like this.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D6874011
+    
+    fbshipit-source-id: 46c07a1cf3216eda1900e214447e6e49b6c8e489
+
+commit 87659d07c32268836a18c5ccafb60612b8ffbdd4
+Author: Anirudh Ramachandran <avr@fb.com>
+Date:   Wed Dec 28 18:54:04 2016 -0800
+
+    Add OpenSSL portability layer
+    
+    Summary:
+    Enable folly to build with OpenSSL alternatives (e.g., BoringSSL).
+    
+    Some SSL-related tests are disabled:
+    
+     - Async session cache ones (BoringSSL has an async cache impl but with a different API)
+     - TFO tests
+     - Some changes to error tests which expect specific error strings. This is
+       flaky as a test because it will break everytime even within a version, so we
+       should fix that first.
+    
+    This should be a noop for OpenSSL 1.0.2.
+    
+    BoringSSL commit used is 35c8afd3143289c99aa3820e01950c564d7aced8 (10/26/2016)
+    
+    Closes: https://github.com/facebook/folly/issues/198
+    
+    Reviewed By: siyengar
+    
+    Differential Revision: D3280382
+    
+    fbshipit-source-id: 4141d992e0d8dd797ac4af479cfe90844a23278f
+
+commit a4e480b2397b3c62d036ad75e5fe42a8343ddaed
+Author: Nathan Bronson <ngbronson@fb.com>
+Date:   Wed Dec 7 11:20:21 2016 -0800
+
+    increase writeLen for tests that want to trigger buffering
+    
+    Summary:
+    Freshly opened TCP sockets can have a send buffer size bigger
+    than wmem_default, because connection parameters are cached in the
+    route cache.  Some of the async socket tests assumed that writing 8M of
+    data was enough to guarantee blocking behavior, but since wmem_max is
+    20M on our systems the resulting tests are flaky.
+    
+    Reviewed By: marcinpe
+    
+    Differential Revision: D4292201
+    
+    fbshipit-source-id: ba5d606d080330e455eee2b17bcae6cf546bf981
+
+commit be171a181d64a32b75440a4a2aebb7de24c4b0b1
+Author: Adam Simpkins <simpkins@fb.com>
+Date:   Thu May 7 11:40:16 2015 -0700
+
+    update FunctionScheduler to use std::chrono::steady_clock
+    
+    Summary:
+    Use std::chrono::steady_clock instead of clock_gettime(CLOCK_MONOTONIC).
+    In particular this fixes the build on Mac OS X, which doesn't have
+    CLOCK_MONOTONIC.
+    
+    This also updates the code to use steady_clock::time_point correctly, instead
+    of using a raw milliseconds value for time since the epoch.
+    
+    Test Plan:
+    Included unit tests, which were copied over from the legacy internal Facebook
+    (non-folly) version of this code.
+    
+    Reviewed By: ldbrandy@fb.com
+    
+    Subscribers: jwatzman, doug, fbcode-common-diffs@, net-systems@, exa, folly-diffs@, yfeldblum, chalfant
+    
+    FB internal diff: D2051557
+    
+    Signature: t1:2051557:1431019654:ee76cfcf8318cc3d8a8d1522b3fc97f08831ecf4
+
+commit b35c3434677866f744d679f09a8429f86aba12a2
+Author: Andrei Alexandrescu <aalexandre@fb.com>
+Date:   Thu Feb 12 13:17:31 2015 -0800
+
+    Migrate FunctionScheduler from common/concurrency/ to folly/experimental/
+    
+    Summary: This are the open-source-related additions. A separate diff will replace the current implementation in common/concurrency/ to use this one.
+    
+    Test Plan: fbmake runtests
+    
+    Reviewed By: simpkins@fb.com
+    
+    Subscribers: trunkagent, net-systems@, folly-diffs@, yfeldblum
+    
+    FB internal diff: D1845525
+    
+    Signature: t1:1845525:1424207291:d30e3c5e85222527c2aff39c1250aa1e41b9a2cf
+
+commit bc374dcbb0e552826e4bcbed1d8cbd479ce062c0
+Author: James Sedgwick <jsedgwick@fb.com>
+Date:   Fri Jan 9 08:27:02 2015 -0800
+
+    move wangle/futures to futures
+    
+    Summary:
+    First step of moving futures out of wangle into folly
+    
+    Namespace change will be another diff
+    
+    This was just a straight codemod of "wangle/futures" to "futures"
+    
+    Test Plan: wait for contbuild
+    
+    Reviewed By: davejwatson@fb.com
+    
+    Subscribers: trunkagent, fbcode-common-diffs@, chaoyc, search-fbcode-diffs@, lars, ruibalp, hero-diffs@, zeus-diffs@, vikas, mcduff, hitesh, cold-storage-diffs@, unicorn-diffs@, ldbrandy, targeting-diff-backend@, netego-diffs@, fugalh, adamsyta, atlas2-eng@, alandau, apollo-diffs@, bmatheny, adityab, everstore-dev@, zhuohuang, sweeney, mwa, jgehring, prometheus-diffs@, smarlow, akr, bnitka, jcoens, zhguo, jying, darshan, apodsiadlo, alikhtarov, fuegen, dzhulgakov, alihussains, jeremyfein, mshneer, folly-diffs@, wch, lins, tingy, maxwellsayles, hannesr
+    
+    FB internal diff: D1772041
+    
+    Tasks: 5960242
+    
+    Signature: t1:1772041:1420739169:36126b1264c5d1747d241921d02b13e306c73fe1
+
+commit d1be08e3f87525f513c2d7a61c9c770afaef95bc
+Author: Hans Fugal <fugalh@fb.com>
+Date:   Fri Dec 26 15:18:11 2014 -0800
+
+    (wangle) Timeouts basic
+    
+    Summary:
+    Add basic timeout functionality. This adds `futures::sleep` which makes an async Future that finishes after the given duration, and `Future::get` which blocks on the result and takes an optional timeout.
+    
+    Introducing the folly::wangle::futures namespace (soon to be just folly::futures) which will hold our wangle utility functions, the things that live in the Future object in Twitter's scala code. We'll probably move when* and wait-ish methods in here too, and perhaps alias makeFuture-ish methods too, though James has me mostly convinced not to deprecate them at the folly::wangle level (because they're basically Future constructors and Future lives at folly::wangle)
+    
+    `Future::delayed` after Twitter's helper of the same name
+    
+    Test Plan: new and old unit tests
+    
+    Reviewed By: davejwatson@fb.com
+    
+    Subscribers: trunkagent, fugalh, exa, folly-diffs@
+    
+    FB internal diff: D1748894
+    
+    Tasks: 4548494
+    
+    Signature: t1:1748894:1419363496:1f4a62ec8455989c1fcce845695ace1d01c101c8

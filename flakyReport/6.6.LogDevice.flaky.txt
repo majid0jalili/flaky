@@ -1,0 +1,155 @@
+commit d18768332b61da7403debd6ba6aecb7b064bf48c
+Author: Zeyi (Rice) Fan <zeyi@fb.com>
+Date:   Mon Jul 6 16:00:45 2020 -0700
+
+    add retry flag to getdeps test
+    
+    Summary: This commit adds a flag `--retry` to getdeps and teach it to run retry failed test. This allows us to still pass the tests when there are some flaky tests presents.
+    
+    Reviewed By: wez
+    
+    Differential Revision: D22291063
+    
+    fbshipit-source-id: 572af48a52ceb4a9abbf530cc0154ded0120c0de
+
+commit 0610eec7200cf829d843ac2e55538a52e2928468
+Author: Henry Swanson <hswanson@fb.com>
+Date:   Wed Jan 22 16:04:34 2020 -0800
+
+    scripts cleanup [19/n] -- Move stress.py to logdevice/tools and give it a TARGETS entry
+    
+    Summary: see title. Also changed the shebang to Python 3
+    
+    Reviewed By: runemaster
+    
+    Differential Revision: D19401972
+    
+    fbshipit-source-id: 85273d4f2351e46cf2cf643370c4191d47f01542
+
+commit d0c2c3bd3f264ee9ac7b5744b379835f2eaf4f9f
+Author: Ahmed Soliman <asoli@fb.com>
+Date:   Thu Dec 12 01:21:53 2019 -0800
+
+    disabling GOSSIP/HealthMonitor flaky tests on OSS builds (#156)
+    
+    Summary:
+    Disabling these tests until we move to Clang.
+    Pull Request resolved: https://github.com/facebookincubator/LogDevice/pull/156
+    
+    Test Plan:
+    ```
+            1671 - GOSSIP_MessageTest.SerializeAndDeserialize (Disabled)
+            1672 - GOSSIP_MessageTest.SerializeAndDeserializeWithBoycott (Disabled)
+            1673 - GOSSIP_MessageTest.SerializeAndDeserializeWithStarting (Disabled)
+            1675 - GOSSIP_MessageTest.SerializeAndDeserializeWithVersions (Disabled)
+            1682 - HealthMonitorTest.HealthMonitorDelayTest (Disabled)
+    ```
+    
+    Reviewed By: MohamedBassem
+    
+    Differential Revision: D18939828
+    
+    Pulled By: AhmedSoliman
+    
+    fbshipit-source-id: db52a18c3274ee20be8fd139361456fd0befd6d0
+
+commit 7b0ce7f9ba8ec5867ae11b84ae34d55e79694592
+Author: Mike Kolupaev <kolmike@fb.com>
+Date:   Thu Nov 14 14:06:39 2019 -0800
+
+    Fix flakiness in MaintenanceManagerTest caused by not waiting for gossip correctly
+    
+    Summary:
+    The test started the cluster, waited for each node to see itself as alive in gossip, then did some appends and expected them to succeed. That didn't work because nodes would sometimes see other nodes as dead and reject appends with E::ISOLATED. This diff makes the test wait until everyone sees everyone as alive.
+    
+    But that wasn't enough: sometimes FailureDetector would declare some node alive without hearing about it from gossip, then quickly declare it dead again. This is lame and unnecessary, but instead of fixing it, this diff just waits a bit more: until all nodes initialize their gossip counters for all other nodes.
+    
+    Reviewed By: davidvigier
+    
+    Differential Revision: D18349314
+    
+    fbshipit-source-id: 7ada0fe892190003c3555bd6648c877ebb338ee9
+
+commit f55f9269b3fdb963fa0fa05d1d12df80e15031c5
+Author: Mike Kolupaev <kolmike@fb.com>
+Date:   Thu Nov 7 13:43:16 2019 -0800
+
+    Fix FailureDomainIntegrationTest.ThreeRackReplication flakiness
+    
+    Summary: It used to expect reader to always make progress in under 5 seconds, which is too optimistic for dev mode under load. Increased to 20 seconds. Also tightened the check for read unavailability (T31455346).
+    
+    Reviewed By: mcrnic
+    
+    Differential Revision: D18265917
+    
+    fbshipit-source-id: 29e886bf8ef886c01dcecf819e7d8c52b9d0aaf8
+
+commit a1b27334260757a82a30975bdb8ed5a8a015b262
+Author: Mike Kolupaev <kolmike@fb.com>
+Date:   Mon Sep 30 22:29:10 2019 -0700
+
+    waitForConfigUpdate() doesn't do what you think it does, and other sources of flakiness in SequencerIntegrationTest
+    
+    Summary:
+    These tests, as well as the code they're testing, are really sloppy about propagation of config updates and about ensuring that sequencers don't get spuriously reactivated at a wrong time for an unrelated reason. This diff fixes or works around some of these issues, enough to fix most of the flakiness.
+    
+    But the real issue remains: the sequencer activation and config update propagation flows inside logdevice server are too nondeterministic and opaque to test properly. I guess proper fix would be to (a) add an admin command to check if config update was propagated to all workers (and maybe other consumers? I didn't check who else subscribes), and use it in integration tests, (b) add an admin command to check that Sequencer/SequencerBackgroundActivator/AllSequencers are quiescent - no updates pending, no hidden timers in flight, not gonna randomly reactivate on you at any moment, (c) would be cool to remove the awkward reactivation after writing to metadata log and instead just guarantee that the first append goes to epoch 1 and sequencer will stay in epoch 1 indefinitely unless you do something to the cluster. Created T54730759 and T54730512 for that, but probably won't do them any time soon.
+    
+    Reviewed By: shobhitdayal
+    
+    Differential Revision: D17638575
+    
+    fbshipit-source-id: 8fbee4c356a23265661b0eeb4964757cf2dbb581
+
+commit 1740d45f1d1e35193e1a5dcd7535781ea764463d
+Author: David Vigier <dvigier@fb.com>
+Date:   Fri Sep 20 14:14:44 2019 -0700
+
+    Wait for process start until test timeout even if using TCP ports
+    
+    Summary: Prior to this change, the test framework would only wait 30s for the process to be available if using TCP ports. Although it seems a long time, under stress and in dev-asan mode it's possible that the process starts takes longer. Besides, if the TCP ports are in use, the process will exit and waitUntilStarted() will return, so there should be no reason to treat TCP and unix socket cases differently.
+    
+    Reviewed By: pvjykumar
+    
+    Differential Revision: D17349014
+    
+    fbshipit-source-id: ae8e312a3f1b532b383b3ccd7b56ea16b50242a7
+
+commit 41e1417cf1485cb17cf6b27f484a2d58097d3699
+Author: Marcin Dobrzycki <dyniusz@fb.com>
+Date:   Wed Sep 4 06:48:55 2019 -0700
+
+    Separate boycotting stats from the rest of stats
+    
+    Summary: Extracts PerClientNodeStats from Stats to make both use different ThreadLocalPtr locks. We see problem of NODE_STATS_AGGREGATE message being slow b/c of the common lock being held for a long time.
+    
+    Reviewed By: MohamedBassem
+    
+    Differential Revision: D17091127
+    
+    fbshipit-source-id: 99f388d8f55529dc95970c4a066ea980d41151ee
+
+commit b8175ff20d606346c3529077aeb776cc120ab9e4
+Author: Mike Kolupaev <kolmike@fb.com>
+Date:   Thu Jun 6 20:35:25 2019 -0700
+
+    ClientReadStream: less rewinding for underreplicated regions
+    
+    Summary:
+    If you `kill -9` all storage nodes once, each storage node gets 1-2 partitions marked underreplicated, readers start rewinding like crazy and slow down to a crawl, and scd read amplification goes through the roof (4+). Without D15350079 it never recovers, and even tailers remain affected until mini-rebuilding is done. With D15350079, in my test cluster the badness lasts for 1-2 hours.
+    
+    This diff tries to fix that by making ClientReadStream not rewind immediately after getting gap/record with UNDER_REPLICATED flag, but instead wait until it actually gets a gap. The hope is that (a) often it won't ever get a gap and will go through the underreplicated region without rewinds, (b) when it does rewind it'll add many shards to known down at once instead of rewinding once per shard.
+    
+    Reviewed By: lucaspmelo
+    
+    Differential Revision: D15371107
+    
+    fbshipit-source-id: b5527f4058427c9ba4b6174e479c66a48f0231f5
+
+commit debb8abc5794b909989a153843f2982db4ab7be9
+Author: facebook-github-bot <facebook-github-bot@users.noreply.github.com>
+Date:   Wed Sep 12 08:21:05 2018 -0700
+
+    Initial commit
+    
+    fbshipit-source-id: 0f4fed036c207534f5d4fee01207bd1d866a1dc4

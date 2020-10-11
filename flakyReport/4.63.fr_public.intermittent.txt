@@ -1,0 +1,5 @@
+commit d19b62252ac1bd9c793f70fede5b2d5c98e790e2
+Author: Tammo 'kb' Hinrichs <kb@kebby.org>
+Date:   Fri Apr 27 21:06:52 2012 +0200
+
+    Initial checkin of Altona and Werkkzeug4

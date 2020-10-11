@@ -1,0 +1,5 @@
+commit 28127e624911e5b373a9862219a5a74dbaac629f
+Author: baldurk <baldurk@baldurk.org>
+Date:   Thu Jun 18 11:34:32 2020 +0100
+
+    Only init DXC and create DXIL shaders when capture uses DXIL shaders

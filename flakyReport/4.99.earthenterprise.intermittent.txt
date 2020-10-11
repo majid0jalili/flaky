@@ -1,0 +1,68 @@
+commit ed51695c0d01cb669ff2c44d76c1fe1002961934
+Author: Lee Savoie <lsavoie@t-sciences.com>
+Date:   Wed Sep 16 09:40:37 2020 -0700
+
+    New version of docs for 5.3.7
+
+commit 4e05f686b1ffd1fe32670fd45872154bb28b1a4a
+Author: Lee Savoie <lsavoie@t-sciences.com>
+Date:   Wed Sep 9 09:33:20 2020 -0700
+
+    Revert "Revert "Merge branch 'master' into release_5.3.5.1" (#1832)"
+    
+    This reverts commit 111f8b8443df3fdbf73922cffe18816f905900a7.
+
+commit 111f8b8443df3fdbf73922cffe18816f905900a7
+Author: tst-mbiancalana <38667409+tst-mbiancalana@users.noreply.github.com>
+Date:   Thu Aug 27 17:38:48 2020 +0000
+
+    Revert "Merge branch 'master' into release_5.3.5.1" (#1832)
+    
+    This reverts commit c9645fb59662959cf6afc9e30427119cb8b30b4f, reversing
+    changes made to 1dd99dccbf18c00f469cf4deb33530d7064ef1c6.
+
+commit cea33a3613b19690fc3ba783b5c91f151a9ba3d2
+Author: Rick Wildes <rwildes@t-sciences.com>
+Date:   Thu Jul 16 13:21:11 2020 -0400
+
+    generated html for 5.3.5 release notes
+
+commit 6c63e4618bc5fd94d335747bafb3eba7d02bb3c9
+Author: Rick Wildes <rwildes@t-sciences.com>
+Date:   Thu Jul 16 13:21:11 2020 -0400
+
+    generated html for 5.3.5 release notes
+
+commit aceabe268c0403ed36da9c173aed587637318e20
+Author: tst-swanson <kswanson@t-sciences.com>
+Date:   Tue Jul 7 13:19:13 2020 -0400
+
+    Index deletions2 (#1776)
+    
+    * index deletions 2
+    
+    * generated files
+
+commit 104452fc3394feacb5bc0308437ff811e2ae1313
+Author: Mike Biancalana <mbiancalana@t-sciences.com>
+Date:   Tue Jun 16 19:01:35 2020 +0000
+
+    Update master branch to be version 5.3.6
+
+commit 257bbc668ccb42d7e561e2462d7963a2ca93d47a
+Author: Rick Wildes <rwildes@t-sciences.com>
+Date:   Sun Mar 8 01:36:19 2020 +0000
+
+    new 5.3.5 generated docs
+
+commit 0a120ba936d6256ccbd0ed1a2e3e57a5ad8fb67b
+Author: Lee Savoie <lsavoie@t-sciences.com>
+Date:   Tue Feb 4 10:29:56 2020 -0700
+
+    Retry failed tasks (#1628)
+
+commit 54ad9e6c337e06fdf331c0d267f5106e2efd430c
+Author: Avnish Bhatnagar <avnish@sunrise.mtv.corp.google.com>
+Date:   Thu Mar 23 20:01:16 2017 -0700
+
+    Initial public commit

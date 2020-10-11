@@ -1,0 +1,232 @@
+commit 55b8dbb79b03df2469d3dea82268945561c66722
+Author: Sotiris Nanopoulos <sonanopo@microsoft.com>
+Date:   Mon Sep 14 21:50:06 2020 +0300
+
+    [Windows] Fixes various tests (#13062)
+    
+    Fixes various tests on Windows
+    
+    For all the tests that I have removed the tag I have tested them locally on 100+ runs to make sure that they are not flaky.
+    
+    Risk Level: N/A test only
+    Testing: test only
+    
+    Signed-off-by: Sotiris Nanopoulos <sonanopo@microsoft.com>
+
+commit e9e773c840c62ad34200bc864e1edb3d31c6d617
+Author: Zach Reyes <39203661+zasweq@users.noreply.github.com>
+Date:   Fri Aug 28 16:09:06 2020 -0400
+
+    [fuzz] Added support for metadata frame to Http2Frame and h2 capture fuzz test (#12798)
+    
+    Commit Message: Increased code coverage of h2_capture_fuzz_test by including metadata frames in the Http2Frame utility class.
+    Added utility functions to create metadata frames in Utility class. One of the additions supports taking a metadata_map and converting it into a byte string representing a metadata frame (logic based on source/common/http/http2/metadata_encoder). Added support for metadata frames in h2_capture_fuzz_test, which increased the line coverage of source/common/http/http2/metadata_decoder for this fuzz test by 86%.
+    Signed-off-by: Zach <zasweq@google.com>
+
+commit 670b2ebb927f68b6468326a54cf34be94d1ca31a
+Author: Yifan Yang <stedyyf@gmail.com>
+Date:   Fri Aug 28 14:17:51 2020 -0400
+
+    azure: rerun the flaky tests automatically (#12655)
+    
+    Added the build flag to enable rerunning the failed flaky tests as brought up by #12358. This is separated from the additional logic to post-process the test output to prevent rollbacks and improve quality of life of envoy devs.
+    Deflaker posts messages on Slack channel for flakey tests.
+    
+    Signed-off-by: Yifan Yang <needyyang@google.com>
+
+commit 07f0ed639bf6df972603d07532869c3f0743c388
+Author: Sunjay Bhatia <5337253+sunjayBhatia@users.noreply.github.com>
+Date:   Fri Aug 28 12:25:45 2020 -0400
+
+    Windows: Enable direct_response_integration_test (#12772)
+    
+    - The test is flaky without performing socket shutdown
+      - We know the content is fully written and the filter is a terminal
+        one so we can enable the connection to be half closed and shut down
+        the write end
+      - Otherwise, the read in the client can get a connection reset error
+        and on Windows may not have received all the data it should
+      - See: https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-shutdown#remarks
+        - `To assure that all data is sent and received on a connected
+          socket before it is closed, an application should use shutdown to
+          close connection before calling closesocket.`
+    - Also enables route_fuzz_test and echo_integration_test as they now
+      compile and pass
+    
+    Signed-off-by: Sunjay Bhatia <sunjayb@vmware.com>
+    Co-authored-by: William A Rowe Jr <wrowe@vmware.com>
+
+commit 8d83ffbf97d399b2d8d0da1894ea09dde1e0116a
+Author: William A Rowe Jr <wrowe@vmware.com>
+Date:   Thu Aug 27 17:50:52 2020 -0500
+
+    Change known-working test flags for windows (#12851)
+    
+    - Five tests appear now-passing
+    - Four more verified flaky
+    - Two are fail -> known flaky
+    - One flake is now known to fail
+    
+    Co-authored-by: Sunjay Bhatia <sunjayb@vmware.com>
+    Signed-off-by: Sunjay Bhatia <sunjayb@vmware.com>
+    Co-authored-by: William A Rowe Jr <wrowe@vmware.com>
+    Signed-off-by: William A Rowe Jr <wrowe@vmware.com>
+
+commit 57a002dc361d8153064e52de4e773fe7a3f159f1
+Author: William A Rowe Jr <wrowe@vmware.com>
+Date:   Tue Aug 18 12:43:43 2020 -0500
+
+    Greenlight and reclassify //test/... with the current progress for Windows (#12695)
+    
+    Co-authored-by: William A Rowe Jr <wrowe@vmware.com>
+    Co-authored-by: Sunjay Bhatia <sunjayb@vmware.com>
+    Signed-off-by: William A Rowe Jr <wrowe@vmware.com>
+    Signed-off-by: Sunjay Bhatia <sunjayb@vmware.com>
+
+commit bf5436a0c1cef70ecd0929f995ee26c07beb723d
+Author: Henry Yang <4411287+HenryYYang@users.noreply.github.com>
+Date:   Mon May 4 19:29:58 2020 -0700
+
+    redis: mark cluster refresh manager as flaky test (#11051)
+    
+    Mark cluster refresh manager as flaky test
+    
+    Signed-off-by: Henry Yang <hyang@lyft.com>
+
+commit 1cb955f22287a753dca81e77b5ac8b336b31e81d
+Author: Greg Greenway <ggreenway@users.noreply.github.com>
+Date:   Tue Apr 21 08:24:53 2020 -0700
+
+    coverage: revert workarounds that are no longer neccessary (#10837)
+    
+    Signed-off-by: Greg Greenway <ggreenway@apple.com>
+
+commit 656697d938f3024b39b5e679af540a258c58cf2e
+Author: Stephan Zuercher <zuercher@gmail.com>
+Date:   Mon Apr 13 16:31:22 2020 -0700
+
+    test: ban RegisterFactory in most tests (#10645)
+    
+    * test: ban RegisterFactory in most tests
+    
+    Allows the integration test filters and clusters to be statically
+    registered. Allows the registry test to perform static registrations.
+    Otherwise tests should use the InjectFactory helper.
+    
+    Adds code format check for RegisterFactory and REGISTER_FACTORY used
+    outside the whitelisted files. Removes use of both from all other
+    tests.
+    
+    Also disables flaky test mode since we think the problems are
+    fixed now.
+    
+    Risk Level: low, test only
+    Testing: existing tests
+    Docs Changes: n/a
+    Release Notes: n/a
+    
+    Signed-off-by: Stephan Zuercher <zuercher@gmail.com>
+
+commit af6d1d460e5f05fd4e2dbae3777e076c3f381393
+Author: Lizan Zhou <lizan@tetrate.io>
+Date:   Wed Feb 19 15:40:34 2020 -0800
+
+    ci: mark coverage flaky and multiple attempts in CI (#10098)
+    
+    Signed-off-by: Lizan Zhou <lizan@tetrate.io>
+
+commit 1223a2b4aef6eb90f3e34eebf496aead4930c4ab
+Author: yanavlasov <yavlasov@google.com>
+Date:   Tue Feb 18 20:46:12 2020 -0500
+
+    Plumb the flaky flag from envoy_cc_test to the native.cc_test (#10009)
+    
+    Signed-off-by: Yan Avlasov <yavlasov@google.com>
+
+commit a60f6853a2c2ebbbfed79dfff0b5b644fd735980
+Author: Adam Kotwasinski <adam.kotwasinski@gmail.com>
+Date:   Mon Jan 6 17:51:49 2020 +0100
+
+    Kafka: Add broker-level metrics-collecting filter (#8188)
+    
+    Signed-off-by: Adam Kotwasinski <adam.kotwasinski@gmail.com>
+
+commit fcb7af6b49bea65e3a47dc6028e4baf0d9c90a3b
+Author: Joshua Marantz <jmarantz@google.com>
+Date:   Wed Mar 27 08:14:42 2019 -0400
+
+    time: sim-time thread safety and move guard-dog fully into abstract time. (#6369)
+    
+    * Rework guarddog_impl.cc using timers rather than condvar timed waits.
+    
+    Signed-off-by: Joshua Marantz <jmarantz@google.com>
+
+commit 9a2cd6bf887b91a9af49df7e9df6ad89d7e6167a
+Author: alyssawilk <alyssar@google.com>
+Date:   Thu Mar 21 18:43:03 2019 -0400
+
+    governance: noting CI is a maintainer responsibility, emailing failures to on-call (#6342)
+    
+    Signed-off-by: Alyssa Wilk <alyssar@chromium.org>
+
+commit 197acd8d480c22381f8a57dd20aa99187f9505d8
+Author: Joshua Marantz <jmarantz@google.com>
+Date:   Mon Jan 28 23:35:07 2019 -0500
+
+    test: Make time-system into a global singleton to simplify its use and plumbing, and avoid multi-time-system test confusion. (#5708)
+    
+    * Enforce TimeSystem being a true singleton. Share delagation logic via template & subclass.
+    * Add description in test/README.md of the time-system and how to test with it.
+    
+    Signed-off-by: Joshua Marantz <jmarantz@google.com>
+
+commit 06f3b63cf007207e9f422dd778855164e9356a39
+Author: Joshua Marantz <jmarantz@google.com>
+Date:   Fri Sep 28 17:49:04 2018 -0400
+
+    time: check that condvar.waitFor is not directly called anywhere, except GuardDogImpl. (#4555)
+    
+    Signed-off-by: Joshua Marantz <jmarantz@google.com>
+
+commit 03216f157b260621548c9d26dd21a4a673e66a63
+Author: Stephan Zuercher <zuercher@gmail.com>
+Date:   Wed May 2 14:48:44 2018 -0700
+
+    ci: retry integration tests on OS X (#3273)
+    
+    Adds the --flaky_test_attempts flag for OS X CI builds to paper over the flaky tests noted in #2428. Test with "integration" in their names will be retried on failure and the CI will succeed if the retry succeeds.
+    
+    Risk Level: Low
+    Testing: n/a
+    Docs Changes: n/a
+    Release Notes: n/a
+    
+    Signed-off-by: Stephan Zuercher <stephan@turbinelabs.io>
+
+commit 895868263a909be50e53a3e3ae86254d4e0d7411
+Author: htuch <htuch@users.noreply.github.com>
+Date:   Tue Jun 27 14:57:11 2017 -0400
+
+    bazel: upgrade cc_configure.bzl for Bazel 0.5.2. (#1180)
+    
+    Previous cc_configure.bzl was somewhat stale, didn't provide required variable substitutions, thus
+    breaking build.
+    
+    Explicitly disabled OS X and Windows build support with fail() messages indicating we need to
+    revisit.
+    
+    Updated requirements to specify Bazel version.
+
+commit 2f2aa37d5dbfd61acfa28da2b5ba9968a66ef375
+Author: htuch <htuch@users.noreply.github.com>
+Date:   Tue Apr 18 17:54:04 2017 -0400
+
+    bazel: import cc_configure.bzl from https://github.com/bazelbuild/bazel at d6fec93. (#787)
+    
+    This is a clean import to support making clear what is going on in #782.
+
+commit cec2bdfbe86870f654ac8697d0042a120e827e3e
+Author: James Synge <jamessynge@users.noreply.github.com>
+Date:   Tue Apr 4 13:41:32 2017 -0400
+
+    Remove TcpListenSocket constructors that take a port (#647)

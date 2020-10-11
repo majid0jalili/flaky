@@ -1,0 +1,56 @@
+commit f4fe8542c7578c7c9d661c8327c2b451b499fd84
+Author: mdr0id <marshall@z.cash>
+Date:   Mon Feb 11 09:16:09 2019 -0800
+
+    make-release.py: Updated release notes and changelog for 2.0.3.
+
+commit 722b14742535b0e80afa2c8e9b1f3d0051c16592
+Author: mdr0id <marshall@z.cash>
+Date:   Mon Feb 4 12:05:43 2019 -0800
+
+    make-release.py: Updated release notes and changelog for 2.0.3-rc1.
+
+commit 6ca68f6745dd2e0562e86b10b85874e7aca203c1
+Author: Jay Graber <jay@z.cash>
+Date:   Wed Oct 12 16:43:45 2016 -0700
+
+    Mv btc release notes to doc/bitcoin-release-notes
+
+commit 69baec96473ca2dc28ac016093770a46650a4ac9
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Thu Jan 30 12:31:17 2014 +0100
+
+    doc: Add historical release notes
+    
+    Add all known release notes for versions since 0.3.12,
+    thanks to Matt Corallo for collecting them on the wiki.
+
+commit 29a414632725431f0947fae60f239946021f9a60
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Tue Oct 15 14:34:12 2013 +0200
+
+    doc: remove readme-qt.md
+    
+    Now that autotools is used as a build system there is nothing
+    special about building the GUI anymore. Merge the salvageable
+    parts into build-unix.md
+
+commit 7772821a696645bd2f88c82652119c0986ab0453
+Author: fanquake <fanquake@gmail.com>
+Date:   Wed Jul 10 16:01:57 2013 +0800
+
+    Remove readme-qt.rst and update documentation for readme-qt.md
+
+commit 00a887450364bd5b096978291b6a6e0f47181d75
+Author: super3 <me@super3.org>
+Date:   Sun Jun 16 06:29:23 2013 -0400
+
+    Markdown Cleanup - Part 2
+    
+    Now everything is in markdown...
+
+commit 6c33ec404530419ef78d075be92cf0408323bf84
+Author: Chris Moore <dooglus@gmail.com>
+Date:   Mon Oct 24 16:21:28 2011 -0700
+
+    Warn about the qt-at-spi bug in Ubuntu 11.10.

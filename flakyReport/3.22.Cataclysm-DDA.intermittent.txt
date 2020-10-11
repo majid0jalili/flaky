@@ -1,0 +1,592 @@
+commit 88b28a7cd093255adac7510b1fd77064ec1ee7f2
+Author: KorGgenT <curtis.r.merrill@gmail.com>
+Date:   Thu Aug 6 17:28:36 2020 -0400
+
+    magiclysm attunements - soulfire
+
+commit 18c6b7511f93713349c10ad9a9169d882ffc8ed8
+Author: Maleclypse <54345792+Maleclypse@users.noreply.github.com>
+Date:   Fri Aug 28 17:22:05 2020 -0500
+
+    [ Magiclyms ] Holy Werewolves, Foodperson! (#42885)
+    
+    * First draft using mixed artifact and relic code
+    
+    * Update enchanted.json
+    
+    * Update data/mods/Magiclysm/items/enchanted.json
+    
+    Co-authored-by: Curtis Merrill <curtis.r.merrill@gmail.com>
+    
+    * Update enchanted.json
+    
+    * loup garou
+    
+    * Update monstergroups.json
+    
+    * add looks like and stat tweaks
+    
+    * Wolfsbane pike and itemgroups
+    
+    * Update melee.json
+    
+    * makes into ethereal item and z werewolf
+    
+    * lint
+    
+    * fix effect
+    
+    * Update data/mods/Magiclysm/Spells/item_only.json
+    
+    Co-authored-by: Curtis Merrill <curtis.r.merrill@gmail.com>
+    
+    * Update data/mods/Magiclysm/monsters/zombified_monsters.json
+    
+    Co-authored-by: Fris0uman <41293484+Fris0uman@users.noreply.github.com>
+    
+    * Update zombified_monsters.json
+    
+    * Update item_only.json
+    
+    * Update data/mods/Magiclysm/monsters/zombified_monsters.json
+    
+    Co-authored-by: Fris0uman <41293484+Fris0uman@users.noreply.github.com>
+    
+    * Update enchanted.json
+    
+    * Update item_only.json
+    
+    * edit dodge on loup garou and zombie werewolf
+    
+    * wolfsbane spell test tbd
+    
+    * relic and spell
+    
+    * missing second space
+    
+    * Update monsters.json
+    
+    * Update data/mods/Magiclysm/Spells/item_only.json
+    
+    * Update data/mods/Magiclysm/Spells/item_only.json
+    
+    Co-authored-by: Wishbringer <wishbringer@telia.com>
+    
+    * Update monsters.json
+    
+    * Update ethereal_items.json
+    
+    * Update item_only.json
+    
+    * Update ethereal_items.json
+    
+    * Update ethereal_items.json
+    
+    * Update ethereal_items.json
+    
+    * Update ethereal_items.json
+    
+    * fix enchantment serialization for intermittent activations
+    
+    * adjust werewolf spell to be 12 hours
+    
+    Co-authored-by: Curtis Merrill <curtis.r.merrill@gmail.com>
+    Co-authored-by: Fris0uman <41293484+Fris0uman@users.noreply.github.com>
+    Co-authored-by: Wishbringer <wishbringer@telia.com>
+
+commit e274f1ab144149129fce08ea6c6e21e4dc543e2d
+Author: John Candlebury <johncandlebury@gmail.com>
+Date:   Tue Aug 18 00:39:31 2020 -0600
+
+    Artifact studies (#42981)
+
+commit c1b89a530f3e55a27c1ad268513fdee41c812e06
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Sun Aug 9 21:14:10 2020 +0800
+
+    Routine i18n updates on 9 Aug 2020
+
+commit 55b41ae48d18de719e5f225d6e6f9e421f118ea8
+Author: Curtis Merrill <curtis.r.merrill@gmail.com>
+Date:   Fri Aug 7 19:31:45 2020 -0400
+
+    Artifact procgen json (and minor activation fix) (#42738)
+
+commit 033346c69f9d81b65a2e60f1e782b603e053565c
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Mon Jul 27 09:29:14 2020 +0800
+
+    Routine i18n updates on 26 Jul 2020
+
+commit b54d51483981a7a15ab056cc433d3eacea08febf
+Author: anothersimulacrum <42699974+anothersimulacrum@users.noreply.github.com>
+Date:   Tue Jul 14 16:40:37 2020 -0700
+
+    Move crafting related functions to character
+    
+    Shake the tree of moving crafting functions to Character, and pick up
+    whatever falls out.
+
+commit 44727d389e0caf209f79dfc0127e5db59d3c0d6e
+Author: Maleclypse <54345792+Maleclypse@users.noreply.github.com>
+Date:   Wed May 20 04:17:34 2020 -0500
+
+     [Aftershock] Unwilling Operator Profession (#40665)
+
+commit a06d37d45c72c9b8a478def4526745d53ae6deb4
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Fri May 15 20:21:03 2020 +0800
+
+    Routine i18n updates on 15 May 2020
+
+commit 4322afd08e4f76f125ed46a6997a169da383ed0a
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Sat May 9 16:59:15 2020 +0800
+
+    Routine i18n updates on 9 May 2020
+
+commit 2ec2211aa79c9d35309245663528fe1bd58ee7d6
+Author: anothersimulacrum <42699974+anothersimulacrum@users.noreply.github.com>
+Date:   Thu May 7 20:23:39 2020 -0700
+
+    Remove dead mods: Salvaged Robots
+
+commit f94cfe10ed0752bc043d76bf77db56e95c00a628
+Author: Fris0uman <41293484+Fris0uman@users.noreply.github.com>
+Date:   Sat Apr 18 14:27:55 2020 +0200
+
+    Add enchantments to bionics (#39563)
+    
+    * Add enchantments to bionics
+    
+    * test json
+    
+    * update cache
+    
+    * move recalculate_enchantment_cache()
+    
+    * update force_add to consider emitter and ench_effects
+    
+    * Revert "test json"
+    
+    This reverts commit 7ce05e0eed73909fc58d056c0c57e185f9e1a843.
+    
+    * Jsonize bionic invisibility effect with an enchantment
+    
+    * Doc
+    
+    * fix
+    
+    Co-authored-by: KorGgenT <curtis.r.merrill@gmail.com>
+
+commit 09b9b99ded51fb74620ed6343e0e22b412d36011
+Author: KorGgenT <curtis.r.merrill@gmail.com>
+Date:   Thu Feb 20 20:18:52 2020 -0500
+
+    JSONize AEP_EVIL and implement intermittent artifact effects (#38221)
+
+commit 99797f4b71a7fdda1ccce019e7f2927af0518e77
+Author: Curtis Merrill <curtis.r.merrill@gmail.com>
+Date:   Thu Sep 5 22:33:52 2019 -0400
+
+    Enchantments - A JSON-ized rework of Artifact Passive Effects (#33471)
+
+commit dedfb9f765b9bca12c2dc35e7b4f71e65aa90de6
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Sun Jul 7 23:50:39 2019 +0800
+
+    Routine i18n updates on 7 Jul 2019
+
+commit d5cafd3e5a785f43164e3ff3e1cb60dd7fefde94
+Author: Kevin Granade <kevin.granade@gmail.com>
+Date:   Tue Mar 5 08:43:46 2019 +0000
+
+    Import latest translations.
+
+commit 4338d4249bdc62dfd99501f370d218614bb35f9e
+Author: Kevin Granade <kevin.granade@gmail.com>
+Date:   Fri Feb 22 03:48:29 2019 +0000
+
+    Revert "Translation template of 0.D-branch"
+    
+    This reverts commit 6efbab3ee7ebf5c8876334f9e931e9e4653d29a6.
+
+commit 6efbab3ee7ebf5c8876334f9e931e9e4653d29a6
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Fri Feb 22 10:10:25 2019 +0800
+
+    Translation template of 0.D-branch
+
+commit 1b4d7784178512492031f60c59ec18fc5cdf3399
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Fri Feb 22 10:24:41 2019 +0800
+
+    Routine i18n updates as of Feb 22, 2019
+
+commit fd82e21431ed77054fb22f7eae40ea1ce500a2e0
+Author: Kevin Granade <kevin.granade@gmail.com>
+Date:   Sun Feb 17 04:22:56 2019 +0000
+
+    Spellchecking
+
+commit 8ccefb72eff0fde3823240e5d2c048d55a22bb7a
+Author: I-am-Erk <45136638+I-am-Erk@users.noreply.github.com>
+Date:   Thu Dec 6 20:33:44 2018 -0800
+
+    Shorten acid ant trails, and stop formic infanticide (#26896)
+    
+    * Add "short acid trail" monster flag
+    part of responding to issue 25054 and issue 26743: acid ant soldiers should now leave shorter acid trails.
+    Also adds acidproof flag to acid ant larvae to keep them from getting killed by soldiers' acid trails
+
+commit 2b08c0553c51d02d9164b39435bc4fdd4953dffd
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Fri Oct 5 16:50:48 2018 +0800
+
+    Routine i18n updates as of Oct 5, 2018
+
+commit d4c0d1a8fe8e5495d275053842ddd70be4625b57
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Fri Sep 28 17:25:31 2018 +0800
+
+    Routine i18n updates as of Sep 28, 2018
+
+commit bd1be74f31b065b3f157dd30e90dd50305c4fa6e
+Author: SunshineDistillery@github.com <zacharyaehl@gmail.com>
+Date:   Thu Sep 20 02:07:56 2018 -0500
+
+    Adding salvaged robots mod and dependant turrets mod.
+
+commit 0de1f1a35a12022be7ee48500e665f58fba18963
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Tue Aug 14 22:24:11 2018 +0800
+
+    i18n: Added Hungarian
+
+commit 45d3d85390950fc320474cbff132bfef114f2b46
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Tue Aug 14 22:28:25 2018 +0800
+
+    i18n: Dropped Serbian
+
+commit 03292b8d073ef9b5fbcb27cc764975c6bc752169
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Tue Aug 14 22:23:21 2018 +0800
+
+    i18n: Dropped Portuguese (Brazil)
+
+commit 35ceca346a68b75314d0ff65eebc77d283cb4e60
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Tue Aug 14 22:23:00 2018 +0800
+
+    i18n: Dropped Italian
+
+commit 16fc09259be06b75678054ab865dd2e39b1e4fd2
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Sat May 13 20:30:49 2017 +0800
+
+    Import Polish translation
+
+commit d0ea91ac08041d389ddfc5d714562edb37c04f4e
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Sun Jan 29 11:08:39 2017 +0800
+
+    Introduce Serbian translation
+
+commit fbbcf05bafe2db2cb4b8128d9b1b169c6bf1b56c
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Thu Jan 26 23:25:57 2017 +0800
+
+    Delete pt_PT.po
+    
+    There is NO content in the Portuguese (Portugal) translation.
+
+commit 1eeefcc47787a82f976ced88754969b66ec447d9
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Sun Nov 6 06:45:32 2016 +0800
+
+    Corrected translation template
+
+commit 25333e25dbcf97afebec5348a0921e7fadd6a384
+Author: Brett Dong <brett.browning.dong@gmail.com>
+Date:   Sat Nov 5 09:56:25 2016 +0800
+
+    Update pot
+    
+    Generated by VlasovVitaly on Nov 4
+
+commit 90db0c8dce8b67615dc66cc624c53fa00d8b644c
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Jun 1 10:31:44 2016 +0300
+
+    Removed Vietnamese language
+
+commit 46771193be6d1443cc13bb8ebcd13496637637af
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Jun 1 10:31:16 2016 +0300
+
+    Removed Serbian language
+
+commit 4bcea2646ce1a6032b9a61336de4b805995bd385
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Jun 1 10:30:45 2016 +0300
+
+    Removed never used Portugal language
+
+commit d0544660fd12e47f768eeb33c390ef6f3a4c56fa
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Jun 1 10:30:18 2016 +0300
+
+    Removed Polish language
+
+commit 4d30941edf7821afebddf02f0311511720f1d44c
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Jun 1 10:29:57 2016 +0300
+
+    Removed Finnish language
+
+commit 7e696f4b5d98391be9f09b8aea06982599ff4633
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Jun 1 10:29:22 2016 +0300
+
+    Removed Greek language
+
+commit 48701c7af3449ae8c593290eabb9478c8e3b3a43
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Jun 1 10:29:00 2016 +0300
+
+    Removed Czech language
+
+commit e2be35b08ed7bdcaf1a33503482e8e0ee1d40fe7
+Author: cainiaowu <cainiaowu@hotmail.com>
+Date:   Mon Feb 22 11:10:53 2016 +0800
+
+    Added files via upload
+
+commit 07a65f168e5629b4ae78dc72dc8b09423839f687
+Author: cainiaowu <cainiaowu@hotmail.com>
+Date:   Mon Feb 22 11:07:11 2016 +0800
+
+    Delete zh_CN.po
+
+commit 0ed7fb7ce98e23f700a269dcb15acd10a637578f
+Author: fenjo <fenjo@users.noreply.github.com>
+Date:   Thu Aug 27 11:19:08 2015 +0900
+
+    Revert "Korean .po update"
+
+commit 1a5c0f1b2f706781bc0d63df39c97e4898340fbb
+Author: fenjo <fenjo@users.noreply.github.com>
+Date:   Mon Aug 24 19:25:22 2015 +0900
+
+    ko.po update
+
+commit d903984066f99bfa6ca64720a1e9091113df0b3f
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Feb 18 10:58:05 2015 +0300
+
+    New language: Greek
+
+commit 64d5e29c78eaaeb9982f79737a85c5173dd6f289
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Mon Dec 8 11:50:17 2014 +0300
+
+    Italian change it => it_IT
+
+commit 4e52fdca4c9affb3cafd9cbdf7ce5be9c471ebda
+Author: cellxiecao <cellxiecao@foxmail.com>
+Date:   Wed Nov 12 18:11:01 2014 +0800
+
+    Create zh_CN.po
+
+commit 9ed0987afc90ab2fd00bb817624c2aac968a7ed1
+Author: cellxiecao <cellxiecao@foxmail.com>
+Date:   Wed Nov 12 17:57:05 2014 +0800
+
+    Delete zh_CN.po
+
+commit d7ce5d551ff2ca4d85e9c1452ab71a02b05ea997
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Oct 15 10:39:28 2014 +0400
+
+    New .po translation: Spanish (Argentina)
+
+commit c23d9c902d970a5cba5a9bad6c6b8b2db7a765a9
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Aug 13 15:25:51 2014 +0400
+
+    Finnish update
+
+commit 9731dcd28efec21093f023f35f7753bca81a33a0
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Sat Aug 2 14:59:50 2014 +0400
+
+    NEW. Spanish translation.
+
+commit cdd76522678d1d80628c9e34699f148ebf0a0d86
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Wed Jun 11 11:56:06 2014 +0400
+
+    Removed obsolete translations. French and German translations don't use any of special dialects. So fr.po and de.po will be used in any case.
+
+commit 307103f2306d53d7a6cd7b2d50280b8c887ef01f
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Thu May 8 14:09:42 2014 +0400
+
+    There is no ru_RU language. Just 'ru' as Russian
+
+commit 6f83775b430dc7c52e66f705c668433aa6b0ba4d
+Author: SeanMirrsen <controllersean@mail.ru>
+Date:   Sun Mar 23 21:27:57 2014 +0400
+
+    Add messages when hitting skill cap
+    
+    Both on levelup and intermittently during regular crafting when over
+    cap.
+
+commit f1e6f6be5d452c9b42afbb261aff0405e08855c4
+Author: Kevin Granade <kevin.granade@gmail.com>
+Date:   Sat Mar 1 03:06:34 2014 -0600
+
+    Import translations from launchpad.
+
+commit a8f2d91f27e17d6aa6e7c60b1679fa7721d75431
+Author: Tommy <yobbobanana@gmx.com>
+Date:   Sun Nov 17 18:41:17 2013 +1300
+
+    Move all the sources to a src/ directory.
+
+commit e1623cbe1ecef3ff0220897d5e8e41036d0bdd1a
+Author: Tommy <yobbobanana@gmx.com>
+Date:   Wed Oct 23 09:10:53 2013 +1300
+
+    New languages: cs (Czech), vi (Vietnamese).
+
+commit 05bdfe0ce41ce5871824c2b3c34874794cdd7601
+Author: Tommy <yobbobanana@gmx.com>
+Date:   Tue Oct 15 06:21:53 2013 +1300
+
+    Add Japanese (ja) translation file.
+
+commit 3c95f185cc023ce601f5669ef75af639686c2487
+Author: Tommy <yobbobanana@gmx.com>
+Date:   Wed Oct 9 14:22:11 2013 +1300
+
+    Rename pl_PL.po to pl.po.
+
+commit 8a6e85b9667aa9b068de990336865b715bc036f2
+Author: Tommy <yobbobanana@gmx.com>
+Date:   Wed Sep 25 15:15:51 2013 +1200
+
+    Merge current state of translations: de fr ru zh_CN zh_TW and new ko.
+
+commit dddcc1ebd98b6ce572041d85784906de6944c9fa
+Author: Michał Walczak <mjf.walczak@gmail.com>
+Date:   Tue Sep 24 21:51:45 2013 +0200
+
+    2% PL translation
+
+commit 64162f25f6ac992bc3f7945cc97721708056a39c
+Author: Tommy <yobbobanana@gmx.com>
+Date:   Sun Sep 8 18:21:33 2013 +1200
+
+    Import translations from launchpad.
+
+commit 380805f901752c088e3b7e918db7c87ab1213d49
+Author: Tommy <yobbobanana@gmx.com>
+Date:   Sun Sep 8 18:20:22 2013 +1200
+
+    Add new Chinese (Traditional) translation file (lang/po/zh_TW.po).
+
+commit 678393167d716c78228a848ea752012341f606d5
+Author: Tommy <yobbobanana@gmx.com>
+Date:   Sun Sep 8 18:19:33 2013 +1200
+
+    Add empty translation file for Italian (lang/po/it.po).
+
+commit 9169d42bedcda7add535d32bca1694e6f0559c10
+Author: GalenEvil <galenevil.eve@gmail.com>
+Date:   Wed Aug 21 15:28:29 2013 -0500
+
+    Reset And Retry, Again to get this looking right!
+
+commit bd3078d70378720012c5c6b46ec46bf8661cfd42
+Author: GalenEvil <galenevil.eve@gmail.com>
+Date:   Wed Aug 21 00:44:10 2013 -0500
+
+    Merge branch 'master-2' in 'master' to bring it up to date with DDA Mainline
+    
+    Conflicts:
+    	CataclysmWin.cbp
+    	Makefile.Windows
+    	SIGNOFF
+    	TRANSLATING.md
+    	addiction.cpp
+    	artifact.cpp
+    	auto_pickup.cpp
+    	bionics.cpp
+    	calendar.cpp
+    	computer.cpp
+    	construction.cpp
+    	crafting.cpp
+    	data/raw/item_groups.json
+    	data/raw/items/ammo.json
+    	data/raw/items/armor.json
+    	data/raw/items/comestibles.json
+    	data/raw/items/containers.json
+    	data/raw/items/melee.json
+    	data/raw/items/ranged.json
+    	data/raw/professions.json
+    	data/raw/recipes.json
+    	disease.cpp
+    	faction.cpp
+    	field.cpp
+    	game.cpp
+    	game.h
+    	item.cpp
+    	item.h
+    	item_factory.cpp
+    	itypedef.cpp
+    	iuse.cpp
+    	lang/po/cataclysm-dda.pot
+    	lang/po/de_DE.po
+    	lang/po/fr_FR.po
+    	lang/po/pt_PT.po
+    	lang/po/ru_RU.po
+    	lang/po/zh_CN.po
+    	main.cpp
+    	melee.cpp
+    	monattack.cpp
+    	mondeath.cpp
+    	monmove.cpp
+    	mutation.cpp
+    	mutation_data.cpp
+    	newcharacter.cpp
+    	npcmove.cpp
+    	npctalk.cpp
+    	options.cpp
+    	options.h
+    	output.cpp
+    	output.h
+    	overmap.cpp
+    	player.cpp
+    	player.h
+    	pldata.h
+    	profession.cpp
+    	profession.h
+    	ranged.cpp
+    	sdlcurse.cpp
+    	skill.cpp
+    	translations.h
+    	trapfunc.cpp
+    	veh_interact.cpp
+    	vehicle.cpp
+    	weather.cpp
+    	wincurse.cpp
+    	wish.cpp
+
+commit 9a781676558046f0d9b6b192acbd09ae9b79944c
+Author: Vlasov Vitaly <vnigtha@gmail.com>
+Date:   Sun Aug 18 17:21:40 2013 +0400
+
+    Misspelling fix.

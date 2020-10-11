@@ -1,0 +1,12 @@
+commit 5647154314b0d8473b9949174d9bb8c06cb4607d
+Author: tangouyi <tangyouyi@baidu.com>
+Date:   Thu Nov 29 11:46:41 2018 +0800
+
+    modify the es alarm
+    add govendor
+
+commit e71be5582250190759b8f2e56d81c654aae90b52
+Author: tangouyi <tangyouyi@baidu.com>
+Date:   Mon Nov 26 19:55:28 2018 +0800
+
+    add vender for rasp cloud

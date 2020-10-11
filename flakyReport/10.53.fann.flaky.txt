@@ -1,0 +1,18 @@
+commit 0b99a5db48d78eadd202095367f5e3fac42de621
+Author: steffennissen <steffen.fann@gmail.com>
+Date:   Sat Oct 31 20:40:32 2015 +0800
+
+    removed old version of google test and added cmake setup. I'm sure this will break stuff for Visual Studio, but I don't have access to a windows machine, so I can't fix that right now
+
+commit 4376b7323abdc7b2c3bc77124c6909fed15d36c6
+Author: steffennissen <steffen.fann@gmail.com>
+Date:   Sat Oct 31 20:13:13 2015 +0800
+
+    added never version of google test (latest from github)
+
+commit e7880e5d64614e02ce383b6c69903638e9d6e163
+Author: Steffen Nissen <steffen.fann@gmail.com>
+Date:   Sun Jun 17 22:09:27 2012 +0800
+
+    Added unittests (for now only a few tests and only for VS2010)
+    Made error messages better, when calling non-array create methods

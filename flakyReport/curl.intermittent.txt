@@ -1,0 +1,13 @@
+commit f4781fc3cba8c808ff849e18e17d70d39c34ae24
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Wed Nov 5 09:43:07 2014 +0100
+
+    bump: towards next release
+
+commit 734fdb084243590b023b6e75f5f6b9d8419ca948
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Thu Oct 9 23:55:17 2014 +0200
+
+    RELEASE-NOTES: synced with 6637b237e6eb
+    
+    ... and bumped the planned release version.

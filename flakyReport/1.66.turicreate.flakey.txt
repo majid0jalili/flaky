@@ -1,0 +1,117 @@
+commit af567ff5ba333f39ff9b7dac44e74a7b558c0da7
+Author: Hoyt Koepke <hoytak@graphlab.com>
+Date:   Tue Dec 17 19:25:36 2019 -0700
+
+    Build System Improvements (#2835)
+    
+    This Commit introduces a significant overhaul of the build system with a focus on simplification and integration with proper CMake options.
+    
+    Improvements:
+    
+    All dependencies except openssl, curl, and libxml are moved into src/external and compiled as part of our source build. These dependencies are those needed for adding remote fs support, so compiling with --no-remotefs does not compile anything in deps/.
+    
+    CMakeLists.txt simplification. Now CMakeLists.txt is organized in a far more standard way. In addition, more logic is added to and moved to the ./configure script, as many cmake options that we were previously overriding with our own compiler flags work correctly when specified in CMake BEFORE the CMakeLists.txt file is loaded.
+    
+    More options in ./configure to support additional compilation options, such as listing out all source files used in the build or turning on or off various options.
+    
+    The custom model dylibs for iOS are now compiled using xcodebuild. XCode is supported as a generator for these models, which means that the compilation builds an xcode project, then calls xcodebuild to compile it. This allows better integration with the OSX ecosystem and should provide a way to resolve #834 easily.
+    
+    Source changes needed to support the above compilation and other internal dependencies. These changes included proper use of ARC globally, fixing all the size_t -> int conversions (int is 32 bit on some platforms, while size_t is 64 bit).
+
+commit 2ee3f9b4273b48a7ad3be79d29a2468249a93b9d
+Author: Hoyt Koepke <hoytak@graphlab.com>
+Date:   Wed Oct 2 09:51:54 2019 -0700
+
+    Delete the CMake source code.   (#2381)
+    
+    Removal of cmake source code.
+    
+    This simply removes the source code.  It was disabled in an earlier commit.
+
+commit d61d403efc54eb80ef2feb15624adecde404cae5
+Author: Zach Nation <znation@apple.com>
+Date:   Wed Aug 14 22:10:32 2019 -0700
+
+    Add external dependency: Node.js (#2231)
+    
+    * Takes a drop of Node.js 10.15.3 under `deps/src`
+    * Adds an external CMake project for it in `deps/cmake`
+    
+    Needed for executing JavaScript build tooling at compile time, as part
+    of #1822.
+
+commit 9b5e997c1d78bfb254f85df8c0e6568abe418f27
+Author: Hoyt Koepke <hoytak@graphlab.com>
+Date:   Thu Mar 7 09:54:49 2019 -0800
+
+    Upgraded coremltools; made it a dep that is much easier to upgrade. (#1501)
+    
+    * Moved coremltools into a much easier spot to upgrade.
+    
+    This PR also allows an alternate coremltools to be specified at
+    configure time to allow for quick testing of new coremltools features.
+    
+    * Added coremltools to external dependencies.
+    
+    * Updated coremltools version.
+
+commit 9f9c880fc7469207eef32cc408b205cdc59b5c10
+Author: Hoyt Koepke <hoytak@graphlab.com>
+Date:   Thu Feb 21 10:28:53 2019 -0800
+
+    Updates packaged CMake to version 3.13.4. (#1432)
+    
+    * Updates packaged CMake to version 3.13.4.
+    
+    This enables the use of
+    object libraries, which would substantially help the build process.
+    
+    Several GPL-ish files in the LexerParser directory had to be replaced.
+    The log for how this was done is checked in.
+    
+    * Updated travis config.
+
+commit a01609fa5033c65d7609c38af812294da700bcf7
+Author: Zach Nation <znation@gmail.com>
+Date:   Thu Dec 13 16:22:12 2018 -0800
+
+    Upgrade Boost to 1.68.0 (#1187)
+    
+    * Add Boost 1.68.0, remove 1.65.1
+    
+    * Update Boost external project cmake
+    
+    * Fix some build errors
+    
+    * Replace GIL_FORCEINLINE with BOOST_FORCE_INLINE
+    
+    * Remove BOOST_FORCE_INLINE
+    
+    That no longer exists either
+    
+    * Fix for hang in non-space parser
+    
+    Otherwise, the new post-skip behavior is to get stuck in a while
+    loop trying to parse while `first == last`.
+    
+    * Add back Boost date/time patch
+    
+    * Switch out Boost for Unix line endings
+    
+    I accidentally committed the version with Windows line endings earlier.
+    
+    * Turns out we need the `|| true` for incremental builds
+    
+    * Fix date/time patch
+    
+    Seems we no longer need part of it since it has changed in Boost
+    
+    * Fixed tuple conversion in variant_converter.
+    
+    * Fix build break from last commit
+
+commit e8e1f451d37b01f948846092851a079cc88426ff
+Author: Zach Nation <znation@apple.com>
+Date:   Thu Dec 7 12:14:27 2017 -0800
+
+    Initial commit of Turi Create 4.0.

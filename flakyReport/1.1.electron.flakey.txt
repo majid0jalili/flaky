@@ -1,0 +1,11 @@
+commit 08f288faf1ce3395f281e0352e9a35db9f7b00ca
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Tue May 26 22:21:38 2020 +0900
+
+    test: use WebContents event to test beforeunload (#23699)
+
+commit f09cb114e43a11dd7a1c91e93749ca562704351e
+Author: Jeremy Apthorp <jeremya@chromium.org>
+Date:   Wed Nov 27 09:42:54 2019 -0800
+
+    test: retry beforeunload tests up to 3 times (#21293)

@@ -1,0 +1,11 @@
+commit 9ac8733078c9e903239941f34d61264f26184815
+Author: Brian Armstrong <brian.armstrong@discordapp.com>
+Date:   Tue May 30 21:30:30 2017 +0000
+
+    linux build for ffmpeg
+
+commit 4cf86c20f5aa72fc1cd43766c0cdcb5fb9003079
+Author: Brian Armstrong <brian.armstrong@discordapp.com>
+Date:   Tue May 23 17:05:58 2017 -0700
+
+    include and build bzip2, ffmpeg

@@ -1,0 +1,13 @@
+commit 961e0b5d2874c73ceee136eb270e6d6d42eae1b0
+Author: Miguel A. Colón Vélez <debian.micove@gmail.com>
+Date:   Tue Aug 18 01:16:59 2015 -0400
+
+    Remove wx2.8 from the 3rdparty folder.
+
+commit 0bf5d1c43b3cb4eb290c868561b5fd8ce68e755b
+Author: Jake.Stine <Jake.Stine@96395faa-99c1-11dd-bbfe-3dabce05a288>
+Date:   Tue Mar 10 11:35:24 2009 +0000
+
+    Pcsx2-wxGui: Initial commit of "non-functional" gui (WIP).  It compiles but doesn't do anything yet (none of the menus have been bound to actions, except for the GameHacks dialog).  Initial wxWidgets project additions and prepwork are courtesy of Feat87.
+    
+    git-svn-id: http://pcsx2.googlecode.com/svn/branches/wxgui@732 96395faa-99c1-11dd-bbfe-3dabce05a288

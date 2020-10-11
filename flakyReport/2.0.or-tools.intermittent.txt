@@ -1,0 +1,88 @@
+commit b027e57e95e2f70d17c28d6f6319e57dcbbd46b2
+Author: Corentin Le Molgat <corentinl@google.com>
+Date:   Wed Oct 31 16:18:18 2018 +0100
+
+    dotnet: Remove reference to dotnet release command
+    
+    - Currently not implemented...
+    
+    Add abseil patch
+    
+    - Add patches/absl-config.cmake
+    
+    Makefile: Add abseil-cpp on unix
+    
+    - Force abseil-cpp SHA1 to 45221cc
+      note: Just before the PR #136 which break all CMake
+    
+    Makefile: Add abseil-cpp on windows
+    
+    - Force abseil-cpp SHA1 to 45221cc
+      note: Just before the PR #136 which break all CMake
+    
+    CMake: Add abseil-cpp
+    
+    - Force abseil-cpp SHA1 to 45221cc
+      note: Just before the PR #136 which break all CMake
+    
+    port to absl: C++ Part
+    
+    - Fix warning with the use of ABSL_MUST_USE_RESULT
+      > The macro must appear as the very first part of a function
+        declaration or definition:
+        ...
+        Note: past advice was to place the macro after the argument list.
+      src: dependencies/sources/abseil-cpp-master/absl/base/attributes.h:418
+    - Rename enum after windows clash
+    - Remove non compact table constraints
+    - Change index type from int64 to int in routing library
+    - Fix file_nonport compilation on windows
+    - Fix another naming conflict with windows (NO_ERROR is a macro)
+    - Cleanup hash containers; work on sat internals
+    - Add optional_boolean sub-proto
+    
+    Sync cpp examples with internal code
+    - reenable issue173 after reducing number of loops
+    
+    port to absl: Python Part
+    
+    - Add back cp_model.INT32_MIN|MAX for examples
+    
+    Update Python examples
+    
+    - Add random_tsp.py
+    - Run words_square example
+    - Run magic_square in python tests
+    
+    port to absl: Java Part
+    
+    - Fix compilation of the new routing parameters in java
+    - Protect some code from SWIG parsing
+    
+    Update Java Examples
+    
+    port to absl: .Net Part
+    
+    Update .Net examples
+    
+    work on sat internals; Add C++ CP-SAT CpModelBuilder API; update sample code and recipes to use the new API; sync with internal code
+    
+    Remove VS 2015 in Appveyor-CI
+    
+    - abseil-cpp does not support VS 2015...
+    
+    improve tables
+    
+    upgrade C++ sat examples to use the new API; work on sat internals
+    
+    update license dates
+    
+    rewrite jobshop_ft06_distance.py to use the CP-SAT solver
+    
+    rename last example
+    
+    revert last commit
+    
+    more work on SAT internals
+    
+    fix

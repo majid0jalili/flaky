@@ -1,0 +1,69 @@
+commit 15cc52c08f483d95b503af37187b3a08809d7869
+Author: Alessandro Osima <alessandro@crytek.com>
+Date:   Thu Jun 13 14:21:35 2019 +0200
+
+    !XR (Sandbox) (DEV-7994) Added "Legacy" to previous PropertyTree classes name, QPropertyTree2 is now QPropertyTree. Renamed QPropertyTree folder to QPropertyTreeLegacy
+    
+    Copied from Perforce
+     Change: 1984577
+
+commit 3b61bbcc022f112b972b1d12a046895a6b085922
+Author: Build <buildengineers@crytek.de>
+Date:   Tue Mar 20 00:20:55 2018 +0100
+
+    !XT (git) Force addition of a newline to each text file to ensure it's exposure to Gitfusion.
+    
+    Copied from Perforce
+     Change: 1670541
+
+commit 1984f0c3dbf5dc3b5ac7fbb5deff9baf07c034ce
+Author: David Kaye <davidka@crytek.de>
+Date:   Thu Feb 1 16:28:53 2018 +0100
+
+    !XA (Build) Add third-party licenses.
+    !XR (bootstrap) Add license text references and attribution requirements.
+    
+    Copied from Perforce
+     Change: 1647032
+
+commit 2b987de363f1011be3d00662b3c0e1ccb24e3a0c
+Author: Holger Durach <holgerd@crytek.de>
+Date:   Thu Jan 12 16:13:13 2017 +0100
+
+    !XI (//ce/dev_schematyc -> //ce/main) @1481289 (Approved by achim)
+    	!R (Schematyc) Clean up IScriptElement interface.
+    	!R (Schematyc) Simplify IEnvSignal interface.
+    	!R SGUID using CryGUID
+    	!F (Schematyc) Implement signal 'sender' filtering system.
+    	!F (Schematyc) Create experimental action node.
+    	!R (Schematyc) Simplify IEnvDataType interface.
+    	!F (Schematyc) Add author and description to env packages.
+    	!R (Schematyc) Remove author and wikilink from env elements.
+    	!F (Schematyc) Implement compile-time reflection tests on all compilers.
+    	!R (Schematyc) Clean up reflection system.
+    Review: ID 63970 by Author: Holger Durach, Reviewer: Nico Moss, Observer: Achim Lang, Observer: Paul Slinger, Observer: Timur Davidenko, Observer: Marco Hopp, Observer: Scott Peter, Observer: Samuel Kahn
+    
+    Copied from Perforce
+     Change: 1482029
+
+commit 97dede9c814335dc54695f7a725272711e881234
+Author: David Kaye <davidka@crytek.de>
+Date:   Sun Apr 17 12:33:11 2016 +0200
+
+    !XI Branch //ce/main to //ce/main_stabilisation.
+    
+    Copied from Perforce
+     Change: 1378678
+
+commit aa93834e90b797aeab21d24c0e17fb89e9aec6c3
+Author: Matthijs <matthijs@crytek.com>
+Date:   Fri Apr 15 22:00:34 2016 +0200
+
+    !XR Apply formatting to CryEngine (except CryEngine/CryPhysics), Sandbox and GameZero folders. (Approved by matthijs)
+    !XA Add tool and settings used to Code/Tools/uncrustify, also including (zipped) sources as required by license.
+    Review: ID 54414 by Author: Matthijs van der Meide, Reviewer: David Kaye, Observer: Thomas Wollenzin, Observer: Nicolas Schulz, Observer: Anton Knyazyev, Observer: Romanchuk Katerina, Observer: Dario Sancho, Observer: Scott Peter, Observer: Nico Moss, Observer: Gabriel Rodriguez H, Observer: Samuel Kahn, Observer: Michael Madsen
+    
+    [grafted history before @1378678]
+    
+    Copied from Perforce
+     Change: 1378617

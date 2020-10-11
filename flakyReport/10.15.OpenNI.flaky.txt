@@ -1,0 +1,5 @@
+commit 98d33a8cb14283c4ba2daa80acaf7b4587501a36
+Author: Eddie Cohen <eddie.cohen@primesense.com>
+Date:   Wed Oct 23 09:04:06 2013 +0300
+
+    Updated to version 1.5.7.8

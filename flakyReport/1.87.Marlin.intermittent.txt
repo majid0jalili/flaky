@@ -1,0 +1,5 @@
+commit 60bed3434bb7aa51b02978e93dae5985ff24fe3a
+Author: Mobilinkd LLC <mobilinkd@gmail.com>
+Date:   Wed May 20 15:38:29 2020 -0500
+
+    Ignore spurious MAX31855K / 6675 thermocouple errors (#18039)

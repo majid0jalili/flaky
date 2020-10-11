@@ -1,0 +1,45 @@
+commit 944f724460f5afce0585bf9d07bb2a5d3a4620db
+Author: Proj Upstream <kwrobot@kitware.com>
+Date:   Tue Mar 8 12:44:42 2016 -0500
+
+    libproj4 2016-03-08 (41bdf053)
+    
+    Code extracted from:
+    
+        https://gitlab.kitware.com/third-party/proj.git
+    
+    at commit 41bdf05361007f8c5186f3df9944d86bb273ed13 (for/vtk).
+
+commit 7d3c2959fa9cb65b3be81bdfe3f69c29d31a9e67
+Author: KWSys Robot <kwrobot@kitware.com>
+Date:   Wed May 2 08:46:10 2012 -0400
+
+    KWSys 2012-05-02 (719638e2)
+    
+    Extract upstream KWSys using the following shell code.
+    
+    $ sha1=719638e233b560afb0d9a0afdcf23469dc1827fe &&
+    git archive --prefix=KWSys-snapshot/ $sha1 |
+    tar x
+
+commit cdd4d6fdec8b4b2c143224ca1d94699c96a8b58a
+Author: VTK Developers <vtk-developers@vtk.org>
+Date:   Mon Apr 9 10:04:47 2012 -0400
+
+    Modularize VTK tree layout
+    
+    Move source files from their former monolithic VTK location to their new
+    location in modular VTK without modification.  This preserves enough
+    information for "git blame -M" and "git log --follow" to connect
+    modularized VTK files to their original location and history.
+    
+    Co-Author: Marcus D. Hanwell <marcus.hanwell@kitware.com>
+    Co-Author: Chris Harris <chris.harris@kitware.com>
+    Co-Author: Brad King <brad.king@kitware.com>
+    Co-Author: Nikhil Shetty <nikhil.shetty@kitware.com>
+
+commit 3d450112ed6151f5612f438db2d9f76c4e64457e
+Author: Brad King <brad.king@kitware.com>
+Date:   Mon Dec 4 14:42:47 2006 -0500
+
+    ENH: Changes based on patch from Ryan C. Gordon to enable process execution on BeOS.  There seems to be no way to implement it without polling (or threads).

@@ -1,0 +1,32 @@
+commit 4a95d700e6b745970eceea8fb202d2874d4387b8
+Author: Ben RUBSON <6764151+benrubson@users.noreply.github.com>
+Date:   Fri Feb 28 21:12:38 2020 +0100
+
+    Update google vendors (#589)
+
+commit 8de46c0bd5b46213021fcb573da57b3ac17f6541
+Author: Valient Gough <valient@gmail.com>
+Date:   Sun Aug 6 22:36:28 2017 -0400
+
+    Squashed 'vendor/github.com/google/googletest/' content from commit a3ac2d7f
+    
+    git-subtree-dir: vendor/github.com/google/googletest
+    git-subtree-split: a3ac2d7faa9cc6d38d69321f293925f72edf6727
+
+commit a98123a3a7da598d2191f816fe958cdcbb319391
+Author: Valient Gough <valient@gmail.com>
+Date:   Sun Aug 6 22:36:13 2017 -0400
+
+    Squashed 'vendor/github.com/google/benchmark/' content from commit 163ce4af
+    
+    git-subtree-dir: vendor/github.com/google/benchmark
+    git-subtree-split: 163ce4af68fd7d100e7e54ab65abd50971183009
+
+commit 59d74aea1f11cd1fb0df3e1dea97f731bfd21dd0
+Author: Valient Gough <valient@gmail.com>
+Date:   Sat Aug 5 23:23:41 2017 -0700
+
+    Squashed 'vendor/github.com/muflihun/easyloggingpp/' content from commit 850ea2a9
+    
+    git-subtree-dir: vendor/github.com/muflihun/easyloggingpp
+    git-subtree-split: 850ea2a9f151ed648a989dda1cf44e503e45831f

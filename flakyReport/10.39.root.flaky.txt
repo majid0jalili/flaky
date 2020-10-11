@@ -1,0 +1,109 @@
+commit d98765343eed1b1f505d7e617d9064b48eed7c47
+Author: Bertrand Bellenot <bertrand.bellenot@cern.ch>
+Date:   Mon May 25 09:01:42 2020 +0200
+
+    Use static liblzma.lib on Windows
+    
+    The static liblzma.lib was rebuilt from source and the tar file changed, so the hash had to be changed as well
+
+commit b60c28a240bfdd0a8b1057e94ecd87e6bce194eb
+Author: Enric Tejedor Saavedra <enric.tejedor.saavedra@cern.ch>
+Date:   Thu Jul 4 17:22:09 2019 +0200
+
+    [Exp PyROOT] Update cppyy-backend to clingwrapper-1.9.0
+
+commit c7ed9006cd4ff141006d4628de9014fe264154fd
+Author: Enric Tejedor Saavedra <enric.tejedor.saavedra@cern.ch>
+Date:   Fri Mar 29 11:51:43 2019 +0100
+
+    [Exp PyROOT] Update cppyy-backend to clingwrapper-1.8.1
+
+commit 2c79d1b443b859897631ddbff11672478ba85065
+Author: Oksana Shadura <oksana.shadura@cern.ch>
+Date:   Fri Jan 18 18:17:40 2019 +0100
+
+    Updating LZMA binaries for Linux and Windows
+    
+    Update LZMA package hashes and version of packages
+
+commit 853b6222d5ce0a82ed11fae400fd240de6ac783b
+Author: Vassil Vassilev <vvasilev@cern.ch>
+Date:   Thu May 25 19:13:30 2017 +0200
+
+    Import LLVM r302975.
+
+commit 40735bd8e0c0ddfb42ee3923044d84b73a03d3ff
+Author: Axel Naumann <Axel.Naumann@cern.ch>
+Date:   Wed Jun 15 12:12:22 2016 +0200
+
+    Update llvm/clang to r272382 + ROOT-patches.
+
+commit d5500643855e9a1cb5e93cbc9de06a2fbffb9b67
+Author: Vassil Vassilev <vvasilev@cern.ch>
+Date:   Thu Aug 14 14:48:42 2014 +0200
+
+    Upgrade to llvm / clang r214630.
+
+commit dc7b2aca31a3cfe8ec793139bb58671ec41829c9
+Author: Axel Naumann <Axel.Naumann@cern.ch>
+Date:   Tue Feb 18 08:22:10 2014 +0100
+
+    Update to llvm/clang r201395.
+
+commit 234fd515ed3893629e1e170e5c497688c81281b9
+Author: Axel Naumann <Axel.Naumann@cern.ch>
+Date:   Wed Apr 24 16:28:08 2013 +0000
+
+    Update to clang/llvm r179269 (llvm vendor branch r49215):
+    Parser::Scope versus Sema::DeclContext are now checked for cross-vailidity.
+    Emit the TU-transaction explicitly instead of relying on a first transaction.
+    The typename extraction now takes a stream instead of a string to write to.
+    The llvm::Linker has much reduced functionality; use llvm::sys::Path instead to find dynamic libraries.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@49325 27541ba8-7e3a-0410-8455-c3a389f83636
+
+commit 03fce4fcbeeb70a564e6bebd8dce1c560da69166
+Author: Fons Rademakers <Fons.Rademakers@cern.ch>
+Date:   Wed Oct 31 21:42:00 2012 +0000
+
+    get rid of the large LLVM and clang test directories which we don't need.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@46946 27541ba8-7e3a-0410-8455-c3a389f83636
+
+commit bca9438d2f5a352d7492b58884401f6b9882b315
+Author: Fons Rademakers <Fons.Rademakers@cern.ch>
+Date:   Mon Aug 6 21:33:52 2012 +0000
+
+    move src under llvm.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@45431 27541ba8-7e3a-0410-8455-c3a389f83636
+
+commit 0543d462dca4005b099a202e1febe792be70bb5b
+Author: Fons Rademakers <Fons.Rademakers@cern.ch>
+Date:   Mon Aug 6 21:28:45 2012 +0000
+
+    rename llvm to src and then move to llvm/src.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@45429 27541ba8-7e3a-0410-8455-c3a389f83636
+
+commit 6e43688f9757966501f52792751a398e809c6261
+Author: Fons Rademakers <Fons.Rademakers@cern.ch>
+Date:   Fri Aug 3 16:14:34 2012 +0000
+
+    copy initial clang vendor import r160956.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@45394 27541ba8-7e3a-0410-8455-c3a389f83636
+
+commit 19975e89c54ace12be536b37abb270fda3f6bc06
+Author: Fons Rademakers <Fons.Rademakers@cern.ch>
+Date:   Fri Aug 3 16:12:23 2012 +0000
+
+    copy initial LLVM vendor import r160956.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@45393 27541ba8-7e3a-0410-8455-c3a389f83636

@@ -1,0 +1,203 @@
+commit 446cddcc800d1494883b53c3fd9e75aa1db0c189
+Author: ffsup2 <ffsup2@localhost>
+Date:   Fri May 13 23:13:34 2011 +0200
+
+    bugfix for crash when user empties trash bin
+    
+    bug introduced with latest patch for memory leaks
+    When a widget is not constant but changed during operation it mustn't be "manged" automatically by gtk.
+
+commit 544dbd55b28bb2195609cff0ba868162f91fa384
+Author: ffsup2 <ffsup2@localhost>
+Date:   Thu Mar 17 17:51:49 2011 +0100
+
+    Fix for orientation issue #486
+
+commit ec61e3094c988a3fd9898828fd5060bbb6251b07
+Author: Hombre <natureh@free.fr>
+Date:   Mon Feb 14 02:08:28 2011 +0100
+
+    CMAKE_BUILD_TYPE now properly handled and information printed in AboutThisBuild.txt, thanks to greatbull69
+
+commit 58b108b372cd0e35dedec396b5af88df3a1135a5
+Author: ffsup2 <ffsup2@localhost>
+Date:   Mon Dec 13 22:39:23 2010 +0100
+
+    Fix for lenses on Nikon D300s
+
+commit e394b29d6dfd4becb7e1e0d1913daf18ef625819
+Author: Hombre <natureh@free.fr>
+Date:   Sun Dec 12 18:47:53 2010 +0100
+
+    Suppressing the lib and winclude dir ! Now, all the dependancies libraries have to be managed by the developer. See COMPILE.txt on how to build the libs and how to get precompiled libraries.
+    
+    This imply that we now use an up-to-date jpeg library, finally !
+
+commit 0ba5ff177168c4495728c73cc1f3a42c948edb82
+Author: Wyatt Olson <wyatt@digitalcave.ca>
+Date:   Wed Dec 8 19:07:27 2010 -0700
+
+    Re-generated translations
+
+commit f52810e56b5f4268d2c52f506395eb49f3aba7b6
+Author: Oliver Duis <oduis@hotmail.com>
+Date:   Fri Dec 3 11:06:29 2010 +0100
+
+    Fixed crash on faulty JPGs by GreatBull69; see issue #362
+
+commit c5560a0296c3ce0bf469f1b95f770895946989ce
+Author: ffsup2 <ffsup2@localhost>
+Date:   Sat Nov 20 20:48:16 2010 +0100
+
+    Code clean in RawImage
+    Preparing for dcraw C++
+
+commit 6925ad199794ea8ea4dfac6df521fb7d1fd74948
+Author: Wyatt Olson <wyatt@digitalcave.ca>
+Date:   Tue Nov 16 08:00:54 2010 -0700
+
+    Updated Serbian translation (thanks to gpopac)
+
+commit b84838da19d9930d2301b538d4bf5778fd2c0c5f
+Author: Wyatt Olson <wyatt@digitalcave.ca>
+Date:   Wed Nov 10 22:21:03 2010 -0700
+
+    Updated dcraw.patch prior to attempting 9.05 upgrade
+
+commit 096d8e419847378249daa31ee6e33592f848e9db
+Author: Emil Martinec <ejmartin@uchicago.edu>
+Date:   Sun Nov 7 18:23:54 2010 -0600
+
+    Fixing neutral profile; this time with the correct file.
+
+commit 9c34548983c8a03c39160262d1f0896fc4a84abe
+Author: Emil Martinec <ejmartin@uchicago.edu>
+Date:   Mon Nov 1 09:26:50 2010 -0500
+
+    Changes to exposure controls.
+
+commit 926056c2c2460189bb8c56b994b51e845eda7560
+Author: Emil Martinec <ejmartin@uchicago.edu>
+Date:   Tue Oct 26 22:59:18 2010 -0500
+
+    Changes to black compression and saturation controls.  Black compression from 0-50 acts the same as 0-100 on the previous version, compressing dark tones without crushing blacks.  50-100 then starts crushing blacks until by 100 on the slider, all tones up to the set black point are sent to zero.  In the new saturation control, negative values of the slider set a linear curve rather than an inverted S curve, and smoothly decrease saturation to zero across the board.
+
+commit ae72521bf549f679c1d1086ff4ac3812ff574e9e
+Author: slapo001 <slapo001@gmail.com>
+Date:   Sun Oct 24 17:10:58 2010 +0200
+
+    Swapped two strings.
+
+commit 04970207f1f8a304cb75f86c3bc3d2c1aec5f371
+Author: Wyatt Olson <wyatt@digitalcave.ca>
+Date:   Wed Oct 20 10:18:14 2010 -0600
+
+    Fixed bug found by Emil, incorrect syntax for #ifdef statement failed on older GCC
+
+commit d3714bf3d4883259870ee949230a246c62e88a79
+Author: Wyatt Olson <wyatt.olson@gmail.com>
+Date:   Thu Oct 14 09:14:32 2010 -0600
+
+    Updated Swedish on behalf of Johan Andersson; re-generated other locales to include new translation keys
+
+commit 8b52e0aa5ff5731a78bdaa517647dfccbce4e436
+Author: Hombre <natureh@free.fr>
+Date:   Fri Oct 8 01:06:09 2010 +0200
+
+    The language selection combo was no more populated after Stingo's merge.
+
+commit 5bca42abfb2dadeb39e0c324a992744f982c996a
+Author: Hombre <natureh@free.fr>
+Date:   Tue Oct 5 22:48:50 2010 +0200
+
+    The font is now user selectable in Preferences. I had to rename the sections name in the Grey theme. This "hack" hit the "clearlooks-default" and "clearlooks-menu-items" sections to set the fonts, i don't know if there's a cleaner way of handling font selection...
+
+commit d1b551466f9cbf9946b91b1c0ed1e7d890274c86
+Author: Philip Rinn <rinni@gmx.net>
+Date:   Mon Sep 13 10:44:42 2010 +0200
+
+    Reapplied Hombres patch (revision c006f93a5f) as it got lost on the way.
+
+commit d7e3d8f52ba987fc6041c06cd15d4091a156a2f8
+Author: Andrey Skvortsov <Andrey Skvortsov@localhost>
+Date:   Sun Sep 12 17:25:53 2010 -0700
+
+    bilinear raw conversion very fast and with openmp
+
+commit a5d9a88f11f621b627c43ab053e08b4a73cc1a1b
+Author: Andrey Skvortsov <Andrey Skvortsov@localhost>
+Date:   Sun Sep 12 17:09:04 2010 -0700
+
+    Bilinear demosaic extremely fast and simple.
+
+commit 459a8e4b0e2047e82c3d03dcce6d57a05b11b97c
+Author: askvortsov <askvortsov@cuba>
+Date:   Thu Sep 9 16:17:56 2010 -0700
+
+    if no b/a area enabled some speed up when opening images
+
+commit 84ecfe412a1efce58fc0aba1542bafc89b0ea46c
+Author: askv <askv@Nova>
+Date:   Mon Sep 6 14:54:45 2010 -0700
+
+    classic rt UI !
+
+commit 1393463d9f3fd8bf1e2a1845fbb8ace469451e20
+Author: Philip Rinn <rinni@gmx.net>
+Date:   Mon Aug 23 11:19:43 2010 +0200
+
+    Backed out changeset 0f925a42ac9d (Fixing creation and use of profile direcory)
+
+commit eef14f76dd3925db61a2585a21cacaf84898dfd8
+Author: ffsup2 <ffsup2@localhost>
+Date:   Thu Aug 19 00:37:53 2010 +0200
+
+    Added dark frame subtraction
+    Moved debayer and preprocessing parameters to class ProcParams for every single image.
+    Added tab RAW for changing those parameters.
+    Progress bar shows only load step (work to do)
+
+commit bc9e8cb61d3924b3d76d18fb9ffd881fb2086b16
+Author: gabor <gabor@localhost>
+Date:   Thu May 27 15:27:05 2010 +0200
+
+    ImProcFunctions cleanup and transition to OpenMP -- phase 2
+
+commit 9bbe5b53165de873a1811da7f173fd179583e3e7
+Author: Paul Matthijsse <paul.matthijsse@wanadoo.fr>
+Date:   Sat May 15 12:08:51 2010 +0200
+
+    Added missing DCB lines to couple of language files
+    --
+    user: Paul Matthijsse <paul.matthijsse@wanadoo.fr>
+    branch 'default'
+
+commit 7b9fe645e8581ee9c87da1ebdd6978d75baaecb1
+Author: Wyatt Olson <wyatt@digitalcave.ca>
+Date:   Fri May 14 08:53:47 2010 -0600
+
+    Corrected compile instructions for linux
+
+commit 65ea3aff3ec936d1656035f918cf9d60283ecc4d
+Author: sashavasko <sashavasko@localhost>
+Date:   Thu May 13 16:42:43 2010 -0500
+
+    Added better handling of failures loading icons, as Cairo generated exception were crashing app under windows. Minor fix to handling missing processing params to not alter the global defaults.
+
+commit ff7c6a1531d9f16d27698d8c806e9cd7b54f6bbe
+Author: Wyatt Olson <wyatt@digitalcave.ca>
+Date:   Sat May 1 13:32:21 2010 -0600
+
+    Applied patch from Phil for hardcoded language fixes
+
+commit 2547245d51ac85fd7d9ae1960b84718c1f8f821d
+Author: Wyatt Olson <wyatt@digitalcave.ca>
+Date:   Thu Apr 22 17:20:19 2010 -0600
+
+    Fixed type in English translations for false color suppression, as patched by Eric Mountain
+
+commit 35da4bbfb70807035e89a9cdd0ee180bd53b1e70
+Author: ghorvath <ghorvath@hit.bme.hu>
+Date:   Fri Jan 1 11:52:33 2010 +0000
+
+    initial import

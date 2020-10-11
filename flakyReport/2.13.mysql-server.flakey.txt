@@ -1,0 +1,85 @@
+commit 3fdef64d8a30a74d81ee757a63e8cd264d80a9d8
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat Jun 6 12:10:35 2020 +0200
+
+    Bug #31432103   BUILD BREAK FOR 7.3 AND 7.4 COMMERCIAL WIN VERSION DUE TO TOO LONG FILE NAMES
+    
+    Add prebuild version of dojo 1.15.3
+    
+    Approved by:  Dinesh Prakash <dinesh.prakash@oracle.com>
+    
+    Change-Id: If0cf5aa7d60410ce7302ec56650bd6733bfcb3e2
+
+commit 000cb98131f9fa81725a4e4093a72d7784a7f4e2
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat Jun 6 12:04:01 2020 +0200
+
+    Bug #31432103   BUILD BREAK FOR 7.3 AND 7.4 COMMERCIAL WIN VERSION DUE TO TOO LONG FILE NAMES
+    
+    Remove dojo 1.15.3 source
+    
+    Approved by:  Dinesh Prakash <dinesh.prakash@oracle.com>
+    
+    Change-Id: I7e84a405e0210747fb2de2a957a27dc3cb26fca6
+
+commit b4fb2fc87685901b90cdb608191cc3a0c1e8130c
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat May 9 12:24:38 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - add new dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit d4b9c26350128363e03829dc775c44705b4e5a6a
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Sat May 9 12:07:34 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - remove old dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit c8c38e6075bd762508731110d47c588c7015e852
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Fri May 8 20:15:33 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - add new dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit 5567fc4b39d36ccb4262dd9f795051743431c790
+Author: Kari Juul Wedde <kari.wedde@oracle.com>
+Date:   Fri May 8 13:20:12 2020 +0200
+
+    Bug #31029110 Upgrade dojo
+    
+    Upgrade to dojo 1.15.3 - remove old dojo
+    
+    Approved by: Tiago Alves <tiago.alves@oracle.com>
+
+commit c575d2e2aaf8cbf8d9933a104eb034abb2d40a4c
+Author: Mikael Ronström <mikael.ronstrom@oracle.com>
+Date:   Thu May 23 09:46:26 2019 +0200
+
+    WL#11018: Install Dojo 1.8.14 with bug fix
+    
+    Reviewed-by: Mikael Ronström <mikael.ronstrom@oracle.com>
+
+commit a515f338d3fc29a82b469eb4d78774d8d6e4c7f9
+Author: Mikael Ronström <mikael.ronstrom@oracle.com>
+Date:   Thu May 23 09:43:43 2019 +0200
+
+    WL#11018: Remove old dojo
+    
+    Reviewed-by: Mikael Ronström <mikael.ronstrom@oracle.com>
+
+commit ff03c0c45c8a315125cf328d6de034fe3f639b42
+Author: Dyre Tjeldvoll <Dyre.Tjeldvoll@oracle.com>
+Date:   Mon Feb 4 14:45:26 2013 +0100
+
+    Adding mcc dir to 7.3

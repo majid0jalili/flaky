@@ -1,0 +1,22 @@
+commit 00742af3a6f6d25fbd3b3b77744e8f39a8c14c71
+Author: Petr Mrázek <peterix@gmail.com>
+Date:   Mon Aug 26 02:53:29 2013 +0200
+
+    OS compatibility and generic cleanup.
+    
+    Removed bspatch/patchlib
+    Now builds and runs on Windows
+
+commit 253067c782955380bbf66ac0475dc954375b1ff4
+Author: Petr Mrázek <peterix@gmail.com>
+Date:   Sat Aug 17 13:40:51 2013 +0200
+
+    Move all the things (YES. Move them.)
+    
+    Also, implemented some basic modlist logic, to be wired up.
+
+commit b1d00fce8da901b31fa52ea59b4bc3c8edb9d9cc
+Author: Petr Mrázek <peterix@gmail.com>
+Date:   Fri Jan 11 02:25:40 2013 +0100
+
+    CMake build system, big pile of libs: bspatch, quazip, java, the launcher

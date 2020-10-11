@@ -1,0 +1,12 @@
+commit df541a2a22647ea0f688e21c1d64ee6fdf7bdcd5
+Author: Benoit Blanchon <github@benoitblanchon.fr>
+Date:   Tue Apr 18 18:22:24 2017 +0200
+
+    Changed unit testing framework from Google Test to Catch
+
+commit 60a5d723672b42fdceb8f5b1723a799cca9b9c7b
+Author: Benoit Blanchon <github@benoitblanchon.fr>
+Date:   Wed Sep 24 11:41:19 2014 +0200
+
+    Started a new solution from scratch.
+    Added Google test

@@ -1,0 +1,55 @@
+commit d3b4a5a307f5b551190543a75f3ea2529aa0f02d
+Author: Victor Romero <romerosanchezv@gmail.com>
+Date:   Wed Feb 5 15:31:06 2020 -0800
+
+    [CHANGELOG] January updates (#9933)
+
+commit 92dc30ff52fae0d7236b5b3dd7e6b2f0ff39ae6f
+Author: Robert Schumacher <roschuma@microsoft.com>
+Date:   Fri Dec 6 02:18:47 2019 -0800
+
+    [vcpkg] Check in baseline results for CI builds (#9203)
+    
+    * [vcpkg] Check in initial baseline
+    
+    * [vcpkg] Baseline update
+    
+    * [vcpkg] Further baseline updates
+    
+    * [vcpkg] Update baseline
+    
+    * [vcpkg] Update baseline
+    
+    * [vcpkg] Update baseline
+    
+    * [vcpkg] Update baseline
+    
+    * [xalan-c] Fix flaky build for non-Windows hosts
+
+commit 02e6ec94b4f273ddee566ec7975083a0643da834
+Author: Griffin Downs <35574547+grdowns@users.noreply.github.com>
+Date:   Wed Oct 2 00:09:18 2019 -0700
+
+    Add September changelog (#8418)
+
+commit ab51cc9aa13010d60c4adf2f16578c85b3a4a7b6
+Author: Victor Romero <romerosanchezv@gmail.com>
+Date:   Fri Sep 6 12:44:28 2019 -0700
+
+    Add August changelog (#8048)
+
+commit 3bf846f613bfef7982d81600163218c48cb86626
+Author: Griffin Downs <35574547+grdowns@users.noreply.github.com>
+Date:   Tue Jul 16 19:37:24 2019 -0700
+
+    Add June changelog (#7294)
+    
+    * Add June changelog
+    
+    * Add link to spec for overlay-ports
+
+commit aa3f34c02f4742dcee5ef4a07e03002de2bb520d
+Author: Alexander Karatarakis <alkarata@microsoft.com>
+Date:   Wed Nov 23 15:46:30 2016 -0800
+
+    Update CHANGELOG and bump version to v0.0.60

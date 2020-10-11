@@ -1,0 +1,23 @@
+commit 3795fec3168c9110811ca9de7a30d99a75611bbf
+Author: Sergei Alonichau <sergeio@microsoft.com>
+Date:   Fri Apr 17 11:33:01 2020 -0700
+
+    Added UTF-8 optional offset computation for TextToIds methods, a few bugs fixed.
+
+commit 0441abde31d39c3ee5f057f17cb60dae47612c48
+Author: Sergei Alonichau <sergeio@microsoft.com>
+Date:   Wed Apr 8 14:56:45 2020 -0700
+
+    modified tag-dictionary to keep tokens with ids and floating point weights
+
+commit 9678a5ad5dab92db9c676a62ca2daf04ff7998b1
+Author: Ubuntu <sergeio@Semi-Structure-Store-Sergei-VM.3kbex5a2eptubkhb3y5treq54d.xx.internal.cloudapp.net>
+Date:   Fri Aug 16 20:41:44 2019 +0000
+
+    added: BERT Chinese, BERT Cased, BERT Multilingual Cased, fixed some bugs
+
+commit 153ddfa89e27d706b8fb876f7bc27dcf3e383104
+Author: Ubuntu <sergeio@Semi-Structure-Store-Sergei-VM.3kbex5a2eptubkhb3y5treq54d.xx.internal.cloudapp.net>
+Date:   Fri Jul 12 21:58:39 2019 +0000
+
+    added bert base tokenizer

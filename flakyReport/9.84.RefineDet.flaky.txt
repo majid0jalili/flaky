@@ -1,0 +1,5 @@
+commit 80c355dc18ee6ae9c3b6f02f18bda01f9ccd3f58
+Author: Shifeng Zhang <31090111+sfzhang15@users.noreply.github.com>
+Date:   Fri Nov 17 03:38:22 2017 +0800
+
+    Adding the code of RefineDet

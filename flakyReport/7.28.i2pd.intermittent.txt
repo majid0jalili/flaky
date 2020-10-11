@@ -1,0 +1,23 @@
+commit 63c36e917e5d664c2b13141935b3167837f161ff
+Author: Jeff Becker <ampernand@gmail.com>
+Date:   Sun Jun 19 16:50:51 2016 -0400
+
+    Merge branch 'upstream-openssl' into restricted_routes
+
+commit 4b8466e5e5f7dbad544cb3405e5fa9e65d9d2e93
+Author: hypnosis-i2p <hypnosis-i2p@gmail.com>
+Date:   Sun Jun 19 20:44:23 2016 +0800
+
+    restored backg. thread; removed deinit()
+
+commit 4fc80fd366c0f991b796525a26adb674ee325c2a
+Author: orignal <i2porignal@yandex.ru>
+Date:   Fri Jun 17 11:25:28 2016 -0400
+
+    eliminated DaemonQTImpl singleton
+
+commit 1b35f68de9263db71c9a8e504493afa721a05c8c
+Author: hypnosis-i2p <hypnosis-i2p@gmail.com>
+Date:   Fri Jun 17 21:49:49 2016 +0800
+
+    qt: daemon now operates in the background thread; added Quit GUI button

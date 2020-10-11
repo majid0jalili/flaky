@@ -1,0 +1,39 @@
+commit 234fd515ed3893629e1e170e5c497688c81281b9
+Author: Axel Naumann <Axel.Naumann@cern.ch>
+Date:   Wed Apr 24 16:28:08 2013 +0000
+
+    Update to clang/llvm r179269 (llvm vendor branch r49215):
+    Parser::Scope versus Sema::DeclContext are now checked for cross-vailidity.
+    Emit the TU-transaction explicitly instead of relying on a first transaction.
+    The typename extraction now takes a stream instead of a string to write to.
+    The llvm::Linker has much reduced functionality; use llvm::sys::Path instead to find dynamic libraries.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@49325 27541ba8-7e3a-0410-8455-c3a389f83636
+
+commit bca9438d2f5a352d7492b58884401f6b9882b315
+Author: Fons Rademakers <Fons.Rademakers@cern.ch>
+Date:   Mon Aug 6 21:33:52 2012 +0000
+
+    move src under llvm.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@45431 27541ba8-7e3a-0410-8455-c3a389f83636
+
+commit 0543d462dca4005b099a202e1febe792be70bb5b
+Author: Fons Rademakers <Fons.Rademakers@cern.ch>
+Date:   Mon Aug 6 21:28:45 2012 +0000
+
+    rename llvm to src and then move to llvm/src.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@45429 27541ba8-7e3a-0410-8455-c3a389f83636
+
+commit 19975e89c54ace12be536b37abb270fda3f6bc06
+Author: Fons Rademakers <Fons.Rademakers@cern.ch>
+Date:   Fri Aug 3 16:12:23 2012 +0000
+
+    copy initial LLVM vendor import r160956.
+    
+    
+    git-svn-id: http://root.cern.ch/svn/root/trunk@45393 27541ba8-7e3a-0410-8455-c3a389f83636

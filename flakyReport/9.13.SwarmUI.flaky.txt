@@ -1,0 +1,19 @@
+commit 3d89eb6222cf0d705f378cf59cfda0ecc7d96c9d
+Author: Mathieu Le Goc <mathieulegoc@gmail.com>
+Date:   Wed Feb 14 18:19:41 2018 -0800
+
+    ZooidReceiver firmware update
+    
+    Updated ZooidManager and ZooidReceiver firmware
+
+commit 30f7ce06007b6f50e42723b3046a018cfa604f70
+Author: Mathieu Le Goc <mathieulegoc@gmail.com>
+Date:   Tue Sep 5 17:27:13 2017 -0700
+
+    Updated MCU firmware source files and added the ready-to-upload binary files
+
+commit 780ecc7d0071a3692128843a63d53526abdaf85f
+Author: tennisbabo <lawkim@stanford.edu>
+Date:   Thu Jul 21 11:24:53 2016 -0700
+
+    Add files via upload

@@ -1,0 +1,68 @@
+commit 38fc03410053207dfd99ad188d988e20bedc4b83
+Author: arvidn <arvid@libtorrent.org>
+Date:   Fri Aug 21 15:51:28 2020 +0200
+
+    disable flaky test
+
+commit c05a81531976a5c5d851e180b48e94e9954ba5b2
+Author: arvidn <arvid@libtorrent.org>
+Date:   Thu Nov 21 09:27:17 2019 +0100
+
+    merged RC_1_2 into master
+
+commit 0ce4e576e603e9a530910bbce01e2dc3216dd693
+Author: arvidn <arvid@libtorrent.org>
+Date:   Sun Nov 3 10:36:33 2019 +0100
+
+    disable wait_for_alert test, since it relies on accurate wall-clock timings, which aren't necessarily possible on some CIs
+
+commit 8305c40d6a5c38c9a3b9fb6729e5aa0449e44ee3
+Author: arvidn <arvid@cs.umu.se>
+Date:   Thu Dec 29 09:55:17 2016 -0800
+
+    make disk_interface the customization point for storage, rather than storage_interface
+    remove the disk cache
+    remove trim_cache disk job
+    remove zero-storage
+    mark default_storage_constructor as deprecated
+    remove storage_interface
+    remove file_pool and default_storage_constructor. update connection_tester to use disk_io_thread.
+    only ftruncate files once
+    optimize hashing, by running sha1 directly on the memory mapped file
+    use boost-multi_index in file_view_pool
+    remove flush_piece and flush_hashed, simplify job-fence logic, remove prep_read_job_impl
+    support noatime
+    split out mmap implementation into a .cpp file
+    support hashing of content in part files. wraps up new disk storage
+    remove flush_piece disk job
+    separate out store_buffer into its own class
+    pass session_settings into storage operations instead of assigning a pointer in the storage object
+    use unordered_map in store_buffer
+    add fopen-based disk io back-end for non-64 bit systems or systems without mmap
+    factor out open_mode_t into its own header
+    first stab at windows memory mapped files support
+    build all of boost for autotools
+    remove flag in async_read callback handler
+    remove old open_mode_t, preadv/readv and coalesce buffers
+    support sparse and no_cache file flags in mmap
+    Remove use of overlapped I/O because we're no longer doing any scatter/gather syscalls the use of overlapped is an unnecessary complication.
+    don't explicitly specify global read and write. On MINGW we need to use libtorrent::read and libtorrent::write instead of the MINGW provided ::read and ::write.
+    
+    If the underlying file is empty then m_mapping is expected to be null.
+    It is the caller's responsibilty to notice that the region's size is
+    zero and not dereference it in that case.
+    
+    Otherwise there is no good way for users of default_storage::open_file
+    to determine that the opened file is empty.
+
+commit 53cbb607d0f5bf16d4e3703cf0478a463bb24f51
+Author: arvidn <arvid@cs.umu.se>
+Date:   Sat Jun 17 11:35:53 2017 -0400
+
+    first steps towards spell checking documentation
+
+commit 66c14e968b46c6a08dfcd85bc61c69684462f884
+Author: arvidn <arvid@cs.umu.se>
+Date:   Sun Jan 3 13:30:32 2016 -0500
+
+    disable disk-full test, because it's flaky

@@ -1,0 +1,15 @@
+commit 78ec77fa9787de69e4458e3f32f9d39ea1281955
+Author: Philip Hyunsu Cho <chohyu01@cs.washington.edu>
+Date:   Sun Nov 4 05:49:11 2018 -0800
+
+    Release 0.81 version (#3864)
+    
+    * Release 0.81 version
+    
+    * Update NEWS.md
+
+commit fbe9d41dd060a4bb16590902157ad1f01dec021b
+Author: Philip Hyunsu Cho <chohyu01@cs.washington.edu>
+Date:   Wed Sep 26 14:21:41 2018 -0700
+
+    Disable flaky tests in R-package/tests/testthat/test_update.R (#3723)

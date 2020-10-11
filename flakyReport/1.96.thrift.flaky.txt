@@ -1,0 +1,132 @@
+commit b96c43892a9e89dfa61834505bb25357e80287da
+Author: James E. King III <jking@apache.org>
+Date:   Thu Jan 24 17:45:07 2019 -0500
+
+    THRIFT-4717: fix up make clean with autoconf
+
+commit f86845e8ed622e7e3b7c87f00f16729ee6cc524d
+Author: Mustafa Senol Cosar <mustafa@unscrambl.com>
+Date:   Wed Dec 5 17:50:18 2018 +0300
+
+    THRIFT-4675: Generate Int64 constants for js
+
+commit c9ac8d2953a4806cc93aa4ff2e700623ecad980c
+Author: James E. King III <jking@apache.org>
+Date:   Mon Jan 7 16:46:45 2019 -0500
+
+    THRIFT-4720: documenting breaking changes, minor cleanup
+
+commit 0ad20bdbfe9abcbb0cc5332ff95651b5c975da91
+Author: James E. King, III <jking@apache.org>
+Date:   Sat Sep 30 15:44:16 2017 -0700
+
+    THRIFT-4351: use travis build stages to optimize build,
+    avoiding duplicate rebuilds of the same image, and also
+    allow personal docker hub repositories for private fork
+    builds to be optimized. Move ubsan build to artful image
+    because it catches more stuff and fix what was found.
+    
+    THRIFT-4345: solidify docker build strategy for maximum
+    coverage: trusty, xenial, artful as stock as they can be
+    
+    THRIFT-4344: add top level language summary markdown and
+    update readme with a new image on the layered architecture
+    
+    THRIFT-3847: remove VERSION macro from config.h which
+    was causing a conflict on artful builds.
+    
+    THRIFT-4359: fix haxe map/set decode when key is binary,
+    as a missing break statement caused it to use an int
+    during decode
+    
+    This closes #1389
+
+commit d6de19925913ac3b7e5a38167e2362cd2a91a506
+Author: James E. King, III <jking@apache.org>
+Date:   Thu Apr 6 09:22:22 2017 -0400
+
+    Pull CHANGES file from 0.10.0 release to master
+
+commit 4eb23472b76759843b802bb222d308d408475ab0
+Author: James E. King, III <jking@apache.org>
+Date:   Wed Apr 5 19:32:27 2017 -0400
+
+    THRIFT-4071: collapse and remove unnecessary build jobs in Travis CI; ensure WITH_PLUGIN is tested somewhere
+    
+    This closes #1238
+
+commit 147c2849af9c28f2ce347b4005e022ac13db9dd8
+Author: Jim Apple <jbapple-impala@apache.org>
+Date:   Sat Mar 18 12:56:50 2017 -0700
+
+    THRIFT-2026: Eliminate some undefined behavior in C/C++
+    Clients: glib, C++
+    Patch: Jim Apple <jbapple-impala@apache.org>
+    
+    This closes #1214
+    
+    This patch fixes some undefined behavior were found using Clang's
+    UndefinedBehaviorSanitizer (UBSan). To check for undefined behavior,
+    run /build/docker/scripts/ubsan.sh. This is run during CI builds, as
+    well.
+    
+    The examples of the types of undefined behavior fixed in this commit
+    are:
+    
+    1. Enumerations exhibit undefined behavior when they have values
+       outside of a range dependent on the values of their enumerators, as
+       specified in C++14's chapter 7.2 ("Enumeration declarations"),
+       paragraph 8.
+    
+    2. Left shift of negative values, used in zigzag encoding, is
+       undefined behavior. See 5.8 ("Shift operators"), paragraph 2 for
+       C++ and 6.5.7 ("Bitwise shift operators"), paragraph 4 for C99 and
+       C11.
+
+commit b2a4d4ae21c789b689dd162deb819665567f481c
+Author: jfarrell <jfarrell@apache.org>
+Date:   Mon Apr 4 14:25:03 2016 -0400
+
+    THRIFT-3775: 0.10.0 release
+    Client: release
+    Patch: jfarrell
+    
+    Versioning for 0.10.0 release candidate
+
+commit 5e432ec37b3c9db3a4534f6acdea12c74d42455e
+Author: Nobuaki Sukegawa <nsuke@apache.org>
+Date:   Sun Jan 24 01:34:29 2016 +0900
+
+    THRIFT-3579 Introduce retry to make cross
+    
+    This closes #817
+
+commit e58ed1ad390dc15965acb2b898d60cf88364378b
+Author: Nobuaki Sukegawa <nsuke@apache.org>
+Date:   Mon Nov 23 19:23:43 2015 +0900
+
+    THRIFT-3441 Stabilize Travis-CI builds
+    Client: Build
+    Patch: Nobuaki Sukegawa
+    
+    This closes #715
+
+commit 22508c3c9412af1f7d69e8436d4d09a208765716
+Author: jfarrell <jfarrell@apache.org>
+Date:   Sun Oct 11 22:28:54 2015 -0400
+
+    Thrift-2805: Updating trunk CHANGES file to match 0.9.3 release
+    Client: build
+    Patch: jfarrell
+    
+    updating CHANGES file in trunk
+
+commit 53dd39833a08ce33582e5ff31fa18bb4735d6731
+Author: jfarrell <jfarrell@apache.org>
+Date:   Fri Sep 25 02:30:29 2015 -0400
+
+    THRIFT-2805: 0.9.3 release
+    client: release
+    Patch: jfarrell
+    
+    Versioning for 0.9.3 release rc0

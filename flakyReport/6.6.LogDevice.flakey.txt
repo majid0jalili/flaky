@@ -1,0 +1,47 @@
+commit d0c2c3bd3f264ee9ac7b5744b379835f2eaf4f9f
+Author: Ahmed Soliman <asoli@fb.com>
+Date:   Thu Dec 12 01:21:53 2019 -0800
+
+    disabling GOSSIP/HealthMonitor flaky tests on OSS builds (#156)
+    
+    Summary:
+    Disabling these tests until we move to Clang.
+    Pull Request resolved: https://github.com/facebookincubator/LogDevice/pull/156
+    
+    Test Plan:
+    ```
+            1671 - GOSSIP_MessageTest.SerializeAndDeserialize (Disabled)
+            1672 - GOSSIP_MessageTest.SerializeAndDeserializeWithBoycott (Disabled)
+            1673 - GOSSIP_MessageTest.SerializeAndDeserializeWithStarting (Disabled)
+            1675 - GOSSIP_MessageTest.SerializeAndDeserializeWithVersions (Disabled)
+            1682 - HealthMonitorTest.HealthMonitorDelayTest (Disabled)
+    ```
+    
+    Reviewed By: MohamedBassem
+    
+    Differential Revision: D18939828
+    
+    Pulled By: AhmedSoliman
+    
+    fbshipit-source-id: db52a18c3274ee20be8fd139361456fd0befd6d0
+
+commit 08c3d2c41d777b8fcf3402bfd2dcce5e25d6cea1
+Author: Caleb Marchent <cmarchent@fb.com>
+Date:   Thu Sep 13 09:46:05 2018 -0700
+
+    Disable integration tests known to be flakey (#10)
+    
+    Summary:
+    When tests can fail even without regression; confidence in the tests is
+    undermined. While we work to address the intermittent issues with these
+    tests remove them from the set so that developers get clear signal of
+    weather or not their proposed changes cause regression.
+    Pull Request resolved: https://github.com/facebookincubator/LogDevice/pull/10
+    
+    Reviewed By: sh00s
+    
+    Differential Revision: D9810394
+    
+    Pulled By: calebmarchent
+    
+    fbshipit-source-id: d5ab583b49c423efd9f51e9117e8cf937d91b5cc

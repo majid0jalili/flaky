@@ -1,0 +1,37 @@
+commit 1607bdb9e0b762d6723dc3b5930caf22ce86ae1f
+Author: Adrian <adriannuta@gmail.com>
+Date:   Wed Sep 14 16:34:54 2016 +0200
+
+    docs updated qsuggest/suggest docs xml file
+
+commit 74fc94ec8c5333a9f84ad6689aa265588f7f04f0
+Author: Adrian <adriannuta@gmail.com>
+Date:   Wed Sep 14 15:52:56 2016 +0200
+
+    docs updated qsuggest/suggest docs
+
+commit 17a0bd4dadb9b326bf5e317e221c1b519cd5af1a
+Author: deogar <deogar@406a0c4d-033a-0410-8de8-e80135713968>
+Date:   Wed Nov 12 21:14:14 2014 +0000
+
+    fixed tag in changelog
+    
+    git-svn-id: svn://svn.sphinxsearch.com/sphinx/trunk@4843 406a0c4d-033a-0410-8de8-e80135713968
+
+commit dbc2eed293e4f9ee818fea8b719da2e928c77637
+Author: deogar <deogar@406a0c4d-033a-0410-8de8-e80135713968>
+Date:   Wed Nov 12 21:03:06 2014 +0000
+
+    New version, Sphinx 2.2.6-release
+    
+    git-svn-id: svn://svn.sphinxsearch.com/sphinx/trunk@4842 406a0c4d-033a-0410-8de8-e80135713968
+
+commit 51710b51db3f9f5f52faf063f3cb3cb40965708b
+Author: shodan <shodan@406a0c4d-033a-0410-8de8-e80135713968>
+Date:   Sun Jul 18 23:22:48 2010 +0000
+
+    version tag 1.10; and docs on RT caveats
+    
+    
+    
+    git-svn-id: svn://svn.sphinxsearch.com/sphinx/trunk@2411 406a0c4d-033a-0410-8de8-e80135713968

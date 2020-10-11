@@ -1,0 +1,18 @@
+commit 964b89e42a7d66202f38f39ceccd1776b72f52fd
+Author: Carl Worth <cworth@cworth.org>
+Date:   Thu Aug 1 15:12:25 2013 -0700
+
+    docs: Import 9.1.6 release notes, add news item.
+
+commit fe358c0ffa4acb7ecab10fda68ba9740497d2e7f
+Author: Eric Anholt <eric@anholt.net>
+Date:   Mon Mar 5 17:01:11 2012 -0800
+
+    gtest: Import sources from gtest 1.6.0.
+    
+    The upstream of gtest has decided that the intended usage model is for
+    projects to import the source and use it, which is reflected in their
+    recent removal of the gtest-config tool.
+    
+    Reviewed-by: Ian Romanick <ian.d.romanick@intel.com>
+    Reviewed-by: Chad Versace <chad.versace@linux.intel.com>
