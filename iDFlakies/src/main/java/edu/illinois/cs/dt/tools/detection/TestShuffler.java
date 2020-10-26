@@ -21,6 +21,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.Arrays; 
+
 
 public class TestShuffler {
     public static String className(final String testName) {
