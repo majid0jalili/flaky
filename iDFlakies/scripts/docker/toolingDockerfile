@@ -8,8 +8,7 @@ USER idflakies
 
 ## Install the tooling
 RUN \
-  git clone https://github.com/TestingResearchIllinois/testrunner && \
-  git clone https://github.com/majid0jalili/flaky.git && cp -r /home/idflakies/flaky/testrunner /home/idflakies/
-  cd testrunner/ && /home/idflakies/apache-maven/bin/mvn clean install && cd /home/idflakies && \
+  git clone https://github.com/majid0jalili/flaky.git && cp -r /home/idflakies/flaky/testrunner /home/idflakies/ && \
+  cd /home/idflakies/testrunner/ && /home/idflakies/apache-maven/bin/mvn clean install && cd /home/idflakies && \
   cp -r /home/idflakies/flaky/iDFlakies /home/idflakies/  && \
-  cd iDFlakies/ && /home/idflakies/apache-maven/bin/mvn clean install && cd /home/idflakies
+  cd /home/idflakies/iDFlakies/ && /home/idflakies/apache-maven/bin/mvn clean install && cd /home/idflakies
