@@ -61,7 +61,7 @@ public class TestRun {
             }
         } catch (Exception ignored) {}
 
-        System.out.printf(", got(Majid2) %s\n", result);
+        System.out.printf(", got(Majid3) %s\n", result);
         return this.result.equals(result);
     }
 }
