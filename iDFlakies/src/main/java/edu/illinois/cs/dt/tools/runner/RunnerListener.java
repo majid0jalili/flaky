@@ -7,10 +7,12 @@ import org.junit.runner.notification.RunListener;
 public class RunnerListener extends RunListener {
     @Override
     public void testFinished(final Description description) throws Exception {
+		System.out.printf("************************testFinished");
     }
 
     @Override
     public void testStarted(final Description description) throws Exception {
+		System.out.printf("************************testStarted");
     }
 
     @Override
