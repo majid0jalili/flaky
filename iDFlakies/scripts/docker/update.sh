@@ -7,3 +7,4 @@ TOOL_REPO="iDFlakies"
 
 cd /home/$SCRIPT_USERNAME/testrunner/ && git pull && /home/$SCRIPT_USERNAME/apache-maven/bin/mvn clean install -B
 cd /home/$SCRIPT_USERNAME/$TOOL_REPO/ && git pull && /home/$SCRIPT_USERNAME/apache-maven/bin/mvn clean install -B
+cd /home/$SCRIPT_USERNAME/flaky/ && git pull && cp -r /home/idflakies/flaky/iDFlakies /home/idflakies/ && cd /home/idflakies/iDFlakies && /home/$SCRIPT_USERNAME/apache-maven/bin/mvn clean install -B
