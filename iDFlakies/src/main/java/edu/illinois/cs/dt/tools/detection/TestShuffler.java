@@ -36,7 +36,12 @@ public class TestShuffler {
     public TestShuffler(final String type, final int rounds, final List<String> tests) {
         this.type = type;
         this.tests = tests;
-
+		System.out.printf("*****************MAJID");
+		System.out.println(Arrays.toString(tests.toArray()));
+		String name = System.console().readLine(); 
+        System.out.println(name); 
+		
+		
         classToMethods = new HashMap<>();
 
         for (final String test : tests) {
