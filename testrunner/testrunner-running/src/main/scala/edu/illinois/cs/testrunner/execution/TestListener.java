@@ -27,6 +27,7 @@ public class TestListener extends RunListener {
     }
 
     public Map<String, Double> runtimes() {
+		System.out.println("***********************Test runtimes");
         return testRuntimes;
     }
 
