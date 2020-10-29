@@ -35,7 +35,7 @@ public class TestListener extends RunListener {
 
     @Override
     public void testStarted(Description description) throws Exception {
-		System.out.println("***********************Test started" );
+		System.out.println("***********************Test started " );
         times.put(JUnitTestRunner.fullName(description), System.nanoTime());
     }
 
