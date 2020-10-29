@@ -33,7 +33,7 @@ public class OriginalDetector extends ExecutingDetector {
 
     @Override
     public DetectionRound results() throws Exception {
-		System.out.println("MMAJID2")
+		System.out.println("MMAJID2");
 		System.out.println(Arrays.toString(tests.toArray()));
         return makeDts(origResult, runList(tests));
     }
