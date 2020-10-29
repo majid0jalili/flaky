@@ -247,7 +247,7 @@ public class JUnitTestExecutor {
         }
         final TestRunResult finalResult = TestRunResult.empty(testRunId);
         for (int i = 0; i < IDEMPOTENT_NUM_RUNS; i++) {
-			System.out.println("MMAJID(1) ", IDEMPOTENT_NUM_RUNS);
+			System.out.println("MMAJID(1) "+ IDEMPOTENT_NUM_RUNS);
             // Construct the request that filters out only tests we need and sorts in specified order
             re = core.run(Request.classes(classes.toArray(new Class[0])).
             // Filter to only include passed in tests
