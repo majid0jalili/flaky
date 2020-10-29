@@ -15,12 +15,14 @@ public class TestListener extends RunListener {
     private final Set<String> ignoredTests;
 
     public TestListener() {
+		System.out.println("***********************Test TestListener");
         testRuntimes = new HashMap<>();
         times = new HashMap<>();
         ignoredTests = new HashSet<>();
     }
 
     public Set<String> ignored() {
+		System.out.println("***********************Test ignored");
         return ignoredTests;
     }
 
@@ -30,6 +32,7 @@ public class TestListener extends RunListener {
 
     @Override
     public void testIgnored(Description description) throws Exception {
+		System.out.println("***********************Test testIgnored");
         ignoredTests.add(JUnitTestRunner.fullName(description));
     }
 
@@ -41,11 +44,13 @@ public class TestListener extends RunListener {
 
     @Override
     public void testFailure(Failure failure) throws Exception {
+		System.out.println("***********************Test testFailure");
         failure.getException().printStackTrace();
     }
 
     @Override
     public void testAssumptionFailure(Failure failure) {
+		System.out.println("***********************Test testAssumptionFailure");
         failure.getException().printStackTrace();
     }
 
