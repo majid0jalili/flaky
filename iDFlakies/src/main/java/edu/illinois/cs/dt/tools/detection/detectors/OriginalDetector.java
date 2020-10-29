@@ -5,6 +5,7 @@ import edu.illinois.cs.dt.tools.detection.DetectorUtil;
 import edu.illinois.cs.dt.tools.detection.filters.UniqueFilter;
 import edu.illinois.cs.testrunner.data.results.TestRunResult;
 import edu.illinois.cs.testrunner.runner.Runner;
+import java.util.Arrays; 
 
 import java.util.List;
 
@@ -32,6 +33,8 @@ public class OriginalDetector extends ExecutingDetector {
 
     @Override
     public DetectionRound results() throws Exception {
+		System.out.println("MMAJID2")
+		System.out.println(Arrays.toString(tests.toArray()));
         return makeDts(origResult, runList(tests));
     }
 }
