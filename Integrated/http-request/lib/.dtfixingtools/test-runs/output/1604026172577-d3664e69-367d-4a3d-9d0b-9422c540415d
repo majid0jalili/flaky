@@ -1,0 +1,23 @@
+*************MMAJID TestListener
+*************MMAJID testStarted
+*************MMAJID testFailure
+java.lang.Exception: No tests found matching Filter by list from org.junit.runner.Request$1@3327bd23
+	at org.junit.internal.requests.FilterRequest.getRunner(FilterRequest.java:37)
+	at org.junit.internal.requests.SortingRequest.getRunner(SortingRequest.java:21)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.util.Try$.apply(Try.scala:209)
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+*************MMAJID testFinished
+MMAJIDRun: 645036for org.junit.runner.manipulation.Filter.initializationError info: initializationError(org.junit.runner.manipulation.Filter)
+*************MMAJID runtimes
+[ERROR] Unexpected test executed: org.junit.runner.manipulation.Filter.initializationError
+*************MMAJID runtimes
+[ERROR]: No JUnitTest found for test name 'org.junit.runner.manipulation.Filter.initializationError'
+*************MMAJID ignored

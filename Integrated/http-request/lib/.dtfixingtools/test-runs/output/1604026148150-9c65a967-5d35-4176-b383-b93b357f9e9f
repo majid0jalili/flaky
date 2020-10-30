@@ -1,0 +1,1239 @@
+*************MMAJID TestListener
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 11056381for com.github.kevinsawicki.http.EncodeTest.encode info: encode(com.github.kevinsawicki.http.EncodeTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 146394for com.github.kevinsawicki.http.EncodeTest.encodeMalformedUri info: encodeMalformedUri(com.github.kevinsawicki.http.EncodeTest)
+2020-10-29 21:49:08.665:INFO:oejs.Server:jetty-8.1.9.v20130131
+2020-10-29 21:49:08.681:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:41121
+2020-10-29 21:49:08.688:INFO:oejs.Server:jetty-8.1.9.v20130131
+2020-10-29 21:49:08.692:INFO:oejs.AbstractConnector:Started SelectChannelConnector@0.0.0.0:41885
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 4418272for com.github.kevinsawicki.http.HttpRequestTest.getMissingParameter info: getMissingParameter(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 1252143for com.github.kevinsawicki.http.HttpRequestTest.receiveFile info: receiveFile(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 146094for com.github.kevinsawicki.http.HttpRequestTest.notModifiedCode info: notModifiedCode(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 56489for com.github.kevinsawicki.http.HttpRequestTest.malformedStringUrlCause info: malformedStringUrlCause(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 192634for com.github.kevinsawicki.http.HttpRequestTest.appendMappedQueryParamsWithPath info: appendMappedQueryParamsWithPath(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 171059for com.github.kevinsawicki.http.HttpRequestTest.optionsEmpty info: optionsEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 296998for com.github.kevinsawicki.http.HttpRequestTest.getEmptyHeaders info: getEmptyHeaders(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 336714for com.github.kevinsawicki.http.HttpRequestTest.uploadProgressSendByteArray info: uploadProgressSendByteArray(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 128156for com.github.kevinsawicki.http.HttpRequestTest.streamOfEmptyOkResponse info: streamOfEmptyOkResponse(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 165262for com.github.kevinsawicki.http.HttpRequestTest.getMixQuotedParameters info: getMixQuotedParameters(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 41629for com.github.kevinsawicki.http.HttpRequestTest.appendVarargsQueryParmasWithNoPath info: appendVarargsQueryParmasWithNoPath(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 427329for com.github.kevinsawicki.http.HttpRequestTest.basicAuthentication info: basicAuthentication(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 49942for com.github.kevinsawicki.http.HttpRequestTest.appendMappedQueryParamsWithNoPath info: appendMappedQueryParamsWithNoPath(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 145018for com.github.kevinsawicki.http.HttpRequestTest.getToOutputBody info: getToOutputBody(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 125417for com.github.kevinsawicki.http.HttpRequestTest.getToOutputCode info: getToOutputCode(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 519209for com.github.kevinsawicki.http.HttpRequestTest.getWithResponseCharsetAsSecondParam info: getWithResponseCharsetAsSecondParam(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 123945for com.github.kevinsawicki.http.HttpRequestTest.getSingleParameter info: getSingleParameter(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 127783for com.github.kevinsawicki.http.HttpRequestTest.acceptCharsetHeader info: acceptCharsetHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 48926251for com.github.kevinsawicki.http.HttpRequestTest.singleVerifier info: singleVerifier(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 291530for com.github.kevinsawicki.http.HttpRequestTest.basicProxyAuthentication info: basicProxyAuthentication(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 134160for com.github.kevinsawicki.http.HttpRequestTest.postUrlEmpty info: postUrlEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 151249for com.github.kevinsawicki.http.HttpRequestTest.deleteWithVarargsQueryParams info: deleteWithVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 171299for com.github.kevinsawicki.http.HttpRequestTest.getWithEscapedMappedQueryParams info: getWithEscapedMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 27775for com.github.kevinsawicki.http.HttpRequestTest.appendNullMappedQueryParams info: appendNullMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 157709for com.github.kevinsawicki.http.HttpRequestTest.sendHeadersWithoutCode info: sendHeadersWithoutCode(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 28113for com.github.kevinsawicki.http.HttpRequestTest.appendEmptyMappedQueryParams info: appendEmptyMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 29696for com.github.kevinsawicki.http.HttpRequestTest.appendWithNullVaragsQueryParamValues info: appendWithNullVaragsQueryParamValues(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 120816for com.github.kevinsawicki.http.HttpRequestTest.traceUrlEmpty info: traceUrlEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 30696for com.github.kevinsawicki.http.HttpRequestTest.appendMultipleMappedQueryParams info: appendMultipleMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 109363for com.github.kevinsawicki.http.HttpRequestTest.acceptJson info: acceptJson(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 127531for com.github.kevinsawicki.http.HttpRequestTest.sendErrorReadStream info: sendErrorReadStream(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 136256for com.github.kevinsawicki.http.HttpRequestTest.deleteEmpty info: deleteEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 30451for com.github.kevinsawicki.http.HttpRequestTest.appendMappedQueryParamsWithExistingParams info: appendMappedQueryParamsWithExistingParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 108185for com.github.kevinsawicki.http.HttpRequestTest.cacheControlHeader info: cacheControlHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 129720for com.github.kevinsawicki.http.HttpRequestTest.getNonGzippedWithUncompressEnabled info: getNonGzippedWithUncompressEnabled(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 113360for com.github.kevinsawicki.http.HttpRequestTest.userAgentHeader info: userAgentHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 112836for com.github.kevinsawicki.http.HttpRequestTest.putUrlEmpty info: putUrlEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 138832for com.github.kevinsawicki.http.HttpRequestTest.postWithMappedQueryParams info: postWithMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 127884for com.github.kevinsawicki.http.HttpRequestTest.malformedDateHeader info: malformedDateHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 97164for com.github.kevinsawicki.http.HttpRequestTest.contentEncodingHeader info: contentEncodingHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 121188for com.github.kevinsawicki.http.HttpRequestTest.headWithVaragsQueryParams info: headWithVaragsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 110003for com.github.kevinsawicki.http.HttpRequestTest.getReaderWithCharset info: getReaderWithCharset(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 140168for com.github.kevinsawicki.http.HttpRequestTest.getWithEscapedVarargsQueryParams info: getWithEscapedVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 112635for com.github.kevinsawicki.http.HttpRequestTest.getWithVarargsQueryParams info: getWithVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 203642for com.github.kevinsawicki.http.HttpRequestTest.nullUploadProgress info: nullUploadProgress(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 109555for com.github.kevinsawicki.http.HttpRequestTest.getEmptyParameter info: getEmptyParameter(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 24952for com.github.kevinsawicki.http.HttpRequestTest.appendMultipleVarargsQueryParams info: appendMultipleVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 98375for com.github.kevinsawicki.http.HttpRequestTest.sendErrorCloseStream info: sendErrorCloseStream(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 161954for com.github.kevinsawicki.http.HttpRequestTest.postMultipleFiles info: postMultipleFiles(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 106383for com.github.kevinsawicki.http.HttpRequestTest.getWithResponseCharset info: getWithResponseCharset(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 155741for com.github.kevinsawicki.http.HttpRequestTest.ifModifiedSinceHeader info: ifModifiedSinceHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 453704for com.github.kevinsawicki.http.HttpRequestTest.uploadProgressSendReader info: uploadProgressSendReader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 226151for com.github.kevinsawicki.http.HttpRequestTest.receiveAppendable info: receiveAppendable(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 89397for com.github.kevinsawicki.http.HttpRequestTest.getParameterFromMissingHeader info: getParameterFromMissingHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 89644for com.github.kevinsawicki.http.HttpRequestTest.locationHeader info: locationHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 141112for com.github.kevinsawicki.http.HttpRequestTest.putWithEscapedVarargsQueryParams info: putWithEscapedVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 95532for com.github.kevinsawicki.http.HttpRequestTest.getMultipleParametersQuoted info: getMultipleParametersQuoted(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 93057for com.github.kevinsawicki.http.HttpRequestTest.contentTypeHeader info: contentTypeHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 51867for com.github.kevinsawicki.http.HttpRequestTest.appendArrayQueryParams info: appendArrayQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 29129for com.github.kevinsawicki.http.HttpRequestTest.appendWithNullMappedQueryParamValues info: appendWithNullMappedQueryParamValues(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 131930for com.github.kevinsawicki.http.HttpRequestTest.postWithEscapedMappedQueryParams info: postWithEscapedMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 99372for com.github.kevinsawicki.http.HttpRequestTest.requestContentTypeNullCharset info: requestContentTypeNullCharset(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 97464for com.github.kevinsawicki.http.HttpRequestTest.optionsUrlEmpty info: optionsUrlEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 110324for com.github.kevinsawicki.http.HttpRequestTest.getUrlEncodedWithSpace info: getUrlEncodedWithSpace(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 93524for com.github.kevinsawicki.http.HttpRequestTest.headEmpty info: headEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 162431for com.github.kevinsawicki.http.HttpRequestTest.bodyOfEmptyErrorResponse info: bodyOfEmptyErrorResponse(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 112316for com.github.kevinsawicki.http.HttpRequestTest.receivePrintStream info: receivePrintStream(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 101590for com.github.kevinsawicki.http.HttpRequestTest.getWithMappedQueryParams info: getWithMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 277044for com.github.kevinsawicki.http.HttpRequestTest.postFormAsEntries info: postFormAsEntries(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 109880for com.github.kevinsawicki.http.HttpRequestTest.bodyOfNonEmptyErrorResponse info: bodyOfNonEmptyErrorResponse(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 88686for com.github.kevinsawicki.http.HttpRequestTest.refererHeader info: refererHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 97257for com.github.kevinsawicki.http.HttpRequestTest.sendWithWriter info: sendWithWriter(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 88764for com.github.kevinsawicki.http.HttpRequestTest.requestContentType info: requestContentType(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 159063for com.github.kevinsawicki.http.HttpRequestTest.customConnectionFactory info: customConnectionFactory(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 95064for com.github.kevinsawicki.http.HttpRequestTest.getParameters info: getParameters(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 24518for com.github.kevinsawicki.http.HttpRequestTest.httpTrust info: httpTrust(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 104195for com.github.kevinsawicki.http.HttpRequestTest.dateHeader info: dateHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 84488for com.github.kevinsawicki.http.HttpRequestTest.getSingleParameterQuoted info: getSingleParameterQuoted(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFailure
+java.lang.AssertionError: expected:<2> but was:<null>
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at com.github.kevinsawicki.http.HttpRequestTest.postWithNumericQueryParams(HttpRequestTest.java:2584)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+*************MMAJID testFinished
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.util.Try$.apply(Try.scala:209)
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+MMAJIDRun: 691751for com.github.kevinsawicki.http.HttpRequestTest.postWithNumericQueryParams info: postWithNumericQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 98578for com.github.kevinsawicki.http.HttpRequestTest.getMultipleParameters info: getMultipleParameters(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 89340for com.github.kevinsawicki.http.HttpRequestTest.getQuotedParameters info: getQuotedParameters(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFailure
+java.lang.AssertionError: expected:<us er> but was:<null>
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at com.github.kevinsawicki.http.HttpRequestTest.deleteWithEscapedMappedQueryParams(HttpRequestTest.java:2778)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+*************MMAJID testFinished
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+MMAJIDRun: 326849for com.github.kevinsawicki.http.HttpRequestTest.deleteWithEscapedMappedQueryParams info: deleteWithEscapedMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.util.Try$.apply(Try.scala:209)
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 205751for com.github.kevinsawicki.http.HttpRequestTest.postWithLength info: postWithLength(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 20293for com.github.kevinsawicki.http.HttpRequestTest.appendWithVarargsQueryParamsWithExistingParams info: appendWithVarargsQueryParamsWithExistingParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 99117for com.github.kevinsawicki.http.HttpRequestTest.sendIntHeaderWithoutCode info: sendIntHeaderWithoutCode(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 87420for com.github.kevinsawicki.http.HttpRequestTest.acceptEncodingHeader info: acceptEncodingHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 18368for com.github.kevinsawicki.http.HttpRequestTest.appendVarargsQueryParamsWithExistingQueryStart info: appendVarargsQueryParamsWithExistingQueryStart(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 124965for com.github.kevinsawicki.http.HttpRequestTest.postNonEmptyByteArray info: postNonEmptyByteArray(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 88458for com.github.kevinsawicki.http.HttpRequestTest.headUrlEmpty info: headUrlEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 19757for com.github.kevinsawicki.http.HttpRequestTest.appendVarargsQueryParamsWithPath info: appendVarargsQueryParamsWithPath(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 140533for com.github.kevinsawicki.http.HttpRequestTest.postFormWithNoCharset info: postFormWithNoCharset(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFailure
+java.lang.AssertionError: expected:<user> but was:<null>
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at com.github.kevinsawicki.http.HttpRequestTest.headWithMappedQueryParams(HttpRequestTest.java:2943)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+*************MMAJID testFinished
+	at scala.util.Try$.apply(Try.scala:209)
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+MMAJIDRun: 273958for com.github.kevinsawicki.http.HttpRequestTest.headWithMappedQueryParams info: headWithMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 80311for com.github.kevinsawicki.http.HttpRequestTest.emptyHeaders info: emptyHeaders(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 94942for com.github.kevinsawicki.http.HttpRequestTest.postFormEntryWithNullValue info: postFormEntryWithNullValue(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 95888for com.github.kevinsawicki.http.HttpRequestTest.numberHeader info: numberHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 81830for com.github.kevinsawicki.http.HttpRequestTest.eTagHeader info: eTagHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 117313for com.github.kevinsawicki.http.HttpRequestTest.postForm info: postForm(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 16613for com.github.kevinsawicki.http.HttpRequestTest.appendEmptyVarargsQueryParams info: appendEmptyVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 89255for com.github.kevinsawicki.http.HttpRequestTest.getReader info: getReader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 103498for com.github.kevinsawicki.http.HttpRequestTest.headers info: headers(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFailure
+java.lang.AssertionError: expected:<user> but was:<null>
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at com.github.kevinsawicki.http.HttpRequestTest.putWithVarargsQueryParams(HttpRequestTest.java:2859)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+*************MMAJID testFinished
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+MMAJIDRun: 268541for com.github.kevinsawicki.http.HttpRequestTest.putWithVarargsQueryParams info: putWithVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.util.Try$.apply(Try.scala:209)
+*************MMAJID testStarted
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+*************MMAJID testFinished
+MMAJIDRun: 105882for com.github.kevinsawicki.http.HttpRequestTest.postNonEmptyFile info: postNonEmptyFile(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 109823for com.github.kevinsawicki.http.HttpRequestTest.malformedIntHeader info: malformedIntHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFailure
+java.lang.AssertionError: expected:<us er> but was:<null>
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at com.github.kevinsawicki.http.HttpRequestTest.headWithEscapedMappedQueryParams(HttpRequestTest.java:2998)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+*************MMAJID testFinished
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.util.Try$.apply(Try.scala:209)
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+MMAJIDRun: 292677for com.github.kevinsawicki.http.HttpRequestTest.headWithEscapedMappedQueryParams info: headWithEscapedMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 197943for com.github.kevinsawicki.http.HttpRequestTest.uploadProgressSend info: uploadProgressSend(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 113458for com.github.kevinsawicki.http.HttpRequestTest.postNonEmptyReader info: postNonEmptyReader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 92218for com.github.kevinsawicki.http.HttpRequestTest.traceEmpty info: traceEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 98820for com.github.kevinsawicki.http.HttpRequestTest.postNonEmptyString info: postNonEmptyString(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 38643for com.github.kevinsawicki.http.HttpRequestTest.malformedStringUrl info: malformedStringUrl(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFailure
+java.lang.AssertionError: expected:<us er> but was:<null>
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at com.github.kevinsawicki.http.HttpRequestTest.postWithEscapedVarargsQueryParams(HttpRequestTest.java:2555)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.util.Try$.apply(Try.scala:209)
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+*************MMAJID testFinished
+MMAJIDRun: 296267for com.github.kevinsawicki.http.HttpRequestTest.postWithEscapedVarargsQueryParams info: postWithEscapedVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 88905for com.github.kevinsawicki.http.HttpRequestTest.missingDateHeader info: missingDateHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 183193for com.github.kevinsawicki.http.HttpRequestTest.uploadProgressSendInputStream info: uploadProgressSendInputStream(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 97573for com.github.kevinsawicki.http.HttpRequestTest.getUrlEmpty info: getUrlEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 86449for com.github.kevinsawicki.http.HttpRequestTest.requestContentTypeEmptyCharset info: requestContentTypeEmptyCharset(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 16281for com.github.kevinsawicki.http.HttpRequestTest.appendNullVaragsQueryParams info: appendNullVaragsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 93484for com.github.kevinsawicki.http.HttpRequestTest.lastModifiedHeader info: lastModifiedHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 103218for com.github.kevinsawicki.http.HttpRequestTest.sendReceiveWithoutCode info: sendReceiveWithoutCode(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+java.lang.ClassCastException: sun.net.www.protocol.http.HttpURLConnection cannot be cast to javax.net.ssl.HttpsURLConnection
+*************MMAJID testFailure
+	at com.github.kevinsawicki.http.HttpRequestTest.verifierAccepts(HttpRequestTest.java:1797)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.util.Try$.apply(Try.scala:209)
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+*************MMAJID testFinished
+MMAJIDRun: 183318for com.github.kevinsawicki.http.HttpRequestTest.verifierAccepts info: verifierAccepts(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFailure
+java.lang.AssertionError: expected:<us er> but was:<null>
+	at org.junit.Assert.fail(Assert.java:93)
+	at org.junit.Assert.failNotEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:128)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at com.github.kevinsawicki.http.HttpRequestTest.deleteWithEscapedVarargsQueryParams(HttpRequestTest.java:2804)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+*************MMAJID testFinished
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+MMAJIDRun: 288238for com.github.kevinsawicki.http.HttpRequestTest.deleteWithEscapedVarargsQueryParams info: deleteWithEscapedVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.util.Try$.apply(Try.scala:209)
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+*************MMAJID testFinished
+MMAJIDRun: 88840for com.github.kevinsawicki.http.HttpRequestTest.deleteUrlEmpty info: deleteUrlEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 83103for com.github.kevinsawicki.http.HttpRequestTest.getEmptyParameters info: getEmptyParameters(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFailure
+org.junit.ComparisonFailure: expected:</[%]> but was:</[]>
+	at org.junit.Assert.assertEquals(Assert.java:125)
+	at org.junit.Assert.assertEquals(Assert.java:147)
+	at com.github.kevinsawicki.http.HttpRequestTest.getUrlEncodedWithPercent(HttpRequestTest.java:329)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.execute(JUnitTestExecutor.java:251)
+*************MMAJID testFinished
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.executeWithJUnit4Runner(JUnitTestExecutor.java:319)
+	at edu.illinois.cs.testrunner.execution.JUnitTestExecutor.runOrder(JUnitTestExecutor.java:49)
+	at edu.illinois.cs.testrunner.execution.Executor$.$anonfun$run$1(Executor.scala:30)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.util.Try$.apply(Try.scala:209)
+MMAJIDRun: 523742for com.github.kevinsawicki.http.HttpRequestTest.getUrlEncodedWithPercent info: getUrlEncodedWithPercent(com.github.kevinsawicki.http.HttpRequestTest)
+	at edu.illinois.cs.testrunner.execution.Executor$.run(Executor.scala:28)
+	at edu.illinois.cs.testrunner.execution.Executor$.main(Executor.scala:18)
+	at edu.illinois.cs.testrunner.execution.Executor.main(Executor.scala)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 101180for com.github.kevinsawicki.http.HttpRequestTest.serverErrorCode info: serverErrorCode(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 18184for com.github.kevinsawicki.http.HttpRequestTest.appendMappedQueryParamsWithExistingQueryStart info: appendMappedQueryParamsWithExistingQueryStart(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 88026for com.github.kevinsawicki.http.HttpRequestTest.missingIntHeader info: missingIntHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 100570for com.github.kevinsawicki.http.HttpRequestTest.expiresHeader info: expiresHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 40705for com.github.kevinsawicki.http.HttpRequestTest.appendOddNumberOfParams info: appendOddNumberOfParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 79761for com.github.kevinsawicki.http.HttpRequestTest.nullConnectionFactory info: nullConnectionFactory(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 100216for com.github.kevinsawicki.http.HttpRequestTest.getNoContent info: getNoContent(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 257634for com.github.kevinsawicki.http.HttpRequestTest.getGzipped info: getGzipped(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 234460for com.github.kevinsawicki.http.HttpRequestTest.serverHeader info: serverHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 91037for com.github.kevinsawicki.http.HttpRequestTest.getNonEmptyString info: getNonEmptyString(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 97913for com.github.kevinsawicki.http.HttpRequestTest.deleteWithMappedQueryParams info: deleteWithMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 101745for com.github.kevinsawicki.http.HttpRequestTest.postWithVaragsQueryParams info: postWithVaragsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 200654for com.github.kevinsawicki.http.HttpRequestTest.receiveWriter info: receiveWriter(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 171665for com.github.kevinsawicki.http.HttpRequestTest.postMultipartWithContentType info: postMultipartWithContentType(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 86079for com.github.kevinsawicki.http.HttpRequestTest.acceptHeader info: acceptHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 111128for com.github.kevinsawicki.http.HttpRequestTest.getUrlEncodedWithUnicode info: getUrlEncodedWithUnicode(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 84953for com.github.kevinsawicki.http.HttpRequestTest.postEmptyForm info: postEmptyForm(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 92964for com.github.kevinsawicki.http.HttpRequestTest.putEmpty info: putEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 87906for com.github.kevinsawicki.http.HttpRequestTest.getBufferedReader info: getBufferedReader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 127974for com.github.kevinsawicki.http.HttpRequestTest.putWithEscapedMappedQueryParams info: putWithEscapedMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 122502for com.github.kevinsawicki.http.HttpRequestTest.httpsTrust info: httpsTrust(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 88670for com.github.kevinsawicki.http.HttpRequestTest.getToOutputBodyWithCharset info: getToOutputBodyWithCharset(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 99465for com.github.kevinsawicki.http.HttpRequestTest.getHeaders info: getHeaders(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 31945for com.github.kevinsawicki.http.HttpRequestTest.appendListQueryParams info: appendListQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 94191for com.github.kevinsawicki.http.HttpRequestTest.getAllHeaders info: getAllHeaders(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 333944for com.github.kevinsawicki.http.HttpRequestTest.postMultipart info: postMultipart(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 86048for com.github.kevinsawicki.http.HttpRequestTest.getBytes info: getBytes(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 129223for com.github.kevinsawicki.http.HttpRequestTest.getEmpty info: getEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 168881for com.github.kevinsawicki.http.HttpRequestTest.getError info: getError(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 83661for com.github.kevinsawicki.http.HttpRequestTest.postEmpty info: postEmpty(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 34448for com.github.kevinsawicki.http.HttpRequestTest.negativeBufferSize info: negativeBufferSize(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 32050for com.github.kevinsawicki.http.HttpRequestTest.singleSslSocketFactory info: singleSslSocketFactory(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 271728for com.github.kevinsawicki.http.HttpRequestTest.chunkPost info: chunkPost(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 141009for com.github.kevinsawicki.http.HttpRequestTest.headWithEscapedVarargsQueryParams info: headWithEscapedVarargsQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 124809for com.github.kevinsawicki.http.HttpRequestTest.noError info: noError(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 86819for com.github.kevinsawicki.http.HttpRequestTest.ifNoneMatchHeader info: ifNoneMatchHeader(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 103324for com.github.kevinsawicki.http.HttpRequestTest.putWithMappedQueryParams info: putWithMappedQueryParams(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 105151for com.github.kevinsawicki.http.HttpRequestTest.sendDateHeaderWithoutCode info: sendDateHeaderWithoutCode(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID testStarted
+*************MMAJID testFinished
+MMAJIDRun: 96797for com.github.kevinsawicki.http.HttpRequestTest.badRequestCode info: badRequestCode(com.github.kevinsawicki.http.HttpRequestTest)
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID ignored
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
+*************MMAJID runtimes
