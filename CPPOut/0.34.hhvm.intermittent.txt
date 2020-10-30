@@ -1,0 +1,280 @@
+commit 791e1ca73294c3b7d406caa11bda3aa655f53883
+Author: Julia Pitts <jupi@fb.com>
+Date:   Mon Oct 21 11:40:08 2019 -0700
+
+    Add fake Lwt_unix module to prevent linking against the real one in hh_server
+    
+    Summary:
+    In D13197032 (fixed in D13197031), and again in D13776587 (fixed in D14099177), we accidentally linked against the Lwt_unix module in hh_server. Some internal signaling behavior in Lwt_unix causes Unix.select to fail intermittently with EINTR. Since we directly use Unix.select in a number of places, and we do not handle EINTR in most of them, this causes a number of issues, including failure to load saved states and intermittent server crashes.
+    
+    It's not always easy to tell when a change will result in Lwt_unix being included in hh_server builds. Consider the most recent fix, D14099177. The actual source changes appear to be completely unrelated to Lwt_unix, and have no connection to the place where the server-crashing exception was raised (P60953570).
+    
+    In order to prevent this from happening again, this diff adds a fake Lwt_unix module, to ensure a compiler error in the event that we accidentally link against Lwt_unix from hh_server again in the future.
+    
+    Differential Revision: D14110546
+    
+    fbshipit-source-id: 63708af969b4656e02dea0e0e302584a04d3480a
+
+commit cbd093c6d937c0100e836a55e5ad29f0f5b70674
+Author: Fred Emmott <fe@fb.com>
+Date:   Fri Aug 31 12:35:59 2018 -0700
+
+    fix paths in cmake for low-ptr-def.h
+    
+    Summary:
+    This broke `make install`.
+    
+    This probably isn't goign to fix any intermittent issues, but will fix the nightlies.
+    
+    Builds worked as cmake still knew to execute the command (which did the right
+    thing) on build, but 'make install' needed the actual file.
+    
+    Reviewed By: markw65
+    
+    Differential Revision: D9615764
+    
+    fbshipit-source-id: 5caccb201c1e680f6c0926ce042d5c6e63ad49d3
+
+commit 122a36d877b5a80c9d27490195555fdf273ed4d9
+Author: Jim Geist <jimge@fb.com>
+Date:   Thu May 17 10:31:35 2018 -0700
+
+    Fix intermittent crash on debugger launch/attach
+    
+    Summary: Parameter variables were being returned from tryGetString and saved in type 'const auto&'. The returned string object goes out of scope as soon as the statment is over, so the reference is to a destructed object. Removing the reference to save the actual string.
+    
+    Reviewed By: ebluestein
+    
+    Differential Revision: D7974926
+    
+    fbshipit-source-id: 17cb0dbf66ccbed3c8d8e8c47ece618bfe4c1fa5
+
+commit 3a8b37a4c7b7cbc652998a721a688ca85abfa1a3
+Author: Neal Poole <neal@fb.com>
+Date:   Sun Jan 22 11:41:42 2017 -0800
+
+    Properly type invariant_violation to be sprintf-style
+    
+    Summary:
+    The lack of this is bugging me. I've spent a bunch of time trying to clean this up, but I can only work on it intermittently and it requires setting up a custom hh_client/hh_server, which is annoying and slow (I need to wait for hh_server to warm up) so there isn't a ton of progress.
+    
+    The plan is to mute all of the existing badness with HH_FIXME, then come back later and clean it up (and get other people to work on it too) I'm in the middle of using fixme.par and a version of hh_client to write diffs to add those. I won't land this until the weekend, after I've landed those diffs and confirmed trunk is clean.
+    
+    Differential Revision: D4414278
+    
+    fbshipit-source-id: 00e9199508add966b6cec618cd290633e52f0fba
+
+commit e952492969bff96d1c2b02087600de4076942b29
+Author: Philip Hölzenspies <drphil@fb.com>
+Date:   Fri Jan 13 08:02:59 2017 -0800
+
+    Fixed corner-case of intermittent Noop inside statement blocks.
+    
+    Summary: The new parser keeps empty statements, so a `;;` at the end of the statement inserts a `Noop`. For fidelity with the AST parser, we must fix this case.
+    
+    Reviewed By: ericlippert
+    
+    Differential Revision: D4403596
+    
+    fbshipit-source-id: 96838f58d3350aa43bdaad8c2bf85a40b55abdc6
+
+commit 1bde6aa5e193353a7cf84cef02570af398472e72
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Aug 28 15:15:37 2015 -0700
+
+    Flakeylist Monolog\Handler\RotatingFileHandlerTest
+    
+    Summary: Writes to a fixed location without adequate guards, will
+    intermittently fail.
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D2393791
+
+commit 1d931280a3f017f02ff48933ea65b457c93c8a5f
+Author: Bert Maher <bertrand@fb.com>
+Date:   Wed Jan 14 09:21:58 2015 -0800
+
+    lstat_stat_variation22 is flaky due to race
+    
+    Summary: It fails intermittently in contbuild, and I finally realized that it
+    checks stat(' '), and mkdir_variation1 creates a directory named ' ', so they
+    race.
+    
+    Reviewed By: @swtaarrs
+    
+    Differential Revision: D1781460
+    
+    Signature: t1:1781460:1421219891:e561f9adb9fae9bcdff26efbb4da0f19bec514fc
+
+commit 3918a2ccceb98230ff517601ad60aa6bee36e2c4
+Author: Alex Malyshev <alexanderm@fb.com>
+Date:   Tue Oct 28 15:55:34 2014 -0700
+
+    Replace use of MAX macro with std::max in ZendPack
+    
+    Summary: This has randomly bitten me in open source builds. I intermittently get
+    an error saying that MAX isn't defined.
+    
+    Instead of trying to figure out what's going on, I'm just gonna switch
+    it to std::max.
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D1636740
+
+commit 738d98caea9a636515c29defb95c0150663121f7
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Sep 26 12:56:20 2014 -0700
+
+    Dont init request-local stream wrappers in Stream::getWrapper
+    
+    Summary: Causes intermittent SIGSEGV with StatCache.
+    
+    Reviewed By: @markw65
+    
+    Differential Revision: D1581335
+
+commit cc1518ab7c7b4b92bc2f1722990e080a3c82d7ca
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Mon Sep 22 17:11:26 2014 -0700
+
+    Make numStackArgs() assert in ARM codegen more verbose
+    
+    Summary: This is triggering intermittently in some framework test runs and we
+    have no idea why. This will help debug.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1570865
+
+commit e6e780565a62641620393dd455f222e01b7162b8
+Author: Dario Russi <drussi@fb.com>
+Date:   Thu May 1 16:21:22 2014 -0700
+
+    Disable inlining test
+    
+    Summary: Disable test failing intermittently
+    
+    Reviewed By: @alexmalyshev
+    
+    Differential Revision: D1307683
+
+commit 369f030253f551409ed8db090b3e761520d86233
+Author: Owen Yamauchi <oyamauchi@fb.com>
+Date:   Wed Apr 9 08:45:18 2014 -0700
+
+    Skip priv1 and priv5.php in ARM mode for now
+    
+    They're failing intermittently because catch traces don't work.
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1267080
+
+commit a52a835859b532b019fffe1b5b587c6d9b29b956
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Thu Mar 13 14:08:58 2014 -0700
+
+    Blacklist intermitently-hanging vfsstream test
+    
+    This test intermittently hangs for > 24h
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1219833
+
+commit 16555d9b6d1cc024b04cff46fd0cfb30444effe9
+Author: Sean Cannella <seanc@fb.com>
+Date:   Wed Oct 2 20:27:55 2013 -0700
+
+    Fix intermittently failing file tests
+    
+    File tests run in parallel should use independent paths to avoid creation/teardown interfering with each other
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D994417
+
+commit 85a381a725450bd4dcdff42b1c564a8d3ec8c415
+Author: Edwin Smith <smith@fb.com>
+Date:   Sat Sep 7 11:33:38 2013 -0700
+
+    Initialize addrlen before calling accept()
+    
+    We were passing a garbage value to accept(), making it fail
+    intermittently.  (A big value will silently pass and could
+    corrupt memory).  Apparently the value got randomly smaller
+    with our switch to gcc 4.8.1
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D960745
+
+commit 6fca89f259940d11cc91bebb06789f0c5cb7a6e8
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Jun 5 14:48:08 2013 -0700
+
+    Disable flaky zend test
+    
+    I've seen it failing on master intermittently
+
+commit 094a72954936c346c9aa40db5531338317c3e047
+Author: Jordan DeLong <jdelong@fb.com>
+Date:   Mon Apr 22 17:27:38 2013 -0700
+
+    Kneecap an ext_spl test that had too many filesystem things going on
+    
+    It was failing intermittently in contbuild and in different
+    fbcode checkouts.
+
+commit 28032229728a3bc1ac575a8088fdad95dc8569c9
+Author: hzhao <hzhao@facebook.com>
+Date:   Thu Jul 1 22:05:42 2010 -0700
+
+    [hphp-soap] better fix of two SOAP problems
+    
+    Summary:
+    Here's my explanation of what's happening. xmlCreateFileParserCtxt() is
+    definitely buggy with its HTTP/URL fetching and it can sometimes return with
+    ctxt->wellFormed = 0. This failure doesn't always happen:
+    
+    1. It doesn't happen with Jessica's WSDL file during all my tests on dev boxes
+    and production machines.
+    
+    2. It happens frequently with Michael's WSDL file.
+    
+    When it happens, it falls back to soap_xmlParseMemory(), which uses our own
+    HTTP client that's always successful with curl's strong implementation of
+    HTTP/URL. Previously, I didn't see doc->URL to be the filename. This was okay
+    with Michael's case, as his WSDL doesn't have external references. Therefore,
+    this explains why my previous fix solved Michael's problem. Current fix is
+    stronger, so Michael's continues to work.
+    
+    For Jessica's though, since I cannot repro anywhere, I suspect
+    xmlCreateFileParserCtxt() failed on production machines intermittently, esp.
+    last night. When it happens, it falls back to soap_xmlParseMemory(), which
+    didn't set doc->URL correctly. This made all subsequent external XSD file
+    fetching failed, simply because the base URL is empty. This is addressed with
+    this new fix.
+    
+    Test Plan:
+    I have two scripts and they both are working on all machines I tried:
+    
+      <?php  // Jessica's case
+      $client = new
+    SoapClient('http://mctrack001.snc1.facebook.com:8002/pe2.wsdl');
+    
+      <?php // Michael's case
+      class MyClient extends SoapClient {
+        public function __doRequest($request, $location, $action, $version,
+    $one_way) { var_dump($location); exit; } }
+        $client = new
+    MyClient("http://sc-atlastestapp01.thefacebook.com:16011/sys_user.do?WSDL");
+    $client->getRecords();
+    
+    DiffCamp Revision: 129380
+    Reviewed By: iproctor
+    CC: hphp-diffs@lists, iproctor, hzhao, mdevine, jgronski
+    Revert Plan:
+    OK

@@ -1,0 +1,144 @@
+commit 6a34c9527ecb03c99992cf9b8ad97883002b6b23
+Author: Teddy Reed <teddy@casualhacking.io>
+Date:   Fri Sep 18 22:12:21 2020 -0400
+
+    tests: Improve flaky python test handling (#6654)
+
+commit aae2b809add47860a0dee2fbb228bcadf2ba393a
+Author: Teddy Reed <teddy@casualhacking.io>
+Date:   Mon Sep 7 08:40:08 2020 -0400
+
+    tests: Fix flaky test_2_daemon_with_option (#6634)
+
+commit 983d2a30a4d547f89e0202905fc0f38337cd99a4
+Author: Teddy Reed <teddy@casualhacking.io>
+Date:   Sat Feb 29 07:48:41 2020 -0500
+
+    tests: Fix flaky ProcessOpenFilesTest.test_sanity test (#6185)
+
+commit afaaac6d18ca066000cab2b94aaf0265f8758547
+Author: Teddy Reed <teddy@casualhacking.io>
+Date:   Sat Jan 18 19:03:59 2020 -0500
+
+    tests: Improve flakyness of test_processes_memory_cpu (#6182)
+    
+    Co-authored-by: Marek Cirkos <marekcirkos@users.noreply.github.com>
+
+commit 86cd9ec520bbc2bed8eb1e2ea0a23b3ada021e63
+Author: Stefano Bonicatti <stefano.bonicatti@gmail.com>
+Date:   Thu Jan 16 01:54:33 2020 +0100
+
+    Fix flaky LoggerTests.test_logger_log_status (#6171)
+    
+    Logging happens after getting the current time,
+    so the time check should be inverted.
+
+commit 3dfea42d582593098bdf9df59583ed883ac998db
+Author: Filipe Manco <fmanco@fb.com>
+Date:   Wed Feb 20 05:56:30 2019 -0800
+
+    Disable flaky test test_tls_enroll
+    
+    Summary: This test is flaky on some systems. Need to investigate and fix.
+    
+    Reviewed By: guliashvili
+    
+    Differential Revision: D14149533
+    
+    fbshipit-source-id: 7df570c84c66cad8bdc67a1286d91a7c7e8e3502
+
+commit 51b104823ca1113b65b273907e3d8fc2a4cbc02f
+Author: Alexander Kindyakov <akindyakov@fb.com>
+Date:   Thu Feb 14 03:25:34 2019 -0800
+
+    Fix up flaky tests: FileOpsTests.test_safe_permissions and FileOpsTests.test_safe_db_permissions
+    
+    Summary: Please never reuse tmp directory with the same name :(
+    
+    Reviewed By: guliashvili
+    
+    Differential Revision: D14066968
+    
+    fbshipit-source-id: 164d0b9e6f34b102759bc5919dadc37197ff0798
+
+commit d22146beacae42187f10fcf35df04b19fc642a8e
+Author: Alexander <akindyakov@gmail.com>
+Date:   Wed Jun 13 10:18:27 2018 +0100
+
+    Fix up flaky fileops_tests (#4529)
+
+commit 8909602a402d6e01a293f9651e4ce241809a193f
+Author: Zachary Wasserman <zachwass2000@gmail.com>
+Date:   Wed Jul 6 14:59:24 2016 -0700
+
+    Increase block period in flaky BufferedForwarder test (#2222)
+    
+    This test was intermittently failing because it relies on the actual thread
+    scheduling. Our discussion in issue #2218 decided that it was worth keeping the
+    test around, while trying to mitigate the flakiness. The longer sleeps in this
+    test ran successfully hundreds of times in local testing.
+
+commit c2a364c573caf2fb94fb1043e8bbebc66d7540e5
+Merge: d71fa5b 91691f7
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Mon Mar 28 17:51:40 2016 -0700
+
+    Merge pull request #1982 from zwass/asl_test_fix
+    
+    Update flaky test for ASL table
+
+commit 91691f71d61caf807059c7e27eea1b3397fae0dc
+Author: Zachary Wasserman <zachwass2000@gmail.com>
+Date:   Mon Mar 28 12:32:03 2016 -0700
+
+    Update flaky test for ASL table
+    
+    Previously, this test relied on there being console messages available
+    to query for. Now, it actually writes a message to ASL, then verifies
+    that the message can be found. It also exercises a more complicated
+    query than previously. Also remove potentially high latency queries.
+    
+    Fixes issue #1975
+
+commit 28bdcecc19c55c25a1f13175dafda2ae516e71d7
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Sun Nov 8 02:29:49 2015 -0800
+
+    Custom flaky test marker
+
+commit c25d75386a17d439ad423959f875b5bdc54f200c
+Merge: 0589d03 cd8f428
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Wed Oct 28 17:54:03 2015 -0700
+
+    Merge pull request #1606 from theopolis/flaky_tests
+    
+    Mark flaky integration tests
+
+commit cd8f42844a275ddab1b4739dbfe65de36268a786
+Author: Teddy Reed <teddy@prosauce.org>
+Date:   Wed Oct 28 09:40:17 2015 -0700
+
+    Mark flaky integration tests
+
+commit 3d81223dfb2d2eb449ca80bf0b3e96336dff04a3
+Merge: e8d9118 41ef679
+Author: Mike Arpaia <mike@arpaia.co>
+Date:   Wed Sep 16 12:05:51 2015 -0700
+
+    Merge pull request #1508 from marpaia/distributed_test_fixes
+    
+    Making distributed tests more awesome and less flaky
+
+commit 41ef6798c6dca28a22b73f0a77aa6676f7bdf2d4
+Author: Mike Arpaia <mike@arpaia.co>
+Date:   Wed Sep 16 10:36:34 2015 -0700
+
+    Making distributed tests more awesome and less flaky
+    
+    Distributed tests were failing every now and then because the test
+    plugin didn't implement retry's and the test server wasn't always
+    starting up fast enough. I fixed this by refactoring the tests to use
+    the real TLS plugin, which has retry logic. This required some mangling
+    of the configuration options, which should serve as a good reference as
+    well.

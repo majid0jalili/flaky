@@ -1,5 +1,0 @@
-commit b66f78bacff656fbb0dcf7f86d74567443de8081
-Author: Tom Poole <thomas.poole@roli.com>
-Date:   Wed Oct 3 12:47:41 2018 +0100
-
-    Fixed some CoreGraphics image issues in the latest iOS and MacOS SDKs

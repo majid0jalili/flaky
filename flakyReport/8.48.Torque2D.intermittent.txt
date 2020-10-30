@@ -1,5 +1,0 @@
-commit a20f2864a17f3696554382e5232e37d41ccb3db3
-Author: Mich <michaelp@garagegames.com>
-Date:   Tue Feb 5 00:01:17 2013 -0500
-
-    - First push of Torque 2D 2.0 (MIT)

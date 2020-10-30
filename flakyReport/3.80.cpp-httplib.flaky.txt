@@ -1,5 +1,0 @@
-commit 4781156fa18027bede08afb121d39bd7e79d72e9
-Author: yhirose <yuji.hirose.bug@gmail.com>
-Date:   Wed Sep 26 21:35:49 2012 -0400
-
-    Added google test framework.

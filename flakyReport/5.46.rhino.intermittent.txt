@@ -1,5 +1,0 @@
-commit 65b08a7a46dd2515216f55b289912ef78c8d57ba
-Author: Gregory Brail <greg@apigee.com>
-Date:   Tue Jan 27 11:29:45 2015 -0800
-
-    Extracted the stuff that was formerly in testsrc/tests.tar.gz.

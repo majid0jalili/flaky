@@ -1,0 +1,4720 @@
+commit 1711d3ea4a376148de05bec8de679a43dcc0e137
+Author: Leonard Lausen <lausen@amazon.com>
+Date:   Tue Oct 13 13:56:00 2020 -0700
+
+    Mark GPU memory profiler tests as flaky
+
+commit 7f98e7389955248503888519c4c845edbae56129
+Author: Leonard Lausen <lausen@amazon.com>
+Date:   Tue Oct 6 21:09:31 2020 -0700
+
+    Remove build_ccache_wrappers invocation from R-package unittests (#19305)
+    
+    https://github.com/apache/incubator-mxnet/issues/19304 reported flaky compilation failures related to CI ccache configuration.
+
+commit 99466f6d27db4251ce0f06a45741e23c1fb206e1
+Author: Leonard Lausen <lausen@amazon.com>
+Date:   Mon Oct 5 09:49:55 2020 -0700
+
+    Skip flaky test_gpu_memory_profiler_gluon (#19250)
+
+commit 4cd3bed9b478fe3065c4715f19a90c60fd85de98
+Author: Sam Skalicky <samskalicky@gmail.com>
+Date:   Sat Oct 3 13:30:38 2020 -0700
+
+    Backport PRs in v1.7.x missing from v1.x to v1.8.x (#19262) (#19281)
+    
+    * * Fix einsum gradient (#18482)
+    
+    * [v1.7.x] Backport PRs of numpy features (#18653)
+    
+    * add zero grad for npi_unique (#18080)
+    
+    * fix np.clip scalar input case (#17788)
+    
+    * fix true_divide (#18393)
+    
+    Co-authored-by: Hao Jin <hjjn.amzn@gmail.com>
+    Co-authored-by: Xi Wang <xidulu@gmail.com>
+    
+    * [v1.7.x] backport mixed type binary ops to v1.7.x (#18649)
+    
+    * Fix Windows GPU CI (#17962)
+    
+    Update Windows CI to use VS 2019 and enable x64 bit toolchain. Previously we are using an older 32 bit toolchain causing OOM errors during linking. Switching to x64 bit toolchain on the older VS version previously used by the CI was attempted in #17912 and did not work. Update to Cuda 10.2 as it is required by VS 2019. Switch to ninja-build on Windows to speed up build as ninja-build is now preinstalled. Remove logic to install cmake 3.16 on every PR as cmake 3.17 is now preinstalled. Add build retrials due to cuda thrust + VS2019 flakyness.
+    
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+    
+    * backport mixed type
+    
+    Co-authored-by: Leonard Lausen <lausen@amazon.com>
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+    
+    * revise activations (#18700)
+    
+    * [v1.6] Fix the monitor_callback invalid issue during calibration with variable input shapes (#18632) (#18703)
+    
+    * Fix the monitor_callback invalid issue during calibration with variable input shapes
+    
+    * retrigger CI
+    
+    * Add UT for monitor check and disable codecov
+    
+    Co-authored-by: Tao Lv <tao.a.lv@intel.com>
+    
+    * Fail build_windows.py if all retries failed (#18177)
+    
+    * Update to thrust 1.9.8 on Windows (#18218)
+    
+    * Update to thrust 1.9.8 on Windows
+    
+    * Remove debug logic
+    
+    * Re-enable build retries on MSVC (#18230)
+    
+    Updating thrust alone did not help. Similar issues (though less often) still
+    occur with updated thrust, and also with nvidia cub. Tracked upstream at
+    https://github.com/thrust/thrust/issues/1090
+    
+    Co-authored-by: Ke Han <38852697+hanke580@users.noreply.github.com>
+    Co-authored-by: Xingjian Shi <xshiab@connect.ust.hk>
+    Co-authored-by: Hao Jin <hjjn.amzn@gmail.com>
+    Co-authored-by: Xi Wang <xidulu@gmail.com>
+    Co-authored-by: Yijun Chen <chenyijun0902@gmail.com>
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+    Co-authored-by: ciyong <ciyong.chen@intel.com>
+    Co-authored-by: Tao Lv <tao.a.lv@intel.com>
+    
+    Co-authored-by: Leonard Lausen <lausen@amazon.com>
+    Co-authored-by: Ke Han <38852697+hanke580@users.noreply.github.com>
+    Co-authored-by: Xingjian Shi <xshiab@connect.ust.hk>
+    Co-authored-by: Hao Jin <hjjn.amzn@gmail.com>
+    Co-authored-by: Xi Wang <xidulu@gmail.com>
+    Co-authored-by: Yijun Chen <chenyijun0902@gmail.com>
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+    Co-authored-by: ciyong <ciyong.chen@intel.com>
+    Co-authored-by: Tao Lv <tao.a.lv@intel.com>
+
+commit 371b31279bd441d298696f0b74834557a5d611d8
+Author: Leonard Lausen <lausen@amazon.com>
+Date:   Fri Oct 2 15:48:21 2020 -0700
+
+    Backport PRs in v1.7.x missing from v1.x to v1.8.x (#19262)
+    
+    * * Fix einsum gradient (#18482)
+    
+    * [v1.7.x] Backport PRs of numpy features (#18653)
+    
+    * add zero grad for npi_unique (#18080)
+    
+    * fix np.clip scalar input case (#17788)
+    
+    * fix true_divide (#18393)
+    
+    Co-authored-by: Hao Jin <hjjn.amzn@gmail.com>
+    Co-authored-by: Xi Wang <xidulu@gmail.com>
+    
+    * [v1.7.x] backport mixed type binary ops to v1.7.x (#18649)
+    
+    * Fix Windows GPU CI (#17962)
+    
+    Update Windows CI to use VS 2019 and enable x64 bit toolchain. Previously we are using an older 32 bit toolchain causing OOM errors during linking. Switching to x64 bit toolchain on the older VS version previously used by the CI was attempted in #17912 and did not work. Update to Cuda 10.2 as it is required by VS 2019. Switch to ninja-build on Windows to speed up build as ninja-build is now preinstalled. Remove logic to install cmake 3.16 on every PR as cmake 3.17 is now preinstalled. Add build retrials due to cuda thrust + VS2019 flakyness.
+    
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+    
+    * backport mixed type
+    
+    Co-authored-by: Leonard Lausen <lausen@amazon.com>
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+    
+    * revise activations (#18700)
+    
+    * [v1.6] Fix the monitor_callback invalid issue during calibration with variable input shapes (#18632) (#18703)
+    
+    * Fix the monitor_callback invalid issue during calibration with variable input shapes
+    
+    * retrigger CI
+    
+    * Add UT for monitor check and disable codecov
+    
+    Co-authored-by: Tao Lv <tao.a.lv@intel.com>
+    
+    * Fail build_windows.py if all retries failed (#18177)
+    
+    * Update to thrust 1.9.8 on Windows (#18218)
+    
+    * Update to thrust 1.9.8 on Windows
+    
+    * Remove debug logic
+    
+    * Re-enable build retries on MSVC (#18230)
+    
+    Updating thrust alone did not help. Similar issues (though less often) still
+    occur with updated thrust, and also with nvidia cub. Tracked upstream at
+    https://github.com/thrust/thrust/issues/1090
+    
+    Co-authored-by: Ke Han <38852697+hanke580@users.noreply.github.com>
+    Co-authored-by: Xingjian Shi <xshiab@connect.ust.hk>
+    Co-authored-by: Hao Jin <hjjn.amzn@gmail.com>
+    Co-authored-by: Xi Wang <xidulu@gmail.com>
+    Co-authored-by: Yijun Chen <chenyijun0902@gmail.com>
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+    Co-authored-by: ciyong <ciyong.chen@intel.com>
+    Co-authored-by: Tao Lv <tao.a.lv@intel.com>
+
+commit fe7cf9911e580bfd2e7d4c11835201a8b3f104c3
+Author: kpuatamazon <56725192+kpuatamazon@users.noreply.github.com>
+Date:   Tue Sep 22 02:03:17 2020 +0100
+
+    Fix flaky intgemm test in v1.8.x too (#19204)
+
+commit 4e46b518ada8f405029ff0a215bbcf53e560543c
+Author: kpuatamazon <56725192+kpuatamazon@users.noreply.github.com>
+Date:   Mon Sep 21 21:13:17 2020 +0100
+
+    Fix flaky test #19197 by avoiding case that 0.45 mapped to 0.5 (#19201)
+
+commit a563ae34d9af5a6d57bbf58f4ee383675782b88a
+Author: kpuatamazon <56725192+kpuatamazon@users.noreply.github.com>
+Date:   Mon Sep 21 20:30:35 2020 +0100
+
+    Fix intgemm flaky test in #19197 for master (#19202)
+
+commit 9981e847fff9270268385068c5b7d0c3929e46f9
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Tue Aug 18 08:32:35 2020 -0700
+
+    [CI][1.x] Cherrypick: Upgrade unix gpu toolchain (#18186) (#18785)
+    
+    * Update unix gpu toolchain (#18186)
+    
+    * update nvidiadocker command & remove cuda compat
+    
+    * replace cu101 with cuda since compat is no longer to be used
+    
+    * skip flaky tests
+    
+    * get rid of ubuntu_build_cuda and point ubuntu_cu101 to base gpu instead of cuda compat
+    
+    * Revert "skip flaky tests"
+    
+    This reverts commit 1c720fad8791a4518b4012de2e3339a7cdff5d74.
+    
+    * revert removal of ubuntu_build_cuda
+    
+    * add linux gpu g4 node to all steps using g3 in unix-gpu pipeline
+    
+    * remove docker compose files
+    
+    * add back the caffe test since caffe is deprecated for mx2.0 and not 1.x
+    
+    * drop nvidia-docker requirement since docker19.0 supports it by default
+    
+    :q
+    
+    * remove compat from dockerfile
+    
+    * Cherry-pick #18635 to v1.7.x (#18935)
+    
+    * Remove mention of nightly in pypi (#18635)
+    
+    * update bert dev.tsv link
+    
+    Co-authored-by: Sheng Zha <szha@users.noreply.github.com>
+    
+    * disable tvm in CI functions that rely on libcuda compat
+    
+    * tvm off for ubuntu_gpu_cmake build
+    
+    * drop tvm from all unix-gpu builds
+    
+    Co-authored-by: Carin Meier <cmeier@gigasquidsoftware.com>
+    Co-authored-by: Sheng Zha <szha@users.noreply.github.com>
+
+commit d32ba4f24d92b3a4c7e250103203a57bfefe37c6
+Author: Jake Lee <gstu1130@gmail.com>
+Date:   Thu Aug 13 22:19:03 2020 -0700
+
+     [v1.7.x] backport Invoke mkldnn and cudnn BatchNorm when axis != 1 to v1.7.x (#18676) (#18890)
+    
+    * [Improvement] Invoke mkldnn and cudnn BatchNorm when axis != 1 (#18504)
+    
+    * fix batch norm when fix_gamma is True
+    
+    * support gradient accumulation for batch norm
+    
+    * mkldnn batchnorm support grad add
+    
+    * unittest for bn
+    
+    * fix bn arg
+    
+    * fix lint
+    
+    * fix mkldnn
+    
+    * fix mkldnn bn
+    
+    * fix grad when fixing gamma
+    
+    * fix naive gpu bn
+    
+    * fix lint
+    
+    * invoke mkldnn and cudnn batchnorm when axis != 1
+    
+    * backport 18500
+    
+    * change condition
+    
+    * fix
+    
+    * fix
+    
+    * add mkldnn_off for bn
+    
+    * remove mkldnn_off
+    
+    * recover save_000800.json
+    
+    * cast
+    
+    * remove  and fix flaky test
+    
+    Co-authored-by: JackieWu <wkcn@live.cn>
+    
+    Co-authored-by: JackieWu <wkcn@live.cn>
+
+commit 651e24b281e9e2b405808bd4ec0423a4e6a5a946
+Author: Jake Lee <gstu1130@gmail.com>
+Date:   Mon Aug 10 11:37:35 2020 -0700
+
+     [v1.7.x] backport Invoke mkldnn and cudnn BatchNorm when axis != 1 to v1.7.x (#18676)
+    
+    * [Improvement] Invoke mkldnn and cudnn BatchNorm when axis != 1 (#18504)
+    
+    * fix batch norm when fix_gamma is True
+    
+    * support gradient accumulation for batch norm
+    
+    * mkldnn batchnorm support grad add
+    
+    * unittest for bn
+    
+    * fix bn arg
+    
+    * fix lint
+    
+    * fix mkldnn
+    
+    * fix mkldnn bn
+    
+    * fix grad when fixing gamma
+    
+    * fix naive gpu bn
+    
+    * fix lint
+    
+    * invoke mkldnn and cudnn batchnorm when axis != 1
+    
+    * backport 18500
+    
+    * change condition
+    
+    * fix
+    
+    * fix
+    
+    * add mkldnn_off for bn
+    
+    * remove mkldnn_off
+    
+    * recover save_000800.json
+    
+    * cast
+    
+    * remove  and fix flaky test
+    
+    Co-authored-by: JackieWu <wkcn@live.cn>
+
+commit 045efb27842e850f6ddf7c48e5c16e5678508443
+Author: Sheng Zha <szha@users.noreply.github.com>
+Date:   Thu Jul 30 19:19:33 2020 -0700
+
+    [NumPy] DLPack refactor and npx.from_numpy (#18656)
+    
+    * refactor dlpack and add from_numpy to npx
+    
+    * remove reference of DeepNumPy
+    
+    * map platform-dependent types to fixed-size types
+    
+    * update DMLC_LOG_FATAL_THROW
+    
+    * fix flaky
+    
+    * fix flaky
+    
+    * test no error
+
+commit 608afef6fb69129730f4c18d0e42f5a8ac2078a7
+Author: Xi Wang <xidulu@gmail.com>
+Date:   Fri Jul 31 02:30:25 2020 +0800
+
+    Fix dirichlet flaky tests (#18817)
+    
+    * make parameter smoother
+    
+    * minor changes
+
+commit 7908d7eb56fc9d20c12afffd8ea592b959b80bfc
+Author: Yiyan66 <57363390+Yiyan66@users.noreply.github.com>
+Date:   Tue Jul 28 15:11:19 2020 +0800
+
+    [numpy] fix flaky mixed precision binary error (#18660)
+    
+    * temp
+    
+    * change test
+    
+    * fix bad func call
+    
+    * test
+    
+    * rectify
+    
+    * doc
+    
+    * change test
+
+commit a807f6de32213cfec9462c8df2ca1fad4f9bcbad
+Author: Sheng Zha <szha@users.noreply.github.com>
+Date:   Mon Jul 27 22:06:50 2020 -0700
+
+    [NumPy] loss for np array (#17196)
+    
+    * loss for np/nd array
+    
+    * fix flaky
+
+commit 477affeef45c2630825306138c07304727a5e18c
+Author: Yijun Chen <chenyijun0902@gmail.com>
+Date:   Sun Jul 5 14:30:54 2020 +0800
+
+    [v1.7.x] backport mixed type binary ops to v1.7.x (#18649)
+    
+    * Fix Windows GPU CI (#17962)
+    
+    Update Windows CI to use VS 2019 and enable x64 bit toolchain. Previously we are using an older 32 bit toolchain causing OOM errors during linking. Switching to x64 bit toolchain on the older VS version previously used by the CI was attempted in #17912 and did not work. Update to Cuda 10.2 as it is required by VS 2019. Switch to ninja-build on Windows to speed up build as ninja-build is now preinstalled. Remove logic to install cmake 3.16 on every PR as cmake 3.17 is now preinstalled. Add build retrials due to cuda thrust + VS2019 flakyness.
+    
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+    
+    * backport mixed type
+    
+    Co-authored-by: Leonard Lausen <lausen@amazon.com>
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+
+commit fb3fea441f24a874219549e33a2ac0b0da3e8015
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Tue Jun 30 18:37:22 2020 -0700
+
+    [CI][v1.6.x] Fix failing CI pipelines (#18597)
+    
+    * add the missing build_ubuntu_gpu_cuda101_cudnn7_mkldnn_cpp_test in runtime_functions.sh
+    
+    * Revert "add the missing build_ubuntu_gpu_cuda101_cudnn7_mkldnn_cpp_test in runtime_functions.sh"
+    
+    This reverts commit de173b05a393c2b21075b02f276b6fb6e5312530.
+    
+    * Revert "[CI][1.6.x] fix centos 7 url to unblock centos-cpu & gpu pipeline (#18560)"
+    
+    This reverts commit d2713482f9a6a45f1274df87bd34d784a94756ed.
+    
+    * fix centos 7 url to unblock centos-cpu & gpu pipeline
+    
+    * skip quantized conv flaky case (#16866)
+    
+    * Fix quantized concat when inputs are mixed int8 and uint8
+    
+    Change-Id: I4da04bf4502425134a466823fb5f73da2d7a419b
+    
+    * skip flaky test
+    
+    * trigger ci
+    
+    * Trigger empty commit
+    
+    * [v1.7.x] update jetson dockerfile to support CUDA 10.0 (#18339)
+    
+    * update dockerfile for jetson
+    
+    * add toolchain files
+    
+    * update build_jetson function
+    
+    * update ubuntu_julia.sh
+    
+    * update FindCUDAToolkit.cmake
+    
+    * Update centos7_python.sh
+    
+    * revert changes on ubuntu_julia.sh
+    
+    * disable TVM for gpu build
+    
+    * Disable TVM_OP on GPU builds
+    
+    Co-authored-by: Wei Chu <weichu@amazon.com>
+    Co-authored-by: Leonard Lausen <leonard@lausen.nl>
+    
+    * add setuptools to ci/docker/install/requirements
+    
+    * add missing build_ubuntu_gpu_cuda101_cudnn7_mkldnn_cpp_test
+    
+    * add setuptool to docker & cpp-test build syntax error
+    
+    * remove erroneously added cpp tests in 1.6.x
+    
+    * py3 to p2
+    
+    Co-authored-by: Xinyu Chen <xinyu1.chen@intel.com>
+    Co-authored-by: waytrue17 <52505574+waytrue17@users.noreply.github.com>
+    Co-authored-by: Wei Chu <weichu@amazon.com>
+    Co-authored-by: Leonard Lausen <leonard@lausen.nl>
+
+commit e8fce62b369dac627dec23d730661624ec79b957
+Author: Manu Seth <22492939+mseth10@users.noreply.github.com>
+Date:   Mon Jun 15 18:42:51 2020 -0700
+
+    Skip flaky test_gpu_memory_profiler_gluon on cd pipeline (#18565)
+
+commit d2713482f9a6a45f1274df87bd34d784a94756ed
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Mon Jun 15 11:36:33 2020 -0700
+
+    [CI][1.6.x] fix centos 7 url to unblock centos-cpu & gpu pipeline (#18560)
+    
+    * fix centos 7 url to unblock centos-cpu & gpu pipeline
+    
+    * [v1.7.x] update jetson dockerfile to support CUDA 10.0 (#18339)
+    
+    * update dockerfile for jetson
+    
+    * add toolchain files
+    
+    * update build_jetson function
+    
+    * update ubuntu_julia.sh
+    
+    * update FindCUDAToolkit.cmake
+    
+    * Update centos7_python.sh
+    
+    * revert changes on ubuntu_julia.sh
+    
+    * disable TVM for gpu build
+    
+    * Disable TVM_OP on GPU builds
+    
+    Co-authored-by: Wei Chu <weichu@amazon.com>
+    Co-authored-by: Leonard Lausen <leonard@lausen.nl>
+    
+    * skip quantized conv flaky case (#16866)
+    
+    * Fix quantized concat when inputs are mixed int8 and uint8
+    
+    Change-Id: I4da04bf4502425134a466823fb5f73da2d7a419b
+    
+    * skip flaky test
+    
+    * trigger ci
+    
+    Co-authored-by: waytrue17 <52505574+waytrue17@users.noreply.github.com>
+    Co-authored-by: Wei Chu <weichu@amazon.com>
+    Co-authored-by: Leonard Lausen <leonard@lausen.nl>
+    Co-authored-by: Xinyu Chen <xinyu1.chen@intel.com>
+
+commit fb73de7582de4e622299a4ad045e25f771568193
+Author: Haibin Lin <linhaibin.eric@gmail.com>
+Date:   Wed Jun 10 19:54:25 2020 -0700
+
+    remove mx.module.* APIs for MXNet 2.0 (#18525)
+    
+    * remove Module tests
+    
+    * remove APIs relying on module
+    
+    * remove docs and tools using mx.module
+    
+    * remove executor manager
+    
+    * remove ssd and ncf examples
+    
+    * add back grad compression api doc
+    
+    * fix lint
+    
+    * add back cpredict exmaple
+    
+    * fix resnet memory test
+    
+    * remove tests
+    
+    * remove tests/python/tensorrt/test_tensorrt_lenet5.py since it depends on a model traiend by mx.Module
+    
+    * skip flaky test
+    
+    * fix quantization test
+    
+    * remove subgraph tests
+    
+    Co-authored-by: EC2 Default User <ec2-user@ip-172-31-81-80.ec2.internal>
+    Co-authored-by: Lin <haibilin@a483e7be4c92.ant.amazon.com>
+
+commit 6ab61284d21e7649a8795f83a13a00605238deea
+Author: Joshua Z. Zhang <cheungchih@gmail.com>
+Date:   Fri May 22 19:49:05 2020 -0700
+
+    Fix flaky CSVIter test (#18390)
+
+commit 51844b277f38240e93a54db2e2b454e480c36794
+Author: Leonard Lausen <lausen@amazon.com>
+Date:   Tue May 12 21:52:08 2020 -0700
+
+    Mark test_np_mixed_precision_binary_funcs flaky (#18290)
+
+commit 21899f87f552b4d78a48ae0947047dce37ce13e1
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Mon May 11 19:25:02 2020 -0700
+
+    Update unix gpu toolchain (#18186)
+    
+    * update nvidiadocker command & remove cuda compat
+    
+    * replace cu101 with cuda since compat is no longer to be used
+    
+    * skip flaky tests
+    
+    * get rid of ubuntu_build_cuda and point ubuntu_cu101 to base gpu instead of cuda compat
+    
+    * Revert "skip flaky tests"
+    
+    This reverts commit 1c720fad8791a4518b4012de2e3339a7cdff5d74.
+    
+    * revert removal of ubuntu_build_cuda
+    
+    * add linux gpu g4 node to all steps using g3 in unix-gpu pipeline
+
+commit 0580200562a394060520d85621f32fbae20d11c4
+Author: Sheng Zha <szha@users.noreply.github.com>
+Date:   Mon May 4 16:44:27 2020 -0700
+
+    [CI] run pytest in parallel (#18146)
+    
+    * run pytest in parallel
+    
+    * disable memory pool
+    
+    * address flaky ftrl/fm test and layernorm timeout
+    
+    * mark tests as serial
+    
+    * use parametrize in numpy op tests
+    
+    * fix io bugs
+    
+    * fix gluon rnn cell test and doc
+    
+    * replace xfail with raises scope
+    
+    * fix flaky numpy, mkldnn quantize, and rnn tests
+    
+    * fix tempfile/dir usage
+
+commit 4aaffe79140c583e45b03fbd6314c30a7683f9de
+Author: Leonard Lausen <lausen@amazon.com>
+Date:   Tue Apr 28 17:00:14 2020 -0700
+
+    Update test_mlp.py (#18156)
+    
+    0.96 is flaky http://jenkins.mxnet-ci.amazon-ml.com/blue/rest/organizations/jenkins/pipelines/mxnet-validation/pipelines/centos-cpu/branches/master/runs/1869/nodes/146/steps/263/log/?start=0
+
+commit 3ba1751188035b2c3198f3416130a515bc8c930d
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Fri Apr 10 10:11:40 2020 -0700
+
+    [R][v1.6.x] Fix blocked pipelines [windows,unix-cpu,unix-gpu] on v1.6.x (#17993)
+    
+    * fix R error; backport 1 line from #17228
+    
+    * print exception
+    
+    * remove namespace to resolve load_module not found error
+    
+    * fix static build ubuntu 1404 python error in nvidia docker gnutls handshake error
+    
+    * fix rvm version error
+    
+    * fix requantize flaky test (#16709)
+    
+    Co-authored-by: Xinyu Chen <xinyu1.chen@intel.com>
+
+commit 66ee118a455c5e267566f0e3fdc482985f803df0
+Author: Leonard Lausen <lausen@amazon.com>
+Date:   Fri Apr 3 20:20:47 2020 +0000
+
+    Fix Windows GPU CI (#17962)
+    
+    Update Windows CI to use VS 2019 and enable x64 bit toolchain. Previously we are using an older 32 bit toolchain causing OOM errors during linking. Switching to x64 bit toolchain on the older VS version previously used by the CI was attempted in #17912 and did not work. Update to Cuda 10.2 as it is required by VS 2019. Switch to ninja-build on Windows to speed up build as ninja-build is now preinstalled. Remove logic to install cmake 3.16 on every PR as cmake 3.17 is now preinstalled. Add build retrials due to cuda thrust + VS2019 flakyness.
+    
+    Co-authored-by: vexilligera <vexilligera@gmail.com>
+
+commit ab48a43e97d0fda62bdb2eb819b6d2d0fc796eb8
+Author: JiangZhaoh <54654391+JiangZhaoh@users.noreply.github.com>
+Date:   Fri Feb 21 03:00:17 2020 +0800
+
+    Fix flaky - test_operator_gpu.test_np_insert (#17620)
+    
+    * fix flaky
+    
+    * retrigger CI
+
+commit 6cac78608f70fb33eca6af90a081d05a733bc32f
+Author: Hao Jin <hjjn.amzn@gmail.com>
+Date:   Thu Feb 6 22:10:30 2020 -0800
+
+    skip flaky test_convolution_multiple_streams (#17499)
+
+commit 6c733b16331e2f4de97a00bfda4ee5d1827133d4
+Author: Ziyi Mu <ziyi.mu@columbia.edu>
+Date:   Mon Feb 3 22:38:40 2020 -0800
+
+    Disable flaky test_custom_op_fork (#17481)
+    
+    * disable test_custom_op_fork
+    
+    * retrigger ci
+
+commit b72d195754ac57336315d6a25ca7e90cb58b0422
+Author: Rohit Kumar Srivastava <srivastava.141@osu.edu>
+Date:   Wed Jan 22 23:40:27 2020 -0800
+
+    skipping flaky tests randint,log_softmax. Skipped topk due to increased memory footprint (#17410)
+
+commit 52f3bba1e0ef2084430ee19df0bddbf29206e6db
+Author: alicia <32725332+Alicia1529@users.noreply.github.com>
+Date:   Wed Jan 22 16:00:10 2020 +0800
+
+    fix flaky test: boolean index and fix bugs (#17222)
+
+commit 557a29b7024e86979b5927ae81209d8c32d8511d
+Author: Rohit Kumar Srivastava <srivastava.141@osu.edu>
+Date:   Tue Jan 21 11:02:55 2020 -0800
+
+    skipping randint flaky test for large vector and reordering op execution (#17388)
+
+commit 5f5b83f267b2bff2bbfea947deed9c6565e975a7
+Author: alicia <32725332+Alicia1529@users.noreply.github.com>
+Date:   Tue Dec 10 03:02:17 2019 +0800
+
+    skip quantized conv flaky case (#16866) (#16774)
+    
+    * Fix quantized concat when inputs are mixed int8 and uint8
+    
+    Change-Id: I4da04bf4502425134a466823fb5f73da2d7a419b
+    
+    * skip flaky test
+    
+    * trigger ci
+    
+    [Numpy] add op full_like, c++ impl, fix zeros_like, ones_like type inference (#16804)
+
+commit 3b8fdacd16fd10143e841f202df551cebb89fbf6
+Author: Xinyu Chen <xinyu1.chen@intel.com>
+Date:   Mon Dec 9 13:57:52 2019 +0800
+
+    skip quantized conv flaky case (#16866)
+    
+    * Fix quantized concat when inputs are mixed int8 and uint8
+    
+    Change-Id: I4da04bf4502425134a466823fb5f73da2d7a419b
+    
+    * skip flaky test
+    
+    * trigger ci
+
+commit c583e44816a5e383493f35e69daaa92a47e40e39
+Author: Xinyu Chen <xinyu1.chen@intel.com>
+Date:   Tue Nov 5 13:57:06 2019 +0800
+
+    fix requantize flaky test (#16709)
+
+commit aa1074dc1704d3732ab205c43d48083ef8c69680
+Author: Tao Lv <tao.a.lv@intel.com>
+Date:   Thu Oct 31 22:55:13 2019 +0800
+
+    Upgrade MKL-DNN dependency to v1.0 (#16555)
+    
+    * [mkldnn-v1.0] Initiate the transition to MKL-DNN v1.0 (#15706)
+    
+    * update mkldnn to 1.0.1 release
+    
+    * change makefile
+    
+    * change cmake
+    
+    * update ci build and pip package build
+    
+    * fix typo in mkldnn.mk
+    
+    * fix build for USE_BLAS=mkl & bump MKL version
+    
+    * skip mkldnn unit tests
+    
+    * remove iomp5 from mx_mkldnn_lib
+    
+    * ci: skip test_mkldnn_install
+    
+    * retrigger ci
+    
+    * retrigger ci
+    
+    * retrigger ci
+    
+    * [mkldnn-v1.0] Update MKL-DNN to v1.0.2 (#16012)
+    
+    * bump mkldnn to v1.0.2
+    
+    * skip quantization unit test
+    
+    * add useless build flag
+    
+    * Fixes openblas installation for static build
+    
+    * empty commit
+    
+    * [mkldnn-v1.0] Enable base code with new APIs. (#16064)
+    
+    * fix comments (#8)
+    
+    * add base code for mkldnn 1.0
+    
+    * fix comments
+    
+    * Update mkldnn.mk
+    
+    * add base code for mkldnn 1.0
+    
+    * fix build
+    
+    * fix lint
+    
+    * fix lint
+    
+    * [mkldnn-v1.0] Add MKL-DNN Convolution (#16141)
+    
+    * add mkldnn conv
+    
+    * revert unnecessary change
+    
+    * fix testcase fail for cpu: test_convolution_independent_gradients
+    
+    * fix failed testcase: test_reshape_transpose_6d&&test_weight_async_reorder
+    
+    * fix comments
+    
+    * change variable name from weights to weight in mkldnn_conv
+    
+    * [mkldnn-v1.0] Add MKL-DNN activation (#16195)
+    
+    * add mkldnn act; pass lint; pass mnist training
+    
+    * make bwd as private member
+    
+    * [mkldnn-v1.0] Add MKL-DNN BN (#16199)
+    
+    * add mkldnn bn
+    
+    * add static_cast to transform data type
+    
+    * change mkldnn_args_map_t
+    
+    * retrigger CI
+    
+    * add mkldnn lrn (#16223)
+    
+    * [mkldnn-v1.0] Add MKL-DNN Transpose (#16250)
+    
+    * add mkldnn transpose
+    
+    * using mkldnn_args_map_t instead of std::unordered_map<int, mkldnn::memory>
+    
+    * [mkldnn-v1.0] Add MKL-DNN softmax (#16246)
+    
+    * add mkldnn softmax
+    
+    * trigger CI
+    
+    * [mkldnn-v1.0] Add MKL-DNN FC (#16221)
+    
+    * add mkldnn fc; pass lint; pass mnist training
+    
+    * add TODO info for future debug
+    
+    * [mkldnn-v1.0] Add MKL-DNN  deconv (#16259)
+    
+    * add mkldnn deconv
+    
+    * coding style
+    
+    * trigger CI
+    
+    * add mkldnn softmax_output (#16222)
+    
+    * [mkldnn-v1.0] Add MKL-DNN Pooling (#16272)
+    
+    * add mkldnn pooling
+    
+    * add workaround for mkldnn v1.0 pooling fwd && bwd workspace mismatch
+    
+    * code clean
+    
+    * fix lint error
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * add extra work_space check and fix some typo
+    
+    * trigger CI
+    
+    * [mkldnn-v1.0] Add MKL-DNN reshape&flatten&expand_dims (#16258)
+    
+    * Add mkldnn 1.0 support for reshape/flatten/expanddims ops
+    
+    * improve log & modify definition location of args_map_
+    
+    * fix comments
+    
+    * rebase code
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * [mkldnn-v1.0] Add MKL-DNN int8 activation&pooling&flatten (#16425)
+    
+    * Add mkldnn quantized activation/pooling/flatten
+    
+    * int8 flatten
+    
+    * [mkldnn-1.0] int8 conv quantize dequantize requantize (#16283)
+    
+    * int8 conv quantize dequantize requantize
+    
+    Change-Id: Ibd9df97288a95c61d6d85ec3831fd18b626ca283
+    
+    * Fix lint
+    
+    * Fix clang build
+    
+    Change-Id: I9468774d014c852901e4cc3bffabd8a3d8004519
+    
+    * add mkldnn sum concat (#16263)
+    
+    * [mkldnn-1.0] mkldnn int8 elemwise_add (#16454)
+    
+    * add mkldnn int8 elemwise_add
+    
+    * add workaround to fix format any issue
+    
+    * code clean
+    
+    * upgrade int8 bn to MKLDNN1.0 (#16458)
+    
+    * [mkldnn-v1.0] Fused RNN Op (#16420)
+    
+    * [mkldnn-v1.0] Add MKL-DNN int8 fc (#16457)
+    
+    * Add mkldnn_v1.0 int8 fc
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * [mkldnn-v1.0] Update enabling flag for MKL dropout (#16433)
+    
+    * use MSHADOW_USE_MKL to determine whther to use mkl optimized dropout
+    
+    * rebase code
+    
+    * [mkldnn-1.0] upgrade int8 concat to MKLDNN1.0 (#16466)
+    
+    * [mkldnn-1.0] upgrade int8 concat to MKLDNN1.0
+    
+    * fix lint
+    
+    * use mkldnn_args_map_t
+    
+    * update dict usage style
+    
+    * retrigger CI
+    
+    * retrigger CI again
+    
+    * retrigger CI again 2
+    
+    * [mkldnn-v1.0] Add MKL-DNN slice (#16484)
+    
+    * change slice to mkldnn v1.0
+    
+    * fix lint
+    
+    * [mkldnn-1.0] add mkldnn subgraph fc (#16468)
+    
+    * add mkldnn subgraph fc
+    
+    * code clean
+    
+    * trigger CI
+    
+    * [mkldnn-v1.0]enable mkldnn concat (#16507)
+    
+    * enable mkldnn concat
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * [mkldnn-v1.0] Enable mkldnn cpp-test, copy op, concat op (#16503)
+    
+    * [mkldnn-v1.0] Enable mkldnn test, copy op, concat op
+    
+    Exclude gpu topology via MXNET_USE_CUDA
+    
+    nit
+    
+    default format
+    
+    Remove whitespace
+    
+    * Unix-GPU Tensor-RT build timeout, re-trigger CI
+    
+    * [mkldnn-1.0] add skipped case for mkldnn_v1.0 (#16470)
+    
+    * add skipped case for mkldnn_v1.0
+    
+    * enable mkl quantized testcase
+    
+    * enable skipped testcase
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * [mkldnn-1.0]enable mkldnn elemwise_sum (#16521)
+    
+    * enable mkldnn elemwise_sum
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * trigger CI
+    
+    * [mkldnn-v1.0] Enable more checks for MXNET_USE_MKLDNN (#16520)
+    
+    * open USE_MKLDNN check
+    
+    * trigger ci
+    
+    * ci
+    
+    * [mkldnn-v1.0]Minor fix for leakyrelu compile flag (#16519)
+    
+    * change to MXNET_USE_MKLDNN == 100
+    
+    * trigger
+    
+    * remove MKL license (#16534)
+    
+    * change MXNET_USE_MKLDNN from 100 to 1 (#16551)
+    
+    * re-enable unit tests (#16565)
+    
+    * [mkldnn-v1.0] Skip flaky test for unidirectional rnn_relu (#16545)
+    
+    Skip `test_rnnrelu_sym`, and add some issue tracking message
+    
+    Add return
+    
+    Revert test_rnnrelu_sym to origin
+    
+    * Add some annotations and log strings, rename mem_desc variables (#16609)
+    
+    * [mkldnn-v1.0]set fc weight layout as mkldnn v0.2x did (#16593)
+    
+    * set fc weight layout as mkldnn v0.2x did
+    
+    * fix lint
+    
+    * [mkldnn-v1.0] Upgrade to MKL-DNN v1.0.4 patch release (#16592)
+    
+    * upgrade to mkldnn v1.0.3 patch release
+    
+    * retrigger ci
+    
+    * mkldnn v1.0.4 patch release
+    
+    * [mkldnn-1.0]Rebase to master (#16648)
+    
+    * fixed broken links across multiple files (#16581)
+    
+    * fix missing docs due to git add issues (#16496)
+    
+    * Create SECURITY.md (#16573)
+    
+    * Create SECURITY.md
+    
+    * Update SECURITY.md
+    
+    * [Numpy] Support N_D(N>=3) batch_dot (#16586)
+    
+    * Support N_D(N>=3) batch_dot
+    
+    * use 1E-4
+    
+    * fix lint
+    
+    * remove unnecessary comment
+    
+    * Update test_numpy_op.py
+    
+    * Large Vector tests for DGL Ops Part 2 (#16497)
+    
+    * add hyperbolic, logical, sign and regression tests for large vector
+    
+    * changed hyperbolic functions into existing trignometric functions
+    
+    * fix trigo and simple bind needs shape as tuple
+    
+    * fix logical ops, add with_seed
+    
+    * fix arcosh in largearray, remove regression from largevector
+    
+    * [Numpy] Loading numpy-incompatible NDArray in numpy-compatible mode (#16597)
+    
+    * Make MXIsNumpyShape return enum
+    
+    * address the comment
+    
+    * Surpress subgraph log in CI (#16607)
+    
+    Change-Id: Ia2ed6fdbb1d2cb5cc607a8856ca13ee338e27eac
+    
+    * Fix dequantize memory corruption (#16606)
+    
+    Change-Id: I51b62a32987bdbcf96f04b1bc6617e66796f648b
+    
+    * [MKLDNN]Fix reorder2default (#16602)
+    
+    * Fix reorder2default
+    
+    Change-Id: I74c87af9535f6264e6d1ea7eaed089a6480a3358
+    
+    * fix
+    
+    Change-Id: I6d07b43b520a47e7c78bd4b4b6390f5fb95e6957
+    
+    * Fix
+    
+    Change-Id: Id72f25c34291be4711f55569c6d61467edd6113d
+    
+    * Fix CI
+    
+    Change-Id: I8c33a82555d5ace2d0b682c1e3eefa13f3a44768
+    
+    * Run CI
+    
+    Change-Id: Ie8a6dab80ef91c0337cafbae4e3db277e0c7ebf7
+    
+    * second round of fixing broken links in multiple files (#16598)
+    
+    * Python Docstring Convetion (#16550)
+    
+    * Docstring convetnion for
+    
+    * Docstring convention for
+    
+    * Docstring convention for
+    
+    * Docstring convention for
+    
+    * Docstring convention for
+    
+    * Docstring convention for
+    
+    * Docstring convention
+    
+    * Revert removing new line
+    
+    * Remove white space
+    
+    * [MXNET-1434] Fix a broken link for basic C++ tutorial (#16461)
+    
+    * Fix for wrong reqs set after switching from training to inference (#16553)
+    
+    * Debugging reqs
+    
+    * Move literal strings to const static members
+    
+    * Fix lint
+    
+    * julia/docs: more DRY on page rendering (#16396)
+    
+    * [mkldnn-v1.0]rebase with master (#16649)
+    
+    * fixed broken links across multiple files (#16581)
+    
+    * fix missing docs due to git add issues (#16496)
+    
+    * Create SECURITY.md (#16573)
+    
+    * Create SECURITY.md
+    
+    * Update SECURITY.md
+    
+    * [Numpy] Support N_D(N>=3) batch_dot (#16586)
+    
+    * Support N_D(N>=3) batch_dot
+    
+    * use 1E-4
+    
+    * fix lint
+    
+    * remove unnecessary comment
+    
+    * Update test_numpy_op.py
+    
+    * Large Vector tests for DGL Ops Part 2 (#16497)
+    
+    * add hyperbolic, logical, sign and regression tests for large vector
+    
+    * changed hyperbolic functions into existing trignometric functions
+    
+    * fix trigo and simple bind needs shape as tuple
+    
+    * fix logical ops, add with_seed
+    
+    * fix arcosh in largearray, remove regression from largevector
+    
+    * [Numpy] Loading numpy-incompatible NDArray in numpy-compatible mode (#16597)
+    
+    * Make MXIsNumpyShape return enum
+    
+    * address the comment
+    
+    * Surpress subgraph log in CI (#16607)
+    
+    Change-Id: Ia2ed6fdbb1d2cb5cc607a8856ca13ee338e27eac
+    
+    * Fix dequantize memory corruption (#16606)
+    
+    Change-Id: I51b62a32987bdbcf96f04b1bc6617e66796f648b
+    
+    * [MKLDNN]Fix reorder2default (#16602)
+    
+    * Fix reorder2default
+    
+    Change-Id: I74c87af9535f6264e6d1ea7eaed089a6480a3358
+    
+    * fix
+    
+    Change-Id: I6d07b43b520a47e7c78bd4b4b6390f5fb95e6957
+    
+    * Fix
+    
+    Change-Id: Id72f25c34291be4711f55569c6d61467edd6113d
+    
+    * Fix CI
+    
+    Change-Id: I8c33a82555d5ace2d0b682c1e3eefa13f3a44768
+    
+    * Run CI
+    
+    Change-Id: Ie8a6dab80ef91c0337cafbae4e3db277e0c7ebf7
+    
+    * second round of fixing broken links in multiple files (#16598)
+    
+    * Python Docstring Convetion (#16550)
+    
+    * Docstring convetnion for
+    
+    * Docstring convention for
+    
+    * Docstring convention for
+    
+    * Docstring convention for
+    
+    * Docstring convention for
+    
+    * Docstring convention for
+    
+    * Docstring convention
+    
+    * Revert removing new line
+    
+    * Remove white space
+    
+    * [MXNET-1434] Fix a broken link for basic C++ tutorial (#16461)
+    
+    * Fix for wrong reqs set after switching from training to inference (#16553)
+    
+    * Debugging reqs
+    
+    * Move literal strings to const static members
+    
+    * Fix lint
+    
+    * julia/docs: more DRY on page rendering (#16396)
+    
+    * Disables test_bulking_operator_gpu due to flakiness (#16611)
+    
+    * C Api for simplebind, fix comment for trigoops, add atol to assert (#16585)
+    
+    * C Api for simplebind, fix comment for trigoops, add atol to assert
+    
+    * fix build issues
+    
+    * fix lint and add regression test
+    
+    * fix indent
+    
+    * api doc and function name change
+    
+    * fix lint and add infer shape test
+    
+    * Imagenet inference to nightly fix (#16599)
+    
+    * split to cd and shell
+    
+    * comment
+    
+    * lots of prints
+    
+    * copy binary at correct location
+    
+    * remove comments
+    
+    * add mkl lib
+    
+    * update docker run build function
+    
+    * set nvidia docker true to run imagenet inference on GPU
+    
+    * Revert "set nvidia docker true to run imagenet inference on GPU"
+    
+    This reverts commit 98f8eef2057351d7964f1e9326ea6772c216f0af.
+    As we don't need GPU for compilation.
+    
+    * Fix python doc build issue (#16630)
+    
+    * pin the pip versions
+    
+    * remove nbconvert comment
+    
+    * Faster general take (#16615)
+    
+    * Sped up perf of take op when axis != 0
+    
+    * Formatting and syntax fixes
+    
+    * Rename Take to specify axis
+    
+    * Fix line length lint errors
+    
+    * [Gluon] Don't serialize shared parameters twice (#16582)
+    
+    Add deduplicate argument (default of False) to save_parameters.
+    
+    * Fix index overflow bug in einsum (#16589)
+    
+    * fix index overflow
+    
+    * check index overflow
+    
+    * fix index overflow in einsum path
+    
+    * fix indent
+    
+    * reduce NPY_MAXARGS
+    
+    * safe accumulate
+    
+    * Move some subgraph verbose to MXNET_SUBGRAPH_VERBOSE=2 (#16622)
+    
+    * Move subgraph pass log to verbose=2
+    
+    * Run CI
+    
+    * add npx reshape (#16640)
+    
+    * RNNOp only call cuda/cudnn if GPU ctx is requested (#16632)
+    
+    * fix bad encode (#16641)
+    
+    * [Perl] - ndarray to native array conversion fix (#16635)
+    
+    * fixing broken links in multiple files - round 3 (#16634)
+    
+    * add type switch to weight tensor (#16543)
+    
+    * numpy doc enhancement (#16637)
+    
+    * Change NDArray to ndarray for npx ops
+    
+    Add nonzero
+    
+    boolean mask supports boolean ndarray
+    
+    Add argmin op and interoperability test for nonzero
+    
+    Fix vdot, inner, outter docs
+    
+    Add nonzero to mx.nd.np
+    
+    Add docs
+    
+    Fix
+    
+    * Fix lint
+    
+    * Fix
+    
+    * Fix
+    
+    * Fix get_constant
+    
+    * Disable float16 test (#16643)
+    
+    * Fix GetMKLDNNData for delay alloc (#16618)
+    
+    * Fix GetMKLDNNData for delay alloc
+    
+    * Run CI
+    
+    * Run CI
+    
+    * Run CI
+    
+    * Run CI
+    
+    * Run CI
+    
+    Change-Id: I7ac2796e0ee8439c92fd2bd7a70a23a359b76b12
+    
+    * Revert "[mkldnn-1.0]Rebase to master (#16648)"
+    
+    This reverts commit dea3dd23d1982c913b3af6cfc7f4115c2cfa7244.
+    
+    * [mkldnn-v1.0] Minor fix of mkldnn-v1.0 transition (#16644)
+    
+    mk and rm directory in mkldnn.mk
+    
+    ndarray.cc redundant whitespace
+    
+    mkldnn_act rename variables of bwd primitives
+    
+    mkldnn_rnn.cc iterator -> const_iterator
+    
+    Use != instead of < for iterator in for-loop
+    
+    Code comment for explaining the reason why excludes the last layer
+    
+    * [mkldnn-v1.0]rm int8 sum workaround (#16623)
+    
+    * rm int8 sum workaround due to mkldnn lib update
+    
+    * simple dims asignments in mkldnn_quantized_elemwise_add.cc
+    
+    * make MKLDNN macro simple for imperative_utils.h (#16652)
+    
+    * fix ci jenkins step groovy (#16659)
+    
+    * Adopt autograd.record() context to RNNOp (#16657)
+    
+    * Use memcopy instead of set_handle when num_layer=0, direction=1 (#16663)
+    
+    * fallback mkldnn fc bwd in imperative mode (#16672)
+    
+    * disable MKLDNN FC backward
+    
+    * [mkldnn-v1.0] Must reorder and emplace weights for inference primitives (#16682)
+    
+    * add default parameter for mkldnn rnn
+
+commit 6af6570b065e1d4886621763777297eedb2fde84
+Author: Lin Yuan <apeforest@gmail.com>
+Date:   Thu Sep 19 13:05:59 2019 -0700
+
+    fix flaky test (#16191)
+
+commit 6122dfc763cff08dc34409b38f3eb94dc2986390
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Wed Sep 4 10:48:17 2019 -0700
+
+    Add Large tensor vector test cases (#15941)
+    
+    * add random ops
+    
+    * add shuffle to test large array
+    
+    * shape evaluation after value check
+    
+    * add log, exponent, power ops
+    
+    * fix sequence reverse issue in test_large_array and add sequence ops to test_large_vector
+    
+    * add binary arithmetic
+    
+    * fix lint, minor mistakes in large_array; add nn op to tensor
+    
+    * Trigger notification coz of test_operator.test_laop_6 error
+    
+    * Trigger notification coz of test_operator.test_laop_6 error
+    
+    * Trigger notification bcoz R failures
+    
+    * address comments
+    
+    * normal distribution assert statement fix; randint dtype check
+    
+    * correct layernorm and shuffle
+    
+    * layer norm numpy flaky hence removed, dropout shape fix
+    
+    * comment not working ops
+    
+    * fix multi
+    
+    * Trigger notification
+    
+    * fix seq reverse, uncomment seq mask as it works
+    
+    * index fix and uncomment test
+    
+    * index fix
+    
+    * seq_reverse index fix
+    
+    * uncomment seq reverse test and handle static typecasts
+    
+    * removing commented ops
+    
+    * resolve merge conflict
+    
+    * teardown, lint, remove redundant functions
+    
+    * fix shape assertions and randint low,high
+    
+    * remove waits, add teardown to large_array, change randint assert in large array
+
+commit a8ba6d9fbb24634a0b4547ea269a08704e320578
+Author: Xinyu Chen <xinyu1.chen@intel.com>
+Date:   Tue Sep 3 01:47:20 2019 +0800
+
+    fix flaky test (#16074)
+
+commit 36bab1c39db4088ee61fb3a8f733bd33b3b34de3
+Author: Carin Meier <cmeier@gigasquidsoftware.com>
+Date:   Sun Sep 1 15:26:10 2019 -0400
+
+    Fix flaky clojure profile test (#16058)
+    
+    * Fix flaky clojure profile test
+    
+    * disable profiler test
+
+commit 65928b1936d5d43f237b0f9f9e43115861faf4c0
+Author: Hao Jin <hjjn.amzn@gmail.com>
+Date:   Fri Aug 30 12:43:28 2019 +0800
+
+    NumPy-compatible infrastructure on Gluon (#16024)
+    
+    * numpy infra residual part
+    
+    * Add test
+    
+    * Fix sanity
+    
+    * Fix flaky test
+
+commit 649429d055e8ac89b2a45929ff2344959768a6e3
+Author: Anirudh Subramanian <anirudh2290@ufl.edu>
+Date:   Wed Aug 28 19:37:11 2019 -0700
+
+    Disable flaky test in test_amp_conversion (#16031)
+
+commit bcbdc1cc797064fafc0a46a3dd00d446a7c60357
+Author: Pedro Larroy <pedro.larroy.lists@gmail.com>
+Date:   Sun Aug 18 18:02:00 2019 -0700
+
+    Re-enable flaky test_prelu (#15777)
+    
+    Fixes #12885
+
+commit be49b3b2230d02e57b837355d0322b468ed520bf
+Author: Hao Jin <hjjn.amzn@gmail.com>
+Date:   Wed Aug 7 19:54:02 2019 -0700
+
+    Numpy-compatible Infra (#15581)
+    
+    * [Do not review] [Do not merge] New numpy-compatible sum (#14739)
+    
+    * Add numpy namespace and initial impl of np.sum (not complete)
+    
+    * Clean up
+    
+    * Fix import error
+    
+    * numpy sum
+    
+    * add test and backward data type support
+    
+    * add license to test_numpy_op.py
+    
+    * improve test to reduce flakiness
+    
+    * fix sanity build
+    
+    * extra numeric test and imperative test
+    
+    * add error message for initial argument
+    
+    * [numpy] Infra for supporting numpy ops in imperative mode and Gluon APIs (#14758)
+    
+    * Infra of new ndarray and symbol types for numpy operators
+    
+    * Rename
+    
+    * Fix import problem
+    
+    * Refactor
+    
+    * Remove redundant code
+    
+    * Add docstring
+    
+    * More on numpy ndarray and symbol
+    
+    * Override unimplemented methdos for ndarray and _NumpySymbol
+    
+    * Fix built-in methods of ndarray and _NumpySymbol
+    
+    * Fix test and sanity check
+    
+    * Fix pylint
+    
+    * Address cr comments
+    
+    * Add unit tests for ndarray and _NumpySymbol
+    
+    * Add _true_divide
+    
+    * Fix gpu build
+    
+    * Add future import division
+    
+    * More correct way of checking if an output is from a np compat op
+    
+    * Fix gpu build
+    
+    * Fix output ndarray/symbol types with at least one new ndarray/symbol
+    
+    * Modify true_divide doc
+    
+    * Fix flaky copying zero-size arrays via gpus
+    
+    * Fix zero size in gluon hybridize and zeros/ones symbol not creating new symbol type
+    
+    * Fix doc
+    
+    * Enable np op compat check with name prefix (#14897)
+    
+    * [numpy] Numpy dot (#14831)
+    
+    * Numpy Dot case 1-4 + case 3.5 forward and 0.5 backward
+    
+    * Backward computation and test coverage
+    
+    * numpy-compatible mean (#14859)
+    
+    * [numpy] Some np ops for d2l (#14924)
+    
+    * Add np transpose
+    
+    More ops and namespaces for submodules
+    
+    Add relu and sigmoid
+    
+    Add reshape
+    
+    Fix symbolic name mismatch
+    
+    Add maximum and minimum
+    
+    * Add convenience fluent method
+    
+    * Add ndarray.item()
+    
+    * Fix CI
+    
+    * Fix lint
+    
+    * Fix lint
+    
+    * Fix reshape gpu
+    
+    * Add example
+    
+    * Remove python notebook outputs
+    
+    * Remove notebook output
+    
+    * Add one more example
+    
+    * [numpy] Refactor np modules (#14989)
+    
+    * Refactor
+    
+    * Initial refactoring
+    
+    * Fix notebook
+    
+    * Move numpy op check from backend to frontend
+    
+    * Add homogeneous ndarray check
+    
+    * Fix grouping inhomogeneous types of symbols
+    
+    * Improve error handling of different types of symbols as outputs
+    
+    * Fix test
+    
+    * Fix numpy test
+    
+    * Fix ci
+    
+    * Try to fix gpu ci failure
+    
+    * [numpy] Refactor np module (example runs through) (#15055)
+    
+    * Refactor notebook
+    
+    * notebook working with hybrid block
+    
+    * More refactoring
+    
+    * Remove unnecessary use_np_compat
+    
+    * Use class decorator to initialize numpy ndarrays in parameter.py
+    
+    * Clear notebook outputs
+    
+    * Improve np decorator
+    
+    * Remove npe op from optimizer
+    
+    * Fix CI
+    
+    * Fix functools.wraps issue in Python2
+    
+    * Fix ci
+    
+    * Change np_compat to np_shape
+    
+    * Temporarily disable test_amp
+    
+    * Numpy-compatible stack (#15027)
+    
+    * numpy stack
+    
+    * migrate to use_np_shape
+    
+    * Numpy Unary Ops (#15010)
+    
+    * Unary Ops
+    
+    * new version of unit tests
+    
+    * [numpy] Fix np branch after rebase (#15086)
+    
+    * Add np_array semantics for Gluon
+    
+    Fix notebook
+    
+    Fix sanity
+    
+    Fix gluon deferred infer shape
+    
+    Add np.random.uniform
+    
+    Add random normal
+    
+    Add boolean comparison ops
+    
+    Add np.ndarray indexing
+    
+    Reformat test ndarray indexing
+    
+    Fix unit tests
+    
+    Add one more test of indexing
+    
+    Fix sanity
+    
+    Enable amp test
+    
+    Add np.arange
+    
+    Revert cython unit test to ctypes
+    
+    Delete unnecessary use_np_shape decorator from test
+    
+    Rebase with numpy branch
+    
+    support range as index
+    
+    Fix python2 range type check
+    
+    Add argmax
+    
+    Disable clojure test
+    
+    * Fix ci
+    
+    * Add np.linalg.norm for ord='fro'
+    
+    * Fix pylint
+    
+    * numpy concatenate (#15104)
+    
+    * [WIP][numpy] Fix for D2L Chapters 2/3/4 (#15139)
+    
+    * Fix
+    
+    * Fix linear regression gluon
+    
+    * More fix
+    
+    * Fix pylint
+    
+    * Fix for chapter 4
+    
+    * Add np.add mul div mod pow sub and shuffle
+    
+    * Fix model selection, underfitting, overfitting
+    
+    * Fix weight decay
+    
+    * Fix dropout
+    
+    * Fix
+    
+    * Fix chapter 4
+    
+    * [numpy] Fix d2l performance regression (#15173)
+    
+    * Add np array adapter decorator for layers
+    
+    * Fix performance regression caused by too many conversions between nd.NDArray and np.ndarray
+    
+    * Fix pylint
+    
+    * Fix test backward compatibility issue
+    
+    * Fix test_lambda
+    
+    * Fix (#15188)
+    
+    * fix for chapter6 conv nn (#15224)
+    
+    * [numpy] Fix d2l chapter8 (#15237)
+    
+    * Add np op doc
+    
+    * Fix several issues
+    
+    * Add a N-D dot b 2D support
+    
+    * Simplify array creation api
+    
+    * Add swapaxes
+    
+    * Fix rnn gluon
+    
+    * More fix
+    
+    * Fix pylint
+    
+    * Delete
+    
+    * Fix mp windows
+    
+    * fix for ch11 (#15244)
+    
+    * Numpy-compatible split (#15049)
+    
+    * numpy split
+    
+    * numpy split
+    
+    * unit test
+    
+    * unit test
+    
+    * [numpy] [DO NOT MERGE] Fix d2l chapters 9 and 13 (#15246)
+    
+    * Add npx batch_dot and topk
+    
+    * Text embedding uses numpy
+    
+    * Fix SoftmaxCrossEntropyLoss with np
+    
+    * Fix sentiment cnn
+    
+    * Fix pylint
+    
+    * Fix dot attention
+    
+    * Fix seq2seq attention
+    
+    * Add np.tile
+    
+    * Fix transformer
+    
+    * Fix ci
+    
+    * Fix ci and rebase
+    
+    * [numpy] Fix d2l chapter 5 (#15264)
+    
+    * Fix parameter initializer
+    
+    * Add np.save and np.load
+    
+    * Fix read-write
+    
+    * Fix lint
+    
+    * Numpy compatible max (#15161)
+    
+    * numpy amax
+    
+    * weird cu file diff
+    
+    * fix the unit test error
+    
+    * fix gpu bug
+    
+    * minor fix
+    
+    * fix lint
+    
+    * remove scalar value check
+    
+    * fix the bug on unit test
+    
+    * fix the case () that breaks the kernel launch
+    
+    * add zero dimension unit test
+    
+    * revert the tuple change
+    
+    * use mshadow maximum
+    
+    * remove test zero
+    
+    * change the macro for now
+    
+    * change the cuda to use mashadow op
+    
+    * fix the broadcast_reduce_op_value.cu wrong kernel
+    
+    * add more logic in shape to detect the invalid situation
+    
+    * change back to type swtich
+    
+    * change to as_nd_ndarray
+    
+    * add missing @npx.use_np_shape
+    
+    * retrigger CI
+    
+    * address the comment
+    
+    * undo algorithm import
+    
+    * remove the numeric gradient check
+    
+    * Numpy compatible multinomial (#15219)
+    
+    * draft of multinomial
+    
+    * rename to more concise name
+    
+    * finish shape
+    
+    * complete the forward function
+    
+    * complete forward without handle 0 dimension & scalar
+    
+    * handle 0 dimension
+    
+    * add new line
+    
+    * fix lint
+    
+    * fix the build error
+    
+    * fix lint
+    
+    * finish unit test
+    
+    * change the registration
+    
+    * make multinomial support pvals as mx.ndarray
+    
+    * delete newline
+    
+    * fix lint error
+    
+    * support input as list, mx.ndarray, np.ndarray & unit test
+    
+    * fix lint
+    
+    * fix the include error
+    
+    * fix lint
+    
+    * refactor & pass the tensor instead of tuple to kernel
+    
+    * fix lint
+    
+    * updata the doc
+    
+    * address the comment
+    
+    * Numpy compatible linspace (#15256)
+    
+    * draft
+    
+    * finish linspace implementation
+    
+    * finish linspace
+    
+    * delete newline
+    
+    * fix pylint
+    
+    * add more unit test
+    
+    * address comment
+    
+    * add more test case
+    
+    * disable too-many-arguments
+    
+    * resolve confliction
+    
+    * add ctx
+    
+    * numpy-compatible cumsum (#15309)
+    
+    * [numpy] Misc fix for other chapters (#15332)
+    
+    * Add np.prod
+    
+    * Fix ndarray.reshape accepting positional integers as arguments
+    
+    * Rebase
+    
+    * Fix rebase error
+    
+    * Add np.ndarray.flatten
+    
+    * Fix
+    
+    * Add broadcast_to
+    
+    * Add meshgrid and broadcast_arrays
+    
+    * Fix sin, cos, sinh, cosh not supporting scalars
+    
+    * Add more unary ops supporting python scalars
+    
+    * Fix
+    
+    * Fix
+    
+    * Fix ci
+    
+    * Fix sanity
+    
+    * [numpy] Change d2l chapters cv and gan to use numpy (#15368)
+    
+    * Change op name style to lower case underscore
+    
+    * Add ops under image to npx
+    
+    * Add image submodule to npx
+    
+    * Fix split_and_load use np
+    
+    * Fix fine tuning
+    
+    * Fix bbox and anchor
+    
+    * Fix odd
+    
+    * Fix ssd and rcnn
+    
+    * Remove restriction on binary element-wise scalar
+    
+    * Fix gan
+    
+    * Fix sanity
+    
+    * Try to fix website build failure
+    
+    * Add npx.random.seed
+    
+    * Fix doc
+    
+    * add doc for multinomial, dot, cumsum, clip, abs, exp, arctan (#15386)
+    
+    * [numpy] Fix several places in numpy (#15398)
+    
+    * Fix
+    
+    * More fix
+    
+    * [numpy] fix cython (#15418)
+    
+    * add cython support for numpy
+    
+    * stay with original API for backward compatibility
+    
+    * fix after rebase
+    
+    * get rid of coverage in clang60 mkldnn
+    
+    * fix lint issues
+    
+    * fix flaky test and get rid of extra print
+    
+    * remove numpy examples
+    
+    * revert #15309 #15256 #15219 #15161
+    
+    * remove numpy docs
+    
+    * remove changes to contrib/text/embedding.py
+    
+    * remove numpy changes to gluon peripherals
+    
+    * Revert "remove numpy docs"
+    
+    This reverts commit c104695b28a26738b8700d80c70814e0f583ac55.
+    
+    * get rid of most operators
+    
+    * Revert "get rid of coverage in clang60 mkldnn"
+    
+    This reverts commit 77dc90520b6a2282716ba41987a1f37522daf078.
+    
+    * remove np-compatible from mxnet.image mxnet.initializer
+    
+    * address comments
+
+commit a2b11aed6851c20f7fcf419849dbb3f4b8c4c192
+Author: Manu Seth <22492939+mseth10@users.noreply.github.com>
+Date:   Wed Aug 7 17:34:29 2019 -0700
+
+    Fix PR #15489 (Dynamic Library Loading Support) (#15760)
+    
+    * Dynamic Library Loading Support (#15489)
+    
+    * Accelerator APIs header file
+    
+    * adding example to test accelerator loading
+    
+    * adding c_api function header
+    
+    * modifying header file path
+    
+    * creating templates for call to lib fns
+    
+    * modifying target to mxnet_static for libdl
+    
+    * rebaseing with master
+    
+    * returning nullptr handle if library not loaded
+    
+    * refactoring code to load libraries dynamically
+    
+    * addressing review comments
+    
+    * using static cast
+    
+    * pylint fix
+    
+    * moving library.h file to src/common/
+    
+    * adding dynamic loading support for windows
+    
+    * updating header guard
+    
+    * fixing headers
+    
+    * fixing windows casting error
+    
+    * declaring library functions for windows
+    
+    * adding library testing module in examples
+    
+    * adding unit test to test library loading
+    
+    * correcting file names
+    
+    * updating error messages
+    
+    * getting error message from DL library
+    
+    * adding unit test to gpu suite
+    
+    * correcting windows pointer
+    
+    * requiring absolute path to library
+    
+    * changing file description
+    
+    * addressing review comments - adding more docs, windows error msg
+    
+    * addressing PR comments
+    
+    * checking machine type for unit test
+    
+    * “re-trigger”
+    
+    * added map to store loaded libraries
+    
+    * added dlclose calls in naive & threaded engines
+    
+    * removed library map declaration in cc file
+    
+    * added windows free
+    
+    * fixed formatting
+    
+    * added cast to HMODULE for void* for windows
+    
+    * retrigger CI for flaky unix_cpu
+    
+    * build library and stash it in CI
+    
+    * modifying unittest to use CI built binary
+    
+    * Retrigger CI
+    
+    * adding dlclose to initialize destructor
+    
+    * adding sample_lib target to all in Makefile
+
+commit aadef2d666b4ca4c5b89247778146f79dd482baa
+Author: Przemyslaw Tredak <ptredak@nvidia.com>
+Date:   Wed Aug 7 09:22:48 2019 -0700
+
+    Fix flaky test test_global_metric (#15756)
+    
+    * Fix flaky test test_global_metric
+    
+    * Retrigger CI
+    
+    * retrigger CI
+    
+    * retrigger CI
+    
+    * retrigger CI
+
+commit 3112893f80fdda2c9d8f6832562146bec97de205
+Author: Manu Seth <22492939+mseth10@users.noreply.github.com>
+Date:   Mon Aug 5 12:20:15 2019 -0700
+
+    Dynamic Library Loading Support (#15489)
+    
+    * Accelerator APIs header file
+    
+    * adding example to test accelerator loading
+    
+    * adding c_api function header
+    
+    * modifying header file path
+    
+    * creating templates for call to lib fns
+    
+    * modifying target to mxnet_static for libdl
+    
+    * rebaseing with master
+    
+    * returning nullptr handle if library not loaded
+    
+    * refactoring code to load libraries dynamically
+    
+    * addressing review comments
+    
+    * using static cast
+    
+    * pylint fix
+    
+    * moving library.h file to src/common/
+    
+    * adding dynamic loading support for windows
+    
+    * updating header guard
+    
+    * fixing headers
+    
+    * fixing windows casting error
+    
+    * declaring library functions for windows
+    
+    * adding library testing module in examples
+    
+    * adding unit test to test library loading
+    
+    * correcting file names
+    
+    * updating error messages
+    
+    * getting error message from DL library
+    
+    * adding unit test to gpu suite
+    
+    * correcting windows pointer
+    
+    * requiring absolute path to library
+    
+    * changing file description
+    
+    * addressing review comments - adding more docs, windows error msg
+    
+    * addressing PR comments
+    
+    * checking machine type for unit test
+    
+    * “re-trigger”
+    
+    * added map to store loaded libraries
+    
+    * added dlclose calls in naive & threaded engines
+    
+    * removed library map declaration in cc file
+    
+    * added windows free
+    
+    * fixed formatting
+    
+    * added cast to HMODULE for void* for windows
+    
+    * retrigger CI for flaky unix_cpu
+
+commit 9ebcfccc7d231c33773dd7362e09ff26b2dca6cd
+Author: reminisce <wujun.nju@gmail.com>
+Date:   Fri May 3 16:09:44 2019 -0700
+
+    [numpy] Infra for supporting numpy ops in imperative mode and Gluon APIs (#14758)
+    
+    * Infra of new ndarray and symbol types for numpy operators
+    
+    * Rename
+    
+    * Fix import problem
+    
+    * Refactor
+    
+    * Remove redundant code
+    
+    * Add docstring
+    
+    * More on numpy ndarray and symbol
+    
+    * Override unimplemented methdos for ndarray and _NumpySymbol
+    
+    * Fix built-in methods of ndarray and _NumpySymbol
+    
+    * Fix test and sanity check
+    
+    * Fix pylint
+    
+    * Address cr comments
+    
+    * Add unit tests for ndarray and _NumpySymbol
+    
+    * Add _true_divide
+    
+    * Fix gpu build
+    
+    * Add future import division
+    
+    * More correct way of checking if an output is from a np compat op
+    
+    * Fix gpu build
+    
+    * Fix output ndarray/symbol types with at least one new ndarray/symbol
+    
+    * Modify true_divide doc
+    
+    * Fix flaky copying zero-size arrays via gpus
+    
+    * Fix zero size in gluon hybridize and zeros/ones symbol not creating new symbol type
+    
+    * Fix doc
+
+commit f0b6d723b114acc82c138456e5091c6656830a9e
+Author: Zhaoqi Zhu <zhaoqizh@usc.edu>
+Date:   Tue Jul 30 16:38:12 2019 -0700
+
+    update previous flaky naive engine test (#15651)
+    
+    * update precious flaky naive engine test
+    
+    * retriever tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * Update test_profiler.py
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * Update test_profiler.py
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * retrigger tests
+    
+    * Update test_profiler.py
+    
+    * retrigger tests
+    
+    * Update test_profiler.py
+
+commit 728b8db572e3652ea76e89a0d8f91be8dc895e41
+Author: Sergey Sokolov <Sergei.Sokolov@gmail.com>
+Date:   Fri Jul 5 03:44:30 2019 -0700
+
+    Revise Symbol tutorial (#15343)
+    
+    * Revise Symbol tutorial
+    
+    * Force flaky build
+    
+    * Address code review comments
+    
+    * Split tie weight example into blocks
+    
+    * Force build
+
+commit 512a491547c17f4caffc4cc962d95a6467186a3d
+Author: Zhaoqi Zhu <zhaoqizh@usc.edu>
+Date:   Tue Jul 2 20:55:18 2019 -0700
+
+    Temporarily Commenting out Flaky Test (#15436)
+    
+    * comment out flaky test
+    
+    * Update test_profiler.py
+    
+    * Update test_profiler.py
+    
+    * Update test_profiler.py
+
+commit 37f5315a2631d64facf3a99c426ad36ee27cd9e1
+Author: perdasilva <perdasilva@gmail.com>
+Date:   Thu May 23 01:13:58 2019 +0200
+
+    Disables flaky test_random_size_crop (#15019)
+
+commit 6dd2dda043b384fe78ddc7799c10086e09fbf330
+Author: perdasilva <perdasilva@gmail.com>
+Date:   Tue May 21 03:37:03 2019 +0200
+
+    Disables flaky test_droupout (#15003)
+
+commit 91e81150bfc11ae54ba8f0da5b0af26ade46a660
+Author: perdasilva <perdasilva@gmail.com>
+Date:   Tue May 21 03:36:49 2019 +0200
+
+    Disables flaky test_l2_normalization (#15006)
+
+commit 0e570a7431e30fedd2dc5573db4849dbb93c2f3e
+Author: perdasilva <perdasilva@gmail.com>
+Date:   Sun May 19 03:52:19 2019 +0200
+
+    Disables flaky test_operator_gpu.test_activation (#14969)
+
+commit 8c4a0e62b39c957a28ad625839eff76f67d55404
+Author: perdasilva <perdasilva@gmail.com>
+Date:   Sun May 19 03:52:03 2019 +0200
+
+    Disables test_bulking due to flakyness (#14971)
+
+commit 8cae72eeadd3ab59de1b1ad81c202f6eb513e07e
+Author: Iblis Lin <iblis@hs.ntnu.edu.tw>
+Date:   Thu Apr 25 06:44:34 2019 +0800
+
+    julia/ndarray: fix flaky test cases for `clamp` (#14776)
+    
+    ref: #14757
+
+commit a6fd0e9ac500e15a98a9e21a132fc14f75c6340d
+Author: Jake Lee <gstu1130@gmail.com>
+Date:   Wed Apr 3 09:55:25 2019 +0800
+
+    Fix flaky test poisson generator & test_negative_binomial_generator (#14571)
+    
+    * set success_rate to 0.2
+    
+    * fix the flaky test
+    
+    * reenable the test
+
+commit 88b3741756379c4ce8cec429601a0848a3dfae57
+Author: perdasilva <perdasilva@gmail.com>
+Date:   Thu Mar 14 10:45:10 2019 +0100
+
+    Disables flaky TestStochasticTiming_2D test (#14412)
+
+commit c4cae6ea7b7732ec0432cf899a274a96ced528b1
+Author: perdasilva <perdasilva@gmail.com>
+Date:   Wed Mar 13 16:19:53 2019 +0100
+
+    Disables flaky test_operator.test_sgld test (#14410)
+
+commit 6152ffa1ed7a7a46cc503c1ed8cc6a63d6278d10
+Author: Rohit Kumar Srivastava <srivastava.141@osu.edu>
+Date:   Mon Mar 4 12:36:35 2019 -0800
+
+    FIX: flaky test exponential generator (#14287)
+    
+    * changing success_percentage test correctness of random exponential generator to 20% to fix its flakiness
+    
+    * Re-Trigger build
+
+commit e35658628617dbf1a078805f767002e7e589c282
+Author: Carin Meier <cmeier@gigasquidsoftware.com>
+Date:   Wed Feb 13 22:34:37 2019 -0500
+
+    disable flaky integration test (#14151)
+
+commit ac962cd3efee4be01bc0a000948e86fbe1aa02fd
+Author: Carin Meier <cmeier@gigasquidsoftware.com>
+Date:   Mon Feb 4 19:23:40 2019 -0500
+
+    rewrote the concat test to avoid flaky failures (#14049)
+    
+    ran 10000 times with no failures
+
+commit 195d4f12ee54693c41c42626e01af740c344c1de
+Author: Jose Luis Contreras <joseluis.contreras.santos@gmail.com>
+Date:   Mon Jan 28 18:44:32 2019 +0100
+
+    Disabled flaky test test_negative_binomial_generator (#13784)
+
+commit 183be8cfb91582dfa2891555536b3c01ffebe169
+Author: Istvan Fehervari <gooksl@gmail.com>
+Date:   Thu Jan 24 09:54:25 2019 -0800
+
+    Gradient multiplier (contrib) operator (#13632)
+    
+    * Added the gradient reversal contrib operator
+    
+    Missing test for backwards pass
+    
+    * Fixed linting errors
+    
+    * Fixed forward test
+    
+    * Added random forward / backward test for gradient reversal
+    
+    * Update test_contrib_operator.py
+    
+    * Fixed typo in gradient reversal op description
+    
+    * Replace forward code with the identitiy implementation
+    
+    * Fixed typos in function docs
+    
+    * Changed default behavior to identity
+    
+    * Replaced backward code with scalar_mul
+    
+    * Fixed backward operator and unit test
+    
+    * Renamed operator to gradient multiplier
+    
+    * Update test_contrib_operator.py
+    
+    Retrigger flaky test
+    
+    * Update gradient_multiplier_op.cc
+    
+    Improved the description of the scalar multiplier
+
+commit d07187b5ef46424613c1833670f5a1b8d9913245
+Author: perdasilva <perdasilva@gmail.com>
+Date:   Fri Jan 18 10:45:28 2019 -0800
+
+    test_ImageRecordIter_seed_augmentation flaky test fix (#12485)
+    
+    * Moves seed_aug parameter to ImageRecParserParam and re-seeds RNG before each augmentation to guarantee reproducibilit
+    
+    * Update image record iterator tests to check the whole iterator not only first image
+
+commit f554835f33633bfdc93a240a8415dc061d127583
+Author: Roshani Nagmote <roshaninagmote2@gmail.com>
+Date:   Sun Jan 13 23:06:30 2019 -0800
+
+    adding tolerance to flaky test (#13850)
+    
+    * adding tolerance
+    
+    * retrigger ci
+    
+    * retrigger ci
+
+commit 5282cdd4944481a08ae8c909acb6e95b8210f2b2
+Author: Jose Luis Contreras <joseluis.contreras.santos@gmail.com>
+Date:   Fri Jan 11 01:12:50 2019 +0100
+
+    Disabled flaky test (#13758)
+
+commit 0011ab2f4bf87619cdfe0bb928d74c5ae0df452c
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Thu Dec 6 23:49:16 2018 -0800
+
+    Fix flaky test test_random:test_randint_generator (#13498)
+    
+    * updated seed, alpha value, comments
+    
+    * typo in comment fix
+    
+    * added nrepeat
+    
+    * removed unusued variable, added link for scipy alpha, rephrased the sentence for discrete distribution buckets
+    
+    * removed fixed seed, alpha
+
+commit bd8e0f8356676749ecae16ec38a366b4cc00bf15
+Author: Pedro Larroy <928489+larroy@users.noreply.github.com>
+Date:   Wed Dec 5 19:49:39 2018 +0100
+
+    [MXNET-769] Use MXNET_HOME in a tempdir in windows to prevent access denied due t… (#13531)
+    
+    * Use MXNET_HOME in cwd in windows to prevent access denied due to concurrent data downloads
+    
+    Fixes #13484
+    
+    * Revert "Disabled flaky test test_gluon_data.test_recordimage_dataset_with_data_loader_multiworker (#13527)"
+    
+    This reverts commit 3d499cb3584919b767142c5596211a7f7fb18d50.
+
+commit 40db61908000ee86d21aac847ff2225807d6c168
+Author: Steffen Rochel <steffenrochel@gmail.com>
+Date:   Wed Dec 5 10:11:25 2018 -0800
+
+    Bumped minor version from 1.4.0 to 1.5.0 on master, updated License file (#13478)
+    
+    * updated to v1.5.0
+    
+    * Bumped minor version from 1.4.0 to 1.5.0 on master
+    
+    * added Anirudh as maintainer for R package
+    
+    ... adding something useful and re-trigger PR check
+    
+    * Updated license file for clojure, onnx-tensorrt, gtest, R-package
+    
+    * Get the correct include path in pip package (#13452)
+    
+    * add find_include_path API
+    
+    * address reviewer comment
+    
+    * change return type from list to string
+    
+    * add unit test
+    
+    * address reviewer comment
+    
+    * address reviewer comment
+    
+    * address reviewer comment
+    
+    * address reviewer comment
+    
+    * fix include path problem in pip package
+    
+    * add comment
+    
+    * fix lint error
+    
+    * address reviewer comment
+    
+    * address reviewer comment
+    
+    * Use ~/.ccache as default ccache directory so is not cache is not erased on reboot (#13431)
+    
+    * Skip flaky test https://github.com/apache/incubator-mxnet/issues/13446 (#13480)
+    
+    * Rewrite dataloader with process pool, improves responsiveness and reliability (#13447)
+    
+    * fix recordio.py
+    
+    * rewrite dataloader with pool
+    
+    * fix batch as tuple
+    
+    * fix prefetching
+    
+    * fix pylint
+    
+    * picklable function
+    
+    * use pickle
+    
+    * add missing commit
+    
+    * Fix errors in docstrings for subgraph op; use code directive (#13463)
+    
+    * [MXNET-1158] JVM Memory Management Documentation (#13105)
+    
+    * update train_mnist
+    
+    * Add documentation for JVM Memory Management
+    
+    * update doc
+    
+    * address nit picks
+    
+    * address nit picks
+    
+    * Grammar and clarity edits for memory management doc
+    
+    * Edits for scala memory management
+    
+    * Update memory-management.md
+    
+    * Update memory-management.md
+    
+    * Update memory-management.md
+    
+    * capitalization fix
+    
+    * Update row_sparse tutorial (#13414)
+    
+    Update row_sparse tutorial
+    
+    * Add resiliency to onnx export code (#13426)
+    
+    * Added resiliency to onnx export code
+    
+    - With previous infer-shape implementation, if input shape was list instead of tuple or if extra non-existent parameters were provided, the code would still work. The fixes in this commit make sure that behavior is restored to prevent any compatibility issues with existing export code.
+    
+    * Fixed name of net in unittest
+    
+    * Fix pylint
+    
+    * [MXNET-1185] Support large array in several operators (part 1) (#13418)
+    
+    * fix a few operators with large arrays (# of elements)
+    
+    * fix bug in broadcast_div and add tests
+    
+    * address reviewer comment
+    
+    * add unit test
+    
+    * add empty line
+    
+    * retrigger CI
+    
+    * [MXNET-1210 ] Gluon Audio - Example (#13325)
+    
+    * Initialized the example
+    
+    * Addressed PR comments, about existing synset.txt file - no overwrite
+    
+    * RST - docstring issues fixed
+    
+    * added README
+    
+    * Addressed PR comments
+    
+    * Addressed PR comments, checking Divide by 0
+    
+    * Raising error if format is not supported.
+    
+    * changed a line for ndarray of labels
+    
+    * Trigger CI
+    
+    * Trigger CI
+    
+    * PR comments addressed around skip_header argument
+    
+    * Addressed PR comments around librosa import
+    
+    * PR Comments
+    
+    * Passing lazy=lazy from argument
+    
+    * Added PR comments, labels to README.MD
+    
+    * Trigger CI
+    
+    * Addressing PR Comments in README
+    
+    * Modified README.md
+    
+    * Added example under audio folder
+    
+    * Retrigger CI
+    
+    * Retrigger CI
+    
+    * ONNX export: Instance normalization, Shape (#12920)
+    
+    * ONNX import/export: Make backend_rep common
+    
+    * ONNX export: Instance Normalization
+    
+    * ONNX export: Shape operator
+    
+    * Clarify dependency on OpenCV in CNN Visualization tutorial. (#13495)
+    
+    * clarify ops faq regarding docs strings (#13492)
+    
+    * Add graph_compact operator. (#13436)
+    
+    * add graph_compact.
+    
+    * fix.
+    
+    * add doc.
+    
+    * add tests for graph_compact.
+    
+    * address comments.
+    
+    * update docs.
+    
+    * trigger CI
+    
+    * Deprecate Jenkinsfile (#13474)
+    
+    * update github location for sampled_block.py (#13508)
+    
+    Updated to https://github.com/dmlc/gluon-nlp/blob/master/src/gluonnlp/model/sampled_block.py
+    
+    * #13453 [Clojure] - Add Spec Validations to the Optimizer namespace (#13499)
+    
+    * ONNX export: Logical operators (#12852)
+    
+    * Fix cmake options parsing in dev_menu (#13458)
+    
+    Add GPU+MKLDNN unittests to dev_menu
+    
+    * Revert "Manually track num_max_thread (#12380)" (#13501)
+    
+    This reverts commit 75410210e07a5fab5e044348aee276d578d5857e.
+    
+    * Feature/mkldnn static 2 (#13503)
+    
+    * build mkldnn as static lib
+    
+    * update makefile to statically build mkldnn
+    
+    * build static mkldnn
+    
+    * fix static name
+    
+    * fix static name
+    
+    * update static for mac
+    
+    * rename mkldnn dep in ci
+    
+    * remove moving mkldnn dynamic lib
+    
+    * remove commented code
+    
+    * remove mkldnn dnaymic for unitest
+    
+    * force static for mkldnn lib
+    
+    * remove dynamic mkldnn bind
+    
+    * only link windows
+    
+    * add mkldnn.mk
+    
+    * try force linking
+    
+    * remove mkldnn dynanmic check
+    
+    * remove test mkldnn install
+    
+    * fix spacing
+    
+    * fix index
+    
+    * add artifacts
+    
+    * add comment about windows
+    
+    * remove static
+    
+    * update makefile
+    
+    * fix toctree Sphinx errors (#13489)
+    
+    * fix toctree errors
+    
+    * nudging file for CI
+    
+    * Disabled flaky test test_gluon_data.test_recordimage_dataset_with_data_loader_multiworker (#13527)
+    
+    * [MXNET-1234] Fix shape inference problems in Activation backward (#13409)
+    
+    * Provide a failing test for ReLU activation shape inference bug
+    
+    * Fix Activation backward shape inference
+    
+    fixes: #13333
+    
+    * Add softsign Activation to test_gluon.py
+    
+    * Use activation in GPU if we are using CUDNN and not MKLDNN as it's happening right now
+    
+    * Don't disable MKLDNN
+
+commit 3d499cb3584919b767142c5596211a7f7fb18d50
+Author: Jose Luis Contreras <joseluis.contreras.santos@gmail.com>
+Date:   Tue Dec 4 14:12:36 2018 +0100
+
+    Disabled flaky test test_gluon_data.test_recordimage_dataset_with_data_loader_multiworker (#13527)
+
+commit 9e0877014b9117e711ec3681504bcb10ffa2941c
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Fri Nov 30 15:44:35 2018 -0800
+
+    Skip flaky test https://github.com/apache/incubator-mxnet/issues/13446 (#13480) (#13491)
+
+commit b5ea1943bdf113546d7161cfda339365de4d80f8
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Fri Nov 30 09:47:53 2018 -0800
+
+    Skip flaky test https://github.com/apache/incubator-mxnet/issues/13446 (#13480)
+
+commit 8a94dbd37688db7b298ac275dade9e5ef6dce702
+Author: Chaitanya Prakash Bapat <chai.bapat@gmail.com>
+Date:   Tue Nov 27 13:31:44 2018 -0800
+
+    [MXNET-1029] Feature request: randint operator (#12749)
+    
+    * randint operator add along with add optional tag to params
+    
+    * register param
+    
+    * lint space issue
+    
+    * randn issue fix
+    
+    * uniform_int_distribution doesn't support int8, uint8 fix
+    
+    * dtype ftype
+    
+    * ftype to dtype - invalid template arg
+    
+    * fix template arg issue
+    
+    * test with int dtype for windows
+    
+    * removed int8,uint8 from test
+    
+    * gpu implementation
+    
+    * gpu engine state diff
+    
+    * removed gpu support
+    
+    * empty commit
+    
+    * temporary fix : batchnorm flaky test skip
+    
+    * removed randn symbol specific code since other PR is on it
+    
+    * revert ndarray/randn for compatibility
+    
+    * added unit test for checking extremes and uniform distribution for sufficient samples
+    
+    * increased the high val
+    
+    * int32 to int64 support, indentation fix, check for optype correctly based on type of random function
+    
+    * gpu support, revert finfertype using template specialization, remove defaults, prints, test other low high val
+    
+    * fix for invalid template arg by checking for int32,int64
+    
+    * gpu randint in random_generator
+    
+    * sample_uniform issue and param, removed old flaky test skip line
+    
+    * replaced discrete_uniform function by rand_int64 for consistency
+    
+    * formula update and removed itype
+    
+    * change ctx to include gpu, randint samepl_op.cu typo
+    
+    * trigger ci
+    
+    * doc fix, check fix, whitespace remove
+    
+    * added the without dtype testcase
+
+commit 70f4e2cf46a48677a85d76986753670ba771a1a8
+Author: Manu Seth <22492939+mseth10@users.noreply.github.com>
+Date:   Fri Nov 16 16:07:07 2018 -0800
+
+    enabling test_dropout after fixing flaky issue (#13276)
+    
+    * enabling test_dropout after fixing flaky issue
+    
+    * adding a check for positive seed
+
+commit 7fc344c76930e13c3ae2ab49121262216db3306a
+Author: Anton Chernov <mechernov@gmail.com>
+Date:   Mon Nov 12 07:08:43 2018 +0100
+
+    Disable flaky test test_operator.test_dropout (#13200)
+
+commit 8209712ee9ee45ad0cc3ea45fa54e5272bae0834
+Author: Chance Bair <chancebair@gmail.com>
+Date:   Wed Oct 31 16:23:45 2018 +0100
+
+    Disable flaky test test_prelu (#13060)
+
+commit 03c402032f35acef02babce4155ea85dfdad4b99
+Author: Chance Bair <chancebair@gmail.com>
+Date:   Wed Oct 31 13:15:10 2018 +0100
+
+    Disable flaky test test_operator.test_dropout (#13057)
+
+commit 7d0f7d623ffaff16935412865618593bf6146465
+Author: Anton Chernov <mechernov@gmail.com>
+Date:   Wed Oct 24 03:24:28 2018 +0200
+
+    Disabled flaky test: test_gluon_gpu.test_slice_batchnorm_reshape_batchnorm (#12768)
+
+commit 1ebbf944ff8bfbf66b214910d32f1b4cdd1d190d
+Author: Xingjian Shi <xshiab@ust.hk>
+Date:   Fri Oct 19 01:38:31 2018 +0800
+
+    Fix Flaky Topk (#12798)
+    
+    * fix flaky topk
+    
+    * try to fix
+    
+    * remove the usage of IndexFill
+    
+    * fix
+    
+    * add docstring
+
+commit c98b19e2d108a3861d89b475927e8a21a913e540
+Author: Anton Chernov <mechernov@gmail.com>
+Date:   Tue Oct 9 23:30:28 2018 +0200
+
+    Disabled flaky test: test_mkldnn.test_Deconvolution (#12770)
+
+commit 6522a2cde2861a2362a8741d800451bcc8118c76
+Author: Shufan <33112206+juliusshufan@users.noreply.github.com>
+Date:   Sun Sep 30 12:20:18 2018 +0800
+
+    [MXNET-500]Test cases improvement for MKLDNN on Gluon (#10921)
+    
+    * Rebase to align the latest changes on test_gluon.py
+    
+    * Referring the issue link to skip message
+    
+    * Retrigger the PRECI
+    
+    * Remove previous changes
+    
+    * Modify the cases trying to eliminate the errors on GPU
+    
+    * Resolving conflict
+    
+    * Further reduce the tensor size
+    
+    * minor changes
+    
+    * move to mkl
+    
+    * fix flaky case
+    
+    * Remove the test_mkldnn_gluon.py
+    
+    * Move the cases back to test_gluon.py
+
+commit 8ff50c95201e02e849e0592de5fb7af87489be53
+Author: Joshua Z. Zhang <cheungchih@gmail.com>
+Date:   Wed Sep 12 13:32:57 2018 -0700
+
+    Revert "Change the way NDArrayIter handle the last batch" (#12537)
+    
+    * Revert "Removing the re-size for validation data, which breaking the validation accuracy of CIFAR training (#12362)"
+    
+    This reverts commit ceabcaac77543d99246415b2fb2d8c973a830453.
+    
+    * Revert "[MXNET-580] Add SN-GAN example (#12419)"
+    
+    This reverts commit 46a5cee2515a1ac0a1ae5afbe7e639debb998587.
+    
+    * Revert "Remove regression checks for website links (#12507)"
+    
+    This reverts commit 619bc3ea3c9093b72634d16e91596b3a65f3f1fc.
+    
+    * Revert "Revert "Fix flaky test: test_mkldnn.test_activation #12377 (#12418)" (#12516)"
+    
+    This reverts commit 7ea05333efc8ca868443b89233b101d068f6af9f.
+    
+    * Revert "further bump up tolerance for sparse dot (#12527)"
+    
+    This reverts commit 90599e1038a4ff6604e9ed0d55dc274c2df635f8.
+    
+    * Revert "Fix broken URLs (#12508)"
+    
+    This reverts commit 3d83c896fd8b237c53003888e35a4d792c1e5389.
+    
+    * Revert "Temporarily disable flaky tests (#12520)"
+    
+    This reverts commit 35ca13c3b5a0e57d904d1fead079152a15dfeac4.
+    
+    * Revert "Add support for more req patterns for bilinear sampler backward (#12386)"
+    
+    This reverts commit 4ee866fc75307b284cc0eae93d0cf4dad3b62533.
+    
+    * Revert "Change the way NDArrayIter handle the last batch (#12285)"
+    
+    This reverts commit 597a637fb1b8fa5b16331218cda8be61ce0ee202.
+
+commit 7ea05333efc8ca868443b89233b101d068f6af9f
+Author: Anton Chernov <mechernov@gmail.com>
+Date:   Wed Sep 12 10:47:47 2018 +0200
+
+    Revert "Fix flaky test: test_mkldnn.test_activation #12377 (#12418)" (#12516)
+    
+    This reverts commit 445967e6c316a91876efb60b6a5ef52ec1837d73.
+
+commit 35ca13c3b5a0e57d904d1fead079152a15dfeac4
+Author: Stephanie Jingyi Yuan <stephanieyuan1994@gmail.com>
+Date:   Tue Sep 11 16:18:00 2018 -0400
+
+    Temporarily disable flaky tests (#12520)
+
+commit 9ec4879e4abc16e4dff010cb2648f88625509046
+Author: Stephanie Jingyi Yuan <stephanieyuan1994@gmail.com>
+Date:   Tue Sep 11 00:41:14 2018 -0400
+
+    Temporarily disable flaky tests (#12513)
+
+commit 445967e6c316a91876efb60b6a5ef52ec1837d73
+Author: Luobao <luobao.zou@intel.com>
+Date:   Sat Sep 8 09:02:20 2018 +0800
+
+    Fix flaky test: test_mkldnn.test_activation #12377 (#12418)
+    
+    * test_activation_rec_eps
+    
+    * enable case
+
+commit de9a2e88c334cc9a157ceb904ecaebffed2779b2
+Author: Philip Hyunsu Cho <chohyu01@cs.washington.edu>
+Date:   Wed Sep 5 12:31:30 2018 -0700
+
+    Fix flaky test test_operator_gpu.test_batchnorm_with_type (#11873)
+
+commit 4e19a328ae94c893ed11591b798aaebf33f39052
+Author: Hao Jin <haojin2@users.noreply.github.com>
+Date:   Wed Sep 5 11:34:54 2018 -0700
+
+    remove flaky test and add consistency test for stable testing (#12427)
+
+commit e0498ebf7af1dccf245b55ecdde4249a300c30dc
+Author: Anton Chernov <mechernov@gmail.com>
+Date:   Mon Sep 3 14:57:21 2018 +0200
+
+    Revert "fixed flaky test issue for test_operator_gpu.test_depthwise_convolution (#12402)" (#12441)
+    
+    This reverts commit 58560f6d2e96da605c658742ebb0e26a7d0cbcd3.
+
+commit 58560f6d2e96da605c658742ebb0e26a7d0cbcd3
+Author: Manu Seth <22492939+mseth10@users.noreply.github.com>
+Date:   Fri Aug 31 18:13:09 2018 -0700
+
+    fixed flaky test issue for test_operator_gpu.test_depthwise_convolution (#12402)
+    
+    * fixed flaky test issue for test_operator_gpu.test_depthwise_convolution
+    
+    * Changed implicit cast to explicit cast
+
+commit 10e94f8804ccde98a4edc12d0ed2e0b2014e41a9
+Author: Manu Seth <22492939+mseth10@users.noreply.github.com>
+Date:   Fri Aug 31 18:09:50 2018 -0700
+
+    fixed flaky test issue for test_operator_gpu.test_convolution_grouping (#12385)
+    
+    * fixed flaky test issue for test_operator_gpu.test_convolution_grouping
+    
+    * Changed implicit cast to explicit cast
+
+commit a64cf7d9c8c1c473e201b5bd68ab9af6bf7365ba
+Author: reminisce <wujun.nju@gmail.com>
+Date:   Thu Aug 30 19:13:33 2018 -0700
+
+    Subgraph API for integrating accelerators with MXNet (#12157)
+    
+    * Graph partitioner and subgraph op (#11251)
+    
+    Graph partitioner and subgraph op
+    
+    Fix duplicate entry bugs (#11767)
+    
+    Make subgraph var node name unique (#11876)
+    
+    [DO NOT REVIEW] Fix bug of eliminating cycles (#11907)
+    
+    * Fix cycle bug
+    
+    * Fix decycle bug
+    
+    * Fix comment
+    
+    [DO NOT REVIEW] Subgraph API (#12104)
+    
+    * Initial commit
+    
+    * Add unit tests
+    
+    * Fix lint
+    
+    * Fix lint
+    
+    * Clean up
+    
+    * Add graph partitiong to Bind
+    
+    * Add property name to graph partitioning c api
+    
+    * Fix unit test gpu context
+    
+    * Address cr
+    
+    * Move subgraph to attrs.subgraphs and fix the example
+    
+    * Fix lint
+    
+    * Add var version unit test
+    
+    * Address cr
+    
+    * Enable unit test that was flaky
+    
+    * Clean up
+    
+    * Clean up
+    
+    * Clean up
+    
+    * Change version return type in NDArray
+    
+    * Clean up
+    
+    * Add register or get for subgraph prop registry
+    
+    * Address cr
+    
+    * Remove unnecessary code
+    
+    * Handle var version issue in naive engine
+    
+    * Delete example
+    
+    * Remove registration of resource request for default subgraph op
+    
+    * Add doc string
+    
+    * Improve doc string
+
+commit 65c374db28941c9dc57e89b45c61779a55fd3025
+Author: Anton Chernov <mechernov@gmail.com>
+Date:   Wed Aug 29 17:03:42 2018 +0200
+
+    Disabled flaky test: test_mkldnn.test_activation (#12378)
+    
+    * Disabled flaky test: test_mkldnn.test_activation
+    
+    * Revert accidental change
+
+commit c88b8ee18c4b3d25435cf97ee8124d36543b6981
+Author: Alexander Zai <azai91@gmail.com>
+Date:   Sun Aug 26 09:26:07 2018 -0700
+
+    fix flaky test: test_broadcast_binary_op (#11875)
+    
+    * cast inputs to f32
+    
+    * retrigger
+    
+    * retrigger
+    
+    * remove extra cast
+    
+    * remove commented out function
+    
+    * retrigger
+
+commit ad34e05bc970ab2e09cbf809c2d2b5fdda8abff3
+Author: Chance Bair <chancebair@gmail.com>
+Date:   Sat Aug 25 11:39:56 2018 +0200
+
+    Disable flaky test test_ndarray.test_order (#12311)
+
+commit 490cf99f629c1effd6e1a4a0b5a425042bba1bac
+Author: Chance Bair <chancebair@gmail.com>
+Date:   Fri Aug 24 16:27:49 2018 +0200
+
+    Disable flaky test test_operator.test_dropout (#12330)
+
+commit 5a9949a444771f6b62146c6cf24866ee784cef47
+Author: Da Zheng <zhengda1936@gmail.com>
+Date:   Wed Aug 22 16:28:22 2018 -0700
+
+    Make sure input symbol names are unique in control flow operators. (#12187)
+    
+    * add test for foreach.
+    
+    * add tests for while_loop.
+    
+    * use unique name.
+    
+    * make the names of vars in while_loop unique.
+    
+    * verify unique names.
+    
+    * avoid flaky.
+    
+    * fix lint.
+    
+    * fix.
+    
+    * fix tests.
+    
+    * fix.
+
+commit 2899715921612ef4dd147004292b5b5d0f83320b
+Author: Sam Skalicky <samskalicky@gmail.com>
+Date:   Mon Aug 20 16:21:22 2018 -0700
+
+    [MXNET-792] Fix for issue #9816 with dropout operator and RNG (#12091)
+    
+    * added mshadow op for threshold_eq (theshold currently does <, this will do <=)
+    
+    modified dropout operator to use threshold_eq instead of theshold this will ensure equivalent behavior for the random numbers generated on CPU [0, 1) and GPU (0, 1]
+    
+    removed fixed seed for test_dropout
+    
+    * removed comment about flaky test
+
+commit 383a2d0e4791a3899272c4ecf4ff2535f558fb53
+Author: Junru Shao <junrushao1994@gmail.com>
+Date:   Tue Aug 21 03:20:41 2018 +0800
+
+    Fix flaky tests in control flow (#12192)
+    
+    * Fix flaky tests in control flow
+    
+    * Trigger CI
+    
+    * Trigger CI
+    
+    * Trigger CI
+
+commit 605c569aef6e9beff70c94eb5bd31f99557e22ae
+Author: Anton Chernov <mechernov@gmail.com>
+Date:   Mon Aug 20 15:38:03 2018 +0200
+
+    Disabled flaky test: test_operator_gpu.test_bilinear_sampler (#12249)
+
+commit 338a40b839436fb79eac51709c1323405a795aff
+Author: Kellen Sunderland <kellen.sunderland@gmail.com>
+Date:   Sun Aug 19 18:44:23 2018 +0200
+
+    Disable flaky test deformable_psroipooling (#12246)
+
+commit fa18f513c96f68fea9a062d758af3db66de14b2e
+Author: Anton Chernov <mechernov@gmail.com>
+Date:   Fri Aug 17 19:13:10 2018 +0200
+
+    Disable flaky test: test_operator_gpu.test_convolution_grouping (#12220)
+
+commit 6876820f20fed3f997a7143526085d8cf5c426a9
+Author: Anton Chernov <mechernov@gmail.com>
+Date:   Fri Aug 17 16:41:42 2018 +0200
+
+    Disable flaky test: test_operator_gpu.test_depthwise_convolution (#12204)
+
+commit 391377aff635da0d79f5069ed7689c1ac3ea5c24
+Author: Anirudh <anirudhkrec@gmail.com>
+Date:   Wed Aug 15 09:31:31 2018 -0700
+
+    Partially enable flaky test for norm operator (#12027)
+
+commit 4c1933e8ca34e0a522a326e2366b9db730d915f0
+Author: reminisce <wujun.nju@gmail.com>
+Date:   Mon Aug 13 18:51:25 2018 -0700
+
+    [DO NOT REVIEW] Subgraph API (#12104)
+    
+    * Initial commit
+    
+    * Add unit tests
+    
+    * Fix lint
+    
+    * Fix lint
+    
+    * Clean up
+    
+    * Add graph partitiong to Bind
+    
+    * Add property name to graph partitioning c api
+    
+    * Fix unit test gpu context
+    
+    * Address cr
+    
+    * Move subgraph to attrs.subgraphs and fix the example
+    
+    * Fix lint
+    
+    * Add var version unit test
+    
+    * Address cr
+    
+    * Enable unit test that was flaky
+
+commit ec90f4ac1cbfbdba40b149513818f59c5aa6ab51
+Author: Anirudh <anirudhkrec@gmail.com>
+Date:   Sun Aug 12 12:39:40 2018 -0700
+
+    [MXNET-767] Fix flaky test for kl_loss (#11963)
+    
+    * Fix flaky test for kl_loss
+    
+    * remove comment.
+
+commit 1eafbfc0717b341b18f7d069e6a12095259aeb66
+Author: Sandeep Krishnamurthy <sandeep.krishna98@gmail.com>
+Date:   Sun Aug 12 12:26:16 2018 -0700
+
+    Fix flaky test test_operator_gpu:deformable_conv and deformable_psroi_pooling (#12070)
+
+commit f6215b1c8094c5c1ad8f413f199736593ec41709
+Author: Xinyu Chen <xinyu1.chen@intel.com>
+Date:   Fri Aug 10 19:46:01 2018 +0800
+
+    Fix flaky tests for quantize and requantize (#12040)
+
+commit d7627551d648bcca4d3a49567bb3fbd86af02b2d
+Author: Anirudh <anirudhkrec@gmail.com>
+Date:   Wed Aug 8 17:27:42 2018 -0700
+
+    Fix flaky test for elementwise_sum (#11959)
+
+commit 9b18af879667ae52db148c0ef972a767160aa39f
+Author: Hao Jin <haojin2@users.noreply.github.com>
+Date:   Tue Aug 7 18:49:02 2018 -0400
+
+    fix flaky test_quantization.test_get_optimal_thresholds (#12004)
+
+commit 9dd5edd8e6ec28a97c6ba9bda51b2b9c7a88971b
+Author: Anirudh Subramanian <anirudh2290@apache.org>
+Date:   Mon Aug 6 20:18:48 2018 -0700
+
+    Disable flaky cpp test (#12056)
+
+commit 7261d8c5917d755f233bb66369812bb2e6e77820
+Author: Lanking <lanking520@live.com>
+Date:   Sat Aug 4 20:36:41 2018 -0700
+
+    [MXNET-751] fix bce_loss flaky (#11955)
+    
+    * add fix to bce_loss
+    
+    * add comments
+    
+    * remove unecessary comments
+
+commit 43ed13faa53a7f54659943e7d536eb686993b678
+Author: Zach Kimberg <zachary@kimberg.com>
+Date:   Fri Aug 3 22:30:45 2018 -0700
+
+    Fix flaky tests for test_hinge_loss (#12020)
+
+commit 09add8a602c6dfffe578e935027e32e46fe7da8b
+Author: Zach Kimberg <zachary@kimberg.com>
+Date:   Fri Aug 3 22:29:08 2018 -0700
+
+    Fix flaky tests for test_squared_hinge_loss (#12017)
+
+commit 3910c08d4e054ae55d59cd6335f9448819550116
+Author: Lin Yuan <apeforest@gmail.com>
+Date:   Fri Aug 3 15:42:18 2018 -0700
+
+    [MXNET-770] Fix flaky test: test_factorization_machine_module (#12023)
+    
+    * Remove fixed seed in flaky test
+    
+    * Remove fixed seed in flaky test
+    
+    * Update random seed to reproduce the issue
+    
+    * Fix Flaky unit test and add a training test
+    
+    * Remove fixed seed in flaky test
+    
+    * Update random seed to reproduce the issue
+    
+    * Fix Flaky unit test and add a training test
+    
+    * Increase accuracy check
+
+commit 3dd0003c2b9d4d561c5346372caea1db1aa37744
+Author: Marco de Abreu <marcoabreu@users.noreply.github.com>
+Date:   Fri Aug 3 23:40:23 2018 +0200
+
+    Disable flaky test test_random.test_gamma_generator (#12022)
+
+commit 32c2e159ae63458b9aa0231761c8fec38be42df4
+Author: Kellen Sunderland <kellen.sunderland@gmail.com>
+Date:   Fri Aug 3 13:02:15 2018 +0200
+
+    Disable flaky mkldnn test_requantize_int32_to_int8 (#11748)
+
+commit 1818280d33201ee369a41ab1be324e22b162c46f
+Author: Ankit Khedia <36249596+ankkhedia@users.noreply.github.com>
+Date:   Thu Aug 2 20:47:50 2018 -0700
+
+    removed seed from flaky test (#11975)
+
+commit 1bd9356b30ecde412663d0020ed769042cf456d6
+Author: Lai Wei <royweilai@gmail.com>
+Date:   Thu Aug 2 10:11:17 2018 -0700
+
+    [MXNET-771] Fix Flaky Test test_executor.py:test_dot (#11978)
+    
+    * use assert_almost_equal, increase rtol, reduce matrix size
+    
+    * remove seed in test_bind
+    
+    * add seed 0 to test_bind, it is still flaky
+    
+    * add comments for tracking
+
+commit a93905dcbdbf5f50a769eebc76446f995368e68d
+Author: Lanking <lanking520@live.com>
+Date:   Wed Aug 1 21:30:00 2018 -0700
+
+    [MXNET-751] fix ce_loss flaky (#11971)
+    
+    * add xavier initializer
+    
+    * remove comment line
+
+commit c6a32b6cfb4c984d3ce96f8f651b4fd4df2bd3f5
+Author: Piyush Ghai <ghai.8@osu.edu>
+Date:   Wed Aug 1 14:49:09 2018 -0700
+
+    Fix flaky tests for test_laop_4 (#11972)
+
+commit fc912f31927921cf5e14b00e4c66db1605f1db13
+Author: Lin Yuan <apeforest@gmail.com>
+Date:   Wed Aug 1 09:08:59 2018 -0700
+
+    [MXNET-770] Remove fixed seed in flaky test (#11958)
+    
+    * Remove fixed seed in flaky test
+    
+    * Remove fixed seed in flaky test
+
+commit 83ae3a3cd76ae9e314104f61b618eb046a3015fb
+Author: Pedro Larroy <928489+larroy@users.noreply.github.com>
+Date:   Mon Jul 30 19:11:57 2018 +0200
+
+    Disable flaky test: test_spatial_transformer_with_type (#11930)
+    
+    https://github.com/apache/incubator-mxnet/issues/11839
+
+commit bd3fc88716d7312c93a2de9214c8682f19cb172b
+Author: Anirudh Subramanian <anirudh2290@apache.org>
+Date:   Fri Jul 27 17:50:58 2018 -0700
+
+    Fix flaky test test_deconvolution (#11630)
+    
+    * Replace cublassgemm with cublassgemmex for >= 7.5
+    
+    * Add comment for cublassgemmex
+
+commit 4bbf15c85d300801f6f880f7abe4628e68ced2f7
+Author: Anirudh <anirudhkrec@gmail.com>
+Date:   Fri Jul 27 13:02:44 2018 -0700
+
+    [MXNET-344] Add more operators to onnx import (#11856)
+    
+    * add more ops
+    
+    * use dict.get
+    
+    * add list comprehensive
+    
+    * retrigger CI due to unrelated flaky test failure
+
+commit 54632bcb38064a0ed1f23dd652897562d3a0036a
+Author: Junru Shao <junrushao1994@users.noreply.github.com>
+Date:   Wed Jul 18 17:09:10 2018 -0700
+
+    [MXNET-626] Add while_loop (#11566)
+    
+    * Add while_loop
+    
+    * Avoid input/output overlap for nnvm graph cut
+    
+    * Add more testcases
+    
+    * Enhance test 4.2
+    
+    * Add more complicated testcases; Add testcase for nested loop
+    
+    * Check unused loop_vars in while_loop
+    
+    * Add testcases for RNN
+    
+    * Make lint happy
+    
+    * Make lint happy
+    
+    * Address TODOs
+    
+    * Fix flaky test for while_loop
+    
+    * Address comments
+    
+    * Improve docstring
+    
+    * Improve error message
+    
+    * Add benchmark code
+    
+    * Update benchmarks
+    
+    * Allow sparse types
+    
+    * Make max_iterations default to None
+    
+    * Add while_loop to docs/api/python/{symbol|ndarray}/contrib.md
+    
+    * Pad imperative while_loop so that it has the same shape with the symbolic one
+    
+    * Add example result into the example section
+    
+    * Remove unused class member
+    
+    * Rename unittest to test_contrib_control_flow.py
+    
+    * Update docstring
+    
+    * Update docstring
+    
+    * Trigger CI
+    
+    * Change threshold for assert_almost_equal
+    
+    * Trigger CI
+    
+    * Address comments from szha
+    
+    * Rewrite benchmark code
+    
+    * Fix sphinx warning
+
+commit ab30cf803fbd3d448f6537601c15278446ecfaf8
+Author: Frank Liu <frankfliu2000@gmail.com>
+Date:   Tue Jul 17 20:45:17 2018 -0700
+
+    [MXNET-8230] test_operator_gpu.test_rms fails (#11749)
+    
+    * Fix flaky test#8230, test_rms fails.
+    
+    * Address code review comments.
+
+commit ede98e56e0d3d905399a01d70185c642194543ba
+Author: Kellen Sunderland <kellen.sunderland@gmail.com>
+Date:   Tue Jul 17 19:40:08 2018 +0200
+
+    [MXNET-682] Disable Caffe import integration test (#11781)
+    
+    Disable flaky Caffe test due to regression of issue: #11407.
+
+commit 716df2622cf49341456ce7feb66fceaf3da9231c
+Author: Lanking <lanking520@live.com>
+Date:   Mon Jul 16 13:48:44 2018 -0700
+
+    add arange fix (#11766)
+    
+    Fix flaky arange test
+
+commit 11cd73f5add64919dcb6ddc3fea5bbb6397314d8
+Author: Haibin Lin <linhaibin.eric@gmail.com>
+Date:   Fri Jul 13 16:54:14 2018 -0700
+
+    Fix dist kvstore for trainer and flaky dist kvstore test (#11633)
+    
+    * fix dist kvstore trainer
+    
+    * fix test setup
+    
+    * enable tests on CI
+    
+    * update move some test to cpu
+    
+    * dont use nvdia-docker
+    
+    * rename option
+    
+    * trigger test
+    
+    * reduce workload to avvoid time out
+    
+    * disable operator tuning to reduce launch overhead
+    
+    * update test types
+
+commit b264f6f51a5a34c2884e34b7f366f68627237308
+Author: Da Zheng <zhengda1936@gmail.com>
+Date:   Wed Jul 11 09:49:23 2018 -0700
+
+    Fix flaky test test_gluon.test_hybrid_static_memory_switching (#11577)
+    
+    * enable tests.
+    
+    * update tests.
+    
+    * don't invalidate in AsArray.
+    
+    * don't invalidate in FC.
+    
+    * fix.
+
+commit 4ae0cd9908d097d7cef957f5f9d5870dba7e9137
+Author: Pedro Larroy <928489+larroy@users.noreply.github.com>
+Date:   Wed Jul 11 11:04:59 2018 +0200
+
+    Fix for flaky keyserver keyserver.ubuntu.com. Fix #11601 (#11602)
+
+commit c7926383972b8988d2f6505443d3672f9ade70fa
+Author: Anirudh Subramanian <anirudh2290@apache.org>
+Date:   Tue Jul 10 16:39:31 2018 -0700
+
+    Fix flaky test:test_sample_multinomial (#11366)
+    
+    * Fix atol and tests
+    
+    * Remove commented code
+    
+    * Remove skip
+
+commit 0bec94ba282135296fbde55233ad0558707d9358
+Author: Lai Wei <royweilai@gmail.com>
+Date:   Tue Jul 10 11:30:45 2018 -0700
+
+    [MXNET-620]Fix flaky test batchnorm training (#11544)
+    
+    * increase atol to 1e-2
+    
+    * enable test_batchnorm_training
+    
+    * remove row_sparse as it's tested in another test, increase mkldnn batchnorm test atol to 1e-2
+
+commit 53e8afd32c39a241b9cc02798d6f592b05b0a592
+Author: Kellen Sunderland <kellen.sunderland@gmail.com>
+Date:   Mon Jul 9 21:41:21 2018 +0200
+
+    Disable flaky test: gluon test_export (#11617)
+
+commit dd954b45a35d5eb9e8cdb6c6e19dd872a0a3d84d
+Author: Haibin Lin <linhaibin.eric@gmail.com>
+Date:   Fri Jul 6 18:48:57 2018 -0700
+
+    fix flaky test (ran 50000 times locally) (#11595)
+
+commit 490e9517ce882c1ccbbd4f7ea24a2e3bf79b4eb5
+Author: Eric Junyuan Xie <piiswrong@users.noreply.github.com>
+Date:   Mon Jul 2 13:53:32 2018 -0700
+
+    Fix flaky test 10380 (#11529)
+
+commit 06a18abc3b8a37407bc470eda41ca4ce7e4707f3
+Author: Rakesh Vasudevan <rakesh.nvasudev@gmail.com>
+Date:   Sat Jun 30 18:29:52 2018 -0700
+
+    [MXNET-615] Fix for flaky test_svmoutput_with_type (#11505)
+    
+    * Fix for flaky test_svmoutput_with_type
+    
+    * make pylint happy
+    
+    * make pylint happy
+    
+    * make pylint happy
+    
+    * Update test_operator_gpu.py
+
+commit 7e5d88d1dbe9459d40d1fbd6b49c1af1664ef2a2
+Author: Marco de Abreu <marcoabreu@users.noreply.github.com>
+Date:   Sat Jun 30 16:08:31 2018 +0200
+
+    Disable flaky test test_conv in gluon (#11507)
+
+commit cca088366849ec803a9e73501d8f4e706e2552ae
+Author: Sergey Kolychev <sergeykolychev.github@gmail.com>
+Date:   Fri Jun 29 18:27:54 2018 -0700
+
+    MXNET-336 [Perl] Major Gluon update for Perl API. (#11414)
+    
+    * MXNET-336
+    Major Gluon update towards parity with Python's API.
+    Miscellaneous bugfixes and improvements.
+    New Engine API.
+    Module::reshape moved to C++ backend.
+    Examples were updated to work on multi-gpu boxes.
+    
+    * fixing random seed for flaky tests.
+    
+    * removed redundant row.
+    
+    * fixed learning rate.
+
+commit 355de662ec6c13e5512419ccdde752c2b07a03ae
+Author: Aaron Markham <markhama@amazon.com>
+Date:   Fri Jun 29 16:02:21 2018 -0700
+
+    [MXNET-548] fixed path for auto_module_index.js (#11287)
+    
+    * fixed path for auto_module_index.js
+    
+    * nudge flaky ci test
+
+commit 275cd8e10a7f3141d70b589081909159aeba5e6d
+Author: Aaron Markham <markhama@amazon.com>
+Date:   Fri Jun 29 11:32:46 2018 -0700
+
+    update docs: deps using CI scripts and other clarifications (#11431)
+    
+    * update dependencies using CI scripts; clarifications
+    
+    * nudging flaky ci test
+
+commit 39ca251a1283de886f674967e2d6c4a6b875c847
+Author: Hao Jin <haojin2@users.noreply.github.com>
+Date:   Fri Jun 29 11:06:11 2018 -0400
+
+    fix flaky test_sparse_dot and incorrect handling of empty sparse tensors (#11389)
+
+commit 4511086756d4053c43e1c5ef73b3d6b314000b7c
+Author: Kellen Sunderland <kellen.sunderland@gmail.com>
+Date:   Fri Jun 29 16:36:09 2018 +0200
+
+    [MXNET-603] Disable flaky test test_hybrid_static_memory (#11486)
+
+commit 2509e0cd7095e778537b0518b8594fa3571ba556
+Author: Kellen Sunderland <kellen.sunderland@gmail.com>
+Date:   Fri Jun 29 13:25:52 2018 +0200
+
+    [MXNET-610] Disable flaky test test_sample_multinomial (#11488)
+
+commit 7ce746fb12b3522e27ac3e8c95fbb64918b1bf29
+Author: Kellen Sunderland <kellen.sunderland@gmail.com>
+Date:   Fri Jun 29 12:52:31 2018 +0200
+
+    Disable flaky test test_sequence_last (#11485)
+
+commit f7a00250cf83ba34779b7c6ffc02532d20795f2f
+Author: ddavydenko <dzianis.davydzenka@gmail.com>
+Date:   Thu Jun 28 16:16:29 2018 -0700
+
+    Fix flaky test test_operator_gpu.test_spatial_transformer_with_type (#7645) (#11444)
+
+commit 2fe5144d517dcd7971b7609f60979211b19fb678
+Author: Kellen Sunderland <kellen.sunderland@gmail.com>
+Date:   Thu Jun 28 14:15:40 2018 +0200
+
+    [MXNET-602] [MXNET-603] Disabling a number of tests to improve CI stability. (#11422)
+    
+    * NIT: cleanup whitespace in Jenkinsfile
+    
+    * Mark test_get_optimal_thresholds as flaky
+    
+    See https://github.com/apache/incubator-mxnet/issues/11456
+    
+    * Marking test_hybrid_static_memory_switching as flaky
+
+commit 645057b83f199c8121ee0f0194df8c4c1bd0120a
+Author: Marco de Abreu <marcoabreu@users.noreply.github.com>
+Date:   Thu Jun 28 06:03:13 2018 +0200
+
+    Disable flaky tests (#11440)
+    
+    * Disable tests
+    
+    * Disable kvstore test
+    
+    * Unify unittest and integration test stage
+    
+    * Add new disabled test
+
+commit ced119b4ff1564c00393b178e2e220a62fccabd3
+Author: Philip Hyunsu Cho <chohyu01@cs.washington.edu>
+Date:   Tue Jun 26 20:18:10 2018 +0000
+
+    Fix flaky test test_operator_gpu.test_batchnorm_with_type (#11396)
+
+commit 21ff36b06bf47ff2ac4145ce60ec1fe5dd14ce1d
+Author: Pedro Larroy <928489+larroy@users.noreply.github.com>
+Date:   Mon Jun 25 16:35:23 2018 -0700
+
+    Fix flaky test test_operator.test_binary_op due to numerical errors (#11259)
+    
+    Use float64 computations as the reference numpy implementation operates in double and not float.
+    f64(f32(f64(.))) % f64(f32(f64(.))) is not the same as f64(.) % f64(.) due to limited precission.
+    
+    fixes #9853
+
+commit adec2802de64366926174af3245dbe71d2e08b1c
+Author: Joshua Z. Zhang <cheungchih@gmail.com>
+Date:   Sun Jun 24 17:24:33 2018 -0700
+
+    flaky test disable test_ImageRecordIter_seed_augmentation temporarily (#11381)
+    
+    * flaky test disable test_ImageRecordIter_seed_augmentation temporarily
+    
+    * test deconv relax
+
+commit b434b8ec18f774c99b0830bd3ca66859212b4911
+Author: Thomas Delteil <thomas.delteil1@gmail.com>
+Date:   Thu Jun 7 18:12:58 2018 -0700
+
+    [MXNET-525] Add retry logic to download functions to fix flaky tests (#11181)
+    
+    * Adding retry logic to the download function
+    
+    * Adding retry logic on download
+    
+    * Fixing retry wording
+    
+    * addressing feedback
+    
+    * forgot parenthesis
+
+commit c4144f2c8e7377aa9cbc38cf9832ff715149a79d
+Author: Thomas Delteil <thomas.delteil1@gmail.com>
+Date:   Thu May 17 07:35:08 2018 -0700
+
+    [MXNET-307] Fix flaky tutorial tests from CI (#10956)
+    
+    * re-add the predict image tutorial
+    
+    * Update predict_image.md
+    
+    * switching to GoogleNet to have a smaller model
+    
+    * Update inference_on_onnx_model.md
+    
+    * Update inference_on_onnx_model.md
+    
+    * Update test_tutorials.py
+    
+    * Update test_tutorials.py
+    
+    * Update inference_on_onnx_model.md
+    
+    * trigger build
+    
+    * Trigger build
+    
+    * trigger build
+    
+    * Trigger build
+    
+    * update according to review
+
+commit 65df1ee711a07fccc74a0131d7b3fb67b4f48e74
+Author: Hao Jin <haojin2@users.noreply.github.com>
+Date:   Tue May 1 20:58:56 2018 -0700
+
+    fix flaky test for hard_sigmoid (#10759)
+
+commit 8727cae68fd732dc352be6d1d587f6512252d3b4
+Author: Hao Jin <haojin2@users.noreply.github.com>
+Date:   Wed Apr 25 22:42:29 2018 -0700
+
+    [MXNET-263] Support for dot(dns, csr) = dns and dot(dns, csr.T) = dns on GPU (#10371)
+    
+    * add support for dot(dns, csr) = dns and dot(dns, csr.T) = dns on GPU
+    
+    * add unit test for new op and forward_stype_hint parameter to dot
+    
+    * update documentation for dot
+    
+    * address code reviews
+    
+    * fix flaky test_gluon:test_lambda through loosening the atol
+    
+    * switch dot(dns, csr) case to a deterministic algorithm with unit test for determinism
+    
+    * address code reviews and add backward
+
+commit 153dc77ef99fc0ad1d8a3b601684325a1eaa7c45
+Author: Hao Jin <haojin2@users.noreply.github.com>
+Date:   Thu Apr 5 12:46:25 2018 -0700
+
+    loosen overly tight rtol to control flaky behavior (#10422)
+
+commit 201ec0063c29b95648e7b1e5dffdeb2eec82d050
+Author: Deokjae Lee <36436141+asitstands@users.noreply.github.com>
+Date:   Sat Mar 31 14:40:26 2018 +0900
+
+    [MXNET-258] Improve flaky test_random.test_shuffle (#10313)
+    
+    * Fix random seed for test_shuffle
+    
+    * A Comment for the fixed seed is added
+    
+    * Set random seed to reproduce the failure of test_random.test_shuffle
+    
+    * Add a link to the github issue on the discussion for the fixed seed
+    
+    * Testing with the failed random seed and increased number of samples
+    
+    * Increase the number of samples instead of fixing the random seed for test_shuffle
+    
+    * Increase the number of samples instead of fixing the random seed for test_shuffle
+
+commit d07f59d8b1aac4a9336d076626f3d8881926932b
+Author: ThomasDelteil <thomas.delteil1@gmail.com>
+Date:   Fri Mar 30 11:01:38 2018 -0700
+
+    [MXNET-132] Change dead link in cpp-package  (#10210)
+    
+    * previous link is dead
+    
+    * Update README.md
+    
+    * Update README.md
+    
+    * Update README.md
+    
+    triggering build again, flaky test
+
+commit 66c6ddac41fd99634a7d96060e4ea77c683359b9
+Author: reminisce <wujun.nju@gmail.com>
+Date:   Mon Mar 26 03:46:32 2018 -0700
+
+    [MXNET-133] Model Quantization with Calibration (#9552)
+    
+    * [Quantization] 8bit Quantization and GPU Support
+    
+    [Quantization] CuDNN 8bit quantized relu v0.1
+    
+    [Quantization] CuDNN 8bit quantized max_pool v0.1
+    
+    [Quantization] CuDNN 8bit quantized lrn v0.1
+    
+    [Quantization] CuDNN 8bit quantized convolution v0.1
+    
+    [Quantization] CuDNN 8bit quantized fully connected v0.1
+    
+    [Quantization] Small fix
+    
+    [Quantization] Implement backward method
+    
+    [Quantization] Convolution backward method
+    
+    [Quantization] Add range for matmul and conv
+    
+    [Quantization] New types in ndarray.py
+    
+    [Quantization] 8bit conv works
+    
+    [Quantization] conv support multiple type
+    
+    [Quantization] matmul works now
+    
+    [Quantization] matmul works well
+    
+    [Quantization] efactor quantization operators
+    
+    [Quantization] Op: quantize_down_and_shrink_range
+    
+    [Quantization] Complete quantize_graph_pass
+    
+    [Quantization] Add example
+    
+    [Quantization] Take zero-center quantize, accuracy fixed
+    
+    [Quantization] Multiple layers MLP pass
+    
+    [Quantization] Make quantized_conv same as Convolution
+    
+    [Quantization] quantized_conv works
+    
+    [Quantization] Fix bug
+    
+    [Quantization] lenet works now
+    
+    [Quantization] Add quantized_flatten
+    
+    [Quantization] Quantized max pool works well
+    
+    [Quantization] Make quantized_conv support NHWC
+    
+    [Quantization] add max_pool
+    
+    [Quantization] add ignore_symbols
+    
+    [Quantization] Save change
+    
+    [Quantization] Reorganize tests, 8 layers resnet works on cifar
+    
+    [Quantization] Support for 'NHWC' max pool
+    
+    [Quantization] Support for 'NHWC' quantized max pool
+    
+    [Quantization] Fix speed of quantize_down_and_shrink_range
+    
+    [Quantization] script for resnet on imagenet
+    
+    [Quantization] refactor for quantize offline
+    
+    [Quantization] Fix infershape
+    
+    [Quantization] Update test
+    
+    [Quantization] Update example
+    
+    [Quantization] Fix build error
+    
+    * [Quantization] Add calibration flow and refactor code
+    
+    Rebase with dmlc/master
+    
+    Add quantize_down_and_shrink by threshold
+    
+    Don't assign resource when threshold is available for quantize_down_and_shrink
+    
+    Fix quantize_down_and_shrink saturation
+    
+    Implement pass for setting calib table to node attrs
+    
+    Rebase with upstream master
+    
+    Change threshold to min/max quantized params
+    
+    Add c-api for setting calib table to graph
+    
+    Add calibration front end function
+    
+    Bug fixes and add unit test
+    
+    Add data iter type to calibration
+    
+    Fix bug in calibrate_quantized_model
+    
+    Bug fix and add example
+    
+    Add the second calibration approach and benchmark
+    
+    Fix
+    
+    Fix infer error and add benchmark for conv
+    
+    Add benchmark script
+    
+    Change output names and argument names
+    
+    Remove commented out code
+    
+    Change name
+    
+    Add layout to benchmark_convolution
+    
+    Remove redundant comment
+    
+    Remove common and add soft link
+    
+    More fix and benchmark
+    
+    Add scripts to plot images
+    
+    Minor fix
+    
+    More fix
+    
+    More fix and util tools
+    
+    Tools and support bias in quantized_conv2d
+    
+    Add script for getting the optimal thresholds using kl divergence
+    
+    Add kl divergence for optimizing thresholds
+    
+    Add benchmark scripts
+    
+    Fix compile after rebasing on master
+    
+    Allocate temp space only once for quantized_conv2d
+    
+    Change quantize_down_and_shrink_range to allocate temp space once
+    
+    No temp space for calib model
+    
+    Refactor quantize_down_and_shrink_range into requantize
+    
+    Refactor quantized convolution using nnvm interfaces
+    
+    Fix quantized_conv bug
+    
+    Use ConvolutionParam for QuantizedCuDNNConvOp
+    
+    Refactor quantized fc using nnvm interfaces
+    
+    Change TQuantizationNeedShrink to FNeedRequantize
+    
+    Refactor quantized_pooling
+    
+    Simplify FQuantizedOp interface
+    
+    Better naming
+    
+    Fix shape and type inference for quantized_flatten
+    
+    Clean up quantization frontend APIs and examples
+    
+    Delete quantized lrn and relu
+    
+    Add python script for generating quantized models
+    
+    Add script for running inference
+    
+    Add inference example
+    
+    Remove redundant files from example/quantization
+    
+    Simplify user-level python APIs
+    
+    Add logger
+    
+    Improve user-level python api
+    
+    Fix coding style
+    
+    Add unit test for quantized_conv
+    
+    Fix bugs in quantized_fully_connected and add unit test
+    
+    Add unit test for requantize
+    
+    Fix a bug and add python api unit tests
+    
+    Import test_quantization in test_operator_gpu.py
+    
+    Rebase with master
+    
+    Remove redundant files
+    
+    Fix test case for python3 and fix doc
+    
+    Fix unit tests
+    
+    Fix unit tests for python3
+    
+    Release used ndarrays in calibration for saving memory usage
+    
+    Simplify releasing memory of used ndarrays for calibration
+    
+    Fix a bug
+    
+    Revert "Fix a bug"
+    
+    This reverts commit f7853f28ae3301f306bb61d6b68b70b21b36e0bb.
+    
+    Revert "Simplify releasing memory of used ndarrays for calibration"
+    
+    This reverts commit 70b9e3863b1c5e42ace47dd294719bffc40a6be2.
+    
+    Clean up benchmark script and improve example
+    
+    Add API and example documentation and fix bugs
+    
+    Remove redundant test file and improve error message
+    
+    Merge quantize and dequantize with master impl
+    
+    Remove commented code
+    
+    Hide monitor interface from users
+    
+    Remove interface from Module
+    
+    Add license header
+    
+    Move quantization unittests to a separate folder so that it can be only run on P3 instances
+    
+    Remove quantization unittests from test_operator_gpu.py
+    
+    Move quantization to contrib
+    
+    Fix lint
+    
+    Add mxnetlinux-gpu-p3 to jenkins
+    
+    Fix jenkins
+    
+    Fix CI build
+    
+    Fix CI
+    
+    Update jenkins file
+    
+    Use cudnn7 for ci
+    
+    Add docker file for quantization unit test only
+    
+    Correctly skip build with cudnn < 6
+    
+    Add doc for quantize symbol api
+    
+    Fix lint
+    
+    Fix python3 and add doc
+    
+    Try to fix cudnn build problem
+    
+    * Fix compile error
+    
+    * Fix CI
+    
+    * Remove tests that should not run on P3
+    
+    * Remove unnecessary docker file
+    
+    * Fix registering quantized nn ops
+    
+    * Reformat Jenkinsfile and switch quantization to CUDA 9 (#9)
+    
+    * Address interface change cr
+    
+    * Address comments and fix bugs
+    
+    * Make unit test stable
+    
+    * Improve unit test
+    
+    * Address cr
+    
+    * Address cr
+    
+    * Fix flaky unit test layer_norm
+    
+    * Fix doc
+
+commit e465cfa70d27eff9aeb0c83ba548fcf14aa81e1c
+Author: jeremiedb <jeremiedb@users.noreply.github.com>
+Date:   Sat Jan 27 08:47:34 2018 -0500
+
+    Fix flaky test R (#9598)
+    
+    * fix flaky test R
+    
+    * fix flaky test R
+
+commit 171d717ce6eecc9b71b1b48c18066047d8ec6a49
+Author: Sergey Kolychev <sergeykolychev.github@gmail.com>
+Date:   Sat Jan 13 17:00:33 2018 -0800
+
+    bitrot fix. (#9414)
+    
+    1) fixed viz routines to be compatible with current symbol json.
+    2) fixed two flaky tests.
+
+commit 7484437d21c5e1456c24bff31e6642cf0a47db4d
+Author: Marco de Abreu <marcoabreu@users.noreply.github.com>
+Date:   Wed Dec 6 19:31:19 2017 +0100
+
+    [Do not merge] Move to new CI (#8960)
+    
+    * Squashed commit of the following:
+    
+    commit ce53ad38a6ef260c7a5870faa58583b5fa2b1e30
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Sat Nov 25 10:53:09 2017 +0100
+    
+        remove whitespace
+    
+    commit 71f1f8d5a71dd495a12594a4f01bf275fbded186
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Sat Nov 25 10:37:04 2017 +0100
+    
+        Decrease timeout in Jenkinsfile
+    
+    commit ef88da18dd0f29b28ae15bb9840f3ff393e4e77f
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Sat Nov 25 10:35:44 2017 +0100
+    
+        Cleanup and add comments
+    
+    commit ad59a48e4f68fe855029ba23a78bf9fa1abf1544
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Sat Nov 25 09:26:51 2017 +0100
+    
+        Fix Integration Test Caffe-GPU to work on ubuntu16.04 with CUDA 8
+    
+    commit fc7cf23e92a6bf48cc36968df274e55c4d47a17a
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Sat Nov 25 07:42:49 2017 +0100
+    
+        Add verbose output to perl tests
+    
+    commit f076312de899fe859df3d03e74b3f97923c96a2c
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Sat Nov 25 06:40:31 2017 +0100
+    
+        Adjust Jenkinsfile to ensure integration stage being run on nvidia-docker
+    
+    commit 9ed3cd0ba7411ad686bb0162e473684c7f689211
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Sat Nov 25 02:14:54 2017 +0100
+    
+        Add nvidia dependencies to caffe_gpu
+    
+    commit 103225b70f734c92aa69416aa94eff3b24b28c5a
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 17:48:32 2017 +0100
+    
+        Update GPU containers to ubuntu16.04 / CUDA 8 to fix OpenBLAS-hang 2
+    
+    commit d1a12065826dabfbbe2102b375fb22a794eb5b3d
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 17:22:51 2017 +0100
+    
+        Update GPU containers to ubuntu16.04 / CUDA 8 to fix OpenBLAS-hang
+    
+    commit b193874f0fd33a2d985fe430b9787d5cbf479662
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 14:39:36 2017 +0100
+    
+        Fix typo
+    
+    commit c1e303468f494e28b8a4c625434a66c9b2c72282
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 14:25:43 2017 +0100
+    
+        Fix typo
+    
+    commit 143fbe258e067d59efcf08ac948850b6de4cd9a0
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 14:18:44 2017 +0100
+    
+        Fix unittest due to cuda
+    
+    commit f7255519bc96dcd25bfe83b89f8ec506af1caba6
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 14:00:48 2017 +0100
+    
+        Make sure containers are run inside the right docker binary
+    
+    commit 7ae2c67ad91fcc2a7093f4d1bf417e6096bfa32e
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 13:43:56 2017 +0100
+    
+        Fix typo
+    
+    commit 26d3a247ed502ea6f3ef25ded63ebe3f62ed9c72
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 13:42:34 2017 +0100
+    
+        Trigger build
+    
+    commit aca7005ddb91ad9ce68fd4ee471664486e44a3fd
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 12:49:36 2017 +0100
+    
+        Separated GPU-Build dockerfiles from runtime Dockerfiles
+    
+    commit 6091e5b171e3c50cecdfeacce04d21e2b3f65693
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 03:43:12 2017 +0100
+    
+        Enable install of nvidia drivers in GPU Dockerfiles
+    
+    commit f0a3fe7474fb13d96bc84671e3402a8b33e71ccd
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 02:31:58 2017 +0100
+    
+        Add cuda stub lib path to Makefile to fix libcuda.so.1 not found error
+    
+    commit 8233a3d032cdf77142f9e9c0424134da390f36fa
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 02:25:29 2017 +0100
+    
+        Add softlink to fix libcuda.so.1 not found-error
+    
+    commit 8c3e50ae98a7de95476bc15dd8ca8c146003c1f1
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Fri Nov 24 01:44:49 2017 +0100
+    
+        Fix libcuda.so.1 not found during build
+    
+    commit 2dbf35424060ec36d8cd4a084ddb3f1a976323cd
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Thu Nov 23 00:12:58 2017 +0100
+    
+        Re-enable DEV-Flag in Jenkinsfile
+    
+    commit 6083f109c0811c310b7f22268c5d6556badf4426
+    Author: Pedro Larroy <pllarroy@amazon.com>
+    Date:   Wed Nov 22 14:38:37 2017 -0800
+    
+        Fix uninitialized array warning
+    
+    commit 6e0dd21c121b275b341dbb9c304ce73ded64eae6
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Wed Nov 22 22:49:55 2017 +0100
+    
+        Support CUDA-Builds on non-gpu-instances
+    
+    commit 5f53708e369c41ed77e76fd6623a9db6573f1b62
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Wed Nov 22 15:15:36 2017 +0100
+    
+        Temp. disable dev compile mode to prevent warnings being treated as errors
+    
+    commit 5e5dff50af43ed7d618122d1c2f0379a1d7193fc
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Wed Nov 22 14:10:22 2017 +0100
+    
+        Fix typo in Jenkins for windows
+    
+    commit a3d9f7483a693b0c513c677baaa5ba6621e722d1
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Wed Nov 22 14:07:18 2017 +0100
+    
+        Fix tests/ci_build/with_the_same_user: line 27: /etc/sudoers.d/90-nopasswd-sudo: No such file or directory
+    
+    commit d76e342cfb76361ac166bc5e770bbef7721317d5
+    Merge: 5762ef88 0c0a5626
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Wed Nov 22 14:07:04 2017 +0100
+    
+        Merge branch 'v0.12.0' of github.com:MXNetEdge/mabreu-incubator-mxnet into v0.12.0
+    
+    commit 5762ef88b85754809fc98a01b149be5036737b64
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Wed Nov 22 13:46:57 2017 +0100
+    
+        Add Kellens fix for C5
+    
+    commit a93a9cd74ec362b4e3417e840169e3ce8b70cfba
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Wed Nov 22 11:40:12 2017 +0100
+    
+        Add Jenkinsfile for windows
+    
+    commit 0c0a5626a614ac203cc7e93fbd5166e4f50267bb
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Wed Nov 22 11:40:12 2017 +0100
+    
+        Add Jenkinsfile for windows
+    
+    commit 175d157171611778ee6a1e1804e4611e7ef4c136
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Mon Nov 20 19:56:18 2017 +0100
+    
+        Remove failing test
+    
+    commit bb15df1464a02fbc9dff042b24e52b49187b9d55
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Mon Nov 20 17:25:29 2017 +0100
+    
+        Disable unnecessary CUDA-archs
+    
+    commit c68265892256eb8756d2eba696ccc41766fbe3db
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Mon Nov 20 16:28:15 2017 +0100
+    
+        Disable failing test test_operator:test_depthwise_convolution
+    
+    commit 07028474d10326029aa27afb81ff3eb3fa063b5f
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Mon Nov 20 15:01:08 2017 +0100
+    
+        Increase git timeout
+    
+    commit 61d689424541801bad5a2ec5b46581810281d9a8
+    Author: Marco de Abreu <marco.g.abreu+github@gmail.com>
+    Date:   Mon Nov 20 13:16:28 2017 +0100
+    
+        Split up Jenkins-Tasks to appropriate machines
+    
+    * Remove temp file
+    
+    * Add separate compile job for MKLML-CPU
+    
+    * Fix typo
+    
+    * Revert Jenkinsfile
+    
+    * Remove MKL Experimental
+    
+    * Revert "Remove MKL Experimental"
+    
+    This reverts commit 5e0f20c67e872c1a5af7491610ab55d37f6fc5b8.
+    
+    * Disable test_gluon:test_dtype
+    
+    * Cleanup
+    
+    * Add sudo install to lint
+    
+    * Add comment about MKLML
+    
+    * Fix typo
+    
+    * Clean up dockerfiles regarding mklml
+    
+    * Enable failing tests
+    
+    * Restructure dockerfiles
+    
+    * Fix typo
+    
+    * Fix Dockerfiles
+    
+    * Update mklml library
+    
+    * MKLML fix
+    
+    * Try to fix failing MKLML-gpu build
+    
+    * Fix typo
+    
+    * Disable flaky test https://github.com/apache/incubator-mxnet/issues/8892
+    
+    * Remove workspace from jenkinsfile
+    
+    * Revert "Remove workspace from jenkinsfile"
+    
+    This reverts commit c2cfe5db296eafb008f63a7ddb0c841ac3b8313e.
+    
+    * Misc changes
+    
+    Merge Jenkinsfiles
+    Documented Dockerfiles and scripts
+    Cleaned up test comments
+    Restore Dockerfile.ubuntu1404_cuda75_cudnn5
+    
+    * fix typo
+    
+    * Fix typo
+    
+    * Revert KNOWN_CUDA_ARCH changes
+    
+    * Change makefile comment
+    
+    * Remove Jenkinsfile_windows
+    
+    * Add myself to CONTRIBUTORS.md
+    
+    * Cleanup
+    
+    * Add CUDA_ARCH to Jenkinsfile
+    
+    * Fix typo
+    
+    * Fix typo
+    
+    * Fix typo
+    
+    * Fix typo
+    
+    * Add cuda_archs to ci_build
+    
+    * Add cuda_archs to ci_build
+    
+    * Fix typo and comment
+    
+    * Disable flaky test test_loss:test_ctc_loss_train #8892

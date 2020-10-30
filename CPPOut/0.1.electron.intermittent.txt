@@ -1,0 +1,38 @@
+commit cbe66f27e725070c7c0c590a2e485978a554be19
+Author: trop[bot] <37223003+trop[bot]@users.noreply.github.com>
+Date:   Mon Jul 6 09:37:17 2020 -0700
+
+    fix: intermittent 100% CPU usage on macOS (#24415)
+    
+    Co-authored-by: Shelley Vohr <shelley.vohr@gmail.com>
+
+commit 93a9512ce19e662b250f15ab83ffe9d429edd0ba
+Author: trop[bot] <37223003+trop[bot]@users.noreply.github.com>
+Date:   Mon Jul 6 09:02:08 2020 -0700
+
+    fix: intermittent 100% CPU usage on macOS (#24414)
+    
+    Co-authored-by: Shelley Vohr <shelley.vohr@gmail.com>
+
+commit 831b6fa227a7c960519e348bac8ef0f04eb05a4a
+Author: trop[bot] <37223003+trop[bot]@users.noreply.github.com>
+Date:   Fri Jul 3 11:25:18 2020 -0700
+
+    fix: intermittent 100% CPU usage on macOS (#24413)
+    
+    Co-authored-by: Shelley Vohr <shelley.vohr@gmail.com>
+
+commit 9106d0c6d51b5d3748464bbcbaa492ba16266293
+Author: Shelley Vohr <shelley.vohr@gmail.com>
+Date:   Fri Jul 3 09:18:51 2020 -0700
+
+    fix: intermittent 100% CPU usage on macOS (#24394)
+
+commit bd03ae53f20decceb14899b8a511bfc54ffc253d
+Merge: 4e35535 704561b
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Wed Aug 17 20:31:06 2016 +0900
+
+    Merge pull request #6832 from hammerandchisel/bug/remote_object_freer_crash
+    
+    fix intermittent crash in RemoteObjectFreer

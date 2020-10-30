@@ -1,7 +1,0 @@
-commit 930a1fb0a8fa9432025442c4f4732058bb7af592
-Author: zhunaipan <zhunaipan@huawei.com>
-Date:   Fri Mar 27 14:49:12 2020 +0800
-
-    initial version
-    
-    Signed-off-by: leonwanghui <leon.wanghui@huawei.com>

@@ -1,0 +1,32 @@
+commit 61a9ef5d81acad525cb1c98829b6be4e11f8bef0
+Author: Ruslan Mustakov <r.mustakov@gmail.com>
+Date:   Thu Mar 1 17:40:44 2018 +0700
+
+    Fix intermittent audio driver crash during startup on Android
+    
+    set_pause can be called before the driver is initialized, and there
+    already is a check for that. The problem is that the 'active' field
+    was not initialied in the constructor, which lead to it having an
+    undefined value.
+    
+    (cherry picked from commit c10749d51f2b77eb1b38909d790e7d3895a97364)
+
+commit 3e03ed90a8e7a933cff02d0c46cd8d3b61a95f54
+Merge: bc3bf79 c10749d
+Author: Rémi Verschelde <rverschelde@gmail.com>
+Date:   Thu Mar 1 12:50:31 2018 +0100
+
+    Merge pull request #17137 from endragor/fix-audio-init-crash
+    
+    Fix intermittent audio driver crash during startup on Android
+
+commit c10749d51f2b77eb1b38909d790e7d3895a97364
+Author: Ruslan Mustakov <r.mustakov@gmail.com>
+Date:   Thu Mar 1 17:40:44 2018 +0700
+
+    Fix intermittent audio driver crash during startup on Android
+    
+    set_pause can be called before the driver is initialized, and there
+    already is a check for that. The problem is that the 'active' field
+    was not initialied in the constructor, which lead to it having an
+    undefined value.

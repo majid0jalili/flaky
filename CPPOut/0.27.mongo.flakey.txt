@@ -1,0 +1,73 @@
+commit a0a6898ca793a2c45a5d8ac700ea71e520bc39bc
+Author: Jason Chan <jason.chan@10gen.com>
+Date:   Fri Apr 3 17:16:41 2020 -0400
+
+    SERVER-47326 Fix flakey failCommand failpoint usage in exhaust awaitable isMaster integration tests
+    
+    (cherry picked from commit a48c4ec6a01b4347abe3f3cb02c5366e181f789c)
+
+commit a48c4ec6a01b4347abe3f3cb02c5366e181f789c
+Author: Jason Chan <jason.chan@10gen.com>
+Date:   Fri Apr 3 17:16:41 2020 -0400
+
+    SERVER-47326 Fix flakey failCommand failpoint usage in exhaust awaitable isMaster integration tests
+
+commit 0678fcf6338eee7520ccbb1880f739c7b5dca5cb
+Author: Jason Carey <jcarey@argv.me>
+Date:   Fri Feb 1 16:20:49 2019 -0500
+
+    SERVER-39331 Remove StressTest from NIA Test
+    
+    It's removed in 4.0+ and flakey
+    
+    (cherry picked from commit d0296d551c0dc079c6d57c2154b69d4dbe92a1e1)
+
+commit d0296d551c0dc079c6d57c2154b69d4dbe92a1e1
+Author: Jason Carey <jcarey@argv.me>
+Date:   Fri Feb 1 16:20:49 2019 -0500
+
+    SERVER-39331 Remove StressTest from NIA Test
+    
+    It's removed in 4.0+ and flakey
+
+commit b57eedd62f8cdaf78ad46918d5513a6f3e1ea84a
+Author: Jonathan Reams <jbreams@mongodb.com>
+Date:   Fri Dec 9 13:56:46 2016 -0500
+
+    SERVER-27210 Fix flakey ScopedDbConnection unit test
+    
+    (cherry picked from commit e4ccedc08b69cdebdf3c2ed707d07f2a78036b42)
+
+commit e4ccedc08b69cdebdf3c2ed707d07f2a78036b42
+Author: Jonathan Reams <jbreams@mongodb.com>
+Date:   Fri Dec 9 13:56:46 2016 -0500
+
+    SERVER-27210 Fix flakey ScopedDbConnection unit test
+
+commit 7779d7993383502db34363844264cbfc5cd67fa9
+Author: matt dannenberg <matt.dannenberg@10gen.com>
+Date:   Mon Jan 4 04:36:59 2016 -0500
+
+    SERVER-22075 disable flakey test case in election_timing.js
+    
+    (cherry picked from commit aaf53b13854fde5271bb6e394295bd2ed6c56736)
+
+commit aaf53b13854fde5271bb6e394295bd2ed6c56736
+Author: matt dannenberg <matt.dannenberg@10gen.com>
+Date:   Mon Jan 4 04:36:59 2016 -0500
+
+    SERVER-22075 disable flakey test case in election_timing.js
+
+commit f22b3d5470d3734937bf069a3ef884f4b6064497
+Author: Matt Dannenberg <matt.dannenberg@10gen.com>
+Date:   Wed May 28 14:06:41 2014 -0400
+
+    SERVER-14076 remove replset_remove_node.js as it is redundant and flakey
+    
+    (cherry picked from commit 4acaf8a26e37986da49d51d14d26b7639699dde6)
+
+commit 4acaf8a26e37986da49d51d14d26b7639699dde6
+Author: Matt Dannenberg <matt.dannenberg@10gen.com>
+Date:   Wed May 28 14:06:41 2014 -0400
+
+    SERVER-14076 remove replset_remove_node.js as it is redundant and flakey

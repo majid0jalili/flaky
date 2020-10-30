@@ -1,0 +1,28 @@
+commit 8d47d7873e7cf332d30e7a661a4ec9cc4d794ad8
+Author: Thomas Van Lenten <thomasvl@google.com>
+Date:   Tue Mar 29 09:21:50 2016 -0400
+
+    Mark iOS tests as able to fail.
+    
+    Travis updated their images to include an xctool that can randomly kill
+    tests, so mark them as flaky to avoid turning things red.
+
+commit 1324119a42b9c8cedd328b6adfa5ef00243651f6
+Author: Thomas Van Lenten <thomasvl@google.com>
+Date:   Tue Feb 16 09:19:50 2016 -0500
+
+    Bump up travis to Xcode 7.2
+    
+    - Update simulator versions used.
+    - Mark the iOS tests as flaky while trying to dig out the root cause.
+
+commit 938ba4103934db7459a920ca0cd96f0fd3953695
+Author: Thomas Van Lenten <thomasvl@google.com>
+Date:   Thu Dec 10 15:49:53 2015 -0500
+
+    Update the min toolchain for iOS/OS X to be Xcode 7
+    
+    - Let Xcode update the projects, schemes, and info.plists.
+    - Add workaround for shallow analyzer issues in current Xcode versions (deep analyze gets things correct).
+    - Tweak the Swift based tests to avoid warnings from Xcode 7's XCTest using optionals for autoenclosure results.
+    - No longer tag the ObjC iOS travis test as flaky, xctool seems to manage the simulator pretty well.

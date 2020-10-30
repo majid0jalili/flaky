@@ -1,5 +1,0 @@
-commit 8cf475990d8e81cfa70b7ae3bcf941ccd8a7baa5
-Author: Jack Lloyd <jack@randombit.net>
-Date:   Thu Apr 9 07:37:07 2020 -0400
-
-    Update news

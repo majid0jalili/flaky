@@ -1,0 +1,53 @@
+commit e53aafa454877b4a8a2adb896f34a31ddb40b639
+Merge: 540ad6b fc5ba94
+Author: Yangqing Jia <jiayq84@gmail.com>
+Date:   Sat Oct 11 17:41:48 2014 -0700
+
+    Merge pull request #1264 from Yangqing/dev
+    
+    Clean flaky code
+
+commit 5770a188de95e80c91468997a455aa84babd5db0
+Merge: 39b9372 3cdff9e
+Author: Yangqing Jia <jiayq84@gmail.com>
+Date:   Sat Oct 11 17:41:48 2014 -0700
+
+    Merge pull request #1264 from Yangqing/dev
+    
+    Clean flaky code
+
+commit fc5ba940744b7294846a63ee5f427b934af9cc6d
+Author: Yangqing Jia <jiayq84@gmail.com>
+Date:   Sat Oct 11 19:35:40 2014 +0000
+
+    fix flaky math functions, remove unnecessary instantiations.
+
+commit 3cdff9ee9a20d7f4ee450c83aeaf9207df5c07a2
+Author: Yangqing Jia <jiayq84@gmail.com>
+Date:   Sat Oct 11 19:35:40 2014 +0000
+
+    fix flaky math functions, remove unnecessary instantiations.
+
+commit 0160a0bc16055948e79dd214a61c33041994d163
+Author: Yangqing Jia <jiayq84@gmail.com>
+Date:   Sat Oct 11 19:35:06 2014 +0000
+
+    fix flaky test EXPECT_EQ code, using EXPECT_FLOAT_NEAR per Jeff
+
+commit 32c20db35f614197919191579a4798187ab1ac9f
+Author: Yangqing Jia <jiayq84@gmail.com>
+Date:   Sat Oct 11 19:35:06 2014 +0000
+
+    fix flaky test EXPECT_EQ code, using EXPECT_FLOAT_NEAR per Jeff
+
+commit 57a7ae1d539ffdbf30ca13f6ab0d4214f8f2aa2d
+Author: Yangqing Jia <jiayq84@gmail.com>
+Date:   Sun Sep 28 18:11:35 2014 -0700
+
+    add explicit declaration - does that help the flakyness?
+
+commit 4020069bce81c50f08bb108181de8397d3bbc639
+Author: Yangqing Jia <jiayq84@gmail.com>
+Date:   Sun Sep 28 18:11:35 2014 -0700
+
+    add explicit declaration - does that help the flakyness?

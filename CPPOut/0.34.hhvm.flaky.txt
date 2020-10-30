@@ -1,0 +1,1707 @@
+commit e3e6da495d827021a1ff3a240a637e14cdb42e38
+Author: Waleed Khan <waleedk@fb.com>
+Date:   Tue Oct 15 16:23:15 2019 -0700
+
+    Fix integration tests for status
+    
+    Summary:
+    These tests were broken/flaky because we always `sleep 1.0`'d before emitting a status, so we never saw the "initializing" status message. Moving the `sleep` afterward and showing status immediately ensures that we don't miss any status messages.
+    
+    To fix this, we also have to make it possible for the tests to receive a `showStatus` request and not respond to it. (If we do respond to it, then the language server immediately sends another `showStatus` request, until you don't respond to it.)
+    
+    Reviewed By: jewelpit
+    
+    Differential Revision: D17938029
+    
+    fbshipit-source-id: b1834cf1369ce7aa9d95b0dfeaa3f8254cb99a91
+
+commit c491040b1a1ec66b951272b3057232f26e8ec351
+Author: Wilfred Hughes <wilfred@fb.com>
+Date:   Mon Aug 12 08:21:55 2019 -0700
+
+    Apply ocamlformat to more directories
+    
+    Summary:
+    Enable ocamlformat for more directories. This diff focuses on the long tail of small, rarely modified directories to minimise conflicts with work in progress.
+    
+    Ignore flaky procs:run_worker_test failure.
+    
+    Reviewed By: 2BitSalute
+    
+    Differential Revision: D16671287
+    
+    fbshipit-source-id: eb751aedada316fed6ef2f5f5eed3d7a7122ad76
+
+commit c1a8c4f3fa121c038f36e30968bc4e60f28d7350
+Author: Wilfred Hughes <wilfred@fb.com>
+Date:   Thu Aug 8 09:59:45 2019 -0700
+
+    Don't use doc comments for copyright headers
+    
+    Summary:
+    This unblocks ocamlformat migration, which tries to move doc comments to a consistent position.
+    
+    Transformation run was:
+    
+    ```
+    $ cd fbcode/hphp/hack
+    $ find . -maxdepth 4 -name \*.ml | xargs sed -i "1s/(\*\*$/(*/"
+    $ find . -maxdepth 4 -name \*.mli | xargs sed -i "1s/(\*\*$/(*/"
+    ```
+    
+    Ignore flaky run_procs test.
+    
+    Reviewed By: arxanas
+    
+    Differential Revision: D16691668
+    
+    fbshipit-source-id: be2be5056976c3668257c2ea5031218c5532c4c1
+
+commit b788f3284d69bdf6b897e08f2d502a9973da0222
+Author: Wilfred Hughes <wilfred@fb.com>
+Date:   Fri Jul 12 03:19:28 2019 -0700
+
+    Remove unused shim function
+    
+    Summary:
+    This function is unused. String.split_on_char was added to OCaml 4.04.0.
+    
+    run_worker_test and run_procs_unit_tests are known to be flaky, see [these tasks](https://our.intern.facebook.com/intern/tasks/?t=46662056&q=%7B%22key%22%3A%22AND%22%2C%22children%22%3A[%7B%22key%22%3A%22CONTAINS_ALL_TEXT%22%2C%22field%22%3A%22TASK_TITLE%22%2C%22value%22%3A%22Test%20failed%3A%20hphp%2Fhack%2Ftest%2Funit%2Fprocs%3Arun_worker_test%20-%20main%22%7D]%7D).
+    
+    Reviewed By: kmeht, jewelpit
+    
+    Differential Revision: D16092132
+    
+    fbshipit-source-id: 83b448a480789acd272937265ebc4ef727100855
+
+commit e6f861c56ae9cfe460af6efa66dff3fe2bfc8de7
+Author: Waleed Khan <waleedk@fb.com>
+Date:   Mon Jun 17 16:39:59 2019 -0700
+
+    Delete test_one_hg_update_daemonized
+    
+    Summary: Seems to be flaky, even though dabek tried to fix it in D10511311.
+    
+    Differential Revision: D13867403
+    
+    fbshipit-source-id: a03d30cdc5356ad3ef9b343649d90641e26fd9bc
+
+commit 764b4eaeaff9a12e4b89ff8853492feef57d4d59
+Author: Ted Spence <tspence@fb.com>
+Date:   Fri May 31 10:31:04 2019 -0700
+
+    Switch mixed-process test to full ocaml unit test
+    
+    Summary:
+    As reported by Tatiana Racheva, the test I wrote for validating the symbol index service relies on launching HH.  Because it's an integration test, it depends on consistent behavior of watchman + HH Server + HH Client.
+    
+    In experience it was flaky.
+    
+    So, let's rewrite it to simply execute the same statements we want to test locally.
+    
+    Reviewed By: 2BitSalute
+    
+    Differential Revision: D15566608
+    
+    fbshipit-source-id: 2e83486f8f5b2077e47d559887086f8f48022240
+
+commit a4b0f8b9dbc6c3b8ba4022628fc938c0c6e436be
+Author: Kasper Kopec <kasper@fb.com>
+Date:   Tue Oct 23 13:58:49 2018 -0700
+
+    Fix WatchmanEventWatcher to prevent starting hh_server in hg.filemerge state
+    
+    Summary:
+    `WatchmanEventWatcher` is a daemon that is intended to have a lifespan longer than that of single server, or single server monitor, which allows it to more reliably answer the question “are we in the middle of rebase”.
+    
+    It has a bug (?) where instead of only looking at `hg.update` state enter/leave events, it just treats any leave as end of update. This ends up including things nested inside `hg.update`, which makes it incorrect, with the worst offender being `hg.filemerge` being entered/left for every file with merge conflicts WHILE the rest of files are still mid-update.
+    
+    There was already test that is failing for similar reason related to `hg.transaction` events, but it was disabled as flaky long time ago ¯\_(ツ)_/¯.
+    
+    Reviewed By: 2BitSalute
+    
+    Differential Revision: D10511311
+    
+    fbshipit-source-id: 5e3c26fdf119ee41df4322db15a457c7a4315493
+
+commit b1779738ec82509e4d353292448c71862e0e0628
+Author: Kasper Kopec <kasper@fb.com>
+Date:   Thu May 17 12:47:54 2018 -0700
+
+    Do not automatically restart full checks cancelled because of IDE edit commands
+    
+    Summary:
+    Here comes the big (?) disappointment of this diff stack: while we can do things during typechecking, the most important (?) and time sensitive sequence of IDE queries (edit + autocomplete) requires us to STOP typechecking (to apply the edit in thread safe way). We can do it, but there is a constant cost to starting and stopping those jobs, which can exceed the time Nuclide allots us to return the results and results in a very flaky experience.
+    
+    I tried a bunch of heuristics to try to automatically determine when to restart and none of them were particularly satisfying, so instead I opt to transfer this responsibility to the user - when you start editing files you cancel current recheck and it will be only restarted when you save any file again.
+    
+    Reviewed By: alexchow
+    
+    Differential Revision: D7944023
+    
+    fbshipit-source-id: 0af0123f00c1c0b971c55bef7cef8b57c6a1b701
+
+commit f76028e1741c3da5435e2ef9cd92559089119096
+Author: Alexander Chow <achow@fb.com>
+Date:   Thu Apr 12 13:55:25 2018 -0700
+
+    Fix spontaneous End_of_file in Workers and flaky procs_unit_test
+    
+    Summary:
+    This diff fixes 2 issues:
+    - Sometimes, a failed job shows up as End_of_file instead of the actual underlying failure
+    - Flaky process_unit_test
+    
+    The first problem is caused by a race between WorkerController and the worker master, resulting in an End_of_file exception when a worker slave's job fails. I will copy-pasta from the diff:
+    
+    ```
+        (**
+         * We run the "with_exit_status_check" twice (first time non-blockingly).
+         * This is because of a race condition.
+         *
+         * Immediately after the worker master forks the slave (see worker.ml), it does
+         * a blocking, non-interruptible waitpid on the slave. This means that if the slave
+         * fails, then the master will see the failure and also fail accordingly, which we
+         * will catch in here with "with_exit_status_check". This is designed around a sort-of
+         * invariant - if the worker slave fails, then the worker master will fail, so
+         * the WorkerController here will see the failure and not attempt to read the result
+         * with "Marshal_tools.from_fd_with_preamble"
+         *
+         * But there is a brief moment after the slave is forked and before the
+         * non-interruptible waitpid where the worker slave can actually fail quickly
+         * and this WorkerController has already checked the worker master's status. So the
+         * invariant above will be broken, the WorkerController will try to read the result
+         * with Marshal_tools, get an End_of_file, and crash.
+         *
+         * To get around this, we give the worker master time to "catch up" and reach the
+         * non-interruptible waitpid that we expect it to be at. Eventually, it will also
+         * fail accordingly, since its slave has failed.
+         *)
+    ```
+    
+    The second problem is caused by a race condition in the unit test. All 10 jobs are actually
+    in-progress by the time we coalesce failures and, and we want to see the first 5 of them fail, but
+    there's a fairly good chance that more than 5 of them have actually completed.
+    
+    This fixes that race.
+    
+    copy-pasta from the docs:
+    ```
+        (**
+         * We want the first 5 buckets to all have exited when the MultiWorker result
+         * is merged. Yes, they fail quickly, but it's still racy. We don't want to
+         * see "just 3" failures or something when merging.
+         *
+         * To ensure all 5 have failed, we delay merging.
+         *
+         * To do that, we delay handing out the last 5 buckets.
+         *
+         * To do that, we add a sleep when creating the 6th bucket.
+         *
+         * This works because the result isn't merged until all buckets are handed
+         * out.
+         *)
+    ```
+    
+    Reviewed By: gabelevi
+    
+    Differential Revision: D7437008
+    
+    fbshipit-source-id: 67030de9ac0e9ceab989f1ac24015dede295835d
+
+commit ff18a428eef6d5254543061c8e018ea28c6b64d0
+Author: Bin Liu <binliu@fb.com>
+Date:   Thu Mar 15 14:30:05 2018 -0700
+
+    Fix some failed/flaky test in asan mode
+    
+    Summary: The sanitizer prints some warnings on undefined behaviors. This tries to fix some of them.
+    
+    Reviewed By: markw65
+    
+    Differential Revision: D7270746
+    
+    fbshipit-source-id: 4c2781448ed47eb2819eca3d6fffb3feeb3561f8
+
+commit f4d06a8a70befbf1158e884f8b7ea90fe33f1f20
+Author: Alexey Toptygin <alexeyt@fb.com>
+Date:   Mon Feb 12 12:10:06 2018 -0800
+
+    Delete zend/bad and zend/flaky tests.
+    
+    Summary:
+    We don't run them now, and we don't intend to run them in the future.
+    Also delete scripts for importing these tests and moving them around.
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D6959408
+    
+    fbshipit-source-id: 310a37055ff42c2d95ab7c6b14fb759aa1bcd06a
+
+commit 34b65c7c12006afddcb4b38895847f2e3778556e
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Fri Feb 9 10:50:56 2018 -0800
+
+    Add slim test to flaky list
+    
+    Reviewed By: fredemmott
+    
+    Differential Revision: D6941280
+    
+    fbshipit-source-id: 8560f157ece82dae21f7cb3c916b4b13265e0e63
+
+commit b542daf156fd2ca07b838d2d702a61e372ec6113
+Author: Eric Bluestein <ericblue@fb.com>
+Date:   Wed Jan 17 21:38:44 2018 -0800
+
+    Nuclide HHVM Debugger - Fix flaky test shutdown
+    
+    Summary: When the HHVM process finishes running a script, it can exit without flushing the remaining VS debug protocol messages into the TCP socket. The real client doesn't care so much when this happens, since the debug wrapper terminates the debug session if it sees the TCP socket close. The tests should be resiliant to this as well.
+    
+    Reviewed By: vladima
+    
+    Differential Revision: D6733753
+    
+    fbshipit-source-id: cbf87d46c37a4a1404f8ddf87d8087e180bffadc
+
+commit 162c1669439bbc955c1947d1ca98470285a9adb6
+Author: Mark Williams <mwilliams@fb.com>
+Date:   Thu Dec 21 14:14:18 2017 -0800
+
+    Fix tier_overrides_tier.php
+    
+    Summary:
+    This test has been getting more and more flaky recently, and I just
+    noticed that its because it fails 100% of the time on kernel
+    4.11.3-27_fbk7_2638_g404b383, in dbgo builds.
+    
+    I grabbed a devserver, upgraded to 4.11.3-27_fbk7_2638_g404b383, and
+    it reprod. The problem turns out to be that it sets an RSS limit of
+    200M, which isn't quite enough in dbgo builds. Its not quite clear why
+    the kernel matters, but presumably its either enforcing the limits
+    more strictly, or computing them differently.
+    
+    In any case, doubling the limit fixes it.
+    
+    Reviewed By: alexeyt
+    
+    Differential Revision: D6621892
+    
+    fbshipit-source-id: efb3b1c42f93068681c7d47b0eeff1db23ab1ac2
+
+commit 5bf46eac5342fcd1796ff7247b9bf1162f943f1e
+Author: James Wu <jjwu@fb.com>
+Date:   Mon Oct 16 14:33:25 2017 -0700
+
+    Compare hashes during initialization
+    
+    Summary:
+    This diff activates the benefits of the stack: it allows us to split our dirty_files during initialization into two categories. Regular dirty files, whose declarations have changed(whose hashes have changed) and *similar files*, files whose hashes have not changed. These files don't have to be redeclared or retypechecked because they cannot create any new errors.
+    
+    The difference between this and incremental init is that files that haven't been significantly changed do not need to be declared and extra two times. In fact, no declaration step is necessary at all! We can lazily declare as necessary only for files that have significantly changed.
+    
+    due to LSP test flaky:
+    
+    Reviewed By: alexchow
+    
+    Differential Revision: D5972889
+    
+    fbshipit-source-id: c435b9e1bcd6c5a514c1596b7a5c750c747c7699
+
+commit 4900f95b112b4cccd454b47e30533ac6f8977e2a
+Author: Jeremy Faller <jfaller@fb.com>
+Date:   Fri Sep 22 06:47:15 2017 -0700
+
+    Re-enable weakref_gc test with tighter skip conditions.
+    
+    Summary: This test might still be flaky as it triggers because of stale pointers.
+    
+    Reviewed By: edwinsmith
+    
+    Differential Revision: D5882090
+    
+    fbshipit-source-id: 6cceee33a0ebd397eca05529c3523bca949edc54
+
+commit 0afec29a136bc067d61ed19ae2c8e1599a0cc637
+Author: Jeremy Faller <jfaller@fb.com>
+Date:   Tue Sep 19 11:50:40 2017 -0700
+
+    Turn off weak-ref gc test.
+    
+    Summary: Test looks flaky. Never flaked for me, but HEAD seems to have a problem. Get build back to green, and research answer.
+    
+    Reviewed By: edwinsmith
+    
+    Differential Revision: D5861954
+    
+    fbshipit-source-id: 9728d26fdbd3ffdfa6e42c507ad35da66b4223b1
+
+commit ada6c10e363df6d55420d764d1cbdba504ecabb7
+Author: Gabe Levi <gabe@fb.com>
+Date:   Tue Aug 15 14:42:23 2017 -0700
+
+    Attempt to fix flaky timeout_test
+    
+    Summary:
+    [hphp/hack/test/unit/utils:timeout](https://our.intern.facebook.com/intern/testinfra/testdetail/102431738)
+    is pretty flaky. Looking at failing test runs, the failing tests tend to look
+    like this:
+    
+    1. Spawn another process that is supposed to timeout after X seconds
+    2. Wait Y seconds (where Y > X)
+    3. Fail when child process hasn't exited yet.
+    
+    I'm guessing that these spurious failures are due to spawning a child process
+    taking surprisingly long when the machine is under stress (like running all the
+    tests).
+    
+    We probably could just delete these tests. It's probably sufficient to test
+    that timeouts work in the current process, without testing that they work in
+    spawned processes too. However, I'm first going to try and fix this by making
+    the parent process wait for the child process to start before it starts the
+    timer.
+    
+    Yes, this does kind of bias things the other direction - that is now the parent
+    might start its timer too late instead of too early if the host is slow to
+    resume the parent process. So it's possible this test will start being flaky in
+    the other direction (parent process timers failing to fire in time). But let's
+    try this and see how it does.
+    
+    Reviewed By: dabek
+    
+    Differential Revision: D5602215
+    
+    fbshipit-source-id: 5c56b4d63f26b8b969297c876efd2919eeed0dba
+
+commit ff11550f18a576cca5aacb9df07e6a5a0fce08c5
+Author: Mark Williams <mwilliams@fb.com>
+Date:   Tue Aug 8 10:54:47 2017 -0700
+
+    Disable flaky apc-gc test
+    
+    Summary: It keeps crashing
+    
+    Reviewed By: kodafb
+    
+    Differential Revision: D5582966
+    
+    fbshipit-source-id: 2853941a94e1b2299e2c103631ff034884d48bb6
+
+commit 3880b958237d0eaa259c6b6da3c7db6b33d0babf
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Tue May 23 16:50:50 2017 -0700
+
+    Mark socket_connect_params as flaky
+    
+    Summary: It tries to listen on a random port without any retry logic.
+    
+    Reviewed By: kodafb
+    
+    Differential Revision: D5105308
+    
+    fbshipit-source-id: ae1c8e970b27010ec7b4385bddf12908d2dfc599
+
+commit 8f924db6f2187ee8a9ddc79005d2a6a7f807976b
+Author: Mark Williams <mwilliams@fb.com>
+Date:   Fri Mar 17 15:38:06 2017 -0700
+
+    Remove flaky tests
+    
+    Summary:
+    These two and *_class_002.php all create, manipulate and then delete
+    the same set of files. I'm leaving class_002.
+    
+    Reviewed By: ricklavoie
+    
+    Differential Revision: D4729622
+    
+    fbshipit-source-id: c8dd7b18f0bdecd0c397098c2bc45adf2671ab96
+
+commit 0ba70a4f8f7738c7a0e64644b2292484603081cd
+Author: Mark Williams <mwilliams@fb.com>
+Date:   Wed Mar 1 15:47:28 2017 -0800
+
+    Move mkdir_variation1.php to flaky
+    
+    Summary:
+    It creates and removes a directory named " ", while lots of other
+    tests in the same directory attempt to get various attributes of a
+    file named " ", with the expectation that it doesn't exist. When it
+    /does/ exist, they fail.
+    
+    Reviewed By: mxw
+    
+    Differential Revision: D4635298
+    
+    fbshipit-source-id: 2daa28e187b67325290645e6e27bda8f4d932b30
+
+commit 265a7c24824ad557cdde9decd8ffbc81e5f91d36
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Thu Sep 29 09:40:57 2016 -0700
+
+    Disable flaky test
+    
+    Summary:
+    Anything dealing with shared memory is going to be inherently flaky,
+    and this one even admits as much in a comment.
+    
+    Reviewed By: paulbiss
+    
+    Differential Revision: D3937710
+    
+    fbshipit-source-id: 044dd8d543d3d865ba4751a37ce53bbf587cfe43
+
+commit 98cd8c66bdce1b50fed9fdfbb7ff00f1ea4c497e
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Fri Sep 23 16:42:28 2016 -0700
+
+    Disable flaky curl test
+    
+    Reviewed By: alexmalyshev
+    
+    Differential Revision: D3916234
+    
+    fbshipit-source-id: 49174a725e86b48a1e5efcea01b50cbc751d5db3
+
+commit 2be3c2c5edcef6bdf867d5bf02bc80220eed7486
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Fri Sep 23 10:40:08 2016 -0700
+
+    Disable some flaky zend tests
+    
+    Summary:
+    One tries to listen on a random port, the others stomp on each other's
+    files.
+    
+    Reviewed By: paulbiss
+    
+    Differential Revision: D3908581
+    
+    fbshipit-source-id: afad1275523c78bdbdf396ac31605c3de0790846
+
+commit 84ee59fe7ece40b971729e06fe3ab0c48e31ecfb
+Author: Kasper Kopec <kasper@fb.com>
+Date:   Mon Aug 15 16:49:53 2016 -0700
+
+    Framework for new, python-less integration tests
+    
+    Summary:
+    Problems with python integration tests:
+    
+    - flaky because of a lot of moving parts when launching a full real server
+    - slow because of lot of ("sleep 1") to synchronize progress of server and test runner
+    - race conditions anyway: we can check if the final result is what we desired, but there is no easy way to see if the way we arrived at it is also what we intended
+    - the only output we can inspect is what the server exposes to the clients - what would often be more useful is to be able to directly inspect server state: env, shared memory, search indexes, etc
+    - python is not as nice as Ocaml
+    
+    My solution:
+    
+    - refactor a single iteration of main loop into a separate, exposed function with well defined and stub-able inputs
+    - provide a module that can set up all the data structures and run a single iteration of main loop with inputs provided using simple DSL
+    - tests can now use this module to run the main loop step by step and directly inspect the server state between them
+    
+    Right now, the only stub-able part are the disk changes. See {D3700508} for example usage.
+    
+    Reviewed By: dlreeves
+    
+    Differential Revision: D3700354
+    
+    fbshipit-source-id: 6ec038e58bd0119d0310d38444ed1080087b4701
+
+commit 1535c08b2f4be490361936e3eecaf1a169ed19e5
+Author: Alex Malyshev <alexanderm@fb.com>
+Date:   Mon Jul 18 16:08:48 2016 -0700
+
+    Disable flaky curl tests
+    
+    Summary: These things keep flaking out.
+    
+    Reviewed By: paulbiss
+    
+    Differential Revision: D3552902
+    
+    fbshipit-source-id: 81f6c82cb024ba94e70100bcb4b87608eb75721b
+
+commit ef76bcc42d5c783d2fd6de35c9843662973b04ab
+Author: Alex Malyshev <alexanderm@fb.com>
+Date:   Fri May 20 14:00:29 2016 -0700
+
+    Mark frameworks test as flaky
+    
+    Summary:
+    We've decided this test should fail, but it passes some build
+    configurations.  Just mark it as flaky for now.
+    
+    Reviewed By: paulbiss
+    
+    Differential Revision: D3318417
+    
+    fbshipit-source-id: f8ace0479971226ec34e834b0dc8a9cfedf57a4f
+
+commit 5c3a0ecd5ec46592f4a90e6a36395209c72547e4
+Author: Edwin Smith <smith@fb.com>
+Date:   Wed Mar 30 06:34:55 2016 -0700
+
+    increase sleep duration in asio_callbacks_io_wait.php
+    
+    Summary: sometimes the 1sec duration is too slow and the test flaky-fails.
+    
+    Reviewed By: jano
+    
+    Differential Revision: D3109892
+    
+    fb-gh-sync-id: ca2fac3a835cfe544b7df38666b8501f430af2b7
+    fbshipit-source-id: ca2fac3a835cfe544b7df38666b8501f430af2b7
+
+commit c79e58e60d20e6c1ada578f805d59ed217c04cdc
+Author: Alexander Chow <achow@fb.com>
+Date:   Tue Mar 8 18:16:56 2016 -0800
+
+    Better timeout test logging. Give some slack for timeout
+    
+    Summary:Timeout test is flaky on buck on sandcastle, but doesn't repro locally.
+    Add some slack on the timeout and add some logging.
+    
+    Reviewed By: int3
+    
+    Differential Revision: D3025199
+    
+    fb-gh-sync-id: e5b3d9311db2ef24e99fea5c1f75bb0bb50ce096
+    shipit-source-id: e5b3d9311db2ef24e99fea5c1f75bb0bb50ce096
+
+commit f7b9f483089954fb1f51d145d01c89955401f0f3
+Author: Kasper Kopec <kasper@fb.com>
+Date:   Fri Jan 8 13:23:51 2016 -0800
+
+    Fresh state integration tests + "wait(2)" after os commands to fight flakiness
+    
+    Summary:
+    All the integration tests currently test loading saved state scenario. This makes them flaky (loading saved state fails some % of the time) and slow.
+    
+    This diff adds the third (in addition to saved state and mini saved state) test which tests the behavior on a fresh startup. This is a path that is also worth testing, though I do admit that my main motivation here is circumventing saved state flakiness and providing some kind of continuous coverage for IDE integration that we currently miss because if it.
+    
+    Stress testing shows that (even without this dependency) tests are still too flaky:
+    
+    - client sometimes fails to connect to the server (return code 6) - I'm not sure when this happens (alexchow?) and should our existing client retry logic keep trying to pummel through it. For now I added an additional level of retrying for this case.
+    - race conditions with os commands (?). We write/move/rename some files and then depend on subsequent Hack calls reflecting the new state of the world. This doesn't seem to work reliably, and adding some strategically placed time.wait(2) makes it go away...
+    
+    After those changes I had much more success with those tests (multiple successful stress runs with 200 tests at once - much more than our test runner, though also on a different machine than it uses), but sometimes I do end up with a crazy failure - an error in .hhi file (?!?!):
+    
+      First has 0, Second has 1:  '/tmp/tmplqkg9o__/hhi_e484883/hhi/typestructure.hhi:39:9,21: Invalid constraint on newtype (Typing[4110])'
+      First has 0, Second has 1:  '  /tmp/tmplqkg9o__/hhi_e484883/hhi/typestructure.hhi:42:19,27: This is an object of type classname'
+      First has 0, Second has 1:  '  /tmp/tmplqkg9o__/hhi_e484883/hhi/classname.hhi:9:25,30: It is incompatible with a string'
+    
+    No idea where this comes from, but I I do hope it will be reliable enough in the test runner environment to pass the bar.
+    
+    dogscience
+    
+    Reviewed By: int3
+    
+    Differential Revision: D2814372
+    
+    fb-gh-sync-id: 01321ce7e65ff3570330a7031dfddb5949fe522a
+
+commit 43ecca3b4b22e528af315fd6ad5b39ee5e36c385
+Author: Alexander Chow <achow@fb.com>
+Date:   Wed Dec 23 11:26:13 2015 -0800
+
+    Make test_abnormal_typechecker_exit_message less flaky
+    
+    Reviewed By: int3
+    
+    Differential Revision: D2780915
+    
+    fb-gh-sync-id: 43014ce51a5bcb1b3295f3f3ec7a4be568eb7431
+
+commit 4c4c0c5705d07cd5f70b841468c50edd2f7b6708
+Author: Alexander Chow <achow@fb.com>
+Date:   Thu Dec 17 17:14:16 2015 -0800
+
+    Less flaky test_abnormal_typechecker_exit_message
+    
+    Reviewed By: int3
+    
+    Differential Revision: D2771549
+    
+    fb-gh-sync-id: 10947ba1085f3db226dcd3dddea1a2c01c2ed4c2
+
+commit 9640202ab55c5e9ccb7f176d48f2d82465bbb18c
+Author: Josh Watzman <jwatzman@fb.com>
+Date:   Tue Dec 8 11:11:10 2015 -0800
+
+    Move some gethostby{name,port} tests into flaky
+    
+    Summary: These three tests are failing in our continuous build enviornment, suddenly. Probably a config change on that end, combined with these tests relying on some property of system configruation that isn't universally true. Let's just mark as flaky and move on.
+    
+    Reviewed By: paulbiss
+    
+    Differential Revision: D2734661
+    
+    fb-gh-sync-id: 0fee4796620557957c87fb1d445eae2efdacb5eb
+
+commit db8da2aa55ea74b271bd705c74d1aeb5f1bb9067
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Fri Jul 31 11:16:59 2015 -0700
+
+    Disable flaky test
+    
+    Summary: It fails if it can't reach a couple external websites.
+    
+    Reviewed By: @mxw
+    
+    Differential Revision: D2300436
+
+commit 7b5cbf127847fff19514676408227f9d6a7f9765
+Author: Joel Marcey <joelm@fb.com>
+Date:   Thu Jul 30 14:42:52 2015 -0700
+
+    Add flaky test to Zend test import script.
+    
+    Summary: We manually made this test flaky in D2266425; let's make sure it always
+    stays that way when we re-import
+    
+    Reviewed By: @jwatzman
+    
+    Differential Revision: D2291326
+
+commit 6ae44fc92acb63e7fa31b5fd4fcd4cf939c3ef54
+Author: Josh Watzman <jwatzman@fb.com>
+Date:   Tue Jul 28 13:55:50 2015 -0700
+
+    Remove flaky test with extreme prejudice
+    
+    Summary: AFAICT this test failed because it picked the same port
+    randomly either as another program or another instance of itself. This
+    is a terrible test liable to randomly fail, and with all the flakyiness
+    inherent in our infra right now, we don't need more of this shit.
+    
+    rage-deskflip
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D2266425
+
+commit 72e934370b91d59b2336517c0426fcb6d2f4d3f1
+Author: Francesco Logozzo <logozzo@fb.com>
+Date:   Fri May 1 23:21:24 2015 -0700
+
+    Modified the verify.py script to dump output on test failure
+    
+    Summary: We have some flaky test. In order to understand what's going on, we need to
+    print out the expected and the output file.
+    
+    Reviewed By: @phooji
+    
+    Differential Revision: D2039456
+
+commit 44de19a0aeeacecfc5eeb064ae28d115791f15ca
+Author: mwilliams <mwilliams@fb.com>
+Date:   Fri Mar 27 08:24:52 2015 -0700
+
+    Fix a flaky asan test
+    
+    Summary: It specied a memory limit of 3 bytes; which seems to be fine
+    when we're using the chunked allocator, but when its disabled (as it is
+    for asan builds), we oom before getting to the register_postsend_function
+    call, breaking the test.
+    
+    Reviewed By: @swtaarrs
+    
+    Differential Revision: D1948865
+
+commit 4ef02d0992cd640ae6bfd622cb66d04f94acfdde
+Author: bsimmers <bsimmers@fb.com>
+Date:   Sat Mar 21 13:00:07 2015 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 376368ed080ff7d8529c5d6f0c171cd8029564b7
+Author: Alex Malyshev <alexanderm@fb.com>
+Date:   Fri Mar 20 16:57:49 2015 -0700
+
+    Kill flaky doctrine2 test
+    
+    Summary: Doctrine\Tests\ORM\Functional\IdentityMapTest::testReusedSplObjectHashDoesNotConfuseUnitOfWork
+    is not to be trusted so burn the entire file down.
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D1932525
+
+commit 76d3b1c795e401f5aea4fd53db56595941a0f71f
+Author: Bert Maher <bertrand@fb.com>
+Date:   Fri Mar 20 16:35:27 2015 -0700
+
+    Make test/slow/ext_intervaltimer/reset-in-callback.php less flaky
+    
+    Summary: Testing time-based stuff is hard :-(
+    
+    Reviewed By: @alexmalyshev
+    
+    Differential Revision: D1932041
+
+commit 1b9b4151c2b34e4c81d76ead91a2491b5c0d618b
+Author: Joel Marcey <joelm@fb.com>
+Date:   Tue Mar 17 15:56:31 2015 -0700
+
+    Flake-ize flaky Doctrine Test
+    
+    Summary: This test is flaky and causing erratic internal test results
+    
+    Reviewed By: @jano
+    
+    Differential Revision: D1920006
+
+commit dcb4e334c2ac671f31e513557812bbcabca2eb2b
+Author: Bert Maher <bertrand@fb.com>
+Date:   Wed Feb 11 22:59:15 2015 -0800
+
+    Make intervaltimer tests less flaky
+    
+    Summary: Just had these fail on a diff, hopefully making the interval huge will
+    prevent flakiness, if not I'll disable them.
+    
+    Reviewed By: @jano
+    
+    Differential Revision: D1844044
+
+commit a442c9d3cde77ec1fc95eabec9b78a6ec4b5471b
+Author: Bert Maher <bertrand@fb.com>
+Date:   Mon Feb 9 17:44:34 2015 -0800
+
+    Disable flaky zend tests
+    
+    Summary: They test weirdly named files like " " that happen to be created by
+    another test.
+    
+    Reviewed By: @swtaarrs
+    
+    Differential Revision: D1836106
+
+commit 0be1c6e7926dbb28c3df23c1defee25fd3e30575
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Feb 2 13:07:53 2015 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 1cb76c13366b8e23f197eac05b663ff43c940f48
+Author: bsimmers <bsimmers@fb.com>
+Date:   Sat Jan 31 14:05:42 2015 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit ee28906ab6a532c8e9167755763d20914cb50fb9
+Author: Jeff Hemphill <jhemphill@fb.com>
+Date:   Fri Jan 16 14:17:20 2015 -0800
+
+    Add PrivacyPolicyBaseBase to Hack special names
+    
+    Summary: Small change. I also made my array_values test less flaky, per the comment in my last diff.
+    
+    Reviewed By: @jwatzman
+    
+    Differential Revision: D1786280
+
+commit 1d931280a3f017f02ff48933ea65b457c93c8a5f
+Author: Bert Maher <bertrand@fb.com>
+Date:   Wed Jan 14 09:21:58 2015 -0800
+
+    lstat_stat_variation22 is flaky due to race
+    
+    Summary: It fails intermittently in contbuild, and I finally realized that it
+    checks stat(' '), and mkdir_variation1 creates a directory named ' ', so they
+    race.
+    
+    Reviewed By: @swtaarrs
+    
+    Differential Revision: D1781460
+    
+    Signature: t1:1781460:1421219891:e561f9adb9fae9bcdff26efbb4da0f19bec514fc
+
+commit 79766de4c931a68cbba55dfd79205294933ac759
+Author: Edwin Smith <smith@fb.com>
+Date:   Wed Jan 7 08:51:11 2015 -0800
+
+    Remove more Sweepable persistence cruft.
+    
+    Reviewed By: @mxw
+    
+    Differential Revision: D1769192
+    
+    Signature: t1:1769192:1420649976:890da11c5d23b9be3c1800df4c6772ffecdad38c
+    cmake-verification is flaky (mutex error is unrelated to this diff)
+
+commit 38a4515b81bc71644c0fa5038a5f56315dcb07b1
+Author: Bert Maher <bertrand@fb.com>
+Date:   Mon Dec 15 16:00:27 2014 -0800
+
+    Disable socket-pair test because it is flaky
+    
+    Summary: It's failing a bunch on sandcastle
+    
+    Reviewed By: @alexmalyshev
+    
+    Differential Revision: D1741089
+
+commit 562c1c10f28c591b9671af1ab80ef3f28caf3cf5
+Author: Maksim Panchenko <maks@fb.com>
+Date:   Fri Dec 12 20:22:50 2014 -0800
+
+    Fixes for vasm-llvm backend.
+    
+    Summary: Down to 12 failures in test/quick. At least 1 test is flaky and sometimes
+    it goes to 11.
+    
+    - Allocate data sections close to code to ensure 32-bit relocations point
+      to correct code locations. This also fixes assertions we get with
+      debug LLVM builds.
+    - Update LLVM with fixes to stack alignment in HHVM_TC calling convention
+      and disable 8-byte stack alignment override.
+    - Enable smashable calls.
+    
+    Reviewed By: @swtaarrs
+    
+    Differential Revision: D1736576
+    
+    Signature: t1:1736576:1418411702:b527abd17f6b8091561c7e7fb33015941bd10749
+
+commit edafab47a1c6a90616ee3c54103e28bafdb7c3bd
+Author: Bert Maher <bertrand@fb.com>
+Date:   Tue Dec 2 13:42:33 2014 -0800
+
+    touch_variation1 is flaky
+    
+    Summary: Both it and touch use dirname(__FILE__)."/touch.dat", so they can't be
+    run concurrently.
+    
+    Reviewed By: @fredemmott
+    
+    Differential Revision: D1712418
+    
+    Signature: t1:1712418:1417546066:e938a29484398ce85cbf5956eacdebfa6210a9ee
+
+commit 16605c253460abcc66bd1df75b399cbd754a1b82
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Tue Sep 23 17:14:30 2014 -0700
+
+    Fix remaining asan test failures
+    
+    Summary: - The JEWISH_MONTH_NAME macro was accessing an array out of bounds when given a
+      year < 1. According to a few sources on the internet, years < 1 don't exist
+      in the Jewish calendar, so the result is undefined.
+    - A copy of ext/gmp/tests/002.php already exists in test/slow, so instead of
+      applying the same fix I moved it to flaky.
+    
+    Reviewed By: @alexmalyshev, @bertmaher
+    
+    Differential Revision: D1573700
+
+commit d63517376f3afa975ae4de41ac0af4932e85b468
+Author: Jason Reed <jcreed@fb.com>
+Date:   Tue Aug 12 08:03:42 2014 -0700
+
+    Untangle logging dependencies
+    
+    Summary: The idea here is to narrow down the amount of information EventLogger receives from its caller so that it doesn't create circular dependencies when trying to log events from most of the code in /src/client/ or /src/server/.
+    
+    this is a disjoint set of (I presume flaky) tests that failed compared to the last rebase
+    
+    Reviewed By: @jwatzman
+    
+    Differential Revision: D1480933
+
+commit b3587bec7facb7d486af4013637a2087f441b9fe
+Author: Bert Maher <bertrand@fb.com>
+Date:   Tue Aug 5 08:50:14 2014 -0700
+
+    Disable flaky zend test
+    
+    Summary: Depends on timing.  I don't know how this can fail to run in <1
+    second, but it did on my diff.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1477602
+
+commit 36d66a8474b5a6775fa4e19f0561cc17999be3a0
+Author: Liran Nuna <liranuna@fb.com>
+Date:   Fri Aug 1 22:25:09 2014 -0700
+
+    Correctted flaky test to not be flaky
+    
+    Summary: Makes a flaky test not flaky
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1474165
+
+commit 9dbd3b844182f065dc957fdc8abededb7887d09d
+Author: Liran Nuna <liranuna@fb.com>
+Date:   Fri Aug 1 17:24:30 2014 -0700
+
+    Add norepo file if test does not pass
+    
+    Summary: The test runner only added .norepo files if the tests pass. This diff changes the behavior to keep the .norepo file even if the tests fail or are flaky.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1473808
+
+commit 8a38af717dc41099a7fdcf07f3f7daa17ffbf7bc
+Author: Liran Nuna <liranuna@fb.com>
+Date:   Fri Aug 1 15:47:33 2014 -0700
+
+    Move readfile_variation6.php to flaky
+    
+    Summary: Move readfile_variation6.php to flaky/ since it uses files used by other tests
+    
+    Reviewed By: @fredemmott
+    
+    Differential Revision: D1473626
+
+commit 89ecab370135992ef3c29eb4c4b580cf38e77d25
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Jul 31 15:31:17 2014 -0700
+
+    Move zend xsl test from flaky to bad
+    
+    Summary: It's legitimately failing
+    
+    Reviewed By: @LiraNuna
+    
+    Differential Revision: D1471013
+
+commit 3d498eae4c5bfb58737afafc03e4235cf92ef905
+Author: Bert Maher <bertrand@fb.com>
+Date:   Thu Jul 31 12:57:32 2014 -0700
+
+    More flaky failures
+    
+    Summary: disable flaky tests
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1469323
+
+commit d5769b26d2c564cf139da2e8439da2ef7a9474af
+Author: Liran Nuna <liranuna@fb.com>
+Date:   Thu Jul 31 07:57:42 2014 -0700
+
+    Remove zend test from both good/ and bad/ when importing
+    
+    Summary: @bertmaher encountered a bug when he imported a few flaky tests. This corrects the bug
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1469208
+
+commit 61bcf468fc6ef3ca3ae087e6bc7a1f196d7ae9c4
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Jul 30 15:45:37 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 9235ae86c95a5dfa184293ef84e4cec51615de72
+Author: Liran Nuna <liranuna@fb.com>
+Date:   Wed Jul 30 16:20:00 2014 -0700
+
+    Move flaky tests to their own directory
+    
+    Summary: This diff moves all bad tests that are maybe good and maybe pass but have issues running in parallel tests to a new directory called 'flaky'.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1466144
+
+commit 82f2d51664d95ceba5da3130909bef0d2fbb3f65
+Author: Edwin Smith <smith@fb.com>
+Date:   Wed Jul 30 04:56:03 2014 -0700
+
+    Move flaky tests to test/zend/bad
+    
+    Summary: More of what happened in D1465647
+    
+    Reviewed By: mcl, bertrand
+    
+    Differential Revision: D1466742
+
+commit 5965dc9cac159bbd272e19d0a0da65fc83c16f5d
+Author: Liran Nuna <liranuna@fb.com>
+Date:   Tue Jul 29 16:43:26 2014 -0700
+
+    Mark SplFileObject_setCsvControl_error001.php as flaky
+    
+    Summary: what it says on the tin
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1465647
+
+commit 86754b20189c8e5f6b90e0db86c36ab0bfc5fbe8
+Author: Alex Malyshev <alexanderm@fb.com>
+Date:   Tue Jul 8 10:09:45 2014 -0700
+
+    Update flaky PHP5 tests
+    
+    Summary: They couldn't be run in parallel. They've already been fixed in PHP5,
+    so it was just a matter of running import_zend.py
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1423492
+
+commit 33b2e8b26beff8138dbdef31dee0252879be3c33
+Author: Bert Maher <bertrand@fb.com>
+Date:   Tue Jul 8 09:17:48 2014 -0700
+
+    Disable flaky zend tests
+    
+    Summary: spl directory iterator tests failing on D1421815 for no reason
+    
+    Reviewed By: @swtaarrs
+    
+    Differential Revision: D1423910
+
+commit 5dfaf1cef49f2ae5220e1a2cff8a6a2cbe9336e1
+Author: Bert Maher <bertrand@fb.com>
+Date:   Tue Jul 1 13:40:58 2014 -0700
+
+    Disable flaky zend test
+    
+    Summary: failed on unrelated D1413405
+    
+    Reviewed By: liranuna, bsimmers, alexanderm
+    
+    Differential Revision: D1414139
+
+commit 74b1a7596602acea46ca3476a4bb9342bc8090f2
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Fri Jun 27 01:15:14 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 08df29221de1e82b1b96c4e9cbbdb877c7244f89
+Author: James Reyes <jlreyes@fb.com>
+Date:   Mon Jun 23 17:51:44 2014 -0700
+
+    Fixed bug where xdebug_memory_usage could return a negative value when using jemalloc
+    
+    Summary: This diff fixes an edge case in xdebug_memory_usage where a negative value could
+    be returned if jemalloc is being used. As explained in ext_std_options.cpp:831:
+    
+    "Since we don't always alloc and dealloc a shared structure from the same
+    thread it is possible that this can go negative when we are tracking
+    jemalloc stats"
+    
+    This should stop the xdebug/peak_memory_usage.php test from being flaky.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1397065
+
+commit 85bcb83efc31586cc3a7c8a0527d2f2ab3783c46
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Mon Jun 23 06:41:16 2014 -0700
+
+    Disable flaky zend tests
+    
+    Reviewed By: @bertmaher
+
+commit 3b5e28c1f1f9562c8c7313b5ad1fc4d46c5d190f
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Fri Jun 20 00:54:43 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 0f7c0cad6d25503cc0a8b1dd47616c8b0a6be4ae
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Jun 18 14:31:31 2014 -0700
+
+    clownlist flaky phpbb3 tests
+    
+    Summary: Found via FB CI testing.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1390559
+
+commit ea5a7a4a8644f4437b323cdd3be777e6bbd9e7b2
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Tue Jun 17 13:29:42 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 8f36a0fc20dbddfd59ed73dd6bab707f7a375a20
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Jun 17 00:12:07 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit d54777e4d85c134087c4c0f65392ff9065356949
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Jun 12 15:53:53 2014 -0700
+
+    Disable flaky test
+    
+    Summary: It's relying on timeouts firing or not firing for correct behavior so
+    it's inherently flaky. I've already made one pass at improving it but it's
+    still being flaky.
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1380934
+
+commit 8f7860622a1a5603ed7ee8ec9a5cf24ce94e193b
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Jun 12 10:29:11 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 4f1e50b2bd7479eac2a56497be5cdb95e5b26ee6
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Jun 10 11:38:37 2014 -0700
+
+    Attempt to make fsockopen_connect.php less flaky
+    
+    Summary: It was assuming that 1ms was always enough time for the connection to
+    open but it's been failing on contbuild occasionally.
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1374617
+
+commit a913753d599c2595173815ceaa02a082782d5d65
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Jun 5 17:31:50 2014 -0700
+
+    Disable some flaky tests
+    
+    Summary: These have all failed one or more times on recent contbuild runs.
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1368035
+
+commit bdcbd8be4177a2bd4990bc398fe6ccdd66b3f89c
+Author: Avik Chaudhuri <avik@fb.com>
+Date:   Wed May 14 14:37:20 2014 -0700
+
+    remove test that exposes ident internals
+    
+    Summary: Offending test prints id numbers, flaky
+    
+    Reviewed By: bhosmer
+    
+    Differential Revision: D1329747
+
+commit 345698cbe69d21096ce21d837bf3efa3750d15e9
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue May 13 15:52:12 2014 -0700
+
+    Disable test/slow/ext_socket/select_feof.php
+    
+    Summary: It's flaky due to depending on timing.
+    
+    Reviewed By: @alexmalyshev
+    
+    Differential Revision: D1327920
+
+commit 8bae0a6b2065d77b0f89e4b73a950310cf36e7a1
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Thu Apr 17 01:04:42 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 22cecaa32e9306269c422945edc8c32c71816672
+Author: Brett Simmers <bsimmers@fb.com>
+Date:   Mon Apr 14 01:46:51 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 0ea40740fa3317a2dce13cfc0852b39bcf6b9a58
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Mar 19 09:39:26 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 1c8e09665bf6b6a2259e22f1117c1bbeeb0dfe79
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Mar 17 20:48:29 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 78fd4f6c51fa5258b6f96c07337f02877c836504
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Mar 17 10:40:48 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 88466074ab63f31ee77ed1a0cfdc4d58f946cbac
+Author: bsimmers <bsimmers@fb.com>
+Date:   Fri Mar 14 19:50:27 2014 -0700
+
+    Temporarily disable flaky tests
+    
+    Reviewed By: @jdelong
+
+commit 9babca5771ce780bb69ccfe9a867ea0f53a7d9e2
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Mar 12 12:09:08 2014 -0700
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 8f4dc2cffac5afc49b54a2effa360a2a826b9a47
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Mar 6 11:01:35 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 692ebd4e94334e33dc4634b1e153a14d2b773afd
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Mar 5 10:02:48 2014 -0800
+
+    Temporarily disable flaky test
+    
+    This is probably a real bug so we need to get it figured out, but this
+    will cut down on contbuild noise while we debug.
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1203918
+
+commit 8e0fc217530d316311966a2e52417f3bb30e33af
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Mar 5 09:56:52 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 62e08dc0651af3de2b5813b611d16640c9306a65
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Mar 4 10:08:10 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 9657028414262cc0e3d2249da915175677b3cb92
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Mar 3 16:00:27 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 6a814918594e3dd88b8a5b14928f5bb9bbe81fe4
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Mar 3 10:20:50 2014 -0800
+
+    Disable flaky test/slow/ext_datetime/test_time.php
+    
+    Reviewed By: @bertmaher
+
+commit d4c8f296f43e6725cb683d8cd5c7c057bbebbc7c
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Feb 27 13:12:00 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+
+commit 74723e8cc26b89f7e108eddf244eb5dac6ea2f22
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Feb 26 09:35:47 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1191750
+
+commit 48ad1c32a144f311b35eeb8ea3eb23e9db99c325
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Feb 25 13:13:22 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1189921
+
+commit 1d4e88b226f7d1d23ee858d6c3415bd6e676816f
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Feb 18 17:36:49 2014 -0800
+
+    Disable some flaky zend tests
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1179662
+
+commit e4ca379867605b6f1de08e5c0f52c38887d116f1
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Jan 30 09:32:09 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1150988
+
+commit fd6d3c4dd265361bc829b7fd7f0a9ce66f90045e
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Jan 28 12:10:14 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1147082
+
+commit 1f3095e8cc427a55851a34819a76b474b435474b
+Author: Eugene Letuchy <eletuchy@fb.com>
+Date:   Thu Jan 16 15:52:16 2014 -0800
+
+    make phinq tests slightly more reviewable
+    
+    ... attempting to use diff on expect files containing
+     non-printing characters doesn't seem like a good idea, and having
+     .expect that are treated as binary makes them hard to review.
+    
+    Reviewed By: @hermanventer
+    
+    Differential Revision: D1144149
+    
+    (flaky www test)
+
+commit 20f3e66d927835cd63445322110e1e178826641d
+Author: bsimmers <bsimmers@fb.com>
+Date:   Fri Jan 24 14:59:13 2014 -0800
+
+    Disable/trim flaky tests
+    
+    - Disable sleep_await.php and curlUpload.php for being flaky
+    - Remove potentially flaky parts from ext_network.php
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1143085
+
+commit e31c664c02ea4e91d9161a365a7024b4bf7fe951
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Jan 21 10:08:39 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1135985
+
+commit 58ddd23cec4630b03c06b2c94cd00b5c5acc30ca
+Author: bsimmers <bsimmers@fb.com>
+Date:   Fri Jan 17 12:39:22 2014 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D1133886
+
+commit ed492718fd6352b30aa61b729ec25205c857298d
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Dec 17 17:10:58 2013 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D1103516
+
+commit ac954c4d745831713f03ad6027ad8db72279a824
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Dec 16 12:04:43 2013 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1100222
+
+commit 29d01718247518afd5f97010b4f23f3eb6eadd9d
+Author: bsimmers <bsimmers@fb.com>
+Date:   Sat Dec 14 10:27:55 2013 -0800
+
+    Disable flaky zend test
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D1099379
+
+commit 7f74da5701fb48ac3ac430bb22836ecb3dec09a5
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Nov 21 13:47:24 2013 -0800
+
+    Disable flaky test/zend/good/ext/standard/tests/file/copy_variation16.php
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D1068500
+
+commit 68d745477c528d4719be331beeff171f871be650
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Nov 18 13:54:46 2013 -0800
+
+    Disable flaky Zend test
+    
+    Reviewed By: @dariorussi
+    
+    Differential Revision: D1061932
+
+commit c26c90206bd2e5fec478848dc45ba8be85a9b20b
+Author: bsimmers <bsimmers@fb.com>
+Date:   Fri Nov 15 13:15:48 2013 -0800
+
+    Disable flaky test/zend/good/ext/standard/tests/file/fileowner_basic.php
+    
+    Reviewed By: @dariorussi
+    
+    Differential Revision: D1059751
+
+commit 7c8a3871307e2c668192b215ea1262648c5fa45a
+Author: Joel Marcey <joelm@fb.com>
+Date:   Fri Nov 8 14:15:50 2013 -0800
+
+    Move back to a fgets model and clean up test analyzing a bit
+    
+    Since we determined that fgetc didn't solve deadlocking, and we just blacklisted those tests instead, we go back to fgets.
+    
+    Also, clean up the way we analyze tests and their statuses.
+    
+    PEAR is flaky. I don't think it is any atomicity or overwrite problem with the script. I think it might be the fact that we are running these things with separate processes. Or the tests are flaky. Either way we need a serial mode.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1049044
+
+commit cd6043108515730fce545925890d9da2c6ddda04
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Oct 3 09:40:33 2013 -0700
+
+    Disable a bunch of flaky tests
+    
+    These all failed one or more times on contbuild in the past day.
+    
+    Reviewed By: @scannell
+    
+    Differential Revision: D995196
+
+commit e45e32f1620a9f95f04f2fa3a050ad67aab992a4
+Author: bsimmers <bsimmers@fb.com>
+Date:   Fri Sep 27 11:08:44 2013 -0700
+
+    Make test/zend/good/Zend/tests/bug36759.php less flaky
+    
+    This recently started failing on my devserver but not on contbuild. I
+    traced it down to a dependence on the iteration order of
+    ExecutionContext::m_liveBCObjs. Wrapping it in a function make the objects'
+    destruction order deterministic.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D987785
+
+commit 3322b171ab4f6d020ae2eb4920432e4324c3a982
+Author: bsimmers <bsimmers@fb.com>
+Date:   Fri Sep 27 10:21:36 2013 -0700
+
+    Kill fgets_socket_variation1.php with fire
+    
+    It's flaky on contbuild
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D987629
+
+commit 55ca52bc4bface4993244b8f7ab2604282ddedda
+Author: Herman Venter <hermanv@fb.com>
+Date:   Mon Sep 16 16:18:12 2013 -0700
+
+    Directly restore line table from repo to unit
+    
+    The line table is a shorter version of the source location table and is needed for run time behavior beyond on-line debugging. When a unit is read from a repo, the line table is converted to a pseudo source location table, which is then converted back to a line table when the unit emitter creates the unit. This line table to source location table to line table conversion seems silly in itself. It also does not round trip faithfully, with the result that code that depends on the line table will behave differently the first time than the second time. This may have be the source of flaky tests in the past. Right now, the debugger's small step flow test fails if run a second time.
+    
+    This diff gets rid of the conversion and directly propagates the line table from the repo to the unit.
+    
+    Reviewed By: @mikemag
+    
+    Differential Revision: D969062
+
+commit 310b1b7d0d1f3313d24fc287b9bdaa78b94d5e1e
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon Sep 9 14:57:39 2013 -0700
+
+    Remove some flaky bits from test/slow/ext_socket/ext_socket.php
+    
+    These two tests have flaked out on a couple diffs recently.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D961944
+
+commit 88b4738d2c3b4375ed9ad8ef6abfa49fa1c6934f
+Author: Herman Venter <hermanv@fb.com>
+Date:   Thu Sep 5 14:47:56 2013 -0700
+
+    Disable quick/debugger/list.php
+    
+    This test is flaky on some dev boxes. Disabling it until task 2558262 is implemented. That should get rid of the flakiness.
+    
+    Differential Revision: D957673
+
+commit b6081d95cc7dfaf0c1f1b27e1d4d7f7ecd618793
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Aug 27 16:19:53 2013 -0700
+
+    Disable flaky zend test, trim down test with external dependencies
+    
+    Differential Revision: D946456
+
+commit 8653894f948137b8a7cb870054a853aa8a109825
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Aug 20 12:05:06 2013 -0700
+
+    Trim down test/slow/ext_network
+    
+    It's flaky because it depends on external servers
+    responding. Remove those bits.
+    
+    Differential Revision: D935602
+
+commit fe3ca642beb09e5d23313a8acbb3fb1e2bc4dc09
+Author: Herman Venter <hermanv@fb.com>
+Date:   Wed Jul 24 21:44:44 2013 -0700
+
+    Remove obsolete debugger test suite
+    
+    The debugger tests that are run via hphp/test/ext/test have now been replaced by tests that run via hphp/test/run, so they can be deleted as they test nothing additional and appear to be flaky.
+
+commit bca91c8ef36c6756dfc88b9358bee092458a5d76
+Author: Herman Venter <hermanv@fb.com>
+Date:   Fri Jun 28 11:09:16 2013 -0700
+
+    Really turn off tutorial output this time and re-enable tests that failed because of tutorial mode.
+    
+    It turns out that Tutorial=0 means "auto" and -1 means "off". With auto tutorials, the hphpd.hdf file got updated and test behavior got flaky. Even worse, the non ASCII characters in the tutorial output broke the test runner in a way that made it look like tests passed when you put up a differential, only to fail in contbuild.
+
+commit a372e0063cb33b720d62408a83a63919afb217ee
+Author: Herman Venter <hermanv@fb.com>
+Date:   Tue Jun 25 10:49:10 2013 -0700
+
+    Re-enable debugger tests that were suspected of flakiness
+    
+    These tests failed on the continuous build server, so we disabled them. Since then many other tests have failed and there is no good reason to suspect these tests of being especially flaky, so we may as well re-enable these tests.
+
+commit 1197521469416161d2b31625bf84ec7058ee77b5
+Author: Herman Venter <hermanv@fb.com>
+Date:   Fri Jun 21 14:54:46 2013 -0700
+
+    disable flaky test
+    
+    Fails on continuous build server
+
+commit b66f8587e83bddf0d39d41f684fc13305ba400be
+Author: Herman Venter <hermanv@fb.com>
+Date:   Fri Jun 21 13:20:26 2013 -0700
+
+    Disable flaky tests
+    
+    test/quick/debugger/break1.php and test/quick/debugger/break2.php are failing on the the continuous build machines. Disable these tests while we figure out what is going on.
+
+commit 6fca89f259940d11cc91bebb06789f0c5cb7a6e8
+Author: bsimmers <bsimmers@fb.com>
+Date:   Wed Jun 5 14:48:08 2013 -0700
+
+    Disable flaky zend test
+    
+    I've seen it failing on master intermittently
+
+commit 5cf59f2fc1603e860dc98f4480520ada30335479
+Author: Jordan DeLong <jdelong@fb.com>
+Date:   Thu May 16 09:25:46 2013 -0700
+
+    Move another flaky zend test
+
+commit 997484ffcd18d336a374b3078710cca481ea0885
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon May 13 11:01:34 2013 -0700
+
+    Disable test/zend/good/ext-standard-strings/setlocale_basic2.php
+    
+    It's failing/flaky.
+
+commit cc57737f6b61cc1f3abdfdf80ab4cbd8184964f5
+Author: Jordan DeLong <jdelong@fb.com>
+Date:   Tue May 7 14:19:27 2013 -0700
+
+    Disable some flaky zend tests @override-unit-failures
+
+commit d559b8f1e137f65403024603f3305a54f41f0f00
+Author: bsimmers <bsimmers@fb.com>
+Date:   Mon May 6 15:30:13 2013 -0700
+
+    Disable some zend tests reported as flaky
+
+commit 0dd21ce600328626c3e5dce3846827db2f34567b
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Apr 11 17:28:16 2013 -0700
+
+    Disabled non-refcounted locals optimization
+    
+    It's still flaky, and I'm hitting asserts related to it on
+    trunk right now.
+
+commit 62710cb0832f48a8fc6c7030dea8599b84a6a029
+Author: bsimmers <bsimmers@fb.com>
+Date:   Tue Mar 19 14:32:11 2013 -0700
+
+    Disable flaky TestExtPdo-test_pdo_mysql
+
+commit e5804832140496e36a80f0ca12960c3fa34e8933
+Author: bsimmers <bsimmers@fb.com>
+Date:   Thu Mar 14 12:12:35 2013 -0700
+
+    Disable flaky tests in TestExtFile and TestExtImageSprite

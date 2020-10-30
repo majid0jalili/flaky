@@ -1,0 +1,887 @@
+commit 0b6b8774b76434a84b3f74932c31dc3a3b34f8c8
+Author: Fred Emmott <fe@fb.com>
+Date:   Tue Dec 4 15:37:54 2018 -0800
+
+    Update third-party-rev to pull in fix for flakey mac builds
+    
+    Summary:
+    - ocamlbuild shells out to opam to figure out installation directories
+    - opam gives an error on some systems
+    - ocamlbuild uses that error message as a directory name
+    - fix by specifhying that installation directory
+    
+    Reviewed By: vassilmladenov
+    
+    Differential Revision: D13326010
+    
+    fbshipit-source-id: eb7029488a181d6c7798811cb4929eeebf185a42
+
+commit d4a288e7eb910311bb065a3e9ac43b2fbc8b0b49
+Author: Fred Emmott <fe@fb.com>
+Date:   Thu Jul 26 20:44:06 2018 -0700
+
+    update HHIs to make the HSL pass again
+    
+    Summary: Splitting this out from the 'typecheck open source' diff as packagist seems to be super flakey
+    
+    Reviewed By: kmeht
+    
+    Differential Revision: D9015050
+    
+    fbshipit-source-id: bfe81a64412b885468d39bdc406b25a02ab78567
+
+commit d03111db1cc66fa2d2c88f802b1bd5faa1134394
+Author: Lucian Wischik <ljw@fb.com>
+Date:   Thu Jul 5 14:42:37 2018 -0700
+
+    Hack tests should always show diffs in sandcastle
+    
+    Summary:
+    The ancient Chinese military philosopher Sun Tzu wrote "if you know yourself but not your enemy, for every victory gained you will also suffer a defeat". [The Art of War, Sun Tzu, Spring and Autumn Period]. Our enemy is flakey tests.
+    
+    A more modern military philosopher Career Sergeant Zim said "The enemy cannot pull a trigger if you've disabled his hand" [Starship Troopers, Robert Heinlein, 1959].
+    
+    https://pxl.cl/fC3c
+    
+    Look at that picture. There was a flakey test failure. We don't know what went wrong. Verify.py suggests to run `./hphp/hack/test/review.sh` to review the failures, but our hand has been disabled (by virtue of the test being run on sandcastle).
+    
+    SOLUTION: whenever verify.py runs on sandcastle, it should display diffs.
+    
+    Reviewed By: CatherineGasnier
+    
+    Differential Revision: D8735545
+    
+    fbshipit-source-id: 134ef03601133e9e2b4ac3de3b86488e1e680136
+
+commit 0f635f97a9916b9cdc4a1ef2f9d8c4b05da2dd2f
+Author: Lucian Wischik <ljw@fb.com>
+Date:   Thu Oct 5 14:43:41 2017 -0700
+
+    Another cause of flakey LSP tests
+    
+    Summary:
+    Each LSP integration tests attempts to start hh_server, wait until it's responsive as indicated by "hh check" returning "No errors\!" within 20 one-second retries, then allows 500ms to establish a persistent connection with it, and then enters in dialog over that persistent connection.
+    
+    The previous diff addressed cases (observed in sandcastle but not in testing) where hh_server simply failed to start, by simply skipping the test in this case. I believe that hh_server might fail to start in cases where the machine is overloaded or out of memory.
+    
+    The current diff addresses cases where the machine is so busy that hh_server isn't able to establish a persistent connection within 500ms. In these cases we'll get back the message "Server busy". Again, we simply skip over the test.
+    
+    We might consider changing it to do retries. But that will only delay the question -- what if it's still busy after 10 retries? after 20? after 2 days? The only good answer is to skip the test if hh_server isn't responsive enough.
+    
+    (We don't generally observe hh_server being unresponsive. If it is, I trust it will be caught fine in other situations).
+    
+    Reviewed By: oulgen
+    
+    Differential Revision: D5988628
+    
+    fbshipit-source-id: 899312a5d0a731cb3525461898c09773e76e64b8
+
+commit 16e09b66b0371e7eba3666fe89746299c6012043
+Author: Lucian Wischik <ljw@fb.com>
+Date:   Thu Oct 5 14:43:39 2017 -0700
+
+    Address flakey lsp integration test
+    
+    Summary:
+    I got reports that the lsp integration tests are consistently failing. Inside `test_hover`, it calls `prepare_environment`, which calls `self.check_cmd(...)`, which attempts to launch `hh check`. But it's getting back this on stderr:
+    
+       Error: Ran out of retries, giving up\!
+    
+    I figure the job of the lsp integration tests is to test lsp. If we can't spin up hh, well, that shouldn't report as a failure of LSP.
+    
+    This diff detects that situation and skips the test.
+    
+    Differential Revision: D5984275
+    
+    fbshipit-source-id: d6f71382a68a681fc7a1c84f01c24a6c47f83eaa
+
+commit 1d7fa065cee6b543b1fd972db562adb965e9ebbe
+Author: Gabe Levi <gabe@fb.com>
+Date:   Tue Aug 29 06:23:03 2017 -0700
+
+    Delete multiprocess tests from timeout_test
+    
+    Summary:
+    {D5602215} tried to make the test less flakey on Sandcastle. It hasn't
+    seemed to work. So I'm deleting the test cases that cause trouble. The basic
+    tests seem to be fine.
+    
+    Reviewed By: alexchow
+    
+    Differential Revision: D5639940
+    
+    fbshipit-source-id: a9551d027d7b4aa49abca2ae4b69ad289975b2c5
+
+commit 4cc01ff8429ef5e22ee51a11002dd411683148e2
+Author: Fred Emmott <fe@fb.com>
+Date:   Wed Jun 7 18:38:23 2017 -0700
+
+    Mark Copmoser's testHgExclude() as flakey as it fails on fb infra
+    
+    Summary:
+    This compares what composer+hhvm do with what `hg archive` does; this includes
+    a file called `#weirdfile`, which FB's global config implicitly excludes. This makes the
+    test fail, even though HHVM and Composer are doing the right thing.
+    
+    100% :D - hgexclude() is the only one of these that fails
+    
+    fixes #7869
+    
+    Depends on D5202974
+    
+    Reviewed By: paulbiss
+    
+    Differential Revision: D5203430
+    
+    fbshipit-source-id: 4a9d545f1644c4c38cb42edb08cef05083de7348
+
+commit fe39338c6112c4c38e330bd0bc4bff0f92c4a8c1
+Author: Jacob Bower <jbower@fb.com>
+Date:   Wed Feb 1 12:21:57 2017 -0800
+
+    Make ext_watchman test only alert devx_www
+    
+    Summary:
+    FACEBOOK
+    
+    The ext_watchman test is a bit flakey but I'm having trouble repro'ing this. I suspect the problems are transient external failures relating to Watchman which I can't really control. After multiple hours of running in a loop on my devserver I got one failure which was of this nature.
+    
+    This diff introduces a Faebook-only test which runs the real/open-source ext_watchman test but always returns "pass". All failures are instead reported directly to devx_www by creating/bumping a task. This way we can figure what's going on if there is a consistent problem without bothing the HHVM team. The original/open-source test can still run independently but we will disable it in Sandcastle internally.
+    
+    Reviewed By: markw65
+    
+    Differential Revision: D4447077
+    
+    fbshipit-source-id: 85ca223823340317f543abc9d83c5000f949d54d
+
+commit b67ca21c54f7dbe7f8348dd830f775a14cb845a4
+Author: Aaron Orenstein <aorenste@fb.com>
+Date:   Fri Oct 14 10:38:50 2016 -0700
+
+    Fix race condition in ucfirst/lcfirst.php
+    
+    Summary:
+    These were recenly moved from test/zend/bad-> good but
+    they share a common temp file, which makes them flakey
+    when run in parallel.
+    
+    Reviewed By: markw65
+    
+    Differential Revision: D4001521
+    
+    fbshipit-source-id: 1fe17120dfde957b202f4cb74bd4ea59fee53649
+
+commit 84f0dbdc0a35bab909d61ad9e3bf6bbf39c225ed
+Author: Mark Williams <mwilliams@fb.com>
+Date:   Tue Jan 12 12:56:24 2016 -0800
+
+    Fix a flakey test
+    
+    Summary:
+    The test writes, then includes a php file. The test is also configured
+    to run multiple times (via --count=10). Our devservers have
+    millisecond resolution for file times, so if we did better than 1ms
+    per iteration, we could end up picking up the old file from the file
+    cache.
+    
+    Apparently, we've been optimizing interp times, because this test
+    started failing regularly in the last release.
+    
+    Fix it by using a different name for each iteration.
+    
+    Reviewed By: edwinsmith
+    
+    Differential Revision: D2824179
+    
+    fb-gh-sync-id: cc9b220620bd7f2ca1cae8a2ce91082556d2f29d
+
+commit c6365e11c2565ac847e3dbd0875ee566b0f62f3f
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Oct 16 11:39:08 2015 -0700
+
+    flakeylist twig integration test
+    
+    Summary: Unable to repro or get reasonable debugging information, and the last
+    data set looks sane - suspect it's only failing because it's the last test.
+    
+    Reviewed By: mxw
+    
+    Differential Revision: D2550747
+    
+    fb-gh-sync-id: 7f8b46430e91e631830f495cf22d28a9905b0140
+
+commit 296bf05c32b43a16b36197bcb608c310ee66a940
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Aug 28 15:28:44 2015 -0700
+
+    Remove joomla and joomlacms from HHVM test suite
+    
+    Summary: The clownlists/flakeylists were already ridiculous, and I was about to add more to them.
+    
+    I am not aware of these catching a single legitimate failure, but there have been lots of false positives.
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D2394293
+
+commit bad9c3c4fb9265682fd05b2023b109929f3e6025
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Jul 31 11:34:56 2015 -0700
+
+    Mark LaravelValidatioNValidatorTest as flakey
+    
+    Summary: Depends on google.com. Anything depending on internet access is flakey
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D2288092
+
+commit f4d24472b26383295a36328498435c3bbd416243
+Author: Mark Williams <mwilliams@fb.com>
+Date:   Fri Jul 10 08:43:26 2015 -0700
+
+    Disable flakey test
+    
+    Summary: It keeps failing
+    
+    Reviewed By: @edwinsmith
+    
+    Differential Revision: D2233383
+
+commit efdb7ff71e42c7e93ffbcb3d5fd6c8243603c687
+Author: Bert Maher <bertrand@fb.com>
+Date:   Fri Apr 3 16:08:10 2015 -0700
+
+    flakeylist a few framework tests
+    
+    Summary: Just happened to look, and these have failed spuriously in the last 24
+    hours.
+    
+    Reviewed By: @fredemmott
+    
+    Differential Revision: D1967337
+
+commit 1bb67dc135469d6dc3c368edafedd0b8ed5a3f3d
+Author: RyanCccc <chenrd769@gmail.com>
+Date:   Thu Dec 11 14:53:12 2014 -0800
+
+    Mock date/time functions in Isolation.php
+    
+    Summary: Mock date/time functions (e.g. time() ) so they never return the same value when calling multiple times.
+    By doing so, more flakey test cases can be found.
+    
+    Closes https://github.com/facebook/hhvm/pull/4384
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1719095
+    
+    Signature: t1:1719095:1418338273:e3867d429e3162f1110e96b1c16677da5872d8c0
+
+commit d8d5fb3df2b789fc36fac85da50c2675c593ff2b
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Thu Sep 25 11:38:01 2014 -0700
+
+    mark test flakey
+    
+    Summary: I saw it fail returning a newline on the read
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D1577555
+
+commit c2497c57f2739af51f464aeea00452d59ebdf57d
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Sat Sep 20 20:14:14 2014 -0700
+
+    mark test/zend/good/ext/posix/tests/posix_errno_variation2.php flakey
+    
+    Summary: Another process can obviously be spawned in the meantime.
+    
+    Reviewed By: @markw65
+    
+    Differential Revision: D1568105
+
+commit 948ba6498f6afd8d981e8cbd9a30610e80ed0e0a
+Author: maide <ian@maide.ca>
+Date:   Sun Sep 7 15:35:37 2014 -0700
+
+    Fix GMP tests/crashes
+    
+    Summary: This should fix some crashes and all bad tests other than 014, and 028.
+    
+    I marked test 014 as flakey, as it is checking for wrong return values due to a bug in PHP.  It appears as though PHP is using the resource number as the factorial rather than the resource's value, giving unpridictable results (depends on how many resources have been used thus far)
+    
+    Test 028 still fails as gmp_random is not implemented.
+    Closes https://github.com/facebook/hhvm/pull/3639
+    
+    Reviewed By: @sgolemon
+    
+    Differential Revision: D1530781
+
+commit 217bbdc025967b58792af164c990584f4893eb98
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Wed Sep 3 12:18:59 2014 -0700
+
+    flakeylist copy_variation6
+    
+    Summary: It failed on D1479623?id=4938785
+    
+    Reviewed By: @paulbiss
+    
+    Differential Revision: D1531609
+
+commit 1a55d801967e3c8b3a94fd4dcf9e462d7509047c
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Tue Aug 26 15:56:55 2014 -0700
+
+    flakeylist socket_create_listen
+    
+    Summary: This failed 8 times yesterday after my rand fix. Lets just kill it since tests without retries and binding are horrible.
+    
+    Reviewed By: @fredemmott
+    
+    Differential Revision: D1520240
+
+commit e23ec78a4e3248bfad3255fef3d8c105f460fe77
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Mon Aug 25 17:54:01 2014 -0700
+
+    Update slim, increase delta for flakey test
+    
+    Summary: Facebook: Leaving in contbuild because still 100% with isolate
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1518661
+
+commit 4b119c311e67a4c5f2b7ab64d4c87dec8a1ed8fc
+Author: Graham Campbell <graham@mineuk.com>
+Date:   Sun Aug 17 15:14:35 2014 -0700
+
+    Re-record zf2 tests and flakey list a file
+    
+    Summary: Additional follow up to #3454 in addition to #3455.
+    Closes https://github.com/facebook/hhvm/pull/3489
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1502579
+    
+    Pulled By: svcscm
+
+commit e42900af2928f7461258b4fbfc04df0bd7676060
+Author: Graham Campbell <graham@mineuk.com>
+Date:   Mon Aug 11 15:19:55 2014 -0700
+
+    Updated twig to 1.16.0 in the framework tests
+    
+    Summary: The **current** twig tests differ from the expected output when run. This seams to be due to the numerical locale test. Maybe we should exclude that test? I have in my pull, and I've also updated us to 1.16.0.
+    
+    The diff showing the flakey test **without** any of my modifications to the expected output or framework.yml:
+    ```
+    ----------------------
+    Twig_Tests_CompilerTest::testReprNumericValueWithLocale
+    
+    RUN TEST FILE:  cd /root/hhvm/hphp/test/frameworks/framework_downloads/twig && /root/hhvm/hphp/test/frameworks/../../hhvm/hhvm -v Repo.Local.Mode=-- -v Repo.Central.Path=/tmp/framework-test8uvGFo --config /root/hhvm/hphp/test/frameworks/php.ini -c /root/hhvm/hphp/test/frameworks/.generated.php.ini /root/hhvm/hphp/test/frameworks/vendor/bin/phpunit --debug  -c /root/hhvm/hphp/test/frameworks/framework_downloads/twig/phpunit.xml.dist --filter 'Twig_Tests_CompilerTest::testReprNumericValueWithLocale'
+    
+    EXPECTED: .
+    >>>>>>>
+    ACTUAL: S
+    ```
+    Closes https://github.com/facebook/hhvm/pull/3370
+    
+    Reviewed By: @fredemmott
+    
+    Differential Revision: D1487074
+    
+    Pulled By: svcscm
+
+commit afe07516d6eb7e483efd71afd048790901f7344d
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Sun Aug 10 22:26:08 2014 -0700
+
+    more flakey tests
+    
+    Summary: 2 use the network and one uses a hard-coded port
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1488544
+
+commit b55b376c8702d609f9f9d2868e0c52d9a8307bd7
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Fri Aug 8 17:41:46 2014 -0700
+
+    unflakey realpath_basic
+    
+    Summary: Failed on D1470540?id=4771551
+    
+    Reviewed By: @LiraNuna
+    
+    Differential Revision: D1487207
+
+commit 356f66a9957e9c715096c133b7f4823fbee69a1d
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Aug 6 16:39:37 2014 -0700
+
+    Flakeylist mediawiki base conversion test
+    
+    Summary: Becamse flakey with gmp extension. Same issue exists in PHP5 with gmp conversion - for example:
+    
+    ```
+    <?php
+    $in = '0x1234567890abhaer';
+    $gmp = gmp_init($in, 36);
+    $val = gmp_strval($gmp, 36);
+    var_dump(str_pad($val, strlen($in), '0', STR_PAD_LEFT));
+    ```
+    
+    https://bugzilla.wikimedia.org/show_bug.cgi?id=69249
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1482806
+
+commit 4f071108f578dd132403f267656f5b199c4c45d9
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Wed Aug 6 16:53:28 2014 -0700
+
+    unflakey md5 and sha1 test
+    
+    Summary: failed on D1479623?vs=on&id=4750825&whitespace=ignore-all#toc
+    
+    Reviewed By: @fredemmott
+    
+    Differential Revision: D1482115
+
+commit 4f5fd7fda9d68251e6e2a35bc421ffe419752d96
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Tue Aug 5 18:16:48 2014 -0700
+
+    mark symlink_link_linkinfo_is_link_variation4 flakey
+    
+    Summary: it failed a lot. D1470540?vs=on&id=4726102&whitespace=ignore-all#toc most recently. I will land once a bellwether diff failures on it.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1480045
+
+commit 16894a36594ff1bef23b0086d46a7800a87873a9
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Sat Aug 2 09:52:34 2014 -0700
+
+    mark posix_kill_basic flakey
+    
+    Summary: It failed on my bellwether diff
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1474394
+
+commit cb9fda7154f67b8c0c8500254cc584f306520aa2
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Jun 25 11:22:06 2014 -0700
+
+    Add isolation mode for OSS tests
+    
+    Summary: An alternative approach to finding flakey tests. Finds a few issues, eg that assetic does shell_exec('php '..., so those tests aren't actually tested against the right build of HHVM.
+    
+    Not on by default.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1403101
+
+commit 6d0e38276be99c8b3674ccdfa2a6040712abed80
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Tue Jun 24 14:16:53 2014 -0700
+
+    Add missing removeKey for flakey option
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1400965
+
+commit 6532b42058c39c089b823ece0203c736d604bd9b
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Tue Jun 24 09:19:00 2014 -0700
+
+    re-enable mustache, mark the one failing test as flakey
+    
+    Summary: No change to expect file as when I removed it from clownlylist and re-recorded, the file was still disabled on disk (needed blowing away, etst runner has now been modified)
+    
+    Reviewed By: @bertmaher
+    
+    Differential Revision: D1400141
+
+commit e67a3a3630f35b4a895140e98babefad6f0698fa
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Mon Jun 23 16:19:50 2014 -0700
+
+    Separate flakey from clowny tests
+    
+    Summary: - add --flakey option to run them anyway
+     - make it so you don't need to blow away framework_downloads/WHATEVER every time you remove something from the flakeylist/clownlist/blacklist or add --flakey
+    
+    The idea is that we will still run flakey tests for the charts on hhvm.com/frameworks/ , but we won't include them in our commit-blocking test runs.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1398512
+
+commit 4aa0423a1b44a96600ff213fd58ffd3a6c6f25f2
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Thu Jun 19 13:57:05 2014 -0700
+
+    Increase timeout for fetching OSS stuff in tests
+    
+    Summary: Mediawiki is big, flakey at 2 minutes.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1393049
+
+commit 08c7de5e1ae095831bc37cd9b835654f20c6b88f
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Thu Jun 19 12:06:39 2014 -0700
+
+    Clownlist more flakey joomla tests
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1392685
+
+commit 008a17b4b83a4a2caab9aab41f7bcf7782b23526
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Mon May 12 09:05:03 2014 -0700
+
+    add MySQL.SlowQueryThreshhold to test configs
+    
+    Summary: https://travis-ci.org/facebook/hhvm/jobs/24868918 failed because of this. Lets not have a flakey travis setup.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1323649
+
+commit addd0e8e19c4c4cef111b4603a6879f7a360c05b
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Apr 16 11:25:06 2014 -0700
+
+    Clownlist joomla JForm* tests
+    
+    These are all flakey tests.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1279871
+
+commit 89c954cb375c5e95ec1de93567975a24291f8a22
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Apr 9 13:42:56 2014 -0700
+
+    clownlist a joomla test thats also in joomlacms
+    
+    Already in the Joomla clownlist, exact same test. Hangs the runner and is generally flakey.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1267270
+
+commit 4288eb0a376d1ef885ed50150279e3611a12963d
+Author: Alex Malyshev <alexanderm@fb.com>
+Date:   Mon Apr 7 11:40:25 2014 -0700
+
+    Move flakey curl tests from good to bad
+    
+    They're making travis super sad.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1260329
+
+commit 65033ea38a1d49b059018977144251968588809e
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Thu Mar 27 16:31:47 2014 -0700
+
+    Drupal8 at 100%
+    
+    - clownlist a flakey test
+    - disable warnings for one test (fails under php5 too with warnings on)
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1245226
+
+commit 5587267e6273ca322551413d5bd7bacb411490dc
+Author: Sara Golemon <sgolemon@fb.com>
+Date:   Sun Mar 23 09:49:11 2014 -0700
+
+    Fix flakey test/slow/ext_stream/stream_get_meta_data.php test
+    
+    Port 50000 might be in use.  Try a few.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1235872
+
+commit 923481efebeb03b2fa435b17138f00298fc48811
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Mar 21 15:26:24 2014 -0700
+
+    Run phpmyadmin tests sequentially
+    
+    Unflakeys them. cc jeffchan
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1234717
+
+commit 34d337ffa58b3752243e63502e0e6c6e7d30279d
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Wed Mar 19 10:12:57 2014 -0700
+
+    Make Slim tests less flakey
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1227633
+
+commit b94e6419f939d1f168b86bb61eec669d061b3f9a
+Author: Fred Emmott <fredemmott@fb.com>
+Date:   Fri Mar 14 12:15:18 2014 -0700
+
+    Test custom branch of assetic with un-flakeyed test
+    
+    It's either this or clownlist it.
+    
+    PR up for same change in master.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1221634
+
+commit a36ca6a40412adc57221770168fa5c64caddaeae
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Wed Feb 12 00:56:53 2014 -0800
+
+    re-enable TestServer
+    
+    I want to see what was being flakey about it. (alterior motive, I'm killing .hdf files and that will change this a lot so I want it to at least be running).
+    
+    Reviewed By: afrind
+    
+    Differential Revision: D1170742
+
+commit 186c74e761ebdde133e26164bacc034b5f007b25
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Fri Jan 3 13:24:36 2014 -0800
+
+    enable TestFastCGIProtocol
+    
+    The Server tests were the flakey ones, but both got disabled. Lets leave the unit tests around so I don't break stuff.
+    
+    Reviewed By: @scannell
+    
+    Differential Revision: D1115879
+
+commit 110f0c8fe78aad71eada6bee6c11ad72bb6c3648
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Fri Dec 6 12:50:17 2013 -0800
+
+    fix fprintf flakeyness
+    
+    I love zend
+    
+    Reviewed By: @alexmalyshev
+    
+    Differential Revision: D1087430
+
+commit 926f16e6e4a092a73fa3329d7c35aa48d3ad1966
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Thu Nov 21 16:23:15 2013 -0800
+
+    remove 'now' case from test/slow/datetime/compare.php
+    
+    This is a bit flakey since the 1 second boundary can tick inbetween the `null` and `"now"` case. That isn't even the main point of this test.
+    
+    Reviewed By: @markw65
+    
+    Differential Revision: D1069019
+
+commit ec1d6c6b26f5b2f75d20e056715b0e347cb05877
+Author: Sara Golemon <sgolemon@fb.com>
+Date:   Wed Nov 20 09:51:46 2013 -0800
+
+    Make sqlite3 testless flakey
+    
+    Destructor timing makes this test just everso-slighty
+    nondeterministic.  (I occaisionally see it kick in between the
+    last two tests rather than before them).
+    
+    Move the close to the end and it'll always happen in the right order.
+    
+    Also change expectf "finalised" to "finali%ced" to
+    account for libsqlit3's switch from Brittish English to American English.
+    Or maybe it was the other way around. Either way... Ugh.
+    
+    Reviewed By: @ptarjan
+    
+    Differential Revision: D1065633
+
+commit 82a3d5e2cabd1da66d4ba1b8682d161863afd14d
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Sun Oct 13 00:17:00 2013 -0700
+
+    small framework runner changes
+    
+    - Put a newline before the downloading message as it happened in the middle of the line a bunch of times
+    - Made the comparing message less verbose since it is printed all the time on every runner
+    - Renamed it "run" and made it execuatble (in line with `test/run`)
+    - Fixed a warning where the status is empty. Is that right to ignore it?
+    - Don't always generate `.expect` files
+    - Similarly, don't always generate the summary file. I don't really understand what you are trying to do with that one being checked in?
+    
+    I don't really understand how to use this yet. My runs don't seem to give me the thumbs up, so either the expect files are too specific to @JoelMarcey's machine or the tests are flakey. Either way, we can't use this yet.
+    
+    Reviewed By: @JoelMarcey
+    
+    Differential Revision: D1009080
+
+commit 6a2124828bffff729f68874768d1ab6ec3d4031c
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Wed Sep 25 21:10:14 2013 -0700
+
+    fix many flakey zend tests
+    
+    I went through the latest "failed at step" emails and updated those tests to stop sharing filenames and ports.
+    
+    Reviewed By: @markw65
+    
+    Differential Revision: D985394
+
+commit fa055be5817dc2c88a7c4f429f1a40c67184c056
+Author: mwilliams <mwilliams@fb.com>
+Date:   Wed Sep 25 08:55:09 2013 -0700
+
+    Move flakey test
+    
+    fputcsv.php uses a temporary file named fgetcsv.csv,
+    just like fgetcsv.php does. They collide. Disable fputcsv
+    pending a fix.
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D983981
+
+commit 26e8e0c26abc6a12e45d5ae804ed9c91fc366883
+Author: mwilliams <mwilliams@fb.com>
+Date:   Tue Sep 10 08:20:26 2013 -0700
+
+    Fix and re-enable a number of "flakey" tests
+    
+    None of these tests are fundamentally flakey - there
+    is just a danger of port collision (some had already been fixed
+    before they were disabled). Appropriate retries - and suppression
+    of warnings for the intermediate failures - should be sufficient to
+    make them solid.
+    
+    Reviewed By: @jdelong
+    
+    Differential Revision: D963009
+
+commit 2eb55bc51c34651eb395bd2b8d30e82ce13783ed
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Mon Sep 9 14:45:28 2013 -0700
+
+    fix flakey socket tests
+    
+    I saw these fail once
+    
+    Reviewed By: @markw65
+    
+    Differential Revision: D960622
+
+commit 53c7d78eea3c85b072855f8085b6fc90ec468c56
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Thu Jul 18 18:53:01 2013 -0700
+
+    make socket test less flakey (hopefully)
+    
+    I keep seeing problems with this test. Lets see if opening less sockets helps? The last few have failed on `socket_get_option($s, SOL_SOCKET, SO_TYPE)` which this does't fix though...
+
+commit d95fd236d29c50761848db76b32c10955edd49cd
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Mon Jun 3 19:52:33 2013 -0700
+
+    flakey tests
+    
+    Stop using the same filename!
+
+commit 0b062c3f3b6016d4a853126bedc801610eb32647
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Fri May 17 22:09:27 2013 -0700
+
+    disable flakey time test
+
+commit 09c139c4f7783eae1b18d780a4b0f0ac5b725fa9
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Thu May 16 01:51:52 2013 -0700
+
+    disable flakey test
+    
+    I saw this test fail on an unrelated diff
+
+commit 5685d18e052d22f10357e15f2b916e80558bc18c
+Author: Jordan DeLong <jdelong@fb.com>
+Date:   Wed May 15 07:40:08 2013 -0700
+
+    Fix another flakey zend test
+
+commit b24ca4a2b16b029c856ef218eccd1c51d9ce0bec
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Tue May 14 12:48:08 2013 -0700
+
+    flakey test
+
+commit 930d45ceb3492a24dfae43b77b1fb6621fc4d687
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Thu May 9 09:22:59 2013 -0700
+
+    fix flakey test
+    
+    scanning the current directory sucks
+
+commit b3ededfdc6e9295796017c9f9e27c85831abff2b
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Thu May 9 07:43:45 2013 -0700
+
+    fix flakey text
+    
+    reported by @aalexandre. Sharing filenames is bad.
+    
+    done with
+    
+      ./tools/import_zend_test.py -z /tmp/php-5.4.13/ -o bug41445
+
+commit bb37e7c5f220f87c89947b876afa95c8f199c2a1
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Wed May 8 21:39:49 2013 -0700
+
+    Disable flakey test
+
+commit a220ce802f8106a6b8141e192a00c45ef6f99240
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Wed May 8 10:32:25 2013 -0700
+
+    Enforce disable of flakey tests
+    
+    This will make future imports of these not re-enable them
+
+commit 7bf08468682f7927857bc335a8f4899f81d467b1
+Author: Paul Tarjan <ptarjan@fb.com>
+Date:   Thu Apr 25 00:10:42 2013 -0700
+
+    fix flakey gztests
+    
+    I noticed on one of my diffs that one of these tests failed and I think it is because they were all sharing a file.

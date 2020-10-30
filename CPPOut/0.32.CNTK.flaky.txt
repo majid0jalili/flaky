@@ -1,0 +1,47 @@
+commit c8e55c0b747b213bd5b0b218bf3b0e6775b98b77
+Author: Cha Zhang <chazhang@microsoft.com>
+Date:   Thu Oct 5 08:07:26 2017 -0700
+
+    Disable Index_64MB_with_caching_check_perf test because it's flaky on Jenkins. Will need further investigation later.
+
+commit b69b34e1b60613c055e7d50731de17ea5ad54fdb
+Author: liqun fu <liqfu@microsoft.com>
+Date:   Tue Sep 12 11:31:34 2017 -0700
+
+    correct CSharp name, disable a flaky test for further investigation
+
+commit 3fa4e36ff1e4033abbca0cab49b21cafbd3a9ac3
+Author: liqun fu <liqfu@microsoft.com>
+Date:   Tue Sep 12 11:31:34 2017 -0700
+
+    correct CSharp name, disable a flaky test for further investigation
+
+commit a557e9ef735eab6790d65df3537ddd62113a5f67
+Author: Philipp Kranen <pkranen@microsoft.com>
+Date:   Mon Jan 30 14:11:25 2017 +0100
+
+    fixed tolerance for flaky GAN test
+
+commit f76a944bce0303e26fb1b12aff6bf5929481e83a
+Author: Alexey Reznichenko <alrezni@microsoft.com>
+Date:   Fri May 20 09:03:29 2016 +0100
+
+    Disable flaky test patterns
+
+commit 512216d1a9078a161822a146c68c7c567cf9fe65
+Author: Mark Hillebrand <mahilleb@microsoft.com>
+Date:   Wed May 18 11:04:15 2016 +0200
+
+    Disable / work-around flaky tests pending further investigation.
+
+commit f904d916d9ee6ce39ee610b6a777ba23e3e0fbf8
+Author: Amit Agarwal <amitaga@microsoft.com>
+Date:   Tue Oct 13 14:29:47 2015 -0700
+
+    Removed testing for EvalErr in each mini-batch - too flaky
+
+commit c6fb87d39db77024096fdea5e4113f8f6123d7aa
+Author: Amit Agarwal <amitaga@microsoft.com>
+Date:   Tue Oct 13 14:29:47 2015 -0700
+
+    Removed testing for EvalErr in each mini-batch - too flaky

@@ -1,8 +1,0 @@
-commit ee9a3d181d060535d6b9863dbe8eb9b1f28cea3d
-Author: Florian Rival <Florian.Rival@gmail.com>
-Date:   Sun Dec 25 22:40:32 2016 +0100
-
-    Prevent long lags/freezes in code generated for GDJS games (especially on Android)
-    
-    This is done by generating every events list code in separate functions, reducing
-    the stress on garbage collectors of JS engines.

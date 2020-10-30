@@ -1,0 +1,1558 @@
+commit f29fcffd533a0052b2489e00bf541043c74b3642
+Merge: 335a9ea cf29dda
+Author: yulin liang <64815511+yulin-liang@users.noreply.github.com>
+Date:   Thu Oct 22 09:51:29 2020 -0700
+
+    Merge pull request #24499 from yulin-liang/flaky-ios-tests
+    
+    Add some debug logs for flaky cfstream and cronet tests.
+
+commit cf29dda10067786b87f4cd9df865c8b3b4f87f2e
+Author: yulin-liang <yliangsysu@gmail.com>
+Date:   Tue Oct 20 11:32:45 2020 -0700
+
+    Add some debug logs for flaky cfstream and cronet tests.
+
+commit c6510ea9cefd98af555aa032388b351a4ac39fba
+Merge: c07b075 6fd27e5
+Author: yulin liang <64815511+yulin-liang@users.noreply.github.com>
+Date:   Wed Oct 7 12:55:22 2020 -0700
+
+    Merge pull request #24342 from yulin-liang/flaky-cfstream
+    
+    Modify podfile of CFStreamTests.
+
+commit a204d54f24648137106501eef2d0a684da283c6a
+Author: Donna Dionne <donnadionne@google.com>
+Date:   Thu Oct 1 10:26:17 2020 -0700
+
+    Fixing ListenerRemoved test.
+    
+    In the ListenerRemoved test, we observed that XdsConfigSelector gets re-created after being destroyed upon removal of listener.
+    
+    This sometimes causes test to fail as RPC will continue to succeed which is not expected; more importantly the re-creation of XdsConfigSelector is not the correct behaviour.
+    
+    XdsConfigSelector gets recreated because the XdsConfigSelector destructor calls will check on removed clusters and then
+    recreate XdsConfigSelector due to the change.
+    
+    This recreation uses a stored copy of the LDS/RDS update, the correct solution is to clear that update upon the removal of listener (ResourceDoesNotExist) and thus prvent the recreation of XdsConfigSelector.
+    
+    Fix is tested to make sure ListenerRemoved test is no longer flaky; logs are checked to ensure that after Listener Removal, the CDs and EDs requests contain no resources and the XDS server will unsubscribe to those resources and no RPC will succeed.
+
+commit 2cfb1bf2cf59bdf251f78710668196937eee73c2
+Merge: cd7d535 443c8aa
+Author: Ashitha Santhosh <55257063+ashithasantosh@users.noreply.github.com>
+Date:   Thu Sep 17 21:28:23 2020 -0700
+
+    Merge pull request #24159 from ashithasantosh/eval_flaky
+    
+    Use TestEnvironment to fix flaky test.
+
+commit 443c8aa8f1892627f0cbde2b2352fed19962518b
+Author: Ashitha Santhosh <ashithasantosh@google.com>
+Date:   Tue Sep 15 12:56:45 2020 -0700
+
+    Create TestEnvironment to fix flaky test.
+
+commit 749024c2c8dd66239adda533c47417f2fe487089
+Merge: 694bb50 5c1ebcb
+Author: yulin liang <64815511+yulin-liang@users.noreply.github.com>
+Date:   Mon Aug 31 11:30:55 2020 -0700
+
+    Merge pull request #23993 from yulin-liang/flaky-cfstream
+    
+    Fix flaky macos/grpc_cfstream test.
+
+commit 5c1ebcbb40b00af46f91e0a90ae884c14de046b9
+Author: yulin-liang <yliangsysu@gmail.com>
+Date:   Wed Aug 26 22:25:06 2020 -0700
+
+    Fix flaky macos/grpc_cfstream test by extending NTP sync timeout.
+
+commit aafecef6d4a5bea4100afd1b2f3f54f9727a5144
+Merge: d41a10d 54a7f1a
+Author: Eric Gribkoff <ericgribkoff@google.com>
+Date:   Fri Aug 21 00:51:40 2020 -0700
+
+    Merge pull request #23926 from menghanl/v1.30.x
+    
+    backport xds flaky test fixes to v1.30.x
+
+commit d60febca9eb0db4c6903a07a4ec8e77e95c8a09b
+Merge: c435430 2c0d5f7
+Author: Eric Gribkoff <ericgribkoff@google.com>
+Date:   Fri Aug 21 00:51:17 2020 -0700
+
+    Merge pull request #23925 from menghanl/v1.31.x
+    
+    backport xds flaky test fixes to v1.31.x
+
+commit dd348c8c435cb1afae30b2d720781ffd50e5dc36
+Merge: 34795b4 cfd1069
+Author: Karthik Ravi Shankar <karthikrs@google.com>
+Date:   Thu Aug 13 17:11:27 2020 -0700
+
+    Merge pull request #23794 from karthikravis/flaky-fix
+    
+    Mark client_crash_test as flaky
+
+commit 242b1b87f8cbf1965557003c1b0f4eeb888cf6d2
+Merge: 218c5fd b296f1a
+Author: Karthik Ravi Shankar <karthikrs@google.com>
+Date:   Thu Aug 13 14:25:27 2020 -0700
+
+    Merge branch 'master' into flaky-fix
+
+commit 218c5fd235822fefaf4a4802b510d527239baba7
+Author: Karthik Ravi Shankar <karthikrs@google.com>
+Date:   Tue Aug 11 13:19:31 2020 -0700
+
+    Mark client_crash_test as flaky
+    
+    This test fails under asan.
+
+commit 647f37c76fea8ef83a1c6170435632d9481051a2
+Merge: 4d3f060 3021bc9
+Author: apolcyn <apolcyn@google.com>
+Date:   Tue Aug 11 00:19:48 2020 -0700
+
+    Merge pull request #23732 from apolcyn/mark_flakey
+    
+    Mark stranded_event_test as flaky
+
+commit 3021bc975a0ef311550a887a2644f5d3ce1e6a11
+Author: Alexander Polcyn <apolcyn@google.com>
+Date:   Tue Aug 4 10:21:43 2020 -0700
+
+    Mark stranded_event_test as flaky
+
+commit 296febf232c5b3f0dbac76ba4f5db3d737adbf6e
+Merge: 4e7ec48 33c128e
+Author: donnadionne <donnadionne@google.com>
+Date:   Wed Jul 29 19:16:55 2020 -0700
+
+    Merge pull request #23662 from donnadionne/msan
+    
+    Fixing a flaky test in ClientLoadReportingWithDropTest.
+
+commit 33c128e99ec58aac9eae2fbaf9e87ff26e493b63
+Author: Donna Dionne <donnadionne@google.com>
+Date:   Wed Jul 29 17:27:23 2020 -0700
+
+    Fixing a flaky test in ClientLoadReportingWithDropTest
+
+commit e758ccaff0b5d363a10d5c28c16855ea44ba3810
+Merge: 2aa6774 2a3b1f0
+Author: Esun Kim <veblush@google.com>
+Date:   Mon Jun 22 13:04:11 2020 -0700
+
+    Merge pull request #23256 from veblush/json-run-flaky-preassign-port
+    
+    Fixed port conflict of json_run_localhost
+
+commit c9759f9414832c9ea964ed83aed7dd580b6b96ed
+Merge: 456036d e994c95
+Author: yulin liang <64815511+yulin-liang@users.noreply.github.com>
+Date:   Thu Jun 18 16:42:31 2020 -0700
+
+    Merge pull request #23251 from yulin-liang/flakey-cronet-tests
+    
+    Fix flaky test:ios-test-cronettests
+
+commit e994c9550265204ed662c0ef9b25b83374898937
+Author: yulin-liang <yliangsysu@gmail.com>
+Date:   Thu Jun 18 11:50:04 2020 -0700
+
+    Fix flaky test:ios-test-cronettests
+
+commit e01080c800d87f37a04e7e04e5605b676fd713bd
+Merge: 96338ad ed2037d
+Author: Esun Kim <veblush@google.com>
+Date:   Mon Jun 15 16:22:29 2020 -0700
+
+    Merge pull request #22984 from veblush/json-run-flaky-fix
+    
+    Defer the server shutdown until the clients finish calls to avoid tim…
+
+commit a379951943143df9c66568bb0ba2d38833a0c0dd
+Merge: 899ea58 5a2f60d
+Author: Vijay Pai <vpai@google.com>
+Date:   Sat Jun 13 01:12:06 2020 -0700
+
+    Merge pull request #23202 from vjpai/flaky
+    
+    Fix flaky_network_test
+
+commit a43082112f5a2e4ef475c8b9c364ca08349e201b
+Merge: ec8be42 3856831
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Mon Jun 1 15:47:50 2020 +0200
+
+    Merge pull request #23068 from jtattermusch/concurrent_connectivity_flaky
+    
+    Mark concurrent_connectivity_test as flaky
+
+commit ec8be426bdfb1282f5b959588b650cb6bb3f5a26
+Merge: 03fc68b b4441c9
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Mon Jun 1 15:47:19 2020 +0200
+
+    Merge pull request #23067 from jtattermusch/cancel_ares_query_test_flaky
+    
+    Mark cancel_ares_query_test as flaky
+
+commit 44eb8a6def3b18092979e46a2a011dfac9ee4b29
+Author: Donna Dionne <donnadionne@google.com>
+Date:   Fri May 29 13:19:29 2020 -0700
+
+    Putting in a temp fix for flaky tests.
+    
+    Temporiarly increase tolerance for small load of RPCs
+
+commit babda6469770e3df5ddd085a77016976fd804f53
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu May 28 03:17:11 2020 -0400
+
+    mark concurrent_connectivity_test as flaky
+
+commit f622a797d25a2a3112d737ad747788815a060106
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu May 28 01:34:19 2020 -0400
+
+    mark cancel_ares_query_test as flaky
+
+commit 14374494bf8b1376c7028ceb8e91f1663f297c93
+Author: Eric Gribkoff <ericgribkoff@google.com>
+Date:   Wed May 20 19:44:12 2020 -0700
+
+    Reenable --fail_on_failed_rpcs flag
+    
+    These were previously causing flaky tests due to latency in the config
+    push from GCP -> TD, meaning that the clients were launching before the
+    new config was actually available to the client. These tests now launch
+    a "exploratory" client process before initiating the test to ensure that
+    the expected backends are receiving traffic before the test begins.
+    
+    (The existing checks rely purely on GCP API, e.g., checking if the
+    backend service reports healthy. There can be slight delays before these
+    status changes are actually available in the xDS response sent to
+    proxyless clients).
+
+commit 6a2880a1ac7016ad6d91c0225b0375b879837b72
+Merge: fffea57 d45f877
+Author: Esun Kim <veblush@google.com>
+Date:   Wed May 20 14:40:15 2020 -0700
+
+    Merge pull request #22992 from veblush/json-run-flaky-logs
+    
+    Add more logs and asserts to qps_worker
+
+commit 44fb37c99f2853cc23f04fba15468980d9e28e41
+Merge: d2fbaf7 92d31d6
+Author: Esun Kim <veblush@google.com>
+Date:   Sun May 17 16:08:12 2020 -0700
+
+    Merge pull request #22818 from veblush/bm_opencensus_plugin_test_flag
+    
+    Remove flaky flag from bm opencensus plugin test
+
+commit d2fbaf7f46d351f192e45dfef6a5afcd444e8dd1
+Merge: 2ff6917 1be6f7a
+Author: Esun Kim <veblush@google.com>
+Date:   Sun May 17 16:08:04 2020 -0700
+
+    Merge pull request #22819 from veblush/time-convert-flag
+    
+    Remove flaky flag from ChannelzChannelTest::LastCallStartedTime
+
+commit 8174dbdd50303107a0d0827202d0a42532392406
+Merge: db932d8 a37d5f1
+Author: matthewstevenson88 <52979934+matthewstevenson88@users.noreply.github.com>
+Date:   Thu May 7 08:46:58 2020 -0700
+
+    Merge pull request #22892 from matthewstevenson88/remove-flaky-test
+    
+    Remove flaky test introduced in PR 21932.
+
+commit a37d5f14b07d7f73d049a41707bb2943b673bd2e
+Author: Matthew Stevenson <mattstev@google.com>
+Date:   Thu May 7 07:22:29 2020 -0700
+
+    Remove flaky test introduced in PR 21932.
+
+commit 92d31d6f99067971b6f655ffd1ba8d14dca52d47
+Author: Esun Kim <veblush@google.com>
+Date:   Sat Apr 25 20:49:37 2020 -0700
+
+    Remove the flaky flag from bm_opencensus_plugin
+
+commit 1be6f7aedbc2ca85cd74f2829e609af7bddeee73
+Author: Esun Kim <veblush@google.com>
+Date:   Sat Apr 25 17:43:24 2020 -0700
+
+    Remove flaky flag from channelz_test
+
+commit 56dd5fb5e4b6538a1ae7ac59668027c4a6b88207
+Merge: 6b0b260 657275f
+Author: Esun Kim <veblush@google.com>
+Date:   Wed Apr 29 12:14:19 2020 -0700
+
+    Merge pull request #22655 from veblush/time-convert
+    
+    Fix flaky ChannelzChannelTest::LastCallStartedTime test
+
+commit 8c64e96458188000a7c883db1a6014e97888b7c6
+Author: Esun Kim <veblush@google.com>
+Date:   Sat Apr 25 17:30:17 2020 -0700
+
+    Fix flaky LastCallStartedTime
+
+commit 234b356e2f30be8e840b9dd1f0fea662ce9c689b
+Author: Esun Kim <veblush@google.com>
+Date:   Sat Apr 25 20:46:02 2020 -0700
+
+    Fix the flaky bm_opencensus_plugin
+
+commit 0ce79a560b3e055b10b34290bf9702a7d5b16059
+Author: Donna Dionne <donnadionne@google.com>
+Date:   Sat Apr 25 20:54:05 2020 -0700
+
+    Revert a change to XdsTest/ClientLoadReportingWithDropTest
+    
+    This test was a bit flaky, but after the change, the msan runs are
+    failing more often.
+    
+    Reverting the change while investigating futher
+
+commit 63573b0515338ab590c643e4a71d0f05f4e26eec
+Author: Donna Dionne <donnadionne@google.com>
+Date:   Wed Apr 15 17:33:31 2020 -0700
+
+    Fixing a flaky test.
+
+commit e677f3d166ebcac000e2657263b3505c5c2f701f
+Merge: 60cebcd 719ec59
+Author: Vijay Pai <vpai@google.com>
+Date:   Fri Apr 10 11:02:54 2020 -0700
+
+    Merge pull request #22621 from grpc/vjpai-patch-1
+    
+    Unmark flaky on streaming_pump
+
+commit 733c85744ec5a108deed13bc02a054614b11eb63
+Merge: cb67f77 697f411
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Thu Apr 9 18:17:36 2020 +0200
+
+    Merge pull request #22631 from jtattermusch/client_channel_stress_test_flaky
+    
+    mark client_channel_stress_test as flaky
+
+commit 697f411fef03c1ef296f0e4efa686e3621213f05
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Apr 9 10:05:07 2020 -0400
+
+    mark client_channel_stress_test as flaky
+
+commit 527509abc40b74e2e95ed19ec99cd06175fb3fd8
+Author: Vijay Pai <vpai@google.com>
+Date:   Wed Apr 8 10:09:00 2020 -0700
+
+    Unmark flaky on streaming_pump
+
+commit be856729eca0d7c8e86d64bf66d44f062317171b
+Author: Eric Gribkoff <ericgribkoff@google.com>
+Date:   Mon Apr 6 09:56:28 2020 -0700
+
+    Merge pull request #22588 from ericgribkoff/change_backend_workaround
+    
+    Disable flaky verification of no RPC failure
+
+commit d667417081046082d8a30c4154f8055330b925bb
+Merge: 630ad82 0325842
+Author: Eric Gribkoff <ericgribkoff@google.com>
+Date:   Mon Apr 6 09:56:28 2020 -0700
+
+    Merge pull request #22588 from ericgribkoff/change_backend_workaround
+    
+    Disable flaky verification of no RPC failure
+
+commit 0325842b1dbd5b54427559eaa4cdeaa558ab4a9b
+Author: Eric Gribkoff <ericgribkoff@google.com>
+Date:   Sat Apr 4 10:17:13 2020 -0700
+
+    Disable flaky verification of no RPC failure
+
+commit 93055a540390b47add2a09c9ef3680ac749b81b0
+Merge: 46838d1 e4ea741
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Fri Apr 3 10:45:38 2020 +0200
+
+    Merge pull request #22558 from grpc/cq-threading-flaky
+    
+    Mark completion_queue_threading_test flaky
+
+commit d18091014c9c8e23bd31026bf4a3408764eb38b1
+Author: Muxi Yan <muxi@users.noreply.github.com>
+Date:   Thu Apr 2 12:18:49 2020 -0700
+
+    Mark completion_queue_threading_test flaky
+
+commit 13ab6c85903cbbce3221941feb0c8d24c77326f3
+Merge: b4a65af c9ae8ed
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Wed Mar 18 20:56:38 2020 +0100
+
+    Merge pull request #22393 from jtattermusch/mark_channelz_test_as_flaky
+    
+    Mark channelz_test as flaky
+
+commit 6738f420fd797d334448b7cb6c7966d114ae3fce
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Wed Mar 18 05:10:22 2020 -0400
+
+    mark channelz_test as flaky
+
+commit bccdd0cb299e6edcb208274ffa72c907114b8d59
+Merge: 2f0f675 5a92850
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Tue Mar 17 17:51:13 2020 +0100
+
+    Merge pull request #22356 from jtattermusch/more_flakes
+    
+    Mark client_lb_end2end_test as flaky
+
+commit 2f0f675deda1b3020423644ac6538531c5469212
+Merge: e37f2fa b24ddc0
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Tue Mar 17 17:33:07 2020 +0100
+
+    Merge pull request #22379 from jtattermusch/more_flaky_marking
+    
+    Mark more tests as flaky
+
+commit e37f2fafbb9e4c74bd58b1d75acacd5b79219ab0
+Merge: 0071566 548e989
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Tue Mar 17 16:51:15 2020 +0100
+
+    Merge pull request #22357 from jtattermusch/resource_quota_server_flaky_fixtures
+    
+    Mark "resouce_quota_server" as flaky with certain fixtures
+
+commit 2e266a82d979144da4bda840b7dfce21cf2ae216
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Tue Mar 17 06:24:25 2020 -0400
+
+    mark end2end test as flaky
+
+commit a791e16983e4ea211232ec2fbac4030cb8b666a7
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Tue Mar 17 05:32:17 2020 -0400
+
+    mark more tests as flaky
+
+commit 880111fe4713a23c28b5343c54de5b58f641b67b
+Merge: 5ff939c bf206eb
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Mon Mar 16 18:14:25 2020 +0100
+
+    Merge pull request #22355 from jtattermusch/bm_metadata_not_flaky
+    
+    bm_metadata is not flaky anymore
+
+commit 548e989515421e323da525b0326ee059494d897f
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 04:11:11 2020 -0400
+
+    mark some fixtures as flaky with resource_quota_server test
+
+commit 8b663c86b697d6ae8053ca57483ac3adf7b6d7f9
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 03:53:21 2020 -0400
+
+    support marking end2end fixture-test pairs as flaky
+
+commit bda2519eeb968991abf87a48be447752295985dc
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 03:14:00 2020 -0400
+
+    mark client_lb_end2end_test as flaky
+
+commit 29528fc026a15d7c4e877cf0bd061c0a62df9b4c
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Mon Mar 16 03:07:25 2020 -0400
+
+    bm_metadata is not flaky anymore
+
+commit 8fc872ed2e05281f5433924a43e27f30c8bd4e49
+Author: Lidi Zheng <lidiz@google.com>
+Date:   Wed Mar 11 14:24:04 2020 -0700
+
+    Enforce one cq and support many-thread many-loop env
+    
+    - Label channel_argument_test as flaky
+    
+    - Add compatibility test
+    
+    - Add many-loop test case
+
+commit 0f1cc1b0e65f5d439a5aab0b629b25d298e86144
+Merge: 07119d1 8655e5e
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Thu Mar 12 17:01:17 2020 +0100
+
+    Merge pull request #22317 from jtattermusch/bazel_flaky_under_run_tests
+    
+    bazel tests marked as flaky should not run under run_tests.py
+
+commit 99922fcdf0a4d74ff0f3d6cc49620bf443107417
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Mar 12 05:58:21 2020 -0400
+
+    bazel tests marked as flaky should not run under run_tests.py
+
+commit d11e2b39aea8d71f95fe7c92a4837c5f14274cb9
+Merge: 5b9b5eb e00bec7
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Mon Mar 2 10:32:54 2020 -0800
+
+    Merge pull request #22197 from jtattermusch/grpclb_flaky
+    
+    mark grpclb_end2end_test as flaky
+
+commit e00bec7bbb451c8c108993cf6a425079a5605cc1
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Sun Mar 1 22:29:27 2020 -0500
+
+    mark grpclb_end2end_test as flaky
+
+commit b430c46e1bbc681bf47624ece494fc4058478c5f
+Merge: f549fe1 cbb0ef2
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Fri Feb 28 11:44:47 2020 -0800
+
+    Merge pull request #22179 from jtattermusch/start_marking_as_flaky
+    
+    Allow marking bazel test as flaky, under certain rules
+
+commit cbb0ef271776168bef7a74df2cebb6f67381bedd
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Feb 27 22:01:00 2020 -0500
+
+    try marking some offenders as flaky
+
+commit 30304d7fa626ea0608f2c53584687317257705fd
+Merge: 56972ae 9c66db3
+Author: Lidi Zheng <lidiz@google.com>
+Date:   Tue Jan 14 17:35:29 2020 -0800
+
+    Merge pull request #21663 from lidizheng/disable-exit-for-bazel
+    
+    Disable the flaky _exit_test for Bazel
+
+commit 9c66db3d26921ef1fb708671f1b93b47528d112d
+Author: Lidi Zheng <lidiz@google.com>
+Date:   Tue Jan 14 16:47:55 2020 -0800
+
+    Disable the flaky _exit_test for Bazel
+
+commit 642e45a033b306c7396fc91167a97b2d1f53ca48
+Merge: f818a03 9cedb80
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Thu Dec 5 09:38:32 2019 +0100
+
+    Merge pull request #21382 from JamesNK/jamesnk/fix-flakey-test
+    
+    Fix flaky health check test
+
+commit 9cedb80c6f01e643c4d16dedc55eef14c203c8b5
+Author: James Newton-King <james@newtonking.com>
+Date:   Thu Dec 5 12:12:43 2019 +1300
+
+    Fix flaky health check test
+
+commit 3a37f901e8cd183fd687efed3f3ba3f35a2ba43e
+Merge: 218fdef 44f6b99
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Fri Nov 8 07:40:58 2019 +0100
+
+    Merge pull request #20956 from jtattermusch/win_timer_tests
+    
+    Disable flaky timer_test on windows
+
+commit 44f6b99d07a5efea83ffc1fece22aa7e7376e35a
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Wed Nov 6 10:16:01 2019 -0500
+
+    disable flaky timer_test on windows
+
+commit 0856e267efdf9b3d06367641c9e5dc6290502b9f
+Merge: 84cece1 e4081cc
+Author: Stanley Cheung <stanleycheung@google.com>
+Date:   Mon Oct 28 23:03:13 2019 -0700
+
+    Merge pull request #20819 from stanley-cheung/php-composer-is-flaky
+    
+    PHP: composer install could be flaky
+
+commit 40427b1fc721a3b23b13fdb6633443316735e201
+Author: Stanley Cheung <stanleycheung@google.com>
+Date:   Fri Oct 25 17:35:01 2019 -0700
+
+    PHP: composer install could be flaky
+
+commit 98abc22f4cee7289058543f4602185f0ffacf6ed
+Merge: 81f3e43 5340111
+Author: Soheil Hassas Yeganeh <soheil@google.com>
+Date:   Fri Oct 11 14:32:38 2019 -0700
+
+    Merge pull request #20577 from soheilhy/fix-benchmark-flaky-2
+    
+    Consider "Socket closed" to be a good status
+
+commit 5529c7c21863d80c2887d32538f3e109da2b5ba3
+Merge: 1ecded0 3081898
+Author: Soheil Hassas Yeganeh <soheil@google.com>
+Date:   Thu Oct 10 07:53:04 2019 -0700
+
+    Merge pull request #20551 from soheilhy/fix-benchmark-flaky
+    
+    Deflake QPS test.
+
+commit 435b1ee961c941185766a736a9c17edd65d6decd
+Merge: 61e22f0 1ac1ab7
+Author: rmstar <pjaikumar@google.com>
+Date:   Thu May 23 13:53:08 2019 -0700
+
+    Merge pull request #19080 from rmstar/flakynetwork
+    
+      Flaky network test enhancements
+
+commit 1ac1ab73965bebb6f7a5850bf62245a390c31ad6
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Mon May 20 12:24:47 2019 -0700
+
+    Flaky network test enhancements and cleanups
+    
+    - Parameterized flaky_network_test to run with different packet sizes and
+    credentials.
+    - Cleanup debugger_macros
+    
+    Parametrize flaky_network_test to run with different packet sizes and
+    credentials.
+
+commit 478fec7d502889fd820c1066d6bc9472a4e83ff4
+Merge: a1fac43 4966ada
+Author: Lidi Zheng <scallopsky@gmail.com>
+Date:   Wed Mar 27 11:40:04 2019 -0700
+
+    Merge pull request #18300 from lidizheng/disable-flaky-windows-gevent-test
+    
+    Disable two flaky gevent tests
+
+commit 4966adaeaef20531f85c00236d4cb63aab2e30c1
+Author: Lidi Zheng <lidiz@google.com>
+Date:   Thu Mar 7 15:15:44 2019 -0800
+
+    Disable two flaky gevent tests
+
+commit b0b35b03a7eb775b570c3e186926928641a77690
+Merge: ee26fae 7f37d1c
+Author: rmstar <pjaikumar@google.com>
+Date:   Wed Feb 27 10:45:35 2019 -0800
+
+    Merge pull request #18159 from rmstar/flakynetwork_fix
+    
+    Fix test flake in flaky_network_test
+
+commit 7f37d1cb0e5a6f865da2742ce783b4fa116e47a7
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Mon Feb 25 12:10:47 2019 -0800
+
+    Fix test flakes in flaky_network_test
+    
+    - Set channel arg for maximum time between reconnection attempts.
+    - Don't check status of RPCs that can fail due to network flakiness.
+
+commit 8ba4d3a801216d9d794877921554601db1862ebf
+Author: Eric Gribkoff <ericgribkoff@google.com>
+Date:   Thu Feb 21 13:48:40 2019 -0800
+
+    Disable test_abort_does_not_leak_local_vars
+    
+    This test relies on gc timing and has been flaky
+    (https://github.com/grpc/grpc/issues/17927).
+
+commit 0e0a535bcc71b7e2d886c48a2e231310198b4404
+Merge: 7f869b4 deb1081
+Author: Eric Gribkoff <ericgribkoff@google.com>
+Date:   Thu Feb 21 12:34:55 2019 -0800
+
+    Merge pull request #18128 from ericgribkoff/disable_flaky_test
+    
+    Disable flaky health service test
+
+commit deb1081536e59c22f6ec5cedd5d8ea429ce4f498
+Author: Eric Gribkoff <ericgribkoff@google.com>
+Date:   Thu Feb 21 12:09:36 2019 -0800
+
+    Disable flaky health service test
+
+commit 7f869b46d1d65b54e67e2016fa0c908ad88e0406
+Merge: 202c989 64dbada
+Author: rmstar <pjaikumar@google.com>
+Date:   Thu Feb 21 11:02:06 2019 -0800
+
+    Merge pull request #18121 from rmstar/flakyflake
+    
+    Debug flaky_network_test
+
+commit 64dbadace89a179850f018b58a52ee130549fde3
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Thu Feb 21 00:43:48 2019 -0800
+
+    Debug flaky_network_test
+    
+    Run the test with some tracing enabled to debug test flakes.
+
+commit 7bdcf1269c4487147ba398c44415fd61b9db5c01
+Merge: 193293c b31f402
+Author: rmstar <pjaikumar@google.com>
+Date:   Wed Feb 20 15:36:12 2019 -0800
+
+    Merge pull request #18099 from rmstar/readdflakynetworktest
+    
+    Add flaky_network_test after fixing internal build failures.
+
+commit b31f402b469ceeec2a9f7d70c596a1c03351d795
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Tue Feb 19 10:46:05 2019 -0800
+
+    Add flaky_network_test after fixing internal build failures.
+    
+    Re-add flaky_network_test along with a couple of new testcases.
+
+commit 3dacd1afc451803fbbc4d01c53cbaf026aa9d06b
+Merge: 0c1b8f9 cecea9c
+Author: Nicolas Noble <nicolasnoble@users.noreply.github.com>
+Date:   Fri Feb 15 14:18:31 2019 -0800
+
+    Merge pull request #18079 from grpc/revert-17903-flakynetworktest
+    
+    Revert "Added test for RPCs over a flaky network"
+
+commit cecea9c5921c98a43d4a34b3ad1c8e8bdb4eedbb
+Author: hcaseyal <hcaseyal@gmail.com>
+Date:   Fri Feb 15 13:36:02 2019 -0800
+
+    Revert "Added test for RPCs over a flaky network"
+
+commit 17651ca3cc131a7b85d43a619e65cb191e1cc68e
+Merge: 52360b8 485bc78
+Author: rmstar <pjaikumar@google.com>
+Date:   Wed Feb 13 11:19:39 2019 -0800
+
+    Merge pull request #17903 from rmstar/flakynetworktest
+    
+    Added test for RPCs over a flaky network
+
+commit 485bc78ba325ce0b3a4ce55187a7560f4d6732d3
+Author: Prashant Jaikumar <pjaikumar@google.com>
+Date:   Thu Feb 7 16:53:24 2019 -0800
+
+    Added flaky_network_test
+
+commit bd93d6de4190e373e5aaa5da96dc59fdde2dacae
+Merge: 89110b0 817c28f
+Author: rmstar <pjaikumar@google.com>
+Date:   Thu Feb 7 10:53:36 2019 -0800
+
+    Merge pull request #17967 from jtattermusch/scaffolding_flaky_network
+    
+    Scaffolding for flaky network test
+
+commit 817c28f22fb39bc4c278cae65588a4009b6c4261
+Author: Jan Tattermusch <jtattermusch@google.com>
+Date:   Thu Feb 7 18:33:02 2019 +0100
+
+    scaffolding for flaky network test
+
+commit b928f99fdf53e35a1636f943910fc6a7315b8d0f
+Author: Mehrdad Afshari <mmx@google.com>
+Date:   Wed Jul 25 10:47:17 2018 -0700
+
+    Disable ChannelConnectivityTest for the Beta API
+    
+    The Beta API has been unsupported for a while and
+    we plan to disable the flaky tests in the Beta API
+    as we see them before we entirely remove it.
+
+commit 0397c7b95ee5baae949a395424b5bb25ec4b0160
+Merge: 2357b2d 4677c70
+Author: Zhouyihai Ding <ddyihai@google.com>
+Date:   Fri Jun 1 09:36:42 2018 -0700
+
+    Merge pull request #15594 from ZhouyihaiDing/flaky
+    
+    PHP: fix flaky tests
+
+commit 4677c70684c182e99c67bff7b195cd2dadfa2cf5
+Author: ZhouyihaiDing <ddyihai@google.com>
+Date:   Thu May 31 16:02:46 2018 -0700
+
+    PHP: fix flaky tests
+
+commit 62170372a7899949a7baaebec112f11552e6985a
+Author: Nathaniel Manista <nathaniel@google.com>
+Date:   Tue Mar 13 23:50:25 2018 +0000
+
+    Remove _face_interface_test
+    
+    The Beta API has an execution date and RPC Framework is but a distant
+    memory.
+    
+    This test is flaky with Python 3.5 on Windows! Some mysteries will just
+    have to remain unsolved...
+
+commit be32189087794f802903028fc80d13c5362b8c27
+Merge: 3515066 3d78436
+Author: Matt Kwong <matt-kwong@users.noreply.github.com>
+Date:   Wed Jun 14 11:55:05 2017 -0700
+
+    Merge pull request #11477 from matt-kwong/query
+    
+    Change flaky test query to not exclude Kokoro results
+
+commit 3d7843629e6a40795a90dca8d7f12923b91b8f07
+Author: Matt Kwong <mattkwong@google.com>
+Date:   Mon Jun 12 15:56:12 2017 -0700
+
+    Change flaky test query to not exclude Kokoro results
+
+commit b290fc9df2a0880091c009aa31df1a3d37a785a3
+Merge: febb4c3 a582def
+Author: Vijay Pai <vpai@google.com>
+Date:   Mon Mar 13 02:14:45 2017 -0700
+
+    Merge pull request #10063 from vjpai/disable_flaky_rq_qps_test
+    
+    Temporarily disable resource quota QPS tests
+
+commit 2e0a82f14db01fc6adc4df207f76deb9263f4fc7
+Merge: c35a5b0 69709e2
+Author: Yang Gao <yangg@google.com>
+Date:   Wed Mar 8 17:13:31 2017 -0800
+
+    Merge pull request #10040 from rjshade/udp_use_after_free
+    
+    Fix flaky use-after-free in udp_server
+
+commit 69709e2819f5eeeb47a16f7ed964dd1196b94ff0
+Author: Robbie Shade <rjshade@google.com>
+Date:   Wed Mar 8 12:54:28 2017 -0500
+
+    Fix flaky use-after-free in udp_server
+
+commit 41559c643416148f46251052f8148bc38071a47f
+Merge: 73c3354 7c1aafb
+Author: Yang Gao <yangg@google.com>
+Date:   Tue Mar 7 14:11:01 2017 -0800
+
+    Merge pull request #10024 from grpc/revert-10015-use_after_free
+    
+    Revert "Fix flaky use-after-free in udp_server"
+
+commit 7c1aafb3f9dbc284f2041773002379c9def00f72
+Author: Yang Gao <yangg@google.com>
+Date:   Tue Mar 7 14:07:53 2017 -0800
+
+    Revert "Fix flaky use-after-free in udp_server"
+
+commit 73c33541b5eaf6a44e0e14e1382ab19f25538873
+Merge: 1462063 9cf08b6
+Author: Robbie Shade <robbie.shade@gmail.com>
+Date:   Tue Mar 7 13:54:30 2017 -0500
+
+    Merge pull request #10015 from rjshade/use_after_free
+    
+    Fix flaky use-after-free in udp_server
+
+commit 9cf08b6bea66a801506f66193389822d3049c112
+Author: Robbie Shade <rjshade@google.com>
+Date:   Tue Mar 7 10:34:17 2017 -0500
+
+    Fix flaky use-after-free in udp_server
+
+commit e55fcc7f060ec94c22b9b0e1865a327f24c20afd
+Merge: 459e10d b23f4b7
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Feb 1 09:19:09 2017 -0800
+
+    Merge pull request #9530 from ctiller/hybrid
+    
+    Mark hybrid tests as flaky
+
+commit b23f4b7db947a558971cc58d663c21ad7e9e38ee
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Jan 31 15:50:45 2017 -0800
+
+    Mark hybrid tests as flaky
+
+commit 6476170c4bf90c8e29e9d26049f0cffe15c51709
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Oct 27 10:16:11 2016 -0700
+
+    Mark disappearing_server as flaky: this was always so, but is more pronounced now - and will be fixed with retries
+
+commit e04d83656b1ec13df14345baa5eb33b5842fa9fd
+Merge: 8615b7b a5abbd2
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Tue Mar 22 11:07:12 2016 -0700
+
+    Merge pull request #5910 from ctiller/temporary_reprieve
+    
+    Mark mlog_test as flaky
+
+commit a5abbd2c03a46bccfef1539953af02efc449ed94
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Mar 22 06:56:00 2016 -0700
+
+    Mark mlog_test as flaky
+
+commit de7edf83ccef1bd95186b059d55266e45db449ba
+Merge: 3ab6f4d cb1c389
+Author: Craig Tiller <ctiller@google.com>
+Date:   Sun Mar 20 09:12:16 2016 -0700
+
+    Merge github.com:grpc/grpc into backoff2
+    
+    Reintroduce flakiness flag for tests: lb_policies_test is inherently flaky and I don't have time to deflake this week
+
+commit 1faa036a490a6a541047d3440b8a5e084157bbb9
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Tue Mar 15 21:28:09 2016 +0100
+
+    Disabling flaky test.
+
+commit 6963453c20055f5d4641447e6ae50d2fbffe0c97
+Merge: 2edea9c 9e5a05a
+Author: Yang Gao <yangg@google.com>
+Date:   Tue Mar 1 18:43:04 2016 +0000
+
+    Merge pull request #5493 from sreecha/server_try_cancel_test
+    
+    Fix flaky test:  End2endServerTryCancelTest.ResponseStreamServerCancelAfter
+
+commit 7c075b39538e047f4dd4d114b5cb7647ef4ce01a
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Feb 29 21:46:06 2016 -0800
+
+    Remove broken test
+    
+    This test is inherently flaky and I don't see any way to make it not so.
+    Historically this test has not (in my memory) given any signal that something is actually broken.
+    
+    Let's save maintenance and just nuke it.
+
+commit 75065d4b1f47ab3bf9e0e4fa3f3f6368db1fc4c7
+Merge: 05e466e a082435
+Author: Michael Lumish <mlumish@google.com>
+Date:   Thu Nov 12 14:10:08 2015 -0800
+
+    Merge pull request #4106 from tbetbetbe/grpc_ruby_fix_flaky_ruby_interop_test
+    
+    Grpc ruby fix flaky ruby interop test
+
+commit a3bb7f87b396157270cb0c2046744edbfcb150a5
+Merge: 39ec1e8 fe4939f
+Author: Nicolas Noble <nicolasnoble@users.noreply.github.com>
+Date:   Wed Oct 7 10:55:56 2015 -0700
+
+    Merge pull request #3677 from ctiller/port_server_be_flaky
+    
+    More robust port_server version checking
+
+commit 10ce383e1bfc84ffdfaba082bd413be67c5146d6
+Merge: 96bcf02 bfc8a06
+Author: Jan Tattermusch <jtattermusch@users.noreply.github.com>
+Date:   Mon Sep 28 15:13:51 2015 -0700
+
+    Merge pull request #3487 from ctiller/flaky-timeouts
+    
+    Add support for flaky timeouts
+
+commit 6b870e29840dfea9a69300998a660721a31e41c8
+Merge: 3dc1e4f bdd89ca
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Sep 28 13:37:35 2015 -0700
+
+    Merge github.com:grpc/grpc into flaky-timeouts
+
+commit a6735949feb68cc5364ef0eaf74727cc625a8022
+Merge: bd88711 d4509a1
+Author: Nathaniel Manista <nathaniel@google.com>
+Date:   Mon Sep 28 10:04:34 2015 -0700
+
+    Merge pull request #3542 from ctiller/flaky-ist-nicht-gut
+    
+    Only support flaky tests on demand.
+
+commit 1bae5371b88839d448c4d9919af3fbf4fe6cf12c
+Merge: 0f9a118 d7e09c3
+Author: Nathaniel Manista <nathaniel@google.com>
+Date:   Mon Sep 28 09:21:54 2015 -0700
+
+    Merge pull request #3458 from ctiller/flaky-ist-gut
+    
+    Add retries for flaky tests (enabled by default for now).
+
+commit 6c3709c4b3f2a54cd7cc7177970e0fff20281214
+Merge: 0f8265a 557d26f
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Sep 25 17:12:50 2015 -0700
+
+    Merge pull request #3494 from tbetbetbe/grpc-ruby-remove-bad-flaking-test
+    
+    Remove a bad flaky rpc server test
+
+commit 557d26f6438e40a482f65ea5f5e9d2990a59fa6e
+Author: Tim Emiola <temiola@google.com>
+Date:   Fri Sep 25 16:55:19 2015 -0700
+
+    Remove a bad flaky rpc server test
+
+commit 3dc1e4f909abc98a59ab1df091b5d656b3e7bcc2
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Sep 25 11:46:56 2015 -0700
+
+    Add support for flaky timeouts
+
+commit 8d5a98afaaf8be03fd298a683976b54d5d0ac515
+Merge: 91318bc 2d73f05
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Sep 25 11:33:26 2015 -0700
+
+    Merge github.com:grpc/grpc into flaky-ist-gut
+
+commit 91318bc256991c9946f450219721665148480cd8
+Author: Craig Tiller <ctiller@google.com>
+Date:   Thu Sep 24 08:58:39 2015 -0700
+
+    Add retries for flaky tests (enabled by default for now)
+
+commit 3e5964f8fbbcdaf6751ca203843ca127eb215ab7
+Merge: 10dfcc0 8cca469
+Author: Nicolas Noble <nicolasnoble@users.noreply.github.com>
+Date:   Mon Jun 22 15:17:28 2015 -0700
+
+    Merge pull request #2164 from ctiller/all-my-little-snowflakes
+    
+    Fix flaky test
+
+commit 8cca4694ee03f7b5df191211a488c6a7438e64e3
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Jun 22 13:50:59 2015 -0700
+
+    Fix flaky test
+    
+    Assertation could be false if the server responds quickly enough (it's
+    unlikely to). Removing the assert does not change the nature of the
+    test.
+
+commit b1fa5d46275572274fe3e5a501c267be4ea9ffe8
+Author: Tim Emiola <temiola@google.com>
+Date:   Thu Jun 11 09:35:06 2015 -0700
+
+    Ruby shutdown api migration
+    
+    + all tests pass,
+    - but there are a couple of workarounds
+    - tests are flaky
+
+commit 2d8b52bdc76b3183b05e4d960c7e6239e0b45d0d
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Tue May 26 17:06:55 2015 -0700
+
+    Mark tests not flaky
+
+commit 18c26922d10e00b69317793dc3b72b48d0b202d9
+Merge: 031dea1 4251d56
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Mon May 25 08:26:12 2015 -0700
+
+    Merge pull request #1725 from nicolasnoble/makefile-flaky-tests
+    
+    Don't run flaky tests on make test.
+
+commit 4251d561c6d849a13078bcb878a3fd345590a325
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Fri May 22 19:43:39 2015 +0200
+
+    Don't run flaky tests on make test.
+
+commit 9a5eee1d340b72a5f3c67db15837847bfe7356e0
+Merge: 4107ba2 436f964
+Author: Yang Gao <yangg@google.com>
+Date:   Fri Apr 24 15:04:59 2015 -0700
+
+    Merge pull request #1360 from nicolasnoble/flakes
+    
+    Flagging some tests as flaky.
+
+commit 436f964a8051f440d4bc7ac85cc4198feb9ea7d1
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Fri Apr 24 19:58:12 2015 +0200
+
+    Flagging a few census tests as flaky.
+
+commit b8137b343f476b7d6f0e255bf1ce0510e4e1941b
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Fri Apr 24 01:44:28 2015 +0200
+
+    Flagging some tests as flaky.
+
+commit e7bd03cdec8f4b9e878e5206c98f5e6fb5bc43f5
+Merge: 6fac833 c23827b
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Wed Apr 22 22:19:36 2015 -0700
+
+    Merge pull request #1351 from nicolasnoble/flaky-travis
+    
+    Avoid building shared libraries on Travis. This seems flaky.
+
+commit c23827beeb147accfcc11c9745fc67a395d7efea
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Thu Apr 23 06:17:55 2015 +0200
+
+    Avoid building shared libraries on Travis. This seems flaky.
+
+commit 522528182a8cd31919bccca3db13314dba6993c3
+Author: Craig Tiller <ctiller@google.com>
+Date:   Wed Apr 22 14:03:06 2015 -0700
+
+    Update flaky bit for unsecure tests
+
+commit 8fddccb12c5338e5824fad6a3d2659ce4eeefe08
+Author: Craig Tiller <ctiller@google.com>
+Date:   Fri Apr 17 16:09:30 2015 -0700
+
+    Mark large requests tests flaky (they are buggy)
+
+commit 45115845cc116022647e62b2e7627b261a6c4f4b
+Author: Craig Tiller <ctiller@google.com>
+Date:   Mon Mar 2 10:05:10 2015 -0800
+
+    Mark fling_*test non-flaky
+    
+    Also, make the flaky: tag a little more visible in build.json
+
+commit afcbfa1ba3800d685346c61fa96c43b4b911d8cc
+Merge: 6a80e57 9db7c3b
+Author: Craig Tiller <craig.tiller@gmail.com>
+Date:   Thu Feb 26 22:27:13 2015 -0800
+
+    Merge pull request #865 from nicolasnoble/flaky
+    
+    Adding flaky attribute for tests.
+
+commit 9db7c3b174b9a630899439a0fb3e965b8bd5060d
+Author: Nicolas "Pixel" Noble <pixel@nobis-crew.org>
+Date:   Fri Feb 27 06:03:00 2015 +0100
+
+    Adding flaky attribute for tests.
+
+commit bf444937c613370fb88acbc4bceefba1772cc3c1
+Author: Craig Tiller <ctiller@google.com>
+Date:   Tue Jan 13 17:13:08 2015 -0800
+
+    Fix ordering problem leading to flaky test
+
+commit 0c475f0ad78e5848438e1a690b826fe0b6eb26fe
+Author: nnoble <nnoble@google.com>
+Date:   Fri Dec 5 15:37:39 2014 -0800
+
+    Updating moe_db.txt with the latest equivalence since the ruby import changed the exported structure.
+    	Change on 2014/12/01 by nnoble <nnoble@google.com>
+    -------------
+    new [] file for grpc testing.
+    	Change on 2014/12/02 by donnadionne <donnadionne@google.com>
+    -------------
+    Fix unfinished calls in thread_stress_test.
+    
+    Previously we had an early return if we cancelled a stream part way through a
+    message. Correct this, so that half close and full close signals are propagated
+    up the stack correctly so that higher level state machines can see the
+    termination.
+    	Change on 2014/12/02 by ctiller <ctiller@google.com>
+    -------------
+    Remove dependency on internal C code.
+    	Change on 2014/12/02 by ctiller <ctiller@google.com>
+    -------------
+    Turn off the flaky bit from thread_stress_test.
+    	Change on 2014/12/02 by ctiller <ctiller@google.com>
+    -------------
+    Add test cases of empty request/response, request streaming, response streaming, and half duplex streaming.
+    
+    Bring up the GFE/ESF for mannual test:
+    [] build java/com/google/net/[]/testing/integration/hexa:server_components_env
+    []-bin/java/com/google/net/[]/testing/integration/hexa/server_components_env --manual --rpc_port=25000 --use_autobahn
+    	Change on 2014/12/02 by chenw <chenw@google.com>
+    -------------
+    Make echo/server.c and fling/server.c shutdown cleanly on SIGINT, and update
+    the relevant tests to exercise this mechanism.
+    
+    Now "[] coverage" and the memory leak detector are able to see into the
+    server processes.
+    	Change on 2014/12/02 by pmarks <pmarks@google.com>
+    -------------
+    Allow the # of channels to be configurable in this performance test. The threads will use the channels in statically-defined round-robin order (not based on when RPCs complete on any channel). The interesting cases are #channels=1 or #channels=#threads (we previously only had the latter case)
+    	Change on 2014/12/02 by vpai <vpai@google.com>
+    -------------
+    Fixed a typo and reworded a comment.
+    	Change on 2014/12/02 by gnezdo <gnezdo@google.com>
+    -------------
+    Require the grpc_call in this ClientContext to be NULL before allowing set_call to be invoked. Otherwise, it's an indication of a leak somewhere.
+    	Change on 2014/12/02 by vpai <vpai@google.com>
+    -------------
+    Correctly return status other than ok and add a test for it.
+    	Change on 2014/12/02 by yangg <yangg@google.com>
+    -------------
+    Better C++ guards for grpc_security.h
+    	Change on 2014/12/02 by nnoble <nnoble@google.com>
+    -------------
+    Use nullptr instead of NULL for consistency.
+    	Change on 2014/12/02 by vpai <vpai@google.com>
+    -------------
+    Updates the ruby gRPC service class to require the serialization method to be
+    a static method
+    
+    - this brings it inline with the proto3 ruby API
+    - it adds a monkey patch to allow existing proto (beefcake) to continue working.
+    	Change on 2014/12/02 by temiola <temiola@google.com>
+    -------------
+    Adding a buildable unit to the blue print file.
+    
+    Added the buildable unit as its name will be usesd as tap project id.
+    
+    This test will fail right away in tap until tests are actually added.
+    	Change on 2014/12/02 by donnadionne <donnadionne@google.com>
+    -------------
+    Move interop ESF C++ server from Java to grpc directory.
+    
+    Tests passed:
+    [] test javatests/com/google/net/[]/testing/integration/hexa/...
+    [] test net/grpc/testing/interop/esf_server/...
+    	Change on 2014/12/02 by chenw <chenw@google.com>
+    -------------
+    Return a lame channel as opposed to NULL when secure channel creation fails.
+    
+    - Looks like we're going to need something similar server-side.
+    - I changed the prototype of the lame client channel factory to take an
+    explicit void as I think this is better practice in C. Let me know if you
+    disagree and I will revert these changes.
+    	Change on 2014/12/02 by jboeuf <jboeuf@google.com>
+    -------------
+    Putting ALPN support where it belongs.
+    	Change on 2014/12/02 by jboeuf <jboeuf@google.com>
+    -------------
+    GOAWAY send path.
+    
+    Sends a GOAWAY frame when shutting down.
+    This is not read and understood yet.
+    	Change on 2014/12/03 by ctiller <ctiller@google.com>
+    -------------
+    Adds support for secure channels and servers.
+    
+    - wraps new C apis (credentials, server_credentials) and Server#add_secure_http_port
+    - adds tests to ensure credentials and server credentials can be created
+    - updates client_server_spec to run the client_server wrapper layer end-to-end tests using a secure channel
+    	Change on 2014/12/03 by temiola <temiola@google.com>
+    -------------
+    Fix existing issues regarding out of order events.
+    
+    At the client side, using pluck as the client_metadata_read can happen anytime after invoke.
+    
+    At the server side, allow halfclose_ok and rpc_end to come in reverse order.
+    	Change on 2014/12/03 by yangg <yangg@google.com>
+    -------------
+    Don't track coverage of tests.
+    	Change on 2014/12/03 by ctiller <ctiller@google.com>
+    -------------
+    Change UnaryCall to conform standard test requirement of LargeUnaryCall.
+    	Change on 2014/12/03 by yangg <yangg@google.com>
+    -------------
+    updating alpn version to h2-15 ensure all interop are on the same version and working.
+    
+    Java and go are not ready for h2-16 yet.
+    	Change on 2014/12/03 by donnadionne <donnadionne@google.com>
+    -------------
+    Add config to bring echo server in [].
+    
+    This is used to test production GFE as its bckend.
+    	Change on 2014/12/03 by chenw <chenw@google.com>
+    -------------
+    In preparation for fixing shutdown race issues, change em to take ownership of
+    the file descriptor. Add an API to grpc_tcp to take an already created
+    grpc_em_fd object, and change tcp_client to use that API.
+    
+    This is needed because otherwise an em user's close() of the file descriptor
+    may race with libevent internals. That's not an issue yet because destroy()
+    frees the events inline, but that can't be done safely if there is a concurrent
+    poller.
+    	Change on 2014/12/03 by klempner <klempner@google.com>
+    -------------
+    Fixing TAP opensource build
+    
+    We don't want to compile and run C++ tests in the C target.
+    	Change on 2014/12/03 by nnoble <nnoble@google.com>
+    -------------
+    Move and separate interop tests by languages.
+    
+    Small fixes to the test runner.
+    
+    Improving logging.
+    	Change on 2014/12/03 by donnadionne <donnadionne@google.com>
+    -------------
+    Fixing the opensource build:
+    
+    -) The C/C++ split wasn't done up to the 'dep' target level
+    -) The alpn.c file was missing from build.json
+    	Change on 2014/12/03 by nnoble <nnoble@google.com>
+    -------------
+    Adding blue print files after projects exist
+    	Change on 2014/12/03 by donnadionne <donnadionne@google.com>
+    -------------
+    Refactor StreamContext using the new completion_queue_pluck API.
+    
+    The dedicated the poller thread has been removed.
+    This CL keeps the current behavior to make it short. There is one following to
+    make it usable for both client and server.
+    
+    The tags for pluck is based on the address of this StreamContext object for potential debug use.
+    
+    The Read/Write and Wait cannot be called concurrently now and this might need to be fixed.
+    	Change on 2014/12/03 by yangg <yangg@google.com>
+    -------------
+    Binary encoding utilities.
+    
+    Support base64 encoding, HPACK static huffman encoding, and doing both at once.
+    	Change on 2014/12/03 by ctiller <ctiller@google.com>
+    -------------
+    Enforce Makefile regeneration in presubmits.
+    	Change on 2014/12/03 by ctiller <ctiller@google.com>
+    -------------
+    Make CloseSend() send a real zero-length control message to indicate EOS.
+    	Change on 2014/12/03 by zhaoq <zhaoq@google.com>
+    -------------
+    Prefer to create dualstack sockets for TCP clients and servers, with automatic
+    fallback for environments where IPV6_V6ONLY can't be turned off.
+    	Change on 2014/12/03 by pmarks <pmarks@google.com>
+    -------------
+    Add opensource path to build targets.
+    
+    Ensure that MOE is going to run.
+    	Change on 2014/12/03 by ctiller <ctiller@google.com>
+    -------------
+    Add PingPong test case. Delete FullDuplex test case. The latter is not specified for client in
+    
+    https://docs.google.com/document/d/1dwrPpIu5EqiKVsquZfoOqTj7vP8fa1i49gornJo50Qw/edit#
+    	Change on 2014/12/03 by chenw <chenw@google.com>
+    -------------
+    Make generate_projects.sh check out the generated targets.
+    	Change on 2014/12/03 by ctiller <ctiller@google.com>
+    -------------
+    rspec cleanup
+    
+    - stops declaring specs within the GRPC module
+    - splits Bidi streaming specs into a separate test suite
+    
+    adding tests in the GRPC module was a mistake, it pollutes the module and can
+    affect other tests that run later by the test runner
+    
+    the bidi tests are currently flaky, having them run in their own test suite
+    allows having two separate continuous builds (once ruby gRPC is on GitHub),
+    one that includes bidi where we tolerate flakiness, and another that does not,
+    where there should be no flakiness at all
+    	Change on 2014/12/03 by temiola <temiola@google.com>
+    -------------
+    Adding support for composite and IAM credentials.
+    
+    - For now, we don't do any checks on credentials compatibility in the
+    composite credentials. Maybe we'll add that later.
+    - Refactored the end to end security tests so that we always use the public API
+    (except for the fake security context which is not exposed).
+    	Change on 2014/12/03 by jboeuf <jboeuf@google.com>
+    -------------
+    Make GPR library buildable in Visual Studio 2013.
+    	Change on 2014/12/04 by jtattermusch <jtattermusch@google.com>
+    -------------
+    Adds codegen for ruby
+    
+    This is being added now that ruby's proto and grpc apis are defined and stable
+    	Change on 2014/12/04 by temiola <temiola@google.com>
+    -------------
+    Prevent NewStream() from sending negative or 0 timeout.
+    	Change on 2014/12/04 by zhaoq <zhaoq@google.com>
+    -------------
+    Add a grpc_sockaddr_to_string() function, and use it when logging bind
+    failures.  Also improve const-correctness in some earlier code.
+    
+    I'm not certain whether inet_ntop() will need any platform-specific
+    implementations, but for now the compiler offers no complaints.
+    
+    Demo:
+    $ []-bin/net/grpc/c/echo_server 1.2.3.4:80
+    ... tcp_server.c:139] bind addr=[::ffff:1.2.3.4]:80: Permission denied
+    	Change on 2014/12/04 by pmarks <pmarks@google.com>
+    -------------
+    Refactoring - moves c wrapped classes to a submodule Google::RPC::Core
+    
+    - this allows for an explicit rule when reading through gRPC ruby code for telling
+    when an object is pure ruby or wrapped C
+    	Change on 2014/12/04 by temiola <temiola@google.com>
+    -------------
+    Fixes the bidi_call
+    
+    []
+    	Change on 2014/12/04 by temiola <temiola@google.com>
+    -------------
+    Fixing dev build when activating surface traces.
+    	Change on 2014/12/04 by nnoble <nnoble@google.com>
+    -------------
+    Updates the tests to reflect that fact that some Credentials compose works.
+    	Change on 2014/12/04 by temiola <temiola@google.com>
+    -------------
+    Making the generate_project_test actually do something.
+    	Change on 2014/12/04 by nnoble <nnoble@google.com>
+    -------------
+    Rename "esf_server" to "[]4_server". Delete "test_sever" from Java directory.
+    	Change on 2014/12/04 by chenw <chenw@google.com>
+    -------------
+    Added PHP client interop tests. Tested large_unary against the C++ server.
+    	Change on 2014/12/04 by mlumish <mlumish@google.com>
+    -------------
+    Refactor grpc_create_dualstack_socket() by pulling the setsockopt into its own
+    function.  This separates the magic test flag from the real fallback logic.
+    	Change on 2014/12/04 by pmarks <pmarks@google.com>
+    -------------
+    Fixes the type of the constant used for test cert hostname
+    	Change on 2014/12/04 by temiola <temiola@google.com>
+    -------------
+    Disabling these tests as they're causing flakiness.
+    	Change on 2014/12/04 by ctiller <ctiller@google.com>
+    -------------
+    Change intptr --> uintptr.
+    
+    Handles the case where a void* turns into a negative number, which then gets
+    hashed into a negative bucket and segfaults.
+    	Change on 2014/12/04 by ctiller <ctiller@google.com>
+    -------------
+    Add a test fixture to force parsers to handle one byte at a time.
+    
+    This should expand coverage and hopefully prevent errors at some point (it
+    seems to pass out of the box for now though).
+    	Change on 2014/12/04 by ctiller <ctiller@google.com>
+    -------------
+    The code generator isn't +x.
+    	Change on 2014/12/04 by ctiller <ctiller@google.com>
+    -------------
+    Updates math_client and math_server to allow construction using crednetials
+    
+    By:
+    - Extending rpc_server constructor so that it takes a credentials keyword param
+    - Extending client_stub constructor so that it takes a credentials keyword param
+    	Change on 2014/12/04 by temiola <temiola@google.com>
+    -------------
+    Format output a little more nicely.
+    
+    Print each line of output separately - previously logging.info was truncating this at some maximum length, and logs were getting lost.
+    	Change on 2014/12/04 by ctiller <ctiller@google.com>
+    -------------
+    Up timeout for this test.
+    
+    Under TSAN, if we process one byte at a time, this timeout can be reached - and I think this is the cause of the following flake:
+    []
+    	Change on 2014/12/05 by ctiller <ctiller@google.com>
+    -------------
+    Adding more error logging for ssl.
+    	Change on 2014/12/05 by jboeuf <jboeuf@google.com>
+    -------------
+    Read path for goaway.
+    
+    Still need to add hooks to deprecate a channel on the client side when goaway
+    is received.
+    	Change on 2014/12/05 by ctiller <ctiller@google.com>
+    -------------
+    Separate accept() into server_accept() and server_end_of_initial_metadata().
+    
+    This allows servers to initiate reads before finishing writing metadata.
+    	Change on 2014/12/05 by ctiller <ctiller@google.com>
+    -------------
+    Fix for breakage 11512317 - adding missing test files.
+    	Change on 2014/12/05 by nnoble <nnoble@google.com>
+    -------------
+    grpc c++ server side streaming support.
+    
+    This is based on [] There is a lot of room to clean up the internal implementation which may require refactoring of CompletionQueue. The current cl serves as a working implementation with the missing interfaces.
+    
+    The sample generated files are included and will be removed before submitting.
+    	Change on 2014/12/05 by yangg <yangg@google.com>
+    -------------
+    Changed to the latest timeout format again (search "grpc-timeout" in [] for the spec).
+    	Change on 2014/12/05 by zhaoq <zhaoq@google.com>
+    -------------
+    Fixing opensource build.
+    	Change on 2014/12/05 by nnoble <nnoble@google.com>
+    -------------
+    Making absolutely sure we can do the moe export by adding a sh_test for it.
+    	Change on 2014/12/05 by nnoble <nnoble@google.com>
+    -------------
+    Change :scheme psuedo-header from "grpc" to "http" or "https".
+    	Change on 2014/12/05 by zhaoq <zhaoq@google.com>
+    -------------
+    Add server credential wrapping for c++ server. It only wraps ssl and []2 for now.
+    
+    The ServerCredentials class and the factory class are in a similar fashion as
+    client side wrapping. The difference is the factory method returns shared_ptr
+    instead of unique_ptr as the server builder needs to keep a reference to it for
+    actually creating the server later.
+    
+    The integration will happen in a following cl.
+    	Change on 2014/12/05 by yangg <yangg@google.com>
+    -------------
+    Fixed bugs in new_grpc_docker_builder.sh
+    	Change on 2014/12/05 by mlumish <mlumish@google.com>
+    -------------
+    In secure endpoint, hold a refcount for the life of a write callback if the
+    write does not complete immediately.
+    	Change on 2014/12/05 by klempner <klempner@google.com>
+    -------------
+    Add migration support to MOE and have TAP verify it doesn't break.
+    
+    Migration support allows mirroring commits from [] into the git repo, instead of just a dump of the current source.
+    	Change on 2014/12/05 by ejona <ejona@google.com>
+    -------------
+    Change initial window size to 65535 according http2 draft 15.
+    	Change on 2014/12/05 by zhaoq <zhaoq@google.com>
+    -------------
+    Re-enable the flaky cases in dualstack_socket_test, with additional logging to
+    help track down the problem if it surfaces again.
+    
+    This also seems like a good opportunity to make grpc_socket_utils a separate
+    library, as it's not really specific to TCP.
+    
+    Example output:
+    logspam: [], 26570) resolved 2 addrs in 37ms:
+    logspam:   [0] [::1]:26570
+    logspam:   [1] 127.0.0.1:26570
+    	Change on 2014/12/05 by pmarks <pmarks@google.com>
+    -------------
+    Opensource build fixes.
+    
+    -) A function that has a return type should actually return something.
+    -) Don't pass unsigned chars to strlen and strncmp.
+    	Change on 2014/12/05 by nnoble <nnoble@google.com>
+    -------------
+    Created by MOE: http://code.google.com/p/moe-java
+    MOE_MIGRATED_REVID=81458281

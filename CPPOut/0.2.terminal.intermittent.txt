@@ -1,0 +1,31 @@
+commit 86706d76988d202d38226e237690a3093b415842
+Author: Michael Niksa <miniksa@microsoft.com>
+Date:   Mon Feb 10 11:14:06 2020 -0800
+
+    Move tests to invoke `te.exe` directly instead of using VSTest runner (#4490)
+    
+    Moves the tests from using the `vstest.console.exe` route to just using `te.exe`.
+    
+    PROs:
+    - `te.exe` is significantly faster for running tests because the TAEF/VSTest adapter isn't great.
+    - Running through `te.exe` is closer to what our developers are doing on their dev boxes
+    - `te.exe` is how they run in the Windows gates.
+    - `te.exe` doesn't seem to have the sporadic `0x6` error code thrown during the tests where somehow the console handles get lost
+    - `te.exe` doesn't seem to repro the other intermittent issues that we have been having that are inscrutable.
+    - Fewer processes in the tree (te is running anyway under `vstest.console.exe`, just indirected a lot
+    - The log outputs scroll live with all our logging messages instead of suppressing everything until there's a failure
+    - The log output is actually in the order things are happening versus vstest.
+    
+    CONs:
+    - No more code coverage.
+    - No more test records in the ADO build/test panel.
+    - Tests really won't work inside Visual Studio at all.
+    - The log files are really big now
+    - Testing is not a test task anymore, just another script.
+    
+    Refuting each CON:
+    - We didn't read the code coverage numbers
+    - We didn't look at the ADO test panel results or build-over-build velocities
+    - Tests didn't really work inside Visual Studio anyway unless you did the right incantations under the full moon.
+    - We could tone down the logging if we wanted at either the te.exe execution time (with a switch) or by declaring properties in the tests/classes/modules that are very verbose to not log unless it fails.
+    - I don't think anyone cares how they get run as long as they do.

@@ -1,0 +1,24 @@
+commit c5bd0c37ce5b185542a0c8c934f3c71c1ad3daad
+Author: Viktor Ferenczi <viktor@ferenczi.eu>
+Date:   Sat Mar 17 23:23:55 2018 +0100
+
+    Running builder (content generator) functions in subprocesses on Windows
+    
+    - Refactored all builder (make_*) functions into separate Python modules along to the build tree
+    - Introduced utility function to wrap all invocations on Windows, but does not change it elsewhere
+    - Introduced stub to use the builders module as a stand alone script and invoke a selected function
+    
+    There is a problem with file handles related to writing generated content (*.gen.h and *.gen.cpp)
+    on Windows, which randomly causes a SHARING VIOLATION error to the compiler resulting in flaky
+    builds. Running all such content generators in a new subprocess instead of directly inside the
+    build script works around the issue.
+    
+    Yes, I tried the multiprocessing module. It did not work due to conflict with SCons on cPickle.
+    Suggested workaround did not fully work either.
+    
+    Using the run_in_subprocess wrapper on osx and x11 platforms as well for consistency. In case of
+    running a cross-compilation on Windows they would still be used, but likely it will not happen
+    in practice. What counts is that the build itself is running on which platform, not the target
+    platform.
+    
+    Some generated files are written directly in an SConstruct or SCsub file, before the parallel build starts. They don't need to be written in a subprocess, apparently, so I left them as is.

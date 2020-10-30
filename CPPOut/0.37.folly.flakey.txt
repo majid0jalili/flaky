@@ -1,0 +1,148 @@
+commit 95efa1a8d9399ba139954a90f2c618f587fb5c7e
+Author: Wez Furlong <wez@fb.com>
+Date:   Wed Apr 1 10:28:30 2020 -0700
+
+    folly: windows: inline debug info into .obj rather than use .pdb
+    
+    Summary:
+    We see flakey builds to conflicting writes to .pdb files; the error
+    message suggests enabling `/FS` which is already enabled.  Some serious
+    internet research reveals that we can put the debug info into `.obj` files
+    instead of having everyone contend with the same `.pdb` file.
+    
+    ```
+    C:\PROGRA~2\MIB055~1\2017\BUILDT~1\VC\Tools\MSVC\1416~1.270\bin\Hostx64\x64\cl.exe  /nologo /TP -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE -DGFLAGS_IS_A_DLL=1 -DWIN32_LEAN_AND_MEAN -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_SCL_SECURE_NO_WARNINGS -D_STL_EXTRA_DISABLED_WARNINGS="4774 4987" -IZ:\shipit\folly -I. -IZ:\installed\boost-6XBjAEHS6zoZVAY7uQHhSxYamF-vUNWngO1YaEIiiko\include\boost-1_69 -IZ:\installed\double-conversion-8uX8TcZDEz7gXyY70bMXqPUF2uLqH2OTWBffkLfU7FU\include -IZ:\installed\gflags-Md0yNU5drHUQ6MCdsB6iC0WS5YX-RFZk_eTHNKjkcPs\include -IZ:\installed\glog-_3NtzkcZDkkSFkgC70vwofqrnao05-mPxEa0E546a9g\include -IZ:\installed\libevent-TIUwVyvnVZZVHDsesjdIidM_iH4er-_6pEE0X4dzuL4\include -IZ:\installed\openssl-0G_glZ7y5BplM752sREIHKuam0GcoPqw7m6yjEGefyE\include -IZ:\installed\zlib-lxujVMVR4hhdh4-S0SCxkb55DAWh5ISCLWbfL7m7hwg\include -IZ:\installed\zstd-M8csiME1A2X7ZGECWeSGmWbqM1glHd6xoskhyPHgpaw\include -IZ:\installed\snappy-Z3WzzGXxgX1-6zSn4NdRg8Z3coQaz7Gob3gGoomN95E\include -IZ:\installed\fmt-W9-akKzyOlf4GoHcFsw1_rCxt3y0ghyjO3gb5Xve1Gc\include /DWIN32 /D_WINDOWS /W3 /GR  /MD /Zi /O2 /Ob1 /DNDEBUG   /EHs /GF /Zc:referenceBinding /Zc:rvalueCast /Zc:implicitNoexcept /Zc:strictStrings /Zc:threadSafeInit /Zc:throwingNew /permissive- /std:c++latest /bigobj /favor:blend /Zc:inline /Wall /MP /Gw /Gy /Qpar /Oi /Ot /wd4191 /wd4291 /wd4309 /wd4310 /wd4366 /wd4587 /wd4592 /wd4628 /wd4723 /wd4724 /wd4868 /wd4996 /wd4068 /wd4091 /wd4146 /wd4800 /wd4018 /wd4365 /wd4388 /wd4389 /wd4100 /wd4459 /wd4505 /wd4701 /wd4702 /wd4061 /wd4127 /wd4200 /wd4201 /wd4296 /wd4316 /wd4324 /wd4355 /wd4371 /wd4435 /wd4514 /wd4548 /wd4571 /wd4574 /wd4582 /wd4583 /wd4619 /wd4623 /wd4625 /wd4626 /wd4643 /wd4647 /wd4668 /wd4706 /wd4710 /wd4711 /wd4714 /wd4820 /wd5026 /wd5027 /wd5031 /wd5045 /we4099 /we4129 /we4566 /showIncludes /FoCMakeFiles\folly_base.dir\folly\Format.cpp.obj /FdCMakeFiles\folly_base.dir\ /FS -c Z:\shipit\folly\folly\Format.cpp
+    
+    Z:\shipit\folly\folly\Format.cpp: fatal error C1041: cannot open program database 'Z:\build\folly\CMakeFiles\folly_base.dir\vc140.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
+    
+    ninja: build stopped: subcommand failed.
+    ```
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D20752325
+    
+    fbshipit-source-id: 4f20871d54cc0973b3d025734dd0886c202c839b
+
+commit 9add78aed6e5eea1e361e4563e0e2510fff3c690
+Author: Wez Furlong <wez@fb.com>
+Date:   Thu Jun 6 10:30:20 2019 -0700
+
+    getdeps: disable ccache on sandcastle
+    
+    Summary:
+    We sometimes see some flakeyness in our internal CI, so we can live
+    without it there.
+    
+    Reviewed By: pkaush
+    
+    Differential Revision: D15695124
+    
+    fbshipit-source-id: 1d76ae89e245d9c95937e8818826c544c0ae8fc3
+
+commit 5ca2f8add25e9e07d0ef988654eaca8c32541975
+Author: Wez Furlong <wez@fb.com>
+Date:   Fri May 24 14:09:26 2019 -0700
+
+    getdeps: configure testpilot to use collections and tag tests
+    
+    Summary:
+    This should enable test pilot to skip broken/flakey tests.
+    
+    The `--tag-new-tests` flag is only appropriate for code that has been
+    landed on master and is used by the FB infra to classify new tests
+    appropriately.
+    
+    For continuous builds we use a test collection with different parameters
+    from the normal developer facing flow so that the infra can re-assess
+    their status and enable/disable high-signal/noisy tests.
+    
+    Depends: D15495344
+    
+    Reviewed By: Ben0mega
+    
+    Differential Revision: D15500955
+    
+    fbshipit-source-id: f3b7976cec6a5cf70f5d128b38bde11620b26918
+
+commit 049e3d99a99a1567574fb57c34280565eaf4ff1e
+Author: Nicholas Ormrod <njormrod@fb.com>
+Date:   Thu Apr 20 10:07:21 2017 -0700
+
+    Remove unpackHack from smallVector
+    
+    Summary:
+    This change removes the unpackHack function from small_vector, which was blocking ##-Waddress-of-packed-member## from being enabled. The fix is split the pointer-getting non-const ##getCapacity## into a normal getter and setter.
+    
+    (lithium is flakey, according to continuous, and is push-blocking)
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D4918188
+    
+    fbshipit-source-id: 435e030ad659f5dc9c42d90e9bfee9ca564a120a
+
+commit fa43917d8aad3fb20bcd5005c4b5cd524aeb149b
+Author: James Sedgwick <jsedgwick@fb.com>
+Date:   Fri Sep 26 08:48:09 2014 -0700
+
+    fix more flakey tests
+    
+    Summary: fixed the one brought up in the task, and tweaked another that could theoretically cause problems
+    
+    Test Plan: ran, though I have not been able to repro the
+    
+    Reviewed By: njormrod@fb.com
+    
+    Subscribers: fugalh, njormrod
+    
+    FB internal diff: D1575632
+    
+    Tasks: 5225808
+
+commit 471b4b72c9adf0570ba3999e680906b2d833d1ae
+Author: James Sedgwick <jsedgwick@fb.com>
+Date:   Wed Sep 24 10:30:21 2014 -0700
+
+    de-flake tests
+    
+    Summary: make these more serialized / event based so they don't get flakey under high load
+    
+    Test Plan:
+    ran under load - caveat: i was not able to repro the flakiness @njormrod reported
+    but by inspection these should be fine
+    
+    Reviewed By: njormrod@fb.com
+    
+    Subscribers: fugalh, njormrod
+    
+    FB internal diff: D1574640
+    
+    Tasks: 5225808
+
+commit 69b46104294b1cccaeafc2c88a67e9c7f9543962
+Author: Peter Griess <pgriess@fb.com>
+Date:   Sat Sep 21 11:40:58 2013 -0500
+
+    Be more careful when using SSE intrinsics.
+    
+    Summary:
+    - Check FOLLY_HAVE_EMMINTRIN_H before #including it in Range.cpp.
+    - The version of Clang that Mac OS X uses for Xcode is based on GCC 4.2.
+    It turns out that this does not have a full compliment of SSE2
+    builtins (e.g. __builtin_ia32_loaddqu is undefined, but
+    __builtin_ia32_storedqu is). Work around this omission by not
+    compiling the specialized code on this platform.
+    
+    @override-unit-failures
+    Ignore unit test failures as two tests are just sitting in the postponed
+    state forever. I investigated all the other unit test failures and they
+    just look like flakey tests.
+    
+    Test Plan:
+    - fbconfig -r folly && fbmake runtests
+    - ./configure && make check on Ubuntu/FC/Mac
+    
+    Reviewed By: delong.j@fb.com
+    
+    FB internal diff: D999130

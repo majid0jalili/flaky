@@ -1,0 +1,25 @@
+commit b4c4429e86838d15701106509b9038f00fa2fab9
+Author: Ariya Hidayat <ariya.hidayat@gmail.com>
+Date:   Sun Jun 2 13:33:52 2013 -0700
+
+    Unit tests: reduce the flakiness of loading progress tests.
+    
+    For whatever reason, swapping the order with the render() tests solve the
+    intermittent random failures. Also, split the tests between loading
+    start and finish checks (to better recognize which one is failing, if
+    there is a failure), also make the tests more asynchoronous.
+    
+    https://github.com/ariya/phantomjs/issues/11091
+
+commit d181c00378fcf786fc40a819e5dfe42e5725475f
+Author: Ariya Hidayat <ariya.hidayat@gmail.com>
+Date:   Sun Jun 2 13:33:52 2013 -0700
+
+    Unit tests: reduce the flakiness of loading progress tests.
+    
+    For whatever reason, swapping the order with the render() tests solve the
+    intermittent random failures. Also, split the tests between loading
+    start and finish checks (to better recognize which one is failing, if
+    there is a failure), also make the tests more asynchoronous.
+    
+    https://github.com/ariya/phantomjs/issues/11091

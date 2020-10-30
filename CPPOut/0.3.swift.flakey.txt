@@ -1,0 +1,21 @@
+commit d2e624077c61e46f782cee6bec7dbfcaef83b450
+Author: Gogul Balakrishnan <bgogul@google.com>
+Date:   Thu Mar 28 21:13:57 2019 -0700
+
+    Set CPU Device Count from environment variable in tests. (#23629)
+    
+    The initialization order between _ExecutionContext and _RuntimeConfig is not
+    guaranteed, which makes the tests flakey.
+
+commit d2a23d9f9c32e41933db852629b00fe35d7d2f48
+Author: Davide Italiano <ditaliano@apple.com>
+Date:   Mon Feb 19 11:28:18 2018 -0800
+
+    [build-script] Re-enable lldb unit tests in PR testing.
+    
+    This have been disabled because they were flakey, but now we
+    should have fixed the issues (or if there's something outstanding,
+    well, it's the right time to fix).
+    
+    This is getting more important as we want to increase the set
+    of `lit/` or `unittest`-style testcases.

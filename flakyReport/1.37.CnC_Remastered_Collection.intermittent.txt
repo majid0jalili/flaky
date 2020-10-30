@@ -1,7 +1,0 @@
-commit 03416d24e1544ba56611f770940ca5674ce64b70
-Author: PG-SteveT <63470275+PG-SteveT@users.noreply.github.com>
-Date:   Wed May 27 12:16:20 2020 -0700
-
-    Initial Source Code commit
-    
-    Initial commit of original Tiberian Dawn and Red Alert source code converted to build as DLLs, and compatible with the release version of Command & Conquer Remastered.

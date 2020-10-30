@@ -1,5 +1,0 @@
-commit d4021ee1e9bd6067980e37df70d9e90c2a574d3d
-Author: Gregory Brail <gregbrail@google.com>
-Date:   Mon Jan 13 12:38:07 2020 -0800
-
-    Update for 1.7.12 release.

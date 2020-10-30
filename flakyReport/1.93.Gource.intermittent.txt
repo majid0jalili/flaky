@@ -1,7 +1,0 @@
-commit 1a1423c8dbb083d7aa12278478ec7e8bcab53d34
-Author: Andrew Caudwell <acaudwell@gmail.com>
-Date:   Tue Jul 6 17:26:48 2010 +1200
-
-    Users fade out when end reached rather than ending abruptly.
-    
-    This replaces the --stop-on-idle option.

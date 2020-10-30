@@ -1,0 +1,367 @@
+commit dc65716e7ed6053e4ec1f7d1dfa82b435d46ba03
+Author: Benety Goh <benety@mongodb.com>
+Date:   Thu Oct 10 16:38:02 2019 +0000
+
+    SERVER-43800 disable flaky test
+
+commit 982ba21e0ffbdaaf766dc8fa060728ba9b5f4914
+Author: William Schultz <william.schultz@mongodb.com>
+Date:   Tue Oct 2 21:54:58 2018 -0400
+
+    SERVER-36697 Utilize TickSource for transactions timing metrics
+    
+    This patch converts the existing transactions diagnostics timing related
+    metrics to use a TickSource to record transaction durations. The
+    TickSource is a high precision, mock-able time source for measuring
+    the passage of time. This patch also converts the existing unit tests
+    to use a mock TickSource, which allows the tests to fully virtualize
+    time, making them much faster and less flaky.
+
+commit 1f6ce7dea097c2b3daad2829dd6c4d11a94ad679
+Author: Andrew Morrow <acm@mongodb.com>
+Date:   Fri Apr 13 12:48:52 2018 -0400
+
+    SERVER-34541 Removes the unimportant but flaky scoped_db_conn_test
+    
+    (cherry picked from commit 55aac9ac800531ad021f18f56d69c69ac5619245)
+    (cherry picked from commit c78a7b639334c44c31dea771c6338ea430da73e7)
+
+commit c78a7b639334c44c31dea771c6338ea430da73e7
+Author: Andrew Morrow <acm@mongodb.com>
+Date:   Fri Apr 13 12:48:52 2018 -0400
+
+    SERVER-34541 Removes the unimportant but flaky scoped_db_conn_test
+    
+    (cherry picked from commit 55aac9ac800531ad021f18f56d69c69ac5619245)
+
+commit 55aac9ac800531ad021f18f56d69c69ac5619245
+Author: Andrew Morrow <acm@mongodb.com>
+Date:   Fri Apr 13 12:48:52 2018 -0400
+
+    SERVER-34541 Remove MessagePort and Listener
+    
+    Also removes the unimportant but flaky scoped_db_conn_test
+
+commit 75a9628337012c3c071972da9f9d6c4816ede0fa
+Author: Kelsey Thomas Schubert <kelsey@mongodb.com>
+Date:   Tue Nov 21 18:51:33 2017 -0500
+
+    Import tools: 12cce7433c480538ff26caa9c51cec3e04a07e90 from branch master
+    
+    ref: 75f2d994ce..12cce7433c
+    for: 3.6.0
+    
+    TOOLS-1507    Mongorestore does not preserve order of partial indexes. Conflicting index configurations
+    TOOLS-1546    Need option to filter out BSON shard meta data
+    TOOLS-1688    Evergreen tests broken in master
+    TOOLS-1718    duplicate top level key: create
+    TOOLS-1725    Audit all files to identify vended code
+    TOOLS-1755    OP_MSG support
+    TOOLS-1797    mongodump must skip collections used for sessions
+    TOOLS-1813    Minimal UUID support for 3.6
+    TOOLS-1814    Update common oplog type to support 'ui' field in 3.6 server oplogs
+    TOOLS-1815    Capture UUID in collection metadata
+    TOOLS-1818    Abort dump if feature compatibility version changes
+    TOOLS-1822    Put copyright/license comment at the top of all our source files
+    TOOLS-1827    Implement Initial DNS Seedlist discovery spec
+    TOOLS-1861    build.sh script doesn't abort on error
+    TOOLS-1865    remove 2.4 tests and stop testing against 2.4 binaries
+    TOOLS-1867    Create FCV test helper functions
+    TOOLS-1868    Remove UUID fields from oplog entries when restoring from oplog
+    TOOLS-1872    Have integration tests get connection URI from environment
+    TOOLS-1873    IsConnectionFailure needs to look for "write results unavailable from" errors
+    TOOLS-1878    qa-tests-unstable force_table_scan.js
+    TOOLS-1879    qa-tests-unstable mongotop_reports.js
+    TOOLS-1882    qa-tests-unstable users_and_roles_26_to_28_to_26.js
+    TOOLS-1883    dump_broken_pipe.js test is flaky
+    TOOLS-1889    qa-tests oplog_replay_local_main.js
+    TOOLS-1890    native-cert-ssl ssl_with_system_ca.js
+
+commit 30aded8889e2806aa22d0d4fcfb6314b07074771
+Author: Kelsey Thomas Schubert <kelsey@mongodb.com>
+Date:   Tue Nov 21 18:27:31 2017 -0500
+
+    Import tools: 12cce7433c480538ff26caa9c51cec3e04a07e90 from branch master
+    
+    ref: 75f2d994ce..12cce7433c
+    for: 3.7.1
+    
+    TOOLS-1507    Mongorestore does not preserve order of partial indexes. Conflicting index configurations
+    TOOLS-1546    Need option to filter out BSON shard meta data
+    TOOLS-1688    Evergreen tests broken in master
+    TOOLS-1718    duplicate top level key: create
+    TOOLS-1725    Audit all files to identify vended code
+    TOOLS-1755    OP_MSG support
+    TOOLS-1797    mongodump must skip collections used for sessions
+    TOOLS-1813    Minimal UUID support for 3.6
+    TOOLS-1814    Update common oplog type to support 'ui' field in 3.6 server oplogs
+    TOOLS-1815    Capture UUID in collection metadata
+    TOOLS-1818    Abort dump if feature compatibility version changes
+    TOOLS-1822    Put copyright/license comment at the top of all our source files
+    TOOLS-1827    Implement Initial DNS Seedlist discovery spec
+    TOOLS-1861    build.sh script doesn't abort on error
+    TOOLS-1865    remove 2.4 tests and stop testing against 2.4 binaries
+    TOOLS-1867    Create FCV test helper functions
+    TOOLS-1868    Remove UUID fields from oplog entries when restoring from oplog
+    TOOLS-1872    Have integration tests get connection URI from environment
+    TOOLS-1873    IsConnectionFailure needs to look for "write results unavailable from" errors
+    TOOLS-1878    qa-tests-unstable force_table_scan.js
+    TOOLS-1879    qa-tests-unstable mongotop_reports.js
+    TOOLS-1882    qa-tests-unstable users_and_roles_26_to_28_to_26.js
+    TOOLS-1883    dump_broken_pipe.js test is flaky
+    TOOLS-1889    qa-tests oplog_replay_local_main.js
+    TOOLS-1890    native-cert-ssl ssl_with_system_ca.js
+
+commit e2c655019a46979e2db6609369839cc968c31d17
+Author: Charlie Swanson <charlie.swanson@mongodb.com>
+Date:   Tue Jan 24 14:27:29 2017 -0500
+
+    SERVER-26317 Increase benchRun seconds for flaky tests
+
+commit f6785f6fe57da074f1ff9458d19710ec3ae9b596
+Author: Charlie Swanson <charlie.swanson@mongodb.com>
+Date:   Tue Jan 24 14:27:29 2017 -0500
+
+    SERVER-26317 Increase benchRun seconds for flaky tests
+
+commit 1cfafa59e7ab3f02ea386743d0a2019889b2f314
+Author: Charlie Swanson <charlie.swanson@mongodb.com>
+Date:   Tue Oct 25 10:25:57 2016 -0400
+
+    SERVER-26317 Increase benchRun seconds for flaky tests
+    
+    These tests have been failing sporadically because benchRun completes
+    without running any operations. This is a temporary workaround to
+    reduce the noise in the build.
+
+commit e47c92953460959512ccbd70f09e46709c92623f
+Author: Ramon Fernandez <ramon@mongodb.com>
+Date:   Thu Sep 22 10:37:39 2016 -0400
+
+    Import tools: 959ed7c66bb4df5e4f66ed3bcfe662798ee53231 from branch v3.3
+    
+    ref: 5b883d86fd..959ed7c66b
+    for: 3.3.13
+    
+    TOOLS-69      MongoImport -- Support For Merge Imports
+    TOOLS-853     Using mongo-tools as a package
+    TOOLS-1035    Don't create intents for system.profile.metadata.json files
+    TOOLS-1142    Load system certs on all platforms
+    TOOLS-1147    Connection Leak for mongo tools
+    TOOLS-1223    Mongodump SSL and GSSAPI authentication
+    TOOLS-1248    mongoexport shouldn't disallow system namespaces
+    TOOLS-1256    Tools have to know not to backup/copy docs in views
+    TOOLS-1324    use newer/correct server release versions
+    TOOLS-1333    rare intermittent test failures
+    TOOLS-1350    move mongotape code into mongodb/mongo-tools
+    TOOLS-1351    default output format for mongotape monitor incorrect
+    TOOLS-1365    Issue only one ApplyOps cmd per oplog entry
+    TOOLS-1366    listening for SIGPIPE will exit on network errors
+    TOOLS-1369    Switch rhel55 distro to rhel55-test
+    TOOLS-1371    mongorestore assumes admin.system.version only contains authSchema document
+    TOOLS-1372    use insertMany in tests
+    TOOLS-1375    use SIGABRT to stop hung tools executions
+    TOOLS-1376    Create s390x evergreen build variant for master
+    TOOLS-1377    Create arm64 evergreen build variant for master
+    TOOLS-1379    parseGrace (flaky) test failure on Z with RHEL 7.2
+    TOOLS-1382    consolidate unit test tasks
+    TOOLS-1387    dump and restore should ignore system collections
+    TOOLS-1390    replace the vendoring script that represents what we actually do
+    TOOLS-1420    go 1.7 vet bugs on master
+    TOOLS-1421    Add TLS SNI Support
+    TOOLS-1423    stop building tools master on rhel 5.5
+    TOOLS-1436    Make version not also print usage
+    TOOLS-1442    make spacemonkeygo/openssl compile on suse11
+
+commit 3ff28718ccd78d876beafcaa437890dc08b71a42
+Author: Benety Goh <benety@mongodb.com>
+Date:   Fri Aug 19 14:42:07 2016 -0400
+
+    SERVER-25637 make InitialSyncTest::DataReplicatorPassesThroughOplogFetcherFailure less flaky
+
+commit af166b15f20097452ee40f6847d39e218795cdcd
+Author: Benety Goh <benety@mongodb.com>
+Date:   Thu Aug 18 16:38:36 2016 -0400
+
+    SERVER-25637 made GetInitialSyncProgressReturnsCorrectProgress less flaky
+
+commit efb09f95f1bea9a7f749b99949860743ba970f8d
+Author: Judah Schvimer <judah@mongodb.com>
+Date:   Wed Aug 17 13:56:27 2016 -0400
+
+    SERVER-25637 make DataReplicator replSetGetStatus test less flaky and easier to debug
+
+commit 965066ff4441f95ca757a6a9845fc1b70213e11e
+Author: Judah Schvimer <judah@mongodb.com>
+Date:   Wed Aug 17 16:58:12 2016 -0400
+
+    Revert "SERVER-25637 make DataReplicator replSetGetStatus test less flaky and easier to debug"
+    
+    This reverts commit 9ef2dd6eb418d61368a0025ba4efc6e81910b12b.
+
+commit 9ef2dd6eb418d61368a0025ba4efc6e81910b12b
+Author: Judah Schvimer <judah@mongodb.com>
+Date:   Wed Aug 17 13:56:27 2016 -0400
+
+    SERVER-25637 make DataReplicator replSetGetStatus test less flaky and easier to debug
+
+commit 56a903eb64f5b9865f1b54b90334f02cb5adf6dd
+Author: Andy Schwerin <schwerin@mongodb.com>
+Date:   Tue Apr 12 12:02:33 2016 -0400
+
+    SERVER-23299 Add an arbiter to server-23299-1.js test, to remove flaky behavior.
+    
+    The multiversion suite's replica set upgrade logic expects sets to have
+    at least three nodes. Add an arbiter so this test can use said upgrade logic
+    reliably.
+
+commit c3b97911a0490581163975a5af13d6141fc684b9
+Author: Andy Schwerin <schwerin@mongodb.com>
+Date:   Tue Apr 12 12:02:33 2016 -0400
+
+    SERVER-23299 Add an arbiter to server-23299-1.js test, to remove flaky behavior.
+    
+    The multiversion suite's replica set upgrade logic expects sets to have
+    at least three nodes. Add an arbiter so this test can use said upgrade logic
+    reliably.
+    
+    (cherry picked from commit 985d53ebd792481f2443ad14eefdb0d0fbf28eff)
+
+commit f5e927ea49ba48a3576d04c02c79c4c725c1069f
+Author: David Storch <david.storch@10gen.com>
+Date:   Wed Dec 2 12:50:25 2015 -0500
+
+    SERVER-21735 remove flaky assertions from objid6.js
+
+commit 6163b162ebe3645fd079ca9ae4166a09a1f41f00
+Author: Martin Bligh <mbligh@mongodb.com>
+Date:   Wed Sep 23 18:05:25 2015 -0400
+
+    BF-1173: disable flaky test csrs_upgrade_during_migrate.js
+
+commit b804cb4dba4909e328611577bcd410712815aba8
+Author: Amalia Hawkins <amalia.hawkins@10gen.com>
+Date:   Fri May 23 15:03:35 2014 -0400
+
+    SERVER-12621 fix flaky auth_repl.js test
+
+commit 94ce941611abf2fd3826936a90d93b09e483d99c
+Author: Hari Khalsa <hkhalsa@10gen.com>
+Date:   Tue Oct 15 21:15:17 2013 -0400
+
+    SERVER-11168 remove inTiming.js tests - flaky
+
+commit b5121aef9a69e4f9bef2e71457e6840b0f97576a
+Author: Hari Khalsa <hkhalsa@10gen.com>
+Date:   Thu Oct 10 19:29:15 2013 -0400
+
+    SERVER-10471 remove flaky ordering
+
+commit 72009e81f2c622abdc26e39ada424cd5fa666ac9
+Author: Eric Milkie <milkie@10gen.com>
+Date:   Wed Aug 7 15:12:04 2013 -0400
+
+    SERVER-10429 disable flaky test until we can fix it properly
+
+commit e323f9cb025348a8a349685595d8933cb3070775
+Author: Eric Milkie <milkie@10gen.com>
+Date:   Wed Aug 7 15:12:04 2013 -0400
+
+    SERVER-10429 disable flaky test until we can fix it properly
+
+commit 42e79743e335e676f560b103da3ce73b5537a468
+Author: Eric Milkie <milkie@10gen.com>
+Date:   Thu May 23 14:35:16 2013 -0400
+
+    Revert "SERVER-8689, SERVER-8691"
+    
+    This reverts commit c2db241639fc9c26c8dfb773d29a8d2eac6e32cc.
+    "    Temporarily disable flaky tests shard_insert_getlasterror_w2.js and
+        replReads.js"
+
+commit 0b6b3dd955cfb6a09f509a5038208669981f409e
+Author: Dan Pasette <dan@10gen.com>
+Date:   Sun Feb 24 07:15:20 2013 -0500
+
+    SERVER-8689, SERVER-8691
+    
+    Temporarily disable flaky tests shard_insert_getlasterror_w2.js and
+    replReads.js
+
+commit c2db241639fc9c26c8dfb773d29a8d2eac6e32cc
+Author: Dan Pasette <dan@10gen.com>
+Date:   Sun Feb 24 07:15:20 2013 -0500
+
+    SERVER-8689, SERVER-8691
+    
+    Temporarily disable flaky tests shard_insert_getlasterror_w2.js and
+    replReads.js
+
+commit 0502e74fe90915fe7fa5a3ffb3c2610aa54f486e
+Author: Hari Khalsa <hkhalsa@10gen.com>
+Date:   Fri Feb 8 21:48:34 2013 -0500
+
+    remove flaky timing test
+
+commit 347254ef573926544d79dec246b1c4b7fee7c450
+Author: Eliot Horowitz <eliot@10gen.com>
+Date:   Tue Sep 11 23:54:25 2012 -0400
+
+    SERVER-6821 - test had a > vs >= bug making it flaky
+
+commit 5bd5648464b5582c3b3e109f63fc1bf63c1e6148
+Author: Eliot Horowitz <eliot@10gen.com>
+Date:   Tue Sep 11 23:54:25 2012 -0400
+
+    SERVER-6821 - test had a > vs >= bug making it flaky
+
+commit 4adc117fbc5937b7f4f1f050c47e30121d859ab4
+Author: Tad Marshall <tad@10gen.com>
+Date:   Mon Apr 9 15:00:12 2012 -0400
+
+    SERVER-5548 Relax timing in remove1.js
+    
+    It seems to take almost exactly 30 seconds to cycle a primary
+    up or down on the 32-bit Windows buildbot and the test times
+    out after 30 seconds so this is too flaky.  Change the timeout
+    from 30 seconds to 60 seconds to buy some breathing room.  Also,
+    the comments and messages displayed by this test weren't aligned
+    with changes that had been made to it, making the log hard to
+    follow: fix up the comments and log messages to match what the
+    test is actually doing.
+
+commit 6a6b4613fc8fd4035a1dee12300dd512411caf10
+Author: Kristina <kristina@10gen.com>
+Date:   Mon Mar 26 15:31:28 2012 -0400
+
+    Fix flaky tests and add more debugging
+
+commit 86f8966f2c79dc2e3c7182c589ad596631030e86
+Author: Kristina <kristina@10gen.com>
+Date:   Mon Feb 13 15:38:04 2012 -0500
+
+    Fix flaky tests and add more debugging
+
+commit f4fe880d51db66ff6e7a5513350c9495ad9dac69
+Author: Kristina <kristina@10gen.com>
+Date:   Fri Feb 10 13:10:17 2012 -0500
+
+    Fix flaky test not to run a command on a possibly bad connection
+
+commit 78527f722ea9da5acabea19118ad56006a80d272
+Author: Spencer T Brody <spencer@10gen.com>
+Date:   Tue Nov 22 19:56:11 2011 -0500
+
+    Fix test that's flaky due to SERVER-4356
+
+commit c2fc3335085bbba8da8ddcbb51f28eaff8aae28c
+Author: Spencer T Brody <spencer@10gen.com>
+Date:   Mon Nov 7 17:21:25 2011 -0500
+
+    Extend flaky test to get more information on failure.
+
+commit e6452738d8f20b2f19cdaa92bb4e11d7027566bb
+Author: Dwight <dwight@10gen.com>
+Date:   Wed Dec 29 12:53:02 2010 -0500
+
+    turning off brekapoint for now on windows; afraid it will make _DEBUG win buildbot flaky

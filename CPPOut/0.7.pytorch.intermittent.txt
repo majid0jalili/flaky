@@ -1,0 +1,224 @@
+commit c46c28a7cbcd0b98bec041daa5ea76189230bab0
+Author: Nikita Shulga <nshulga@fb.com>
+Date:   Mon Mar 23 22:17:43 2020 -0700
+
+    Fix `JitTest.ADFormulas` intermittent failures (#35196)
+    
+    Summary:
+    Clamp input tensor values to [3, 3] to limit how small `tanh` gradint can get
+    Pull Request resolved: https://github.com/pytorch/pytorch/pull/35196
+    
+    Test Plan: CI + `bin/test_jit --gtest_filter=JitTest.ADFormulas --gtest_repeat=60000 --gtest_break_on_failure`
+    
+    Differential Revision: D20611256
+    
+    Pulled By: malfet
+    
+    fbshipit-source-id: 8640faa5d8567d6c6df8cc5df80c2e65407116eb
+
+commit 65889388d17e16ff68a9f9023f6be04f35e9db40
+Author: peter <peterghost86@gmail.com>
+Date:   Tue Mar 17 09:52:42 2020 -0700
+
+    Use randomtemp to resolve intermittent cuda build errors (#34777)
+    
+    Summary:
+    Fixes https://github.com/pytorch/pytorch/issues/25393.
+    Core logic of randomtemp: https://github.com/peterjc123/randomtemp/blob/master/randomtemp/randomtemp.cpp
+    Pull Request resolved: https://github.com/pytorch/pytorch/pull/34777
+    
+    Differential Revision: D20491243
+    
+    Pulled By: ezyang
+    
+    fbshipit-source-id: 76b0e1819ac1e3f760d5451197bd75ea13df1f0b
+
+commit 47e589eb6e322fe6d4a752a1e8ef0adab78b7dc1
+Author: Jithun Nair <jithun.nair@amd.com>
+Date:   Tue Feb 11 22:47:11 2020 -0800
+
+    Disable flaky tests test_DistributedDataParallel and test_backend_group for ROCm (#33211)
+    
+    Summary:
+    Getting intermittent error in CI runs:
+    
+    **TestDistBackend.test_DistributedDataParallel**
+    ```
+    02:36:32   File "/var/lib/jenkins/.local/lib/python3.6/site-packages/torch/serialization.py", line 442, in _legacy_save
+    02:36:32     pickler.dump(obj)
+    02:36:32 AttributeError: Can't pickle local object 'Module._replicate_for_data_parallel.<locals>.zero_grad'
+    ```
+    Some CI runs where it failed:
+    https://ci.pytorch.org/jenkins/job/pytorch-builds/job/py3.6-clang7-rocmdeb-ubuntu16.04-test2/16163/console
+    https://ci.pytorch.org/jenkins/job/pytorch-builds/job/py3.6-clang7-rocmdeb-ubuntu16.04-test2/16165/console
+    
+    **TestDistBackend.test_backend_group**
+    ```
+    test_backend_group (__main__.TestDistBackend) ... Memory access fault by GPU node-5 (Agent handle: 0x265c670) on address 0x7fded754a000. Reason: Page not present or supervisor privilege.
+    ```
+    Some CI runs where it failed:
+    https://ci.pytorch.org/jenkins/job/pytorch-builds/job/py3.6-clang7-rocmdeb-ubuntu16.04-test2/16288/console
+    Pull Request resolved: https://github.com/pytorch/pytorch/pull/33211
+    
+    Differential Revision: D19849089
+    
+    Pulled By: bddppq
+    
+    fbshipit-source-id: 5e997653cc344f4c6819d46bedc6d3bd75b5d854
+
+commit 4bdfc71421ff2c7b6fe6d6b32175be92c6c53929
+Author: Michael Carilli <mcarilli@nvidia.com>
+Date:   Wed Jan 22 16:30:30 2020 -0800
+
+    Fix race condition for to() backward that spans devices (#31930)
+    
+    Summary:
+    While putting finishing touches on the gradient scaling PR (https://github.com/pytorch/pytorch/pull/26512), I discovered my multi-GPU test (which uses `to()` to transfer tensors between devices) was intermittently failing with bad numerics.  I knew it was going to be [a weird case from the start](https://www.imdb.com/title/tt8946378/quotes/qt4868203) and spent a week descending into madness.  It turns out, for backward ops that create gradients on a different device from the device on whose stream the op is executed, the streaming backward synchronizations in [input_buffer.cpp](https://github.com/pytorch/pytorch/blob/master/torch/csrc/autograd/input_buffer.cpp#L46-L83) do not properly tell later ops to wait on the population/creation of those gradients.  For example, a cross-device `to()` backward (CopyBackward Node) enqueues a cudaMemcpyAsync on the current stream of the source (incoming gradient's) device, then [syncs getCurrentCUDAStream on the destination device with the cudaMemcpyAsync](https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/native/cuda/Copy.cu#L76).  However, `input_buffer.cpp` in such cases ([case (3)](https://github.com/pytorch/pytorch/blob/master/torch/csrc/autograd/input_buffer.cpp#L77-L81)) was not properly telling `opt_consumer_stream` to wait on the current stream of the destination device (`var`'s device).
+    
+    Circumstances needed to repro in current master (see [my test](https://github.com/pytorch/pytorch/compare/master...mcarilli:backward_to_race_fix#diff-e68a7bc6ba14f212e5e7eb3727394b40R1901)):
+    - 2 devices, with non-default streams used for forward-pass ops on both devices (which is the default behavior in test_cuda.py)
+    - A `to()` that transfers a tensor requiring grad from one device to another
+    - A backward pass that routes back through to()'s backward (aka CopyBackward).
+    
+    Under these circumstances, backward ops following CopyBackward on CopyBackward's destination device (aka the original forward-pass source device) race with the device-to-device transfer, and execute using partially-transferred data.
+    
+    The present PR fixes the race condition and ensures that later ops wait on the CopyBackward transfer.  This PR should also make streaming backward safe for other backward ops that span devices, as long as they play nice and populate any new gradients they create using the "current stream" of the device(s) on which they create those gradients.
+    
+    There are a couple minor issues where I'm not sure of the best approach:
+    - Should we guard onto the var's device for the entire body of InputBuffer::add?
+    - I'm fairly sure we need to `recordStream` on `var` if the consumer stream is different from the stream on which (we expect) `var` was created, but calling `c10::cuda::CUDACachingAllocator::recordStream` in input_buffer.cpp might break CPU-only builds.  I couldn't find a different API call to record streams that seemed CPU-build-agnostic.  Could I wrap the call with a macro?
+    
+    Thanks to mruberry for helpful suggestions and also the organization/naming of the stream pool and streaming backward code that allowed me to (just barely) wrap my head around the issue.
+    Pull Request resolved: https://github.com/pytorch/pytorch/pull/31930
+    
+    Differential Revision: D19517617
+    
+    Pulled By: mruberry
+    
+    fbshipit-source-id: 183d5460aefa5d27366b465b0473b80ec80fa044
+
+commit 0d22f3b1709467ee42c5b00628ad5648c2b27fb6
+Author: Edward Yang <ezyang@fb.com>
+Date:   Tue Oct 8 11:18:51 2019 -0700
+
+    Emergency split CUDA libtorch build/test into separate job (#26859)
+    
+    Summary:
+    Pull Request resolved: https://github.com/pytorch/pytorch/pull/26859
+    
+    CUDA builds are intermittently taking greater than five hours,
+    hitting CircleCI's timeout limit, and also all around making
+    developers unhappy.  Part of the reason for this is because
+    they build PyTorch twice: once as normal, and once as libtorch.
+    This diff splits libtorch into a new job to parallelize this
+    and get us below the patch.  It's an emergency diff because
+    I did the minimum possible work to make this work, including
+    grody hacks to make sure macos libtorch builds still work
+    (without adding a separate job there).
+    
+    - Add a new libtorch config, to cuda9 (same as before).  Disable
+      generation of the other test variants.
+    - Adjust common.sh to NO LONGER set BUILD_TEST_LIBTORCH for
+      pytorch-linux-trusty-py3.6-gcc7; we will test for *libtorch*
+      in the job name for this case.  (I noticed a bug while
+      looking at this.)
+    - Adjust build.sh and test.sh.  The eventual logic is that if you are a
+      *libtorch* build, ONLY build libtorch; otherwise do the same
+      thing you used to do (including respecting BUILD_TEST_LIBTORCH)
+    
+    Signed-off-by: Edward Z. Yang <ezyang@fb.com>
+    
+    Test Plan: Imported from OSS
+    
+    Differential Revision: D17810592
+    
+    Pulled By: ezyang
+    
+    fbshipit-source-id: 8dcdb8f7424ddda293500d9fc90097a54dca28b9
+
+commit b4b8f53a5d49402e93d73a8b5ff7be5da23df413
+Author: Mike Ruberry <mruberry@devfair044.maas>
+Date:   Sat Sep 14 17:09:04 2019 -0700
+
+    Ports most of test_torch.py to generic device type framework (#26232)
+    
+    Summary:
+    This PR moves many tests in test_torch.py to the generic device type framework. This means that many CUDA tests now run in test_torch.py and there is greater consistency in how tests for many device types are written.
+    
+    One change is that all MAGMA tests are run on the default stream due to intermittent instability running MAGMA on the non-default stream. This is a known issue.
+    Pull Request resolved: https://github.com/pytorch/pytorch/pull/26232
+    
+    Test Plan:
+    While this PR edits the tests itself, it was validated using two independent methods:
+    
+    (1) The code was reviewed and it was verified that all deleted functions were actually moved.
+    (2) The output of the TestTorch CI was reviewed and test outputs were matched before and after this PR.
+    
+    Differential Revision: D17386370
+    
+    Pulled By: mruberry
+    
+    fbshipit-source-id: 843d14911bbd52e8aac6861c0d9bc3d0d9418219
+
+commit 964707e9b524c713fd1f1e9a4b42095d53bc9607
+Author: Tongzhou Wang <SsnL@users.noreply.github.com>
+Date:   Wed Jan 31 19:04:44 2018 -0500
+
+    temporarily disable test_segfault until we figure out why it intermittently fails on cuda CI workere (#4976)
+
+commit 4b6c8779eb26e87bd90400691b115c0a4d0c3d72
+Author: Zachary DeVito <zdevito@fb.com>
+Date:   Sat Dec 2 15:34:42 2017 -0500
+
+    Fixes the the NativeFunctionsCuda.cu intermittent build issues.
+    
+    CMake does not correctly add generated header file dependencies
+    for CUDA compilation units (cpp works fine.). This introduces an
+    explicit dependency to force the aten generator to run first.
+
+commit 50049168a655179832aaa98ebdaa72c77b301381
+Author: Simon Layton <slayton58@gmail.com>
+Date:   Mon Oct 23 11:29:59 2017 -0700
+
+    Pybind v2.2.1
+    
+    Summary:
+    Bumps the pybind version from v1.8.1 to v2.2.1, resolving all compile & runtime issues that arose.
+    
+    Upgrades to the API used https://github.com/pybind/pybind11/blob/master/docs/upgrade.rst as the point of reference.
+    
+    This also solves a long-standing bug we had, where a type would spontaneously and intermittently change in the C++ -> Python boundary.
+    
+    \cc Yangqing
+    Closes https://github.com/caffe2/caffe2/pull/1308
+    
+    Differential Revision: D6125152
+    
+    Pulled By: pietern
+    
+    fbshipit-source-id: 67839a9654c655d143820c6686c311beba64eff2
+
+commit d8ad5de560212040357708b122c7f19e24c0ce34
+Author: Edward Z. Yang <ezyang@fb.com>
+Date:   Thu Oct 19 14:19:59 2017 -0700
+
+    Fix intermittent segfault on Python 2.
+    
+    Signed-off-by: Edward Z. Yang <ezyang@fb.com>
+
+commit 420488349f5e5ed55cd114b3ee1245bd331dc324
+Author: Andrew Dye <andrewdye@fb.com>
+Date:   Fri Feb 17 08:58:22 2017 -0800
+
+    Implement CUDA-aware allreduce chunked
+    
+    Summary:
+    First pass at a CUDA-aware allreduce chunked implementation. For now the algorithm runs on the CPU and is mostly copy/paste from allreduce_ring.h. A subsequent pass will offload to the GPU.
+    
+    Serialize cuda test to avoid intermittent failures due to memory contention.
+    
+    Reviewed By: pietern
+    
+    Differential Revision: D4576959
+    
+    fbshipit-source-id: e1f292a05b88ff24c33e549d4a52e770a21f85d2

@@ -1,5 +1,0 @@
-commit e03269e8ed2a2544f85573f0a8028724b8a57e4c
-Author: Nathan Hourt <nathan@followmyvote.com>
-Date:   Wed Apr 5 14:20:50 2017 -0500
-
-    Initial commit

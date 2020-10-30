@@ -1,0 +1,82 @@
+commit 5d082ffe67c9714472dcc1548c6b5b7b60780d2c
+Author: Michael Niksa <miniksa@microsoft.com>
+Date:   Tue Aug 18 11:23:24 2020 -0700
+
+    Helix Testing (#6992)
+    
+    Use the Helix testing orchestration framework to run our Terminal LocalTests and Console Host UIA tests.
+    
+    ## References
+    #### Creates the following new issues:
+    - #7281 - re-enable local tests that were disabled to turn on Helix
+    - #7282 - re-enable UIA tests that were disabled to turn on Helix
+    - #7286 - investigate and implement appropriate compromise solution to how Skipped is handled by MUX Helix scripts
+    
+    #### Consumes from:
+    - #7164 - The update to TAEF includes wttlog.dll. The WTT logs are what MUX's Helix scripts use to track the run state, convert to XUnit format, and notify both Helix and AzDO of what's going on.
+    
+    #### Produces for:
+    - #671 - Making Terminal UIA tests is now possible
+    - #6963 - MUX's Helix scripts are already ready to capture PGO data on the Helix machines as certain tests run. Presuming we can author some reasonable scenarios, turning on the Helix environment gets us a good way toward automated PGO.
+    
+    #### Related:
+    - #4490 - We lost the AzDO integration of our test data when I moved from the TAEF/VSTest adapter directly back to TE. Thanks to the WTTLog + Helix conversion scripts to XUnit + new upload phase, we have it back!
+    
+    ## PR Checklist
+    * [x] Closes #3838
+    * [x] I work here.
+    * [x] Literally adds tests.
+    * [ ] Should I update a testing doc in this repo?
+    * [x] Am core contributor. Hear me roar.
+    * [ ] Correct spell-checking the right way before merge.
+    
+    ## Detailed Description of the Pull Request / Additional comments
+    We have had two classes of tests that don't work in our usual build-machine testing environment:
+    1. Tests that require interactive UI automation or input injection (a.k.a. require a logged in user)
+    2. Tests that require the entire Windows Terminal to stand up (because our Xaml Islands dependency requires 1903 or later and the Windows Server instance for the build is based on 1809.)
+    
+    The Helix testing environment solves both of these and is brought to us by our friends over in https://github.com/microsoft/microsoft-ui-xaml.
+    
+    This PR takes a large portion of scripts and pipeline configuration steps from the Microsoft-UI-XAML repository and adjusts them for Terminal needs.
+    You can see the source of most of the files in either https://github.com/microsoft/microsoft-ui-xaml/tree/master/build/Helix or https://github.com/microsoft/microsoft-ui-xaml/tree/master/build/AzurePipelinesTemplates
+    
+    Some of the modifications in the files include (but are not limited to) reasons like:
+    - Our test binaries are named differently than MUX's test binaries
+    - We don't need certain types of testing that MUX does.
+    - We use C++ and C# tests while MUX was using only C# tests (so the naming pattern and some of the parsing of those names is different e.g. :: separators in C++ and . separators in C#)
+    - Our pipeline phases work a bit differently than MUX and/or we need significantly fewer pieces to the testing matrix (like we don't test a wide variety of OS versions).
+    
+    The build now runs in a few stages:
+    1. The usual build and run of unit tests/feature tests, packaging verification, and whatnot. This phase now also picks up and packs anything required for running tests in Helix into an artifact. (It also unifies the artifact name between the things Helix needs and the existing build outputs into the single `drop` artifact to make life a little easier.)
+    2. The Helix preparation build runs that picks up those artifacts, generates all the scripts required for Helix to understand the test modules/functions from our existing TAEF tests, packs it all up, and queues it on the Helix pool.
+    3. Helix generates a VM for our testing environment and runs all the TAEF tests that require it. The orchestrator at helix.dot.net watches over this and tracks the success/fail and progress of each module and function. The scripts from our MUX friends handle installing dependencies, making the system quiet for better reliability, detecting flaky tests and rerunning them, and coordinating all the log uploads (including for the subruns of tests that are re-run.)
+    4. A final build phase is run to look through the results with the Helix API and clean up the marking of tests that are flaky, link all the screenshots and console output logs into the AzDO tests panel, and other such niceities.
+    
+    We are set to run Helix tests on the Feature test policy of only x64 for now.
+    
+    Additionally, because the set up of the Helix VMs takes so long, we are *NOT* running these in PR trigger right now as I believe we all very much value our 15ish minute PR turnaround (and the VM takes another 15 minutes to just get going for whatever reason.) For now, they will only run as a rolling build on master after PRs are merged. We should still know when there's an issue within about an hour of something merging and multiple PRs merging fast will be done on the rolling build as a batch run (not one per).
+    
+    In addition to setting up the entire Helix testing pipeline for the tests that require it, I've preserved our classic way of running unit and feature tests (that don't require an elaborate environment) directly on the build machines. But with one bonus feature... They now use some of the scripts from MUX to transform their log data and report it to AzDO so it shows up beautifully in the build report. (We used to have this before I removed the MStest/VStest wrapper for performance reasons, but now we can have reporting AND performance!) See https://dev.azure.com/ms/terminal/_build/results?buildId=101654&view=ms.vss-test-web.build-test-results-tab for an example.
+    
+    I explored running all of the tests on Helix but.... the Helix setup time is long and the resources are more expensive. I felt it was better to preserve the "quick signal" by continuing to run these directly on the build machine (and skipping the more expensive/slow Helix setup if they fail.) It also works well with the split between PR builds not running Helix and the rolling build running Helix. PR builds will get a good chunk of tests for a quick turn around and the rolling build will finish the more thorough job a bit more slowly.
+    
+    ## Validation Steps Performed
+    - [x] Ran the updated pipelines with Pull Request configuration ensuring that Helix tests don't run in the usual CI
+    - [x] Ran with simulation of the rolling build to ensure that the tests now running in Helix will pass. All failures marked for follow on in reference issues.
+
+commit fe82e97ff6e532e2bf367344657c7b510bb56dc6
+Author: Mike Griese <migrie@microsoft.com>
+Date:   Tue Aug 11 18:56:58 2020 -0500
+
+    Enable partial rebuilds of the TerminalControl project again (#7248)
+    
+    This regressed around the #7163 timeframe.
+    
+    We're discussing this on chat currently. It might break the intellisense
+    on the `#include <winrt/Microsoft.Terminal.TerminalControl.h>` line in
+    VS 16.7, but we're not _really_ sure? Intellisense has been notoriously
+    flaky for us.
+    
+    I'm running 16.6.5, and it works for me. @lhecker is running 16.7 and
+    confirmed it worked there. If the CI build passes, then this definitely
+    will work for 16.7.

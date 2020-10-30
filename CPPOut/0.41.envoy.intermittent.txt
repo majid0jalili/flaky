@@ -1,0 +1,23 @@
+commit fa0b52a874b67c857bd314620592d39280767330
+Author: Dmitri Dolguikh <ddolguik@redhat.com>
+Date:   Fri May 17 14:30:16 2019 -0700
+
+    Fix for an intermittently failing integration test (#6978)
+    
+    This is fix for intermittent failures in a vhds_integration_test: VhdsVirtualHostAddUpdateRemove.
+    
+    Signed-off-by: Dmitri Dolguikh <ddolguik@redhat.com>
+
+commit 89b1ea686084cc4abaa888a9c6d72dec1c2296a5
+Author: Joshua Marantz <jmarantz@google.com>
+Date:   Thu Feb 15 14:04:05 2018 -0500
+
+    server: un-revert #2568 with a fix to initialize logging before validation (#2623)
+    
+    Description:
+    Reverts #2613 the revert of #2568
+    Fixed the underlying issue which was that logging was not initialized during validation, so it ran lockless. This caused intermittent tsan errors. Although #2619 makes the failure immediate and consistent by asserting that logging has been initialized prior to spawning any threads.
+    
+    Risk Level: Medium -- the earlier #2568 caused intermittent tsan errors which we believe to be fixed, but #2568 was medium-risk in the first place.
+    
+    Release Notes: N/A

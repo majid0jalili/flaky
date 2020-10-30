@@ -1,0 +1,39 @@
+commit ad4b681bba821ac7fa59139b668bdd1f75b5eb1d
+Author: Pete Warden <petewarden@google.com>
+Date:   Mon Jul 8 17:06:18 2019 -0700
+
+    Try to make dependency downloading more robust to intermittent network errors
+    
+    PiperOrigin-RevId: 257086921
+
+commit a4ad92579f5f39d2b8a8d9722f3fa1696bce7374
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Nov 16 13:34:49 2017 -0800
+
+    Tag tensorflow/python:basic_session_run_hooks_test with "notsan".
+    
+    The test gets intermittent TSan warnings.
+    
+    PiperOrigin-RevId: 176011109
+
+commit e725083ea3269a25acf968300ce5dd05cc626bfe
+Author: Rohan Jain <rohanj@google.com>
+Date:   Wed Oct 11 21:31:36 2017 -0700
+
+    Disabling a couple of ClusterFLR tests since test clusters in GRPC seem to have issues with multiple servers and have intermittent failures (https://github.com/grpc/grpc/issues/10142)
+    
+    PiperOrigin-RevId: 171915902
+
+commit aee4914fadca79289c87eccf1c24dfd6030bf2b6
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Mar 2 13:17:15 2017 -0800
+
+    Retrying FileExists errors in case of errors to overcome intermittent GCS errors.
+    Change: 149038920
+
+commit b8feac575992d0fa0613ac80b3bb51113feb15e4
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Thu Mar 2 13:17:15 2017 -0800
+
+    Retrying FileExists errors in case of errors to overcome intermittent GCS errors.
+    Change: 149038920

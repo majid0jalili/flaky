@@ -1,0 +1,90 @@
+commit 6ad5a4ccdefb643d2ac188038caa7c522b8db9d7
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Fri Oct 2 10:07:09 2020 -0700
+
+    Fix DefFunctionTest.testConstantOnWrongDevice to not be flakey
+    
+    Previously it generated a random shape using random_normal what caused a failure
+    when the shape become invalid (e.g. -2 as dimension size).
+    
+    PiperOrigin-RevId: 335048111
+    Change-Id: I0d4418ad1a891a5ebb02fc8c7db97db4909a6402
+
+commit 4cc40b10698c66e1fbac4b9942093c8927a54f7b
+Author: A. Unique TensorFlower <gardener@tensorflow.org>
+Date:   Wed Jun 15 13:29:24 2016 -0800
+
+    Fixing flakey test in learning_test.py
+    Change: 124992790
+
+commit 3b0d55719860a9977a88766826df8e7f21d887d6
+Author: Dan Mané <danmane@gmail.com>
+Date:   Mon May 16 15:27:49 2016 -0800
+
+    Fix a flakey TensorBoard test, by not depending on precise async behavior from Polymer.
+    Change: 122471926
+
+commit f9a23fa35c3e169ffc7464349c427db6f97e38f7
+Author: Dan Mané <danmane@gmail.com>
+Date:   Mon May 16 15:27:49 2016 -0800
+
+    Fix a flakey TensorBoard test, by not depending on precise async behavior from Polymer.
+    Change: 122471926
+
+commit d420fdadaf2f6a3aee70e8049af033af2f535b57
+Author: Dan Mané <danmane@gmail.com>
+Date:   Tue Apr 26 13:37:21 2016 -0800
+
+    Finish fixing flakey TensorBoard tests.
+    
+    For some reason the listener for the "rendered" signal was flaking on firefox (around 1% of the time). However, listening for the rendered flag here was itself a workaround for the bug in the graph-dashboard that caused switching away from it to throw errors. Since smilkov@ has fixed that, we can remove the hack and fix the flake.
+    Instead, we just use setTimeout to ensure that the tab switch happened before we run the test.
+    
+    I verified by running each flakey test 200 times and found no failures.
+    Change: 120853722
+
+commit 791a664aef6005187128e06da07e593154f1ea92
+Author: Dan Mané <danmane@gmail.com>
+Date:   Tue Apr 26 12:30:32 2016 -0800
+
+    Fix flakey TensorBoard unit tests
+    
+    - remove the "autoreload disabled on detached component" since it was flakey and not particularly important (in practice, tensorboards don't get detached)
+    - ensure that event handler is attached to "reload the dashboard" test before the event can fire (speculating that's what caused a very rare flake on the test)
+    Change: 120846177
+
+commit dbe8afb22cf7b2c04b8a539ad1a607e01485ec7b
+Author: A. Unique TensorFlower <nobody@tensorflow.org>
+Date:   Fri Mar 18 11:06:21 2016 -0800
+
+    Remove LongDelayedPollingTest from gpu_event_mgr_test.
+    This test is flakey with any reasonable finite timeout, due
+    to reliance on a separate thread to take action.  In the unlikely
+    event that the underlying mechanism breaks without breaking
+    any of the remaining tests in this file, TF regression tests
+    involving GPUs should break.
+    Change: 117571507
+
+commit 4c6cb2392e1b933f876979975a1274cdb9480e97
+Author: A. Unique TensorFlower <nobody@tensorflow.org>
+Date:   Thu Feb 4 12:29:03 2016 -0800
+
+    Make gpu_event_mgr_test less flakey.
+    
+    The various subtests are supposed to ensure that tensors queued for
+    unref after some GPU stream event completes actually do get deleted.
+    However, the way in which this is normally accomplished is
+    asynchronous in a couple of ways.  First, completed GPU stream events
+    are ordinarily detected by an independent polling thread.  In many of
+    the tests, this is bypassed by synchronously calling into the polling
+    function to harvest completed events.  However, event completion
+    itself is asynchronous and dependent on the CUDA driver.  It is
+    suspected that the test failures have been due to delayed event
+    completion, such that the test criterion is tested prematurely.
+    Unfortunately simply synching on the CUDA device does not fix the
+    problem.  But in these tests there's never any actual GPU work queued
+    on the streams, they only contain events that are eligible for
+    immeidate completion.  So the fix applied here is to put a while loop
+    around the synchronous poll call that clears the queue, achieving the
+    expected state.
+    Change: 113877300

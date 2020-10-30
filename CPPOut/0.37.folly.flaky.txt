@@ -1,0 +1,305 @@
+commit 7cc28784d1749283b7eb78399a0f0a77594dbc14
+Author: Robin Cheng <hpmv@fb.com>
+Date:   Wed Oct 14 18:34:10 2020 -0700
+
+    Relax the limits for StackTraceSizeLimitTest.
+    
+    Summary: Apparently it's flaky...
+    
+    Differential Revision: D24179337
+    
+    fbshipit-source-id: 75416adaf8dbd37fc9ddeaa0500ddfaeb80cffa9
+
+commit 85a8672b3fabf6b682677cfb0654727d1e3511e4
+Author: TJ Yin <ytj@fb.com>
+Date:   Fri Aug 7 09:21:37 2020 -0700
+
+    make time based unit-test less flaky by waiting longer
+    
+    Reviewed By: yfeldblum, andriigrynenko
+    
+    Differential Revision: D22965140
+    
+    fbshipit-source-id: 8f9996ccc28aff621879774e901b0c75e8c62883
+
+commit 9426d3025431ed070bfde47226bf7eb76f60bc22
+Author: Zeyi (Rice) Fan <zeyi@fb.com>
+Date:   Mon Jul 6 16:00:45 2020 -0700
+
+    add retry flag to getdeps test
+    
+    Summary: This commit adds a flag `--retry` to getdeps and teach it to run retry failed test. This allows us to still pass the tests when there are some flaky tests presents.
+    
+    Reviewed By: wez
+    
+    Differential Revision: D22291063
+    
+    fbshipit-source-id: 572af48a52ceb4a9abbf530cc0154ded0120c0de
+
+commit 101ac180cbd1a03a1e6efeef75ecc7806053c544
+Author: TJ Yin <ytj@fb.com>
+Date:   Wed Mar 18 13:10:02 2020 -0700
+
+    fix flaky unit-test CodelTest
+    
+    Summary:
+    Sometimes it fails to throw exception in [Codel::setOptions](https://github.com/facebook/folly/blob/master/folly/executors/Codel.cpp#L109), since it failed the check `interval <= delay`.
+    
+    The reason is that both interval and delay are [POD](https://github.com/facebook/folly/blob/master/folly/executors/Codel.h#L80-L81), thus both are not initialized by default.
+    
+    Using them without initialization is UB. In x86, they will have random value (since x86 doesn't have trap representation), thus sometimes it passes, sometimes it fails.
+    
+    Based on comment, it looks like the intention is copying the `options` from default initialized `Codel`.
+    
+    Reviewed By: amlannayak
+    
+    Differential Revision: D20499449
+    
+    fbshipit-source-id: e12de0b42c02a8bf6379ba7fd224e0ae173945f0
+
+commit 1308f879db98691cb79312c689de65d1a6250519
+Author: Brandon Schlinker <bschlinker@fb.com>
+Date:   Fri May 24 16:01:31 2019 -0700
+
+    Fix ErrMessageCallback test flakyness
+    
+    Summary: Need to use `readAll` to ensure that we've read in all bytes that were written (up to EOF). Current approach sometimes returns after only a partial read.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D15456484
+    
+    fbshipit-source-id: f36a596a3557d4d3714bfaa3c33c726d81ccb5a4
+
+commit ea2d4e8471c641dcd2898ea28258674988c3c420
+Author: Orvid King <orvid@fb.com>
+Date:   Thu Oct 25 14:41:30 2018 -0700
+
+    Nuke AsyncSocketTest.ConnectionsStorm
+    
+    Summary: This test is the definition of how not to write a reliable test, resulting in extreme flakyness and timeouts, so nuke it.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D10856270
+    
+    fbshipit-source-id: d8b585d439c091e763075a604d2fe21b517ae93c
+
+commit 1172173db398b47223cf173d0621c78f62d259c6
+Author: Andrii Grynenko <andrii@fb.com>
+Date:   Thu Feb 15 11:35:24 2018 -0800
+
+    Make FiberManager.batonTimedWaitTimeout less flaky
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D6957008
+    
+    fbshipit-source-id: 848932827efaf8529513026b45446da2c1697253
+
+commit caed689d47d9e82e697050effe386a5ebcb6233b
+Author: Adam Simpkins <simpkins@fb.com>
+Date:   Thu Feb 1 13:13:22 2018 -0800
+
+    cmake: mark the async_test as BROKEN for now
+    
+    Summary:
+    Disable running the async_test in open source builds.  A few of the tests
+    functions in this binary are flaky.
+    
+    Additionally, this test consistently hangs in Travis CI builds.  It hangs in
+    `AsyncSocketTest.ServerAcceptOptions`; I suspect it never sees the socket
+    accept event and therefore never breaks out of the loop.  I suspect that even
+    if we fixed this test other subsequent tests would also hang.  We should
+    ideally update all of the tests to always have their own internal event base
+    loop timeout rather than potentially looping forever, so it could at least run
+    other test functions after a hang like this.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D6874011
+    
+    fbshipit-source-id: 46c07a1cf3216eda1900e214447e6e49b6c8e489
+
+commit 28962b903ab67e73921868865ca4a5f8805baff7
+Author: Patryk Zaryjewski <patzar@fb.com>
+Date:   Tue Jan 30 22:03:09 2018 -0800
+
+    Fix flaky test.
+    
+    Summary: Flakyness was caused by a small chance that the function would still be in the heap when adding a function. Increased delay to 3 seconds.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D6855408
+    
+    fbshipit-source-id: 47d4035698a5d14a7ed71902656210f0e17b0b5d
+
+commit e3fd8c27fb1053e4c911e090c292561a58927483
+Author: Adam Simpkins <simpkins@fb.com>
+Date:   Tue Jan 30 14:31:25 2018 -0800
+
+    fix flaky time handling and other issues in EventBaseTest.IdleTime
+    
+    Summary:
+    Update EventBaseTest.IdleTime() to drive the loop once before starting the bulk
+    of the test logic.  This triggers the initial NotificationQueue callbacks which
+    can otherwise slow down the test slightly and make it more prone to failing due
+    to not accounting for the time required for these callbacks.
+    
+    Also replace `ASSERT_*()` checks inside a lambda with `EXPECT_*()`.
+    The googletest `ASSERT_*()` macros only work directly inside the main test
+    function, as they `return` from the current function.  When used inside the
+    lambda these skip the remainder of the lambda but continue running the
+    remainder of the test checks, which causes incorrect failures.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D6843335
+    
+    fbshipit-source-id: 879901edb6e5a5a84736705fb2d1cb8d2e0cc252
+
+commit 79376dc7937cd38c10c0c632e3b39c6955ebd734
+Author: Tianjiao Yin <ytj@fb.com>
+Date:   Sun Nov 19 18:51:19 2017 -0800
+
+    fix SingletonTest
+    
+    Summary: There is no guarantee that this code will finish in 6 seconds (nor other threads will release singleton in 5 seconds), especially in ASAN mode. Though I don't have better idea, this diff will relax the condition in ASAN mode to make the unit-test less flaky.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D6371692
+    
+    fbshipit-source-id: 58dd15cc0b3273719314c8b323ba88ee47e8ff61
+
+commit 87659d07c32268836a18c5ccafb60612b8ffbdd4
+Author: Anirudh Ramachandran <avr@fb.com>
+Date:   Wed Dec 28 18:54:04 2016 -0800
+
+    Add OpenSSL portability layer
+    
+    Summary:
+    Enable folly to build with OpenSSL alternatives (e.g., BoringSSL).
+    
+    Some SSL-related tests are disabled:
+    
+     - Async session cache ones (BoringSSL has an async cache impl but with a different API)
+     - TFO tests
+     - Some changes to error tests which expect specific error strings. This is
+       flaky as a test because it will break everytime even within a version, so we
+       should fix that first.
+    
+    This should be a noop for OpenSSL 1.0.2.
+    
+    BoringSSL commit used is 35c8afd3143289c99aa3820e01950c564d7aced8 (10/26/2016)
+    
+    Closes: https://github.com/facebook/folly/issues/198
+    
+    Reviewed By: siyengar
+    
+    Differential Revision: D3280382
+    
+    fbshipit-source-id: 4141d992e0d8dd797ac4af479cfe90844a23278f
+
+commit a4e480b2397b3c62d036ad75e5fe42a8343ddaed
+Author: Nathan Bronson <ngbronson@fb.com>
+Date:   Wed Dec 7 11:20:21 2016 -0800
+
+    increase writeLen for tests that want to trigger buffering
+    
+    Summary:
+    Freshly opened TCP sockets can have a send buffer size bigger
+    than wmem_default, because connection parameters are cached in the
+    route cache.  Some of the async socket tests assumed that writing 8M of
+    data was enough to guarantee blocking behavior, but since wmem_max is
+    20M on our systems the resulting tests are flaky.
+    
+    Reviewed By: marcinpe
+    
+    Differential Revision: D4292201
+    
+    fbshipit-source-id: ba5d606d080330e455eee2b17bcae6cf546bf981
+
+commit c1ad77a56bd725605154c4e71a852a3232b95481
+Author: Tianjiao Yin <ytj@fb.com>
+Date:   Thu Sep 22 01:06:15 2016 -0700
+
+    fix flaky TimeKeeper unit-test
+    
+    Summary:
+    Sometime we have such unit-test failure
+    
+    ```
+    folly/futures/test/TimekeeperTest.cpp:134: Failure
+    Value of: flag
+      Actual: false
+    Expected: true
+    ```
+    
+    This diff should make it less flaky, though I am not sure what's the best way to fix this flaky unit-test.
+    
+    Reviewed By: yfeldblum
+    
+    Differential Revision: D3889630
+    
+    fbshipit-source-id: e7486d75fbcb3081d06724d213d4a2cf8942955d
+
+commit 707089c425f2001517d9b3472c78cfc3d9052288
+Author: Aravind Anbudurai <aru7@fb.com>
+Date:   Fri Aug 19 16:33:50 2016 -0700
+
+    fix flaky EventHandlerTest
+    
+    Summary: Lets the kernel choose the port instead of hardcoding it.
+    
+    Reviewed By: djwatson
+    
+    Differential Revision: D3745911
+    
+    fbshipit-source-id: d9680ec286e8015abb9274c30b572ff1d91548ce
+
+commit a3bd593ad9374cd3a1db31066874b9bad1cf74b4
+Author: Adam Simpkins <simpkins@fb.com>
+Date:   Tue Jul 5 11:20:28 2016 -0700
+
+    fix flaky ConnectTFOTimeout and ConnectTFOFallbackTimeout tests
+    
+    Summary:
+    In the ConnectTFOTimeout and ConnectTFOFallbackTimeout tests in
+    AsyncSSLSocketTest.cpp, the client runs for 1ms before timing out and quitting.
+    It may end up shutting down the server thread before the server has even
+    received the TCP connect callback.  If this happened it would cause the test to
+    fail, since the server code checked to make sure the callback was invoked.
+    
+    This diff creates a new ConnectTimeoutCallback server-side callback for these
+    tests to use, which doesn't care if it gets told about a new connection or not.
+    
+    Reviewed By: siyengar
+    
+    Differential Revision: D3512809
+    
+    fbshipit-source-id: ce77fe944fb06a38a84c1458356f161cec7387b3
+
+commit bf035046df458d07d274965ab5b09572f0985715
+Author: Nathan Bronson <ngbronson@fb.com>
+Date:   Wed Oct 8 16:59:27 2014 -0700
+
+    fix flaky test from uninitialized std::atomic
+    
+    Summary:
+    std::atomic<bool> default constructor doesn't initialize it to
+    false, so the flag to end the LifoSem.multi_try_wait test was sometimes
+    set too early.  This diff fixes that, makes the test more deterministic,
+    and also fixes a couple of other benign uninitialized values (so that
+    they won't be used as prototypes for places where it does matter).
+    
+    Test Plan: unit tests
+    
+    Reviewed By: mpawlowski@fb.com
+    
+    Subscribers: njormrod, lovro
+    
+    FB internal diff: D1604508
+    
+    Tasks: 5336837

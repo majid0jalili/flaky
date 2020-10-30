@@ -1,0 +1,1022 @@
+commit b1e491182fa9c15da89f1b701778de3a1421811b
+Author: Anirudh Subramanian <anirudh2290@ufl.edu>
+Date:   Sat Feb 1 09:36:59 2020 -0800
+
+    Multithreaded Inference Support (#16654)
+    
+    * Add cached op threadsafe version with corresponding C APIs, CPP Package changes, CI changes and tests
+    
+    * Fix download cmd in runtime_functions
+    
+    * Add CI changes
+    
+    * Add stage
+    
+    Fix indentation
+    
+    * Fix lint
+    
+    * Change to DEFAULT for C API
+    
+    * Fix mxnet_unit_tests path
+    
+    * export correct LD_LIBRARY_PATH
+    
+    * Add cpp include dirs
+    
+    * Build test with USE_CPP_PACKAGE
+    
+    * Add cached op threadsafe version with corresponding C APIs, CPP Package changes, CI changes and tests
+    
+    * Fix download cmd in runtime_functions
+    
+    * Merge
+    
+    * change mkldnn lib name
+    
+    * Add static_alloc, static_Shape support
+    
+    * Address review comments
+    
+    * Make GetCachedOpThreadSafeState similar to cached_op
+    
+    * Address review comments: comments for locking strategy
+    
+    * multithreaded inference tutorial
+    
+    * [Estimator] handle composite metrics in estimator (#16676)
+    
+    * handle composite metrics in estimator
+    
+    * fix composite metric case in handlers
+    
+    * remove unused import
+    
+    * [Estimator] refactor estimator to allow overriding evaluate/fit of a batch (#16678)
+    
+    * refactor estimator to allow overriding evaluate/fit of a batch
+    
+    * add doc to explain call structure and how to override
+    
+    * fix and doc
+    
+    * Pointwise fusion for GPU (#15167)
+    
+    * Beginning of RTC of pointwise ops
+    
+    * Code generation from the given JSON
+    
+    * add initial simple_partition_pass and use it for pointwise fusion
+    
+    * fix the fusion, use a symbol.Copy() at the beginning of binding function, use the name of input nodes in the cuda code
+    
+    * Fixes
+    
+    * Adding support for attribute inference for backward nodes when fusing
+    
+    * keep proper input ordering for fused Op
+    
+    * instantiate the indexed_graph before starting the subgraph replacement, return a new graph to reset the indexed_graph
+    
+    * Fuse backward
+    
+    * fix ordering of subgraph node inputs using subgraph topological ordering instead of main graph topological ordering, add tvm.patch
+    
+    * excluse forward node fusion during the fusion of the nodes in the backward graph
+    
+    * Dealing with fused backward nodes inferattr
+    
+    * use subgraph.indexed_graph() instead of main for _FusedOpHelper nodes node_id, invert control_deps loop to modify topology of subgraph before calling its indexed_graph(), check that all node of the first DFSVisit are actually in the subgraph
+    
+    * Adding support for other reqs in codegen
+    
+    * Fix
+    
+    * Cleaning
+    
+    * Change the TVM submodule
+    
+    * More cleaning
+    
+    * Making linter happy
+    
+    * Do fusion only if default context is GPU
+    
+    * Fixes for tests
+    Add powerscalar and rpowerscalar, fix return type of zero and one
+    Cleaning, fixing lint
+    Go back to proper TVM submodule
+    
+    * Fix the TVM commit
+    
+    * Fix lint
+    
+    * Guard fusion with MXNET_USE_CUDA
+    
+    * Fix
+    
+    * Fix clang-tidy
+    
+    * Add erf and erfinv backward
+    
+    * Gluon support for fusion
+    
+    * Cleaning
+    
+    * Cleaning and allow shape/type change in FusedOp
+    
+    * Fixing Gluon bugs
+    
+    * Fixing after rebase
+    
+    * Fixing race condition and guarding against races when using NVRTC
+    
+    * Cleaning and renaming FusedOp to _FusedOp
+    
+    * Going easy on Windows compiler
+    
+    * Disable fusion on Windows for now
+    
+    * Refactor InferAttr and InferShapeAttr
+    
+    * Added slice and half2 support to FusedOp
+    
+    * Fix lint errors
+    
+    * Added multiple types support for vector loading/storing
+    
+    * add slice fusion when it's at the beginning of subgraphs
+    
+    * Removed constant ndim assumption in fused op
+    
+    * Fix memory alignment issue in slice for FusedOp
+    
+    * Fixes
+    
+    * Fix lint errors
+    
+    * Do not include cuda_fp16.h
+    
+    * Refactor fused op op lists
+    
+    * Make linter happy
+    
+    * Changes from review
+    
+    * Fixes after rebase
+    
+    * Expand FusedOp support for slice
+    
+    * Fix for fp16 _zeros and _ones
+    
+    * Fix
+    
+    * Moving aux functions to unnamed namespace and detail namespace -> fusion
+    namespace
+    
+    * Disabling fusion if it alters topological order of inputs
+    
+    * Print code only when env variable is set
+    
+    * Fix
+    
+    * Fix lint and 2 tests that specify the same names for multiple inputs
+    
+    * Fixes from review and disabling fusion of slice with non-default step
+    
+    * Add amp_cast to fusion, fixes
+    
+    * Add amp_multicast and its backward to the list of support ops
+    
+    * Apply wording suggestions from code review
+    
+    Co-Authored-By: Aaron Markham <markhama@amazon.com>
+    
+    * Apply wording suggestions from code review
+    
+    Co-Authored-By: Aaron Markham <markhama@amazon.com>
+    
+    * Make clearer comment
+    
+    * Adding punctuation and capitalization to \brief descriptions
+    
+    * Fix
+    
+    * Fix
+    
+    * Add backward_cast to fusion
+    
+    * Adding unittests for fusion. Fix for erfinv_grad
+    
+    * Adding slice ops and add_n to tests
+    
+    * Fixes from review
+    
+    * Setting inplace option
+    
+    * Fix lint
+    
+    * Storing double in half
+    
+    * Retrigger CI
+    
+    * Slight relaxing of the relative tolerance in the test
+    
+    * Move the env variable check to the end
+    
+    * Fix a race condition between InferShape and scheduled Forward
+    
+    * Fix flakey test_fusion test involving fp32 erfinv op.
+    
+    * Fix from review
+    
+    * Added broadcast_like and slice_like to fused op
+    
+    * Minor fix and cleanup
+    
+    * Added negative axis support in slice_axis, temporarily disabled fusion of slice_like and broadcast_like
+    
+    * Added axes support to slice_like
+    
+    * Added axis support to broadcast_like
+    
+    * Add fast_load_slice function to fused op code
+    
+    * Added runtime switch for choosing fast and slow slice kernel
+    
+    * Fix lint and warning
+    
+    * Going easy on Windows compiler (again)
+    
+    * Fix slice_like
+    
+    * Debug broadcast_like fusion
+    
+    * Fix lint
+    
+    * Fix lint
+    
+    * Trigger CI
+    
+    * Get rid of the initializer list
+    
+    * Fix backward calls with different gradient type
+    
+    * avoid cycle when adding node specific for inputs of subgraph for pointwise fusion
+    
+    * Fix lint
+    
+    * Add namespace to the fusion implementations
+    
+    * Set launch bounds on the fused kernel
+    
+    * Fix NumPy tests
+    
+    * Test showcasing an issue fixed in PR #16553
+    
+    * Cast scalarts to FP32 and perform (a*1.0/b) instead of (a/b)
+    
+    Fix lint errors
+    
+    Fix lint
+    
+    * Fix a bug in cycle detection for inputs only op in pointwise fusion
+    
+    * Add comments to simple_partition_pass.h file
+    
+    * fix install dir (#16690)
+    
+    * [numpy] add numpy operator : append (#16564)
+    
+    * add operator : append ; fix op concatenate when axis = None
+    
+    * pylint disable
+    
+    remove mistake
+    
+    disable pylint
+    
+    * Initializer.__eq__ (#16680)
+    
+    * fix binary dependencies in CD and nightly (#16693)
+    
+    * [MKL-DNN] Add mxnet mkldnn cmake tutorial (#16688)
+    
+    * add mxnet mkldnn cmake instruction
+    
+    * imporve doc
+    
+    * OMP->OpenMP
+    
+    * Revert "[MKLDNN]Fix reorder2default (#16602)" (#16697)
+    
+    This reverts commit dd4eaf5c23046d07a4578a219e2dd3622e5620fa.
+    
+    * [Estimator] refactor estimator and clarify docs (#16694)
+    
+    * refactor estimator and clarify docs
+    
+    * fix info message and test
+    
+    * clean up after releasing logging handler
+    
+    * Eliminate common expressions (#15657)
+    
+    * Eliminate common expressions from a graph
+    
+    * Guarding against optimizing out stateful ops and ops that require
+    resource
+    
+    * Fix lint
+    
+    * Added THasDeterministicOutput to multiple ops
+    
+    * DDebug eliminate common expr
+    
+    * Added test
+    
+    * Expose get_optimized_symbol
+    
+    * Fix
+    
+    * Fix 2
+    
+    * Add doc to the Python call
+    
+    * Add env var MXNET_ELIMINATE_COMMON_EXPR, default true
+    
+    * Add comments, improve readability of eliminate_common_expr_pass.cc
+    
+    * Expand testing
+    
+    * Lower priority of THasDeterministicOutput attr for equal Node test
+    
+    * Change mx.gpu() to mx.cpu() in tests
+    
+    * Skip CSE test on Windows (as env variable setting during test does not work there)
+    
+    * Add missing import sys
+    
+    * Add missing import logging
+    
+    * Backport of #16711, #16737, #16408 to 1.6 branch (#16763)
+    
+    * support mixed-precision true_divide (#16711)
+    
+    * [MKLDNN] use dim_t instead of int in slice/transpose operators (#16737)
+    
+    * use dim_t instead of int
+    
+    * fix same issue in pooling
+    
+    * rebase code
+    
+    * trigger CI
+    
+    * Add MXNet Ops for fast multihead attention (#16408)
+    
+    * add MXNet Ops for fast multihead attention
+    
+    * add cutlass as 3rdparty dependency
+    
+    * add cutlass to compilation flags
+    
+    * remove all cutlass stuff
+    
+    * add better error message and description and remove cutlass from compilation flags
+    
+    * change credit for the approach since the code have changed
+    
+    * fix typos
+    
+    * correct another typo
+    
+    * Add all the cuda/cublas helper functions
+    
+    * remove tests using kAddTo
+    
+    * only use cublasStridedBatchedGemm if CUDA >= 9.1
+    
+    * add equivalent mxnet code in description of mha ops
+    
+    * remove a wrong copy-paste
+    
+    * add _contrib for namespace and add GPU only on description
+    
+    * add warning in bwd_ignore_zero_init description, also test with fp32
+    
+    * add error return if bwd_ignore_zero_init is used without MXNET_EXEC_ENABLE_ADDTO
+    
+    * remove std::move for clang
+    
+    * remove bwd_ignore_zero_init flag
+    
+    * remove bwd_ignore_zero_init in test_operator_gpu.py
+    
+    * fix typo
+    
+    * fix another typo
+    
+    * Removed unrelated test
+    
+    * Add example and documentation for multi threaded inference
+    
+    * Add LICENSE
+    
+    * Add get_model.py
+    
+    * Add license for README
+    
+    * Refactor cached op and cached op threadsafe
+    
+    * Add limitation
+    
+    * Add tests for naive engine
+    
+    * Add latest test changes
+    
+    * Thread Safety tests in NaiveEngine mode
+    
+    * Thread Safety tests update
+    
+    * Update thread safety tests, add unsupported use cases
+    
+    * Changes to doc and refactor
+    
+    * Fix todo owner, indentation and mx_float->float
+    
+    * Refactor cached op code, remove num_threads arg from example
+    
+    * Fix lint
+    
+    * Fix warning
+    
+    * Add back cython, required for unix-gpu build
+    
+    * Fix for windows
+    
+    * Add bulking support for thread safe cached op version
+    
+    * Add support for subgraph testing
+    
+    * import mxnet before calling get_backend_symbol
+    
+    * Fix symbol json name
+    
+    * Refactor DynamicForward
+    
+    * Add comments
+    
+    * Add DMLC_ATTRIBUTE_UNUSED
+    
+    * Fix use_naive_run issue
+    
+    * Fix lint
+    
+    * Revert unittest_cpp to old test since it doesnt test thread safety
+    
+    * Fix doc
+    
+    Co-authored-by: Sheng Zha <szha@users.noreply.github.com>
+    Co-authored-by: Przemyslaw Tredak <ptrendx@gmail.com>
+    Co-authored-by: Tao Lv <tao.a.lv@intel.com>
+    Co-authored-by: JiangZhaoh <54654391+JiangZhaoh@users.noreply.github.com>
+    Co-authored-by: Leonard Lausen <leonard@lausen.nl>
+    Co-authored-by: Xinyu Chen <xinyu1.chen@intel.com>
+    Co-authored-by: Zhennan Qin <zhennan.qin@intel.com>
+
+commit a296dad87438624bc6388e4659db4cb039a7908a
+Author: Dick Carter <dcarter@nvidia.com>
+Date:   Thu Jan 16 10:28:35 2020 -0800
+
+    Fix flakey test_ndarray.py:test_reduce (#17312)
+
+commit 51c2065c36cab1026cc1c78ba67a90fdf9b4082c
+Author: Przemyslaw Tredak <ptredak@nvidia.com>
+Date:   Thu Oct 31 21:07:24 2019 -0700
+
+    Pointwise fusion for GPU (#15167)
+    
+    * Beginning of RTC of pointwise ops
+    
+    * Code generation from the given JSON
+    
+    * add initial simple_partition_pass and use it for pointwise fusion
+    
+    * fix the fusion, use a symbol.Copy() at the beginning of binding function, use the name of input nodes in the cuda code
+    
+    * Fixes
+    
+    * Adding support for attribute inference for backward nodes when fusing
+    
+    * keep proper input ordering for fused Op
+    
+    * instantiate the indexed_graph before starting the subgraph replacement, return a new graph to reset the indexed_graph
+    
+    * Fuse backward
+    
+    * fix ordering of subgraph node inputs using subgraph topological ordering instead of main graph topological ordering, add tvm.patch
+    
+    * excluse forward node fusion during the fusion of the nodes in the backward graph
+    
+    * Dealing with fused backward nodes inferattr
+    
+    * use subgraph.indexed_graph() instead of main for _FusedOpHelper nodes node_id, invert control_deps loop to modify topology of subgraph before calling its indexed_graph(), check that all node of the first DFSVisit are actually in the subgraph
+    
+    * Adding support for other reqs in codegen
+    
+    * Fix
+    
+    * Cleaning
+    
+    * Change the TVM submodule
+    
+    * More cleaning
+    
+    * Making linter happy
+    
+    * Do fusion only if default context is GPU
+    
+    * Fixes for tests
+    Add powerscalar and rpowerscalar, fix return type of zero and one
+    Cleaning, fixing lint
+    Go back to proper TVM submodule
+    
+    * Fix the TVM commit
+    
+    * Fix lint
+    
+    * Guard fusion with MXNET_USE_CUDA
+    
+    * Fix
+    
+    * Fix clang-tidy
+    
+    * Add erf and erfinv backward
+    
+    * Gluon support for fusion
+    
+    * Cleaning
+    
+    * Cleaning and allow shape/type change in FusedOp
+    
+    * Fixing Gluon bugs
+    
+    * Fixing after rebase
+    
+    * Fixing race condition and guarding against races when using NVRTC
+    
+    * Cleaning and renaming FusedOp to _FusedOp
+    
+    * Going easy on Windows compiler
+    
+    * Disable fusion on Windows for now
+    
+    * Refactor InferAttr and InferShapeAttr
+    
+    * Added slice and half2 support to FusedOp
+    
+    * Fix lint errors
+    
+    * Added multiple types support for vector loading/storing
+    
+    * add slice fusion when it's at the beginning of subgraphs
+    
+    * Removed constant ndim assumption in fused op
+    
+    * Fix memory alignment issue in slice for FusedOp
+    
+    * Fixes
+    
+    * Fix lint errors
+    
+    * Do not include cuda_fp16.h
+    
+    * Refactor fused op op lists
+    
+    * Make linter happy
+    
+    * Changes from review
+    
+    * Fixes after rebase
+    
+    * Expand FusedOp support for slice
+    
+    * Fix for fp16 _zeros and _ones
+    
+    * Fix
+    
+    * Moving aux functions to unnamed namespace and detail namespace -> fusion
+    namespace
+    
+    * Disabling fusion if it alters topological order of inputs
+    
+    * Print code only when env variable is set
+    
+    * Fix
+    
+    * Fix lint and 2 tests that specify the same names for multiple inputs
+    
+    * Fixes from review and disabling fusion of slice with non-default step
+    
+    * Add amp_cast to fusion, fixes
+    
+    * Add amp_multicast and its backward to the list of support ops
+    
+    * Apply wording suggestions from code review
+    
+    Co-Authored-By: Aaron Markham <markhama@amazon.com>
+    
+    * Apply wording suggestions from code review
+    
+    Co-Authored-By: Aaron Markham <markhama@amazon.com>
+    
+    * Make clearer comment
+    
+    * Adding punctuation and capitalization to \brief descriptions
+    
+    * Fix
+    
+    * Fix
+    
+    * Add backward_cast to fusion
+    
+    * Adding unittests for fusion. Fix for erfinv_grad
+    
+    * Adding slice ops and add_n to tests
+    
+    * Fixes from review
+    
+    * Setting inplace option
+    
+    * Fix lint
+    
+    * Storing double in half
+    
+    * Retrigger CI
+    
+    * Slight relaxing of the relative tolerance in the test
+    
+    * Move the env variable check to the end
+    
+    * Fix a race condition between InferShape and scheduled Forward
+    
+    * Fix flakey test_fusion test involving fp32 erfinv op.
+    
+    * Fix from review
+    
+    * Added broadcast_like and slice_like to fused op
+    
+    * Minor fix and cleanup
+    
+    * Added negative axis support in slice_axis, temporarily disabled fusion of slice_like and broadcast_like
+    
+    * Added axes support to slice_like
+    
+    * Added axis support to broadcast_like
+    
+    * Add fast_load_slice function to fused op code
+    
+    * Added runtime switch for choosing fast and slow slice kernel
+    
+    * Fix lint and warning
+    
+    * Going easy on Windows compiler (again)
+    
+    * Fix slice_like
+    
+    * Debug broadcast_like fusion
+    
+    * Fix lint
+    
+    * Fix lint
+    
+    * Trigger CI
+    
+    * Get rid of the initializer list
+    
+    * Fix backward calls with different gradient type
+    
+    * avoid cycle when adding node specific for inputs of subgraph for pointwise fusion
+    
+    * Fix lint
+    
+    * Add namespace to the fusion implementations
+    
+    * Set launch bounds on the fused kernel
+    
+    * Fix NumPy tests
+    
+    * Test showcasing an issue fixed in PR #16553
+    
+    * Cast scalarts to FP32 and perform (a*1.0/b) instead of (a/b)
+    
+    Fix lint errors
+    
+    Fix lint
+    
+    * Fix a bug in cycle detection for inputs only op in pointwise fusion
+    
+    * Add comments to simple_partition_pass.h file
+
+commit 4149f8b8752989fce5d80cc13f92d99774988b4f
+Author: Przemyslaw Tredak <ptredak@nvidia.com>
+Date:   Thu Oct 31 21:07:24 2019 -0700
+
+    Pointwise fusion for GPU (#15167)
+    
+    * Beginning of RTC of pointwise ops
+    
+    * Code generation from the given JSON
+    
+    * add initial simple_partition_pass and use it for pointwise fusion
+    
+    * fix the fusion, use a symbol.Copy() at the beginning of binding function, use the name of input nodes in the cuda code
+    
+    * Fixes
+    
+    * Adding support for attribute inference for backward nodes when fusing
+    
+    * keep proper input ordering for fused Op
+    
+    * instantiate the indexed_graph before starting the subgraph replacement, return a new graph to reset the indexed_graph
+    
+    * Fuse backward
+    
+    * fix ordering of subgraph node inputs using subgraph topological ordering instead of main graph topological ordering, add tvm.patch
+    
+    * excluse forward node fusion during the fusion of the nodes in the backward graph
+    
+    * Dealing with fused backward nodes inferattr
+    
+    * use subgraph.indexed_graph() instead of main for _FusedOpHelper nodes node_id, invert control_deps loop to modify topology of subgraph before calling its indexed_graph(), check that all node of the first DFSVisit are actually in the subgraph
+    
+    * Adding support for other reqs in codegen
+    
+    * Fix
+    
+    * Cleaning
+    
+    * Change the TVM submodule
+    
+    * More cleaning
+    
+    * Making linter happy
+    
+    * Do fusion only if default context is GPU
+    
+    * Fixes for tests
+    Add powerscalar and rpowerscalar, fix return type of zero and one
+    Cleaning, fixing lint
+    Go back to proper TVM submodule
+    
+    * Fix the TVM commit
+    
+    * Fix lint
+    
+    * Guard fusion with MXNET_USE_CUDA
+    
+    * Fix
+    
+    * Fix clang-tidy
+    
+    * Add erf and erfinv backward
+    
+    * Gluon support for fusion
+    
+    * Cleaning
+    
+    * Cleaning and allow shape/type change in FusedOp
+    
+    * Fixing Gluon bugs
+    
+    * Fixing after rebase
+    
+    * Fixing race condition and guarding against races when using NVRTC
+    
+    * Cleaning and renaming FusedOp to _FusedOp
+    
+    * Going easy on Windows compiler
+    
+    * Disable fusion on Windows for now
+    
+    * Refactor InferAttr and InferShapeAttr
+    
+    * Added slice and half2 support to FusedOp
+    
+    * Fix lint errors
+    
+    * Added multiple types support for vector loading/storing
+    
+    * add slice fusion when it's at the beginning of subgraphs
+    
+    * Removed constant ndim assumption in fused op
+    
+    * Fix memory alignment issue in slice for FusedOp
+    
+    * Fixes
+    
+    * Fix lint errors
+    
+    * Do not include cuda_fp16.h
+    
+    * Refactor fused op op lists
+    
+    * Make linter happy
+    
+    * Changes from review
+    
+    * Fixes after rebase
+    
+    * Expand FusedOp support for slice
+    
+    * Fix for fp16 _zeros and _ones
+    
+    * Fix
+    
+    * Moving aux functions to unnamed namespace and detail namespace -> fusion
+    namespace
+    
+    * Disabling fusion if it alters topological order of inputs
+    
+    * Print code only when env variable is set
+    
+    * Fix
+    
+    * Fix lint and 2 tests that specify the same names for multiple inputs
+    
+    * Fixes from review and disabling fusion of slice with non-default step
+    
+    * Add amp_cast to fusion, fixes
+    
+    * Add amp_multicast and its backward to the list of support ops
+    
+    * Apply wording suggestions from code review
+    
+    Co-Authored-By: Aaron Markham <markhama@amazon.com>
+    
+    * Apply wording suggestions from code review
+    
+    Co-Authored-By: Aaron Markham <markhama@amazon.com>
+    
+    * Make clearer comment
+    
+    * Adding punctuation and capitalization to \brief descriptions
+    
+    * Fix
+    
+    * Fix
+    
+    * Add backward_cast to fusion
+    
+    * Adding unittests for fusion. Fix for erfinv_grad
+    
+    * Adding slice ops and add_n to tests
+    
+    * Fixes from review
+    
+    * Setting inplace option
+    
+    * Fix lint
+    
+    * Storing double in half
+    
+    * Retrigger CI
+    
+    * Slight relaxing of the relative tolerance in the test
+    
+    * Move the env variable check to the end
+    
+    * Fix a race condition between InferShape and scheduled Forward
+    
+    * Fix flakey test_fusion test involving fp32 erfinv op.
+    
+    * Fix from review
+    
+    * Added broadcast_like and slice_like to fused op
+    
+    * Minor fix and cleanup
+    
+    * Added negative axis support in slice_axis, temporarily disabled fusion of slice_like and broadcast_like
+    
+    * Added axes support to slice_like
+    
+    * Added axis support to broadcast_like
+    
+    * Add fast_load_slice function to fused op code
+    
+    * Added runtime switch for choosing fast and slow slice kernel
+    
+    * Fix lint and warning
+    
+    * Going easy on Windows compiler (again)
+    
+    * Fix slice_like
+    
+    * Debug broadcast_like fusion
+    
+    * Fix lint
+    
+    * Fix lint
+    
+    * Trigger CI
+    
+    * Get rid of the initializer list
+    
+    * Fix backward calls with different gradient type
+    
+    * avoid cycle when adding node specific for inputs of subgraph for pointwise fusion
+    
+    * Fix lint
+    
+    * Add namespace to the fusion implementations
+    
+    * Set launch bounds on the fused kernel
+    
+    * Fix NumPy tests
+    
+    * Test showcasing an issue fixed in PR #16553
+    
+    * Cast scalarts to FP32 and perform (a*1.0/b) instead of (a/b)
+    
+    Fix lint errors
+    
+    Fix lint
+    
+    * Fix a bug in cycle detection for inputs only op in pointwise fusion
+    
+    * Add comments to simple_partition_pass.h file
+
+commit f9359c3d5b4dd70d1001501ec0948efaaa53d6d0
+Author: Dick Carter <dcarter@nvidia.com>
+Date:   Tue Oct 15 08:54:54 2019 -0700
+
+    Fix flakey pylint CI failures (#16462)
+    
+    * Change pylint parallel jobs from 8 to 1
+    
+    * Non-functional tweeks to keep pylint happy
+    
+    * Disable pylint too-many-lines, duplicate-code, cyclic-import
+    
+    * Trigger CI
+    
+    * Trigger CI
+    
+    * Fighting unrelated CI failures.  Trigger CI.
+    
+    * Fighting unrelated CI failures.  Trigger CI.
+
+commit 1a6fe602e0e445cc3b052b4103069b7c6f5bf012
+Author: Dick Carter <dcarter@nvidia.com>
+Date:   Sat Aug 17 17:40:21 2019 -0700
+
+    Refactor for windows CI 'out of heap space' errors (#15922)
+    
+    * Speed up test_random.py:test_shuffle to get past CI timeouts.
+    
+    * Fix flakey test_operator.py:test_laop_6.
+    
+    * Break up broadcast_reduce_op_value.{cc,cu}
+    
+    * Revert "Fix flakey test_operator.py:test_laop_6."
+    
+    This reverts commit 479ba3860884402914ef7df2fc5a031fed5b0f37.
+    
+    * Break up elemwise_unary_op_basic.{cc,cu}
+
+commit e81c0e246f0bb00a5e0d0b134e93a1af7f0c82bb
+Author: Aaron Markham <markhama@amazon.com>
+Date:   Wed Sep 12 15:53:44 2018 -0700
+
+    update apachecon links to https (#12521)
+    
+    * update apachecon links to https
+    
+    * nudging file to get past flakey test
+
+commit cb6c72c40be49c19dc3502f73147abecdfcb08f6
+Author: Aaron Markham <markhama@amazon.com>
+Date:   Wed Sep 12 15:53:31 2018 -0700
+
+    Consistent website theme and custom 404 (#12426)
+    
+    * consistent theme plus error handling for missing apis and pages
+    
+    * add error pages
+    
+    * update messaging
+    
+    * force url update to 404 page on redirect
+    
+    * static redirect to force url update
+    
+    * version dropdown fix; reverts #12482; lesser of evils
+    
+    * adding note to nudge past flakey test
+
+commit 98c5b38bd3d352eae047562aa1557478f869b256
+Author: Dick Carter <dick.carter@comcast.net>
+Date:   Mon May 14 11:22:42 2018 -0700
+
+    Fix flakeyness of test_operator.py:test_reduce. (#10891)

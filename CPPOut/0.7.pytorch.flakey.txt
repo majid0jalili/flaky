@@ -1,0 +1,74 @@
+commit e882c748b0b1025f64793b9325124733cea43fd1
+Author: Nikolay Korovaiko <korovaikon@gmail.com>
+Date:   Thu Oct 1 12:40:04 2020 -0700
+
+    Disable tcuda_fuser tests in Profiling Mode (#45638)
+    
+    Summary:
+    Disable tcuda_fuser tests in Profiling Mode to address flakey tests until fuser switches to the new approach.
+    
+    Pull Request resolved: https://github.com/pytorch/pytorch/pull/45638
+    
+    Reviewed By: mrshenli
+    
+    Differential Revision: D24057230
+    
+    Pulled By: Krovatkin
+    
+    fbshipit-source-id: 8f7a47610d9b7da6ad3057208057a5a596e1bffa
+
+commit dcda11c4d3e1de2156b14fb321b510fea8b28098
+Author: Nikolay Korovaiko <korovaikon@gmail.com>
+Date:   Thu Oct 1 12:40:04 2020 -0700
+
+    Disable tcuda_fuser tests in Profiling Mode (#45638)
+    
+    Summary:
+    Disable tcuda_fuser tests in Profiling Mode to address flakey tests until fuser switches to the new approach.
+    
+    Pull Request resolved: https://github.com/pytorch/pytorch/pull/45638
+    
+    Reviewed By: mrshenli
+    
+    Differential Revision: D24057230
+    
+    Pulled By: Krovatkin
+    
+    fbshipit-source-id: 8f7a47610d9b7da6ad3057208057a5a596e1bffa
+
+commit 6d63e9dbfffba9f925ac3af5232390a76aa54dce
+Author: Elias Ellison <eellison@fb.com>
+Date:   Wed Nov 28 19:14:16 2018 -0800
+
+    Support Embedding + EmbeddingBag in Script + (Ignore flakey test) (#14509)
+    
+    Summary:
+    Resubmitting PR #14415
+    
+    The tests added for Embedding + EmbeddingBag had random numbers as input, which affected the random number generator & caused the flakey test to break.
+    
+    Everything but the last two commits have already been accepted
+    Pull Request resolved: https://github.com/pytorch/pytorch/pull/14509
+    
+    Differential Revision: D13247917
+    
+    Pulled By: eellison
+    
+    fbshipit-source-id: ea6963c47f666c07687787e2fa82020cddc6aa15
+
+commit 482ffccd76457aeb1f2a0b379aee4a634592cc36
+Author: Kevin Matzen <matzen@fb.com>
+Date:   Thu Apr 27 22:31:49 2017 -0700
+
+    Make instance norm grad test less flakey
+    
+    Summary:
+    Instance norm failed grad check in some cases that needed a smaller step size.  Decreased step size, but also increased threshold slightly.
+    
+    Related diff: D4627379
+    
+    Reviewed By: kennyhorror
+    
+    Differential Revision: D4941827
+    
+    fbshipit-source-id: d6f565340da92af40bfee90627960a3356c69412

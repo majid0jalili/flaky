@@ -1,5 +1,0 @@
-commit 7c911b3891590f2d7b61a1b646c70e1554e50a25
-Author: Patrick Niklaus <patrick.niklaus@student.kit.edu>
-Date:   Thu Mar 2 13:59:35 2017 +0000
-
-    Mark test as flaky and track in own issue.

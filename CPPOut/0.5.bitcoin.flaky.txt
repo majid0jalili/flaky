@@ -1,0 +1,125 @@
+commit c91f955f44903df559ee8dfce1aa86cb89457b6e
+Merge: 0368931 56b018c
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sun Sep 6 13:03:39 2020 +0200
+
+    Merge #19887: test: Fix flaky wallet_basic test
+    
+    56b018ca7f37d25041b74f1bec305bdf54a55b9b test: Fix flaky wallet_basic test (Fabian Jahr)
+    
+    Pull request description:
+    
+      Fixes #19853
+    
+      I investigated the issue in #19876 and I still intend to fix the underlying issue of a race when using wallet RPCs right after starting a node in that PR. However, since that is a bit more complicated than I initially thought it makes sense to merge the fix of the test so the intermittent test failures stop. This fix in the test is going to be needed, either way, #19876 will only provide an error where before it was reporting a false balance.
+    
+    Top commit has no ACKs.
+    
+    Tree-SHA512: 52bb2388a3e77aa20d26ab0fd45796bc1781483b1cffe49cbb44e2488a72e76998edfb1198495373f9c6fd2ec26064d4176bd1a64dd59806622d5e50a4f4e870
+
+commit 56b018ca7f37d25041b74f1bec305bdf54a55b9b
+Author: Fabian Jahr <fjahr@protonmail.com>
+Date:   Sat Sep 5 19:55:37 2020 +0200
+
+    test: Fix flaky wallet_basic test
+    
+    Co-authored-by: João Barbosa <joao.paulo.barbosa@gmail.com>
+
+commit 0626b8cbdf0aa971500eb5613c7ab4096c496966
+Merge: 67923d6 c3dfc91
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Wed Jul 24 07:18:40 2019 -0400
+
+    Merge #16445: test: Skip flaky p2p_invalid_messages test on macOS
+    
+    c3dfc9103260935261eaf6cfbacf0623003f116d test: Skip flaky p2p_invalid_messages test on macOS (Fabian Jahr)
+    
+    Pull request description:
+    
+      This mitigates https://github.com/bitcoin/bitcoin/issues/15400
+    
+      I had a look into the issue today and this seems to be the best we can do given that the root causes some unexpected custom error code from the macOS kernel that python/asyncio doesn't know how to handle properly yet.
+    
+    Top commit has no ACKs.
+    
+    Tree-SHA512: 20a0551d45c405b6eb0ae58190b701c7026c52eff6c434bc678f723a4dabf0074e5b52a8bb3d51ee7132dc29419d1e67a24696761c444c62cd4d429ec768e67d
+
+commit c3dfc9103260935261eaf6cfbacf0623003f116d
+Author: Fabian Jahr <fjahr@protonmail.com>
+Date:   Tue Jul 23 15:10:36 2019 -0400
+
+    test: Skip flaky p2p_invalid_messages test on macOS
+
+commit a1fd876122938469cc3527f53211f976351989c1
+Merge: cbb91cd b6f0db6
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sat Dec 29 14:37:27 2018 +0100
+
+    Merge #15022: tests: Upgrade Travis OS to Xenial
+    
+    b6f0db69a9 Increase timeout of featuer_assumevalid test to fix flaky tests (Graham Krizek)
+    aa9aca85f1 If tests are ran with (ASan + LSan), Docker needs access to ptrace (Graham Krizek)
+    a3b8b43663 Update Travis base OS to Xenial (Graham Krizek)
+    
+    Pull request description:
+    
+      Update base Travis OS to `xenial` from `trusty`.
+    
+      Link to Travis Docs for Xenial: https://docs.travis-ci.com/user/reference/xenial/
+    
+      As noted in the documentation, Docker version is also updated from `17.06` to `18.06`
+    
+      Also includes:
+          - If running Bitcoin config with LSan sanitizer, Allow ptrace in Docker run command
+          - Increase timeout of feature_assumevalid test to fix flaky tests
+    
+    Tree-SHA512: baf2eda0cbb9990c43c76de1aebc8dd4a3f540323ac1fe2e164ac3bcf1fe3afa3e5b026bfeb5d650dae09a6854695d5744c1130c2fa82ece86c6835ba152f68d
+
+commit b6f0db69a9c9cdf101371720351935121590d3aa
+Author: Graham Krizek <graham@krizek.io>
+Date:   Fri Dec 28 08:28:38 2018 -0600
+
+    Increase timeout of featuer_assumevalid test to fix flaky tests
+
+commit fd3777b0b272ad4ce7fbb152917353aa46879f89
+Merge: e356002 3c30f27
+Author: Gavin Andresen <gavinandresen@gmail.com>
+Date:   Tue Nov 18 14:29:38 2014 -0500
+
+    Merge pull request #5280
+    
+    3c30f27 travis: disable rpc tests for windows until they're not so flaky (Cory Fields)
+    daf03e7 RPC tests: create initial chain with specific timestamps (Gavin Andresen)
+    a8b2ce5 regression test only setmocktime RPC call (Gavin Andresen)
+
+commit 3c30f27f342c15af17c6f7e160be5ee60f28194d
+Author: Cory Fields <cory-nospam-@coryfields.com>
+Date:   Mon Nov 17 14:08:08 2014 -0500
+
+    travis: disable rpc tests for windows until they're not so flaky
+
+commit b8e1dc2e53b9d19df26a87686dfd435b3b346f9c
+Author: Gavin Andresen <gavinandresen@gmail.com>
+Date:   Fri May 3 10:45:00 2013 -0400
+
+    Remove flaky util thread unit tests
+
+commit 8269a0953ee9ccbdc422433fc37184e60f94b178
+Author: Gavin Andresen <gavinandresen@gmail.com>
+Date:   Mon Feb 11 18:52:30 2013 -0500
+
+    Reimplement click-to-pay links. Add OSX support.
+    
+    Switch to using Qt's QLocalServer/QLocalSocket to handle bitcoin
+    payment links (bitcoin:... URIs)
+    
+    Reason for switch: the boost::interprocess mechanism seemed flaky,
+    and doesn't mesh as well with "The Qt Way"
+    
+    qtipcserver.cpp/h is replaced by paymentserver.cpp/h
+    
+    Click-to-pay now also works on OSX, with a custom Info.plist
+    that registers Bitcoin-Qt as a handler for bitcoin: URLs and
+    an event listener on the main QApplication that handles
+    QFileOpenEvents (Qt translates 'url clicked' AppleEvents into
+    QFileOpenEvents automagically).

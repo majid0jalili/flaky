@@ -1,0 +1,116 @@
+commit f64f73bfad53faf802980dba2d5c1c4ec054c1f2
+Author: Alon Zakai <azakai@google.com>
+Date:   Tue Aug 25 15:58:55 2020 -0700
+
+    Fix a flaky reftest, which became worse after recent firefox changes (#12038)
+    
+    The test has always been async (ready is called asynchronously) but for
+    some reason it wasn't noticeable until now, where apparently some firefox
+    changes make the timing issue happen more often.
+
+commit e3865d3df98468bf564340d726e909e00d8b914c
+Author: Louis DeScioli <louis.descioli@gmail.com>
+Date:   Tue Mar 17 14:09:18 2020 -0400
+
+    Always sends headers to disable caching in tests (#10701)
+    
+    I observed browser tests being flaky due to the iframe HTML (a.html)
+    sometimes being cached by the browser. This was happening because
+    no-cache headers were only being sent for some resources. This
+    changes the test harness server to always specify no caching.
+    
+    I've observed this bring down the flakiness of the test_modularize
+    suite from failing overall 50-70% of the time to failing 0% of the time,
+    consistently, on Safari and Firefox.
+    
+    I also removed the unneeded Expires header since the browsers
+    used in testing are modern enough to only need the standard
+    Cache-Control header.
+
+commit 56d7fb8b0d62aa2a13612f1e6ebe7933aa4cde3b
+Author: Alon Zakai <azakai@google.com>
+Date:   Mon Aug 12 13:09:29 2019 -0700
+
+    Browser test improvements (#9208)
+    
+    Remove the @flaky annotation, which used to run annotated tests up to 3 times. Instead, since the problem is more widespread (any timing issue on the CI VMs can make a test fail), let each browser test run twice before failing it.
+    
+    This is an optimization over @flaky - that ran the whole test again. This just runs the browser portion, so it avoids duplicate building.
+    
+    Standardizes the timeout to 60s. This should avoid more flakiness.
+    
+    Fixes the glgears_long test, apparently our bots now can reach only 20fps (not sure what changed there..)?
+
+commit 8fa09b596fc44f338024aab030e08cde097f5ae9
+Author: Alon Zakai <azakai@google.com>
+Date:   Wed Jul 17 16:49:06 2019 -0700
+
+    Mark as flaky some graphics tests. These have always been flaky but recently the frequency of all 3 has increased a bunch. Could be the firefox update. (#9008)
+
+commit 71cbb1a7474e75825c4013c9afa37ceeb4d7f752
+Author: Alon Zakai <azakai@google.com>
+Date:   Wed Jul 17 16:48:25 2019 -0700
+
+    Fix one flakiness issue in browser.test_chunked_synchronous_xhr (#9003)
+    
+    The test is marked @flaky which runs it up to 3 times to try to avoid a random error. But we never shut down the server, so the second and later runs would just hit an error on trying to create a server on the same port. (Of course not shutting down the server was bad for other reasons too!)
+    
+    Hopefully this will decrease dramatically the number of random failures on this test, but it won't eliminate them entirely.
+
+commit 79e1df93c70524d5379171e116c730560c268ef4
+Author: Alon Zakai <azakai@google.com>
+Date:   Fri Jun 28 14:50:50 2019 -0700
+
+    mark two tests as flaky (#8866)
+    
+    These seem to be common enough in recent runs to justify retrying.
+
+commit b5170dd95a37131a2324ef2e6f3db79700b19072
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Tue Oct 30 11:05:43 2018 -0700
+
+    Get most chrome browser tests running (#7375)
+    
+    * use new KeyboardEvent(), as event.initKeyEvent was deprecated and removed from chrome
+    
+    * remove dump() calls
+    
+    * mark a test as no-chrome
+    
+    * add a mechanism to manually run a reftest, for tests that are async
+    
+    * xvfb fixes: show the log, and automatically find a port, so that another invocation during the emrun test succeeds
+    
+    * add some debugging code for browser tests
+    
+    * update sdl2 port to version_15, which brings in a fix for egl error reporting on context creation failure (which happens on chrome on ci sometimes)
+    
+    * browser test improvements: mark pthread_sbrk as flaky, mark two more tests that need a manual reftest trigger, and avoid creating an sdl2 renderer if we don't need one in some tests
+    
+    * more reference slack for browser.test_sdl2_gfx
+    
+    * mark browser.test_sdl2_mouse as flaky - the errors there appear to just be random weirdness on headless chrome's side
+
+commit 405d5a8ed2f32f96651b5ef3722e7ddfd369e2d5
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Mon May 9 11:52:16 2016 -0700
+
+    ignore crunch test time diffs on non-linux, where OS file change reporting seems flaky
+
+commit e617310781cfca463b2adfb74f66e794eec780c1
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Fri Feb 5 18:25:24 2016 -0800
+
+    increase browser timouts to make tests less flaky #4072
+
+commit 6b0f2fa2123dbd24890a10ffe4880fa0b018e4d4
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Fri Feb 21 11:30:23 2014 -0800
+
+    make canvas proxy test less flaky
+
+commit f7043b6e2cd0b0d4eb414ef9689e224537dc37b2
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Thu Jan 24 10:21:40 2013 -0800
+
+    disable flaky leaky .ll detection

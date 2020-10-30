@@ -1,0 +1,85 @@
+commit c80657b542ead48bd317a20ea359b13a9b81933d
+Author: Jiaming Yuan <jm.yuan@outlook.com>
+Date:   Fri Oct 30 03:11:22 2020 +0800
+
+    Fix flaky data initialization test. (#6318)
+
+commit 143b278267d35a644c0fbe7740dae38394b197a9
+Author: Philip Hyunsu Cho <chohyu01@cs.washington.edu>
+Date:   Wed Oct 28 11:50:57 2020 -0700
+
+    Mark flaky tests as XFAIL (#6299)
+    
+    * Temporarily skip TestGPUUpdaters::test_categorical
+    
+    * Temporarily skip test_boost_from_prediction[approx]
+
+commit 09142c94f5759f2f274a59c63971fa3e27b45dc1
+Author: Philip Hyunsu Cho <chohyu01@cs.washington.edu>
+Date:   Wed Sep 26 14:21:41 2018 -0700
+
+    Disable flaky tests in R-package/tests/testthat/test_update.R (#3723)
+
+commit fbe9d41dd060a4bb16590902157ad1f01dec021b
+Author: Philip Hyunsu Cho <chohyu01@cs.washington.edu>
+Date:   Wed Sep 26 14:21:41 2018 -0700
+
+    Disable flaky tests in R-package/tests/testthat/test_update.R (#3723)
+
+commit 86d88c0758a314e80a093d934969cd870241808a
+Author: Philip Hyunsu Cho <chohyu01@cs.washington.edu>
+Date:   Thu Aug 30 21:05:05 2018 -0700
+
+    Fix #3648: XGBClassifier.predict() should return margin scores when output_margin=True (#3651)
+    
+    * Fix #3648: XGBClassifier.predict() should return margin scores when output_margin=True
+    
+    * Fix tests to reflect correct implementation of XGBClassifier.predict(output_margin=True)
+    
+    * Fix flaky test test_with_sklearn.test_sklearn_api_gblinear
+
+commit b678e1711d9c3432d21409c4249646a1691707a9
+Author: Yun Ni <Euler57721@gmail.com>
+Date:   Mon Oct 16 20:18:47 2017 -0700
+
+    [jvm-packages] Add SparkParallelismTracker to prevent job from hanging (#2697)
+    
+    * Add SparkParallelismTracker to prevent job from hanging
+    
+    * Code review comments
+    
+    * Code Review Comments
+    
+    * Fix unit tests
+    
+    * Changes and unit test to catch the corner case.
+    
+    * Update documentations
+    
+    * Small improvements
+    
+    * cancalAllJobs is problematic with scalatest. Remove it
+    
+    * Code Review Comments
+    
+    * Check number of executor cores beforehand, and throw exeception if any core is lost.
+    
+    * Address CR Comments
+    
+    * Add missing class
+    
+    * Fix flaky unit test
+    
+    * Address CR comments
+    
+    * Remove redundant param for TaskFailedListener
+
+commit 813a53882a363906596b78ccdd23527bb22034e6
+Author: Nan Zhu <CodingCat@users.noreply.github.com>
+Date:   Thu Oct 13 07:21:24 2016 -0400
+
+    [jvm-packages] deprecate Flaky test (#1662)
+    
+    
+    
+    * deprecate flaky test

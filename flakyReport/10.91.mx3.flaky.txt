@@ -1,5 +1,0 @@
-commit 6955e85d52eeb694b055b52f684feaf74766edc6
-Author: Steven Kabbes <stevenkabbes@gmail.com>
-Date:   Sun May 18 17:51:01 2014 -0700
-
-    drop in gtest 1.7.0 for testing

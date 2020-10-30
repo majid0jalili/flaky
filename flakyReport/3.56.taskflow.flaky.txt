@@ -1,5 +1,0 @@
-commit 626627a006a7fe1340dfb636da50bc2800b085e7
-Author: twhuang <twh760812@gmail.com>
-Date:   Thu Nov 29 16:11:13 2018 -0600
-
-    before push

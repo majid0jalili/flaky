@@ -1,0 +1,25 @@
+commit b08b0a440226540a5157bb7ec1e82644ef228004
+Author: Casper <casperneo@uchicago.edu>
+Date:   Thu Oct 29 12:57:29 2020 -0700
+
+    Implement `Debug` trait for Rust flatbuffers. (#6207)
+    
+    * Refactor idl_gen_rust to a ForAllX continuation pattern.
+    
+    * Removed unneeded SetValue and updated sample rust gencode
+    
+    * Make Rust flatbuffers print right
+    
+    * Generated code and removed unnecessary trait constraint
+    
+    * bumped rust version. Release required
+    
+    * removed an unwrap in Rust Debug-print unions
+    
+    * Tested formatting flatbuffers in rust.
+    
+    * Set float precision in flaky debug-print test
+    
+    * impl Debug for structs too
+    
+    Co-authored-by: Casper Neo <cneo@google.com>

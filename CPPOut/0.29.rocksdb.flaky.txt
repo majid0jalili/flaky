@@ -1,0 +1,1200 @@
+commit 0bda0e3dfaf27ac3b0ecbfd24dfe80689bd2aa67
+Author: Jay Zhuang <zjay@fb.com>
+Date:   Tue Oct 6 12:42:57 2020 -0700
+
+    Fix StallWrite crash with mixed of slowdown/no_slowdown writes (#7508)
+    
+    Summary:
+    `BeginWriteStall()` removes no_slowdown write from the write
+    list and updates `link_newer`, which makes `CreateMissingNewerLinks()`
+    thought all write list has valid `link_newer` and failed to create link
+    for all writers.
+    It caused flaky test and SegFault for release build.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7508
+    
+    Test Plan: Add unittest to reproduce the issue.
+    
+    Reviewed By: anand1976
+    
+    Differential Revision: D24126601
+    
+    Pulled By: jay-zhuang
+    
+    fbshipit-source-id: f8ac5dba653f7ee1b0950296427d4f5f8ee34a06
+
+commit f548a2a03cacdf1463bb4c63340569f846c73128
+Author: Jay Zhuang <zjay@fb.com>
+Date:   Mon Oct 12 11:20:45 2020 -0700
+
+    Fix a flaky tsan test for DBTest2 (#7526)
+    
+    Summary:
+    ThreadSanitizer: data race for `DummyOldStats.num_rt`.
+    Failed build: https://app.circleci.com/pipelines/github/facebook/rocksdb/3991/workflows/b47c3ae1-5531-4489-ac51-11854abdfd0f/jobs/42305
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7526
+    
+    Reviewed By: akankshamahajan15
+    
+    Differential Revision: D24226736
+    
+    Pulled By: jay-zhuang
+    
+    fbshipit-source-id: e05ce354d0c0db0eba242d59d4b0e89ce7c25acf
+
+commit 98c133380604b0dc7dbcf161b63c2af80d63c169
+Author: Jay Zhuang <zjay@fb.com>
+Date:   Thu Oct 8 09:39:22 2020 -0700
+
+    Disable a known flaky test: RandomAccessUniqueIDDeletes (#7511)
+    
+    Summary:
+    It's a known issue, which is tracked in https://github.com/facebook/rocksdb/issues/7405, https://github.com/facebook/rocksdb/issues/7470. Disable it for
+    now.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7511
+    
+    Reviewed By: zhichao-cao
+    
+    Differential Revision: D24145075
+    
+    Pulled By: jay-zhuang
+    
+    fbshipit-source-id: 1858497972f2baba617867aaeac30d93b8305c80
+
+commit 53089038def1a5ffa05afb27beaa63ed64dff764
+Author: Jay Zhuang <zjay@fb.com>
+Date:   Tue Oct 6 12:42:57 2020 -0700
+
+    Fix StallWrite crash with mixed of slowdown/no_slowdown writes (#7508)
+    
+    Summary:
+    `BeginWriteStall()` removes no_slowdown write from the write
+    list and updates `link_newer`, which makes `CreateMissingNewerLinks()`
+    thought all write list has valid `link_newer` and failed to create link
+    for all writers.
+    It caused flaky test and SegFault for release build.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7508
+    
+    Test Plan: Add unittest to reproduce the issue.
+    
+    Reviewed By: anand1976
+    
+    Differential Revision: D24126601
+    
+    Pulled By: jay-zhuang
+    
+    fbshipit-source-id: f8ac5dba653f7ee1b0950296427d4f5f8ee34a06
+
+commit 718e192965cabb311feb7718d9cb8a2e34958072
+Author: Andrew Kryczka <andrewkr@fb.com>
+Date:   Wed Sep 30 16:49:16 2020 -0700
+
+    Fix flaky intra-L0 consistency failure regression tests (#7477)
+    
+    Summary:
+    Do not assert the number of files after intra-L0 compaction is eligible to run since it could complete (and reduce the number of files) before the assertion executes.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7477
+    
+    Reviewed By: pdillinger
+    
+    Differential Revision: D24032049
+    
+    Pulled By: ajkr
+    
+    fbshipit-source-id: e838ac7a24651ebd643b9e5a9d39d2e789c46929
+
+commit 6727259eb46b0899d329965d19a99326191d4911
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Tue Sep 22 09:55:42 2020 -0700
+
+    Possible fix to flaky db_write_test (#7418)
+    
+    Summary:
+    Make the test robust to spurious wakeups on condition variable,
+    and clear sync points to ensure no use-after-free.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7418
+    
+    Test Plan: repeated runs on updated test, watch CircleCI for recurrence
+    
+    Reviewed By: jay-zhuang
+    
+    Differential Revision: D23828823
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: af85117d9c02602541a90252840e0e5a6996de5b
+
+commit 731f022dc8f5efea048465793ca429f81a22dfb5
+Author: Zhichao Cao <zhichao@fb.com>
+Date:   Sat Sep 19 17:56:39 2020 -0700
+
+    fix the flaky test failure (#7415)
+    
+    Summary:
+    Fix the flaky test failure in error_handler_fs_test. Add the sync point, solve the dependency.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7415
+    
+    Test Plan: make asan_check, ~/gtest-parallel/gtest-parallel -r 100 ./error_handler_fs_test
+    
+    Reviewed By: siying
+    
+    Differential Revision: D23804330
+    
+    Pulled By: zhichao-cao
+    
+    fbshipit-source-id: 5175108651f7652e47e15978f2a9c1669ef59d80
+
+commit 485fd9d9db4e444e5dca89f95700ec804ba010b3
+Author: Zhichao Cao <zhichao@fb.com>
+Date:   Sat Sep 19 17:56:39 2020 -0700
+
+    fix the flaky test failure (#7415)
+    
+    Summary:
+    Fix the flaky test failure in error_handler_fs_test. Add the sync point, solve the dependency.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7415
+    
+    Test Plan: make asan_check, ~/gtest-parallel/gtest-parallel -r 100 ./error_handler_fs_test
+    
+    Reviewed By: siying
+    
+    Differential Revision: D23804330
+    
+    Pulled By: zhichao-cao
+    
+    fbshipit-source-id: 5175108651f7652e47e15978f2a9c1669ef59d80
+
+commit ec024a86de1a1e0035e23fb0ade29ba6984172b4
+Author: Andrew Kryczka <andrewkr@fb.com>
+Date:   Tue Sep 15 22:43:05 2020 -0700
+
+    More robust sync points for intra-L0 compaction tests (#7382)
+    
+    Summary:
+    `IntraL0CompactionAfterFlushCheckConsistencyFail` was flaky by sometimes failing due to no intra-L0 compactions happening. I was able to repro it by putting a `sleep(1)` in the compaction thread before it grabs the lock and picks a compaction. This also showed other intra-L0 tests are affected too, although some of them exhibit hanging forever rather than failing.
+    
+    The problem was that all the flushes/ingestions could finish before any compaction got picked, so it would end up simply picking all the files that the test generates for L0->L1. But, these tests intend only the first few files to be picked for L0->L1, and the subsequent files to be picked for intra-L0. This PR adjusts the sync points of all the intra-L0 tests to enforce this.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7382
+    
+    Test Plan: run all the `db_compaction_test`s with and without the artificial `sleep()`
+    
+    Reviewed By: jay-zhuang
+    
+    Differential Revision: D23684985
+    
+    Pulled By: ajkr
+    
+    fbshipit-source-id: 6508399030dddec7738e9853a7b3dc53ef77a584
+
+commit 7d0ecab570742c7280628b08ddc03cfd692f484f
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Mon Aug 17 22:06:02 2020 -0700
+
+    Fix some flaky tests in BackupableDBTest with intentional flushing (#7273)
+    
+    Summary:
+    Some tests like BackupableDBTest.FileCollision and
+    ShareTableFilesWithChecksumsNewNaming are intermittently failing,
+    probably due to unpredictable flushing with FillDB. This change
+    should fix the failures seen and help to prevent similar flakiness in
+    future tests in the file.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7273
+    
+    Test Plan: make check, and with valgrind
+    
+    Reviewed By: siying
+    
+    Differential Revision: D23176947
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: 654b73a64db475f2b9b065ed53a889a8b9083c59
+
+commit 15245e90187408c090ed243864eb17a61a101c1b
+Author: Zitan Chen <11285749+gg814@users.noreply.github.com>
+Date:   Fri Aug 14 13:31:56 2020 -0700
+
+    Fix flaky BackupableDBTest.CustomChecksumTransition (#7254)
+    
+    Summary:
+    The flaky test in the title is caused by two problems. First, there is a bug in the BackupEngine that results in skipping computing the default crc32 checksum when `share_table_files` is enabled and the table is already backed up. Second, when `RestoreDBFromBackup` fails and the backup was being restored to the DB directory, it is likely that `RestoreDBFromBackup` has cleaned up the DB directory before it fails, and therefore, files in old backups may collide with files to be backed up if `share_files_with_checksum` is not enabled.
+    
+    New tests that cover the above problems are added.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7254
+    
+    Test Plan: `./backupable_db_test`
+    
+    Reviewed By: pdillinger
+    
+    Differential Revision: D23118715
+    
+    Pulled By: gg814
+    
+    fbshipit-source-id: 7be8de912808944be59e93d602c7431a54c079eb
+
+commit 7e37a5918cbe18e6aca0751d9ff01c0e1dc3b055
+Author: Akanksha Mahajan <akankshamahajan@fb.com>
+Date:   Fri Jul 24 14:45:45 2020 -0700
+
+    Fix for flaky test BackupableDBTest.RateLimiting (#7167)
+    
+    Summary:
+    BackupableDBTest.RateLimiting test is failing due to timed out
+    on our test server. It might be because of nested loops run sequentially that test different type of combinations of parameters. This patch converts the test into parameterized test so that all combinations can be tested out.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7167
+    
+    Test Plan: make check -j64
+    
+    Reviewed By: zhichao-cao
+    
+    Differential Revision: D22709531
+    
+    Pulled By: akankshamahajan15
+    
+    fbshipit-source-id: 95518153e87b3b5311a6c1960a191bca58898786
+
+commit cc5c68084b90697a3a1dc0c91115527766b80a10
+Author: Zitan Chen <11285749+gg814@users.noreply.github.com>
+Date:   Wed Jul 8 12:15:02 2020 -0700
+
+    Fix flaky BackupableDBTest.TableFileCorruptedBeforeBackup (#7102)
+    
+    Summary:
+    The fix in PR https://github.com/facebook/rocksdb/issues/7082 is not really successful because there is still a small chance that the test will fail.
+    
+    In addtion to flushing, we close the DB and then reopen before corrupting a table file in the DB. Specifically, we corrupt a table file before backup takes place as follows.
+    * Open DB
+    * Fill DB
+    * Flush DB (optional, no flushing here also works)
+    * Close DB
+    * Reopen DB
+    * Corrupt a table file in the DB
+    
+    This should make the test reliable.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7102
+    
+    Test Plan:
+    `while ./backupable_db_test --gtest_filter=*TableFileCorruptedBeforeBackup*; do true; done`
+    (kept running for an hour or so :)
+    
+    Reviewed By: pdillinger
+    
+    Differential Revision: D22432417
+    
+    Pulled By: gg814
+    
+    fbshipit-source-id: d407eee93ff428bb662f80cde1659fbf0149d0cd
+
+commit 147f7b472a86d2c4facd2f1cf36d2735fc83dec0
+Author: Zitan Chen <11285749+gg814@users.noreply.github.com>
+Date:   Fri Jul 3 15:38:35 2020 -0700
+
+    Fix flakiness of BackupableDBTest.TableFileCorruptedBeforeBackup (#7082)
+    
+    Summary:
+    If the corruption of a table file is done before flushing, then db manifest may record the checksum for the corrupted table, which results in "matching checksums" when backup engine tries to verfiy the checksum, and causes a flaky test.
+    
+    Fix the issue by adding `Flush()` before trying to corrupt a table file in *db*.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7082
+    
+    Test Plan:
+    `buck test`
+    Without the fix, failed 5 of 100 tests.
+    Suspected whether the pseudo randomness causes the issue: doubling `keys_iteration` resulted in 2 of 100 tests failed; deterministically corrupting tables file also caused 2 of 100 tests to fail.
+    With the fix, passed 200 of 200 tests.
+    
+    Reviewed By: pdillinger
+    
+    Differential Revision: D22375421
+    
+    Pulled By: gg814
+    
+    fbshipit-source-id: 7304618e7520684b6087e42d0b58329c5ad18329
+
+commit c25a014792f53cfa2bd7ecbe19a6ec7e11336098
+Author: Andrew Kryczka <andrewkr@fb.com>
+Date:   Wed Jul 1 14:51:50 2020 -0700
+
+    deflake DBCompactionTestWithParam.IntraL0Compaction test (#7065)
+    
+    Summary:
+    This check is flaky because compaction could run between the `Flush()` and the `TestGetTickerCount()`, which would increase the `BLOCK_CACHE_INDEX_MISS` count beyond what the test expects. Verified by adding a `sleep(1)` between those two lines and observing the counter is too high every time. The solution is just to remove this check as it doesn't have any use anyways. The latter check of index miss is sufficient to conclude the newest L0 file (i.e., the one generated by intra-L0) does not have its index block pinned in cache. It'd be nice to simultaneously check the L0 files generated by flush do have their index blocks pinned in cache, but that's not what the line deleted in this PR was checking..
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7065
+    
+    Reviewed By: pdillinger
+    
+    Differential Revision: D22340327
+    
+    Pulled By: ajkr
+    
+    fbshipit-source-id: e076b2c7228b7fa763dd0c0cb13828e176c1abee
+
+commit 46516778ddcd05e50c58e11b0a6a34c20f47f885
+Author: Cheng Chang <xcc@fb.com>
+Date:   Thu Feb 13 17:25:29 2020 -0800
+
+    Fix flaky test DecreaseNumBgThreads (#6393)
+    
+    Summary:
+    The DecreaseNumBgThreads test keeps failing on Windows in AppVeyor.
+    It fails because it depends on a timed wait for the tasks to be dequeued from the threadpool's internal queue, but within the specified time, the task might have not been scheduled onto the newly created threads.
+    https://github.com/facebook/rocksdb/pull/6232 tries to fix this by waiting for longer time to let the threads scheduled.
+    This PR tries to fix this by replacing the timed wait with a synchronization on the task's internal conditional variable.
+    When the number of threads increases, instead of guessing the time needed for the task to be scheduled, it directly blocks on the conditional variable until the task starts running.
+    But when thread number is reduced, it still does a timed wait, but this does not lead to the flakiness now, will try to remove these timed waits in a future PR.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/6393
+    
+    Test Plan: Wait to see whether AppVeyor tests pass.
+    
+    Differential Revision: D19890928
+    
+    Pulled By: cheng-chang
+    
+    fbshipit-source-id: 4e56e4addf625c98c0876e62d9d57a6f0a156f76
+
+commit 3a6d9436e82790e149f69d9a5eace3dd3f145e52
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Mon Dec 9 09:22:07 2019 -0800
+
+    Use SpecialSkipListFactory in RecalculateScoreAfterPicking (#6125)
+    
+    Summary:
+    Test DBTestUniversalCompaction.RecalculateScoreAfterPicking was
+    flaky on ARM, so it now uses SpecialSkipListFactory (like other tests)
+    for predictable memtable flushes.
+    
+    Fixes https://github.com/facebook/rocksdb/issues/5736
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/6125
+    
+    Test Plan:
+    while ./db_universal_compaction_test; do :; done # for a
+    while on ARM and on Intel (both Linux)
+    
+    Differential Revision: D18864821
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: 2f3ca0ea66ce420dcd6d41b0ec12377112a5a79f
+
+commit 52733b44984b67584121efb6730a9020cab3a67c
+Author: Maysam Yabandeh <myabandeh@fb.com>
+Date:   Mon Nov 4 16:22:26 2019 -0800
+
+    WritePrepared: Fix flaky test MaxCatchupWithNewSnapshot (#5850)
+    
+    Summary:
+    MaxCatchupWithNewSnapshot tests that the snapshot sequence number will be larger than the max sequence number when the snapshot was taken. However since the test does not have access to the max sequence number when the snapshot was taken, it uses max sequence number after that, which could have advanced the snapshot by then, thus making the test flaky.
+    The fix is to compare with max sequence number before the snapshot was taken, which is a lower bound for the value when the snapshot was taken.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/5850
+    
+    Test Plan: ~/gtest-parallel/gtest-parallel --repeat=12800 ./write_prepared_transaction_test --gtest_filter="*MaxCatchupWithNewSnapshot*"
+    
+    Differential Revision: D17608926
+    
+    Pulled By: maysamyabandeh
+    
+    fbshipit-source-id: b122ae5a27f982b290bd60da852e28d3c5eb0136
+
+commit f1219644ec834a96f3a2a13d83046126e8e7409d
+Author: Sagar Vemuri <svemuri@fb.com>
+Date:   Fri Jun 14 14:07:50 2019 -0700
+
+    Validate CF Options when creating a new column family (#5453)
+    
+    Summary:
+    It seems like CF Options are not properly validated  when creating a new column family with `CreateColumnFamily` API; only a selected few checks are done. Calling `ColumnFamilyData::ValidateOptions`, which is the single source for all CFOptions validations,  will help fix this. (`ColumnFamilyData::ValidateOptions` is already called at the time of `DB::Open`).
+    
+    **Test Plan:**
+    Added a new test: `DBTest.CreateColumnFamilyShouldFailOnIncompatibleOptions`
+    ```
+    TEST_TMPDIR=/dev/shm ./db_test --gtest_filter=DBTest.CreateColumnFamilyShouldFailOnIncompatibleOptions
+    ```
+    Also ran gtest-parallel to make sure the new test is not flaky.
+    ```
+    TEST_TMPDIR=/dev/shm ~/gtest-parallel/gtest-parallel ./db_test --gtest_filter=DBTest.CreateColumnFamilyShouldFailOnIncompatibleOptions --repeat=10000
+    [10000/10000] DBTest.CreateColumnFamilyShouldFailOnIncompatibleOptions (15 ms)
+    ```
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/5453
+    
+    Differential Revision: D15816851
+    
+    Pulled By: sagar0
+    
+    fbshipit-source-id: 9e702b9850f5c4a7e0ef8d39e1e6f9b81e7fe1e5
+
+commit ca1aee2a198f8b461f4c168232ed65d9a205ce9e
+Author: Manuel Ung <mung@fb.com>
+Date:   Tue Jun 11 17:58:31 2019 -0700
+
+    WriteUnprepared: commit only from the 2nd queue (#5439)
+    
+    Summary:
+    This is a port of this PR into WriteUnprepared:
+    https://github.com/facebook/rocksdb/pull/5014
+    
+    This also reverts this test change to restore some flaky write unprepared
+    tests: https://github.com/facebook/rocksdb/pull/5315
+    
+    Tested with:
+    $ gtest-parallel ./transaction_test --gtest_filter=MySQLStyleTransactionTest/MySQLStyleTransactionTest.TransactionStressTest/9 --repeat=128
+    [128/128] MySQLStyleTransactionTest/MySQLStyleTransactionTest.TransactionStressTest/9 (18250 ms)
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/5439
+    
+    Differential Revision: D15761405
+    
+    Pulled By: lth
+    
+    fbshipit-source-id: ae2581fd942d8a5b3f9278fd6bc3c1ac0b2c964c
+
+commit 1b59a490ef8d8da78c826b379167207dfa682b4c
+Author: Sagar Vemuri <svemuri@fb.com>
+Date:   Thu May 30 16:07:57 2019 -0700
+
+    Fix flaky DBTest2.PresetCompressionDict test (#5378)
+    
+    Summary:
+    Fix flaky DBTest2.PresetCompressionDict test.
+    
+    This PR fixes two issues with the test:
+    1. Replaces `GetSstFiles` with `TotalSize`, which is based on `DB::GetColumnFamilyMetaData` so that only the size of the live SST files is taken into consideration when computing the total size of all sst files. Earlier, with `GetSstFiles`, even obsolete files were getting picked up.
+    1. In ZSTD compression, it is sometimes possible that using a trained dictionary is not better than using an untrained one. Using a trained dictionary performs well in 99% of the cases, but still in the remaining ~1% of the cases (out of 10000 runs) using an untrained dictionary gets better compression results.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/5378
+    
+    Differential Revision: D15559100
+    
+    Pulled By: sagar0
+    
+    fbshipit-source-id: c35adbf13871f520a2cec48f8bad9ff27ff7a0b4
+
+commit c71f5bb9aa7fd2f12533a5b8300949e7f766e213
+Author: Maysam Yabandeh <myabandeh@fb.com>
+Date:   Thu May 16 15:35:28 2019 -0700
+
+    Disable WriteUnPrepared stress tests (#5315)
+    
+    Summary:
+    They are kind of flaky at the moment. Will re-enable it when flakiness is fixed.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/5315
+    
+    Differential Revision: D15382744
+    
+    Pulled By: maysamyabandeh
+    
+    fbshipit-source-id: 8b2f9d81a4bb34bfd51481727a682d5cd063c5e3
+
+commit 1583cb402eb6f52adac0261cb3766b47aac3078e
+Author: Yanqin Jin <yanqin@fb.com>
+Date:   Wed May 15 15:13:44 2019 -0700
+
+    Fix a flaky test with test sync point (#5310)
+    
+    Summary:
+    If DB is opened with `avoid_unnecessary_blocking_io` being true, then `~ColumnFamilyHandleImpl` enqueues a purge request and schedules a background thread to perform the deletion. Without test sync point, whether the SST file is purged or not at a later point in time is not deterministic. If the SST does not exist, it will cause an assertion failure.
+    
+    How to reproduce:
+    ```
+    $git checkout 6492430eaf1a13730eec81321528558cbf486c96
+    $make -j20 deletefile_test
+    $gtest-parallel --repeat 1000 --worker 16 ./deletefile_test --gtest_filter=DeleteFileTest.BackgroundPurgeCFDropTest
+    ```
+    The test may fail a few times.
+    With changes made in this PR, repeat the above commands, and the test should not fail.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/5310
+    
+    Differential Revision: D15361136
+    
+    Pulled By: riversand963
+    
+    fbshipit-source-id: c4308d5f8da83472c893bf7f8ceed347fbfa850f
+
+commit 93f7e7a450ced3414f7443121d38fa5c536d9986
+Author: Siying Dong <siying.d@fb.com>
+Date:   Tue Feb 19 14:41:16 2019 -0800
+
+    Temporarily Disable DBTest2.PresetCompressionDict (#5003)
+    
+    Summary:
+    DBTest2.PresetCompressionDict is flaky. Temparily disable it for now.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/5003
+    
+    Differential Revision: D14139505
+    
+    Pulled By: siying
+    
+    fbshipit-source-id: ebf1872d364b76b2cb021b489ea2f17ee997116a
+
+commit 46e3209e0da1d7563e345d0e28a82ec05f1ddf32
+Author: Burton Li <pul@microsoft.com>
+Date:   Wed Dec 26 13:56:56 2018 -0800
+
+    Compaction limiter miscs (#4795)
+    
+    Summary:
+    1. Remove unused API SubtractCompactionTask().
+    2. Assert outstanding tasks drop to zero in ConcurrentTaskLimiterImpl destructor.
+    3. Remove GetOutstandingTask() check from manual compaction test, as TEST_WaitForCompact() doesn't synced with 'delete prepicked_compaction' in DBImpl::BGWorkCompaction(), which may make the test flaky.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4795
+    
+    Differential Revision: D13542183
+    
+    Pulled By: siying
+    
+    fbshipit-source-id: 5eb2a47e62efe4126937149aa0df6e243ebefc33
+
+commit 4ed3c1eb8875f9ba5fe4aa585ddac22a429a1cd9
+Author: Maysam Yabandeh <myabandeh@fb.com>
+Date:   Fri Dec 14 13:45:21 2018 -0800
+
+    Fix flaky test DeleteFileRange (#4784)
+    
+    Summary:
+    The test fails sporadically expecting the DB to be empty after DeleteFilesInRange(..., nullptr, nullptr) call which is not. Debugging shows cases where the files are skipped since they are being compacted. The patch fixes the test by waiting for the last CompactRange to finish before calling DeleteFilesInRange.
+    Verified by
+    ```
+    ~/gtest-parallel/gtest-parallel ./db_compaction_test --gtest_filter=DBCompactionTest.DeleteFileRange --repeat=10000
+    ```
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4784
+    
+    Differential Revision: D13469402
+    
+    Pulled By: maysamyabandeh
+    
+    fbshipit-source-id: 3d8f44abe205b82c69f01e7edf27e1f8098248e1
+
+commit 0aa17c1002ea146c89c61e7fe2f3a1e95585ca6c
+Author: Maysam Yabandeh <myabandeh@fb.com>
+Date:   Wed Dec 12 16:27:37 2018 -0800
+
+    Fix flaky test DBCompactionTest::DeleteFileRange (#4776)
+    
+    Summary:
+    The test has been failing sporadically probably because the configured compaction options were actually unused. Verified that by the following:
+    ```
+    ~/gtest-parallel/gtest-parallel ./db_compaction_test --gtest_filter=DBCompactionTest.DeleteFileRange --repeat=1000
+    ```
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4776
+    
+    Differential Revision: D13441052
+    
+    Pulled By: maysamyabandeh
+    
+    fbshipit-source-id: d35075b9e6cef9b9c9d0d571f9cd72ade8eda55d
+
+commit c41c60be135e529e8793bb2045b1ff3473043a96
+Author: Pengchao Wang <wpc@fb.com>
+Date:   Fri Dec 7 10:11:37 2018 -0800
+
+    fix tombstone collectable test (#4755)
+    
+    Summary:
+    the original test does not give enough time difference between tombstone write time and the expire time point, which make test flaky.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4755
+    
+    Reviewed By: maysamyabandeh
+    
+    Differential Revision: D13369681
+    
+    Pulled By: wpc
+    
+    fbshipit-source-id: 22576f354c63cd0b39d8b35c3913303707503ea9
+
+commit 8d7bc76f364a6a613faf57ccf58d2e961bef879d
+Author: Yanqin Jin <yanqin@fb.com>
+Date:   Thu Nov 29 13:38:03 2018 -0800
+
+    Fix a flaky test DBFlushTest.SyncFail (#4633)
+    
+    Summary:
+    There is a race condition in DBFlushTest.SyncFail, as illustrated below.
+    ```
+    time         thread1                             bg_flush_thread
+      |     Flush(wait=false, cfd)
+      |     refs_before=cfd->current()->TEST_refs()   PickMemtable calls cfd->current()->Ref()
+      V
+    ```
+    The race condition between thread1 getting the ref count of cfd's current
+    version and bg_flush_thread incrementing the cfd's current version makes it
+    possible for later assertion on refs_before to fail. Therefore, we add test
+    sync points to enforce the order and assert on the ref count before and after
+    PickMemtable is called in bg_flush_thread.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4633
+    
+    Differential Revision: D12967131
+    
+    Pulled By: riversand963
+    
+    fbshipit-source-id: a99d2bacb7869ec5d8d03b24ef2babc0e6ae1a3b
+
+commit 7d04ef465590263cedec0219a38acf96116b1605
+Author: Abhishek Madan <abhishekmadan@fb.com>
+Date:   Mon Nov 12 16:40:08 2018 -0800
+
+    Fix flaky DBDynamicLevelTest.DynamicLevelMaxBytesBase2 (#4668)
+    
+    Summary:
+    Part of the test required that a compaction start before a
+    manual flush, but this was not enforced by the test. In some cases,
+    particularly when writing to tmpfs, this could lead to the compaction
+    starting after the flush, which caused the base level to be higher than
+    it was expected to be. Add a sync point in the test to ensure that the
+    flush and compaction happen simultaneously.
+    
+    The test also had some stale comments, so those have been removed or
+    modified, and the test has been simplified so that it no longer uses sleeps
+    and writes uncompressed SSTs.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4668
+    
+    Differential Revision: D13032440
+    
+    Pulled By: abhimadan
+    
+    fbshipit-source-id: 3f23b583a096454dafb8d8ea75678605dec80209
+
+commit 859dbda6e3cac17416aff48f1760d01707867351
+Author: Yi Wu <yiwu@fb.com>
+Date:   Fri Nov 9 16:43:08 2018 -0800
+
+    Fix DBTest.SoftLimit flakyness (#4658)
+    
+    Summary:
+    The flakyness can be reproduced with the following patch:
+    ```
+     --- a/db/db_impl_compaction_flush.cc
+    +++ b/db/db_impl_compaction_flush.cc
+    @@ -2013,6 +2013,9 @@ void DBImpl::BackgroundCallFlush() {
+           if (job_context.HaveSomethingToDelete()) {
+             PurgeObsoleteFiles(job_context);
+           }
+    +      static int f_count = 0;
+    +      printf("clean flush job context %d\n", ++f_count);
+    +      env_->SleepForMicroseconds(1000000);
+           job_context.Clean();
+           mutex_.Lock();
+         }
+    ```
+    The issue is that FlushMemtable with opt.wait=true does not wait for `OnStallConditionsChanged` being called. The event listener is triggered on `JobContext::Clean`, which happens after flush result is installed. At the time we check for stall condition after flushing memtable, the job context cleanup may not be finished.
+    
+    To fix the flaykyness, we use sync point to create a custom WaitForFlush that waits for context cleanup.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4658
+    
+    Differential Revision: D13007301
+    
+    Pulled By: yiwu-arbug
+    
+    fbshipit-source-id: d98395ee7b0ad4c62e83e8d0e9b6028058c61712
+
+commit fce5994603c7e32021ef614b4afb47e057b8a248
+Author: Zhongyi Xie <xiez@fb.com>
+Date:   Wed Nov 7 14:03:47 2018 -0800
+
+    Add more sync point to fix flaky test GroupCommitTest
+    
+    Summary: Pull Request resolved: https://github.com/facebook/rocksdb/pull/4637
+    
+    Differential Revision: D12963727
+    
+    Pulled By: miasantreble
+    
+    fbshipit-source-id: 76053501afbecc6ef388ddc56542fa0185243e3f
+
+commit 0afa5b53d73f34cc5f63cb408fe1aa12c0e20792
+Author: Maysam Yabandeh <myabandeh@fb.com>
+Date:   Thu Oct 18 14:19:26 2018 -0700
+
+    Disable GroupCommitTest in Appveyor (#4536)
+    
+    Summary:
+    We have already disabled it on Travis since it has been too flaky. The same problem arises in Appveyor as well.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4536
+    
+    Differential Revision: D10452240
+    
+    Pulled By: maysamyabandeh
+    
+    fbshipit-source-id: 728f4ecddf780097159dc0a0737d460eb5ce4f09
+
+commit d8d66c937e6730fc87b29d1711662b500b52df22
+Author: Maysam Yabandeh <myabandeh@fb.com>
+Date:   Wed Aug 8 07:23:10 2018 -0700
+
+    Simplify DBWithMaxSpaceAllowedRandomized (#4235)
+    
+    Summary:
+    The test has become complicated over the years and hard to reason about the corner cases that makes the test flaky. The patch simplifies the test and also fixes some probable synchronization issues.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4235
+    
+    Differential Revision: D9187995
+    
+    Pulled By: maysamyabandeh
+    
+    fbshipit-source-id: 53c7b060f14367e5a9e361014578c26debfe3d27
+
+commit 2e72a5899b3e700dcc6b71af2481be415dc2e086
+Author: Yi Wu <yiwu@fb.com>
+Date:   Fri Apr 20 15:27:37 2018 -0700
+
+    Disable EnvPosixTest::FilePermission
+    
+    Summary:
+    The test is flaky in our CI but could not be reproduce manually on the same CI host. Disabling it.
+    Closes https://github.com/facebook/rocksdb/pull/3753
+    
+    Differential Revision: D7716320
+    
+    Pulled By: yiwu-arbug
+    
+    fbshipit-source-id: 6bed3b05880c1d24e8dc86bc970e5181bc98fb45
+
+commit 2256dab1352abfd9f4388c37d509b9cd02a70b46
+Author: Andrew Kryczka <andrewkr@fb.com>
+Date:   Tue Mar 13 14:46:41 2018 -0700
+
+    fix flaky DBSSTTest.DeleteSchedulerMultipleDBPaths
+    
+    Summary:
+    I landed #3544 which made this test flaky. The reason was the files scheduled for deletion sometimes went through the trash-marking process, and sometimes were deleted directly. Our counter only bumped on the former code path, so if the latter code path was used, we'd miss counting a file deleted by deletion scheduler. This PR also bumps the counter in the latter code path.
+    Closes https://github.com/facebook/rocksdb/pull/3593
+    
+    Differential Revision: D7226173
+    
+    Pulled By: yiwu-arbug
+    
+    fbshipit-source-id: 81ab44c60834df6ff88db1d73ea34e26c6e93c39
+
+commit f1b040c14a5b645a8127709ff9cefc5ecd288031
+Author: Yi Wu <yiwu@fb.com>
+Date:   Thu Nov 2 13:20:28 2017 -0700
+
+    Blob DB: Fix flaky BlobDBTest::GCExpiredKeyWhileOverwriting test
+    
+    Summary:
+    The test intent to wait until key being overwritten until proceed with garbage collection. It failed to wait for `PutUntil` finally finish. Fixing it.
+    Closes https://github.com/facebook/rocksdb/pull/3116
+    
+    Differential Revision: D6222833
+    
+    Pulled By: yiwu-arbug
+    
+    fbshipit-source-id: fa9b57a772b92a66cf250b44e7975c43f62f45c5
+
+commit 11bacd578765dad2f92b361cc73df0e635301723
+Author: Yi Wu <yiwu@fb.com>
+Date:   Thu Nov 2 13:20:28 2017 -0700
+
+    Blob DB: Fix flaky BlobDBTest::GCExpiredKeyWhileOverwriting test
+    
+    Summary:
+    The test intent to wait until key being overwritten until proceed with garbage collection. It failed to wait for `PutUntil` finally finish. Fixing it.
+    Closes https://github.com/facebook/rocksdb/pull/3116
+    
+    Differential Revision: D6222833
+    
+    Pulled By: yiwu-arbug
+    
+    fbshipit-source-id: fa9b57a772b92a66cf250b44e7975c43f62f45c5
+
+commit 167ba599ec3c7e1cb678453bff05cf028ab4757e
+Author: Yi Wu <yiwu@fb.com>
+Date:   Thu Nov 2 13:20:28 2017 -0700
+
+    Blob DB: Fix flaky BlobDBTest::GCExpiredKeyWhileOverwriting test
+    
+    Summary:
+    The test intent to wait until key being overwritten until proceed with garbage collection. It failed to wait for `PutUntil` finally finish. Fixing it.
+    Closes https://github.com/facebook/rocksdb/pull/3116
+    
+    Differential Revision: D6222833
+    
+    Pulled By: yiwu-arbug
+    
+    fbshipit-source-id: fa9b57a772b92a66cf250b44e7975c43f62f45c5
+
+commit a03ae04493e930abde66b855f262e262f3377df7
+Author: Yi Wu <yiwu@fb.com>
+Date:   Fri Aug 25 10:40:25 2017 -0700
+
+    make blob file close synchronous
+    
+    Summary:
+    Fixing flaky blob_db_test.
+    
+    To close a blob file, blob db used to add a CloseSeqWrite job to the background thread to close it. Changing file close to be synchronous in order to simplify logic, and fix flaky blob_db_test.
+    Closes https://github.com/facebook/rocksdb/pull/2787
+    
+    Differential Revision: D5699387
+    
+    Pulled By: yiwu-arbug
+    
+    fbshipit-source-id: dd07a945cd435cd3808fce7ee4ea57817409474a
+
+commit 503db684f72061b98d2200debafcc750b7f8de67
+Author: Yi Wu <yiwu@fb.com>
+Date:   Fri Aug 25 10:40:25 2017 -0700
+
+    make blob file close synchronous
+    
+    Summary:
+    Fixing flaky blob_db_test.
+    
+    To close a blob file, blob db used to add a CloseSeqWrite job to the background thread to close it. Changing file close to be synchronous in order to simplify logic, and fix flaky blob_db_test.
+    Closes https://github.com/facebook/rocksdb/pull/2787
+    
+    Differential Revision: D5699387
+    
+    Pulled By: yiwu-arbug
+    
+    fbshipit-source-id: dd07a945cd435cd3808fce7ee4ea57817409474a
+
+commit ac748c57ed72e021cfc7c24b4920737a1973ca97
+Author: Sagar Vemuri <svemuri@fb.com>
+Date:   Fri Jul 28 14:28:09 2017 -0700
+
+    Fix FIFO Compaction with TTL tests
+    
+    Summary:
+    - FIFOCompactionWithTTLTest was flaky when run in parallel earlier, and hence it was disabled. Fixed it now.
+    - Also, faking sleep now instead of really sleeping to make tests more realistic by using TTLs like 1 hour and 1 day.
+    Closes https://github.com/facebook/rocksdb/pull/2650
+    
+    Differential Revision: D5506038
+    
+    Pulled By: sagar0
+    
+    fbshipit-source-id: deb429a527f045e3e2c5138b547c3e8ac8586aa2
+
+commit fe1a5559f3ef8fd1e915385a9673a19f0bfc7a6b
+Author: Yi Wu <yiwu@fb.com>
+Date:   Tue Jul 25 16:40:21 2017 -0700
+
+    Fix flaky write_callback_test
+    
+    Summary:
+    The test is failing occasionally on the assert: `ASSERT_TRUE(writer->state == WriteThread::State::STATE_INIT)`. This is because the test don't make the leader wait for long enough before updating state for its followers. The patch move the update to `threads_waiting` to the end of `WriteThread::JoinBatchGroup:Wait` callback to avoid this happening.
+    
+    Also adding `WriteThread::JoinBatchGroup:Start` and have each thread wait there while another thread is linking to the linked-list. This is to make the check of `is_leader` more deterministic.
+    
+    Also changing two while-loops of `compare_exchange_strong` to plain `fetch_add`, to make it look cleaner.
+    Closes https://github.com/facebook/rocksdb/pull/2640
+    
+    Differential Revision: D5491525
+    
+    Pulled By: yiwu-arbug
+    
+    fbshipit-source-id: 6e897f122082bd6f98e6d51b31a25e5fd0a3fb82
+
+commit 56656e12d67d8a63f1e4c4214da9feeec2bd442b
+Author: Sagar Vemuri <svemuri@fb.com>
+Date:   Fri Jul 7 20:00:07 2017 -0700
+
+    Temporarily disable FIFOCompactionWithTTLTest
+    
+    Summary:
+    FIFOCompactionWithTTLTests are flaky when run in parallel, as there is a time element involved to it. Temporarily disabling them while I investigate a more robust testing solution like, say,  mocking time.
+    Closes https://github.com/facebook/rocksdb/pull/2548
+    
+    Differential Revision: D5386084
+    
+    Pulled By: sagar0
+    
+    fbshipit-source-id: 262886b25bdf091021d8553e780443a985e9bac4
+
+commit e15382c09c87a65eaeca9bda233bab503f1e5772
+Author: Siying Dong <siying.d@fb.com>
+Date:   Wed Apr 26 17:12:28 2017 -0700
+
+    Disable two flaky tests
+    
+    Summary: Closes https://github.com/facebook/rocksdb/pull/2217
+    
+    Differential Revision: D4959351
+    
+    Pulled By: siying
+    
+    fbshipit-source-id: ce7c3a430bae0d15e06b3d5c958ebce969d08564
+
+commit 88cc81df5c2dcf9eff5e52fb9eddb46d9afc9a18
+Author: Siying Dong <siying.d@fb.com>
+Date:   Mon Apr 3 11:24:39 2017 -0700
+
+    auto_roll_logger_test to move away from real sleep
+    
+    Summary:
+    auto_roll_logger_test relies on timing conditon that some operations finish within 1 seconds. This caused flaky tests. Move away from real timing and sleep and use fake time to verify the time-based rolling.
+    Closes https://github.com/facebook/rocksdb/pull/2066
+    
+    Differential Revision: D4810647
+    
+    Pulled By: siying
+    
+    fbshipit-source-id: c54d994
+
+commit 72202962f9c388436edcad8602232a3c81974d0b
+Author: Leonidas Galanis <lgalanis@fb.com>
+Date:   Tue Mar 7 11:06:53 2017 -0800
+
+    fix db_sst_test flakiness
+    
+    Summary:
+    db_sst_test had been flaky occasionally in the following way: reached_max_space_on_compaction can in very rare cases be 0. This happens when the limit on maximum allowable space set using SetMaxAllowedSpaceUsage is hit during flush for all test db sizes (1,2,4,8 and 10MB).The fix clears the error returned when the the space limit is reached during flush. This ensures that the compaction call back will always be called. The runtime is increased slightly because the 1MB loop writes more data and hits the limit during multiple flushes until compaction is scheduled.
+    Closes https://github.com/facebook/rocksdb/pull/1861
+    
+    Differential Revision: D4557396
+    
+    Pulled By: lgalanis
+    
+    fbshipit-source-id: ff778d1
+
+commit 3b8ba703cbdd04e6c4552923b6be9838ed56dbed
+Author: Siying Dong <siying.d@fb.com>
+Date:   Thu Feb 23 18:36:20 2017 -0800
+
+    Fix flaky DBTestUniversalCompaction.UniversalCompactionTrivialMoveTest2
+    
+    Summary:
+    A previous fix to DBTestUniversalCompaction.UniversalCompactionTrivialMoveTest2 didn't address the right problem. The problem is L0->L0 compaction is not trivial move in the scenario, not parallel compactions. Fix this.
+    Closes https://github.com/facebook/rocksdb/pull/1911
+    
+    Differential Revision: D4608955
+    
+    Pulled By: siying
+    
+    fbshipit-source-id: 7a712cb
+
+commit 48e4e842b79a0fe26ee9044830110f9a3484c20a
+Author: yiwu-arbug <yiwu@fb.com>
+Date:   Wed Oct 19 18:18:42 2016 -0700
+
+    Disable auto compactions in memory_test and re-enable the test (#1408)
+    
+    Summary: Auto-compactions will change memory usage of DB but memory_test
+    didn't take it into account. This PR disable auto compactions in the
+    test and hopefully it fixes its flakyness.
+    
+    Test Plan:
+    UBSAN build used to catch the flakyness. Run `make ubsan_check` and it
+    passes.
+
+commit 040328a30d1ae7f3df3b8e17877833d6ad8dab57
+Author: Yueh-Hsuan Chiang <yhchiang@fb.com>
+Date:   Thu Oct 13 14:26:57 2016 -0700
+
+    Remove an assertion for single-delete in MergeHelper::MergeUntil
+    
+    Summary:
+    Previously we have an assertion which triggers when we issue Merges
+    after a single delete.  However, merges after a single delete are
+    unrelated to that single delete.  Thus this behavior should be
+    allowed.
+    
+    This will address a flakyness of db_stress.
+    
+    Test Plan: db_stress
+    
+    Reviewers: IslamAbdelRahman, sdong
+    
+    Reviewed By: sdong
+    
+    Subscribers: andrewkr, dhruba, leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D64923
+
+commit 8cbe3e10cab26a242286c90d8f9e6eda9b98114c
+Author: Yueh-Hsuan Chiang <yhchiang@fb.com>
+Date:   Thu Oct 13 14:26:12 2016 -0700
+
+    Relax the acceptable bias RateLimiterTest::Rate test be 25%
+    
+    Summary:
+    In the current implementation of RateLimiter, the difference
+    between the configured rate and the actual rate might be more
+    than 20%, while our test only allows 15% difference.  This diff
+    relaxes the acceptable bias RateLimiterTest::Rate test be 25%
+    to make the test less flaky.
+    
+    Test Plan: rate_limiter_test
+    
+    Reviewers: IslamAbdelRahman, andrewkr, yiwu, lightmark, sdong
+    
+    Reviewed By: sdong
+    
+    Subscribers: andrewkr, dhruba, leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D64941
+
+commit 654ed9a28090a6f6533e8703c33d40122b8ba2e1
+Author: Aaron Gao <gzh@fb.com>
+Date:   Tue Sep 20 12:28:59 2016 -0700
+
+    loose the assertion condition of rate_limiter_test
+    
+    Summary: 0.9 can make the test flaky since just found one test fail with 0.88
+    
+    Test Plan: make all check
+    
+    Reviewers: sdong, andrewkr
+    
+    Reviewed By: andrewkr
+    
+    Subscribers: andrewkr, dhruba, leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D63939
+
+commit 2a9c97108e44f9075a0f8bc7355ca2ad6ad89533
+Author: Islam AbdelRahman <tec@fb.com>
+Date:   Wed Aug 24 15:32:01 2016 -0700
+
+    [Flaky Test] Disable DBPropertiesTest.GetProperty
+    
+    Summary: Disable flaky test
+    
+    Test Plan: run it
+    
+    Reviewers: yiwu, andrewkr, kradhakrishnan, yhchiang, lightmark, sdong
+    
+    Reviewed By: sdong
+    
+    Subscribers: andrewkr, dhruba
+    
+    Differential Revision: https://reviews.facebook.net/D62487
+
+commit c3a4bea5dcf851b0236c682bf2fa4eba85a7c125
+Author: omegaga <jhli@fb.com>
+Date:   Wed Aug 3 15:19:35 2016 -0700
+
+    Fix flaky test `ObsoleteFiles`
+    
+    Summary: The test `ObsoleteFiles` failed occasionally on slow device. This problem appears on Travis CI several times. The reason is that we did not wait until compaction jobs are finished in the test, while in slower device the background jobs take longer time to finish.
+    
+    Test Plan: Pass existing tests.
+    
+    Reviewers: yiwu, sdong
+    
+    Reviewed By: sdong
+    
+    Subscribers: andrewkr, dhruba, leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D61479
+
+commit ae0ad719de4869df4051d70b82088f376f9d39c5
+Author: Yi Wu <yiwu@fb.com>
+Date:   Mon Jul 25 15:09:34 2016 -0700
+
+    Fix flaky DBSSTTEST::DeleteObsoleteFilesPendingOutputs
+    
+    Summary: The test is flaky on Travis in osx environment. The background flush the test wanting to block can run behind the L2 manual compaction, making the test actually blocking the L2 compaction and won't able to proceed.
+    
+    Test Plan: Test run on travis
+    
+    Reviewers: kradhakrishnan, sdong, andrewkr, IslamAbdelRahman
+    
+    Reviewed By: IslamAbdelRahman
+    
+    Subscribers: andrewkr, dhruba, leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D61101
+
+commit 630b732cb32a832413e9f2f80847d33e8b420521
+Author: Aaron Gao <gzh@fb.com>
+Date:   Thu Jun 2 18:39:25 2016 -0700
+
+    fix flaky sim_cache_test
+    
+    Summary: fix flaky test
+    
+    Test Plan: `make all check`
+    
+    Reviewers: sdong, andrewkr
+    
+    Reviewed By: andrewkr
+    
+    Subscribers: andrewkr, dhruba, leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D59157
+
+commit 345fd73faf5f0dde31a9abc949a405bf96d7e035
+Author: sdong <siying.d@fb.com>
+Date:   Tue May 24 18:21:54 2016 -0700
+
+    Fix flaky DBTestDynamicLevel.DynamicLevelMaxBytesBase2
+    
+    Summary: We added more table properties for each SST file, so when using 2KB SST file size, the estimated size of SST files is off by almost half, causing the LSM tree structure not as expected. Fix it by making file size 4x as previously, as well as LSM base size. Also avoid the sleeping based synchronization and turn to use sync points.
+    
+    Test Plan: Run paralell unit tests multiple times and make sure they always pass.
+    
+    Reviewers: IslamAbdelRahman, kradhakrishnan
+    
+    Reviewed By: kradhakrishnan
+    
+    Subscribers: leveldb, andrewkr, dhruba
+    
+    Differential Revision: https://reviews.facebook.net/D58749
+
+commit 838676c17bb34430f6024156178d04adc4d7be65
+Author: Islam AbdelRahman <tec@fb.com>
+Date:   Fri Nov 6 16:49:38 2015 -0800
+
+    Revert "Adding new table properties"
+    
+    Summary:
+    Reverting https://reviews.facebook.net/D34269 for now
+    after I landed it a flaky test started continuously failing, I am almost sure this patch is not related to the test but I will revert it until I figure out why it's failing
+    
+    Test Plan: make check
+    
+    Reviewers: kradhakrishnan
+    
+    Subscribers: dhruba
+    
+    Differential Revision: https://reviews.facebook.net/D50385
+
+commit 241bb2aef3e592360cdd25ffaa26c3c19f90ed59
+Author: Yueh-Hsuan Chiang <yhchiang@fb.com>
+Date:   Tue Aug 4 15:47:05 2015 -0700
+
+    Make DBCompactionTest.SkipStatsUpdateTest more stable.
+    
+    Summary:
+    Make DBCompactionTest.SkipStatsUpdateTest more stable by
+    removing flaky but unnecessary assertion on the size of db
+    as simply checking the random file open count is suffice.
+    
+    Test Plan: db_compaction_test
+    
+    Reviewers: igor, anthony, IslamAbdelRahman, sdong
+    
+    Reviewed By: sdong
+    
+    Subscribers: dhruba, leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D43533
+
+commit d1f24dc7eef7c55984f66ebd32ce4ada08293b90
+Author: Igor Canadi <icanadi@fb.com>
+Date:   Wed Sep 10 19:14:17 2014 -0700
+
+    Relax FlushSchedule test
+    
+    Summary: The test makes sure that we don't call flush too often. For that, it's ok to check if we have less than 10 table files. Otherwise, the test is flaky because it's hard to estimate number of entries in the memtable before it gets flushed (any ideas?)
+    
+    Test Plan: Still works, but hopefully less flaky.
+    
+    Reviewers: ljin, sdong, yhchiang
+    
+    Reviewed by: yhchiang
+    
+    Subscribers: leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D23241

@@ -1,0 +1,61 @@
+commit ff7e12b66345f2b70d1c7657f72bd4c35518bd10
+Author: Mark McDuff <mcduff@fb.com>
+Date:   Mon Jun 1 14:57:10 2015 -0700
+
+    AsyncServerSocket: more tries for binding to a port
+    
+    Summary: User reports of intermittent failures at 5.  Setting up a server is expensive.  Binding to a socket is pretty cheap.  Why not 25 tries?  Why not 100?
+    
+    Test Plan: hope
+    
+    Reviewed By: alandau@fb.com
+    
+    Subscribers: folly-diffs@, yfeldblum, chalfant
+    
+    FB internal diff: D2116187
+    
+    Signature: t1:2116187:1433199889:09d6916eddf8521f120894ce361c3e1a96905c90
+
+commit d7562b8c3378fedc0434a89d5000438675b56d0a
+Author: Nicholas Ormrod <njormrod@fb.com>
+Date:   Fri Oct 11 15:33:07 2013 -0700
+
+    Migrating folly to gcc-4.7.1
+    
+    Summary:
+    folly/PLATFORM is the last fbcode platform on gcc-4.6.2.
+    
+    Before pushing, I ran arc unit from my devserver (see Test Plan).
+    Phabricator's test run has a lot of aborted test cases, which are
+    indicative of a failing test framework. Arc unit had been
+    intermittently broken when running my own tests. Overriding
+    Phabricator's unit test failures:
+    @override-unit-failures
+    
+    Test Plan:
+    (1) fbconfig -r folly/ -- build and runtsts in dbg and opt.
+    
+    Everything is passing.
+    
+    (2) arc unit, look at each failed result
+    
+    Some builds/tests are failing. Most seem unrelated. Of the rest, one is
+    also failing on master, and the others did not fail during a second run.
+    
+    Reviewed By: andrei.alexandrescu@fb.com
+    
+    FB internal diff: D1005889
+
+commit 827861961925702ee5e60b043f5d8f6686a3b64a
+Author: Tudor Bosman <tudorb@fb.com>
+Date:   Tue Jun 12 17:08:04 2012 -0700
+
+    Fix intermittent failure in concurrent_skip_list_test
+    
+    Summary: It creates too many threads, stop when we run out of resources.
+    
+    Test Plan: by hand, in a loop, in a memory-constrained environment
+    
+    Reviewed By: delong.j@fb.com
+    
+    FB internal diff: D493239

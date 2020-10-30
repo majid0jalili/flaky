@@ -1,0 +1,780 @@
+commit 671be54f25a3399dbd0a3eb456d931170c6f689c
+Merge: 6a510c1 9cd06f7
+Author: Pavel Yaskevich <xedin@apache.org>
+Date:   Wed Aug 12 00:08:44 2020 -0700
+
+    Merge pull request #33413 from xedin/rdar-66574239
+    
+    [TypeChecker] NFC: Clarify another flaky conformance diagnostic (only…
+
+commit 9cd06f7109e59e41835e4465ffd9c96baddf68ed
+Author: Pavel Yaskevich <pyaskevich@apple.com>
+Date:   Mon Aug 10 17:23:42 2020 -0700
+
+    [TypeChecker] NFC: Clarify another flaky conformance diagnostic (only on iOS 386 simulator)
+
+commit 9cdd622d2e586bbb12b9016634acb950653db991
+Merge: 91d3180 c49f0c4
+Author: Rintaro Ishizaki <rishizaki@apple.com>
+Date:   Fri Jul 31 19:27:10 2020 -0700
+
+    Merge pull request #33242 from xedin/xfail-flaky-diagnostic-5.3
+    
+    [5.3][TypeChecker] NFC: Clarify flaky diagnostic XFAIL
+
+commit c49f0c4947906e37638be957cc5046f3e1ddfa5a
+Author: Pavel Yaskevich <pyaskevich@apple.com>
+Date:   Sat Jun 27 11:36:48 2020 -0700
+
+    [TypeChecker] NFC: Clarify flaky diagnostic XFAIL
+    
+    Instead of XFAILing whole `test/Constraints/operator.swift`
+    let's adjust diagnostic responsible for flakiness.
+    
+    (cherry picked from commit 171502174613ec1709b2bd16b8e2f5ffa26996fd)
+
+commit 500929febd2333974fcdee2931fc70245acfa4bc
+Merge: 61cb9a5 0d2e4ce
+Author: Pavel Yaskevich <xedin@apache.org>
+Date:   Fri Jul 17 10:45:27 2020 -0700
+
+    Merge pull request #32933 from xedin/rdar-65688291
+    
+    [TypeChecker] NFC: Adjust flaky ambiguous operator diagnostic (rdar:/…
+
+commit 0d2e4ce76f3987ce3973e95aa44b5fc98980b3b4
+Author: Pavel Yaskevich <pyaskevich@apple.com>
+Date:   Thu Jul 16 14:43:56 2020 -0700
+
+    [TypeChecker] NFC: Adjust flaky ambiguous operator diagnostic (rdar://problem/65688291)
+
+commit 713c836a2a827e4df96b4a8db5434471810b5cf6
+Merge: 4ef82a8 1715021
+Author: Pavel Yaskevich <xedin@apache.org>
+Date:   Sat Jun 27 19:01:20 2020 -0700
+
+    Merge pull request #32587 from xedin/rdar-64844584
+    
+    [TypeChecker] NFC: Clarify flaky diagnostic XFAIL
+
+commit 171502174613ec1709b2bd16b8e2f5ffa26996fd
+Author: Pavel Yaskevich <pyaskevich@apple.com>
+Date:   Sat Jun 27 11:36:48 2020 -0700
+
+    [TypeChecker] NFC: Clarify flaky diagnostic XFAIL
+    
+    Instead of XFAILing whole `test/Constraints/operator.swift`
+    let's adjust diagnostic responsible for flakiness.
+
+commit 33693c6fc49108b0f51121568c106cc70e58c6c8
+Author: tbkka <tkientzle@apple.com>
+Date:   Tue Jun 16 14:59:18 2020 -0700
+
+    Disable flaky test (#32417)
+
+commit 542721bbf4cd779fc837b79749f1c81cd23b8550
+Author: Dan Zheng <danielzheng@google.com>
+Date:   Mon Jun 15 18:28:07 2020 -0700
+
+    [AutoDiff] Disable flaky tests on Linux. (#32394)
+    
+    Disable tests that occasionally flake on Linux.
+    
+    SR-13021 tracks re-enabling these tests.
+
+commit ffca352dafe1a17bd8a8f08e51817f24a8cc2b4d
+Author: Dan Zheng <danielzheng@google.com>
+Date:   Wed May 20 14:55:39 2020 -0700
+
+    [AutoDiff] Remove flaky SR-12650 negative test. (#31919)
+    
+    `@noDerivative` parameter mangling was added, so the test is not meaningful.
+    The test occasionally flaked during CI, so it is better to remove it.
+
+commit eac379620747014f3c2e7fee884641f7b54c9386
+Merge: 4f3f589 95d9824
+Author: Brent Royal-Gordon <brentdax@apple.com>
+Date:   Mon Mar 23 11:49:24 2020 -0700
+
+    Merge pull request #30575 from apple/unreliable-sources
+    
+    Handle flaky SourceKit/CursorInfo/use-swift-source-info.swift
+
+commit 95d98249ce239c34f496b05222c6de814b8e98c8
+Author: Brent Royal-Gordon <brentdax@apple.com>
+Date:   Sun Mar 22 18:04:04 2020 -0700
+
+    Handle flaky SourceKit/CursorInfo/use-swift-source-info.swift
+    
+    This test was XFAILed on master-next in https://github.com/apple/swift/pull/30330, but it is now passing again. Change the XFAIL to a failing REQUIRES instead.
+
+commit ae9ffc842ef1de1327b6ca40ab5e6c9c1ca1545a
+Author: Robert Widmann <devteam.codafi@gmail.com>
+Date:   Fri Mar 20 09:52:23 2020 -0700
+
+    Remove a flaky failure test
+    
+    The general instability of this test across multiple platforms indicates
+    there are either serious problems with our dependency tracking
+    infrastructure, or memory corruption problems in the verifier, or both.
+    
+    rdar://60689945
+
+commit 90150fe13b7c7c79205dccfdad169edd90fec2a1
+Author: Rintaro Ishizaki <rishizaki@apple.com>
+Date:   Wed Mar 4 15:12:50 2020 -0800
+
+    Disable a flaky test case
+    
+    rdar://problem/59977439
+
+commit 8b5a470155cfe605ac5957cee14031874f33a2bf
+Author: Robert Widmann <devteam.codafi@gmail.com>
+Date:   Wed Mar 4 10:39:48 2020 -0800
+
+    XFAIL a flaky test harder
+
+commit 491953a990e3e141a6076a90867251be87bdfea4
+Author: Robert Widmann <devteam.codafi@gmail.com>
+Date:   Wed Mar 4 09:24:57 2020 -0800
+
+    XFAIL a flaky test
+
+commit 0dd56a9e51e8ed2a89e120911ba2f160ff35c51f
+Merge: c1faaa5 cf1ee04
+Author: Rintaro Ishizaki <rishizaki@apple.com>
+Date:   Wed Mar 4 15:14:05 2020 -0800
+
+    Merge pull request #30216 from rintaro/disable-rdar59977439
+    
+    Disable a flaky test case
+
+commit cf1ee044efd90fc218c22a0174e83c985ec0e8e0
+Author: Rintaro Ishizaki <rishizaki@apple.com>
+Date:   Wed Mar 4 15:12:50 2020 -0800
+
+    Disable a flaky test case
+    
+    rdar://problem/59977439
+
+commit c70235e4d4dd2a344040e93b6826733bd31e8464
+Merge: 6b01603 24d86a7
+Author: Nathan Hawes <nhawes@apple.com>
+Date:   Wed Mar 4 10:44:09 2020 -0800
+
+    Merge pull request #30211 from CodaFi/fail-harder
+    
+    XFAIL a flaky test harder
+
+commit 24d86a7ca0b705d2f5262be5e02d07d17f3cc327
+Author: Robert Widmann <devteam.codafi@gmail.com>
+Date:   Wed Mar 4 10:39:48 2020 -0800
+
+    XFAIL a flaky test harder
+
+commit 6b016038bb7820de4758701bc37a2527196ce9dd
+Merge: f1fa041 7a3b24a
+Author: Mishal Shah <shahmishal@users.noreply.github.com>
+Date:   Wed Mar 4 09:54:29 2020 -0800
+
+    Merge pull request #30208 from CodaFi/failure-is-not-an-option
+    
+    XFAIL a flaky test
+
+commit 7a3b24a6ad95f0cce4027f333eee594f8b2ae39d
+Author: Robert Widmann <devteam.codafi@gmail.com>
+Date:   Wed Mar 4 09:24:57 2020 -0800
+
+    XFAIL a flaky test
+
+commit 8c2a0418225a0b9f7b1c03f4564e56f96c451152
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Tue Feb 25 11:11:31 2020 -0800
+
+    Front-end: add an option to not lock interface file when building module
+    
+    This could help fix a flaky test.
+    
+    Related to: rdar://58578342
+
+commit 70ec5bd5fc085875e2dc0012f682d2783489f68c
+Merge: 641e040 f69557a
+Author: Mishal Shah <shahmishal@users.noreply.github.com>
+Date:   Fri Feb 7 00:49:24 2020 -0500
+
+    Merge pull request #29696 from Rostepher/no-more-flaky-flake8-5.2
+    
+    [Python: flake8] Update the utils/python_lint.py script to fail with a non-zero exit code if flake8 and flake8-import-order are not installed (5.2 branch).
+
+commit 7ff9ba1220b9ecd94aa7ba67d0b3a466da61c738
+Merge: 4d64059 c096e29
+Author: Ross Bayer <Rostepher@users.noreply.github.com>
+Date:   Mon Feb 3 16:20:36 2020 -0800
+
+    Merge pull request #29613 from Rostepher/no-more-flaky-flake8
+    
+    [Python: flake8] Update the utils/python_lint.py script to fail with a non-zero exit code if flake8 and flake8-import-order are not installed.
+
+commit 50a04034190e3f5af717624564245ad8c4b55265
+Merge: 70cb3ca 29e9502
+Author: Brent Royal-Gordon <brentdax@apple.com>
+Date:   Thu Nov 7 17:48:59 2019 -0800
+
+    Merge pull request #28098 from brentdax/a-link-to-the-past-5.1
+    
+    [5.1] Fix flaky Driver tests
+
+commit 29e9502b4b8fb89d9553f8136d415a0a7e9c9100
+Author: Brent Royal-Gordon <brentdax@apple.com>
+Date:   Fri Oct 18 14:28:00 2019 -0700
+
+    Fix flaky Driver tests
+    
+    Several Driver tests create a hard link to the compiler in a temporary directory, then invoke it thorugh that hard link to see how it locates items in the resource directory. This pattern can tickle a system-load-dependent macOS bug involving invocations of freshly-created hard links, causing rare test failures in CI or on contributors’ machines.
+    
+    This change avoids the OS bug by always copying instead of hard linking. We already fall back to copying on Windows, so all tests should pass with a copy anyway. Removing this workaround will be tracked by rdar://problem/53507844.
+
+commit b3bd35bed77822837fe7c1c9f20488f7f210dbd6
+Merge: e67921f 214598d
+Author: Brent Royal-Gordon <brentdax@apple.com>
+Date:   Fri Oct 18 23:48:23 2019 -0700
+
+    Merge pull request #27780 from brentdax/a-link-to-the-past
+    
+    Fix flaky Driver tests
+
+commit 214598d268cb83d14b4938ffc764318010f5ca45
+Author: Brent Royal-Gordon <brentdax@apple.com>
+Date:   Fri Oct 18 14:28:00 2019 -0700
+
+    Fix flaky Driver tests
+    
+    Several Driver tests create a hard link to the compiler in a temporary directory, then invoke it thorugh that hard link to see how it locates items in the resource directory. This pattern can tickle a system-load-dependent macOS bug involving invocations of freshly-created hard links, causing rare test failures in CI or on contributors’ machines.
+    
+    This change avoids the OS bug by always copying instead of hard linking. We already fall back to copying on Windows, so all tests should pass with a copy anyway. Removing this workaround will be tracked by rdar://problem/53507844.
+
+commit df41662c782888f98d9ea2211bba10aa470f4f31
+Author: Robert Widmann <devteam.codafi@gmail.com>
+Date:   Fri Sep 6 09:41:54 2019 -0700
+
+    Update a flaky test
+    
+    As we continue to requestify more parts of the compiler, the CHECK lines
+    here will continue to change.
+
+commit 0f330b25b83d3c83ce993f535d4a83bb626aafa3
+Author: Julian Lettner <yln@users.noreply.github.com>
+Date:   Mon Jul 22 17:07:57 2019 -0700
+
+    Revert "Revert "[TSan] Re-enable potentially flaky test""
+
+commit cb971327b7611e7383aa94e4d86060bb79b3fbf0
+Merge: 9ee0a29 36e250e
+Author: Alexis Laferrière <alaferriere@apple.com>
+Date:   Mon Jul 1 11:13:56 2019 -0700
+
+    Merge pull request #25911 from apple/revert-25766-reenable-test-tsan-norace-deinit
+    
+    Revert "[TSan] Re-enable potentially flaky test"
+
+commit 36e250e663d5826dcff1fd6183d4cab437b46367
+Author: Alexis Laferrière <alexis.laf@xymus.net>
+Date:   Mon Jul 1 11:09:48 2019 -0700
+
+    Revert "[TSan] Re-enable potentially flaky test"
+
+commit ab6d34942328c865bb74fa135cc2a735d72b4a2b
+Author: Julian Lettner <jlettner@apple.com>
+Date:   Tue Jun 25 16:13:48 2019 -0700
+
+    [TSan] Re-enable potentially flaky test
+    
+    Cannot reproduce locally; capture FileCheck input (TSan report) on next
+    failure on bot.
+    
+    rdar://51804988
+
+commit cba7a556145758ae8d3cf4b199ce4ff528233d34
+Merge: 7c1ab33 e61bc4e
+Author: Ben Langmuir <blangmuir@apple.com>
+Date:   Thu Jun 13 18:33:00 2019 -0700
+
+    Merge pull request #25448 from apple/disable-tsan-libdispatch-test
+    
+    [TSan] Disable flaky test to unblock CI
+
+commit e61bc4ec7120fcf79437aa5f8d110d76db194824
+Author: Julian Lettner <jlettner@apple.com>
+Date:   Thu Jun 13 18:20:23 2019 -0700
+
+    [TSan] Disable flaky test to unblock CI
+    
+    rdar://51730427
+
+commit 7dab8739751063a248a35ddc1e40bcbafb594eb6
+Author: Gogul Balakrishnan <bgogul@google.com>
+Date:   Tue Jan 15 10:24:01 2019 -0800
+
+    Reduce flakyness in dynamic_attributes.swift test (#21809)
+
+commit 5ebdac76b05c7ce30a771fa2f0554f6bc114cfa6
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Wed Oct 31 13:19:55 2018 -0700
+
+    Revert "[test] disable a flaky test test/Driver/opt-remark.swift. rdar://42247881"
+
+commit 60b703cf118b8235ab280c8b66c815fd7d673302
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Wed Oct 31 13:14:42 2018 -0700
+
+    Revert " [test] Disable a flaky test test/Driver/sdk-link.swift. rdar://42247881"
+
+commit 89c2fa34e2adcb8d022e6885031e4e4355e766a6
+Merge: d8a336b 22639da
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Wed Oct 31 11:23:43 2018 -0700
+
+    Merge pull request #20187 from nkcsgexi/another-42247881
+    
+    [test] disable a flaky test test/Driver/opt-remark.swift. rdar://42247881
+
+commit 22639daa11839439d8f8e4812fc935cd3bf21eee
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Wed Oct 31 11:20:16 2018 -0700
+
+    [test] disable a flaky test test/Driver/opt-remark.swift. rdar://42247881
+
+commit d8a336b824be21d81ec5a271ca7d81b07d0b7956
+Merge: 09cb5e7 72edd55
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Wed Oct 31 11:12:15 2018 -0700
+
+    Merge pull request #20184 from nkcsgexi/42247881
+    
+     [test] Disable a flaky test test/Driver/sdk-link.swift. rdar://42247881
+
+commit 72edd55b7c9b214ce8ddd0439d36dba0d44ea66c
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Wed Oct 31 11:10:03 2018 -0700
+
+    [test] Disable a flaky test test/Driver/sdk-link.swift. rdar://42247881
+
+commit 88e9544adc2a2c2f1d98948f934755a5200af19d
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Fri Oct 26 11:26:52 2018 -0700
+
+    test: disable a flaky test api-digester/diagnostics.swift
+
+commit 00bbf1bde35afce1377e43d3168d788310c9cd4a
+Author: Karoy Lorentey <klorentey@apple.com>
+Date:   Fri Sep 21 20:07:55 2018 +0100
+
+    [test] Fix flaky test
+
+commit 19b946a003e013c52bca43a586e865352e060755
+Author: Graydon Hoare <ghoare@apple.com>
+Date:   Wed Sep 5 14:55:24 2018 -0700
+
+    <rdar://43955209> Attempt yet again to make overlong-argv test less flaky.
+    
+    The last attempted fix relied on the assumption that lit was emulating shell
+    glob-expansion semantics, which it turns out it does not: lit looks at any 'cd'
+    command on a RUN line and then applies the specified directory as an absolute
+    prefix when resolving any subsequent non-absolute globs on the command line.
+    I.e. it will interpret the second line of:
+    
+       RUN: touch /tmp/foo{1,2,3}.swift
+       RUN: cd /tmp && echo foo*.swift
+    
+    as
+    
+       RUN: cd /tmp && echo /tmp/foo1.swift /tmp/foo2.swift /tmp/foo3.swift
+    
+    whereas sh interprets it as (and I wrote the last attempt relying on):
+    
+       RUN: cd /tmp && echo foo1.swift foo2.swift foo3.swift
+    
+    This new attempt therefore bypasses lit entirely and just delegates to sh.
+    While it might not be the most tasteful choice, it does what we want and in the
+    process lets us use loops to construct our testcase.
+
+commit f72402a4ba803d647a5e88d42c382e866737b834
+Author: Richard Wei <rxwei@google.com>
+Date:   Sun Aug 19 22:49:48 2018 -0700
+
+    Fix flaky dataset test (#18837)
+
+commit b98667dc554f6da23330d4d06c779d94a4fead31
+Author: Vedant Kumar <vk@vedantk.com>
+Date:   Tue Aug 14 16:51:14 2018 -0700
+
+    [build-script] Disable the 'swiftpr' lldb test whitelist (#18714)
+    
+    This change makes the bots run all swift lldb tests during PR testing
+    instead of only running a whitelisted set of tests. This will increase
+    coverage of lldb during PR testing and catch breaking changes earlier.
+    
+    When this change lands, it's possible that flaky lldb tests may block
+    swift PRs from landing. We plan on filing bugs for these tests, skipping
+    them, and re-enabling them as soon as possible.
+    
+    rdar://42984532
+
+commit a2fb9991cee294a2f7aa1a8bf9354267270f3f7a
+Author: Graydon Hoare <ghoare@apple.com>
+Date:   Thu Aug 9 15:38:28 2018 -0700
+
+    <rdar://42816290> Attempt to make overlong-argv test less flaky.
+
+commit 11eaf7db6463b979041a76b60ca0491d5e68f5fb
+Author: Mark Lacey <mark.lacey@apple.com>
+Date:   Tue Aug 7 16:00:08 2018 -0700
+
+    Disable test that seems to be flaky at the moment.
+
+commit 69a2e9cb8ce01d187a0398d7be95e558170c53c1
+Merge: 616f067 77fa298
+Author: Karoy Lorentey <klorentey@apple.com>
+Date:   Mon Mar 19 21:08:46 2018 +0000
+
+    Merge pull request #15337 from lorentey/wordcount-is-flaky
+    
+    [benchmark] WordCount: Initialize global variables in setUpFunction.
+
+commit 8cf705424d2c3336ec1c7bbc0a068e9d649f070a
+Author: hongm <hongm@google.com>
+Date:   Thu Mar 8 21:51:11 2018 -0500
+
+    1. Fixed broken tests from upstream merge cl/188155766, due to different SIL code
+    generated to represent a constant string: unchecked_bitwise_cast was involved
+    before the merge, and value_to_bridge_object + builtin "stringObjectOr_Int64"
+    were involved after the merge.
+    
+    2. Removed flaky test runtime.swift.test.
+    
+    More details on #1 -- for Swift statement:
+      let y = x.convolved2D(withFilter: filter, strides: [1, 1, 1, 1],
+                            padding: .same)
+    
+    Before the merge, the generated SIL code relevant to padding is:
+    
+      %57 = string_literal utf8 "SAME"                // user: %58
+      %58 = builtin "ptrtoint_Word"(%57 : $Builtin.RawPointer) : $Builtin.Word // user: %59
+      %59 = builtin "zextOrBitCast_Word_Int64"(%58 : $Builtin.Word) : $Builtin.Int64 // user: %61
+      %60 = integer_literal $Builtin.Int64, 72057594037927935 // user: %61
+      %61 = builtin "and_Int64"(%59 : $Builtin.Int64, %60 : $Builtin.Int64) : $Builtin.Int64 // user: %63
+      %62 = integer_literal $Builtin.Int64, -9223372036854775808 // user: %63
+      %63 = builtin "or_Int64"(%61 : $Builtin.Int64, %62 : $Builtin.Int64) : $Builtin.Int64 // user: %64
+      %64 = struct $UInt (%63 : $Builtin.Int64)       // user: %65
+      %65 = unchecked_bitwise_cast %64 : $UInt to $Builtin.BridgeObject // users: %70, %66
+      %66 = struct $_StringObject (%65 : $Builtin.BridgeObject) // user: %68
+      %67 = struct $UInt (%1 : $Builtin.Int64)        // user: %68
+      %68 = struct $_StringGuts (%66 : $_StringObject, %67 : $UInt) // user: %69
+      %69 = struct $String (%68 : $_StringGuts)       // user: %72
+      strong_retain %65 : $Builtin.BridgeObject       // id: %70
+      strong_retain %23 : $TensorHandle<Float>        // id: %71
+      %72 = builtin "__tfop_Conv2D,$in,$in,strides,padding"(%23 : $TensorHandle<Float>, %41 : $TensorHandle<Float>, %48 : $Array<Int32>, %69 : $String) : $TensorHandle<Float> // user: %73
+    
+    Note %65 above.
+    
+    After the merge:
+    
+      %57 = string_literal utf8 "SAME"                // user: %58
+      %58 = builtin "ptrtoint_Word"(%57 : $Builtin.RawPointer) : $Builtin.Word // user: %59
+      %59 = builtin "zextOrBitCast_Word_Int64"(%58 : $Builtin.Word) : $Builtin.Int64 // user: %61
+      %60 = integer_literal $Builtin.Int64, 72057594037927935 // user: %61
+      %61 = builtin "and_Int64"(%59 : $Builtin.Int64, %60 : $Builtin.Int64) : $Builtin.Int64 // user: %63
+      %62 = integer_literal $Builtin.Int64, -9223372036854775808 // user: %63
+      %63 = builtin "stringObjectOr_Int64"(%61 : $Builtin.Int64, %62 : $Builtin.Int64) : $Builtin.Int64 // user: %64
+      %64 = struct $UInt (%63 : $Builtin.Int64)       // user: %65
+      %65 = value_to_bridge_object %64 : $UInt        // user: %66
+      %66 = struct $_StringObject (%65 : $Builtin.BridgeObject) // user: %68
+      %67 = struct $UInt (%1 : $Builtin.Int64)        // user: %68
+      %68 = struct $_StringGuts (%66 : $_StringObject, %67 : $UInt) // user: %69
+      %69 = struct $String (%68 : $_StringGuts)       // user: %71
+      strong_retain %23 : $TensorHandle<Float>        // id: %70
+      %71 = builtin "__tfop_Conv2D,$in,$in,strides,padding"(%23 : $TensorHandle<Float>, %41 : $TensorHandle<Float>, %48 : $Array<Int32>, %69 : $String) : $TensorHandle<Float> // user: %72
+    
+    Note %65 above.
+    
+    The fix is to add specific code on value_to_bridge_object and builtin "stringObjectOr_Int64" to unpeel and obtain the string const value. It feels brittle, and ideally there should be a higher level util method to get such const value from a "String struct", but I'm not aware of one.
+    
+    PiperOrigin-RevId: 188427015
+
+commit 11c780319c5162ced6add62b40f5383af061940f
+Author: mazare <mazare@google.com>
+Date:   Mon Feb 26 16:57:05 2018 -0500
+
+    Re-enable the flaky python test involving dictionaries.
+    
+    See b/73816403 for details. This should be fixed now that cl/186878097 has been released however
+    please feel free to deactivate it again should you notice any issue.
+    
+    PiperOrigin-RevId: 187075952
+
+commit fdfd363aad236011be139c5e2c83d480350d38e0
+Author: rxwei <rxwei@google.com>
+Date:   Fri Feb 23 13:33:49 2018 -0500
+
+    Disable the flaky python test that broke builds. This also includes a minor style cleanup.
+    
+    PiperOrigin-RevId: 186788910
+
+commit 871c9dac2a11bdf0a8ef167035399c95f47b060e
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Tue Feb 6 19:40:16 2018 -0800
+
+    SwiftSyntax: Teach SwiftSyntax to use SourceKitd to serialize syntax trees. (#14424)
+    
+    When using SwiftSyntax as a standalone tool, we invoke Swiftc
+    internally to get serialized syntax trees. This is not ideal for
+    several reasons: (1) we have to hard-code the relative path of swiftc
+    to invoke it; (2) we have to rely on standard input/output to pass the
+    tree across the process boundaries; and (3) we have to maintain two
+    different ways to get syntax tree (swiftc and sourcekitd).
+    
+    This patch attempts to teach SwiftSyntax to use SourceKitd to get the
+    tree just like other clients. We first add a SourceKitd client library
+    written in Swift; and next teach SwiftSyntax to adopt this SourceKitd
+    client-side library. For platforms other than MacOS, we still use Swiftc
+    to get syntax trees. This client library also allows us to add
+    SourceKitd tests in Swift.
+    
+    This patch also re-enables several flaky tests.
+
+commit e38355de40a2c356d9bb50a673363b754cfe434a
+Author: rxwei <rxwei@google.com>
+Date:   Wed Jan 24 14:44:56 2018 -0500
+
+    Fix currently broken tests by separating synchronous runtime tests from the async ones.
+    
+    Also refactored the runtime and runtime tests:
+    - Make mutex non-optional in the global context. Since _RuntimeConfig.usesSynchronousExecution is globally mutable, having a mutex lock in the context ensures defined behavior.
+    - Correctly set up the detach thread's cancellation point using pthread_testcancel. Althrough it did not fix the test that calls pthread_cancel, it ensures safety and defined behavior.
+    - Wrap the entire loadProgramInBytes(...) function in sync {...} closure because it reads/writes 'status', 'loadedPrograms', etc.
+    
+    Note:
+    - This fixed the single sync tanh test that is 3% flaky, but did not fix the one that calls pthread_cancel.
+    PiperOrigin-RevId: 183117672
+
+commit 1e2f127396e89ce79667ff35ca37363ee39dc1af
+Author: rxwei <rxwei@google.com>
+Date:   Wed Jan 24 02:22:47 2018 -0500
+
+    Revamp TensorProgram context handling. Introduce a global context 'ExecutionContext.global' that caches TF programs.
+    
+    Background:
+    In the previous design, a new context is created every time a TF program is executed, and it gets deleted when the TensorProgram ends. This design has many problems:
+    - Creating new contexts is very inefficient, because each context initializes all devices on creation. Using a global context is always preferred. (per discussion with apassos@)
+    - The same protobuf gets reloaded again and again.
+    - 'TensorHandle.makeHostCopy()' must pass the program execution context to TFE_TensorHandleCopyToDevice.
+    
+    Fix:
+    - Wrap CTFEContext in reference type ExecutionContext. Use a global context 'ExecutionContext.global' to lazily cache all loaded TF programs.
+    - To work around name lookup in the global context, the name of the entry function (used to be "the_function") is now the name of the SIL function. This is guaranteed to be unique because each partitioned tensor program function corresponds to at most 1 TF program. This name is passed as an extra argument of type UnsafePointer<Int8> to _TFCStartTensorProgram.
+    - Add mutex lock around mutations on context.
+    
+    Also:
+    - Refactor runtime.
+    - Rename TensorProgram to _TensorComputation to reflect that objects of this type represent a running computation, not a program.
+    - Rename _TFCRuntimeConfig to _RuntimeConfig for consistency with other types in the compiler runtime.
+    
+    Todo:
+    - Existing runtime tests are still using protobufs generated with the fixed entry name "the_function". This does not work in the global context because of name conflict. My workaround is to call 'ExecutionContext.global.reset()' in each test case before loading the protobuf. Regenerating these test protos is not a priority, so I'd prefer to get this patch merged first.
+    - pthread_cancel is 80% flaky with the global context. Revisit the concurrency design later.
+    PiperOrigin-RevId: 183044993
+
+commit 4aec94c4673063ceef2a98c7f17e95de16f294f3
+Merge: 995e9af 5dfbc57
+Author: Argyrios Kyrtzidis <akyrtzi@gmail.com>
+Date:   Tue Jan 23 20:46:33 2018 -0800
+
+    Merge pull request #14111 from akyrtzi/disable-flaky-tests-5.0
+    
+    [5.0]Disable two flaky tests
+
+commit f0e906c7d2c1f6bf67537226046d3811f97bfab8
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Tue Jan 23 16:40:45 2018 -0800
+
+    [test] Disable a flaky test: SwiftSyntax/ParserFile. rdar://36740859 (#14095)
+
+commit 33a5a2151de892dc83227a4c5bb2f0a5cd12ade6
+Author: Luke Larson <llarson@apple.com>
+Date:   Mon Jan 22 14:24:47 2018 -0800
+
+    Disable type_checker_perf/slow/rdar23620262.swift since its flaky
+
+commit bdbcb8071c5906bf6319dd59e440b1a00f6b7973
+Merge: ade26aa 79c8695
+Author: swift-ci <swift-ci@users.noreply.github.com>
+Date:   Fri Jan 12 12:24:59 2018 -0800
+
+    Merge pull request #13903 from benlangmuir/disable-flaky-tests
+
+commit a69c11978bfd2fba4dca3aa11167b456c35006a4
+Author: Arnold Schwaighofer <aschwaighofer@apple.com>
+Date:   Thu Nov 30 12:37:08 2017 -0800
+
+    Disable flaky type_checker_perf test on resilient bot
+    
+    rdar://35779008
+
+commit ced386aef389c9e84eb4d0c5fac2306b264082d7
+Author: Mark Lacey <mark.lacey@apple.com>
+Date:   Mon Aug 28 23:55:33 2017 -0700
+
+    Move a test that was a bit flaky into the slow tests.
+    
+    This failed once locally because it was relatively close to 1s for type
+    checking time, so make it a bit more complex so that it is almost
+    certain to fail with the current compiler compiled with
+    release/no-asserts.
+
+commit be96b3360bdeada655155b25fa2036801cd7d3f9
+Merge: 9f9c08b b7e2213
+Author: Arnold Schwaighofer <aschwaighofer@apple.com>
+Date:   Thu Apr 27 19:53:29 2017 -0700
+
+    Merge pull request #9055 from aschwaighofer/disable_flaky_testcharacterset_test_moreSetOperations
+    
+    Disable a failing test: TestCharacterSet.test_moreSetOperations
+
+commit c4705f8c4dcd2ac76e858f8f9f96544e7168f14f
+Merge: 17597f7 3fa712d
+Author: Slava Pestov <sviatoslav.pestov@gmail.com>
+Date:   Fri Apr 21 19:21:00 2017 -0700
+
+    Merge pull request #8922 from apple/revert-8915-disable-md-test
+    
+    Revert "disabled flaky test"
+
+commit 3fa712d4d1caac32fc2c62f7117a1746bf63b880
+Author: Slava Pestov <sviatoslav.pestov@gmail.com>
+Date:   Fri Apr 21 14:02:00 2017 -0700
+
+    Revert "disabled flaky test"
+
+commit 79e060b2a62eb6c30235f0ce0eef6b074d256f44
+Merge: c170e98 a99e380
+Author: eeckstein <eeckstein@apple.com>
+Date:   Fri Apr 21 10:06:43 2017 -0700
+
+    Merge pull request #8915 from eeckstein/disable-md-test
+    
+    disabled flaky test
+
+commit a99e380e8dbddeabc5a34fd3bfaa65f12ddc9b20
+Author: Erik Eckstein <eeckstein@apple.com>
+Date:   Fri Apr 21 10:05:10 2017 -0700
+
+    disabled flaky test
+
+commit 405b67f6d7fb028e126298c43eb0542285763e68
+Author: Erik Eckstein <eeckstein@apple.com>
+Date:   Fri Mar 10 16:09:39 2017 -0800
+
+    tests: temporarily disable a flaky test
+
+commit 4808fb210a8600b3815baa0239d283ac6e6e33e8
+Author: Anna Zaks <ganna@apple.com>
+Date:   Wed Feb 22 14:32:03 2017 -0800
+
+    [tsan] Make this test less flaky by introducing more races.
+
+commit 2b5e3b534a144ef6509aa56f2b8f8b753bd2aa72
+Merge: 655d517 4722c35
+Author: Kuba (Brecka) Mracek <mracek@apple.com>
+Date:   Wed Feb 15 08:53:17 2017 -0800
+
+    Merge pull request #7478 from kubamracek/fix-flaky-swift-tsan-test
+    
+    Fix flaky test/Sanitizers/tsan.swift test
+
+commit 4722c35b932f5de802e3264591dbc219d36893f1
+Author: Kuba Mracek <mracek@apple.com>
+Date:   Tue Feb 14 16:43:52 2017 -0800
+
+    Fix flaky test/Sanitizers/tsan.swift test.
+
+commit 7bee03a41014048746226c0a6ad8c1f1188eed5d
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Wed Dec 7 17:01:17 2016 -0800
+
+    [test] Disable flaky test: 28559-result-case-not-implemented.swift (#6131)
+
+commit 21927755aefe7a694c17fcacf240f58193b36cc1
+Author: Xi Ge <xi_ge@apple.com>
+Date:   Tue Dec 6 15:39:47 2016 -0800
+
+    [test] Disable flaky test: 28562-swift-typebase-getcanonicaltype.swift (#6111)
+
+commit a89a04acb30b4edbff502ec8d7eca507bcdca605
+Merge: 79e0646 b35d891
+Author: swift-ci <swift-ci@users.noreply.github.com>
+Date:   Wed Nov 2 11:38:41 2016 -0700
+
+    Merge pull request #5612 from benlangmuir/disable-flaky-crash
+
+commit c59b266f939bc3b3e034d889594f52ead1268264
+Author: Vedant Kumar <vsk@apple.com>
+Date:   Thu Mar 17 18:21:32 2016 -0700
+
+    Revert "[Coverage] Respect function linkage in PGO name variables"
+    
+    This reverts commit 45c7e4e861ed3b91a96989b8dc08780222715b55.
+    
+    The IR CHECK lines in coverage.swift are flaky.
+
+commit acba19a494b61a681a74e177324ecc651f2bd426
+Author: Adrian Prantl <aprantl@apple.com>
+Date:   Fri May 1 22:13:01 2015 +0000
+
+    Debug Info: Remove an early exit that prevented the swift frontend from
+    emitting indirect pieces — LLVM (ToT, 700) now supports this.
+    
+    Since this only happens in optimized code it is currently not feasible
+    to write a non-flaky testcase for this. I'll revisit this once our
+    SIL serialization efforts progressed further.
+    
+    <rdar://problem/19427586> Support indirect pieces
+    
+    Swift SVN r28051
+
+commit 720fc09402991b33c7a0a613a4278c44d62ac0e8
+Author: Andrew Trick <atrick@apple.com>
+Date:   Wed Jul 23 23:25:17 2014 +0000
+
+    ArrayOpts: handle local variable arrays, not just inout args.
+    
+    This improves RC4 at -Ofast by ~2.7x.
+    
+    It also makes microbenchmarks more robust. Without this, we were
+    seeing dramatic performance artifacts due to inlining differences.
+    
+    For example, if you remove the @inline attribute from Quicksort, this
+    will give us a 10x speedup.
+    
+    Here are the >5% differences:
+    
+    | benchmark     | base -O3 |  opt -O3 |  delta | speedup |
+    | RC4           |   746.00 |   686.00 |  60.00 |    8.7% |
+    | Histogram     |  1147.00 |  1086.00 |  61.00 |    5.6% |
+    | StringWalk    |  1334.00 |  1265.00 |  69.00 |    5.5% |
+    | SmallPT       |  1124.00 |  1069.00 |  55.00 |    5.1% |
+    
+    (I think the non-RC4 results might be bogus)
+    
+    | benchmark     |base-Ofast|opt -Ofast|   delta | speedup |
+    | RC4           |  1094.00 |   405.00 |  689.00 |  170.1% |
+    | EditDistance  |  1727.00 |  1396.00 |  331.00 |   23.7% |
+    | StringWalk    |  1043.00 |   937.00 |  106.00 |   11.3% |
+    | Dictionary    |   930.00 |  1009.00 |   79.00 |   -7.8% |
+    | Phonebook     |  2270.00 |  2131.00 |  139.00 |    6.5% |
+    | StringBuilder |  1842.00 |  1723.00 |  119.00 |    6.9% |
+    
+    RC4 is definitely real. It's always between 2.5-3x faster.
+    
+    The others are very flaky.
+    
+    Swift SVN r20445

@@ -1,0 +1,43 @@
+commit 56274d8b25e1a27410702b420d504f546244c667
+Author: Alon Zakai <azakai@google.com>
+Date:   Tue Feb 25 14:55:24 2020 -0800
+
+    Add debugging logic to browser.test_offset_converter (#10539)
+    
+    Helps #10232. I can't reproduce that intermittent failure locally,
+    so this PR adds some logging that should at least narrow down
+    what the cause could be. It's pretty minimal logging so seems
+    harmless to land and then when the failure happens we'll get
+    more info then.
+
+commit 5c56a3d661ad128421609967dabd1ad6570a29c5
+Author: Alon Zakai <azakai@google.com>
+Date:   Fri May 31 13:29:36 2019 -0700
+
+    Avoid spamming the console with DEMANGLE_SUPPORT suggestions (#8720)
+    
+    The suggestion to flip that option on is helpful, but it should not be emitted from a function that may not be writing to the console at all.
+    
+    Writing it to the output of that function is an option, but it may break stack trace parsing, so seems risky.
+    
+    Instead, I added more docs for this in the debugging section.
+    
+    This should fix an odd intermittent error on emscripten-releases ci on other.test_fflush-fs - the warning is printed to the console there, messing up the output. I'm not totally sure why it gets emitted there, but when I realized we shouldn't even be emitting this, I figured it's faster to just remove it.
+
+commit 7120562bb9335d605086c9b7aa8273926dcd4706
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Sat Sep 15 09:52:05 2018 -0700
+
+    skip browser.test_aniso on chrome, due to intermittent fails. see #7117 (#7122)
+
+commit 1d8b642b43f38571739e86f82d39df7965ea9984
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Tue Jul 16 15:09:18 2013 -0700
+
+    clean up global Building.* changes in test runner, fixes intermittent failure in other.test_static_link
+
+commit 7b7f8f4d66918d306654dd711ffb44d3137fa7bb
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Tue Jan 10 22:41:17 2012 -0800
+
+    option for NODE_JS_SAFE as a workaround for intermittent failures due to node issue 2476

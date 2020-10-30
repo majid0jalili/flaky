@@ -1,0 +1,37 @@
+commit 25c557248cab19f9761bbeb5a8ba110318d79d85
+Author: topjohnwu <topjohnwu@gmail.com>
+Date:   Mon Nov 4 14:32:28 2019 -0500
+
+    Use ContentProvider call method for communication
+    
+    Previously, we use either BroadcastReceivers or Activities to receive
+    messages from our native daemon, but both have their own downsides.
+    Some OEMs blocks broadcasts if the app is not running in the background,
+    regardless of who the caller is. Activities on the other hand, despite
+    working 100% of the time, will steal the focus of the current foreground
+    app, even though we are just doing some logging and showing a toast.
+    In addition, since stubs for hiding Magisk Manager is introduced, our
+    only communication method is left with the broadcast option, as
+    only broadcasting allows targeting a specific package name, not a
+    component name (which will be obfuscated in the case of stubs).
+    
+    To make sure root requests will work on all devices, Magisk had to do
+    some experiments every boot to test whether broadcast is deliverable or
+    not. This makes the whole thing even more complicated then ever.
+    
+    So lets take a look at another kind of component in Android apps:
+    ContentProviders. It is a vital part of Android's ecosystem, and as far
+    as I know no OEMs will block requests to ContentProviders (or else
+    tons of functionality will break catastrophically). Starting at API 11,
+    the system supports calling a specific method in ContentProviders,
+    optionally sending extra data along with the method call. This is
+    perfect for the native daemon to start a communication with Magisk
+    Manager. Another cool thing is that we no longer need to know the
+    component name of the reciever, as ContentProviders identify themselves
+    with an "authority" name, which in Magisk Manager's case is tied to the
+    package name. We already have a mechanism to keep track of our current
+    manager package name, so this works out of the box.
+    
+    So yay! No more flaky broadcast tests, no more stupid OEMs blocking
+    broadcasts for some bizzare reasons. This method should in theory
+    work on almost all devices and situations.

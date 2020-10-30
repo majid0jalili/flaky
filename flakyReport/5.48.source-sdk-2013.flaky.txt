@@ -1,5 +1,0 @@
-commit 39ed87570bdb2f86969d4be821c94b722dc71179
-Author: Joe Ludwig <joe@valvesoftware.com>
-Date:   Wed Jun 26 15:22:04 2013 -0700
-
-    First version of the SOurce SDK 2013

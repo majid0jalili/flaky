@@ -1,0 +1,20 @@
+commit 2a3d6f14861f84ced6fab7e061fc8dd82d667ede
+Author: Jiangtao Hu <boris.hu@gmail.com>
+Date:   Thu Jul 6 13:00:02 2017 -0700
+
+    Workaround for chfn pam system error intermittently in docker.
+    Fix #56
+
+commit 73741d8ac6ea0210b32c9dec083da76cc271e66e
+Author: Jiangtao Hu <boris.hu@gmail.com>
+Date:   Thu Jul 6 13:00:02 2017 -0700
+
+    Workaround for chfn pam system error intermittently in docker.
+    Fix #56
+
+commit 0fc7de6b0dfbc98f6346b8daefd1446cd489141a
+Author: Jiangtao Hu <boris.hu@gmail.com>
+Date:   Thu Jul 6 13:00:02 2017 -0700
+
+    Workaround for chfn pam system error intermittently in docker.
+    Fix #56

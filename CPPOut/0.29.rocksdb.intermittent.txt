@@ -1,0 +1,249 @@
+commit a1b54848110ae9d85df05e27afe470ff0f369196
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Fri Aug 21 08:14:54 2020 -0700
+
+    Work around a backup bug with DB custom checksums (#7294)
+    
+    Summary:
+    On a read-write DB configured with
+    DBOptions::file_checksum_gen_factory, BackupEngine::CreateNewBackup can
+    fail intermittently, with non-OK status. This is due to a race between
+    GetLiveFiles and GetLiveFilesChecksumInfo in creating backups.
+    
+    For patching 6.12 release (as this commit is intended for, except this is a
+    forward-merged version), we can simply treat files for which we falsely failed
+    to get checksum info as legacy files lacking checksum info.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7294
+    
+    Test Plan: unit test reproducer included
+    
+    Reviewed By: ajkr
+    
+    Differential Revision: D23253489
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: 9e4945dad120b776ad3e753be10b962f61f28e14
+
+commit 25bddfa63227aa24d0ce6c80347c7a984920ae81
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Thu Aug 20 14:02:35 2020 -0700
+
+    Work around a backup bug with DB custom checksums
+    
+    Summary: On a read-write DB configured with
+    DBOptions::file_checksum_gen_factory, BackupEngine::CreateNewBackup can
+    fail intermittently, with non-OK status. This is due to a race between
+    GetLiveFiles and GetLiveFilesChecksumInfo in creating backups.
+    
+    For patching 6.12 release (as this commit is intended for), we can simply
+    treat files for which we falsely failed to get checksum info as legacy
+    files lacking checksum info.
+    
+    Test Plan: unit test reproducer included
+
+commit 7d0ecab570742c7280628b08ddc03cfd692f484f
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Mon Aug 17 22:06:02 2020 -0700
+
+    Fix some flaky tests in BackupableDBTest with intentional flushing (#7273)
+    
+    Summary:
+    Some tests like BackupableDBTest.FileCollision and
+    ShareTableFilesWithChecksumsNewNaming are intermittently failing,
+    probably due to unpredictable flushing with FillDB. This change
+    should fix the failures seen and help to prevent similar flakiness in
+    future tests in the file.
+    
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7273
+    
+    Test Plan: make check, and with valgrind
+    
+    Reviewed By: siying
+    
+    Differential Revision: D23176947
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: 654b73a64db475f2b9b065ed53a889a8b9083c59
+
+commit 4584a99a3cfef05bdcf8e3be5a903fc0881b4769
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Thu May 7 15:39:49 2020 -0700
+
+    Fix false NotFound from batched MultiGet with kHashSearch (#6821)
+    
+    Summary:
+    The error is assigning KeyContext::s to NotFound status in a
+    table reader for a "not found in this table" case, which skips searching
+    in later tables, like only a delete should. (The hash search index iterator
+    is the only one that can return status NotFound even if Valid() == false.)
+    
+    This was detected by intermittent failure in
+    MultiThreadedDBTest.MultiThreaded/5, a kHashSearch configuration.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/6821
+    
+    Test Plan: modified existing unit test to reproduce problem
+    
+    Reviewed By: anand1976
+    
+    Differential Revision: D21450469
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: 7478003684d637dbd491cdac81468041a791be2c
+
+commit 442bd69222ebc7bc5d5064eb36b9f64069d63700
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Thu May 7 15:39:49 2020 -0700
+
+    Fix false NotFound from batched MultiGet with kHashSearch (#6821)
+    
+    Summary:
+    The error is assigning KeyContext::s to NotFound status in a
+    table reader for a "not found in this table" case, which skips searching
+    in later tables, like only a delete should. (The hash search index iterator
+    is the only one that can return status NotFound even if Valid() == false.)
+    
+    This was detected by intermittent failure in
+    MultiThreadedDBTest.MultiThreaded/5, a kHashSearch configuration.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/6821
+    
+    Test Plan: modified existing unit test to reproduce problem
+    
+    Reviewed By: anand1976
+    
+    Differential Revision: D21450469
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: 7478003684d637dbd491cdac81468041a791be2c
+
+commit b27a1448b6370784e91b17bb3d07fb2afe07a098
+Author: Peter Dillinger <peterd@fb.com>
+Date:   Thu May 7 15:39:49 2020 -0700
+
+    Fix false NotFound from batched MultiGet with kHashSearch (#6821)
+    
+    Summary:
+    The error is assigning KeyContext::s to NotFound status in a
+    table reader for a "not found in this table" case, which skips searching
+    in later tables, like only a delete should. (The hash search index iterator
+    is the only one that can return status NotFound even if Valid() == false.)
+    
+    This was detected by intermittent failure in
+    MultiThreadedDBTest.MultiThreaded/5, a kHashSearch configuration.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/6821
+    
+    Test Plan: modified existing unit test to reproduce problem
+    
+    Reviewed By: anand1976
+    
+    Differential Revision: D21450469
+    
+    Pulled By: pdillinger
+    
+    fbshipit-source-id: 7478003684d637dbd491cdac81468041a791be2c
+
+commit 7330ec0ff18451c731f46c8b8e414864f80732d5
+Author: anand76 <anand76@devvm1373.frc2.facebook.com>
+Date:   Mon Feb 3 18:15:12 2020 -0800
+
+    Fix a test failure in error_handler_test (#6367)
+    
+    Summary:
+    Fix an intermittent failure in
+    DBErrorHandlingTest.CompactionManifestWriteError due to a race between
+    background error recovery and the main test thread calling
+    TEST_WaitForCompact().
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/6367
+    
+    Test Plan: Run the test using gtest_parallel
+    
+    Differential Revision: D19713802
+    
+    Pulled By: anand1976
+    
+    fbshipit-source-id: 29e35dc26e0984fe8334c083e059f4fa1f335d68
+
+commit c88c57cde10a820b21d9fab0ca3f059da3852057
+Author: Zhongyi Xie <xiez@fb.com>
+Date:   Thu Feb 15 14:11:08 2018 -0800
+
+    Tweak external file ingestion seqno logic under universal compaction
+    
+    Summary:
+    Right now it is possible that a file gets assigned to L0 but also assigned the seqno from a higher level which it doesn't fit
+    Under the current impl, it is possibe that seqno in lower levels (Ln) can be equal to smallest seqno of higher levels (Ln-1), which is undesirable from universal compaction's point of view.
+    This should fix the intermittent failure of `ExternalSSTFileBasicTest.IngestFileWithGlobalSeqnoPickedSeqno`
+    Closes https://github.com/facebook/rocksdb/pull/3411
+    
+    Differential Revision: D6813802
+    
+    Pulled By: miasantreble
+    
+    fbshipit-source-id: 693d0462fa94725ccfb9d8858743e6d2d9992d14
+
+commit 5fcd1ba30a2432a0d1241f4f8d52a97b362ec31f
+Author: Nathan Bronson <ngbronson@fb.com>
+Date:   Tue Feb 2 18:19:07 2016 -0800
+
+    disable kConcurrentSkipList multithreaded test
+    
+    Summary: Disable test that is intermittently failing
+    
+    Test Plan: unit tests
+    
+    Reviewers: igor, andrewkr, sdong
+    
+    Reviewed By: sdong
+    
+    Subscribers: dhruba
+    
+    Differential Revision: https://reviews.facebook.net/D53715
+
+commit b7ecf3d214a5c4f36aeb9824cd278844bf55c692
+Author: Venkatesh Radhakrishnan <rven@fb.com>
+Date:   Tue Jan 26 09:12:20 2016 -0800
+
+    Fix intermittent hang in ColumnFamilyTest.FlushAndDropRaceCondition
+    
+    Summary:
+    ColumnFamilyTest.FlushAndDropRaceCondition sometimes
+    hangs because the sync point, "FlushJob::InstallResults", sleeps
+    holding the DB mutex. Fixing it by releasing the mutex before sleeping.
+    
+    Test Plan:
+    seq 1000 |parallel --gnu --eta 't=/dev/shm/rdb-{}; rm -rf $t;
+    mkdir $t && export TEST_TMPDIR=$t; ./column_family_test
+    -gtest_filter=*FlushAndDropRaceCondition* > $t/log-{}'
+    
+    Reviewers: IslamAbdelRahman, anthony, kradhakrishnan, yhchiang, sdong
+    
+    Reviewed By: sdong
+    
+    Subscribers: dhruba, leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D53349
+
+commit af732c7ba88c14f242506b015bbd2ed95af19e79
+Author: Xing Jin <xjin@fb.com>
+Date:   Tue Aug 20 17:37:49 2013 -0700
+
+    Add universal compaction to db_stress nightly build
+    
+    Summary:
+    Most code change in this diff is code cleanup/rewrite. The logic changes include:
+    
+    (1) add universal compaction to db_crashtest2.py
+    (2) randomly set --test_batches_snapshots to be 0 or 1 in db_crashtest2.py. Old codes always use 1.
+    (3) use different tmp directory as db directory in different runs. I saw some intermittent errors in my local tests. Use of different tmp directory seems to be able to solve the issue.
+    
+    Test Plan: Have run "make crashtest" for multiple times. Also run "make all check"
+    
+    Reviewers: emayanke, dhruba, haobo
+    
+    Reviewed By: emayanke
+    
+    Differential Revision: https://reviews.facebook.net/D12369

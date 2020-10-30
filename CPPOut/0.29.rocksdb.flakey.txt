@@ -1,0 +1,132 @@
+commit dea4063b132c4a566bcf8bd5caca8bc962dfdbe4
+Author: sdong <siying.d@fb.com>
+Date:   Fri Jun 19 16:57:14 2020 -0700
+
+    Remove an assertion in FlushAfterIntraL0CompactionCheckConsistencyFail (#7003)
+    
+    Summary:
+    FlushAfterIntraL0CompactionCheckConsistencyFail is flakey. It sometimes fails with:
+    
+    db/db_compaction_test.cc:5186: Failure
+    Expected equality of these values:
+      10
+      NumTableFilesAtLevel(0)
+        Which is: 3
+    
+    I don't see a clear reason why the assertion would always be true. The necessarily of the assertion is not clear either. Remove it.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/7003
+    
+    Test Plan: See the test still builds.
+    
+    Reviewed By: riversand963
+    
+    Differential Revision: D22129753
+    
+    fbshipit-source-id: 42f0bb05e32b369e8d726bfd3e35c29cf52fe008
+
+commit e4feb7860678e5c024b067c5309a4687f055973a
+Author: Siying Dong <siying.d@fb.com>
+Date:   Thu Jan 3 10:54:09 2019 -0800
+
+    Try to fix DBSSTTest.RateLimitedDelete flakiness (#4840)
+    
+    Summary:
+    DBSSTTest.RateLimitedDelete is flakey. The root cause is not completely identified, but
+    the compaction waiting in the test doesn't strictly wait for compaction cleaning to finish, which
+    may cause test flakiness. Fix it first and see whether the failures still happen.
+    Pull Request resolved: https://github.com/facebook/rocksdb/pull/4840
+    
+    Differential Revision: D13567273
+    
+    Pulled By: siying
+    
+    fbshipit-source-id: 6fce38b912aff92a925231e7aa9bb0fef892761a
+
+commit f725e4fe1f84abd4ecb0ddf8e4eeddad2e1378ba
+Author: Igor Canadi <icanadi@fb.com>
+Date:   Tue May 20 17:09:38 2014 -0700
+
+    Make RateLimiting unit test less flakey
+
+commit 3b5fa6bd9bc2cdef7535901c73c759fa18092522
+Author: Igor Canadi <icanadi@fb.com>
+Date:   Fri May 2 07:13:51 2014 -0700
+
+    Improve ttl_test
+    
+    Summary:
+    Our valgrind tests are failing because ttl_test is kind of flakey. This diff should fix valgrind issue and make ttl_test less flakey and much faster.
+    
+    Instead of relying on Env::Default() for getting current time, I expose `Env*` to all TTL functions that are interested in time. That way, I can insert a custom test Env which is then used to provide exactly the times we need. That way, we don't need to sleep anymore -- we control the time.
+    
+    Test Plan: ttl_test in normal and valgrind run
+    
+    Reviewers: dhruba, haobo, sdong, yhchiang
+    
+    Reviewed By: haobo
+    
+    CC: leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D18399
+
+commit 478990c81be2634ba313f577296687c6f9f4822c
+Author: Igor Canadi <icanadi@fb.com>
+Date:   Thu Apr 24 11:13:28 2014 -0700
+
+    Make CompactionInputErrorParanoid less flakey
+    
+    Summary:
+    I'm getting lots of e-mails with CompactionInputErrorParanoid failing. Most recent example early morning today was: http://ci-builds.fb.com/job/rocksdb_valgrind/562/consoleFull
+    
+    I'm putting a stop to these e-mails. I investigated why the test is flakey and it turns out it's because of non-determinsim of compaction scheduling. If there is a compaction after the last flush, CorruptFile will corrupt the compacted file instead of file at level 0 (as it assumes). That makes `Check(9, 9)` fail big time.
+    
+    I also saw some errors with table file getting outputed to >= 1 levels instead of 0. Also fixed that.
+    
+    Test Plan: Ran corruption_test 100 times without a failure. Previously it usually failed at 10th occurrence.
+    
+    Reviewers: dhruba, haobo, ljin
+    
+    Reviewed By: ljin
+    
+    CC: leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D18285
+
+commit 731e55c01cae9d9b7f97dfabaac65c9605b30699
+Author: Igor Canadi <icanadi@fb.com>
+Date:   Tue Apr 8 14:57:00 2014 -0700
+
+    Fix GetProperty() test
+    
+    Summary:
+    GetProperty test is flakey.
+    Before this diff: P8635927
+    After: P8635945
+    
+    We need to make sure the thread is done before we destruct sleeping tasks. Otherwise, bad things happen.
+    
+    Test Plan: See summary
+    
+    Reviewers: ljin, sdong, haobo, dhruba
+    
+    Reviewed By: ljin
+    
+    CC: leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D17595
+
+commit 3c815464224f00f3f2f426382ea9ebbc9c957329
+Author: Igor Canadi <icanadi@fb.com>
+Date:   Wed Feb 26 14:41:18 2014 -0800
+
+    [CF] Make LogDeletionTest less flakey
+    
+    Summary: Retry GetSortedWalFiles() and also wait 20ms before counting number of log files. WaitForFlush() doesn't necessarily wait for logs to be deleted, since logs are deleted outside of the mutex.
+    
+    Test Plan: column_family_test
+    
+    Reviewers: dhruba, haobo
+    
+    CC: leveldb
+    
+    Differential Revision: https://reviews.facebook.net/D16371

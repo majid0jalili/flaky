@@ -1,5 +1,0 @@
-commit 6f783835d49377cd1e0b7864a582169aa69cb86f
-Author: Christopher Kohlhoff <chris@kohlhoff.com>
-Date:   Tue Feb 8 13:06:20 2011 +1100
-
-    Merge from asio-1-4-branch as of asio-1-4-7.

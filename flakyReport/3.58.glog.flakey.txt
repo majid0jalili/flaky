@@ -1,8 +1,0 @@
-commit b8b4db46fecab6c6c4aa9407f181133e352d3e49
-Author:  <shinichiro.hamaji@gmail.com>
-Date:   Tue Oct 7 05:43:05 2008 +0000
-
-    glog 0.1
-    
-    
-    git-svn-id: https://google-glog.googlecode.com/svn/trunk@2 eb4d4688-79bd-11dd-afb4-1d65580434c0

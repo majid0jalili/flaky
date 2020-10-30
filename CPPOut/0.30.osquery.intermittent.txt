@@ -1,0 +1,10 @@
+commit 8909602a402d6e01a293f9651e4ce241809a193f
+Author: Zachary Wasserman <zachwass2000@gmail.com>
+Date:   Wed Jul 6 14:59:24 2016 -0700
+
+    Increase block period in flaky BufferedForwarder test (#2222)
+    
+    This test was intermittently failing because it relies on the actual thread
+    scheduling. Our discussion in issue #2218 decided that it was worth keeping the
+    test around, while trying to mitigate the flakiness. The longer sleeps in this
+    test ran successfully hundreds of times in local testing.

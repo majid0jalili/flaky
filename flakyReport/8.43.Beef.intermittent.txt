@@ -1,5 +1,0 @@
-commit 078564ac9e37201f38be22d1af83b59f8090ac34
-Author: Brian Fiete <bfiete@gmail.com>
-Date:   Fri Aug 23 11:56:54 2019 -0700
-
-    Initial checkin

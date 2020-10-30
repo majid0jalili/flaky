@@ -1,5 +1,0 @@
-commit 76843b4208bc018b6891e8f78a18d7f7213b7db7
-Author: Jay Sistar <jaysistar@yahoo.com>
-Date:   Thu Oct 8 22:34:20 2015 -0400
-
-    Adding AUTHORS and LICENCE updates along with ASIO and WebSocketPP.

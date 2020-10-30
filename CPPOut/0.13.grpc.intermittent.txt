@@ -1,0 +1,39 @@
+commit ed6ea2cf7d7edc29bef7f3e48dcf058fe1090490
+Merge: 6eb888b bc3d6d2
+Author: Yang Gao <yangg@google.com>
+Date:   Thu Nov 8 15:57:48 2018 -0800
+
+    Merge pull request #17151 from arjunroy/grpc_memleak_fix
+    
+    Fixed intermittent CPP sync server shutdown leak.
+
+commit 843c8d9e75acca671090df8d7f95d4eb973c88ff
+Author: Arjun Roy <arjunroy@google.com>
+Date:   Wed Nov 7 17:39:07 2018 -0800
+
+    Fixed intermittent CPP sync server shutdown leak.
+    
+    Specifically: if a request handling thread is in flight but scheduled
+    out when shutdown is called on the server, but it has already passed
+    the shutdown check, then when it resumes it will add a grpc_call to
+    the completion queue that is leaked. We fix this by explicitly freeing
+    such calls after all worker threads have shutdown.
+    
+    To manifest the leak, run the end2end::ClientCancelsRequestStream
+    test repeatedly on the unpatched server implementation. About 0.5% of
+    the time, the leak will manifest.
+
+commit bfb4e06e3c209907e9e4e15f915b4a3cd318f42c
+Author: Yuchen Zeng <zyc@google.com>
+Date:   Wed Aug 23 23:34:32 2017 -0700
+
+    Check connectivity intermittently
+
+commit e60c5e38106e85363ea0c6bba242e26f76681883
+Author: Christian Blichmann <cblichmann@google.com>
+Date:   Tue Aug 4 13:16:48 2015 +0200
+
+    Use an unsigned pointer compare, as the highest bit may sometimes be set.
+    
+    This fixes intermittent connection issues on 32-bit Linux. Also related
+    to issues #2557 and #2600.

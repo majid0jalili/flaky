@@ -1,0 +1,66 @@
+commit 670b2ebb927f68b6468326a54cf34be94d1ca31a
+Author: Yifan Yang <stedyyf@gmail.com>
+Date:   Fri Aug 28 14:17:51 2020 -0400
+
+    azure: rerun the flaky tests automatically (#12655)
+    
+    Added the build flag to enable rerunning the failed flaky tests as brought up by #12358. This is separated from the additional logic to post-process the test output to prevent rollbacks and improve quality of life of envoy devs.
+    Deflaker posts messages on Slack channel for flakey tests.
+    
+    Signed-off-by: Yifan Yang <needyyang@google.com>
+
+commit bfc458414b49eb0e17f24a0fd1ce51c4e1b228c6
+Author: Stephan Zuercher <zuercher@gmail.com>
+Date:   Mon Nov 25 13:47:22 2019 -0800
+
+    test: fix flakey listener_impl_test (#9132)
+    
+    The DisableAndEnableListener test creates a real listener and client
+    connection to test listener enable/disable functionality. Prior to
+    was not accepted by a disabled listener within 2 seconds. After #7165,
+    the timer and sleep execute against an `Event::SimulatedTimeSystem`
+    (e.g. the sleep call increments simulated time and the timer fires
+    almost immediately). The timer event closes the client connection. If
+    that occurs before the listener has a pending connection, the
+    subsequent `listener.enable()` call does not trigger
+    `listener.onAccept` and the test times out. This seems to happen
+    primarily on macOS, though in principal the race exists on Linux as
+    well. However, it may be that in practice localhost connections in
+    Linux are rarely or never deferred.
+    
+    Risk Level: low
+    Testing: 1000x iterations
+    Doc Changes: n/a
+    Release Notes: n/a
+    
+    Signed-off-by: Stephan Zuercher <zuercher@gmail.com>
+
+commit 5180b242814e57670549a4c2edc7cdd818ba9b4b
+Author: htuch <htuch@users.noreply.github.com>
+Date:   Tue May 8 16:54:46 2018 -0700
+
+    fuzz: remove test/server/server_corpus/oom-550f56d376b3a23320724b98c79905f7c73e4e55. (#3319)
+    
+    This was hanging the CI in a flakey way. Seems dangerous to be reading
+    runtime from / even with the various safeguards (recursion depth, /dev
+    exclusion) that we've added. We can probably skip this one for now, if
+    it shows up in ClusterFuzz again, we can figure out something more
+    robust as a regression.
+    
+    Signed-off-by: Harvey Tuch <htuch@google.com>
+
+commit 11440c98673cb3c03124b23691142f64c10f546f
+Author: Stephan Zuercher <zuercher@gmail.com>
+Date:   Fri Aug 25 13:35:48 2017 -0700
+
+    test/common/network: fix flakey test on Mac OS (#1551)
+
+commit a2a47b2e8072126b0f1d4128eca13759d9ae2155
+Author: htuch <htuch@users.noreply.github.com>
+Date:   Thu Aug 3 16:41:56 2017 -0400
+
+    test: fix integration test flake. (#1389)
+    
+    testEquivalent() was comparing two responses, both of which had a date: header with real time at
+    second granularity. When this straddled a second boundary, the test would fail, resulting in flakey
+    tests.

@@ -1,0 +1,160 @@
+commit 162c4c78dd20f5989f71855b0257bdfa7db94f95
+Author: Brian Gesiak <modocache@gmail.com>
+Date:   Thu Oct 19 17:21:02 2017 -0700
+
+    [Driver] Fix linker test by preparing empty dir
+    
+    This fixes an intermittent failure introduced by
+    https://github.com/apple/swift/pull/12507.
+
+commit 34cda6a520c36db6f91f91a83535eabedc17dc1d
+Author: Greg Parker <gparker@apple.com>
+Date:   Tue Mar 14 16:55:27 2017 -0700
+
+    [test] Be more verbose about errors in test Interpreter/SDK/libc.swift.
+    
+    We're trying to track down an intermittent failure.
+    
+    rdar://26960623
+
+commit 3f0d14b6f7104afcffa2abf1ba0f6c89a5f0e286
+Author: Doug Gregor <dgregor@apple.com>
+Date:   Thu Feb 9 16:22:34 2017 -0800
+
+    [Archetype builder] Improve crash diagnostics for nondeterministic failure.
+    
+    The assertion
+    
+      "Potential archetype mapping differs from representative!"
+    
+    keeps popping up intermittently but has been frustratingly hard to
+    reproduce. When we do catch it (as CI seems to do often "enough"),
+    dump all of the relevant information to aid in debugging.
+
+commit 09578ca9b0630f7d65cf803785639e246b0acfda
+Author: Greg Parker <gparker@apple.com>
+Date:   Mon Dec 5 02:10:20 2016 -0800
+
+    Test: Disable compiler_crashes/28555... because it only crashes intermittently.
+
+commit c09f092e15366bf2779902b721420c14b6c7fc36
+Author: Greg Parker <gparker-github@sealiesoftware.com>
+Date:   Thu Dec 1 14:15:58 2016 -0800
+
+    Revert "[stdlib] Prototype bidirectional UTF-8 Decoding" (#6010)
+    
+    New test fails intermittently (https://ci.swift.org/job/oss-swift_tools-RA_stdlib-RD_test-simulator/2433/)
+
+commit 41c09f068b17690c69accd01299e8ed7d60e175b
+Merge: 16ff6ab 1031efe
+Author: Dmitri Gribenko <gribozavr@gmail.com>
+Date:   Sat Sep 17 12:55:11 2016 -0700
+
+    Merge pull request #4850 from apple/stdlib-fix-dictionary-test
+    
+    Dictionary test: fix intermittent failures
+
+commit 1031efeabca305d3dca3063a74bb19eb3a785d23
+Author: Dmitri Gribenko <gribozavr@gmail.com>
+Date:   Sat Sep 17 21:12:33 2016 +0300
+
+    Dictionary test: fix intermittent failures
+    
+    The test was using an index from one dictionary with a different
+    dictionary instance.
+
+commit 3c3d1004d5451d57f04da9bab394a61a4a66240b
+Merge: b2be3b3 2facb33
+Author: lplarson <llarson@apple.com>
+Date:   Mon Jul 18 18:20:38 2016 -0700
+
+    Merge pull request #3593 from moiseev/fix-xctest-deps
+    
+    [overlay] A tentative fix for the intermittent build failures.
+
+commit 2facb335bfda6ac3075eea28f85300745a89a3ba
+Author: Max Moiseev <moiseev@apple.com>
+Date:   Mon Jul 18 16:14:40 2016 -0700
+
+    [overlay] A tentative fix for the intermittent build failures.
+    
+    It looks from the failed build logs that XCTest has a transitive
+    dependency on CoreMedia, so listing this dependency explicitly might
+    solve the problem.
+    rdar://problem/27404152
+
+commit cbfc93924bde7932d22a305076855d4ed51b71c0
+Author: David Farler <dfarler@apple.com>
+Date:   Tue May 17 18:52:25 2016 -0700
+
+    Temporarily fix end-to-end remote mirror tests to OS X
+    
+    There is an issue with writing to pipes under heavy load in the iOS
+    simulator but is intermittent. Disabling the tests there while I
+    investigate.
+    
+    rdar://problem/26230879
+
+commit 847e321138517b0e23733bce60b21022fd2e43d3
+Author: Greg Parker <gparker@apple.com>
+Date:   Thu May 14 00:50:39 2015 +0000
+
+    [test] Undo Linux XFAILs.
+    
+    These failures either are intermittent or were fixed just before
+    they were disabled.
+    
+    
+    Swift SVN r28548
+
+commit ad85a0f2df19e29bcd25f562db82433ed7542372
+Author: Arnold Schwaighofer <aschwaighofer@apple.com>
+Date:   Wed Mar 25 20:22:42 2015 +0000
+
+    Revert "Nuke the intermittently failing test for now: emit-sib"
+    
+    Jordan told me I can use "REQUIRES: disabled" instead and so I do.
+    
+    This reverts commit r26551.
+    
+    Swift SVN r26552
+
+commit 08be73bb17813b2e52d279b2ed70638bbe2aa75d
+Author: Arnold Schwaighofer <aschwaighofer@apple.com>
+Date:   Wed Mar 25 20:09:30 2015 +0000
+
+    Nuke the intermittently failing test for now: emit-sib
+    
+    XFAIL does not work for a sporatically failing test.
+    
+    rdar://20295441
+    
+    Swift SVN r26551
+
+commit f92a1a2d623cbd4d6f414e0b84348d266fe48cd0
+Author: Michael Gottesman <mgottesman@apple.com>
+Date:   Mon Feb 3 06:32:56 2014 +0000
+
+    Dump output of sil-combine test to disk and then file check that so I can see the output that is causing intermittent failures on the buildbots.
+    
+    Swift SVN r13342
+
+commit 38ceed4e76ff493abaacf9019ddbc9bc2c278cca
+Author: Joe Groff <jgroff@apple.com>
+Date:   Wed Nov 6 06:31:22 2013 +0000
+
+    ClangImporter: Provide a null SourceLocation when lexing NS_ENUM token.
+    
+    Using the expansionLoc intermittently leads to an "offset overflow", and we don't really care about the token source location.
+    
+    Swift SVN r9989
+
+commit 0ac8c2b5328d8cf6ec904eaa840b8d2a2dab94ac
+Author: Joe Groff <jgroff@apple.com>
+Date:   Mon Jul 1 21:48:31 2013 +0000
+
+    SIL: Null-terminate literal instruction string data.
+    
+    Guard against StringRef-uncleanness in APFloat (e.g. rdar://14323230) and hopefully stop the intermittent buildbot failures in some Interpreter tests.
+    
+    Swift SVN r5951

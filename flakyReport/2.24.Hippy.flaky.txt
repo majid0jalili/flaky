@@ -1,5 +1,0 @@
-commit cd46465a1c7f3df6768e8593e4e456b280000a65
-Author: xqkuang(旷旭卿) <xqkuang@tencent.com>
-Date:   Fri Dec 20 13:45:18 2019 +0800
-
-    refactor: make it public

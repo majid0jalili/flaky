@@ -1,0 +1,303 @@
+commit 13cb0504026697f8a5459d0101cf56302302d522
+Author: Michael Starzinger <mstarzinger@chromium.org>
+Date:   Wed Aug 8 11:00:18 2018 +0200
+
+    [wasm] Fix JumpTableAssembler corrupting surrounding code.
+    
+    We instantiate the JumpTableAssembler in patching mode (i.e. directly on
+    existing code without an intermittent buffer). In this mode it is not
+    possible to record reloc information. This makes sure we no longer just
+    blindly write into the non-existing buffer.
+    
+    R=clemensh@chromium.org
+    BUG=v8:8028
+    
+    Change-Id: I4abb8f06cf819fef608e901c4740263f0cecd08a
+    Reviewed-on: https://chromium-review.googlesource.com/1166834
+    Commit-Queue: Michael Starzinger <mstarzinger@chromium.org>
+    Reviewed-by: Clemens Hammacher <clemensh@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#54966}
+
+commit 247bc200d1ad703544ef59bc2e1fb796dedb2425
+Author: Martyn Capewell <martyn.capewell@arm.com>
+Date:   Tue Oct 10 16:21:38 2017 +0100
+
+    Reland "[arm64] Add slot copier to masm and use in builtins"
+    
+    This is a reland of 7c80f9ce697358c3d288a3d17effef3ac9b46199 with fixed restore
+    of system stack pointer in the tests.
+    
+    Original change's description:
+    > Abstract some stack slot copies through a macro assembler function. This
+    > eliminates some non-paired stack operations.
+    >
+    > This is a reland of 1cc93be0f1abf83c257b4f9ef2a215cca364f668 with
+    > additional tests, originally reviewed on
+    > https://chromium-review.googlesource.com/685238 and reverted due to an
+    > unrelated intermittent x64 failure.
+    >
+    > Bug: v8:6644
+    > Change-Id: If22b359dbda4bab1cb83cd8c44a2af5801012c37
+    > Reviewed-on: https://chromium-review.googlesource.com/707247
+    > Reviewed-by: Benedikt Meurer <bmeurer@chromium.org>
+    > Commit-Queue: Martyn Capewell <martyn.capewell@arm.com>
+    > Cr-Commit-Position: refs/heads/master@{#48419}
+    
+    Bug: v8:6644
+    Change-Id: Ie8b45c73acc13df36c978a9ae4bee77082cb7c8d
+    Reviewed-on: https://chromium-review.googlesource.com/709515
+    Reviewed-by: Benedikt Meurer <bmeurer@chromium.org>
+    Commit-Queue: Martyn Capewell <martyn.capewell@arm.com>
+    Cr-Commit-Position: refs/heads/master@{#48449}
+
+commit ce1104cbe88ac7ac0c111fafbf8bf57c95df5783
+Author: Clemens Hammacher <clemensh@chromium.org>
+Date:   Tue Oct 10 10:47:50 2017 +0000
+
+    Revert "[arm64] Add slot copier to masm and use in builtins"
+    
+    This reverts commit 7c80f9ce697358c3d288a3d17effef3ac9b46199.
+    
+    Reason for revert: arm64 msan failures: https://build.chromium.org/p/client.v8/builders/V8%20Linux%20-%20arm64%20-%20sim%20-%20MSAN/builds/17455/steps/Check/logs/copy_slots_up
+    
+    Original change's description:
+    > [arm64] Add slot copier to masm and use in builtins
+    >
+    > Abstract some stack slot copies through a macro assembler function. This
+    > eliminates some non-paired stack operations.
+    >
+    > This is a reland of 1cc93be0f1abf83c257b4f9ef2a215cca364f668 with
+    > additional tests, originally reviewed on
+    > https://chromium-review.googlesource.com/685238 and reverted due to an
+    > unrelated intermittent x64 failure.
+    >
+    > Bug: v8:6644
+    > Change-Id: If22b359dbda4bab1cb83cd8c44a2af5801012c37
+    > Reviewed-on: https://chromium-review.googlesource.com/707247
+    > Reviewed-by: Benedikt Meurer <bmeurer@chromium.org>
+    > Commit-Queue: Martyn Capewell <martyn.capewell@arm.com>
+    > Cr-Commit-Position: refs/heads/master@{#48419}
+    
+    TBR=rmcilroy@chromium.org,martyn.capewell@arm.com,bmeurer@chromium.org
+    
+    Change-Id: I8a8aeff89b6995d5fffaab1f2e4e45f478c28bed
+    No-Presubmit: true
+    No-Tree-Checks: true
+    No-Try: true
+    Bug: v8:6644
+    Reviewed-on: https://chromium-review.googlesource.com/708814
+    Reviewed-by: Clemens Hammacher <clemensh@chromium.org>
+    Commit-Queue: Clemens Hammacher <clemensh@chromium.org>
+    Cr-Commit-Position: refs/heads/master@{#48420}
+
+commit 7c80f9ce697358c3d288a3d17effef3ac9b46199
+Author: Martyn Capewell <martyn.capewell@arm.com>
+Date:   Mon Oct 9 17:49:58 2017 +0100
+
+    [arm64] Add slot copier to masm and use in builtins
+    
+    Abstract some stack slot copies through a macro assembler function. This
+    eliminates some non-paired stack operations.
+    
+    This is a reland of 1cc93be0f1abf83c257b4f9ef2a215cca364f668 with
+    additional tests, originally reviewed on
+    https://chromium-review.googlesource.com/685238 and reverted due to an
+    unrelated intermittent x64 failure.
+    
+    Bug: v8:6644
+    Change-Id: If22b359dbda4bab1cb83cd8c44a2af5801012c37
+    Reviewed-on: https://chromium-review.googlesource.com/707247
+    Reviewed-by: Benedikt Meurer <bmeurer@chromium.org>
+    Commit-Queue: Martyn Capewell <martyn.capewell@arm.com>
+    Cr-Commit-Position: refs/heads/master@{#48419}
+
+commit 23a9405c592e07c6d29c4388b376526406ffc77d
+Author: jyan <jyan@ca.ibm.com>
+Date:   Fri Aug 26 10:16:11 2016 -0700
+
+    Fix GetStackSample to check for nullptr
+    
+    callback_entrypoint_address call could return nullptr and therefore
+    causes seg fault intermittently.
+    
+    R=jochen@chromium.org, lpy@chromium.org, yangguo@chromium.org
+    BUG=
+    
+    Review-Url: https://codereview.chromium.org/2274573007
+    Cr-Commit-Position: refs/heads/master@{#38952}
+
+commit 51f05798dfdcb69e249956a27436c6ed5591db4c
+Author: georgia.kouveli <georgia.kouveli@arm.com>
+Date:   Wed Jun 29 05:20:56 2016 -0700
+
+    [wasm] Do not used "undefined" for function signature padding.
+    
+    Commit d0b8e7fb introduced some functionality to allocate additional
+    space in the function table, filled with an "undefined" function
+    signature. Use -1 instead of undefined_value() as the latter can have
+    the top bits cleared (which happens often for arm64) and causes
+    intermittent test failures.
+    
+    BUG=
+    
+    Review-Url: https://codereview.chromium.org/2105293002
+    Cr-Commit-Position: refs/heads/master@{#37393}
+
+commit 8d00c2ca40459d46f127c8156c5afb7bfa79d9e6
+Author: gib <gib@uk.ibm.com>
+Date:   Thu Dec 17 07:08:54 2015 -0800
+
+    Stop profiler on isolate teardown if still running
+    
+    If the profiler is started via the API and not stopped, V8 will
+     intermittently crash during isolate teardown.
+    
+    The fix is to run the DeleteAllProfiles function in Isolate::Deinit()
+     if cpu_profiler_ still exists.
+    
+    https://groups.google.com/forum/#!topic/v8-dev/WsIlpbaD4mo
+    
+    TEST= Run in debug mode, if you start a profile and don't stop it,
+     this assert should fail:
+    
+      Fatal error in ../src/profiler/cpu-profiler.cc, line 414
+      Check failed: !is_profiling_.
+    
+    Review URL: https://codereview.chromium.org/1526253005
+    
+    Cr-Commit-Position: refs/heads/master@{#32953}
+
+commit 6d542bfcc2b6a2581e0e3c28daae8301da025fa6
+Author: pcc <pcc@chromium.org>
+Date:   Thu Jul 23 23:17:52 2015 -0700
+
+    [build] Disable linker threading in LTO builds, as it causes intermittent link failures.
+    
+    BUG=chromium:513074
+    R=bmeurer@chromium.org
+    LOG=n
+    
+    Review URL: https://codereview.chromium.org/1249273003
+    
+    Cr-Commit-Position: refs/heads/master@{#29827}
+
+commit 3bdbb843b68484b2f692a4d3bb51401301008702
+Author: Erik Arvidsson <arv@chromium.org>
+Date:   Fri Jun 26 15:33:11 2015 -0400
+
+    test262-es6: Add entry for asi test
+    
+    The test language/asi/S7.9_A5.7_T1 is failing intermittently.
+    
+    BUG=v8:4253
+    LOG=N
+    TBR=adamk
+    
+    Review URL: https://codereview.chromium.org/1215813002.
+    
+    Cr-Commit-Position: refs/heads/master@{#29332}
+
+commit bddf5eeb39493ce911bccb6b7fc50584736aa423
+Author: Dusan Milosavljevic <dusan.milosavljevic@imgtec.com>
+Date:   Fri Jan 30 17:47:44 2015 +0100
+
+    MIPS: Fix bug in elements transition code for smi to double transitions.
+    
+    This fixes intermittent sin-cos test failures when corrupted values are returned
+    for referent sin and cos functions in test which require factorial value
+    to be calculated.
+    
+    TEST=mjsunit/sin-cos
+    BUG=
+    R=balazs.kilvady@imgtec.com
+    
+    Review URL: https://codereview.chromium.org/885923004
+    
+    Cr-Commit-Position: refs/heads/master@{#26365}
+
+commit d9b31caab38e621e52f4bfe09e163d338b750b11
+Author: jacob.bramley@arm.com <jacob.bramley@arm.com@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Wed Feb 19 14:37:18 2014 +0000
+
+    A64: Fix r19474: Tidy up Push and Pop TODOs.
+    
+    This fixes some snapshot=off, debug-mode regressions.
+    
+      - Call CheckConstPool when entering InsturctionAccurateScopes. This
+        fixes a problem in PushMultipleTimes where 'count' is very high.
+        Each call to PushHelper starts an InstructionAccurateScope
+        immediately after the last one finishes, with no opportunity for the
+        constant pool to be generated.
+    
+      - Temporarily disable AssertStackConsistency in PrepareForPush. This
+        assertion seems to push the code size too far, and several cctests
+        (intermittently) fail due to buffer size limitations. I would like
+        to renable this assertion later.
+    
+    BUG=
+    R=ulan@chromium.org
+    
+    Review URL: https://codereview.chromium.org/172453002
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@19491 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 2b5d4c611bf22241a380036abfa07a15d367c008
+Author: yurys@chromium.org <yurys@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Mon Aug 26 14:56:23 2013 +0000
+
+    Fix test-log/EquivalenceOfLoggingAndTraversal
+    
+    The test has been marked as intermittently failing since 2011 and since that "code-creation" event signature has changed a bit. I updated the parser in the test but that revealed another issue: "code-creation" events with type 'Script' didn't match functions with type 'LazyCompile' retrieved during the heap traversal because the later had name " :1:1" which didn't match the script's name.
+    
+    BUG=v8:2857
+    R=yangguo@chromium.org
+    
+    Review URL: https://codereview.chromium.org/22824043
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@16331 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 74aa15bfa0dba720e6af92434bdd45e23efb0159
+Author: mstarzinger@chromium.org <mstarzinger@chromium.org@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Mon Sep 3 14:23:00 2012 +0000
+
+    Fix FindSharedFunctionInfoInScript to not optimize.
+    
+    This prevents a corner case in FindSharedFunctionInfoInScript that would cause
+    functions to be optimized because an intermittent GC would clear the flag
+    indicating whether breakpoints are present. Above method was also moved into the
+    Debug class because it is only used by the debugger.
+    
+    R=verwaest@chromium.org
+    
+    Review URL: https://chromiumcodereview.appspot.com/10914065
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@12428 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit 9b3068bedd748d6e7f3fda66d70cb4babd41a4c2
+Author: erik.corry@gmail.com <erik.corry@gmail.com@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri Aug 10 13:45:22 2012 +0000
+
+    Fix intermittent failure in ReleaseOverReservedPages on x64.
+    BUG=v8:2216
+    Review URL: https://chromiumcodereview.appspot.com/10828253
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@12292 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit d6f476dd414bd52228e35e5998bb9a531359b6a5
+Author: erik.corry@gmail.com <erik.corry@gmail.com@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Thu Jan 26 11:14:19 2012 +0000
+
+    Fix intermittent stack overflow in Hydrogen code generation in tests.
+    Review URL: https://chromiumcodereview.appspot.com/9290044
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@10511 ce2b1a6d-e550-0410-aec6-3dcde31c8c00
+
+commit a3b2c7cf550153eeebc77d0bfaa6eedc6e0052a1
+Author: erik.corry@gmail.com <erik.corry@gmail.com@ce2b1a6d-e550-0410-aec6-3dcde31c8c00>
+Date:   Fri May 8 12:39:37 2009 +0000
+
+    Fix intermittent crashes caused by unexpected GCs in
+    HasLocalProperty (bug introduced in r1882 et al.)
+    Review URL: http://codereview.chromium.org/115106
+    
+    git-svn-id: http://v8.googlecode.com/svn/branches/bleeding_edge@1903 ce2b1a6d-e550-0410-aec6-3dcde31c8c00

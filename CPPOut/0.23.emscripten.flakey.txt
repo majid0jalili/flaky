@@ -1,0 +1,23 @@
+commit 22c03b55c4652d42d668b2db9a9e554dca407eed
+Author: Alon Zakai <azakai@google.com>
+Date:   Fri Oct 2 15:33:39 2020 -0700
+
+    Disable browser.test_pthread_create with minimal runtime, which is flakey (#12383)
+    
+    See #12368 - the flakiness in the test appears to be 100% due to the minimal runtime
+    part, so something specific is racy there. After spending a little time I saw nothing
+    obvious, but maybe I'm not familiar enough with minimal runtime to know where to
+    look, that is, where the differences between the runtimes would be regarding pthreads.
+    
+    For now this disables that test on minimal runtime, and also makes the test stricter -
+    it's 100% deterministic so there's no need to retry once after a failure (which actually
+    made the flakiness here harder to notice).
+    
+    Note that this does not remove all minimal runtime + pthreads tests, as there is still
+    test_minimal_runtime_hello_pthread (which is simpler, and shows no flakiness).
+
+commit b50632c760a09b4916273f8fdc2682b4e2be14ac
+Author: Alon Zakai <alonzakai@gmail.com>
+Date:   Fri Jan 17 17:15:15 2014 -0800
+
+    fix flakey lua benchmark

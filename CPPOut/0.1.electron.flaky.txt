@@ -1,0 +1,986 @@
+commit 0b2862b1841638bd3f30265c2b6eedf52b04e259
+Author: Electron Bot <electron@github.com>
+Date:   Thu Oct 22 14:01:59 2020 -0700
+
+    chore: bump chromium to 87.0.4280.27 (11-x-y) (#25993)
+    
+    * chore: bump chromium in DEPS to 87.0.4280.20
+    
+    * update patches
+    
+    * test: disable flaky arm tests (#26046)
+    
+    * tests: disable flaking test on all arm platforms
+    
+    * tests: disable flaky did-change-theme-color tests on WOA
+    
+    (cherry picked from commit 4ce7ca6cfb287b2d260a9e873cfcd4fc975fa15c)
+    
+    * 2478082: Make window cloaking and uncloaking trigger occlusion calculation
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2478082
+    
+    Fixes visibility issues.
+    
+    * Revert "2478082: Make window cloaking and uncloaking trigger occlusion calculation"
+    
+    This reverts commit 5ff8cc8c83e2960ae1b11738aabc4ee5e8752707.
+    
+    * ci: disable CalculateNativeWinOcclusion for woa (#26001)
+    
+    (cherry picked from commit 708cf44d19847e20a452a8ba4db16fb8fa104d24)
+    
+    * Update appveyor.yml
+    
+    disable CalculateNativeWinOcclusion due to visibility issues
+    
+    * chore: bump chromium in DEPS to 87.0.4280.27
+    
+    * update patches
+    
+    Co-authored-by: Electron Bot <anonymous@electronjs.org>
+    Co-authored-by: John Kleinschmidt <jkleinsc@electronjs.org>
+    Co-authored-by: John Kleinschmidt <jkleinsc@github.com>
+    Co-authored-by: Robo <hop2deep@gmail.com>
+
+commit 4ce7ca6cfb287b2d260a9e873cfcd4fc975fa15c
+Author: John Kleinschmidt <jkleinsc@electronjs.org>
+Date:   Mon Oct 19 20:11:30 2020 -0400
+
+    test: disable flaky arm tests (#26046)
+    
+    * tests: disable flaking test on all arm platforms
+    
+    * tests: disable flaky did-change-theme-color tests on WOA
+
+commit 19e7af984140bab90dca76c86f3c9ebfb545d086
+Author: Electron Bot <electron@github.com>
+Date:   Thu Jun 25 00:48:48 2020 -0700
+
+    chore: bump chromium to 85.0.4181.1 (10-x-y) (#23987)
+    
+    * chore: bump chromium in DEPS to 85.0.4165.1
+    
+    * chore: bump chromium in DEPS to 85.0.4166.1
+    
+    * chore: bump chromium in DEPS to 85.0.4166.2
+    
+    * chore: bump chromium in DEPS to 85.0.4166.3
+    
+    * update patches
+    
+    * fixup! Revert "[printing] Mojofy PrintHostMsg_CheckForCancel"
+    
+    (cherry picked from commit 2cc1caf5d7d716ceefb23d5228a79544a2e91206)
+    
+    * update patches
+    
+    * Revert "[printing] Mojofy PrintHostMsg_CheckForCancel"
+    
+    (cherry picked from commit c2b389957836ad77eb8e977872e6a8590666f3da)
+    
+    * Remove WebImeTextSpan
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2225240
+    (cherry picked from commit d839261d71b156c972d3878f16f971e6b6d98f45)
+    
+    * Remove PDFAnnotations flag altogether.
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2229317
+    (cherry picked from commit 50384ed12602d4a9da3209eacfca4faae78f9986)
+    
+    * Rework find-from-selection so it's synchronous -- fixes flaky tests
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2181570
+    (cherry picked from commit 3e9241560390fb18969393beda425afc63f5a151)
+    
+    * Use ExtensionSystem::is_ready() instead of ExtensionService::is_ready()
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2207499
+    (cherry picked from commit 2424589454a9a2ef9cc89c232b4ee87b0bf400cc)
+    
+    * update sysroots
+    
+    (cherry picked from commit b5ea653e602152dde00303d1cfb915d4df320983)
+    
+    * chore: bump chromium in DEPS to 85.0.4167.1
+    
+    * Take RFH as a parameter for DidUpdateFavicon/ManifestURL
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2224745
+    (cherry picked from commit ad40668221732e28bcc8b9b270ab4686c42e956a)
+    
+    * update patches
+    
+    * update patches
+    
+    * Rename net::cookie_util::StripStatuses to StripAccessResults
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2212697
+    (cherry picked from commit bf3de1fe1cbb17feb46b40c81f0eb13b1e7b6412)
+    
+    * use net::CookieAccessResultList instead of net::CookieAccessResultList
+    
+    (cherry picked from commit 400da79504da2310b7c1177b4b3f9f83a3f2b305)
+    
+    * chore: bump chromium in DEPS to 85.0.4168.1
+    
+    * fix mas_no_private_api patch
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2230281
+    (cherry picked from commit 9b127147e0ba7ef1d4454099effe49327b1a5ab6)
+    
+    * Update patches
+    
+    * fix: add new navigation state REUSE_SITE_INSTANCE
+    
+    To fix the new set of state checks added in
+    https://chromium-review.googlesource.com/c/chromium/src/+/2215141
+    
+    (cherry picked from commit 3a91b684efdc7742e7c5efa65263f80e8a24ec4a)
+    
+    * chore: bump chromium in DEPS to 85.0.4169.1
+    
+    * update patches
+    
+    * chore: bump chromium in DEPS to 85.0.4170.1
+    
+    * chore: bump chromium in DEPS to 85.0.4171.1
+    
+    * chore: bump chromium in DEPS to 85.0.4172.1
+    
+    * chore: bump chromium in DEPS to 85.0.4173.1
+    
+    * chore: bump chromium in DEPS to 85.0.4174.1
+    
+    * chore: bump chromium in DEPS to 85.0.4175.3
+    
+    * chore: bump chromium in DEPS to 85.0.4176.1
+    
+    * chore: bump chromium in DEPS to 85.0.4177.2
+    
+    * chore: bump chromium in DEPS to 85.0.4178.1
+    
+    * chore: bump chromium in DEPS to 85.0.4178.3
+    
+    * refactor: MessageLoop, you are terminated \o/
+    
+    Refs: https://chromium-review.googlesource.com/c/chromium/src/+/2246173
+    (cherry picked from commit 0368131d6079a6c1939056e5c2b695eb3e056c61)
+    
+    * chore: bump chromium in DEPS to 85.0.4178.4
+    
+    * update patches
+    
+    * update lib_src_switch_buffer_kmaxlength_to_size_t.patch
+    
+    (cherry picked from commit c5efbdd1660891f4b7fbf85dfcc20dd6f2dbc18b)
+    
+    * [v8] Allow for 4GB TypedArrays
+    
+    https: //chromium-review.googlesource.com/c/v8/v8/+/2249668
+    (cherry picked from commit 2c1d6bfd9dfcb7b4a17b4c100cad28967c721a44)
+    Co-Authored-By: Robo <hop2deep@gmail.com>
+    
+    * Cleanup usages of old mojo types and remove unused code
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2235699
+    (cherry picked from commit e89cb21e8e0eece0e536260bfb1187cc3c4bda84)
+    
+    * refactor: plumb DownloadSchedule to DownloadItem
+    
+    Refs: https://chromium-review.googlesource.com/c/chromium/src/+/2242202
+    (cherry picked from commit 4d549ae2b0408311d3ef4c6ce98bc340f8590a6d)
+    
+    * chore: fix variable typo in IPC
+    
+    (cherry picked from commit 7251b1e6c54ca369dcdc8eb09293711fe919d41d)
+    
+    * chore: s/BindPipeAndPassReceiver/BindNewPipeAndPassReceiver
+    
+    (cherry picked from commit e89bd6c639fbf94f5fcef8195d719221ea6dcf71)
+    
+    * chore: XEvent becomes x11::Event
+    
+    Refs: https://chromium-review.googlesource.com/c/chromium/src/+/2240355
+    (cherry picked from commit 4d832da740d64d2f86186e3f79bb947ecd28682f)
+    
+    * fixup! refactor: MessageLoop, you are terminated \o/
+    
+    (cherry picked from commit 902d72d740a0b5fd4b181c510aca027f4a9489a6)
+    
+    * fixup! chore: XEvent becomes x11::Event
+    
+    (cherry picked from commit 27043549f35f076f5dbf8a726b0be56b1a959b87)
+    
+    * chore: fix windows build
+    
+    (cherry picked from commit 4977098eb398359981b50e70bd88cef8bc20aa3f)
+    
+    * chore: disable SameSite-by-default changes
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2231445
+    (cherry picked from commit d8318aafff2d23d051fdb05bae70357d9a63f3eb)
+    
+    * update printing.patch
+    
+    (cherry picked from commit e2037f527f5db83c26fce7e34dc542c6062b41fb)
+    
+    * Convert WidgetHostMsg_SelectionBoundsChanged/TextInputStateChanged
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2243531
+    (cherry picked from commit 60ff2e067deee27d428db719f7a351f1ec3e8f8c)
+    
+    * [XProto] Replace usages of XID and ::Window with x11::Window
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2249389
+    (cherry picked from commit 97f5b59e066cecb5e93e6e31a6c276bb6681645e)
+    
+    * Update VideoFrameMetadata to use base::Optionals
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2231706
+    https://chromium-review.googlesource.com/c/chromium/src/+/2238361
+    (cherry picked from commit 4787e1f541363527891ebd0cec180671738b2bb9)
+    
+    * --disable-dev-shm-usage for gpu process crash
+    
+    (cherry picked from commit 207d8a380aec95cde4dcf266b36836589e96be7e)
+    
+    * update patches
+    
+    * fixup: Cleanup usages of old mojo types and remove unused code
+    
+    * update patches
+    
+    * chore: bump chromium in DEPS to 85.0.4180.1
+    
+    * build: update v8 headers
+    
+    (cherry picked from commit 4808975f7567c5fafb8f71c2258a05f596c71b7f)
+    
+    * Update patches
+    
+    * fixup: build: update v8 headers
+    
+    * Fixup ssl_security_state_tab_helper.patch
+    
+    * Add missing headers
+    
+    * Adds icon loading service with sandbox for Windows.
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/1987273
+    
+    * disable app.getGPUInfo spec on linux
+    
+    (cherry picked from commit b7ea16c4b7301bd234ecca13569fa7319a049618)
+    
+    * Add missing headers for Linux and Windows
+    
+    * Fixup Adds icon loading service with sandbox for Windows
+    
+    * chore: bump chromium in DEPS to 85.0.4181.1
+    
+    * update patches
+    
+    * Fixup: (for real) Adds icon loading service with sandbox for Windows
+    
+    * No more Vulkan info collection for UMA on Windows
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2252818
+    
+    * extensions: Rename SharedUserScriptMaster to SharedUserScriptManager
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2258357
+    
+    * Add missing headers
+    
+    * fixup: extensions: Rename SharedUserScriptMaster to SharedUserScriptManager
+    
+    * fixup: No more Vulkan info collection for UMA on Windows
+    
+    * Add missing header
+    
+    * Add resource for IDS_UTILITY_PROCESS_UTILITY_WIN_NAME
+    
+    * fix build on windows
+    
+    * fix gn check
+    
+    Co-authored-by: John Kleinschmidt <jkleinsc@github.com>
+    Co-authored-by: deepak1556 <hop2deep@gmail.com>
+    Co-authored-by: Electron Bot <anonymous@electronjs.org>
+    Co-authored-by: Shelley Vohr <shelley.vohr@gmail.com>
+    Co-authored-by: Samuel Attard <samuel.r.attard@gmail.com>
+
+commit 72a089262e31054eabd342294ccdc4c414425c99
+Author: Electron Bot <electron@github.com>
+Date:   Mon Jun 22 10:35:10 2020 -0700
+
+    chore: bump chromium to a84d34e372b8fb5e9a94b1b4b447e (master) (#23908)
+    
+    * chore: bump chromium in DEPS to a7249f73ae05d456c04487ef1693325f719556dd
+    
+    * chore: bump chromium in DEPS to 202466fa40b58f0bb9c9a76a037d1c50154c099e
+    
+    * chore: bump chromium in DEPS to 2dd1b25c8d794b50fb0dd911e0c4e909ff39f145
+    
+    * Update patches
+    
+    * update patches
+    
+    * Revert "[printing] Mojofy PrintHostMsg_CheckForCancel"
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2226002
+    
+    * chore: bump chromium in DEPS to 8c1542e7dd36854fdf4abd1a8021eeb65a6a2e2b
+    
+    * chore: bump chromium in DEPS to 078bc6d796334fb403acd8975b99d1c8ecd028e8
+    
+    * chore: bump chromium in DEPS to d96e9f16ae852ec9dbd15bf17df3d440402413bb
+    
+    * update patches
+    
+    * chore: update patches
+    
+    * Use ExtensionSystem::is_ready() instead of ExtensionService::is_ready()
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2207499
+    
+    * Remove WebImeTextSpan
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2225240
+    
+    * Remove PDFAnnotations flag altogether.
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2229317
+    
+    * Rework find-from-selection so it's synchronous -- fixes flaky tests
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2181570
+    
+    * fixup! Revert "[printing] Mojofy PrintHostMsg_CheckForCancel"
+    
+    * chore: bump chromium in DEPS to a8a280835830c65145ed8573a9a09f36d3920418
+    
+    * update sysroots
+    
+    * update patches
+    
+    * update patches
+    
+    * Take RFH as a parameter for DidUpdateFavicon/ManifestURL
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2224745
+    
+    * chore: bump chromium in DEPS to b6149cb5a5e32caf8eab67b97ef3072b72521ca8
+    
+    * Update patches
+    
+    * Rename net::cookie_util::StripStatuses to StripAccessResults
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2212697
+    
+    * use net::CookieAccessResultList instead of net::CookieAccessResultList
+    
+    * fix mas_no_private_api patch
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2230281
+    
+    * chore: bump chromium in DEPS to a27feee1643d952e48f77c92d8c03aedea14b720
+    
+    * update patches
+    
+    * fix: add new navigation state REUSE_SITE_INSTANCE
+    
+    To fix the new set of state checks added in
+    https://chromium-review.googlesource.com/c/chromium/src/+/2215141
+    
+    * chore: bump chromium in DEPS to ff4559a4c13d20888202474e4ab9917dbdad8a9a
+    
+    * update patches
+    
+    * Cleanup usages of old mojo types and remove unused code
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2235699
+    
+    * chore: bump chromium in DEPS to 05279845f76eb22900a8b0d1a11d4fd339a8e53b
+    
+    * chore: bump chromium in DEPS to 821558279767cffec90e3b5b947865f90089fed3
+    
+    * chore: bump chromium in DEPS to 1aef04e6486be337d3dd820b2d64d6320a1b9c13
+    
+    * chore: bump chromium in DEPS to dc86386e8fdd796a0f7577e91e42a7f8b7e9bc78
+    
+    * chore: bump chromium in DEPS to 64f2360794f14643764092ba3e58e2ed8f9fee12
+    
+    * chore: update patches
+    
+    * refactor: MessageLoop, you are terminated \o/
+    
+    Refs: https://chromium-review.googlesource.com/c/chromium/src/+/2246173
+    
+    * refactor: plumb DownloadSchedule to DownloadItem
+    
+    Refs: https://chromium-review.googlesource.com/c/chromium/src/+/2242202
+    
+    * chore: fix variable typo in IPC
+    
+    * chore: s/BindPipeAndPassReceiver/BindNewPipeAndPassReceiver
+    
+    * chore: update patches
+    
+    * chore: XEvent becomes x11::Event
+    
+    Refs: https://chromium-review.googlesource.com/c/chromium/src/+/2240355
+    
+    * fixup! refactor: MessageLoop, you are terminated \o/
+    
+    * fixup! chore: XEvent becomes x11::Event
+    
+    * build: update v8 headers
+    
+    * chore: fix windows build
+    
+    * chore: disable SameSite-by-default changes
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2231445
+    
+    * update printing.patch
+    
+    * chore: bump chromium DEPS to 9ae03ef8f7d4f6ac663f725bcfe70311987652f3
+    
+    * Convert WidgetHostMsg_SelectionBoundsChanged/TextInputStateChanged
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2243531
+    
+    * chore: update v8 patches
+    
+    * [XProto] Replace usages of XID and ::Window with x11::Window
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2249389
+    
+    * Update VideoFrameMetadata to use base::Optionals
+    
+    https://chromium-review.googlesource.com/c/chromium/src/+/2231706
+    https://chromium-review.googlesource.com/c/chromium/src/+/2238361
+    
+    * --disable-dev-shm-usage for gpu process crash
+    
+    * [v8] Allow for 4GB TypedArrays
+    
+    https://chromium-review.googlesource.com/c/v8/v8/+/2249668
+    
+    * update lib_src_switch_buffer_kmaxlength_to_size_t.patch
+    
+    * disable app.getGPUInfo spec on linux
+    
+    * update patches
+    
+    Co-authored-by: John Kleinschmidt <jkleinsc@github.com>
+    Co-authored-by: Electron Bot <anonymous@electronjs.org>
+    Co-authored-by: deepak1556 <hop2deep@gmail.com>
+    Co-authored-by: Shelley Vohr <shelley.vohr@gmail.com>
+    Co-authored-by: Samuel Attard <samuel.r.attard@gmail.com>
+
+commit 49262b604db03bfafa1806215cb221517ba04994
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Wed Jan 15 16:06:33 2020 +0900
+
+    test: disable some flaky node tests (#21752)
+
+commit 8a92b65fd373d55bbca4f51308a7a247be7476a0
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Fri Jan 10 04:50:30 2020 +0900
+
+    test: retry for a few flaky tests (#21658)
+
+commit a6ae1ca7556d0d80adef00f8d822499e2a836e06
+Author: trop[bot] <37223003+trop[bot]@users.noreply.github.com>
+Date:   Fri Nov 22 15:31:19 2019 -0500
+
+    spec: skip flaky <webview>.capturePage() test on Windows (#21211)
+
+commit 3e520024060139b3708e8e2ace3f2b924ecf89c9
+Author: trop[bot] <37223003+trop[bot]@users.noreply.github.com>
+Date:   Wed Nov 20 12:17:46 2019 -0500
+
+    spec: skip flaky <webview>.capturePage() test on Windows (#21210)
+
+commit f5fde13b147798c48ef0bc9add98349835c10d13
+Author: trop[bot] <37223003+trop[bot]@users.noreply.github.com>
+Date:   Wed Nov 20 11:00:52 2019 -0500
+
+    spec: skip flaky <webview>.capturePage() test on Windows (#21212)
+
+commit 145dd33da16525d4b8c60e847e0bb261d58fde6a
+Author: Milan Burda <milan.burda@gmail.com>
+Date:   Tue Nov 19 18:57:35 2019 +0100
+
+    spec: skip flaky <webview>.capturePage() test on Windows (#21175)
+
+commit c00f71513b95043dfd81b0eda7269e8f1be3d4c2
+Author: John Kleinschmidt <jkleinsc@github.com>
+Date:   Fri Aug 16 16:36:59 2019 -0400
+
+    ci: fix flaky test on arm (5-0-x) (#19806)
+    
+    * ci: update docker options for arm testing
+
+commit 2a5d40617a72114b1976b1771d572943b5f6649b
+Author: Jeremy Apthorp <jeremya@chromium.org>
+Date:   Fri Jul 26 07:09:33 2019 -0700
+
+    test: move the last of the browser window specs (#19295)
+    
+    * move devtools extensions tests
+    
+    * move executeJavaScript tests
+    
+    * move previewFile test
+    
+    * move contextIsolation tests
+    
+    * move OSR tests
+    
+    * RIP api-browser-window-spec.js
+    
+              .--. .-,       .-..-.__
+            .'(`.-` \_.-'-./`  |\_( "\__
+         __.>\ ';  _;---,._|   / __/`'--)
+        /.--.  : |/' _.--.<|  /  | |
+    _..-'    `\     /' /`  /_/ _/_/
+     >_.-``-. `Y  /' _;---.`|/))))
+    '` .-''. \|:  .'   __, .-'"`
+     .'--._ `-:  \/:  /'  '.\             _|_
+         /.'`\ :;   /'      `-           `-|-`
+        -`    |     |                      |
+              :.; : |                  .-'~^~`-.
+              |:    |                .' _     _ `.
+              |:.   |                | |_) | |_) |
+              :. :  |                | | \ | |   |
+              : ;   |                |           |
+              : ;   |                | Here lies |
+              : ;   |                |   1000    |
+              : ;   |                |   flaky   |
+              : ;   |                |   tests   |
+            .jgs. : ;                |           |
+    -."-/\\\/:::.    `\."-._'."-"_\\-|           |///."-
+    " -."-.\\"-."//.-".`-."_\\-.".-\\`=.........=`//-".
+    
+    * remove unused ipcMain listeners
+    
+    * remove debugging logs
+    
+    * close windows in offscreen test
+    
+    * more closeAllWindows
+    
+    * remove extra logs
+    
+    * refactor webContents main spec using closeAllWindows
+
+commit a46e459595711334bcc0a2360655bbf0c04afc59
+Author: Samuel Attard <sattard@slack-corp.com>
+Date:   Tue Jul 23 15:35:51 2019 -0700
+
+    build: disable flaky node tests that fail on linux
+
+commit ad6fb2048621f5274772655819d8add7609023c7
+Author: Jeremy Apthorp <jeremya@chromium.org>
+Date:   Tue Jul 23 16:54:41 2019 -0700
+
+    test: disable flaky webview.clearHistory test (#19398)
+
+commit 616856552f1a2098d010419f9391ce923460ffc1
+Author: Jeremy Apthorp <jeremya@chromium.org>
+Date:   Tue Jul 2 13:48:58 2019 -0700
+
+    test: fix flaky onbeforeunload tests (#19085)
+
+commit c2d78deeca3a9ea2034e97b688c51cdabfd86cb2
+Author: Jeremy Apthorp <jeremya@chromium.org>
+Date:   Tue Jul 2 13:48:26 2019 -0700
+
+    test: attempt to fix flaky webview.clearHistory test (#19083)
+
+commit 53a35db44fd2075a6a918791e58a74b1272ebe96
+Author: trop[bot] <trop[bot]@users.noreply.github.com>
+Date:   Fri Jan 11 08:12:18 2019 -0800
+
+    test: allow retries for flaky mas loginitem specs (#16359)
+
+commit 79e55e5e854a489b6b0df965ef7342d09e03c8c9
+Author: trop[bot] <trop[bot]@users.noreply.github.com>
+Date:   Fri Jan 11 08:12:04 2019 -0800
+
+    test: allow retries for flaky mas loginitem specs (#16358)
+
+commit ca218b63958891e79c6aad28d559801e47dc53a5
+Author: Shelley Vohr <codebytere@github.com>
+Date:   Thu Jan 10 14:15:47 2019 -0800
+
+    test: allow retries for flaky mas loginitem specs (#16347)
+
+commit 1152fecb75c372d957b09cf57caa8b5e23bdeddc
+Author: Jeremy Apthorp <nornagon@nornagon.net>
+Date:   Tue Dec 11 17:01:48 2018 -0800
+
+    test: fix flaky before-input-event test (#16027)
+
+commit a4ed644dd9744a0890786f7d7cca1e79278cb628
+Author: Jeremy Apthorp <nornagon@nornagon.net>
+Date:   Fri Nov 30 12:33:00 2018 -0800
+
+    test: fix a bunch of flaky tests related to emittedOnce (backport: 4-0-x) (#15891)
+    
+    Backports #15871
+
+commit 8b37e627173565f5f995ec8e940d7c34230f8899
+Author: trop[bot] <trop[bot]@users.noreply.github.com>
+Date:   Thu Nov 29 10:57:48 2018 -0600
+
+    test: attempt at fixing flaky takeHeapSnapshotTest (#15881)
+    
+    ref #15095
+
+commit 753fb31c54eb56207356098dbb7d2c79f5c20731
+Author: Jeremy Apthorp <nornagon@nornagon.net>
+Date:   Thu Nov 29 07:51:03 2018 -0800
+
+    test: fix flaky takeHeapSnapshot test (#15853)
+    
+    ref #15095
+
+commit 30109d64f255605a70b42db002c5cd03eba469aa
+Author: Jeremy Apthorp <nornagon@nornagon.net>
+Date:   Wed Nov 28 17:52:19 2018 -0800
+
+    test: fix a bunch of flaky tests related to emittedOnce (#15871)
+
+commit f6b7f547bb4c453f7bfcdcfd32c5619700bdc605
+Author: Shelley Vohr <codebytere@github.com>
+Date:   Fri Oct 12 20:50:03 2018 -0700
+
+    fix: natively implement LoginItems methods (#15128)
+    
+    * fix: natively implement LoginItems methods
+    
+    * fix flaky spec on MAS builds
+
+commit 36ee83875a6afbd23cd632c2fdc9b7ef4a8fbec6
+Author: Alexey Kuzmin <alex.s.kuzmin@gmail.com>
+Date:   Tue Oct 9 23:01:35 2018 +0200
+
+    ci: run tests on VSTS in a separate job (#15027)
+    
+    * ci: run tests on VSTS in a separate job
+    
+    Split current monolithic job into two: one to build Electron,
+    and the other to run its JavaScript tests.
+    
+    Optionally a "Custom.UseArtifacts.BuildId" variable
+    can be used to run tests using binaries built in a different job.
+    Useful to rerun test jobs failed because of flaky tests.
+    
+    * ci: fail a tests job on VSTS if it's started for a build of a different revision
+    
+    * ci: fail a tests job on VSTS if there are no test results
+    
+    * ci: run Mac tests on hosted MacOS agents
+    
+    * ci: install Node.js 10 on hosted Mac agents
+
+commit 8eec8e150df3899263b5468cc60932a90c5de5ef
+Author: trop[bot] <trop[bot]@users.noreply.github.com>
+Date:   Mon Aug 13 15:14:32 2018 -0700
+
+    Fix flaky sandbox tests (#14056)
+    
+    Windows apparently has issues running opening two windows at once which is causing flakiness on the mixed sandbox tests.
+
+commit 75909685f726f861a14dc95399062607e2b48bd2
+Author: trop[bot] <trop[bot]@users.noreply.github.com>
+Date:   Mon Aug 13 15:14:21 2018 -0700
+
+    Fix flaky sandbox tests (#14055)
+    
+    Windows apparently has issues running opening two windows at once which is causing flakiness on the mixed sandbox tests.
+
+commit cb4b3e7be02554baaf8560b23b6305d641556829
+Merge: a53a5ac 828e317
+Author: John Kleinschmidt <jkleinsc@github.com>
+Date:   Mon Aug 13 13:26:52 2018 -0700
+
+    Merge pull request #14049 from electron/fix-flaky-sandbox-tests
+    
+    fix: Fix flaky sandbox tests
+
+commit 828e3173609b7386a4c2cb07a666fd748b456e18
+Author: John Kleinschmidt <jkleinsc@github.com>
+Date:   Mon Aug 13 09:30:20 2018 -0700
+
+    Fix flaky sandbox tests
+    
+    Windows apparently has issues running opening two windows at once which is causing flakiness on the mixed sandbox tests.
+
+commit e6e621515f1ad7e7c0c9e241611ab875d5378360
+Author: Jeremy Apthorp <nornagon@nornagon.net>
+Date:   Tue Aug 7 12:23:48 2018 -0700
+
+    chore: disable flaky isCurrentlyAudible test (#13970)
+
+commit 289db66fee328281f1a176106fb332ab1e8c6ef0
+Author: trop[bot] <trop[bot]@users.noreply.github.com>
+Date:   Tue May 1 17:52:03 2018 -0500
+
+    fix flaky security-warnings test (#12776)
+
+commit e00b128a50eb933d917f125000f3f6faac3ae2b1
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Tue May 1 09:49:45 2018 +0900
+
+    fix flaky security-warnings test (#12749)
+
+commit 5a81cfbbc6f3fad20ed84593b25ac4b67ecfe6e8
+Merge: 8e07e74 c3bcb60
+Author: John Kleinschmidt <jkleinsc@github.com>
+Date:   Tue Mar 13 13:30:43 2018 -0400
+
+    Merge pull request #12241 from electron/sw-file-scheme-flaky-patch
+    
+    spec: isolate sw file scheme spec storage with temp partition
+
+commit cc6bcb6c81a3a7bf602574fa937ba4a0efeddc2a
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Wed Mar 7 14:40:27 2018 +0900
+
+    Fix some flaky tests in CI (#12153)
+    
+    * Guard whole InitPrefs with ScopedAllowIO
+    
+    Saw a crash:
+    0 0x7f8d2f7d918d base::debug::StackTrace::StackTrace()
+    1 0x7f8d2f7d755c base::debug::StackTrace::StackTrace()
+    2 0x7f8d2f867caa logging::LogMessage::~LogMessage()
+    3 0x7f8d2fa157c7 base::ThreadRestrictions::AssertIOAllowed()
+    4 0x7f8d2f83453a base::OpenFile()
+    5 0x7f8d2f82a967 base::ReadFileToStringWithMaxSize()
+    6 0x7f8d2f82ad44 base::ReadFileToString()
+    7 0x7f8d2f846f73 JSONFileValueDeserializer::ReadFileToString()
+    8 0x7f8d2f84738c JSONFileValueDeserializer::Deserialize()
+    9 0x7f8d35a5d1f6 <unknown>
+    10 0x7f8d35a5c217 JsonPrefStore::ReadPrefs()
+    11 0x7f8d35a87d3e PrefService::InitFromStorage()
+    12 0x7f8d35a87c60 PrefService::PrefService()
+    13 0x7f8d35a91a10 PrefServiceFactory::Create()
+    14 0x000000e86e1b brightray::BrowserContext::InitPrefs()
+    15 0x000000c2bd64 atom::AtomBrowserContext::AtomBrowserContext()
+    16 0x000000c320db atom::AtomBrowserContext::From()
+    17 0x000000b4b8b5 atom::api::Session::FromPartition()
+    
+    * Fix done being called twice in setInterval test
+    
+    The callback passed to browser process is called asyncly, so it is
+    possible that multiple callbacks has already been scheduled before we
+    can clearInternval.
+    
+    * Fix failing test when dir name has special chars
+    
+    The pdfSource is not escaped while parsedURL.search is.
+    
+    * Call done with Error instead of string
+    
+    * Fix crash caused by not removing input observer
+    
+    Solve crash:
+    0 libcontent.dylib content::RenderWidgetHostImpl::DispatchInputEventWithLatencyInfo(blink::WebInputEvent const&, ui::LatencyInfo*) + 214
+    1 libcontent.dylib content::RenderWidgetHostImpl::ForwardMouseEventWithLatencyInfo(blink::WebMouseEvent const&, ui::LatencyInfo const&) + 1350
+    2 libcontent.dylib content::RenderWidgetHostViewMac::ProcessMouseEvent(blink::WebMouseEvent const&, ui::LatencyInfo const&) + 44
+    3 libcontent.dylib content::RenderWidgetHostInputEventRouter::RouteMouseEvent(content::RenderWidgetHostViewBase*, blink::WebMouseEvent*, ui::LatencyInfo const&) + 1817
+    
+    * Print detailed error
+    
+    * Run tests after server is ready
+
+commit 42a21262735bd0644d5fb0e324131a590fba4798
+Merge: 696c7d5 d87ea57
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Mon Sep 25 11:44:00 2017 +0900
+
+    Merge pull request #10602 from electron/fix-singleton-test
+    
+    Fix the flaky test of app.makeSingleInstance
+
+commit 53db3862c0d25ed2fa8f0d5398020ecb588fe9b0
+Merge: 6099ab2 830cc7e
+Author: John Kleinschmidt <jkleinsc@github.com>
+Date:   Sun Sep 24 10:25:57 2017 +0900
+
+    Merge pull request #10591 from electron/disable-app-importcertificate-tests
+    
+    disable flaky app.importCertificate and select-client-certificate tests
+
+commit 7a67c36cdb5928877e0105fd5ac3443edaddd87d
+Author: John Kleinschmidt <jkleinsc@github.com>
+Date:   Sun Sep 24 10:09:46 2017 +0900
+
+    Disable flaky cert tests
+
+commit eef8ff09e2dd1d176b7c0151f76dbb3950323aab
+Author: Zeke Sikelianos <zeke@sikelianos.com>
+Date:   Sun Sep 24 09:49:48 2017 +0900
+
+    disable flaky app.importCertificate tests
+
+commit b15392e1c14f11297a06af4d549975ef4f461b04
+Author: Samuel Attard <samuel.r.attard@gmail.com>
+Date:   Sun Sep 24 08:27:08 2017 +1000
+
+    Backporting changes for 1.7.8 (#10586)
+    
+    * Fix app.makeSingleInstance hanging on posix systems
+    
+    Wait for the IO thread to be a thing before attempting to listen on the socket
+    
+    Fixes #9880
+    
+    * Move OnBrowserReady call to PreMainMessageLoopRun to account for timing issues on macOS
+    
+    * Woops, how did that happen ;)
+    
+    * Refactor as per @zcbenz comments
+    
+    Also fix issue where we run the single instance callback *not* on the UI thread,
+    this apparently results in a hung process.
+    
+    * Appease the linting gods
+    
+    * Create watcher when message loop is ready
+    
+    * spec: Add test case for app.makeSingleInstance
+    
+    * Fix missing extension when saving a file without filters
+    
+    Previously, when triggering the save dialog through e.g. `<a download>`
+    links (e.g. http://jsfiddle.net/koldev/cW7W5/), the extension was only
+    saved if Finder was set to show all extensions by default. We now always
+    display the extension to make sure that it is saved.
+    
+    If we want to keep the extension hidden, we could also populate the
+    allowed file types array with the extension from the default filename,
+    but that would have interfered with how we set the filters.
+    
+    * Try to make test less flaky
+    
+    * Try simpler test
+    
+    * Fix stdout detection
+    
+    * Try longer timeout on test
+
+commit f0f17fffd8f3898ca91967316978fd092195873b
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Tue Aug 29 14:23:39 2017 +0900
+
+    spec: Do not test window positions
+    
+    They were too flaky.
+
+commit 9ce3a8c3a77e9fa0898ad61e15a6fa7ba4c748e7
+Merge: 251a61a 65ab71c
+Author: Kevin Sawicki <kevin@github.com>
+Date:   Wed May 17 17:11:03 2017 -0700
+
+    Merge pull request #9516 from electron/flaky-pid-test
+    
+    Assert OS pid after load finishes
+
+commit 9249228ac3ce772c2fcd98a379cef78bece9f2d8
+Merge: ad5a48d f24baff
+Author: Kevin Sawicki <kevin@github.com>
+Date:   Mon Mar 27 14:05:42 2017 -0700
+
+    Merge pull request #9034 from electron/disable-flaky-appveyor-spec
+    
+    Disable flaky post navigation spec on AppVeyor
+
+commit 9a4783bf34ba07a3f181418eb7c3766aad3bb190
+Author: Kevin Sawicki <kevinsawicki@gmail.com>
+Date:   Mon Mar 27 09:15:40 2017 -0700
+
+    Disable flaky post navigation spec on AppVeyor
+
+commit dcbc10ac3810cb2b4b88cd583b783666aad03ccc
+Merge: feac868 b6c5e9a
+Author: Kevin Sawicki <kevin@github.com>
+Date:   Tue Jan 17 08:48:59 2017 -0800
+
+    Merge pull request #8417 from electron/flaky-travis-specs
+    
+    Disable flaky specs on Travis
+
+commit 925fb27b1e59f9c769eee04cd75f4e94f014f132
+Merge: 959613b 6cca627
+Author: Kevin Sawicki <kevin@github.com>
+Date:   Tue Aug 16 16:42:01 2016 -0700
+
+    Merge pull request #6874 from electron/tweak-flaky-web-contents-spec
+    
+    Tweak flaky web contents spec
+
+commit 4841e375024311425294a52c080d8bd832b2af8d
+Merge: b358dff c682ccd
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Sun May 8 16:44:29 2016 +0900
+
+    Merge pull request #5445 from electron/fix-flaky-tests
+    
+    Suppress the window.open tests on travis CI's mac machine
+
+commit 256c2684ee13cea01b064dae3b3d8aeb80a2d4dc
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Fri Mar 11 10:25:12 2016 +0900
+
+    spec: Do not enter fullscreen in travis on OS X
+    
+    It is too flaky
+
+commit 7f02e0a716e55cafb082046578a33183ffc068c7
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Thu Dec 24 19:05:28 2015 +0800
+
+    spec: Surppess did-change-theme-color test
+    
+    It is too flaky.
+
+commit ec541b2a18293da801290dbc996be1d81f58219c
+Merge: 1cb35cd 7c1ea0b
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Fri Dec 4 13:53:07 2015 +0800
+
+    Merge pull request #3686 from atom/fix-flaky-tests
+    
+    Fix a few flaky tests
+
+commit 7c1ea0b0f46334c31c59928731efb776bdbc7cc2
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Fri Dec 4 12:25:46 2015 +0800
+
+    spec: Suppress flaky tests on Travis
+
+commit 13c737823bee91f7f486f7d341b3d5712f6d5733
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Fri Dec 4 11:52:34 2015 +0800
+
+    spec: Suppress execFileSync test
+    
+    It somehow makes the test flaky after refresh.
+
+commit 48975d04e0e9673d9851f4a050f464a7108520ed
+Merge: b547772 417e97e
+Author: Cheng Zhao <zcbenz@gmail.com>
+Date:   Fri Jul 24 16:21:16 2015 +0800
+
+    Merge pull request #2323 from atom/better-spec
+    
+    Fix a few flaky tests

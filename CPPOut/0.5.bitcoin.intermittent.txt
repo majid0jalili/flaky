@@ -1,0 +1,1273 @@
+commit 7012db2a6bcd38cc820771fc9fd7fef13772ea32
+Merge: 1cb4e33 fa5a91a
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Thu Oct 22 11:02:29 2020 +0200
+
+    Merge #20176: test: Fix intermittent issue in p2p_feefilter
+    
+    fa5a91a352364fe615930f1e7d991671a54ddf2c test: Fix typo (one tx is enough) in p2p_feefilter (MarcoFalke)
+    fa3af2c0d3b3ed185fb8c6105dc2d26dc66632af test: Fix intermittent issue in p2p_feefilter (MarcoFalke)
+    
+    Pull request description:
+    
+      Fixes:
+    
+      ```
+      Traceback (most recent call last):
+        File "test/functional/test_framework/test_framework.py", line 126, in main
+          self.run_test()
+        File "test/functional/p2p_feefilter.py", line 63, in run_test
+          self.test_feefilter()
+        File "test/functional/p2p_feefilter.py", line 117, in test_feefilter
+          txids = [miniwallet.send_self_transfer(fee_rate=Decimal('0.00020000'), from_node=node1)['wtxid'] for _ in range(3)]
+        File "test/functional/p2p_feefilter.py", line 117, in <listcomp>
+          txids = [miniwallet.send_self_transfer(fee_rate=Decimal('0.00020000'), from_node=node1)['wtxid'] for _ in range(3)]
+        File "test/functional/test_framework/wallet.py", line 63, in send_self_transfer
+          txid = from_node.sendrawtransaction(tx_hex)
+        File "test/functional/test_framework/coverage.py", line 47, in __call__
+          return_val = self.auth_service_proxy_instance.__call__(*args, **kwargs)
+        File "test/functional/test_framework/authproxy.py", line 146, in __call__
+          raise JSONRPCException(response['error'], status)
+      test_framework.authproxy.JSONRPCException: bad-txns-inputs-missingorspent (-25)
+    
+    ACKs for top commit:
+      guggero:
+        ACK fa5a91a3
+    
+    Tree-SHA512: 51d885753f72e1c91c4580709c15bdab60ff8c9d6f9bcb6db78a560e7e4dd7f76ce23add3303b374174afa3f11f74aa61db189a90c68d7f7655b15e64f51ed96
+
+commit dda18e7310a202a8aa46c95279446131659f91c5
+Merge: b46f37b fa5f466
+Author: fanquake <fanquake@gmail.com>
+Date:   Thu Oct 22 07:57:29 2020 +0800
+
+    Merge #20214: test: Fix rpc_net intermittent issue
+    
+    fa5f46600fb98f1b35346bedc1a66c9019d01114 test: Fix rpc_net intermittent issue (MarcoFalke)
+    
+    Pull request description:
+    
+      Without the sync, the nodes might generate blocks at the same height and thus never be able to sync
+    
+    ACKs for top commit:
+      practicalswift:
+        ACK fa5f46600fb98f1b35346bedc1a66c9019d01114: patch looks correct
+    
+    Tree-SHA512: 21255795c2121c71fc620beb766855e57c7af94a668331d1b625665e22eb4b485a2b5c3ad2bb9a7042744f3c3e49c71251bcec41ba25bca03fd54aae32968a3a
+
+commit fa5f46600fb98f1b35346bedc1a66c9019d01114
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Wed Oct 21 21:12:09 2020 +0200
+
+    test: Fix rpc_net intermittent issue
+
+commit d9d9a293520d26ca8fec8caebab46db103b29903
+Merge: 152ddb3 faab86f
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Mon Oct 19 09:27:22 2020 +0200
+
+    Merge #20179: test: Fix intermittent issue in wallet_import_rescan
+    
+    faab86f6c8367178a068b298eda4ae3986ac2147 test: Fix intermittent issue in wallet_send (MarcoFalke)
+    faca3734c00ffaf2be7bd555fbfa2887ba28c811 test: Fix intermittent issue in wallet_import_rescan (MarcoFalke)
+    
+    Pull request description:
+    
+      Fixes the issue
+    
+      ```
+       node2 2020-10-16T14:26:28.699593Z (mocktime: 2020-10-16T16:26:46Z) [msghand] Timeout downloading block 1131f0318b913e078402524f1e63e53d52171844dd8246a03b970e540cb56924 from peer=0, disconnecting
+    
+    ACKs for top commit:
+      fjahr:
+        utACK faab86f6c8367178a068b298eda4ae3986ac2147
+    
+    Tree-SHA512: 739e8ad488c50e6beae676fb6cb021033cca6192da4acb4512c182bd8843f2f42a4a07474118285cb1d91798904433e4abb09476cc9ce115aae87ce64db69eaf
+
+commit faab86f6c8367178a068b298eda4ae3986ac2147
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sun Oct 18 11:04:32 2020 +0200
+
+    test: Fix intermittent issue in wallet_send
+
+commit faca3734c00ffaf2be7bd555fbfa2887ba28c811
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sun Oct 18 10:13:07 2020 +0200
+
+    test: Fix intermittent issue in wallet_import_rescan
+
+commit fa3af2c0d3b3ed185fb8c6105dc2d26dc66632af
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sat Oct 17 18:03:19 2020 +0200
+
+    test: Fix intermittent issue in p2p_feefilter
+
+commit cbb5f3a2d584f487278e0da1db23d3fcb42e4dc6
+Merge: 9ad7cd2 3333077
+Author: fanquake <fanquake@gmail.com>
+Date:   Fri Oct 16 11:31:12 2020 +0800
+
+    Merge #19836: rpc: Properly deserialize txs with witness before signing
+    
+    33330778230961cfbf2a24de36b5877e395cc596 rpc: Adjust witness-tx deserialize error message (MarcoFalke)
+    cccc7525697e7b8d99b545e34f0f504c78ffdb94 rpc: Properly deserialize txs with witness before signing (MarcoFalke)
+    
+    Pull request description:
+    
+      Signing a transaction can only happen when the transaction has inputs. A transaction with inputs can always be deserialized as witness-transaction. If `try_no_witness` decoding is attempted, this will lead to rare intermittent failures.
+    
+      Fixes #18803
+    
+    ACKs for top commit:
+      achow101:
+        ACK 33330778230961cfbf2a24de36b5877e395cc596
+      ajtowns:
+        ACK 33330778230961cfbf2a24de36b5877e395cc596
+    
+    Tree-SHA512: 73f8a5cdfe03fb0e68908d2fa09752c346406f455694a020ec0dd1267ef8f0a583b8e84063ea74aac127106dd193b72623ca6d81469a94b3f5b3c766ebf2c42b
+
+commit c91f955f44903df559ee8dfce1aa86cb89457b6e
+Merge: 0368931 56b018c
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sun Sep 6 13:03:39 2020 +0200
+
+    Merge #19887: test: Fix flaky wallet_basic test
+    
+    56b018ca7f37d25041b74f1bec305bdf54a55b9b test: Fix flaky wallet_basic test (Fabian Jahr)
+    
+    Pull request description:
+    
+      Fixes #19853
+    
+      I investigated the issue in #19876 and I still intend to fix the underlying issue of a race when using wallet RPCs right after starting a node in that PR. However, since that is a bit more complicated than I initially thought it makes sense to merge the fix of the test so the intermittent test failures stop. This fix in the test is going to be needed, either way, #19876 will only provide an error where before it was reporting a false balance.
+    
+    Top commit has no ACKs.
+    
+    Tree-SHA512: 52bb2388a3e77aa20d26ab0fd45796bc1781483b1cffe49cbb44e2488a72e76998edfb1198495373f9c6fd2ec26064d4176bd1a64dd59806622d5e50a4f4e870
+
+commit 30568d3f1e238f6900265914c2d449adcc355c66
+Merge: 93ab136 fafc9d5
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Wed Aug 26 19:24:51 2020 +0200
+
+    Merge #19778: test: Fix intermittent issue in wallet_bumpfee
+    
+    fafc9d5af48c987212af4170bb8b2504be8138f8 test: Fix intermittent issue in wallet_bumpfee (MarcoFalke)
+    fa347b2f2570a9436313a7c5d61015f2088662f4 test: Select at least the fee in wallet_bumpfee to avoid negative amounts (MarcoFalke)
+    
+    Pull request description:
+    
+      With a "dirty" mempool a transaction might fail to be accepted intermittently. For example,
+    
+      * https://travis-ci.org/github/bitcoin-core/gui/jobs/719916499#L6773 Fails acceptance
+      * https://travis-ci.org/github/bitcoin-core/gui/jobs/719916499#L6954 Test fails
+    
+      Fix the issue by clearing the mempool between subtests
+    
+    ACKs for top commit:
+      promag:
+        Code review ACK fafc9d5af48c987212af4170bb8b2504be8138f8.
+    
+    Tree-SHA512: 23fb6decb6343d19eafddcbdb7da0551f6be11325d1c97c30e563944000aeb02bcc4b24904d204b132c093dc1acf28445fa1fd08bfe8d8b52ddd1de51c33eeb6
+
+commit fafc9d5af48c987212af4170bb8b2504be8138f8
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri Aug 21 18:23:06 2020 +0200
+
+    test: Fix intermittent issue in wallet_bumpfee
+
+commit e6e277f9ed4da7aff9b7b39a7838bada0c3e572a
+Merge: 772cb03 72ae20f
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Tue Aug 18 08:17:56 2020 +0200
+
+    Merge #19756: tests: add sync_all to fix race condition in wallet groups test
+    
+    72ae20fc142457a200278cb2fedc5e32a3766b58 tests: add sync_all to fix race condition in wallet groups test (Karl-Johan Alm)
+    
+    Pull request description:
+    
+      This most likely fixes #19749, the intermittent CI issues with wallet_groups.
+    
+      This fix is also included in #19743.
+    
+    Top commit has no ACKs.
+    
+    Tree-SHA512: dd6ef7f89829483e2278191c21fe0912b51fd2187c10a0fa158339c5ab9f22d93b733ae10f17ef25d8b64f44e596e66dba8d7db5c009343472f422ce4cd67d8f
+
+commit edfeaf6836f1fcaacf1445001e1f58e1d09087ba
+Merge: 910a8d9 12410b1
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Tue Jul 21 16:01:52 2020 +0200
+
+    Merge #19552: test: fix intermittent failure in p2p_ibd_txrelay
+    
+    12410b1feb80189061eb4a2b43421e53cbb758a8 test: fix intermittent p2p_ibd_txrelay race, add test_framework.py#wait_until (Jon Atack)
+    
+    Pull request description:
+    
+      To fix these intermittent failures in Travis CI.
+      ```
+      162/163 - p2p_ibd_txrelay.py failed, Duration: 2 s
+    
+      stdout:
+      2020-07-19T05:44:17.213000Z TestFramework (INFO):
+          Check that nodes set minfilter to MAX_MONEY while still in IBD
+      2020-07-19T05:44:17.216000Z TestFramework (ERROR): Assertion failed
+      Traceback (most recent call last):
+        File "/Users/travis/build/bitcoin/bitcoin/ci/scratch/build/bitcoin-x86_64-apple-darwin16/test/functional/test_framework/test_framework.py", line 117, in main
+          self.run_test()
+        File "/Users/travis/build/bitcoin/bitcoin/ci/scratch/build/bitcoin-x86_64-apple-darwin16/test/functional/p2p_ibd_txrelay.py", line 30, in run_test
+          assert_equal(conn_info['minfeefilter'], MAX_FEE_FILTER)
+        File "/Users/travis/build/bitcoin/bitcoin/ci/scratch/build/bitcoin-x86_64-apple-darwin16/test/functional/test_framework/util.py", line 49, in assert_equal
+          raise AssertionError("not(%s)" % " == ".join(str(arg) for arg in (thing1, thing2) + args))
+    
+      AssertionError: not(0E-8 == 0.09170997)
+      2020-07-19T05:44:17.293000Z TestFramework (INFO): Stopping nodes
+      ```
+    
+      At Marco's suggestion, cherry-picked part of #19134 to nicely simplify using `wait_until`.
+    
+    ACKs for top commit:
+      vasild:
+        ACK 12410b1fe
+    
+    Tree-SHA512: 615f509883682fd693e578b259cba35a9fa0bc519f1394e88c857e8b0650bfec5397bfa856cfa9e6d5ef81d0ee6ad02e4ad2b0eb0bd530b4c281cbe3e663790b
+
+commit 12410b1feb80189061eb4a2b43421e53cbb758a8
+Author: Jon Atack <jon@atack.com>
+Date:   Sun Jul 19 08:39:15 2020 +0200
+
+    test: fix intermittent p2p_ibd_txrelay race, add test_framework.py#wait_until
+
+commit f4de89edfa8be4501534fec0c662c650a4ce7ef2
+Merge: 834ac4c fabd33b
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Tue Jul 14 17:08:16 2020 +0200
+
+    Merge #19429: test: Fix intermittent failure in wallet_encryption
+    
+    fabd33b5416f2a2cd635d02b85d5bc2681cfaf17 test: Fix intermittent failure in wallet_encryption (MarcoFalke)
+    
+    Pull request description:
+    
+      Iterating all crypted keys might take time.
+    
+      E.g.
+    
+      ```
+       node0 2020-07-01T14:41:19.227367Z [httpworker.0] ThreadRPCServer method=walletpassphrase user=__cookie__
+       node0 2020-07-01T14:41:24.377142Z [httpworker.0] queue run of timer lockwallet() in 100000000 seconds (using HTTP)
+      ...
+       test  2020-07-01T14:41:24.379000Z TestFramework (ERROR): Assertion failed
+                                         Traceback (most recent call last):
+                                           File "/tmp/cirrus-ci-build/ci/scratch/build/bitcoin-x86_64-pc-linux-gnu/test/functional/test_framework/test_framework.py", line 117, in main
+                                             self.run_test()
+                                           File "/tmp/cirrus-ci-build/ci/scratch/build/bitcoin-x86_64-pc-linux-gnu/test/functional/wallet_encryption.py", line 88, in run_test
+                                             assert_greater_than(expected_time + 5, actual_time) # 5 second buffer
+                                           File "/tmp/cirrus-ci-build/ci/scratch/build/bitcoin-x86_64-pc-linux-gnu/test/functional/test_framework/util.py", line 54, in assert_greater_than
+                                             raise AssertionError("%s <= %s" % (str(thing1), str(thing2)))
+                                         AssertionError: 1693614483 <= 1693614484
+      ```
+    
+      https://cirrus-ci.com/task/5322429885054976?command=ci#L4517
+    
+    ACKs for top commit:
+      achow101:
+        ACK fabd33b5416f2a2cd635d02b85d5bc2681cfaf17
+    
+    Tree-SHA512: 7a3ccdfc0cdc05fef1f942d3167d100ed63422eb54c05405c884ed91162b7bdb5ce54cb5a981b99a6df2e4af1ea834ccd7d5156531c8c14ea13e735becd6b377
+
+commit fabd33b5416f2a2cd635d02b85d5bc2681cfaf17
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Wed Jul 1 20:02:05 2020 -0400
+
+    test: Fix intermittent failure in wallet_encryption
+
+commit c19fd96694d15966f1cc83c43bae2746b92d3149
+Merge: e4bfd51 fa2ca0c
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri May 29 11:27:57 2020 -0400
+
+    Merge #19022: test: Fix intermittent failure in feature_dbcrash
+    
+    fa2ca0cbdde5c6c5e407ec037e52e3f6315a0b37 test: Fix intermittent failure in feature_dbcrash (MarcoFalke)
+    
+    Pull request description:
+    
+      Example backtrace https://cirrus-ci.com/task/6005716207009792?command=functional_test#L817
+    
+    ACKs for top commit:
+      jnewbery:
+        utACK fa2ca0cbdde5c6c5e407ec037e52e3f6315a0b37
+    
+    Tree-SHA512: 978b3ac222f4764c887719240cfd1b29f72cdd273a456345b631e622db0a38e345c25a70d0bae8d4063c1ff6c1af892a7ee37d0d66f47284c2524b663c3afe55
+
+commit 99e5e21b38bc0a5b26a53b84b5435b7abd1a7803
+Merge: 7418169 fab908f
+Author: Wladimir J. van der Laan <laanwj@protonmail.com>
+Date:   Thu May 21 17:26:45 2020 +0200
+
+    Merge #19023: test: Fix intermittent ETIMEDOUT on FreeBSD
+    
+    fab908f18a080912a0e833f12cccc27f27662e3b test: Fix intermittent ETIMEDOUT on FreeBSD (MarcoFalke)
+    
+    Pull request description:
+    
+      Example backtrace: https://cirrus-ci.com/task/5307019047469056?command=functional_test#L1059
+    
+    ACKs for top commit:
+      laanwj:
+        ACK fab908f18a080912a0e833f12cccc27f27662e3b
+    
+    Tree-SHA512: 06e383e9993e083d6da4c546dde8811ace02559ddbb1c24e307938307763b3abe630699054e7067cf4aea993c82865e259b77b4bee518666a03d26e0f81c0656
+
+commit fab908f18a080912a0e833f12cccc27f27662e3b
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Tue May 19 19:12:45 2020 -0400
+
+    test: Fix intermittent ETIMEDOUT on FreeBSD
+
+commit fa2ca0cbdde5c6c5e407ec037e52e3f6315a0b37
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Tue May 19 18:57:09 2020 -0400
+
+    test: Fix intermittent failure in feature_dbcrash
+
+commit 376294cde6b1588cb17055d8fde567eaf5848c3c
+Merge: b558669 fae153b
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri May 8 19:31:13 2020 -0400
+
+    Merge #18866: test: Fix verack race to avoid intermittent test failures
+    
+    fae153b40968bfd974a4709bcd841a59447abf18 test: Fix verack race to avoid intermittent test failures (MarcoFalke)
+    
+    Pull request description:
+    
+      Fixes #18832
+    
+    ACKs for top commit:
+      laanwj:
+        ACK fae153b40968bfd974a4709bcd841a59447abf18
+    
+    Tree-SHA512: 071de8c8e2b2787c9433c7460e18b9a54beaf471a52ce848c5ac7263fc2a40f5b976d4f558ecc494fd0fa07284b7c98d29267cade58f80ab74fe9a7d18d94298
+
+commit 7bcc42b4035b878719d13201286e322989b415c5
+Merge: c6b15ec fa3f9a0
+Author: Wladimir J. van der Laan <laanwj@protonmail.com>
+Date:   Wed May 6 15:13:42 2020 +0200
+
+    Merge #18873: test: Fix intermittent sync_blocks failures
+    
+    fa3f9a05660687bf4146e089050e944a1d6cbe3c test: Fix intermittent sync_blocks failures (MarcoFalke)
+    
+    Pull request description:
+    
+      Fixes #18872
+      Fixes #18737
+      Fixes #18801
+    
+      See docstring for motivation and description
+    
+    ACKs for top commit:
+      laanwj:
+        Code review ACK fa3f9a05660687bf4146e089050e944a1d6cbe3c
+    
+    Tree-SHA512: acd52d386a6849f7ff1cb1a51a439dc3c76e0e3a4dd8d22030df0ebb09b44497c61c56331ff65724b695d82d86b0ebb24608f9e637008e5dacb7676b0c448889
+
+commit fa3f9a05660687bf4146e089050e944a1d6cbe3c
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Mon May 4 20:06:38 2020 -0400
+
+    test: Fix intermittent sync_blocks failures
+
+commit fae153b40968bfd974a4709bcd841a59447abf18
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Mon May 4 08:48:10 2020 -0400
+
+    test: Fix verack race to avoid intermittent test failures
+
+commit cce034b02800ef380738b662ad7690bd87081a66
+Merge: ddc0a60 fab7ee3
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sun May 3 10:30:44 2020 -0400
+
+    Merge #18839: test: Fix intermittent issues
+    
+    fab7ee39900d128cd305f530b643e2e62999ec74 test: Fix p2p_leak intermittent issue (MarcoFalke)
+    fa8614aea9b8dc0f135a1221c7435014adb71c89 test: Fix intermittent p2p_segwit issue (MarcoFalke)
+    
+    Pull request description:
+    
+      Fixes #18801
+      Fixes #18802
+    
+    ACKs for top commit:
+      practicalswift:
+        ACK fab7ee39900d128cd305f530b643e2e62999ec74 -- diff looks correct
+    
+    Tree-SHA512: b5d0473ec1133aded127bef4c0c90f6b55906327cb49cbbd0776c4971cd9d5c9375fb70cc3dc8dd1f4bd8b1245c4414e803dc0d29ed4553b00eb131d27c9c128
+
+commit fab7ee39900d128cd305f530b643e2e62999ec74
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri May 1 08:46:16 2020 -0400
+
+    test: Fix p2p_leak intermittent issue
+
+commit fa8614aea9b8dc0f135a1221c7435014adb71c89
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri May 1 08:36:04 2020 -0400
+
+    test: Fix intermittent p2p_segwit issue
+
+commit 608359b071dac82a9cf33a6c9e01f87abfcb90eb
+Merge: e5b9308 6a72f26
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri May 1 06:58:53 2020 -0400
+
+    Merge #16426: Reverse cs_main, cs_wallet lock order and reduce cs_main locking
+    
+    6a72f26968cf931c985d8d4797b6264274cabd06 [wallet] Remove locked_chain from CWallet, its RPCs and tests (Antoine Riard)
+    841178820d31e1c24a00cb2c8fc0b1fd2f126f56 [wallet] Move methods from Chain::Lock interface to simple Chain (Antoine Riard)
+    0a76287387950bc9c5b634e95c5cd5fb1029f42d [wallet] Move getBlockHash from Chain::Lock interface to simple Chain (Antoine Riard)
+    de13363a472ea30dff2f8f55c6ae572281115380 [wallet] Move getBlockHeight from Chain::Lock interface to simple Chain (Antoine Riard)
+    b855592d835bf4b3fb1263b88d4f96669a1722b1 [wallet] Move getHeight from Chain::Lock interface to simple Chain (Antoine Riard)
+    
+    Pull request description:
+    
+      This change is intended to make the bitcoin node and its rpc, network and gui interfaces more responsive while the wallet is in use. Currently, because the node's `cs_main` mutex is always locked before the wallet's `cs_wallet` mutex (to prevent deadlocks), `cs_main` currently stays locked while the wallet does relatively slow things like creating and listing transactions.
+    
+      Switching the lock order so `cs_main` is acquired after `cs_wallet` allows `cs_main` to be only locked intermittently while the wallet is doing slow operations, so the node is not blocked waiting for the wallet.
+    
+      To review the present PR, most of getting right the move is ensuring any `LockAssertion` in `Chain::Lock` method is amended as a `LOCK(cs_main)`. And in final commit, check that any wallet code which was previously locking the chain is now calling a  method, enforcing the lock taking job. So far the only exception I found is `handleNotifications`, which should be corrected.
+    
+    ACKs for top commit:
+      MarcoFalke:
+        re-ACK 6a72f26968 🔏
+      fjahr:
+        re-ACK 6a72f26968cf931c985d8d4797b6264274cabd06
+      ryanofsky:
+        Code review ACK 6a72f26968cf931c985d8d4797b6264274cabd06. Only difference compared to the rebase I posted is reverting unneeded SetLastBlockProcessed change in wallet_disableprivkeys test
+    
+    Tree-SHA512: 9168b3bf3432d4f8bc4d9fa9246ac057050848e673efc264c8f44345f243ba9697b05c22c809a79d1b51bf0de1c4ed317960e496480f8d71e584468d4dd1b0ad
+
+commit 6a60bfc76c39493d35c10fef9b2851eb256bfaa5
+Merge: a483ffd fa301fe
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Tue Apr 28 13:11:49 2020 -0400
+
+    Merge #18765: test: Fix wallet_bumpfee intermittent error
+    
+    fa301fec966b77c54d02ac54ae7d726629adbfd5 test: Fix wallet_bumpfee intermittent error (MarcoFalke)
+    
+    Pull request description:
+    
+      Remove incorrect and undocumented `connect_nodes(self.nodes[0], 1)`.
+    
+      Issue is that transactions are re-relayed (going full circle) between the two nodes, that have two connections between each other.
+    
+      https://travis-ci.org/github/bitcoin/bitcoin/jobs/679201559#L6992
+    
+      Also fix some pep8 while touching the file
+    
+      This bug has been introduced by accident in c1dde3a949b36ce9c2155777b3fa1372e7ed97d8
+    
+    ACKs for top commit:
+      achow101:
+        ACK fa301fec966b77c54d02ac54ae7d726629adbfd5
+    
+    Tree-SHA512: a6565ca30dbe44b02e3f58f159d2515c2ea4a74030118fafc1a3391ce980a4b6d4505dcf51315fda24843f72550a7dea7407b877b3b796883dd73d3b6f009e6f
+
+commit fa301fec966b77c54d02ac54ae7d726629adbfd5
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sat Apr 25 13:00:28 2020 -0400
+
+    test: Fix wallet_bumpfee intermittent error
+
+commit 9ddfce671263e41aa27d56747c23c3240efdfab8
+Merge: 3cf464d fa8b9b5
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sun Apr 26 10:47:31 2020 -0400
+
+    Merge #18753: test: Fix intermittent failure in wallet_importmulti
+    
+    fa8b9b5d1f48ad95eecf47ebbd7bf374777fc621 test: Fix intermittent failure in wallet_importmulti (MarcoFalke)
+    
+    Pull request description:
+    
+      The wallet is async, so after generating a block, we must call `syncwithvalidationinterfacequeue`. Otherwise the timestamp will be of the previous block.
+    
+      https://travis-ci.org/github/bitcoin/bitcoin/jobs/677685073#L2648
+    
+    ACKs for top commit:
+      promag:
+        ACK fa8b9b5d1f48ad95eecf47ebbd7bf374777fc621.
+    
+    Tree-SHA512: c21f9912aabbe22019d4ac9d0da06d6e46ef7f2a84d2781110e04c9836eb0ecf90a22cf2bae7f608be611670d17b20600135d1c5e5404aa1e762839816285fb4
+
+commit 85bae24d060e0e67e72b7116ae92b220aad9fba1
+Merge: d8ca51d fae9866
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri Apr 24 07:57:41 2020 -0400
+
+    Merge #18752: test: Fix intermittent error in mempool_reorg
+    
+    fae98668d150bae7a68167749ae134894cb1140e test: Fix intermittent error in mempool_reorg (MarcoFalke)
+    
+    Pull request description:
+    
+      Example: https://travis-ci.org/github/bitcoin/bitcoin/jobs/677689899#L4717
+    
+      Also speed up tx relay and fix two pep8 errors while touching the file anyway.
+    
+    ACKs for top commit:
+      vasild:
+        utACK fae9866
+    
+    Tree-SHA512: 23a7894e71ad0e1a59c74c73643708fca21b505fa4e980038d554294063fd63c396669eefb233ffdffb0083968e51b702c643cb449df8f656dd8345a20f33907
+
+commit fa8b9b5d1f48ad95eecf47ebbd7bf374777fc621
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Thu Apr 23 19:00:12 2020 -0400
+
+    test: Fix intermittent failure in wallet_importmulti
+
+commit fae98668d150bae7a68167749ae134894cb1140e
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Thu Apr 23 18:45:08 2020 -0400
+
+    test: Fix intermittent error in mempool_reorg
+
+commit 9ea4d8326a9d1641dfacca7ac82c16b7d387d967
+Merge: 9773283 fac2fc4
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Tue Apr 21 10:57:52 2020 -0400
+
+    Merge #18704: test: Increase debugging to hunt down mempool_reorg intermittent failure
+    
+    fac2fc4dd8a28b99e17c57e4ab6580a3231f1d0a test: Increase debugging to hunt down mempool_reorg intermittent failure (MarcoFalke)
+    
+    Pull request description:
+    
+    Top commit has no ACKs.
+    
+    Tree-SHA512: 4094b44afaa623e58b69f8d0332e60f0150b9ae2fd8bb265210d85546d887672ab8a3435cd9b086be14f69ab5b17e0f9fae06bd8aec1e7947ca766dd72b577c4
+
+commit dc5da7fe7b0c51dac269d6c630d9b54581b07900
+Merge: f8102d9 92fe537
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Mon Apr 20 06:13:17 2020 -0400
+
+    Merge #18691: test: add wait_for_cookie_credentials() to framework for rpcwait tests
+    
+    92fe537cf704dfb4ae830c8c8b382f08c4893e65 test: fix intermittent race condition in interface_bitcoin_cli.py (Jon Atack)
+    c648e636b2f230db5f1d1137088685f74ae42454 test: add wait_for_cookie_credentials() to test framework (Jon Atack)
+    
+    Pull request description:
+    
+      This PR adds a `wait_for_cookie_credentials()` method to the test framework and calls it before the `-rpcwait` tests, to avoid an intermittent race condition on the CI run with Valgrind where the cookie file isn't written yet when the CLI call with `-rpcwait` arrives to `get_auth_cookie()`.
+    
+      To reproduce/test, build with
+      ```diff
+      diff --git a/src/httprpc.cpp b/src/httprpc.cpp
+      index 60c4d06f12..3dd06c4758 100644
+      --- a/src/httprpc.cpp
+      +++ b/src/httprpc.cpp
+      @@ -291,6 +291,7 @@ static bool InitRPCAuthentication()
+       bool StartHTTPRPC()
+       {
+           LogPrint(BCLog::RPC, "Starting HTTP RPC server\n");
+      +    UninterruptibleSleep(std::chrono::seconds{11});
+           if (!InitRPCAuthentication())
+      ```
+      then run the test normally and with valgrind
+      ```
+      test/functional/interface_bitcoin_cli.py -l debug
+      valgrind test/functional/interface_bitcoin_cli.py -l debug
+      ```
+      Thanks to Marco Falke for all the help. Closes #18684.
+    
+    Top commit has no ACKs.
+    
+    Tree-SHA512: 1b76635b5b1d6b05138affef7ab788aa3bc3fc75b0c69ba778ecdf81063cfe02a8dd7667cfd63a6c6e19b2dac47d7a8b755e334d8af5c0ab9d4026808ee96c83
+
+commit 92fe537cf704dfb4ae830c8c8b382f08c4893e65
+Author: Jon Atack <jon@atack.com>
+Date:   Fri Apr 17 21:19:48 2020 +0200
+
+    test: fix intermittent race condition in interface_bitcoin_cli.py
+    
+    by calling wait_for_cookie_credentials() to ensure the cookie file is written
+    and auth credentials available for testing the CLI -rpcwait option before the
+    RPC connection is up.
+
+commit fac2fc4dd8a28b99e17c57e4ab6580a3231f1d0a
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sun Apr 19 08:47:56 2020 -0400
+
+    test: Increase debugging to hunt down mempool_reorg intermittent failure
+
+commit abc145c9a4aef8ec269b7e0a3e9403cff9970fe4
+Merge: c5966a8 fa2251d
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Tue Apr 7 04:21:44 2020 +0800
+
+    Merge #18543: test: Use one node to avoid a race due to missing sync in rpc_signrawtransaction
+    
+    fa2251df5e3471e0d19d5d5c7780d34ee1498cee test: Use one node to avoid a race due to missing sync in rpc_signrawtransaction (MarcoFalke)
+    
+    Pull request description:
+    
+      Node 0 creates a transaction in a block, and node 1 sends a spending transaction without properly syncing the utxo set.
+    
+      Fixes intermittent test failure in rpc_signrawtransaction
+    
+      ```
+      test  2020-04-01T00:14:03.400000Z TestFramework (ERROR): JSONRPC error
+                                         Traceback (most recent call last):
+                                           File "C:\projects\bitcoin\test\functional\test_framework\test_framework.py", line 112, in main
+                                             self.run_test()
+                                           File "C:\projects\bitcoin/test/functional/rpc_signrawtransaction.py", line 213, in run_test
+                                             self.witness_script_test()
+                                           File "C:\projects\bitcoin/test/functional/rpc_signrawtransaction.py", line 208, in witness_script_test
+                                             self.nodes[1].sendrawtransaction(spending_tx_signed['hex'])
+                                           File "C:\projects\bitcoin\test\functional\test_framework\coverage.py", line 47, in __call__
+                                             return_val = self.auth_service_proxy_instance.__call__(*args, **kwargs)
+                                           File "C:\projects\bitcoin\test\functional\test_framework\authproxy.py", line 141, in __call__
+                                             raise JSONRPCException(response['error'], status)
+                                         test_framework.authproxy.JSONRPCException: bad-txns-inputs-missingorspent (-25)
+      ```
+    
+      Full log: https://ci.appveyor.com/project/DrahtBot/bitcoin/builds/31864368
+    
+    ACKs for top commit:
+      achow101:
+        ACK fa2251df5e3471e0d19d5d5c7780d34ee1498cee
+    
+    Tree-SHA512: 9450d216d9989d6c44028ae4b9818790cfb00796e0de22331422f775f74d697bb14ebae0e88dca20c6b641363780da384fe94c708e20fce9cfde929fb343b12f
+
+commit 910a4301b170680c8d14fd20101f067c2f52a0f9
+Merge: 6fff333 dddd09e
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Thu Dec 5 15:52:12 2019 -0500
+
+    Merge #17522: test: Wait until mempool is loaded in wallet_abandonconflict
+    
+    dddd09eb33d14fabda0aa40fa008b23b2bd6e589 test: Wait until mempool is loaded in wallet_abandonconflict (MarcoFalke)
+    
+    Pull request description:
+    
+      This might or might not fix intermittent issues such as https://ci.appveyor.com/project/DrahtBot/bitcoin/builds/28724018#L4091
+    
+      I believe the mempool was not loaded fully after the restart, in which case it was not dumped either on the next restart. Thus, the previous mempool was attempted to be loaded a second time, which succeeded and contained the txs.
+    
+    ACKs for top commit:
+      laanwj:
+        ACK dddd09eb33d14fabda0aa40fa008b23b2bd6e589
+    
+    Tree-SHA512: ab7061f946b5e5388f825dddceadb125f5197b24af3a7fcf1e700235d106a323419a56bfb4d84a2e27442e0de63e540c623b704343d83a98deaab3c02fcbdcbe
+
+commit e00501e00ccd52ee06e157577cf90b15f928c72f
+Merge: 8fc7f0c 37f2784
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Thu Aug 15 07:42:20 2019 -0400
+
+    Merge #16561: tests: Use colors and dots in test_runner.py output only if standard output is a terminal
+    
+    37f2784952cb6f598f82922f9ce71d40c9d74e26 tests: Use colors and dots in test_runner.py output only if standard output is a terminal -- allows for using the test runner output as input to other programs (practicalswift)
+    
+    Pull request description:
+    
+      Use colors and dots in `test_runner.py` output only if standard output is a terminal -- allows for using the test runner output as input to other programs.
+    
+      I found the need for this when parsing `test_runner.py` output while investigating intermittent functional test failures.
+    
+      Before:
+    
+      ```
+      $ test/functional/test_runner.py wallet_hd.py > output 2>&1
+      $ less output
+      Temporary test directory at /tmp/test_runner_₿_🏃_20190807_074115
+      ESC[1mWARNING!ESC[0m There is already a bitcoind process running on this system. Tests may fail unexpectedly due to resource contention!
+      Remaining jobs: [wallet_hd.py]
+      .......................................^M                                       ^M1/1 - ESC[1mwallet_hd.pyESC[0m passed, Duration: 20 s
+    
+      ESC[1mTEST         | STATUS    | DURATION
+    
+      ESC[0mESC[0;32mwallet_hd.py | ✓ Passed  | 20 s
+      ESC[0mESC[1m
+      ALL          | ✓ Passed  | 20 s (accumulated)
+      ESC[0mRuntime: 20 s
+      ```
+    
+      After:
+    
+      ```
+      $ test/functional/test_runner.py wallet_hd.py > output 2>&1
+      $ less output
+      Temporary test directory at /tmp/test_runner_₿_🏃_20190807_074244
+      1/1 - wallet_hd.py passed, Duration: 20 s
+      WARNING! There is already a bitcoind process running on this system. Tests may fail unexpectedly due to resource contention!
+      Remaining jobs: [wallet_hd.py]
+    
+      TEST         | STATUS    | DURATION
+    
+      wallet_hd.py | ✓ Passed  | 20 s
+    
+      ALL          | ✓ Passed  | 20 s (accumulated)
+      Runtime: 20 s
+      ```
+    
+    ACKs for top commit:
+      laanwj:
+        ACK 37f2784952cb6f598f82922f9ce71d40c9d74e26
+    
+    Tree-SHA512: f15d95f9e07de2954c326d63d7a4bcd2971faeaa00386600dec2fb915ec89475aeef1dbc968b2c12aa5e988d4b3ed1974d6da0b6a3f1e1a105cfd90e8cb97cf6
+
+commit 6b6386e854920be76073ce60d9407c35f2914f5b
+Merge: e55444a fa566b2
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Mon Aug 5 07:48:42 2019 -0400
+
+    Merge #16538: test: Add missing sync_blocks to feature_pruning
+    
+    fa566b2601ee5a40bf814e529d7db253dacd28e7 test: Add missing sync_blocks to feature_pruning (MarcoFalke)
+    
+    Pull request description:
+    
+      Fixes #16537
+      Fixes #16520
+    
+    ACKs for top commit:
+      promag:
+        ACK fa566b2601ee5a40bf814e529d7db253dacd28e7.
+      jonatack:
+        ACK fa566b2601ee5a40bf814e529d7db253dacd28e7. These past few months I have been seeing intermittent failures with this test on master. Ran `(for i in {1..40}; do test/functional/feature_pruning.py -l=debug; done)` overnight with this change; no failures.
+    
+    Tree-SHA512: 5181d5ea525f43ad09e1c8b9ae72e32219f483948854c6dc07dda24b790cbdf4012e586253a0e158a71a980d1ca9f5fdf06aafbe95b8ea3d9154ef2c8687395b
+
+commit 3489b715120b1bf7559fbddf03cd87b889fdca47
+Merge: 94df084 bf3be52
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sun Jul 28 10:12:46 2019 -0400
+
+    Merge #16464: [qa] Ensure we don't generate a too-big block in p2sh sigops test
+    
+    bf3be5297a746982cf8e83f45d342121e5665f80 [qa] Ensure we don't generate a too-big block in p2sh sigops test (Suhas Daftuar)
+    
+    Pull request description:
+    
+      There's a bug in the loop that is calculating the block size in the p2sh sigops test -- we start with the size of the block when it has no transactions, and then increment by the size of each transaction we add, without regard to the changing size of the encoding for the number of transactions in the block.
+    
+      This might be fine if the block construction were deterministic, but the first transaction in the block has an ECDSA signature which can be variable length, so we see intermittent failures of this test when the initial transaction has a 70-byte signature and the block ends up being one byte too big.
+    
+      Fix this by double-checking the block size after construction.
+    
+    ACKs for top commit:
+      jonasschnelli:
+        utACK bf3be5297a746982cf8e83f45d342121e5665f80
+      jnewbery:
+        tested ACK bf3be5297a746982cf8e83f45d342121e5665f80
+    
+    Tree-SHA512: f86385b96f7a6feafa4183727f5f2c9aae8ad70060b574aad13b150f174a17ce9a0040bc51ae7a04bd08f2a5298b983a84b0aed5e86a8440189ebc63b99e64dc
+
+commit 02a02424555eabfd3bdde2af5bca1384e29a814f
+Merge: 2a74733 42a995a
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sun Oct 7 23:49:22 2018 -0300
+
+    Merge #14419: [tests] Remove rpc_zmq.py
+    
+    42a995ae48 [tests] Remove rpc_zmq.py (John Newbery)
+    
+    Pull request description:
+    
+      rpc_zmq.py is racy and fails intermittently. Remove that test file and
+      move the getzmqnotifications RPC test into interface_zmq.py.
+    
+    Tree-SHA512: 666c8f252f8a392deda1bd531e84fdc04bdae4eab09407657ade2b5fc0aeffa247735e20314236f56e4e3402476673f3b7538d6e09f5af6976021ba2377ce63c
+
+commit 42a995ae4819ea472b211eb5088727a422fcbeb8
+Author: John Newbery <john@johnnewbery.com>
+Date:   Sun Oct 7 09:30:45 2018 +0900
+
+    [tests] Remove rpc_zmq.py
+    
+    rpc_zmq.py is racy and fails intermittently. Remove that test file and
+    move the getzmqnotifications RPC test into interface_zmq.py
+
+commit 7f27af22b06a13396fb4fb2b913eedae71ced095
+Merge: dac5374 d9c5630
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Mon Jul 16 14:18:31 2018 +0200
+
+    Merge #13644: 0.16: Remaining backports for 0.16.2
+    
+    d9c563095d71055ff054d3a27e11a12d3d1ec92f qa: Initialize lockstack to prevent null pointer deref (MarcoFalke)
+    21dd5127a423f38712dcdcef4002e714e8276bd2 gui: Show messages as text not html (Wladimir J. van der Laan)
+    f78e7f6589eca50650ecd2010c41333b12f964b0 [qt] send: Clear All also resets coin control options (Sjors Provoost)
+    657dfc5bca2bd476d124f51f711e889f98f1e7d6 Fix csBestBlock/cvBlockChange waiting in rpc/mining (Pieter Wuille)
+    88d1a649a2e9cfa471fc00f8c853e53383eb4695 Consensus: Fix bug when compiler do not support __builtin_clz* (532479301)
+    b72c0bd4c9cf36163fdef6ce0c60970d112d1100 [qa] Add a test for merkle proof malleation (Suhas Daftuar)
+    6b9dc8ceaed597d9c539ba6b09c171b258b66ca3 have verifytxoutproof check the number of txns in proof structure (Gregory Sanders)
+    ed82e7176d6f7c3e5f53363102dd1e7d558b1f92 wallet: Erase wtxOrderd wtx pointer on removeprunedfunds (MarcoFalke)
+    e15e3a9ddd17e1d46b3548cd475bcd6b1795c378 Remove boost dependency (boost/assign/std/vector.hpp) (practicalswift)
+    10621995edaa8237b5846f81a1d731648af4d017 Fix incorrect tests (practicalswift)
+    170b3099814c96c9af39fb2405502b0a85a33b5d Make tests pass after 2020 (Bernhard M. Wiedemann)
+    cfc6f7413bfa486aed9811fcef177cd80568f2db [rpcwallet] Clamp walletpassphrase value at 100M seconds (Suhas Daftuar)
+    bf1f1501903a2a0df4ac5fd4b2bfe086ffe88773 rpc: fix type mistmatch in listreceivedbyaddress (joemphilips)
+    2291774bd5a4cd7692db27de09728c98298db599 [trivial] Add newlines to end of log messages. (John Newbery)
+    cf6feb783764bd37647548c4013a1dde605dcc54 qt: Avoid resetting on resetguisettigs=0 (MarcoFalke)
+    cbdabef35e25d84206006b5dddbf6f8376157d5e qa: Fix wallet_listreceivedby race (MarcoFalke)
+    79c4fff9edec13ca4685abde953a320840544869 [tests] Fixed intermittent failure in p2p_sendheaders.py. (lmanners)
+    c04a4a5ae97915fce1c35dff715e373b1290a169 Remove useless mapRequest tracking that just effects Qt display. (Matt Corallo)
+    
+    Pull request description:
+    
+      Some gui/doc/rpc/qa backports
+    
+    Tree-SHA512: f1e918d2ca6016fc7c5d5adf5d537553a1769731e2dcac788edf02c7354387861ec5bcd0cbf3c833c1485d500c55a73a2799a8b39ed14477524ac46b4ff2332d
+
+commit 79c4fff9edec13ca4685abde953a320840544869
+Author: lmanners <lowellmanners@gmail.com>
+Date:   Tue May 8 22:38:44 2018 +0200
+
+    [tests] Fixed intermittent failure in p2p_sendheaders.py.
+    
+    Added handling for the case where headers are announced over more than one message.
+    refs #12453
+    
+    Github-Pull: #13192
+    Rebased-From: 12d1b77f7eb2ca274890d9fb45d6c19a40ba8f74
+
+commit 1c582503507b72306be1355738f1d853e499bd15
+Merge: f3e747e 12d1b77
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Thu May 10 11:04:53 2018 -0400
+
+    Merge #13192: [tests] Fixed intermittent failure in p2p_sendheaders.py.
+    
+    12d1b77f7e [tests] Fixed intermittent failure in p2p_sendheaders.py. (lmanners)
+    
+    Pull request description:
+    
+      Added handling for the case where headers are announced over more than one message.
+      refs #12453
+    
+    Tree-SHA512: 2c5b48ff019089b86e358181ba170d3aac09d4ae41ec79c2718e0ee83705860501bbcb8fd94d0f5c4f86c0d54a96781a967716621bb8c5ecc991b39af3cec506
+
+commit 12d1b77f7eb2ca274890d9fb45d6c19a40ba8f74
+Author: lmanners <lowellmanners@gmail.com>
+Date:   Tue May 8 22:38:44 2018 +0200
+
+    [tests] Fixed intermittent failure in p2p_sendheaders.py.
+    
+    Added handling for the case where headers are announced over more than one message.
+    refs #12453
+
+commit 9ea62a3dc4bd50a139e6d3c72e4f94d909ef10f3
+Merge: 845838c 41c29f6
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Tue Apr 24 10:02:39 2018 -0400
+
+    Merge #13049: [0.16] qa: Backports
+    
+    41c29f6d1d qa: Fix python TypeError in script.py (MarcoFalke)
+    7460945e0b [qa] Delete cookie file before starting node (Suhas Daftuar)
+    0a76ed232a qa: Cache only chain and wallet for regtest datadir (MarcoFalke)
+    6c26df06ad [qa] Ensure bitcoind processes are cleaned up when tests end (Suhas Daftuar)
+    df38b130d9 [tests] Test starting bitcoind with -h and -version (John Newbery)
+    4bdb0ce517 [tests] Fix intermittent rpc_net.py failure. (John Newbery)
+    0e98f96e42 test: Use wait_until in tests where time was used for polling (Ben Woosley)
+    1286f3e49a test: Use wait_until to ensure ping goes out (Ben Woosley)
+    cfebd400ef [test] Round target fee to 8 decimals in assert_fee_amount (Karl-Johan Alm)
+    
+    Pull request description:
+    
+      Similar to #12967 this contains all relevant bugfixes and improvements to the functional test suite.
+    
+      I didn't include fixes to make the tests run on Windows, since that is still an ongoing effort and doesn't seem worth to backport.
+    
+      As all of these are clean cherry-picks, I suggest reviewers redo the cherry-picks to get the same branch and then run the extended test suite.
+    
+    Tree-SHA512: 70e1bc28d5572f93796f1ac4d97d77e8146869c15dcc1e3b65a730fa2641283050f769cefd9791d800c758e0a92f11fd55ed0797ccec87b897c7e701d0187f34
+
+commit 4bdb0ce5172b511c1426f5ae839c6b66706d8b62
+Author: John Newbery <john@johnnewbery.com>
+Date:   Tue Mar 27 17:18:01 2018 -0400
+
+    [tests] Fix intermittent rpc_net.py failure.
+    
+    rpc_net.py would intermittently fail on Travis, probably
+    due to assuming that two consecutive RPC calls were atomic.
+    Fix this by only testing that amounts are bounded above and
+    below rather than equal.
+    
+    Github-Pull: #12804
+    Rebased-From: 5a67c0524e5dc98d0e387f189545bc99863916d4
+
+commit 243c9bb79a3ce81532d6ec884012728669aa40b3
+Merge: 4490871 5a67c05
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri Mar 30 11:57:05 2018 -0400
+
+    Merge #12804: [tests] Fix intermittent rpc_net.py failure.
+    
+    5a67c0524e [tests] Fix intermittent rpc_net.py failure. (John Newbery)
+    
+    Pull request description:
+    
+      rpc_net.py would intermittently fail on Travis, probably
+      due to assuming that two consecutive RPC calls were atomic.
+      Fix this by trying the test up to three times and only failing
+      if all three attempts fail.
+    
+      fixes #11778
+    
+    Tree-SHA512: f2f5047e05114ad2110377e6221ce057680c240952971fb33863834587d2250896c6b697ba27eef739cd0ab23faf47dfae8cafadc9833cbfab5a6f7e36dae5e2
+
+commit 5a67c0524e5dc98d0e387f189545bc99863916d4
+Author: John Newbery <john@johnnewbery.com>
+Date:   Tue Mar 27 17:18:01 2018 -0400
+
+    [tests] Fix intermittent rpc_net.py failure.
+    
+    rpc_net.py would intermittently fail on Travis, probably
+    due to assuming that two consecutive RPC calls were atomic.
+    Fix this by only testing that amounts are bounded above and
+    below rather than equal.
+
+commit b8947554dd4a7e120c1ee0616bc29f19cf36f917
+Author: Matt Corallo <git@bluematt.me>
+Date:   Tue Feb 6 13:51:44 2018 -0500
+
+    Hold mempool.cs for the duration of ATMP.
+    
+    This resolves an issue where getrawmempool() can race mempool
+    notification signals. Intuitively we use mempool.cs as a "read
+    lock" on the mempool with cs_main being the write lock, so holding
+    the read lock intermittently while doing write operations is
+    somewhat strange.
+    This also avoids the introduction of cs_main in getrawmempool()
+    which reviewers objected to in the previous fix in #12273
+    
+    Github-Pull: #12368
+    Rebased-From: 85aa8398f5d13c659299b81cdae377462b4f8316
+    Tree-SHA512: 90a505a96cecc065e8575d816f3bb35040df8672efc315f45eb3f2ea086e8ea6ee2c99eed03d0fe2215c8d3ee947a7b120e3c57a25185d03550c9075573ab032
+
+commit d57d10ee96a64b76dbf4a4cfe0c358f4ee4b7de2
+Merge: 6db4fa7 02fc886
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Thu Feb 8 09:35:13 2018 +0100
+
+    Merge #12368: Hold mempool.cs for the duration of ATMP.
+    
+    02fc886 Add braces to meet code style on line-after-the-one-changed. (Matt Corallo)
+    85aa839 Hold mempool.cs for the duration of ATMP. (Matt Corallo)
+    
+    Pull request description:
+    
+      This resolves an issue where getrawmempool() can race mempool
+      notification signals. Intuitively we use mempool.cs as a "read
+      lock" on the mempool with cs_main being the write lock, so holding
+      the read lock intermittently while doing write operations is
+      somewhat strange.
+    
+      This also avoids the introduction of cs_main in getrawmempool()
+      which reviewers objected to in the previous fix in #12273
+    
+    Tree-SHA512: 29464b9ca3890010ae13b7dc1c53487cc2bc9c3cf3d32a14cb09c8aa33848f57959d8991ea096beebcfb72f062e4e1962f104aefe4252c7db87633bbfe4ab317
+
+commit 85aa8398f5d13c659299b81cdae377462b4f8316
+Author: Matt Corallo <git@bluematt.me>
+Date:   Tue Feb 6 13:51:44 2018 -0500
+
+    Hold mempool.cs for the duration of ATMP.
+    
+    This resolves an issue where getrawmempool() can race mempool
+    notification signals. Intuitively we use mempool.cs as a "read
+    lock" on the mempool with cs_main being the write lock, so holding
+    the read lock intermittently while doing write operations is
+    somewhat strange.
+    This also avoids the introduction of cs_main in getrawmempool()
+    which reviewers objected to in the previous fix in #12273
+
+commit 1213be6c3a098a9955eab8bb7f44e16b761fcbb5
+Merge: 9cf6393 fa796bb
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Mon Jan 29 10:35:53 2018 +0100
+
+    Merge #12217: qa: Add missing syncwithvalidationinterfacequeue to tests
+    
+    fa796bb qa: Add missing syncwithvalidationinterfacequeue to tests (MarcoFalke)
+    
+    Pull request description:
+    
+      Fixes intermittent travis failures with those tests caused by a missing flush of mempool txes to the wallet.
+    
+    Tree-SHA512: 4f57c93a81af9c07b36c16996bf3e6bbb2af61779f0d6ae0126b64563eb4ec4b53f64241c9cf4c3f322db56f4339fd939319747653bebc93bbc7e3d5dceedda6
+
+commit 598a9c4e4dcd03c6d80fba005de729a6a3aeba7e
+Merge: 6970b30 1e2e09e
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Thu Jan 25 08:04:33 2018 -0500
+
+    Merge #12264: Fix versionbits warning test
+    
+    1e2e09e2f6 Fix intermittent failure in p2p-versionbits-warning.py (John Newbery)
+    3bbd843708 Improve comments/logging in p2p-versionbits-warning.py (John Newbery)
+    ef2beb2c13 Fix flake8 warnings in p2p-versionbits-warning.py (John Newbery)
+    
+    Pull request description:
+    
+      fixes #12259 (and tidies up the test)
+    
+      The problem was that the node was still in IBD at the point the last block was generated. UpdateTip() will not generate a warning if the node is still in IBD:
+    
+      https://github.com/bitcoin/bitcoin/blob/cc5870a4057f0322509dde5877fb08258bf4ec50/src/validation.cpp#L2151
+    
+      The 'proper' fix would be to remove the overenthusiastic latching in DoWarning:
+    
+      https://github.com/bitcoin/bitcoin/blob/cc5870a4057f0322509dde5877fb08258bf4ec50/src/validation.cpp#L2135
+    
+      so that more than one warning message can be output to `alertnotify`. Really we should suppress multiple messages of the same type, but allow messages to be output if they're for different warnings. That would mean the test wouldn't need to stop-start the node.
+    
+    Tree-SHA512: 5c9aa5af7eba3c1350ea28482d57d3d79e3166c6224ceddb5d5a631090081d890d7403015e41f413c22990959a488cf1231f88bb825c54a609b24f89c450a1f6
+
+commit 1e2e09e2f6382ed239d974720126c642c3e3690c
+Author: John Newbery <john@johnnewbery.com>
+Date:   Wed Jan 24 13:29:13 2018 -0500
+
+    Fix intermittent failure in p2p-versionbits-warning.py
+    
+    Makes following changes to fix and tidy up p2p-versionbits-warning.py:
+    - add node alias in the run() method
+    - call versionbits_in_alert_file() in a wait_until loop.
+    - don't clear out the alert.txt file
+    - explicitly comment why the node needs to be stop-started
+    - Verify that the node is out of IBD after stop-start (nodes in IBD do
+    not generate alert messages)
+    - no need to subclass P2PInterface
+
+commit 0d89fa0877930c6c8a539a656c1009ad8ab6755b
+Merge: d080a7d 9d42cc3
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Sat Nov 18 17:30:14 2017 -0500
+
+    Merge #11707: [tests] Fix sendheaders
+    
+    9d42cc333 [tests] address review comments (John Newbery)
+    f0c4ab9a7 [tests] fix flakiness in sendheaders.py (John Newbery)
+    25fd6e2c2 [tests] refactor check_last_announcement() in sendheaders.py (John Newbery)
+    f39d4bbd1 [tests] tidy up BaseNode in sendheaders.py (John Newbery)
+    2613c545f [tests] fix flake8 warnings in sendheaders.py (John Newbery)
+    
+    Pull request description:
+    
+      This PR should fix the intermittent failure of sendheaders.py described in #11673. The first three commits are tidying up and refactoring the file. The final commit _fix flakiness in sendheaders.py_ fixes the intermittent failures. The commit message for that commit describes the problems that are being fixed.
+    
+      I think @laanwj @MeshCollider @MarcoFalke have seen these failures.
+    
+      fixes #11673
+    
+    Tree-SHA512: 278e1af85f2eae00f970f2d8ef33686dd52b4f62180dea4cfdaff7bcf3287c6f1c2930355d99461a12f0c51c4d42cc3b1cb3275174134028ca4d06ffc24c18dd
+
+commit f0c4ab9a7034aca6be83fcb6cd8479cd19a196a2
+Author: John Newbery <john@johnnewbery.com>
+Date:   Thu Nov 16 11:52:59 2017 -0500
+
+    [tests] fix flakiness in sendheaders.py
+    
+    Fixes to sources of intermittent failure in sendheaders.py
+    
+    - at the start of test_null_locators(), a new block is generated and
+    then a getheaders is sent. check_last_accouncement() is called to assert
+    that the headers message is received. However, the new block triggers an
+    inv to be sent over both P2P connections, so there's a race. If the inv
+    is received at the wrong time, the test fails.
+    
+    - test_null_locators() ends by sending a block to the node under test.
+    At the start of test_nonnull_locators(), a block is mined and
+    check_last_announcement() is called to assert that the inv received is
+    for the same block. That means there's a race: if the inv from the block
+    sent in test_null_locators() is received at the wrong time, the test
+    fails.
+
+commit 8df48b36ed3201d938b9974ecbee455d7dc2fb84
+Merge: 96ac26e fadd0c1
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Wed Sep 13 18:18:17 2017 +0200
+
+    Merge #11308: [qa] zapwallettxes: Wait up to 3s for mempool reload
+    
+    fadd0c16b [qa] zapwallettxes: Wait up to 3s for mempool reload (MarcoFalke)
+    
+    Pull request description:
+    
+      There had been intermittent test failures on zapwallettxes, as no time was allotted to reload the mempool.
+    
+    Tree-SHA512: 993254d2aaca6ea42fceefffed0cf90bdda91c64150179ef2a11337c3fe2cc6bf42b83ea9d9a1a575204fbde2676d7203443b00d053e8c2ed43e017c09d3ab11
+
+commit bf74d377fb8e20140da6eac1407414928384bcea
+Merge: 2c811e0 cc5d38f
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri Aug 11 18:09:51 2017 +0200
+
+    Merge #11023: [tests] Add option to attach a python debugger if functional test fails
+    
+    cc5d38f4b Add option to attach a python debugger if test fails (John Newbery)
+    
+    Pull request description:
+    
+      Adds a simple option to the test_framework to attach pdb if the test fails.
+    
+      Helpful for catching and debugging intermittent failures: Run the test in a loop with this option. The first failure will cause execution to pause and nodes will be left running for interactive debugging.
+    
+      @sdaftuar
+    
+    Tree-SHA512: 01cfae15fa3f04ed6ec6a99fef60a6c6a59723429309e81eacd6767caf12f5758f59b337804291ecab33a38a2958f36e2b513d201bee72a2eeb207a67046f952
+
+commit e5d26e47c7a482c072a7fe47bb84c56854734184
+Merge: 96a63a3 faa76d1
+Author: MarcoFalke <falke.marco@gmail.com>
+Date:   Fri Aug 11 16:57:51 2017 +0200
+
+    Merge #11025: qa: Fix inv race in example_test
+    
+    faa76d1b7 qa: Fix inv race in example_test (MarcoFalke)
+    
+    Pull request description:
+    
+      There have been intermittent test failures on this script.
+    
+      ```py
+        File "./test/functional/example_test.py", line 216, in run_test
+          assert_equal(block, 1)
+      AssertionError: not(2 == 1)
+      ```
+    
+      Probably the simplest way to fix them is overriding the `on_inv` method, so that no "colliding" getdata for the blocks are sent out.
+    
+      Additionally, all getdata are now sent in a single message.
+    
+    Tree-SHA512: 809c2bbfa90a67fc97905769fcbe90ba9abe1aac1f145530934f56a364835973b94d3302b6be68f4f2987acf333bce146bcc4c878c283301871ba5bb1a9bedb6
+
+commit a4fd89fddba49c56e77f131fe95feffa8d7cf6ed
+Author: John Newbery <john@johnnewbery.com>
+Date:   Fri Mar 24 12:35:28 2017 -0400
+
+    Make forknotify.py more robust
+    
+    forknotify would intermittently fail because the alert file was not
+    being written fast enough. This commit adds a timeout so the test does
+    not fail immediately.
+
+commit ac40ed780079861e67d5c026e5026e8cc387eb24
+Author: error10 <error@ioerror.us>
+Date:   Fri Dec 4 14:00:18 2015 -0500
+
+    Increase timeout waiting for pruned blk00000.dat
+    
+    In my ever-growing list of test failures, I was seeing this one intermittently.
+    
+    ```
+    Running 2nd level testscript pruning.py...
+    Initializing test directory /tmp/testY5ypCv
+    Warning! This test requires 4GB of disk space and takes over 30 mins (up to 2 hours)
+    Mining a big blockchain of 995 blocks
+    Check that we haven't started pruning yet because we're below PruneAfterHeight
+    Success
+    Though we're already using more than 550MB, current usage: 587
+    Mining 25 more blocks should cause the first block file to be pruned
+    Assertion failed: blk00000.dat not pruned when it should be
+      File "/home/error/bitcoinxt-0.11D/qa/rpc-tests/test_framework/test_framework.py", line 118, in main
+        self.run_test()
+      File "/home/error/bitcoinxt-0.11D/qa/rpc-tests/pruning.py", line 272, in run_test
+        self.test_height_min()
+      File "/home/error/bitcoinxt-0.11D/qa/rpc-tests/pruning.py", line 94, in test_height_min
+        raise AssertionError("blk00000.dat not pruned when it should be")
+    Stopping nodes
+    Failed
+    ```
+    
+    After digging into the test, I found that the code is waiting 10 seconds for blk00000.dat to be deleted, and then throwing this failure if it still exists after 10 seconds.
+    
+    I increased this amount, had the script print the actual time taken, and ran the test a few more times. The time taken ranged between 8 to 12 seconds. So, I feel that this timeout is too short.
+    
+    After changing the timeout to 30 seconds, the test passes consistently.
+    (cherry picked from commit 3469911c89a48dd2fefe4d1c2a0c176256e14ee0)
+
+commit d513405cb71425dd615e88aca4f6222e08d150a5
+Author: Suhas Daftuar <sdaftuar@chaincode.com>
+Date:   Thu Jan 7 09:22:20 2016 -0500
+
+    [Tests] Eliminate intermittent failures in sendheaders.py
+    
+    - Add race-condition debugging tool to mininode
+    - Eliminate race condition in sendheaders.py test
+    
+    Clear the last block announcement before mining new blocks.
+    
+    Github-Pull: #7308
+    Rebased-From: 82a0ce09b45ab9c09ce4f516be5b9b413dcec470 168915e6dec88b31793d4ee4b60b94d4149de36c
+
+commit a4fe57da6207c1e5691a1e843d22db571f3f0186
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Thu Aug 6 14:14:48 2015 +0200
+
+    Revert "Assert on probable deadlocks if the second lock isnt try_lock"
+    
+    Disabling this for now - too many intermittent Travis issues.
+    
+    This reverts commit 0fcc4e1e04082daf6e97e05bfb26e4b94e54ea53
+    (pull #5515).
+
+commit 5121c68657fb90baa50b709adcc48348c4876783
+Merge: fac21df 8a0b933
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Fri Jul 10 18:52:19 2015 +0200
+
+    Merge pull request #6414
+    
+    8a0b933 Fix intermittent test failure, reduce test time (Tom Harding)
+
+commit 8a0b933aaed45b8d58aaba5bd9a904bb7105cf08
+Author: Tom Harding <tomh@thinlink.com>
+Date:   Thu Jul 9 18:10:57 2015 -0700
+
+    Fix intermittent test failure, reduce test time
+    
+    In txn_clone.py, non-essential test transaction tx2 was asserted
+    to be unconfirmed, but would occasionally confirm depending on
+    network behavior.  Fix by explicitly sharing with miner and
+    checking for 1 confirmation.
+    
+    Reduce required conflict tests from 4 to 2, by moving one invocation
+    each of txn_clone.py and txn_doublespend.py to the extented test
+    section.  This saves about 15 seconds per test run for me.
+
+commit 4bf83b27b282ac5905ec428c1772ff8242d1c53a
+Merge: 0d862c2 bdcf5de
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Thu May 21 21:59:56 2015 +0200
+
+    Merge pull request #6171
+    
+    bdcf5de Fix intermittent hang issue in scheduler_tests (Wladimir J. van der Laan)
+
+commit bdcf5dea7c2e7493be7d8fc157e168b77cce7dcc
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Thu May 21 18:57:10 2015 +0200
+
+    Fix intermittent hang issue in scheduler_tests
+    
+    Don't clear `stopRequested` and `stopWhenEmpty` at the top of
+    `serviceQueue`, as this results in a race condition: on systems under
+    heavy load, some of the threads only get scheduled on the CPU when the
+    other threads have already finished their work. This causes the flags to
+    be cleared post-hoc and thus those threads to wait forever.
+    
+    The potential drawback of this change is that the scheduler cannot be
+    restarted after being stopped (an explicit reset would be needed), but
+    we don't use this functionality anyway.

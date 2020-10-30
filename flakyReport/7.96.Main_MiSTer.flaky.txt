@@ -1,5 +1,0 @@
-commit 82312678b86bec7b4050c45317a4b89d3948bd10
-Author: sorgelig <pour.garbage@gmail.com>
-Date:   Sat May 25 22:43:05 2019 +0800
-
-    Picture and logo for menu background.

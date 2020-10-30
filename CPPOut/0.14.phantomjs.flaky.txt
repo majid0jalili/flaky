@@ -1,0 +1,21 @@
+commit f57fa468ab9d5c222891cf0a145671043741d93b
+Author: Ariya Hidayat <ariya.hidayat@gmail.com>
+Date:   Sat Jun 1 19:52:38 2013 -0700
+
+    Unit test: tweak secure connection check.
+    
+    The main wikipedia page can be slow to load and thus triggers the timeout.
+    Let's use the fast Google site so that we don't get flaky outcome.
+    
+    Issue #10882: https://github.com/ariya/phantomjs/issues/10882
+
+commit 678f751275086b46f3eb7a84b2a1326d2689b0bd
+Author: Ariya Hidayat <ariya.hidayat@gmail.com>
+Date:   Sat Jun 1 19:52:38 2013 -0700
+
+    Unit test: tweak secure connection check.
+    
+    The main wikipedia page can be slow to load and thus triggers the timeout.
+    Let's use the fast Google site so that we don't get flaky outcome.
+    
+    Issue #10882: https://github.com/ariya/phantomjs/issues/10882

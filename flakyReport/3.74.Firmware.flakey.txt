@@ -1,5 +1,0 @@
-commit 9404b199065be410ef15e9149b1f3461cd7e141a
-Author: Julian Kent <julian@auterion.com>
-Date:   Fri Apr 3 14:55:00 2020 +0200
-
-    Fix bezier scaling

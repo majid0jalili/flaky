@@ -1,5 +1,0 @@
-commit 3967437cbaffa235a9d62aa41ab712b8c931986f
-Author: David Sansome <davidsansome@gmail.com>
-Date:   Thu Jan 27 19:49:08 2011 +0000
-
-    Bring (parts of) gmock into the repository instead of it being an svn:external

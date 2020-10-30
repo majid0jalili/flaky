@@ -1,5 +1,0 @@
-commit 52dc33302d93f559d29d59b1794a7f6323669842
-Author: weizili <zieckey@gmail.com>
-Date:   Sat May 20 18:27:32 2017 +0800
-
-    Add gtest source codes to fix ubuntu compile failed problem

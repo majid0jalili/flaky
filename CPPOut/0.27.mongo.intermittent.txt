@@ -1,0 +1,216 @@
+commit fa89c7911818408d0e8813cb819aa8f3b9176b8d
+Author: Tess Avitabile <tess.avitabile@mongodb.com>
+Date:   Wed Jun 3 10:23:40 2020 -0400
+
+    SERVER-48563 Fix intermittent failure in IsMasterReturnsErrorOnEnteringQuiesceModeAfterWaitingTimesOut
+
+commit 56cbcf28c6bd4d9f9e739fb834d83b61c99516f1
+Author: David Golden <xdg@xdg.me>
+Date:   Fri May 11 12:22:02 2018 -0400
+
+    Import tools: 0373beacadd1b314e2da616acefc5804889eb92c from branch v4.0
+    
+    ref: 7b16532d46..0373beacad
+    for: 3.7.10
+    
+    TOOLS-1817    Add 'preserveUUIDs' flag to restore collections with existing UUIDS
+    TOOLS-2002    mongorestore --oplogReplay failed on createIndexes command
+    TOOLS-2033    bsondump_broken_pipe.js fails intermittently in Evergreen
+
+commit e47c92953460959512ccbd70f09e46709c92623f
+Author: Ramon Fernandez <ramon@mongodb.com>
+Date:   Thu Sep 22 10:37:39 2016 -0400
+
+    Import tools: 959ed7c66bb4df5e4f66ed3bcfe662798ee53231 from branch v3.3
+    
+    ref: 5b883d86fd..959ed7c66b
+    for: 3.3.13
+    
+    TOOLS-69      MongoImport -- Support For Merge Imports
+    TOOLS-853     Using mongo-tools as a package
+    TOOLS-1035    Don't create intents for system.profile.metadata.json files
+    TOOLS-1142    Load system certs on all platforms
+    TOOLS-1147    Connection Leak for mongo tools
+    TOOLS-1223    Mongodump SSL and GSSAPI authentication
+    TOOLS-1248    mongoexport shouldn't disallow system namespaces
+    TOOLS-1256    Tools have to know not to backup/copy docs in views
+    TOOLS-1324    use newer/correct server release versions
+    TOOLS-1333    rare intermittent test failures
+    TOOLS-1350    move mongotape code into mongodb/mongo-tools
+    TOOLS-1351    default output format for mongotape monitor incorrect
+    TOOLS-1365    Issue only one ApplyOps cmd per oplog entry
+    TOOLS-1366    listening for SIGPIPE will exit on network errors
+    TOOLS-1369    Switch rhel55 distro to rhel55-test
+    TOOLS-1371    mongorestore assumes admin.system.version only contains authSchema document
+    TOOLS-1372    use insertMany in tests
+    TOOLS-1375    use SIGABRT to stop hung tools executions
+    TOOLS-1376    Create s390x evergreen build variant for master
+    TOOLS-1377    Create arm64 evergreen build variant for master
+    TOOLS-1379    parseGrace (flaky) test failure on Z with RHEL 7.2
+    TOOLS-1382    consolidate unit test tasks
+    TOOLS-1387    dump and restore should ignore system collections
+    TOOLS-1390    replace the vendoring script that represents what we actually do
+    TOOLS-1420    go 1.7 vet bugs on master
+    TOOLS-1421    Add TLS SNI Support
+    TOOLS-1423    stop building tools master on rhel 5.5
+    TOOLS-1436    Make version not also print usage
+    TOOLS-1442    make spacemonkeygo/openssl compile on suse11
+
+commit 2a592d47e19211435520f2968a7e5b1a4de08df9
+Author: Andy Schwerin <schwerin@mongodb.com>
+Date:   Fri Jun 17 19:53:18 2016 -0400
+
+    SERVER-24655 Raise timeout of call to awaitBalance in sharding_rs1.js.
+    
+    This is to fix intermittent failures in the CI system where slow machines
+    need another minute or two to finish the balancing step.
+
+commit dec765e00cdc4be81ff42aafded2c4313c290728
+Author: Kamran Khan <kamran.khan@mongodb.com>
+Date:   Wed Feb 17 14:13:49 2016 -0500
+
+    SERVER-22513 Stop suppressing stderr output from jstestfuzz self-tests
+    
+    This change should make it easier to diagnose intermittent failures.
+    
+    (cherry picked from commit e39a25c60e551302323bfe7f3eafd6987d0014e7)
+
+commit e39a25c60e551302323bfe7f3eafd6987d0014e7
+Author: Kamran Khan <kamran.khan@mongodb.com>
+Date:   Mon Feb 8 12:34:40 2016 -0500
+
+    SERVER-22513 Stop suppressing stderr output from jstestfuzz self-tests
+    
+    This change should make it easier to diagnose intermittent failures.
+
+commit 3d727191a98407c76d48bb9a4c53bd312488b879
+Author: Max Hirschhorn <max.hirschhorn@mongodb.com>
+Date:   Wed Oct 7 12:19:39 2015 -0400
+
+    SERVER-20799 Remove aggregation + maxTimeMS test case from crud_api.js.
+    
+    Had caused intermittent failures when run in parallel with other tests.
+
+commit 081e8067f7cc39ed57efb6124590d223e49a4595
+Author: Kamran Khan <kamran.khan@mongodb.com>
+Date:   Fri Aug 21 12:36:50 2015 -0400
+
+    SERVER-20057 Disable mapReduce tests in the sharded concurrency suites
+    
+    The tests intermittently fail because temporary namespaces can collide
+    across mongos processes.  These collisions lead to plan executor errors
+    during the mapReduce commands.
+
+commit fd0af1c636bc45f1da87a3b8402111f30b636021
+Author: Kaloian Manassiev <kaloian.manassiev@mongodb.com>
+Date:   Mon Apr 6 14:47:29 2015 -0400
+
+    SERVER-17898 Add logging of config server check failures
+    
+    This does not actually fix the bug, but helps narrow down the exact
+    nature of these intermittent failures.
+
+commit 2f624527b8263564477a95e25ade7d3afe3dbf83
+Author: Kamran Khan <kamran.khan@mongodb.com>
+Date:   Tue Mar 31 16:49:26 2015 -0400
+
+    SERVER-17826 Ignore ismaster errors in initial_sync_unsupported_auth_schema.js
+    
+    reInitiate can throw because it causes an ismaster command to be run on each
+    secondary.  These exceptions can cause intermittent test failures if the
+    newly added secondary aborts before the ismaster command is run on it.
+    
+    Closes #945.
+    
+    Signed-off-by: Ramon Fernandez <ramon.fernandez@mongodb.com>
+    (cherry picked from commit 0ffc0e9294f673d6d86bfcf531d57efa9b2d6966)
+
+commit 0ffc0e9294f673d6d86bfcf531d57efa9b2d6966
+Author: Kamran Khan <kamran.khan@mongodb.com>
+Date:   Tue Mar 31 16:49:26 2015 -0400
+
+    SERVER-17826 Ignore ismaster errors in initial_sync_unsupported_auth_schema.js
+    
+    reInitiate can throw because it causes an ismaster command to be run on each
+    secondary.  These exceptions can cause intermittent test failures if the
+    newly added secondary aborts before the ismaster command is run on it.
+    
+    Closes #945.
+    
+    Signed-off-by: Ramon Fernandez <ramon.fernandez@mongodb.com>
+
+commit d06de8e3e1846385c181b326dc57cb7d2efc3f7b
+Author: Andreas Nilsson <andreas.nilsson@10gen.com>
+Date:   Thu Oct 2 12:48:11 2014 -0400
+
+    SERVER-15465 Fixed OpenSSL intermittent crash on stepdown
+    
+    Corresponding to 0e6d61d465bbe8679f29339eee20b7ad9aec295e
+    in the v2.6 branch.
+
+commit 0e6d61d465bbe8679f29339eee20b7ad9aec295e
+Author: Andreas Nilsson <andreas.nilsson@10gen.com>
+Date:   Tue Sep 30 13:54:42 2014 -0400
+
+    SERVER-15465 Fixed OpenSSL intermittent crash on stepdown
+
+commit dabdc411bb95e6619eb2a54888177c8ce46272e3
+Author: Siyuan Zhou <siyuan.zhou@mongodb.com>
+Date:   Wed Apr 16 16:54:34 2014 -0400
+
+    SERVER-13615 sharding_rs2.js intermittent failure due to reliance on opcounters
+    
+    (cherry picked from commit 8a2d33b071b5c528a65bb921cc778cef31500425)
+
+commit 8a2d33b071b5c528a65bb921cc778cef31500425
+Author: Siyuan Zhou <siyuan.zhou@mongodb.com>
+Date:   Wed Apr 16 16:54:34 2014 -0400
+
+    SERVER-13615 sharding_rs2.js intermittent failure due to reliance on opcounters
+
+commit 20a414a4809aa5d20f3a09f129f08c918cddf032
+Author: Matt Dannenberg <matt.dannenberg@10gen.com>
+Date:   Tue Jan 14 11:51:12 2014 -0500
+
+    extra debugging info in server8070.js with hopes of fixing intermittent failures on rhel57
+
+commit 6d461683496ca128e89bb09912564a1e5f631981
+Author: Andy Schwerin <schwerin@10gen.com>
+Date:   Tue Aug 20 12:03:58 2013 -0400
+
+    SERVER-9518 Fix problem related to iterator invalidation.
+    
+    Also, correctly handle deleted users and intermittent availability failures of the
+    user data collection.
+    
+    Includes some unit testing.
+
+commit 75b5ee69e55f94751d1cf6f31f4616c38a5abdfd
+Author: Greg Studer <greg@10gen.com>
+Date:   Thu Jan 26 11:53:13 2012 -0500
+
+    buildbot count1.js make sure we wait for stopped balancer, otherwise intermittent failures
+
+commit 982f933d491c977e5d9f708e6ed9945cea2940f4
+Author: gregs <greg@10gen.com>
+Date:   Fri Dec 30 15:30:34 2011 -0500
+
+    buildbot features2.js intermittent issue - balancer assumptions and splitting assumptions have changed
+
+commit c533ddf1699eae72a7e52ea5706d1da1b70db8e4
+Author: Dwight <dwight@10gen.com>
+Date:   Mon Aug 30 10:56:17 2010 -0400
+
+    rs potential fix for sync1.js intermittents 163
+
+commit 494530e5d279ef3091ae8c110b0df368688458d1
+Author: Dwight <dwight@10gen.com>
+Date:   Mon Aug 30 10:56:17 2010 -0400
+
+    rs potential fix for sync1.js intermittents 163
+
+commit 8a54574b76b081437e796cb06ddcaf9581d89c6e
+Author: Aaron <aaron@10gen.com>
+Date:   Tue Mar 24 11:42:21 2009 -0400
+
+    Adjust timing, attempt to fix intermittent test failure

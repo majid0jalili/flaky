@@ -1,0 +1,17 @@
+commit c5efd6ddb7e5241d90aef0eb03aa08742e60ade9
+Author: Karl Kuehn <karl@rethinkdb.com>
+Date:   Wed Apr 15 13:11:24 2015 -0700
+
+    merge of #4059 connections/date.js failing intermittently
+
+commit ca640ec60058a98429c08b83921ad820facaeb37
+Author: Karl Kuehn <karl@rethinkdb.com>
+Date:   Mon Aug 11 14:48:13 2014 -0700
+
+    merge of #2837 atomic_get_set intermittent error
+
+commit 024af2d19e6617420c32dae66a3eb1563168db1a
+Author: Marc Hesse <marc@rethinkdb.com>
+Date:   Tue Jun 5 12:01:41 2012 -0700
+
+    fixing intermittent failure in RPCConnectivityTest.BlobJoin* tests, due to timing error on the test's part.  fixes #692

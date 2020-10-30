@@ -1,5 +1,0 @@
-commit a2ad4103d371b1b26e6ef9d8249ae3fb9aa4b3df
-Author: s9xie <s9xie@eng.ucsd.edu>
-Date:   Wed Sep 30 21:09:13 2015 -0700
-
-    HED training/testing code release

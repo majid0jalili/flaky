@@ -1,0 +1,42 @@
+commit b5687db554a295e697f5d459cf6d3f343d2ca179
+Author: Abseil Team <absl-team@google.com>
+Date:   Mon Sep 21 18:22:01 2020 -0400
+
+    Googletest export
+    
+    Improve DoubleNearPredFormat output on bad epsilons
+    
+    DoubleNearPredFormat will happily accept epsilon values (abs_error) that
+    are so small that they are meaningless. This turns EXPECT_NEAR into a
+    complicated and non-obvious version of EXPECT_EQ.
+    
+    This change modifies DoubleNearPredFormat) so that when there is a
+    failure it calculates the smallest meaningful epsilon value, given the
+    input values, and then prints a message which explains what happened.
+    
+    If a true equality test is wanted either pass a literal 0.0 as abs_error
+    or use EXPECT_EQ. If a check for being almost equal is wanted consider
+    using EXPECT_DOUBLE_EQ which, contrary to its name, verifies that the
+    two numbers are *almost* equal (within four ULPs).
+    
+    With this change the flaky test mentioned in crbug.com/786046 gives this
+    output:
+    
+    The difference between 4.2934311416234112e+18 and 4.2934311416234107e+18 is 512, where
+    4.2934311416234112e+18 evaluates to 4.2934311416234112e+18,
+    4.2934311416234107e+18 evaluates to 4.2934311416234107e+18.
+    The abs_error parameter 1.0 evaluates to 1 which is smaller than the minimum distance between doubles for numbers of this magnitude which is 512, thus making this EXPECT_NEAR check equivalent to EXPECT_EQUAL. Consider using EXPECT_DOUBLE_EQ instead.
+    
+    Tested:
+    I confirmed that this change detects the bad epsilon value that caused
+    crbug.com/786046 in Chromium and added a test for the desired output.
+    PiperOrigin-RevId: 332946880
+
+commit 9417fb401a578b32656f7c4d05a0e6a18940b825
+Merge: c59c7ba c7137f0
+Author: Xiaoyi Zhang <zhangxy@google.com>
+Date:   Tue Jan 21 16:26:24 2020 -0500
+
+    Merge pull request #2665 from bysreg:fix_noshortcircuitfailure_detectsflakyshortcircuit_test
+    
+    PiperOrigin-RevId: 290256504

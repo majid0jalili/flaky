@@ -1,5 +1,0 @@
-commit 0197e416c34b1ff71aaf3d01745f2c4d8444752e
-Author: dccmx <dccmx@dccmx.com>
-Date:   Fri Dec 19 16:30:16 2014 +0800
-
-    First public release.

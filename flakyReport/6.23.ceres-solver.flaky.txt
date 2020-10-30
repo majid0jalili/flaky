@@ -1,5 +1,0 @@
-commit 8ebb0730388045570f22b89fe8672c860cd2ad1b
-Author: Keir Mierle <mierle@gmail.com>
-Date:   Mon Apr 30 23:09:08 2012 -0700
-
-    Initial commit of Ceres Solver.
