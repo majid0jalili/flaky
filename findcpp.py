@@ -13,15 +13,15 @@ def checkFlaky(slugs, pnumber):
         gitlink = 'https://github.com/' + project + '.git'
         # print("gitlink", gitlink)
         p = project.split('/')[1]
-        rootPath = "/home/majid/test/flaky/"
+        rootPath = "/mnt2/majid/project/flaky/"
         folder = rootPath+p
         print("folder", folder)
         os.system("git clone "+gitlink)
         os.chdir(folder)
         if(not os.path.isfile("../"+str(pnumber)+"."+str(idx)+ "." +p+".flaky.txt")):
-            os.system("git log -S flaky > ../"+str(pnumber)+"."+str(idx)+ "." +p+".flaky.txt")
-            os.system("git log -S flakey > ../"+str(pnumber)+"."+str(idx)+ "."+ p+".flakey.txt")
-            os.system("git log -S intermittent > ../"+str(pnumber)+"."+str(idx)+ "."+ p+".intermittent.txt")
+            os.system("git log --all --grep='flaky' > ../"+str(pnumber)+"."+str(idx)+ "." +p+".flaky.txt")
+            os.system("git log --all --grep='flakey' > ../"+str(pnumber)+"."+str(idx)+ "."+ p+".flakey.txt")
+            os.system("git log --all --grep='intermittent' > ../"+str(pnumber)+"."+str(idx)+ "."+ p+".intermittent.txt")
         os.chdir(rootPath)
         shutil.rmtree(folder)
         idx = idx+1
@@ -35,7 +35,7 @@ def main(args):
     # Get all the Cpp projects on GitHub
     slugs = []
     url = 'https://api.github.com/search/repositories?q=language:cpp&sort=stars&order=desc&per_page=100'
-    for i in range(11, 36):
+    for i in range(0, 10):
         print("page#", i)
         suffix = '&page=' + str(i)
         request = url + suffix
