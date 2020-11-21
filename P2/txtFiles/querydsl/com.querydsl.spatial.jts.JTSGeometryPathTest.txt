@@ -1,0 +1,11 @@
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 144089772 631051 28733083 121461011 0 939173 35708081 1516 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 165919490 784110 33088087 142579706 0 1110165 43573685 1745 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 123628787 594746 24634467 107248137 0 836522 33049023 1317 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 145042534 687844 28917877 128352318 0 970226 37769759 1512 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 125266039 591073 24943841 108579235 0 865347 32922746 1314 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 144739637 694383 28817494 131236582 0 981970 38951076 1517 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 145672623 859281 29074660 159507486 0 1116195 46584276 1543 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 167046560 777341 33371313 143052916 0 1115914 43713992 1748 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 144786819 699557 28901621 126350933 0 980049 39441245 1547 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 164588320 791843 32848250 148942165 0 1095433 47207315 1748 
+com.querydsl.spatial.jts.JTSGeometryPathTest.convert 144408087 686343 28786905 125467391 0 970523 38455063 1543 

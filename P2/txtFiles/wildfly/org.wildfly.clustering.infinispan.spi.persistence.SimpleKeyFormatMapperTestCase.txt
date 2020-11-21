@@ -1,0 +1,11 @@
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1158048945 5983045 228124749 1021119838 0 7348966 344235682 26182 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1083097784 5111655 213950509 898329380 0 6563679 289414252 25194 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1160814866 5986038 228638417 1036683887 0 7347112 346671703 26156 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1142070132 5761757 225184701 984286506 0 7137583 339491184 25648 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1082342055 5034720 213815510 899742809 0 6515085 290486367 25185 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1160658822 6125998 228668411 1038658813 0 7349393 355633267 26182 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1102927924 5298606 218060528 951399119 0 6738360 312377091 25713 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1103651051 5216829 217985215 918818205 0 6633570 302644396 25714 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1082162520 5013675 213710887 908031254 0 6544709 291886496 25187 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1163542487 5855978 229319944 999372986 0 7198763 346336537 26393 
+org.wildfly.clustering.infinispan.spi.persistence.SimpleKeyFormatMapperTestCase.test 1082736051 5057624 213489677 902316487 0 6534993 291896992 25177 

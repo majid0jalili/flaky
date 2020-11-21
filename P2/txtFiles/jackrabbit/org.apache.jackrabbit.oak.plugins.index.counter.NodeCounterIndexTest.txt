@@ -1,0 +1,8 @@
+org.apache.jackrabbit.oak.plugins.index.counter.NodeCounterIndexTest.testNotUsedBeforeValid 695135654291 1390014737 112634318729 379996625699 0 1198241962 131236748026 505591 
+org.apache.jackrabbit.oak.plugins.index.counter.NodeCounterIndexTest.testNotUsedBeforeValid 600345404008 1225587536 95427600675 331616919923 0 1038556626 117705994613 435426 
+org.apache.jackrabbit.oak.plugins.index.counter.NodeCounterIndexTest.testNotUsedBeforeValid 347596752582 604149700 55795454841 189902917805 0 625504779 67339115998 536624 
+org.apache.jackrabbit.oak.plugins.index.counter.NodeCounterIndexTest.testNotUsedBeforeValid 591137667192 1192418809 95056139555 328960233156 0 992882758 115965548873 451303 
+org.apache.jackrabbit.oak.plugins.index.counter.NodeCounterIndexTest.testNotUsedBeforeValid 580770367419 1157068877 93437017395 319492656373 0 968570328 113028925325 488784 
+org.apache.jackrabbit.oak.plugins.index.counter.NodeCounterIndexTest.testNotUsedBeforeValid 583388604280 1151598460 94142999938 316715867660 0 986261107 111183385691 400931 
+org.apache.jackrabbit.oak.plugins.index.counter.NodeCounterIndexTest.testNotUsedBeforeValid 700850125117 1310448237 113686236886 378450477929 0 1159245098 131209564267 541866 
+org.apache.jackrabbit.oak.plugins.index.counter.NodeCounterIndexTest.testNotUsedBeforeValid 577361796266 1169002199 94222396055 316303985347 0 999359990 115382916837 457068 

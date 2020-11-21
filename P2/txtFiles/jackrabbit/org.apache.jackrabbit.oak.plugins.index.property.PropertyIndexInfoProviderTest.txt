@@ -1,0 +1,10 @@
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 675264115327 1378280916 108012001385 373303787571 0 1187569738 129925976491 505117 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 651636173407 1296521985 103635923540 356863638209 0 1116207705 125904597426 458449 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 696710863637 1386604628 110896919692 381867891359 0 1212360125 136431840019 654996 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 164086533720 515562780 25351220026 103470964438 0 302791264 42503036410 238731 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 160329458304 492289070 24816597568 98328343545 0 294230706 41494353996 235063 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 161304066211 485113293 24976492276 97660068720 0 296531020 41155707939 232140 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 316413130186 765060164 50170143597 184542875484 0 528511451 68366778365 417340 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 92273318129 273933093 13930132935 55318528992 0 171904322 22917326459 196653 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 90456857435 271922097 13636932018 54163421187 0 173689884 22120535762 356290 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexInfoProviderTest.emptyIndexEstimate 1065727917 6283308 184063715 1086180684 0 4622449 510428625 1826 

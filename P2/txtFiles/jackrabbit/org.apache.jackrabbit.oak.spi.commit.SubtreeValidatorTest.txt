@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 310845124 1818721 60951938 348105598 0 2385950 128388485 3571 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 1127306867 5202341 222081368 987389838 0 7649962 331330910 15986 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 1273367167 6528951 250385482 1137494877 0 8743063 412581795 17362 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 142723144 693972 28449827 148313302 0 1025292 48693135 1721 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 242109627 1127382 47823463 220710649 0 1595729 80794862 2734 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 1227529476 6627291 241414946 1164605035 0 8615768 416205821 16799 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 1427112205 7800857 280479232 1310200570 0 10003034 493176360 19079 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 1320456869 7237530 259826051 1233027023 0 9354329 432351075 17834 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 1408467868 7968314 277128086 1367719957 0 10125773 500671677 18885 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 1413594671 7808333 278114156 1291437737 0 9862937 490796822 19087 
+org.apache.jackrabbit.oak.spi.commit.SubtreeValidatorTest.testSubtreeValidator 1426951145 7757151 280547388 1312701814 0 10015711 490095933 19070 

@@ -1,0 +1,11 @@
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 61903488795 224986030 8776986705 39368672025 0 35008342 40945982911 155026 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 4091837494 19213171 757841664 3300588609 0 18205578 1836696547 42823 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 1215595621 4250682 190733173 930560504 0 5728619 318750612 4334 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 15686635123 81764668 3258378597 11347499683 0 21012147 14573476604 418031 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 15423837383 81689877 3185122942 10810236462 0 21607869 14939013405 371283 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 62347898064 203736098 8914699767 37306985594 0 41060879 35429211300 398754 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 2478815366 9945173 459959640 2040742755 0 13417851 743879726 15549 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 16702503967 94027750 3485914079 12544766495 0 22536448 17453058658 158348 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 15529378903 84555306 3235083197 11213382221 0 20126354 15544240283 367880 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 60717338222 184849404 8520909088 35221031719 0 35090571 32574260028 392960 
+io.undertow.servlet.test.session.invalidate.ServletSessionInvalidateTestCase.testSimpleSessionUsage 61666191968 195350785 9085957939 36576232753 0 41106804 33767971794 19145 

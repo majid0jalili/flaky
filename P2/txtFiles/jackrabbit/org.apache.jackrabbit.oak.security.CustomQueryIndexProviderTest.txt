@@ -1,0 +1,13 @@
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 46247774061 255848209 7863240503 35413032883 0 48603186 14872707666 207800 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 113061452717 264653770 18441908952 69710169375 0 241472853 27318933977 159840 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 656013352717 1221376150 104139205708 356157257801 0 1141390469 125602618703 635375 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 149851791369 489507842 23075718779 94159875663 0 275582544 39079395620 225926 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 43706118882 250943954 7444866650 33496685366 0 47636106 14212397847 213595 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 146176126713 470131865 22549046710 90112426672 0 268486323 38276189187 221215 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 44172378042 255278961 7512223146 33983088804 0 46990082 14286088109 269393 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 147097150111 462763502 22699922068 89705015936 0 270541057 38003358633 226582 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 586949350722 1161896817 93781671207 324859465093 0 990481460 115429638276 503914 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 173739214697 404458663 28665576850 97895120458 0 300783912 37990701925 235595 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 43881897461 258343786 7462316803 35086960615 0 47938368 15083586815 318352 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 168163907111 399858741 27452300966 96118506220 0 303053372 36792718017 415421 
+org.apache.jackrabbit.oak.security.CustomQueryIndexProviderTest.initWentFine 226756476336 576041057 35624363158 130552468169 0 415859480 52161259510 308245 

@@ -1,0 +1,11 @@
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 358235402 1914866 69094090 399293190 0 2396684 179596373 3189 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 4456474768 19731046 846316580 4033926848 0 26949636 1459776534 40034 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 292405988 1642138 55954995 291082946 0 2084576 100437346 2699 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 968823846 3517259 169305140 835928313 0 5243493 247369206 11329 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 15319023 83293 2986126 14682757 0 104001 5518931 196 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 4452031697 20505706 855780954 3992081027 0 28066910 1367007212 39745 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 4593278827 19652682 876578573 3769547432 0 27571762 1314106952 41823 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 340930513 1505499 67449342 322015373 0 2264688 105970874 3356 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 1154740872 3871962 201483912 881663603 0 5931728 274655534 12272 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 1172785151 4958429 203666968 1049681890 0 6753939 323135364 12103 
+org.jboss.as.naming.ExternalContextsNavigableSetTestCase.testGetParentContext 1286038195 4526748 221309364 999221283 0 6585579 318130481 12746 

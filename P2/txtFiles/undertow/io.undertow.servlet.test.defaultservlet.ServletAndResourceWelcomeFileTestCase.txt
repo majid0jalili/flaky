@@ -1,0 +1,11 @@
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 62469933273 228478666 8884316408 39948418542 0 38139822 41232087693 155170 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 25379745624 100190302 4468003234 16350836733 0 35236506 17130632354 43873 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 1354144524 5303622 216804884 1091032504 0 6851642 407698044 4800 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 57518204740 182962104 8487443545 34432793413 0 41891891 31030284871 418886 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 14414169705 78447439 3035364788 10096838765 0 17937900 14626623288 370739 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 20625522669 94554661 3496712333 13613995093 0 20302597 17466654041 396397 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 56738105359 182132564 8154582468 34180609964 0 42919908 31293895162 358861 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 1392776841 8082202 271291428 1365568768 0 10585648 561802165 13780 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 60944232395 190708269 8591853750 35755383000 0 42672691 32865674879 368966 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 42540310626 111839166 5139929077 23990044787 0 26258119 17823491875 269512 
+io.undertow.servlet.test.defaultservlet.ServletAndResourceWelcomeFileTestCase.testWelcomeFileRedirect 61462534984 194522072 9046509947 36410351135 0 40349341 33705198443 19134 

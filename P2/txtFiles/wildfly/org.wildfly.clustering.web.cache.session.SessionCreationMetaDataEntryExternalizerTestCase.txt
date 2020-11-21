@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1659138928 12457735 325571038 1774527560 0 11914329 814453524 32795 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1618416756 11180246 317594943 1565976219 0 10974962 711753486 32033 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1438611939 8678428 282991920 1301288919 0 9344802 546451342 29951 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1552489244 10649741 304774577 1592473772 0 10733947 692260921 31200 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1185001259 5740084 234642149 1069752912 0 7210176 360361305 26987 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 55436076 189676 10403895 43216930 0 245365 15470535 621 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1629924268 11335286 320005632 1549098233 0 11030153 711692221 32250 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1740593915 13071132 341216036 1745033494 0 12253972 844420753 34003 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1246968630 6203866 246104647 1068635373 0 7541386 398236436 27832 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1382815486 7808686 272314621 1217135602 0 8591204 490013339 28960 
+org.wildfly.clustering.web.cache.session.SessionCreationMetaDataEntryExternalizerTestCase.test 1628940810 11749364 319725891 1624094006 0 11150448 749660758 32232 

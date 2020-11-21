@@ -1,0 +1,11 @@
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 1862818727 10152155 375275870 1685717282 0 11201001 667100621 41145 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 2520100045 11759286 508505814 2181259471 0 14862671 769487799 43082 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 2904240875 15103123 580214765 2583591530 0 17608225 1009300048 42547 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 2955010349 16555226 590877201 2802509441 0 18481404 1114335925 43923 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 136719783 482011 26826665 113848928 0 724674 40051343 1738 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 1198397619 5953788 236329607 1073310815 0 7390461 412163685 23680 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 2908887336 14991821 582189420 2528274502 0 17586163 999829155 44464 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 2895499862 15723445 579797424 2665016973 0 17767149 1059804007 43182 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 2842678237 13878904 567973911 2452561545 0 16896948 932717666 41872 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 2713323635 13700976 543717314 2386524003 0 16206390 924763407 43027 
+org.wildfly.clustering.server.group.JGroupsAddressSerializerTestCase.test 137040359 484243 26860023 112793603 0 722519 38703751 1731 

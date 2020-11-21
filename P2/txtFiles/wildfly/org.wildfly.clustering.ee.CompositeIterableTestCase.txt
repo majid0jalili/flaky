@@ -1,0 +1,11 @@
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 12463070 78863 2422838 13981716 0 114851 5331204 114 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 163207825 533188 31129784 133580054 0 845298 36406690 902 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 164156652 543314 31312444 135480757 0 858387 36617539 901 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 12639618 84434 2453043 14408197 0 122323 5438239 117 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 12520383 82280 2429971 14081533 0 118130 5309430 115 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 12564530 79207 2437787 13847585 0 113891 5118199 115 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 163451878 536131 31198736 133783554 0 850760 37138691 897 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 165055909 541184 31427362 149606374 0 839401 55600885 904 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 165527285 567947 31510426 153264176 0 851063 59559535 907 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 12527102 81649 2432739 14787291 0 118295 6539573 114 
+org.wildfly.clustering.ee.CompositeIterableTestCase.test 163486276 617548 31193284 176757905 0 894388 64994633 903 

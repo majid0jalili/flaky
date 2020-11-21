@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1660164088 12467880 325759584 1775854493 0 11925313 815070148 32807 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 10067409 65956 2009830 10588770 0 70484 4615966 263 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1394849893 8552680 274854561 1269459882 0 9175808 535777059 29612 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1763190411 13839229 345825760 1889985694 0 12706751 902196821 34198 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1186780087 5754978 234958900 1072102320 0 7227191 361538929 27000 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1629758715 11228367 319923974 1561617713 0 11037325 744563658 32228 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1623812499 11289657 318782777 1541677137 0 10982733 707806655 32130 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1741473001 13080929 341376739 1746420827 0 12263993 845134393 34015 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1586582964 10693096 311086830 1511109839 0 10770498 705943483 31716 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1617228380 11019290 317201672 1529938293 0 10879979 709942721 32019 
+org.wildfly.clustering.web.cache.routing.LocalRouteLocatorTestCase.test 1630084799 11760226 319936166 1625544904 0 11161671 750319870 32244 

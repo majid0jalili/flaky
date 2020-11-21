@@ -1,0 +1,11 @@
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 2638603097 13816759 531409877 2448712894 0 15864511 926255064 42439 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 1139304493 5543969 226909636 1065143143 0 6942909 379771624 21999 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 2724484137 13823773 545922343 2400551765 0 16340801 907387408 42419 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 2981920941 16752238 595930986 2828643219 0 18651946 1129333124 43923 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 2552140457 12714303 514434971 2176255560 0 15060550 832032279 42905 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 3003883706 16270893 599906577 2743186372 0 18402802 1097471015 44531 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 2631650492 12185342 528457343 2229523827 0 15510798 820821492 44310 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 2704657392 13441073 543278332 2444121988 0 16278856 915917114 43122 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 2334435087 10715617 471789954 1952233025 0 13468659 690332971 41436 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 2794166565 14295122 558707809 2471067877 0 16827934 972725858 43055 
+org.wildfly.clustering.server.group.LocalNodeResolverTestCase.test 2513351827 12687128 507392480 2175425318 0 14746838 799464795 42208 

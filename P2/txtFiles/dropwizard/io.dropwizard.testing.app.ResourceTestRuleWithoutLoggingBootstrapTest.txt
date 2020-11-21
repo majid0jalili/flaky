@@ -1,0 +1,13 @@
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 10724017959 66246771 2107950751 9940740363 0 61027816 4859118796 26100 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 10737935749 67867088 2109361148 10085860597 0 61190564 5028668588 26154 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 10581002009 67015987 2079614771 10186950369 0 61815699 5138955907 27048 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 6589567036 47564059 1274054563 6887699416 0 41060583 3619466326 14660 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 4911933142 33785256 952211195 4817505344 0 29857772 2465495211 13350 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 11171340368 71357138 2199153002 11390279095 0 65372008 5668911016 29984 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 10526251185 68617893 2070520886 10745187732 0 63575280 5425740867 24271 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 5057568961 34551496 994419863 5353684201 0 34060338 2546039263 11272 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 5985994371 29664715 1206719151 5427674540 0 35114556 2218174040 28569 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 11228966667 72591206 2211019532 11482198017 0 66951345 5782833354 44344 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 6543621516 45936596 1264968678 6616796839 0 40406596 3543839890 15598 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 10684897021 68694377 2106132207 11206725588 0 64656130 5666946135 48003 
+io.dropwizard.testing.app.ResourceTestRuleWithoutLoggingBootstrapTest.testResource 8401380127 48137874 1671209117 7826327679 0 50730117 3661189370 27278 

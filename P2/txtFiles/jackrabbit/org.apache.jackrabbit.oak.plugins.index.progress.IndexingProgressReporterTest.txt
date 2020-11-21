@@ -1,0 +1,9 @@
+org.apache.jackrabbit.oak.plugins.index.progress.IndexingProgressReporterTest.basicTest 695031043112 1389309457 112614102442 379897711384 0 1197781352 131168968796 505567 
+org.apache.jackrabbit.oak.plugins.index.progress.IndexingProgressReporterTest.basicTest 105099025290 250902907 17153104647 65207658559 0 225599757 25717130023 152605 
+org.apache.jackrabbit.oak.plugins.index.progress.IndexingProgressReporterTest.basicTest 648393564229 1210284194 102911733909 352295160415 0 1128511056 124282849227 635359 
+org.apache.jackrabbit.oak.plugins.index.progress.IndexingProgressReporterTest.basicTest 88803884406 380642325 13277960640 58334696204 0 160646591 25286579618 195703 
+org.apache.jackrabbit.oak.plugins.index.progress.IndexingProgressReporterTest.basicTest 86829905518 366773593 13031503560 56071167160 0 156990735 25290256271 186314 
+org.apache.jackrabbit.oak.plugins.index.progress.IndexingProgressReporterTest.basicTest 87518620792 357320719 13151889579 55691205663 0 157793344 25256809388 195766 
+org.apache.jackrabbit.oak.plugins.index.progress.IndexingProgressReporterTest.basicTest 668112956395 1262682825 108447570571 362290808407 0 1104574405 126337522226 531083 
+org.apache.jackrabbit.oak.plugins.index.progress.IndexingProgressReporterTest.basicTest 208115910910 466223065 34198556439 118018319983 0 368147923 45724051628 257399 
+org.apache.jackrabbit.oak.plugins.index.progress.IndexingProgressReporterTest.basicTest 201769522924 462231757 32874446846 116133659709 0 370694465 44432353314 456039 

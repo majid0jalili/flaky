@@ -1,0 +1,10 @@
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 627339034251 1300331558 100212432949 348593769306 0 1100831406 122039305145 498707 
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 600296491369 1225385859 95418830041 331580977348 0 1038372082 117686174457 435405 
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 692757589217 1380916294 110264179752 379828491326 0 1205628945 135707918100 654988 
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 691656389046 1343019266 111220541484 381617302469 0 1158836423 134623843682 490502 
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 622032316692 1276326486 99496580622 341277962031 0 1091488399 120483359026 491249 
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 623784312701 1289841883 99705262068 345220779848 0 1096047560 121278571071 949116 
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 636440039341 1214599711 103348225062 346093365392 0 1049191975 121333204150 518534 
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 374395326326 864474971 61096712865 213417383778 0 655038497 81085916560 349048 
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 624774401466 1295501495 99907637393 345114552946 0 1098900651 121786474723 889529 
+org.apache.jackrabbit.oak.security.user.UserAuthenticationFactoryImplTest.testGetAuthentication 231942397523 587915467 36445793899 133474918728 0 427033448 53166375172 308255 

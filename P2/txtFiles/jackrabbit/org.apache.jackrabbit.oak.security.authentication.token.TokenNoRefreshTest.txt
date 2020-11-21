@@ -1,0 +1,12 @@
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 75719828402 322744053 12705725309 53557145265 0 112640244 22498560115 261604 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 677860569089 1334780574 107830710402 369977852158 0 1162320856 130226419432 469735 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 135031826853 254575985 21851036541 77196829419 0 239159495 28755923217 349127 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 181112574466 545597510 28058311027 113049983250 0 335075912 45867324846 263354 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 72792672596 318327655 12216530586 51588552743 0 112346661 21823547324 260815 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 177055974047 520146834 27478050213 107219797299 0 325298692 44590428362 243778 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 73523978071 322332021 12327690615 51859847717 0 111091134 21790497124 444424 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 178096020575 514621219 27652174476 106675299754 0 328636960 44212198539 246252 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 590039003285 1166038344 94281917001 326401196399 0 995659638 115923199272 503915 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 565781187305 1151952867 92356855279 310437388360 0 978911651 113510292535 457053 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 73005385919 324137103 12245296684 53413664268 0 112277934 22837629559 415696 
+org.apache.jackrabbit.oak.security.authentication.token.TokenNoRefreshTest.testNotReset 1002905961 5948136 173494570 1039551210 0 4473557 479281276 1822 

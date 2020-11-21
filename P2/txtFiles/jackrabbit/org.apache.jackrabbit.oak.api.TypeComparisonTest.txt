@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10490341 54915 2015938 10856478 0 78020 3482702 79 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10278216 65279 1979103 15326517 0 87394 3885386 80 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10488386 52639 2017599 10678742 0 73912 3109184 80 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10281567 53470 1979189 10760071 0 74686 3339335 80 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10450954 52283 2015024 10773707 0 72682 3238835 79 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10462192 50853 2015975 10523288 0 73056 3033227 81 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10577023 53577 2035160 10860009 0 74369 3221275 82 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10340071 51063 1995429 10414473 0 72748 2901590 80 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10431784 52128 2008802 10526314 0 72446 3122697 82 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10221076 52883 1969996 10605523 0 75032 3112323 81 
+org.apache.jackrabbit.oak.api.TypeComparisonTest.compareTypes 10327344 53175 1993267 10604815 0 76547 3225976 80 

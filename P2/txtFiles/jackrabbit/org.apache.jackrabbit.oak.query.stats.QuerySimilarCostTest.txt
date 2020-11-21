@@ -1,0 +1,12 @@
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 17334880325 105642762 2811997561 15145775281 0 28329368 7327016446 51953 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 105143171637 251047438 17161088519 65251386729 0 225738089 25733317065 152614 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 328758914143 577383554 53109735808 180450142208 0 596011331 64405532757 523656 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 655191431782 1284751662 105367173338 363081597161 0 1093726234 128718305415 469573 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 16142202995 100981081 2641391579 13810885307 0 26578142 6745173961 47117 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 643964043277 1246164760 103639312991 352824993294 0 1066510325 125449717218 540427 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 16715253515 103496514 2711111904 14526102887 0 26471165 6584453760 93065 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 646724098071 1246576383 104384330214 350638877701 0 1088432068 123190512210 426912 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 685195191560 1286620822 111227222312 370614732772 0 1133433850 128812562784 541819 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 99868714936 300816047 15200758474 60576205140 0 185773661 25241440616 204516 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 16663873229 104111968 2701389418 15765658545 0 27441996 7552438517 119748 
+org.apache.jackrabbit.oak.query.stats.QuerySimilarCostTest.testSimilarCostIndices 98114152783 295315648 14917965780 58753163766 0 186915741 24160614051 356389 

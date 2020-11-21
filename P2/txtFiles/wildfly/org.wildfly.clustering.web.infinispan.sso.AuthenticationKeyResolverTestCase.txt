@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 2510298899 16968757 504498261 2367606577 0 15682409 1101503405 41008 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 2327998554 15802141 468220346 2238881433 0 14481293 1009758716 40859 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 1792947963 9068810 361469497 1599155974 0 10654149 606044779 40097 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 2390947078 15791520 478979454 2240121578 0 14699073 1030248698 40290 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 250568647 1279120 49163342 237511188 0 1585989 93752067 4536 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 2327265508 16240000 466890125 2203114735 0 14521201 1048233799 40612 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 2528852752 17090348 508282246 2430919257 0 15744524 1151462595 40385 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 2094927970 13636660 421271611 1937530598 0 12569168 864971671 40359 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 2518246128 17533516 505254313 2366006594 0 15696030 1124537191 41008 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 183278570 1005530 36201933 207178428 0 1294214 74253169 3121 
+org.wildfly.clustering.web.infinispan.sso.AuthenticationKeyResolverTestCase.test 1670331386 9534742 337272399 1562579983 0 10292152 618318171 39569 

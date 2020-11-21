@@ -1,0 +1,11 @@
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 47018565531 114234612 5577923642 26181617897 0 27347724 18532730466 154877 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 18155949154 87239349 3715393434 12661807499 0 24740500 15748582183 42978 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 48777539786 124752202 6025832164 27899194899 0 39881895 18940586541 245866 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 15678857700 81724348 3256891155 11339944553 0 20971064 14568227539 418031 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 14914912632 79413324 3113405508 10409773222 0 19387584 14703675672 371187 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 21951638831 102028689 3757507448 14712364150 0 24856153 18310186552 398622 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 2469721063 9860670 458230219 2027511265 0 13316837 737430967 15542 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 2331495687 10868621 406525367 2006930286 0 14046205 806317491 16637 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 60631832944 189936389 8551180414 35580510822 0 41918698 32805242833 368962 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 63666428089 197860672 9115544838 37403168504 0 44252816 33982318572 393893 
+io.undertow.servlet.test.streams.ServletInputStreamDrainTestCase.testServletInputStreamEarlyClose 8303752306 25714263 1060268832 5441843637 0 20942678 2662761463 18015 

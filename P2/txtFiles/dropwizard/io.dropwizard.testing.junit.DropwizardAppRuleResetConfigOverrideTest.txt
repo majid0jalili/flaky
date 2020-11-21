@@ -1,0 +1,13 @@
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 7979319979 45327673 1591016031 7322116526 0 48518091 3198637289 12428 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 7985431466 47085675 1591703160 7482270026 0 48632128 3367096817 12417 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 7969011027 45969423 1588783286 7463233270 0 48879778 3321966082 12406 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 3953138061 26757176 777960067 4085644290 0 27632046 1814778304 8958 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 11053745626 69565127 2174782896 10625576257 0 65829111 5104657999 37572 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 7833737149 44917530 1561178697 7537599794 0 47564153 3384886158 12278 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 9695438805 62434969 1910501550 9822218957 0 58785452 4846166050 23954 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 3960286924 26677489 778574082 4045428590 0 27200228 1889182894 9984 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 9133292357 54486824 1821166419 9256206052 0 55260607 4168748779 45278 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 10329194791 64661954 2038219476 10467691661 0 61139252 5070990158 44079 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 3930283012 25432475 772798286 3929726112 0 26858770 1797799041 8928 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 7213236305 52995067 1401832570 8148165329 0 46669881 4361820084 11500 
+io.dropwizard.testing.junit.DropwizardAppRuleResetConfigOverrideTest.test2 7137183844 39188910 1425339324 6422947073 0 43302840 2724226591 19962 

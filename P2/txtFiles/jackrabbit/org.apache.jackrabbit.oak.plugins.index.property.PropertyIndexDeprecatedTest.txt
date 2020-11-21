@@ -1,0 +1,10 @@
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 675057838464 1377797237 107975689386 373174461755 0 1187184704 129874193512 505116 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 416325539113 843407751 66862779919 234482280994 0 780929819 85304617734 330338 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 649841694825 1212877717 103146426352 353094942441 0 1131150507 124578603361 635365 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 703335332115 1360648967 113109978128 387562561168 0 1179255957 136545826302 506465 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 669501779908 1352514620 107240364401 365622979047 0 1177035711 128539661762 495945 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 671085216010 1366602732 107416471071 369804711759 0 1181547842 129380075938 960550 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 122150428808 269330676 19854649380 73038849316 0 246359960 29084228068 222567 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 240928384569 518426412 39501636768 135443967750 0 429928211 51760307564 282045 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 672539188653 1371911510 107710804484 370029831247 0 1185184148 129931863849 889731 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDeprecatedTest.deprecated 234313402403 515290391 38150338739 133528175938 0 433879614 50299602333 473953 

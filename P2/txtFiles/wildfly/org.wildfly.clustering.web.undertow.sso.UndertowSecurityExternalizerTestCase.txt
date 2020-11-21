@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 2500353079 19795710 493076855 2533874294 0 16947976 1324628389 48436 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 88973546 326354 16859676 73455544 0 454718 24692575 828 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 2630561328 21862281 518040541 2772800244 0 18230108 1435542330 47805 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 2401160304 19504812 473569735 2606210540 0 16667835 1431330218 47936 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 2110780247 15990620 416585059 2240332329 0 14288350 1157918091 43800 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 1739092437 10584085 343437079 1543986699 0 10764719 645214027 38451 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 2538112595 20396855 501024061 2566933539 0 17558735 1294293742 48385 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 2335049772 19262112 460857944 2591787115 0 16355763 1304128403 47564 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 2303752023 19626631 454255961 2892841094 0 16463986 1595931016 47539 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 2190247957 17306598 432319735 2217157385 0 14759800 1063148330 45896 
+org.wildfly.clustering.web.undertow.sso.UndertowSecurityExternalizerTestCase.test 1932143040 12906722 381636649 1767360361 0 12323988 783294248 40909 

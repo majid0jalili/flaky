@@ -1,0 +1,11 @@
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 64201342586 234140512 9155673216 41183638741 0 44518842 41726524242 155997 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 18517971461 89317348 3785046064 13011541926 0 26547833 15948987570 43049 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 41397362118 106774849 5030876147 23715586636 0 27435891 16842182991 231189 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 15704703386 81888474 3261923111 11366528849 0 21126650 14585132093 418053 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 16285072689 85966547 3327746785 11571880093 0 25573418 15325904575 371499 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 21993511828 102270854 3765418941 14753098365 0 25043628 18338454802 398635 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 1801294592 7723607 350350949 1551747409 0 10707852 575750489 15019 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 24239361114 108135253 4245397243 16475528571 0 33055533 18965114467 158535 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 15575238168 84911078 3243844128 11258668650 0 20383555 15575954576 367903 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 63612012391 197637226 9105198473 37365690130 0 44115289 33961999119 393892 
+io.undertow.servlet.test.metrics.ServletMetricsHandlerTestCase.testMetrics 7775954072 24064122 997952155 5112313844 0 19338313 2517426421 17976 

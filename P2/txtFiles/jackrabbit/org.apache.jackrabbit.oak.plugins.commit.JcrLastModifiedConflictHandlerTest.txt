@@ -1,0 +1,6 @@
+org.apache.jackrabbit.oak.plugins.commit.JcrLastModifiedConflictHandlerTest.updates 722927545608 1434178225 117411784280 394479612827 0 1244642260 136537040198 506597 
+org.apache.jackrabbit.oak.plugins.commit.JcrLastModifiedConflictHandlerTest.updates 747256718858 1421121278 120375660153 401655110956 0 1258296360 139493549131 491270 
+org.apache.jackrabbit.oak.plugins.commit.JcrLastModifiedConflictHandlerTest.updates 328767415426 577467799 53111286911 180461541898 0 596059275 64418874811 523656 
+org.apache.jackrabbit.oak.plugins.commit.JcrLastModifiedConflictHandlerTest.updates 691660017141 1343106083 111221228332 381623584603 0 1158857290 134634600196 490501 
+org.apache.jackrabbit.oak.plugins.commit.JcrLastModifiedConflictHandlerTest.updates 666851641049 1260837862 108244865281 361663505680 0 1102548788 126155310339 531081 
+org.apache.jackrabbit.oak.plugins.commit.JcrLastModifiedConflictHandlerTest.updates 586881926196 1182824019 95754313840 321235608661 0 1015851081 116995782150 468714 

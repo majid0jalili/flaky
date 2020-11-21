@@ -1,0 +1,17 @@
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 427968360994 735864956 80956285466 238838807937 0 657303192 60779167035 169019 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 431501659303 730253057 81742903654 247265671470 0 708806335 60834499454 179699 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 426047690284 693867729 80726006691 233110868149 0 688955772 56811854515 162929 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 6675600653 41555140 1265572179 6446883426 0 36180692 3430794213 47826 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 3257664098 19713511 625805048 3806489241 0 18718815 1986883203 34681 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 437282972411 593365784 82397387368 223668194674 0 627865053 51180317082 112881 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 426874891879 746845660 80563453571 228906269245 0 614434130 59382182299 144052 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 4280162438 30133077 811026111 4979419894 0 24926378 2977735265 13619 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 3659651390 22400174 693967997 3902485579 0 19184165 2144805652 39410 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 430733399148 588897535 80991279094 223976923329 0 622129823 51581257180 125906 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 7084534782 44224750 1341352104 7277684217 0 38214221 3902667724 43399 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 7698990593 54729905 1446456957 9766755591 0 39856239 5911354417 18249 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 421926164744 507397392 80230891901 210846471735 0 567152977 47817039664 270608 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 420267363083 651691838 78586548648 216950057479 0 603089854 53288386539 445572 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 4952986358 31382073 948113983 5851717479 0 30134939 2983538971 38463 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 8626942485 55201731 1631649318 9306125371 0 46497590 4982641766 54539 
+com.alibaba.fastjson.deserializer.issue2711.TestIssue.testDeserializeGenericsUnwrapped 6292738631 42260309 1176845423 6483955789 0 30654540 3963386795 28007 

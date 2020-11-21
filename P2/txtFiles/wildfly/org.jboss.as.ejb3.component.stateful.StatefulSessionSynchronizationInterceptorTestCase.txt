@@ -1,0 +1,13 @@
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 14998820598 18696328 2549869314 6660995282 0 18447856 1214543085 43808 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 15366271991 20163432 2593922104 6998328820 0 19384341 1341138913 47609 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 14839219203 20820195 2504419852 7594209657 0 19393632 1493753844 78535 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 26815500656 73863289 4800961344 18493605255 0 82897270 5531268770 122781 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 27336771681 75166720 4921338707 17277201845 0 84859857 5475185664 123656 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 19369937386 36129713 3355538208 10167831339 0 39052687 2567068518 100257 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 13649228533 68780892 2683022032 12654440451 0 77449960 5195085083 115818 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 2028784462 13159433 406007625 1895887338 0 12328326 824585306 42256 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 14341361402 71629879 2809786397 13003498386 0 80452707 5114014049 147255 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 15728404106 19114893 2664343364 7143927831 0 18768824 1242064568 43583 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 15432204401 19992317 2586153958 7265570626 0 19042742 1459926254 43625 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 14389631684 69178336 2808578641 12176363290 0 78720691 4919532433 129056 
+org.jboss.as.ejb3.component.stateful.StatefulSessionSynchronizationInterceptorTestCase.testDifferentTx 14802752738 17615562 2472505204 6426928772 0 17392463 1263376232 43497 

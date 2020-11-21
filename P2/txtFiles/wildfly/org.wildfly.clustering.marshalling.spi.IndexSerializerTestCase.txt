@@ -1,0 +1,11 @@
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 19966935 114243 3847042 21305715 0 160537 8628880 215 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 383918349 2149411 72368262 376564245 0 3041212 138369772 3573 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 179337918 716003 33932670 153475267 0 1082343 47671408 1161 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 20136206 121114 3877344 22521947 0 168021 8311664 212 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 562623574 3374107 106658718 570068238 0 4626320 216618610 5339 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 133594905 509754 25148840 117863983 0 762098 34483303 822 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 189832438 1006903 35546295 184545846 0 1518906 64911029 1370 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 20222850 125574 3893847 22378855 0 168239 8269197 214 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 589749736 3574667 111824290 603798821 0 4899762 228191450 5686 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 20158208 120840 3882590 21275772 0 167131 8495309 216 
+org.wildfly.clustering.marshalling.spi.IndexSerializerTestCase.test 466016084 2889541 88447402 486222238 0 3827524 179054577 4425 

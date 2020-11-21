@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 2009838345 9922583 395232463 1787624358 0 13397384 638297780 24929 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 5637415691 26294139 895287935 6027276719 0 18618020 2885456609 36429 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 11510535695 44774432 2012811613 9501758943 0 30258920 3738577748 160870 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 1633870598 8058885 319006987 1449735090 0 10491831 523302029 20074 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 5389597103 26733740 865118467 6029645371 0 18518560 2760740609 32291 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 1358421580 6303587 267253104 1217855112 0 8796538 399272644 17716 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 5418032299 26403665 871866219 6086379656 0 18679019 2658416818 37764 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 2206141835 10335126 431626470 2069393861 0 14394938 670432084 22835 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 5531515293 27351869 889750751 6108562101 0 18827950 2789819231 34323 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 5425275612 25873266 859094778 5904147927 0 17061092 2680708567 32830 
+org.apache.jackrabbit.oak.osgi.OsgiWhiteboardTest.testDoubleUnregister 11823299711 43706173 2029578035 9425972145 0 30500122 3484137631 165077 

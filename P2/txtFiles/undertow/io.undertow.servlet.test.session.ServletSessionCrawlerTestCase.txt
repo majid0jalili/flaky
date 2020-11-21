@@ -1,0 +1,11 @@
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 62047414668 226130215 8804451793 39555685733 0 36015264 41044296334 155072 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 703486148 3919688 136650782 665418488 0 5027499 263552469 8025 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 61669947245 217140957 8756603732 38831893777 0 43044855 39055239672 245888 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 57735812906 183704363 8521940699 34586127702 0 42544760 31095553190 418948 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 14379923878 78211015 3028742676 10062772907 0 17682262 14612584911 370722 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 62359218538 203783560 8916836206 37317058571 0 41107186 35433289948 398757 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 62904616232 194118371 8909039906 37413681227 0 50292247 32701975293 365992 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 544648551 2740290 107189763 494029697 0 3645129 169457588 6678 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 13561005467 76899857 2878377453 9802431786 0 14016683 14687131418 367176 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 63395418789 196310150 9063646907 37175811979 0 43248113 33850402763 393825 
+io.undertow.servlet.test.session.ServletSessionCrawlerTestCase.testCrawlerSessionUsage 454450156 2313269 86929649 419381104 0 3231907 146050436 5654 

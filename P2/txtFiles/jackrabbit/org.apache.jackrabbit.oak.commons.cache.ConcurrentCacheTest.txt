@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 1345511994 2809084 242103255 942145881 0 4103119 232689845 45957 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 7212850766 12629515 1808259469 3908404904 0 18496349 1005174664 53409 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 7425522660 14546371 1847739489 4208272968 0 19953009 1140303216 56580 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 8369475252 15065181 1984427015 4569576027 0 19647909 1201996882 56460 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 7531999533 14804713 1882996833 4240483715 0 19909314 1163002838 56601 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 7214666481 14922918 1811901111 4061890143 0 18532924 1158635607 56691 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 1097900674 6894824 212293393 1064452779 0 7746553 416090030 12668 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 5330452237 9847376 1486659721 2903011602 0 13349351 749808814 36861 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 7838857424 16967446 1933933569 4677924440 0 21399336 1294002416 56620 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 8305552072 16817788 2001340528 4854028171 0 21890331 1301311089 56284 
+org.apache.jackrabbit.oak.commons.cache.ConcurrentCacheTest.test 7755786342 15791333 1929625828 4378763002 0 21024052 1204957304 56671 

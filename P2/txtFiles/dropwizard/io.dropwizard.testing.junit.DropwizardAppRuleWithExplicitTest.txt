@@ -1,0 +1,13 @@
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 7982485879 45346937 1591603208 7325658897 0 48533958 3201287559 12428 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 7988719124 47104896 1592309476 7485921116 0 48649444 3369760532 12417 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 7972237395 45989039 1589378243 7467033724 0 48895923 3324845184 12490 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 74883352 369423 15241296 71472325 0 513487 27414652 124 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 79951258 391404 16142484 75649989 0 538028 29409733 119 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 4418017696 21392918 889493145 3876920844 0 24836036 1653456017 8054 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 74858647 395859 15221925 83467828 0 540671 30706123 122 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 74735355 371587 15186804 73363076 0 519588 28380611 123 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 124957853 656231 24632133 163908188 0 813514 56329037 150 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 10916826516 69251014 2151504099 11121806753 0 64867590 5545303339 44255 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 11224268244 71130885 2208922448 11002713805 0 66607006 5577225511 26008 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 7249901359 53228884 1408958371 8185899854 0 46873728 4382368277 11522 
+io.dropwizard.testing.junit.DropwizardAppRuleWithExplicitTest.runWithExplicitConfig 270689977 1125413 54699746 225340045 0 1630754 84898258 558 

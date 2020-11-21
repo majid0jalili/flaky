@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 2211576383 14106152 433233409 2054579421 0 14800698 877713588 32259 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 2337555104 15806686 452723579 2307672158 0 15553896 977112346 32286 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 5370738818 42490193 1032185304 5063943095 0 27072927 2725622769 44193 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 6497118880 35116317 1036371829 4852146024 0 24020157 2297069258 43624 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 4158496738 18770709 597006428 3210592882 0 18453741 1212720883 39731 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 4663012561 23655206 696291461 3561671296 0 19473415 1492749005 42821 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 6922783173 41500668 1128686406 5661772760 0 28097024 2790034055 42915 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 3785682507 27361601 727210568 3431926794 0 20229944 1750193165 40548 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 3369378091 26102465 652782122 3181694758 0 20000814 1593829657 42413 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 6966225058 38465377 1112225385 5373721905 0 26160463 2567407105 43797 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.TokenProviderCallbackTest.testCallback 7185058788 28496782 1039240282 4562372523 0 20552801 1751958576 43251 

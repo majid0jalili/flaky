@@ -1,0 +1,8 @@
+org.apache.jackrabbit.oak.plugins.index.progress.NodeCounterMBeanEstimatorTest.estimateCount 695084310851 1389785286 112625049303 379952727132 0 1198061437 131203066188 505585 
+org.apache.jackrabbit.oak.plugins.index.progress.NodeCounterMBeanEstimatorTest.estimateCount 290769707211 545521103 46498527537 164306345088 0 563525598 59692380947 255075 
+org.apache.jackrabbit.oak.plugins.index.progress.NodeCounterMBeanEstimatorTest.estimateCount 690298494000 1376282815 109859874072 378445161607 0 1200104682 135166887553 654738 
+org.apache.jackrabbit.oak.plugins.index.progress.NodeCounterMBeanEstimatorTest.estimateCount 700156222393 1356051622 112594223279 386001300536 0 1173897470 136038488785 506461 
+org.apache.jackrabbit.oak.plugins.index.progress.NodeCounterMBeanEstimatorTest.estimateCount 366223451870 844282825 58217335503 212113189903 0 618436728 78353749718 456516 
+org.apache.jackrabbit.oak.plugins.index.progress.NodeCounterMBeanEstimatorTest.estimateCount 144557650649 378142419 22429482994 86017679166 0 270911174 34688881161 228821 
+org.apache.jackrabbit.oak.plugins.index.progress.NodeCounterMBeanEstimatorTest.estimateCount 142131155489 373599884 22052024058 84352196177 0 273093557 33683907410 397445 
+org.apache.jackrabbit.oak.plugins.index.progress.NodeCounterMBeanEstimatorTest.estimateCount 2581296363 16928252 485700723 2665259148 0 15295127 1244923410 3389 

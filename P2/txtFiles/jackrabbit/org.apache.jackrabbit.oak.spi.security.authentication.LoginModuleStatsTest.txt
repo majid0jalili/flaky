@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 2116642735 13001857 414731435 1940110205 0 14051249 807019824 30754 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 6482749576 36548107 1041757445 5126260229 0 26195378 2412592489 43524 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 4455231647 34599306 859446401 4135214173 0 22550088 2113025801 43553 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 6662591688 36924527 1069200071 5037595293 0 24963175 2426421923 43702 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 975750651 4344403 193803018 884820069 0 6545534 279128047 16633 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 4785480568 24950702 720728745 3716788775 0 20317864 1588169516 42923 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 4316247400 32814874 829343328 4125938181 0 23131166 2133752955 42486 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 77045358 370812 15029804 75014729 0 513386 29376257 1016 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 5609432771 31417111 866786230 4348701558 0 23447160 2008639971 43413 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 7099467646 39496394 1137986679 5489841240 0 26591198 2638408198 43837 
+org.apache.jackrabbit.oak.spi.security.authentication.LoginModuleStatsTest.testLoginError 8210161405 37706332 1236585587 5646505175 0 25764655 2427217216 43897 

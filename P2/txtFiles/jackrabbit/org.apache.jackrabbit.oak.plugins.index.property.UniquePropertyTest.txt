@@ -1,0 +1,12 @@
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 670617933437 1367805475 107253655260 370380294937 0 1181091906 128659946515 505081 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 661037752632 1310310647 105148246886 361557159700 0 1132424033 127443568411 462286 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 328676232491 576729114 53093823740 180361065078 0 595591914 64354822769 523626 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 291780525458 718146996 45908559535 172993916731 0 529530446 66292732385 338740 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 665183641624 1342122985 106533763903 362872323387 0 1170494533 127253609928 495917 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 286032273720 689532421 45079476762 165973579760 0 516577357 64675503112 369438 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 667022990912 1357690602 106753758595 367326994345 0 1176179859 128137027480 960522 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 287187733722 684927638 45298940846 164333424103 0 522478266 63190200372 289135 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 37428295285 96547777 6110839789 25372647006 0 87845830 11087331783 147623 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 244796472688 526196706 40142310771 137690309306 0 438079943 52740903760 291929 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 668144848713 1363369326 106992768361 367298555555 0 1179079619 128579072731 889698 
+org.apache.jackrabbit.oak.plugins.index.property.UniquePropertyTest.testUniqueness 237983430857 524624995 38757288555 136161843060 0 442327750 51331091975 474014 

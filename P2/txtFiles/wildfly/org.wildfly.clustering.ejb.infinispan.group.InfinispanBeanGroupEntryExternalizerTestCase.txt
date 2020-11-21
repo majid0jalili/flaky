@@ -1,0 +1,11 @@
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 2021632198 11560012 402829496 1775670818 0 12280700 734606505 42518 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 1551261024 7537110 311525109 1288270370 0 8992459 458790135 37874 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 2081123226 13575573 415357837 2024145979 0 13642107 895007764 41868 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 2117875245 13677141 422243018 2123060642 0 13825420 895736184 42630 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 1627409424 9345115 325951631 1528750892 0 10090595 583044891 37832 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 1863310943 11051555 371006937 1703976999 0 11386450 717787842 41418 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 209949119 955614 40714989 185361706 0 1183095 70637188 3258 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 147229507 597478 28614959 134606192 0 756086 46539562 1693 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 2084266453 13165150 415783335 1943620302 0 13494041 869205187 41880 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 2163261425 13911243 430577832 2077914368 0 13869430 911786662 42572 
+org.wildfly.clustering.ejb.infinispan.group.InfinispanBeanGroupEntryExternalizerTestCase.test 1920662859 11548418 383782585 1910236853 0 12233066 773433535 42126 

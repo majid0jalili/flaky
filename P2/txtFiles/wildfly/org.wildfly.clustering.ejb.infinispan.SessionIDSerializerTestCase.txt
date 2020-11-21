@@ -1,0 +1,11 @@
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 2169256654 13497822 431352075 1952926487 0 13652257 848946991 42589 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 1833339072 10787591 365825779 1621442353 0 11434814 661208283 41425 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 1830776907 11700727 365701571 1747592556 0 11825542 745316663 40967 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 2161196534 14235332 430506583 2181371632 0 14244931 932771371 42645 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 1829763171 11732912 365322599 1774780400 0 11855555 744581259 40685 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 1882449509 11203988 374691162 1726533089 0 11586840 727553985 41451 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 2112328905 13119935 420717877 1991927572 0 13388819 873404295 42509 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 1607054619 8185840 321657098 1427603761 0 9273736 553931079 37946 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 1539399532 7451683 309677507 1296765276 0 8924427 477514014 37662 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 2153867650 13851294 428697142 2066632370 0 13785315 905719333 42555 
+org.wildfly.clustering.ejb.infinispan.SessionIDSerializerTestCase.test 123045406 609432 23482365 132414534 0 773855 46740249 1220 

@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 131782667234 436439006 21698076029 86472681920 0 227806171 34238033250 335567 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 181170776622 379527718 29382898551 107746916567 0 371222202 41154169453 204675 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 519187025900 919459161 83250380282 285531831666 0 929178245 100970659409 591611 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 585192197662 1183789583 94097470870 325787163246 0 982355702 114780200267 451268 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 128603607124 430810038 21145894254 83794464577 0 226952701 33667397625 361313 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 574911479624 1148646114 92491252166 316468183875 0 958428261 111951798143 488748 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 129944980355 433115948 21387654865 83517256446 0 225322517 33197521582 546897 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 577512971875 1142979237 93192961194 313724901860 0 975687817 110190595837 394952 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 619554259552 1189190835 100585283643 337360537704 0 1019569155 118364263287 518459 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 392174198662 893774374 63989170719 222478004448 0 686926282 84181314983 362129 
+org.apache.jackrabbit.oak.security.authorization.permission.DefaultPermissionRandomTestIT.testRandomRead 128950387441 436503585 21197917098 85813940715 0 225890814 35338907518 555949 

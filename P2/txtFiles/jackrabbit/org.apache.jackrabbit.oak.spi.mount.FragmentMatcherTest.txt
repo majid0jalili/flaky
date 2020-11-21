@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 932092239 3828670 184159507 815945709 0 5982945 273544873 10566 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 1209377424 4848187 235663008 1054096754 0 7024369 355425195 11794 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 3982073655 20078681 595447757 4721989118 0 8667117 2431701678 30494 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 2251942239 10418651 439558086 2005340325 0 14110532 695756718 24812 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 5421844870 27055156 871297667 6084648341 0 18850869 2784635411 32311 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 8155314528 27315030 1535925585 5198719421 0 25068992 1550707675 59195 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 5433630297 26504896 874945882 6102597865 0 18797051 2664834537 37778 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 8373316990 26948159 1574028817 5298431297 0 25105660 1519942611 63209 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 99687261 544072 19674562 103697173 0 831320 35991903 1195 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 4182312500 19238135 615868136 4782253803 0 8168864 2272322043 30891 
+org.apache.jackrabbit.oak.spi.mount.FragmentMatcherTest.testMatcher 49591513 233702 9875918 48761752 0 379808 14699973 616 

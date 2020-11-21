@@ -1,0 +1,17 @@
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 427863380540 735525365 80936817202 238738521995 0 657078304 60743074177 168987 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 431395925089 729917853 81723227401 247156344252 0 708535557 60791151684 179668 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 425943234061 693666437 80706575915 233041754463 0 688741383 56777076499 162899 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 426233852300 592475066 80546487944 227342886918 0 660411998 54250469177 161308 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 428027031250 613449011 80392455025 223238848746 0 615584398 54239487012 170006 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 438330579381 598101586 82602430781 224514303483 0 632793891 51526192006 113859 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 426769839156 746630453 80543972794 228836431684 0 614213206 59350338084 144022 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 8667927410 60131425 1625876387 9313013257 0 43288000 5749505795 21467 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 426921288213 590531191 80241225811 220336296011 0 627742532 52531916871 170573 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 429699600482 580715508 80801908545 222872283807 0 617619892 50835096843 125845 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 8569782599 52772090 1627259323 8779858670 0 45021506 4669517546 49632 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 5581572344 36964618 1058345949 7184232347 0 30357508 3995313347 16931 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 426530833394 537364782 81086024741 215992467212 0 586633022 51032957715 272155 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 2608174999 15210163 505690721 2848874394 0 16172921 1452184938 35345 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 9795196469 66701981 1845500293 11558652106 0 52962122 6635129262 50952 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 1388396997 5863376 268744839 1197796136 0 6495300 480975505 10725 
+com.alibaba.fastjson.deserializer.issue2898.TestIssue2898.testDeserialzeComplexGenericType 9281764615 60588194 1736164363 9276518685 0 44147957 5480850573 29340 

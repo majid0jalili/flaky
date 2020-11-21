@@ -1,0 +1,11 @@
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 937166058 5009743 182720537 897137293 0 6848804 308204088 12173 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 935996077 5029813 182540330 875825523 0 6777092 302544392 12188 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 940763469 5056311 183345818 880619849 0 6782972 302867450 12227 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 944935926 4897785 184132454 845683502 0 6636660 303508337 12282 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 939118961 4909810 182990193 838832262 0 6707570 299698210 12208 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 934214843 5149527 182260769 942580881 0 6957504 308376255 12154 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 943105249 4995930 183845413 844323888 0 6672957 305142719 12264 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 930796889 4875918 181555080 834327009 0 6611066 294017218 12184 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 929845332 5212539 181386228 917105811 0 6886413 310769454 12147 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 930859891 4936741 181534297 882904741 0 6750925 302328605 12194 
+org.wildfly.clustering.server.singleton.election.PreferredSingletonElectionPolicyTestCase.elect 937430701 4934486 182735595 886180596 0 6733864 342713405 12266 

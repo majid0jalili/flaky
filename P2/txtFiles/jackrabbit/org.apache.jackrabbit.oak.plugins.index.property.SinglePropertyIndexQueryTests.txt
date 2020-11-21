@@ -1,0 +1,8 @@
+org.apache.jackrabbit.oak.plugins.index.property.SinglePropertyIndexQueryTests.oak2146 677229128483 1382017572 108366155550 374327566065 0 1191896725 130255134476 505118 
+org.apache.jackrabbit.oak.plugins.index.property.SinglePropertyIndexQueryTests.oak2146 359768565136 652039008 57558973026 200996299178 0 684455876 72027807180 306241 
+org.apache.jackrabbit.oak.plugins.index.property.SinglePropertyIndexQueryTests.oak2146 234548071793 425062726 37791570223 131517814287 0 428620800 48481637287 472912 
+org.apache.jackrabbit.oak.plugins.index.property.SinglePropertyIndexQueryTests.oak2146 148813898923 487531475 22908360656 93447884945 0 273450949 38800023042 225882 
+org.apache.jackrabbit.oak.plugins.index.property.SinglePropertyIndexQueryTests.oak2146 145163359513 467747089 22385402639 89331759462 0 266126700 37970082031 221172 
+org.apache.jackrabbit.oak.plugins.index.property.SinglePropertyIndexQueryTests.oak2146 146088227098 460905343 22537306434 89124283684 0 268465491 37769401731 226541 
+org.apache.jackrabbit.oak.plugins.index.property.SinglePropertyIndexQueryTests.oak2146 375898827728 859812025 59772024772 217546124577 0 636142082 80447040769 458058 
+org.apache.jackrabbit.oak.plugins.index.property.SinglePropertyIndexQueryTests.oak2146 466916888483 1003889488 76101915522 260228635910 0 817494882 96583275566 399464 

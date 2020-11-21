@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 2243049368 14551842 439427823 2094517572 0 15079398 904371321 32680 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 3583256582 28211225 695102592 3627110027 0 22321903 1809456546 43194 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 4643878673 36243023 896954255 4346037036 0 23819564 2264280466 43665 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 949484051 4310428 188136935 813878343 0 6253367 264929547 15499 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 5953117877 31328312 939767155 4555975374 0 23426947 2047079508 40405 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 7080320562 42037768 1158380641 5588463298 0 27597362 2820231233 44652 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 3042527199 23676680 585381160 3120730909 0 19646240 1509820340 42205 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 7114929021 40476800 1155476619 5514601319 0 27318132 2662657439 43669 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 5867251675 33771894 917800451 4603997700 0 24681625 2177091971 43490 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 7042319687 38901838 1126708482 5427649941 0 26307569 2597719276 43802 
+org.apache.jackrabbit.oak.spi.security.authentication.callback.PrincipalProviderCallbackTest.testCallback 7379969771 30752994 1078079486 4860861679 0 22114774 1918913342 43525 

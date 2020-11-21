@@ -1,0 +1,13 @@
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 3572940149 14848868 726574268 2946432442 0 19349116 960652062 7653 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 3573172631 14433898 726470251 2834245676 0 19050651 980969886 7654 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 3573984287 14928888 726455034 2944219908 0 19296460 1014199960 7618 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 11244538583 72756633 2213149667 11159509714 0 67380772 5465190945 27303 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 8048719236 46546127 1590711835 7310613600 0 46160644 3305650652 18570 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 3829796975 16417279 776360914 3150590145 0 20586967 1206967321 7447 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 8054913679 48868698 1596058771 7877620349 0 47902603 3827654975 19786 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 8679498712 52479562 1730470493 8570907207 0 53973953 3793703521 20600 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 6832167433 35322936 1373567521 6327610021 0 40375071 2677242590 43318 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 10914520569 69236683 2151061221 11119645332 0 64857773 5543792764 44255 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 11129070625 70443021 2190542675 10899427531 0 66041280 5504845845 23713 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 10533782342 67488045 2078588516 11064967486 0 64108080 5564961268 47996 
+io.dropwizard.testing.junit.DAOTestRuleWithoutLoggingBootstrapTest.ruleCreatedSessionFactory 3588449122 14823992 729309502 2860412863 0 19218954 1017434375 15063 

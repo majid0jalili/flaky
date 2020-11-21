@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 37874371 205380 7271165 38846168 0 273870 15835867 590 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 149069225 684200 27376250 146744030 0 1135409 44974465 1280 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 37791143 208550 7260712 42417621 0 272635 20228584 588 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 37884469 201989 7268315 37319109 0 274663 14293339 590 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 38701729 234859 7437270 55068890 0 291127 19525107 595 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 37838992 201276 7260003 36629507 0 269332 13390301 591 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 149694677 608960 27476835 135089209 0 1083445 48027832 1280 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 150340067 610354 27584928 132847464 0 1080372 44988627 1279 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 37821092 204473 7260432 37524732 0 275710 14463868 590 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 37935225 220241 7281373 47763439 0 285096 17121768 592 
+org.wildfly.clustering.web.session.SessionAttributeImmutabilityTestCase.test 37867914 205256 7267385 37878752 0 278764 14900132 592 

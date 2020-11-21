@@ -1,0 +1,11 @@
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 127193029 524897 25329952 113690487 0 739004 36258280 1299 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 17022556 122527 3339483 17331999 0 117490 6777890 332 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 127990551 514644 25481715 108593376 0 723394 35613050 1300 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 1295900584 8162708 247528635 1175539794 0 8432643 483226545 24665 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 1352309088 9177776 258690834 1256318477 0 8987073 543167517 25308 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 1556417672 10766486 298271278 1456310787 0 10428051 642555342 27162 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 1453163461 9480672 278785161 1332959563 0 9558247 558912064 26006 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 1550616948 10734704 297514263 1479703820 0 10568768 633575815 27109 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 16979194 127759 3329576 18045886 0 115737 8044972 331 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 1453072654 10573551 277694859 1424671497 0 10100820 631477101 26468 
+org.jboss.as.clustering.context.ContextReferenceExecutorTestCase.test 128548237 579643 25579107 136257128 0 757158 60438288 1302 

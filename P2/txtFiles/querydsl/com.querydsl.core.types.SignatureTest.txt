@@ -1,0 +1,13 @@
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 769766069 3943710 147509202 689875579 0 4778170 241912320 8556 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 769327799 4155621 147554966 722172935 0 4847765 264186139 8528 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 765491320 4428880 146826750 773909563 0 5130064 273803044 8534 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 186627519 495292 33917421 134677027 0 592923 46012373 3279 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 7646415973 14619978 1367337718 5837466607 0 49112896 930679253 62670 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 378667432 1492225 72823534 318139080 0 2498988 91623809 3340 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 7353300707 14371267 1313738416 5815867193 0 48382647 927546298 57149 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 8232926474 17966187 1479573485 6353359672 0 51446019 1246943597 70710 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 7515606738 13823141 1342869340 5720321318 0 48537531 949650527 60642 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 7617838220 15397688 1365015892 5944612063 0 49346887 993921958 66788 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 7680139693 15707634 1375826619 6013850710 0 49509264 1037819069 62605 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 8051023616 17468003 1440781136 6282102999 0 51074967 1148086533 70188 
+com.querydsl.core.types.SignatureTest.returnType_extends_simpleExpression 245792037 1194359 46536857 228075488 0 1531406 80714493 1934 

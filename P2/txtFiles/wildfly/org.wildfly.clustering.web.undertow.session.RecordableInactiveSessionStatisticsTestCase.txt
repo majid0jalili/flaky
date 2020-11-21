@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 2137334484 16195415 421989484 2124281332 0 14444086 1068875269 45461 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 2073004150 14885004 407276561 2090819970 0 13563420 964652997 42574 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 1921327846 14133234 379135124 1915915401 0 12689076 923662755 41904 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 2552104603 21546552 503161733 2857797591 0 17853238 1591535014 48394 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 2571218701 21139045 506967704 2769063619 0 17821443 1508498916 48487 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 2420189109 18690947 476608920 2354434191 0 16341139 1173342821 47987 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 1259064186 6043540 251178705 1036568152 0 7193802 349049622 32436 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 2627069462 22622579 518256502 2952254957 0 18617420 1543413724 48476 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 2325729334 19859363 458642185 2930245128 0 16640140 1618803297 47580 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 1621981702 10634748 321158445 1560663693 0 10465641 639625836 37096 
+org.wildfly.clustering.web.undertow.session.RecordableInactiveSessionStatisticsTestCase.test 1897474733 12745184 374826700 1734200922 0 12083436 771810411 40616 

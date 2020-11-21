@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 21819958 100289 4351978 21130262 0 159339 7764270 244 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 6649562797 31583570 1478468856 4904771658 0 9963669 2162869653 245329 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 21881495 105682 4354510 22483112 0 167122 6926335 240 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 6557664038 30127943 1482423136 4872062805 0 8701756 2084536480 244636 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 5221682096 31375602 1031519947 4247323614 0 7671790 2163927967 244983 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 5576749862 30035083 1198183230 4462685453 0 5478646 2065072865 245358 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 1739879747 2826992 441960964 998488644 0 5505371 226825484 27843 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 5069875978 27615066 1151301032 4259416791 0 5115595 1870187273 244701 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 21782528 99774 4336202 20092770 0 154325 6790532 241 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 6629009806 30721099 1522142365 5021839343 0 10649666 2110614201 245126 
+org.apache.jackrabbit.oak.spi.blob.stats.StatsCollectingStreamsTest.downloadCallback 6200166316 30413382 1476943494 4713044467 0 6419881 2149498647 244568 

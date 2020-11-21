@@ -1,0 +1,10 @@
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 678641599348 1387262308 108609819975 375422743054 0 1196196358 130936985907 505524 
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 84318668417 195533619 13954862668 51813796303 0 189584038 20886532802 141571 
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 154325256516 288671075 24945551086 88024241949 0 278489271 32876528457 357357 
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 547140077304 1125900568 88028240041 306628397571 0 915187307 108773933024 443973 
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 537526377227 1090694223 86519891738 297417124118 0 893464625 105725473595 473738 
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 539935767834 1084550965 87183601378 294646699144 0 908348801 103951297759 388855 
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 318100625942 767802959 50442425019 185524757111 0 531705282 68785743341 417362 
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 23754017994 76574072 3910819083 18082690473 0 66239114 8224971942 113474 
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 23628686571 74658634 3889168309 17088415901 0 66458421 8113671855 147868 
+org.apache.jackrabbit.oak.plugins.index.nodetype.NodeTypeIndexTest.nodeType 33141895663 190343903 5537581327 26246132639 0 78393363 13253016917 137921 

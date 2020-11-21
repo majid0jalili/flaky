@@ -1,0 +1,16 @@
+com.querydsl.sql.suites.H2ExceptionSuiteTest.updateBatchFailed 3195096283 10967098 618440226 2409456082 0 15976401 815724511 17583 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.sQLExceptionCreationTranslated 3198479508 10987911 619107733 2413455253 0 16000659 817881173 17586 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.sQLExceptionCreationTranslated 2525383492 9914033 490855329 2284716335 0 14507178 731728558 19180 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.updateBatchFailed 2552986984 10049665 496200787 2311632395 0 14725765 742654650 19211 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.sQLExceptionCreationTranslated 2523870276 9737580 490852188 2301833626 0 14413209 735673002 19377 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.updateBatchFailed 2551268214 9868374 496164874 2327886401 0 14628195 745896026 19429 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.updateBatchFailed 3189405500 11417562 617191898 2480432973 0 16057077 854970549 17826 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.sQLExceptionCreationTranslated 3192874238 11439842 617875345 2484487464 0 16081474 857130755 17829 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.updateBatchFailed 3217709187 11349430 622636097 2468395018 0 16087987 859465428 17653 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.sQLExceptionCreationTranslated 3221222823 11370667 623327596 2472736547 0 16112492 861988529 17656 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.updateBatchFailed 3162896507 11106612 612722613 2445100666 0 16027250 860264822 17672 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.sQLExceptionCreationTranslated 3166389064 11128467 613410334 2449281164 0 16051773 862527908 17675 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.sQLExceptionCreationTranslated 2560928864 8703829 497333518 1982657799 0 13871048 647107745 19277 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.updateBatchFailed 2588476138 8834946 502668035 2008583489 0 14088065 656930108 19323 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.updateBatchFailed 1619829857 5574977 317580759 1274208204 0 9356444 401605323 3058 
+com.querydsl.sql.suites.H2ExceptionSuiteTest.sQLExceptionCreationTranslated 1624417506 5599114 318464004 1279138063 0 9387328 404132824 3061 

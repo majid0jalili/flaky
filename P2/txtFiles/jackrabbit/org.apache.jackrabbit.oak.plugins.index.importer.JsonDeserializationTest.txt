@@ -1,0 +1,9 @@
+org.apache.jackrabbit.oak.plugins.index.importer.JsonDeserializationTest.deserialize 677475067363 1384005971 108413399139 374612825497 0 1193346904 130481100547 505400 
+org.apache.jackrabbit.oak.plugins.index.importer.JsonDeserializationTest.deserialize 399821008141 818169939 64220110310 225784429542 0 751156839 82306793727 330216 
+org.apache.jackrabbit.oak.plugins.index.importer.JsonDeserializationTest.deserialize 627716771502 1176816846 99587809823 341384758384 0 1090442586 120619120502 635311 
+org.apache.jackrabbit.oak.plugins.index.importer.JsonDeserializationTest.deserialize 465194789062 1015535564 73475246554 267638257525 0 797876382 97059194843 422353 
+org.apache.jackrabbit.oak.plugins.index.importer.JsonDeserializationTest.deserialize 457489493323 984576241 72344907525 259742825183 0 780357831 94609214737 443393 
+org.apache.jackrabbit.oak.plugins.index.importer.JsonDeserializationTest.deserialize 458430283323 977790105 72624920782 257665405405 0 791831842 93435809861 367315 
+org.apache.jackrabbit.oak.plugins.index.importer.JsonDeserializationTest.deserialize 550533834841 1107881627 87944792318 305812811381 0 927300061 109017576960 502587 
+org.apache.jackrabbit.oak.plugins.index.importer.JsonDeserializationTest.deserialize 22849714811 74341686 3760476778 17518144957 0 64169656 7947901292 113433 
+org.apache.jackrabbit.oak.plugins.index.importer.JsonDeserializationTest.deserialize 22736157907 72252494 3740672262 16486454757 0 64263390 7833599160 115651 

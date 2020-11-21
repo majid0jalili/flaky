@@ -1,0 +1,8 @@
+org.apache.jackrabbit.oak.plugins.index.counter.MountsNodeCounterTest.testMultipleMounts 695393156952 1390602216 112678288629 380234508098 0 1198772134 131306364952 505599 
+org.apache.jackrabbit.oak.plugins.index.counter.MountsNodeCounterTest.testMultipleMounts 532311639550 1116093397 84526528437 295994997369 0 919790858 105522329858 410682 
+org.apache.jackrabbit.oak.plugins.index.counter.MountsNodeCounterTest.testMultipleMounts 462958219240 824082304 74257399868 254864537120 0 829494668 90207718554 562662 
+org.apache.jackrabbit.oak.plugins.index.counter.MountsNodeCounterTest.testMultipleMounts 680364422270 1322989847 109395012990 375662914436 0 1138033984 132645934618 490278 
+org.apache.jackrabbit.oak.plugins.index.counter.MountsNodeCounterTest.testMultipleMounts 668704619275 1283347020 107609410218 365350815894 0 1109676837 129486369262 540453 
+org.apache.jackrabbit.oak.plugins.index.counter.MountsNodeCounterTest.testMultipleMounts 671615369550 1285874947 108378279326 363842583290 0 1133193142 127648209718 426940 
+org.apache.jackrabbit.oak.plugins.index.counter.MountsNodeCounterTest.testMultipleMounts 685994313840 1288083073 111355697585 371043268959 0 1134962157 128969280139 541834 
+org.apache.jackrabbit.oak.plugins.index.counter.MountsNodeCounterTest.testMultipleMounts 659775352367 1304322735 107297303995 357611856802 0 1135573806 128633249837 487597 

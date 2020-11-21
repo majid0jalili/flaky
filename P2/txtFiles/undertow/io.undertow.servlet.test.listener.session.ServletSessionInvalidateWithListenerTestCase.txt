@@ -1,0 +1,11 @@
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 61702258189 224103305 8748122528 39211552471 0 34270056 40854868804 155009 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 4802919284 22692873 861372744 3863194337 0 21072431 2197323289 42924 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 61418464715 216180299 8709104821 38657244402 0 42274936 38974921007 245876 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 15619123799 81362966 3245404333 11281399167 0 20661496 14531099052 418012 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 63299027095 200552317 9076787307 36950619418 0 50286181 33629710134 374585 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 21454445317 98862638 3665067801 14242838527 0 22347003 17998452023 398531 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 2662909743 11760279 493337323 2262908899 0 15266227 867788822 16682 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 23066548850 102921158 4053693486 15588652516 0 28615426 18518267928 158432 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 14348158949 79303925 2998079480 10393804385 0 16823611 14922450141 367705 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 64008965599 199394731 9180581951 37640639156 0 45380255 34100330162 393936 
+io.undertow.servlet.test.listener.session.ServletSessionInvalidateWithListenerTestCase.testSimpleSessionUsage 1039402898 4436340 180260752 910444419 0 5836743 311109032 6931 

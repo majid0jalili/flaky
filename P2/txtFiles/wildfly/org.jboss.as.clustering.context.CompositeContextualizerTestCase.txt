@@ -1,0 +1,11 @@
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1473299925 9575313 282206147 1355418159 0 9715152 571443192 26271 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1552578013 10905056 297838351 1458732635 0 10509238 655721502 27309 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1473166753 9677276 282241348 1358216508 0 9721192 578407821 26335 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1448338663 10354324 276826867 1373437605 0 9939398 617579291 26421 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1221884233 7692711 233496891 1106579529 0 7912701 453490970 23466 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1332857215 8071937 255465989 1191776121 0 8459992 478374786 24223 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1325319071 7978321 253978670 1185815684 0 8486583 469918922 24170 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1221440588 7664253 233590239 1124823291 0 8019307 445963702 23256 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1234096317 7873468 235969920 1161601975 0 8090431 499004891 23604 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1347759487 9268445 257883980 1298171289 0 9137044 553908239 25228 
+org.jboss.as.clustering.context.CompositeContextualizerTestCase.test 1455157833 9812345 279407915 1437361742 0 9713941 633206650 26025 
