@@ -1,0 +1,11 @@
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 862056635 4148191 168533555 809797734 0 6151665 255136321 11593 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 856887250 4127361 167627261 781294215 0 6035713 247906389 11590 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 865138500 4168652 169048233 790634072 0 6069018 250344315 11648 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 865633398 4006674 169157164 754309983 0 5905685 248466357 11691 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 860812188 4007987 168225959 748914912 0 5976970 246243416 11618 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 858232560 4225171 167930840 845232653 0 6215078 252936452 11567 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 861281261 4070031 168416135 750404417 0 5920798 248949306 11652 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 937460550 4930337 182778689 841793000 0 6675648 297412227 12220 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 936537009 5279562 182614908 926545169 0 6959253 314592181 12184 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 935027068 4971010 182306125 887670939 0 6790758 304549251 12216 
+org.wildfly.clustering.server.singleton.election.SocketAddressPreferenceTestCase.test 944070599 4991335 183955509 893791031 0 6798949 346582991 12303 

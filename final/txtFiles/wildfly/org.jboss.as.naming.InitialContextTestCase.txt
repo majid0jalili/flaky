@@ -1,0 +1,11 @@
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 4511447597 20482785 861786120 4067386450 0 27996406 1500937181 38057 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 4532411207 20048384 861818767 4107266719 0 27482016 1491207449 40148 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 448835308 2269012 86977026 429018730 0 3059458 149478028 4288 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 4399017547 19398003 843720331 3848343678 0 27163668 1319522756 41155 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 1296860751 4984317 227782715 1043035992 0 7210992 338637538 13496 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 1141490996 4719002 205390129 1068278385 0 6824458 325633808 13755 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 419368488 1884738 81545492 370249845 0 2716009 129022655 3898 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 271960180 1059437 54013986 239961439 0 1708242 73341344 2640 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 272244265 1039649 54111108 230771826 0 1696193 72714358 2644 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 1282715496 5435085 225785878 1146400236 0 7540610 354665026 13430 
+org.jboss.as.naming.InitialContextTestCase.testRegisterURLSchemeHandler 270421362 1037843 53768422 227854883 0 1650804 72191963 2639 

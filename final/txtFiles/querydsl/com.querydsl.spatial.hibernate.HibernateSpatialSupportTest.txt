@@ -1,0 +1,11 @@
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 31390964 129910 6283111 27195376 0 220782 7787623 373 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 32034113 131781 6390925 27559814 0 222175 7801267 374 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 144513709 662244 28847300 123611597 0 959268 37630943 1515 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 32197842 144543 6435702 32110987 0 241420 8174452 372 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 146358761 657985 29192474 124866585 0 991064 37186103 1513 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 31737435 141126 6334747 30482020 0 233551 8263399 374 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 166038151 931411 33190594 176080029 0 1240951 50962663 1747 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 145792277 672771 29068135 124726124 0 974870 38144049 1490 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 165180883 763033 33023542 141783845 0 1099527 43271701 1750 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 31938101 148980 6371043 33166342 0 243341 9155874 375 
+com.querydsl.spatial.hibernate.HibernateSpatialSupportTest.allMapped 164853314 749292 32918242 141167646 0 1089722 42599392 1747 

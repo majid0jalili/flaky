@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 2036719502 13134586 410505601 1851638872 0 12317971 813243335 40290 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 1932610762 13320883 389683881 1836250267 0 12008104 824351709 40161 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 2523230515 17306393 506094224 2395363927 0 15610516 1156815577 40391 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 2389339044 15778790 478690209 2237895192 0 14683176 1028853319 40290 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 2385061743 15821100 478645079 2170829092 0 14531482 1011384094 40659 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 1952126719 13164988 392529561 1815522572 0 11874142 834396984 40166 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 2357092414 15347782 474016639 2227499319 0 14432248 1024340406 40265 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 2043713030 13415888 410842544 1892247516 0 12250585 847360611 40275 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 1941277121 13135739 390429202 1760861713 0 11688134 804444758 40149 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 2477687049 16916548 497605210 2406521091 0 15537693 1123950467 40331 
+org.wildfly.clustering.web.infinispan.AffinityIdentityFactoryTestCase.createIdentifier 2399182469 16862084 481999315 2385059631 0 15197320 1109955424 40845 

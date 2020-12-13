@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 471201327 2619807 89880106 448088230 0 2831504 209333840 642 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 661006481146 1310259003 105142809274 361540207895 0 1132373563 127435588476 462284 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 174437940841 325018816 28150479909 99147581316 0 317307079 36751836698 393340 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 368269982027 833455910 57774949208 213326745559 0 662351422 79765105091 372118 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 474871973 3239238 90671315 616828040 0 3091912 243727076 834 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 361458527930 804484871 56781236915 206037889230 0 647249051 77762296972 395950 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 472954153 2732117 90562867 525473923 0 2953319 222292633 813 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 362798024267 799842588 57069978335 204230635306 0 655685722 76480687419 315791 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 638253884436 1217461609 103646190712 347125107447 0 1052403634 121748910930 518545 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 417300102321 930211654 68077360796 235078142838 0 730627664 88210379300 375600 
+org.apache.jackrabbit.oak.spi.query.SlowQueryMetricTest.queryOnStableRevision 477386710 2856468 91231482 488074668 0 3115065 220554571 875 

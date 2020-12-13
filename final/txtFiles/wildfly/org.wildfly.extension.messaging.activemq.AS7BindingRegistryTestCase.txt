@@ -1,0 +1,13 @@
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 95955870192 216453613 17662399085 51523592905 0 201140911 16340769634 504870 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 88740370344 202954023 16862810672 48129196593 0 189778120 15633787330 452351 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 89005780650 203034923 17096258478 48321442294 0 192650130 15778286672 346194 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 64173989096 159606908 12136159820 36092908359 0 150831769 12541131200 267786 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 181478164350 388631682 34220315619 95724383275 0 362022984 30607896364 547115 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 116608940524 258758362 22216705139 61730786360 0 238103102 20253285374 658610 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 32388083312 91078718 6200009067 19458727491 0 79434514 7021232601 197783 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 198173336894 432118797 37683796232 105423120018 0 409881699 33291826909 603251 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 169166937502 367613450 32107083279 89112710795 0 334700178 29045385355 668420 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 67997748779 154544610 12900310158 37616663680 0 142664323 11990090204 533115 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 238308653392 494500987 45386821571 124241474530 0 467976219 38865059785 740385 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 93109270187 200748609 17843289408 49447105876 0 186781632 16234579450 503984 
+org.wildfly.extension.messaging.activemq.AS7BindingRegistryTestCase.bindUnbindBind 87896287586 199755872 16839548557 47393542771 0 182855859 15628495572 540289 

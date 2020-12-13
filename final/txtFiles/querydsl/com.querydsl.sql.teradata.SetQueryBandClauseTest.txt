@@ -1,0 +1,16 @@
+com.querydsl.sql.teradata.SetQueryBandClauseTest.getSQL 434711843 2006142 81886491 412956446 0 2321139 142006553 4868 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.forTransaction 435331078 2013970 81998254 414011946 0 2328083 142414351 4878 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.toString2 435892879 2021338 82099176 414946461 0 2334366 142773798 4888 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.toString_ 436992864 2029018 82283711 416183541 0 2341373 143429208 4899 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.getSQL 426289414 1991059 80526203 449854926 0 2375067 144157758 4865 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.forTransaction 426909118 1997316 80637869 450587024 0 2380666 144485839 4875 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.toString2 427479116 2002897 80740399 451194844 0 2385191 144752368 4885 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.toString_ 428450399 2010026 80905574 452261415 0 2390743 145306602 4896 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.getSQL 441984586 1589327 83230720 340479920 0 2154626 118812570 4854 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.forTransaction 442557051 1595180 83333167 341143281 0 2159882 119145673 4864 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.toString2 443123220 1600686 83434445 341729491 0 2164265 119423984 4874 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.toString_ 444160753 1607982 83609835 342770104 0 2169816 120027874 4884 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.forTransaction 1801524131 6225280 350695642 1418920980 0 10230209 459242982 3140 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.getSQL 1802544108 6235380 350891708 1420515788 0 10239949 460072664 3141 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.toString_ 1803090562 6240989 350990848 1421161541 0 10245440 460416152 3141 
+com.querydsl.sql.teradata.SetQueryBandClauseTest.toString2 1804307729 6248834 351195717 1422466125 0 10252368 461142817 3141 

@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 111409867 622638 22394706 110117294 0 695774 43537008 2794 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 2030284824 13842851 409324407 1925219800 0 12604140 858740212 40286 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 1790207880 9046677 360984874 1596016079 0 10628102 604182617 40097 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 2429090549 15986706 486569074 2273720017 0 14898249 1044687306 40327 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 187436382 874548 36667479 170682324 0 1059415 68092165 3369 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 2367896128 16448605 474995845 2236502655 0 14713907 1061843390 40648 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 2402273456 15608706 483038452 2274926067 0 14711695 1042672340 40316 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 2365251815 15520226 475364546 2220799761 0 14395825 1012471363 40846 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 2074860947 13745287 416658469 1876663113 0 12451190 846891620 40324 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 2521761275 17169033 506392775 2450079268 0 15799439 1141650897 40378 
+org.wildfly.clustering.web.infinispan.ServiceLoaderTestCase.load 2509693922 17572002 504072593 2501328191 0 16034437 1156438832 41012 

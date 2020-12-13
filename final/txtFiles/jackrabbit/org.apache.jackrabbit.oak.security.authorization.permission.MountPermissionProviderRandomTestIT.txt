@@ -1,0 +1,13 @@
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 129851596381 429229000 21370713124 85209580335 0 222085921 33747660821 335552 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 716222169951 1372663306 115386440497 385788490380 0 1202767610 134356555788 481728 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 674794279975 1350840592 107359609753 370510865591 0 1171827026 132676670804 644307 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 454339088281 999213009 71737852661 261964540155 0 778941477 95142102379 413737 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 126748234213 422796291 20830106429 82611811348 0 221453475 33108295106 361297 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 446781590620 968771328 70631067136 254202384174 0 762006647 92833014899 443385 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 127567536261 424836443 20987029712 82146021554 0 218634426 32648990031 546882 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 447707681641 962148187 70902548614 252357058132 0 773165254 91656812218 367306 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 444593199103 962196525 70866892119 252868131969 0 757475059 91863902324 476424 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 246138102567 532396908 40358113253 138626241065 0 442002240 53187714966 291932 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 127250805952 427869022 20908203379 84546747760 0 220557004 34723846770 518729 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 239283101761 530810855 38967304935 137162222391 0 446363138 51750801592 474017 
+org.apache.jackrabbit.oak.security.authorization.permission.MountPermissionProviderRandomTestIT.testRandomRead 228074104144 582060334 35837017372 131441950005 0 419862883 52539673558 308247 

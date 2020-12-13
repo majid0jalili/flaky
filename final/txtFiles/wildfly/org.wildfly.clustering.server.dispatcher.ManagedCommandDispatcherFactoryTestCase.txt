@@ -1,0 +1,11 @@
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 1584123067 7652556 321428376 1379215840 0 9264572 501882703 40738 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 2516008991 11735320 507723202 2176761123 0 14826532 767165771 43080 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 2897232661 15066840 578820315 2576395239 0 17559205 1005924314 42531 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 2951319747 16533663 590167264 2798537758 0 18449227 1112325521 43922 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 2932434438 15345767 585713257 2562604611 0 17857339 1035159780 43115 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 2607415995 12326904 524011748 2261494886 0 15354793 833825033 44375 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 2500687055 11465580 503398461 2109127227 0 14567397 764619370 44204 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 2315567343 11389191 467898740 2081058307 0 13942833 763200458 42740 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 1462222531 6835128 297122967 1219725096 0 8371347 431857230 38832 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 2901519776 15165792 579648430 2589401058 0 17639665 1043578735 43129 
+org.wildfly.clustering.server.dispatcher.ManagedCommandDispatcherFactoryTestCase.test 2746717018 14384171 552446659 2419757658 0 16522294 923964945 42437 

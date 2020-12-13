@@ -1,0 +1,11 @@
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 2993169691 16188425 597078871 2805589236 0 18388384 1112916661 42563 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 2975399562 15682990 594054609 2651813204 0 18214945 1038547153 43224 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 2832729727 14531334 566011574 2505196125 0 17075695 962080493 42458 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 1347115095 7831214 265176276 1424111120 0 8873984 538277464 28347 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 2796189018 14317143 559625123 2419982573 0 16873190 953431431 43024 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 2721455943 13203481 545238716 2394478785 0 16224658 898895637 44427 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 1099854397 5238395 217572763 977711907 0 6615934 371008403 21799 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 2986465097 16358091 596734143 2756240527 0 18377513 1106419284 43200 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 2711371604 12935208 543510513 2321101772 0 15999117 861158032 41838 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 1099477445 5484180 217503075 1026353213 0 6747655 385722983 21805 
+org.wildfly.clustering.server.singleton.ServiceNameResolverTestCase.test 3001657144 16029987 599798083 2672332342 0 18277209 1051526286 42553 

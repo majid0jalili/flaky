@@ -1,0 +1,13 @@
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 6788482917 28877100 1289728303 5627741658 0 36861653 2008240521 48798 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 5501771067 24606038 1052801704 4627743269 0 30976863 1755391372 45224 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 5474546310 23852243 1048746495 4673848183 0 31142564 1694368672 46038 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 5259453123 22254321 1008410222 4326480077 0 29526357 1521122981 47402 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 2011702186 8162606 370994646 1610475008 0 10754176 564094144 27144 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 2060883903 9146942 376948798 1738747793 0 11382491 621261335 24680 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 4863222328 21429103 930383033 4025833377 0 27503885 1498204831 37672 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 1993340992 8178752 366971810 1594493065 0 10784020 552851700 27151 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 2005226261 8168833 369909827 1634973690 0 10800254 559396849 27161 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 5374906225 23592210 1028430019 4533800760 0 30505347 1626849602 46473 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 5203315944 22202218 997323323 4257573682 0 29258605 1490584896 47312 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 1973847967 8543215 364189361 1760974154 0 11167183 579413712 27133 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsingTestCase.testParseSubsystem 4748190647 20302416 908925807 3896057356 0 26614969 1423206560 44630 

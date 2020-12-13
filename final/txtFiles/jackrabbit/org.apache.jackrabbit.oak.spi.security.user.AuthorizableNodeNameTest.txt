@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 5521406886 31626725 860675270 4382889640 0 24959350 2036925482 42405 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 6636498637 38108503 1072283014 5306426045 0 27105572 2555346159 43615 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 12983511 63015 2565478 13016308 0 90841 5296467 204 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 1287841470 7827893 254107803 1188328197 0 8907791 488360664 19446 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 4675503829 23382135 696040117 3638664650 0 20306914 1495215793 40218 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 4940210794 26135714 750701656 3856543621 0 21008797 1665220099 42974 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 6788893431 40647247 1104404362 5566863858 0 27802777 2734598757 42904 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 2064141741 14001902 406210300 2011593736 0 14212205 872117539 29454 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 5655091525 31854476 876062441 4396459897 0 23672462 2044549386 43426 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 504452617 1992563 99233566 420910088 0 2791467 136524191 6179 
+org.apache.jackrabbit.oak.spi.security.user.AuthorizableNodeNameTest.testDefault 7263730976 29346671 1054748322 4677514755 0 21135481 1809665577 43466 

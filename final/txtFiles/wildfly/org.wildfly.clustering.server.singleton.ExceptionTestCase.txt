@@ -1,0 +1,11 @@
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 2893061872 15497421 578468482 2705950136 0 17729445 1058404633 42524 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 2647177057 12527791 531888773 2305669642 0 15752084 828288804 43139 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 2386998256 12525422 480170150 2131294614 0 14550571 805137240 41974 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 825883532 4766136 164136043 855610890 0 5604444 305471520 17856 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 2861235542 14741677 571598326 2482441209 0 17296404 986600307 43041 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 828879778 4339569 164561809 756729528 0 5325486 284679970 17864 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 3004370685 15645471 599982599 2622999540 0 18268399 1049195193 44496 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 927741539 4804975 184578647 884959109 0 5913158 338734899 18948 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 2776981893 13373651 555605298 2385078653 0 16431810 894160220 41864 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 1170643203 6004703 230484860 1102478540 0 7267903 425445054 24546 
+org.wildfly.clustering.server.singleton.ExceptionTestCase.test 2872071250 15140815 575601404 2544803970 0 17379687 982898077 42517 

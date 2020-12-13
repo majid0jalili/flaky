@@ -1,0 +1,16 @@
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenProperties 733324934062 1451948393 119117664456 400169252837 0 1264483109 138694331394 518301 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenNodes 733325607346 1451960958 119117782928 400169913917 0 1264485381 138695024033 518301 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenProperties 600297243032 1225398091 95418969434 331582170463 0 1038376496 117688407314 435405 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenNodes 600297869126 1225411182 95419085232 331582872427 0 1038378838 117689466277 435405 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenNodes 462608052465 823488370 74198937715 254662816097 0 828710231 90134887318 562649 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenProperties 462608789029 823502824 74199073447 254663962446 0 828713370 90137088247 562649 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenProperties 316078552185 755766425 49758193407 185621408731 0 573602731 70549696304 348122 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenNodes 316079204618 755779908 49758314027 185622635501 0 573606073 70552588997 348122 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenProperties 309930109560 728182512 48870203951 178875084839 0 560439077 68968970266 379297 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenNodes 309930772235 728195609 48870326126 178876501348 0 560442451 68972843796 379297 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenProperties 311170750683 723621822 49114107321 177197364754 0 567165819 67555246966 302056 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenNodes 311171398776 723635000 49114226916 177198823817 0 567169165 67559224601 302056 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenNodes 646078014908 1228690137 104898561290 351067227330 0 1065763617 123029284073 518562 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenProperties 646078748355 1228704299 104898696558 351068223764 0 1065766613 123030717730 518563 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenNodes 434540749072 955460779 70856862472 243891388949 0 760541439 91142299002 388444 
+org.apache.jackrabbit.oak.plugins.migration.report.PeriodicReporterTest.callbackEveryTenProperties 434541487418 955474846 70856998706 243892386545 0 760544414 91144219269 388444 

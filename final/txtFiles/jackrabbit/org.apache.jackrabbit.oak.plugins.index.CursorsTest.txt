@@ -1,0 +1,16 @@
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursorExceptions 695029562202 1389276246 112613825268 379895073684 0 1197769090 131165771318 505565 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursor 695030074901 1389289925 112613918758 379895950182 0 1197772112 131167248496 505566 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursorExceptions 9286951 55453 1917727 13811997 0 65705 4850865 12 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursor 16396017 86826 3158850 23948984 0 104227 9493562 16 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursor 344175227997 598754746 55251323913 188129830292 0 619246412 66773987356 536619 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursorExceptions 344175687123 598769180 55251412204 188130701782 0 619249309 66776394203 536619 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursor 373568281732 841105323 58618769251 216129192208 0 671456555 80720333658 372143 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursorExceptions 373568745370 841118705 58618858365 216129945758 0 671459064 80721633175 372143 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursor 366686607660 811848700 57613885903 208705163547 0 656099233 78613444432 395977 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursorExceptions 366687068296 811861270 57613973957 208705824635 0 656101641 78614452700 395977 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursor 368038115020 807189403 57908003805 206845072213 0 664724585 77336133193 322818 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursorExceptions 368038562475 807202002 57908089459 206845779640 0 664727016 77337341301 322818 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursorExceptions 240954743017 547839807 37813301993 139512913615 0 394857436 51444845090 364681 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursor 240955238675 547853453 37813398424 139514199888 0 394860058 51448429615 364681 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursor 420135769258 934320842 68527401561 236468476485 0 735545114 88645730198 375621 
+org.apache.jackrabbit.oak.plugins.index.CursorsTest.intersectionCursorExceptions 420136233155 934335173 68527490264 236469173779 0 735547975 88647148582 375621 

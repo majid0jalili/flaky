@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1507143725 10126360 296177671 1540964364 0 10367202 658964399 30819 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1145806308 5565567 227081494 993001226 0 6889123 346418005 26674 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1763037599 13310085 345615000 1726770009 0 12318780 853713082 34208 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1585127742 11171176 311083672 1649073307 0 11090935 729575817 31666 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1140461804 5607366 226328644 1037450793 0 7030040 350275024 26650 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1191310012 5611399 235643854 1009715376 0 6990072 365121951 26997 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1763721731 13203080 345743072 1737674274 0 12357802 846971037 34203 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1757314468 13299469 344425638 1770696575 0 12421308 864644198 34228 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1314357947 6985808 258940632 1153295033 0 8166524 454735431 28534 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1647255924 11452171 322998619 1574032638 0 11182446 744076465 32495 
+org.wildfly.clustering.web.cache.session.ImmutableSessionAttributesFilterTestCase.getListeners 1647627441 11985129 323267339 1650644047 0 11333797 768633331 32480 

@@ -1,0 +1,11 @@
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 1194849569 1293649 163660680 651656267 0 2217737 90367982 2943 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 1243186219 1463942 169802499 707044809 0 2333825 100138786 2938 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 1216559898 1460784 166895931 710682127 0 2379647 99566610 2944 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 6240094851 2247137 648243498 3120304799 0 3608770 161869511 4217 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 1234452284 1270409 168283177 663874083 0 2236652 95450411 2929 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 6086270547 2075800 615456770 3002021306 0 3517059 154214000 4218 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 6152880149 2073558 624693395 3012322958 0 3513060 157125997 4215 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 6268080484 2080838 652302526 3062596730 0 3504974 155360297 4214 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 6199853102 2075934 639305819 3045951493 0 3555214 152965179 4204 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 1227176572 1312695 167103582 661489411 0 2226161 98341502 2937 
+org.jboss.as.security.vault.VaultSessionTestCase.testVaultConfiguration 1171606406 1345331 160346057 709239653 0 2295507 92339192 2935 

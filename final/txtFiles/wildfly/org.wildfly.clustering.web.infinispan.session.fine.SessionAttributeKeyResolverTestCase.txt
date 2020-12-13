@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 2377328178 15373467 478075117 2202208424 0 14594400 984548548 40948 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 2513335939 17835858 505415611 2459638538 0 15986581 1152818447 41024 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 1747218598 8819110 352443654 1559573726 0 10409964 589020877 40059 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 1789370306 9093457 359896787 1596790491 0 10609604 598745949 40049 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 249191341 1268276 48921646 235825181 0 1571634 92745767 4525 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 2117695492 13934369 425160942 1960395035 0 12897278 886889006 40468 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 182793745 918464 36093059 175165301 0 1209063 69695271 3093 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 2541867381 17747331 510719783 2493533367 0 16069683 1162228794 41011 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 2153584574 14181550 432391275 1954974802 0 13044392 876065913 40520 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 177351687 958864 35096108 200168902 0 1238219 71304102 3062 
+org.wildfly.clustering.web.infinispan.session.fine.SessionAttributeKeyResolverTestCase.test 2459086514 17283502 494060078 2452460400 0 15728288 1137010066 40959 

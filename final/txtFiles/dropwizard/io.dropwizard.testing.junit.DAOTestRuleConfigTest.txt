@@ -1,0 +1,13 @@
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 8127821114 46381438 1619664559 7475063071 0 49378711 3297146720 15399 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 8133454408 48125819 1620253132 7635376337 0 49496047 3464531511 15620 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 8116476336 47023582 1617233082 7621696283 0 49730523 3428389169 16273 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 11177876965 72205737 2200545490 11093732045 0 66993382 5418985353 27300 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 11153914012 70365139 2194293477 10747253112 0 66472777 5195981885 37631 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 3628810432 14930930 737775737 2920399366 0 19178827 1094612169 7294 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 9907861860 63818157 1952754852 10113016002 0 60062296 4977608438 24092 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 8601350063 51857578 1715883150 8493161826 0 53523756 3738687603 20596 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 11191990366 73977338 2204496895 11847837449 0 64714356 5851922932 45858 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 8726281082 52323826 1730960073 8698641186 0 50854561 4069033732 42699 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 11221986113 71116320 2208485247 11000282000 0 66596822 5575325330 25919 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 10456762604 66889501 2064157452 10987807390 0 63660634 5513761063 47992 
+io.dropwizard.testing.junit.DAOTestRuleConfigTest.explicitConfigCreatesSessionFactory 7388544715 40781450 1474715333 6709688059 0 44758291 2894969704 20132 

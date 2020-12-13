@@ -1,0 +1,16 @@
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.binaryProps 695407043792 1390786782 112681056015 380261886746 0 1198879485 131329878097 505606 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.printer 695424680691 1390830276 112684516247 380274277718 0 1198942658 131338222369 505615 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.binaryProps 181181192387 379627740 29385000755 107762011996 0 371308241 41166542288 204680 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.printer 181198947337 379670650 29388486229 107774539910 0 371371827 41175184569 204688 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.binaryProps 247279641905 444813644 39811625792 138198268324 0 451741886 50850618384 493852 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.printer 247301212353 444873032 39815868424 138213928967 0 451830662 50859362881 493864 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.binaryProps 88777158924 380531629 13272712932 58311894989 0 160495961 25273121005 195685 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.printer 88799004247 380593695 13277002906 58327367782 0 160592142 25280487210 195698 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.binaryProps 86803266484 366665213 13026274890 56048749441 0 156845640 25275046982 186297 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.printer 86825066970 366726761 13030554865 56064265529 0 156939472 25283744057 186308 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.binaryProps 87491955762 357214017 13146648453 55668679108 0 157647655 25241938450 195749 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.printer 87513815095 357274826 13150946871 55684182208 0 157741809 25250164157 195760 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.binaryProps 623052187745 1194830170 101143992945 339199373719 0 1025849328 118994946944 518488 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.printer 623069770181 1194868584 101147451926 339211589908 0 1025909061 119002579035 518496 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.binaryProps 579352408616 1171915816 94542049645 317319605214 0 1002820461 115713854727 457074 
+org.apache.jackrabbit.oak.plugins.index.inventory.IndexDefinitionPrinterTest.printer 579370022925 1171955162 94545514346 317331184710 0 1002880837 115721007824 457083 

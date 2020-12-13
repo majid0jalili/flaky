@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 188804724 981446 36574067 187009288 0 1288016 68256666 2586 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 189587087 956591 36738444 179333192 0 1257077 70775914 2592 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 86744609 442833 16709287 96804106 0 507205 34105322 1148 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 180845315 1192627 35209403 248857457 0 1303919 86547991 2564 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 190656635 985654 36881281 189572588 0 1285916 66299979 2593 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 189899832 936396 36796215 175246616 0 1221155 65384701 2573 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 186233866 950841 36095991 182978282 0 1251996 68308822 2568 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 187892061 950769 36358079 182745107 0 1240022 69955355 2560 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 90467143 374008 17377289 78713297 0 523350 29633952 1168 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 90393765 375114 17387670 79858445 0 528727 29235737 1170 
+org.wildfly.clustering.web.hotrod.session.coarse.SessionAttributesKeyExternalizerTestCase.test 90946271 383529 17465625 79817417 0 528930 30597344 1168 

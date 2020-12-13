@@ -1,0 +1,13 @@
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 414831637 1699169 80296170 357773772 0 2557541 106385240 3712 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 416797729 1777818 80701945 363677836 0 2574690 113515418 3714 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 413979719 1927238 80151267 402119710 0 2736757 120087188 3709 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 7663447753 14943093 1373811391 5860801085 0 48735090 1005915194 71502 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 7549519514 13813690 1348832148 5739627059 0 48568239 881153966 60971 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 8041770104 16662321 1436964968 6221962256 0 50997429 1104543085 73729 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 6206639 39937 1207864 7052470 0 47729 3136205 65 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 18606387 182768 3440600 29837555 0 188580 10801823 151 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 7898172349 16189040 1414331206 6078867419 0 50426636 1129882340 66983 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 7621474021 15441839 1365727582 5948553345 0 49362474 996593899 66878 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 7780445670 16522111 1394552825 6121016605 0 50081982 1100067638 64202 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 1071747111 5279984 204461138 952071061 0 6449079 326480988 13025 
+com.querydsl.core.types.dsl.ArrayConstructorExpressionTest.newInstanceObjectArray 7666363991 15478336 1371847745 5977465346 0 49415904 993693770 70005 

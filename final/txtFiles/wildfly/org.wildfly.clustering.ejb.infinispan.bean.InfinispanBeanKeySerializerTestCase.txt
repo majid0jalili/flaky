@@ -1,0 +1,11 @@
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 157456733 740106 30312746 139114678 0 874214 50492419 2504 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 1818463095 10680325 362950067 1604566512 0 11282295 654520544 41398 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 2071273371 13516196 413382116 2013145277 0 13556994 889731692 41850 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 89018167 375130 17137163 87025044 0 464069 27867365 958 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 2149682459 14084055 428566556 2129874171 0 14145057 923953630 42591 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 1866450159 11080072 371606886 1708310007 0 11422255 720371991 41420 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 2160991447 13887628 429932240 2076960204 0 13946019 920647291 42523 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 158706271 674920 30872851 147431453 0 848911 52115756 1834 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 1684445173 9178483 337468442 1474258934 0 10281742 590277303 39187 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 1620990830 9247692 323504416 1481983746 0 9745685 572563715 37179 
+org.wildfly.clustering.ejb.infinispan.bean.InfinispanBeanKeySerializerTestCase.test 95538706 415227 18303299 95974238 0 515935 32526825 991 

@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 140056721 645687 27995680 141158723 0 966990 44866254 1521 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 1109600318 5062694 218820173 969014239 0 7494929 323349245 15809 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 1176570701 6018327 231574439 1042896654 0 7996664 379152189 16387 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 139171397 666193 27750336 142889531 0 994607 46493334 1694 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 1429131845 7843674 280771916 1306412014 0 9952245 497887714 19079 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 1327102244 7391151 261078800 1268337399 0 9360121 466821072 17850 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 1380712656 7290560 271451629 1254812298 0 9612520 458371052 18591 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 1373793959 7553139 270059301 1284422838 0 9773241 452073729 18478 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 1291147961 7103655 254084499 1246119202 0 9204378 443586235 17756 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 1427232986 7935699 280599209 1306274947 0 9979827 497768127 19252 
+org.apache.jackrabbit.oak.json.JsonSerializerTest.childOrder 116118648 499575 23256625 112206496 0 792570 34370540 1373 

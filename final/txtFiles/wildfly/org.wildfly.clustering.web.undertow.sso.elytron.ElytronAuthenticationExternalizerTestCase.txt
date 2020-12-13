@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 2588509701 20899916 510385793 2643612322 0 17618737 1401351747 48470 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 2075700463 14910454 407783755 2094999112 0 13597038 967262544 42605 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 2462310712 20257928 485026090 2587269799 0 17012307 1323586148 47615 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 2619306217 22231177 516403634 2949748046 0 18360834 1662062614 48475 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 2573662792 21162464 507431649 2772659951 0 17852675 1510750917 48490 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 2384464590 18273934 469488610 2309180736 0 16074584 1143629162 47627 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 2389708622 18936691 471831251 2370981322 0 16364191 1181675209 48195 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 2256431852 18505520 445310721 2487222178 0 15754135 1241944672 47164 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 2413221493 20866226 475918530 3079706904 0 17315825 1715236573 48323 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 1869697081 13518281 369142422 1838839842 0 12336131 813763432 40620 
+org.wildfly.clustering.web.undertow.sso.elytron.ElytronAuthenticationExternalizerTestCase.test 1770406225 11093785 350067418 1574477260 0 10945266 665169731 38765 

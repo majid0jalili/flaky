@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 2669439222 19158289 523626223 2567142707 0 18021550 1198409264 41254 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 3772864433 29112228 724730034 3738494666 0 22602658 1867104364 43206 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 1908077004 10685859 369956582 1694934722 0 12121633 663858022 25975 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 4907704065 24797124 734188414 3720091702 0 20976281 1613217872 42242 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 5954328231 31338885 939992173 4557252057 0 23433824 2047729444 40405 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 2378126573 17520573 466804632 2266746156 0 15902092 1056460855 34751 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 6686094288 39608257 1084217413 5448527256 0 27120397 2652948340 42822 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 6758431039 38358894 1087286624 5261721441 0 26489100 2527938752 43608 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 5772745173 32981750 899241110 4512129624 0 24272885 2124116552 43448 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 498552556 1970290 98098827 415932812 0 2755101 134815404 6113 
+org.apache.jackrabbit.oak.spi.security.authorization.accesscontrol.ReadPolicyTest.testGetName 8214114592 37755420 1237344374 5651773613 0 25777606 2431486833 43901 

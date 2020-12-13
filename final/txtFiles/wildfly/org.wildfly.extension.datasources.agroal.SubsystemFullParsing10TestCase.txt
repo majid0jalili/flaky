@@ -1,0 +1,13 @@
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 1979631788 8391747 365384094 1645356090 0 10848884 567312002 27156 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 1993566507 8589945 367162448 1623272189 0 10871395 582304193 27121 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 1974140709 8381461 363847331 1689461034 0 11045419 560375671 27153 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 4584130289 19550844 879871215 3783803615 0 25800356 1314302936 46761 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 5498821184 23877713 1052740797 4672938072 0 31140926 1671459431 42965 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 3140433758 13423122 582794874 2599463420 0 17394341 904847850 26263 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 4770777512 20539161 914006077 3916332525 0 26823912 1434348236 37668 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 3229026304 13576956 600419074 2610920112 0 17622448 931016155 28957 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 3124004626 12647298 582887711 2511488031 0 17055259 849431500 28621 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 5286993038 22883649 1012860288 4447088804 0 29925934 1571440868 46470 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 5293400774 23144925 1013204598 4375857515 0 29950227 1552327555 47313 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 5473037839 24632397 1047613684 4838989848 0 31508839 1716495580 45236 
+org.wildfly.extension.datasources.agroal.SubsystemFullParsing10TestCase.testParse_1_0_Subsystem 5421286638 22867989 1036609551 4423951802 0 30246472 1614805274 45267 

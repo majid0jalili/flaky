@@ -1,0 +1,17 @@
+org.apache.jackrabbit.oak.plugins.blob.SharedDataStoreUtilsTest.testRefsNotAvailableAllRepos
+org.apache.jackrabbit.oak.plugins.blob.SharedDataStoreUtilsTest.testAddMetadataWithConditionalExtraSuffix
+org.apache.jackrabbit.oak.plugins.blob.SharedDataStoreUtilsTest.testAddMetadata
+org.apache.jackrabbit.oak.plugins.blob.SharedDataStoreUtilsTest.test
+org.apache.jackrabbit.oak.plugins.blob.SharedDataStoreUtilsTest.repoMarkerExistOnClose
+org.apache.jackrabbit.oak.plugins.blob.SharedDataStoreUtilsTest.transientRepoMarkerDeleteOnClose
+org.apache.jackrabbit.oak.plugins.blob.SharedDataStoreUtilsTest.testAddMetadataWithExtraSuffix
+org.apache.jackrabbit.oak.plugins.blob.datastore.DataStoreBlobStoreTest.testAddRepositoryId
+org.apache.jackrabbit.oak.plugins.blob.SharedDataStoreUtilsTest.testRefsAvailableAllRepos
+org.apache.jackrabbit.oak.plugins.blob.datastore.BlobIdTrackerTest.addSnapshotRemove
+org.apache.jackrabbit.oak.plugins.blob.datastore.BlobIdTrackerTest.snapshotIgnoreAfterRemove
+org.apache.jackrabbit.oak.plugins.blob.datastore.BlobIdTrackerTest.snapshotExecuteAfterRemove
+org.apache.jackrabbit.oak.plugins.blob.datastore.BlobIdTrackerTest.snapshotBeforeRemove
+org.apache.jackrabbit.oak.plugins.blob.datastore.BlobIdTrackerTest.addSnapshot
+org.apache.jackrabbit.oak.plugins.blob.datastore.BlobIdTrackerTest.externalAddOffline
+org.apache.jackrabbit.oak.plugins.blob.datastore.BlobIdTrackerClusterSharedTest.addRetrieveShared
+org.apache.jackrabbit.oak.plugins.blob.datastore.BlobIdTrackerClusterSharedTest.addRetrieveCluster

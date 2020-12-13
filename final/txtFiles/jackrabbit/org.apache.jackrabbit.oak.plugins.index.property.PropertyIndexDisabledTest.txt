@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 671201019706 1369324022 107352196782 370756921310 0 1182248455 128837758525 505086 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 297023571474 554483491 47498284937 167713770416 0 571834997 60884374662 261591 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 336019184672 586084407 53947767139 183861367374 0 604622344 65349742445 523682 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 184079687270 549580983 28529406685 114503503478 0 340140349 46307532680 263356 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 665781126187 1343882359 106634279832 363249239040 0 1171639501 127442784166 495920 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 179971299106 524080157 27941217132 108689383652 0 330326166 45043771994 243783 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 667605316427 1359077335 106851798720 367671822113 0 1177247941 128307933744 960525 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 181016327944 518683287 28116848187 108132962849 0 333745261 44650684046 246257 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 37521427705 96776118 6125426308 25424824620 0 88077332 11108549315 147624 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 376981260524 868511494 61517155854 214784550195 0 659579131 81592333249 349056 
+org.apache.jackrabbit.oak.plugins.index.property.PropertyIndexDisabledTest.disabled 668740842558 1364879589 107093452054 367659972062 0 1180197869 128773246140 889704 

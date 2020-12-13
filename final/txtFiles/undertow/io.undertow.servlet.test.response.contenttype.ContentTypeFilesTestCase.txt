@@ -1,0 +1,11 @@
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 64075966543 233642919 9131413554 41093749221 0 44063619 41680590446 155977 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 795975325 4749474 153729352 780275956 0 6010076 329365955 8060 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 48135354360 121816450 5899072276 27333677352 0 35918190 18693740345 245068 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 15626100553 81403428 3246757890 11287727361 0 20698339 14534765329 418014 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 16192208504 85393755 3310012471 11497391352 0 25067611 15295455240 371481 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 21735826375 100646880 3717391238 14527292417 0 23900971 18183540542 398606 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 56810290939 182525851 8168039056 34234252891 0 43251814 31318920744 358865 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 23704526748 105937109 4154341943 16092842955 0 31356727 18760272275 158494 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 15453684224 83862546 3220414501 11132731535 0 19621809 15486760301 367844 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 63842852521 198620624 9149229033 37524333148 0 44762418 34043655869 393924 
+io.undertow.servlet.test.response.contenttype.ContentTypeFilesTestCase.testFileContentType 61730039691 195584425 9098371102 36621981930 0 41318541 33795470647 19149 

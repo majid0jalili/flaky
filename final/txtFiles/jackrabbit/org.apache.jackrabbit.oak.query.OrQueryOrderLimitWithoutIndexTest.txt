@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 17265270957 105294623 2799394598 15080979439 0 28037336 7288955402 51925 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 650346320196 1294680128 103433209869 356232576167 0 1113980367 125703782493 458448 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 310743505523 548486805 50266781640 170949397579 0 563239679 61281594996 510800 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 525340792165 1094661440 84547691420 295459559644 0 878050417 105127268958 436291 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 16067930297 100584977 2628016242 13733950563 0 26258729 6701456754 47078 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 516059308008 1060672282 83089730623 286517622075 0 857517240 102254062873 460179 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 16639831414 103123316 2697512642 14459668421 0 26170175 6543711324 91760 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 518404396735 1054422367 83737444305 284085077436 0 871551792 100664271480 382882 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 119383729430 265070678 19424406082 71589509055 0 241391152 28598694371 222553 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 523836965738 1087424732 85315630868 289233983801 0 907994247 106392329035 441567 
+org.apache.jackrabbit.oak.query.OrQueryOrderLimitWithoutIndexTest.testOrderLimitOffset 16583896699 103730815 2686991734 15698602850 0 27143131 7513445710 117944 

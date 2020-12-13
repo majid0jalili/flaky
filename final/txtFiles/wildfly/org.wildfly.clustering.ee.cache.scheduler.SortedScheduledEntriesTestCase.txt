@@ -1,0 +1,11 @@
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 1633579787 9774480 318739828 1485066109 0 10860788 598741529 29093 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 1503268838 8474799 294001407 1446625278 0 9709661 575221139 27430 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 1648966841 10046392 321763691 1554830876 0 11052816 662317174 29241 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 1229981438 6200562 240398221 1067832494 0 7685299 373551928 24222 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 73737014 219193 13935161 57408133 0 330610 17960253 497 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 1640548567 10059504 320052668 1543345855 0 10941282 612069330 28928 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 1664685234 10106791 324596231 1639604083 0 11020912 772671012 29240 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 1424332333 9385195 277400319 1454155467 0 9839668 555341366 26436 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 1404666751 8224501 273667300 1307147027 0 9273003 531188916 26161 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 1570818225 8921006 306330819 1422954102 0 10138599 589960518 28095 
+org.wildfly.clustering.ee.cache.scheduler.SortedScheduledEntriesTestCase.test 89175555 364025 16877045 77945243 0 508876 25411332 650 

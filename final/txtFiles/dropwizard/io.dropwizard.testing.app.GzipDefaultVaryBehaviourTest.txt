@@ -1,0 +1,13 @@
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 8130499807 46397665 1620168598 7477838880 0 49389911 3299219088 15488 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 8136155001 48141894 1620759445 7638084359 0 49507151 3466468416 15709 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 8119163094 47041628 1617737885 7625046323 0 49741694 3431147628 16362 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 11180154770 72220401 2200980450 11096022719 0 67003428 5420614715 27301 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 9533286619 57947578 1882790531 8942667167 0 56055306 4180103004 36254 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 4420472013 21409299 889954914 3879170059 0 24848068 1654763513 8054 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 4714440431 33664521 916920779 5050952136 0 29706101 2709877420 15015 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 4884117928 32578673 962597071 5090553674 0 33181684 2393923488 11255 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 7114184174 38745347 1430002615 6728754744 0 42753876 2904111853 43479 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 4749043647 33834707 922626801 5055367404 0 29619317 2654200707 13333 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 10406833248 65943220 2047138355 10168332517 0 61899945 5108616394 21062 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 7252193422 53243300 1409395060 8187749175 0 46882298 4383207057 11522 
+io.dropwizard.testing.app.GzipDefaultVaryBehaviourTest.testDefaultVaryHeader 267132354 1102302 54047678 222214304 0 1612076 83477607 558 

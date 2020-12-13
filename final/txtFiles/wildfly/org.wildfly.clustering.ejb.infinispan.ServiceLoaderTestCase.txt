@@ -1,0 +1,11 @@
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 83783012 514938 16374614 83845644 0 561871 33232902 2016 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 1606403827 7880857 322308949 1342383862 0 9338869 482046754 39368 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 2126269887 13819047 424233874 2066293528 0 13890448 911168175 41914 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 1927787974 10936333 385480177 1832556634 0 11897831 722600548 42527 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 2148360835 14071305 428326206 2127828546 0 14129991 922463519 42591 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 1643567020 8112381 328905225 1429556250 0 9374085 529237720 39245 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 83937822 530200 16356943 86412655 0 593332 36004017 2012 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 2032278528 12131542 405042620 1907758434 0 12622140 837092325 42492 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 2129232216 13403507 424616510 1983017798 0 13729870 885236426 41915 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 2100274380 13205131 418564053 1999766890 0 13259451 861164880 42532 
+org.wildfly.clustering.ejb.infinispan.ServiceLoaderTestCase.load 2160648054 14619935 430127485 2199953855 0 14327487 970678370 42531 

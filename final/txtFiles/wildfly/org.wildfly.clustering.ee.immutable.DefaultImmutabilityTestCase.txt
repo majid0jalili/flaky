@@ -1,0 +1,11 @@
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 163482303 525271 31205628 132778757 0 837619 35709536 895 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 156030028 492888 29775183 125705840 0 783004 33403064 863 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 156819308 500008 29930698 127146457 0 793744 33465875 862 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 163482933 537866 31214084 134046589 0 849302 36575093 897 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 163141527 537061 31127188 133736762 0 855524 36025920 899 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 163932068 538906 31271816 131872595 0 845264 36704362 898 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 156124157 495904 29819594 125650180 0 786771 33832967 857 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 157740643 500606 30050848 140939695 0 776688 51187622 865 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 158121890 525240 30117529 143994683 0 788161 54485223 868 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 163137360 551104 31125714 147630527 0 853833 51969628 892 
+org.wildfly.clustering.ee.immutable.DefaultImmutabilityTestCase.test 156236309 573395 29827836 167509389 0 830884 59961410 864 

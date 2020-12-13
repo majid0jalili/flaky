@@ -1,0 +1,12 @@
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 670355609422 1366924888 107206276579 370206455189 0 1180473960 128566462437 505065 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 403000896562 822614159 64737285249 227413272456 0 756774113 82884019429 330225 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 174327311045 324309854 28129388934 99043368052 0 316830213 36689101416 393321 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 525316410384 1094608044 84543292876 295445994710 0 878002793 105119541267 436291 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 664949414640 1341245120 106491765261 362709613996 0 1169904696 127162501650 495899 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 516034794118 1060621484 83085311995 286504303939 0 857472775 102246307755 460179 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 666767713131 1356878335 106707636862 367166323385 0 1175599769 128044204938 960504 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 518380278990 1054371090 83733077272 284071940495 0 871506714 100657157141 382882 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 646077326388 1228677408 104898432115 351065618293 0 1065759570 123025749913 518562 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 108968072953 318642221 16668183582 66331009678 0 204084503 27415262236 212949 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 667896407037 1362541741 106947908951 367134032730 0 1178489575 128474265225 889680 
+org.apache.jackrabbit.oak.plugins.index.property.ValuePatternPropertyIndexTests.valuePattern 107092089260 312585907 16367874606 64220280986 0 205284913 26299893205 356443 

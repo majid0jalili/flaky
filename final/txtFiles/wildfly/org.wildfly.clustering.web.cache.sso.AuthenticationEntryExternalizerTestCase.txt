@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1755863674 13940917 344360113 1921615443 0 12839184 909003845 34201 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1768948912 13370667 346807767 1770222987 0 12387840 855517780 34198 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1442421643 8706330 283716954 1306234394 0 9381432 549244542 29985 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1321737880 7352238 260401566 1247842689 0 8399184 472742745 28406 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1663249699 11876215 326728281 1663203305 0 11556562 752514391 32670 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1635123775 11272928 320952018 1568863360 0 11093904 748511953 32280 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1319136185 7091973 259747401 1154197700 0 8210676 442280893 28403 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1744713098 13107160 342003757 1750871320 0 12296370 847707619 34046 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1528138949 9841249 299898879 1430734807 0 10197904 649704015 30967 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1766985778 13191639 346282229 1735694897 0 12283308 860736822 34216 
+org.wildfly.clustering.web.cache.sso.AuthenticationEntryExternalizerTestCase.test 1763877763 13649023 345718943 1821756466 0 12476334 889940328 34211 

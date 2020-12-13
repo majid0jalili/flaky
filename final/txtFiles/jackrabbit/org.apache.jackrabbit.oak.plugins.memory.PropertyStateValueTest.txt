@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 1361406587 7835968 268104140 1354936088 0 9896789 486483259 18384 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 1192648777 5584202 234726125 1052450114 0 8188795 355211531 16733 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 1223908282 6236272 240790259 1088304405 0 8355346 394502007 16735 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 238613211 1217481 47223840 253270419 0 1779600 86237746 2676 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 291683132 1383299 57220929 268722940 0 1970220 99412718 3116 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 1336581947 7439736 262865287 1278632504 0 9480624 470099306 17904 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 1342059875 6992439 264267892 1214250805 0 9291543 440814953 18073 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 1219227059 6762621 239526331 1144221494 0 8676492 405192869 16763 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 1405243987 7943179 276499092 1364390787 0 10099081 499269608 18845 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 1358834311 7447309 267529506 1236075997 0 9430763 468040715 18383 
+org.apache.jackrabbit.oak.plugins.memory.PropertyStateValueTest.compareDates 1224378196 6297912 241220346 1106415481 0 8455273 397833700 16777 

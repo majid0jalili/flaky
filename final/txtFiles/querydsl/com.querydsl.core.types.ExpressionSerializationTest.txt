@@ -1,0 +1,13 @@
+com.querydsl.core.types.ExpressionSerializationTest.serialize 727131624 3533847 139487105 639684281 0 4430525 217080516 7916 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 726652417 3720582 139510128 666524404 0 4492637 236316492 7883 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 723785056 4006128 138950703 724154502 0 4784966 247562921 7889 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 1385016565 6526717 260785309 1197374518 0 7523530 451863038 18722 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 7799492603 15546835 1396409487 5973307672 0 49898825 992658605 64437 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 942336931 4294443 177019523 820603172 0 5556576 291700309 10493 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 7372308040 14508061 1317394685 5839070532 0 48533270 941318493 57394 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 7436160017 13741902 1332019829 5640343032 0 47817585 908752317 56303 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 7522786960 13889384 1344196386 5729848798 0 48590914 955705633 60739 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 201979428 879964 38083892 172793956 0 1182335 62076766 1457 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 8165046369 18604423 1467155545 6486043195 0 51902226 1278553967 72168 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 516563379 2312638 99241368 454368171 0 3273592 145775506 4699 
+com.querydsl.core.types.ExpressionSerializationTest.serialize 242250403 1170728 45851726 223953816 0 1501852 78724136 1896 

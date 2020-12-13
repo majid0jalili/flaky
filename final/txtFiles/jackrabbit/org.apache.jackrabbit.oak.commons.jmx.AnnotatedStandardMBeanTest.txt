@@ -1,0 +1,11 @@
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 12073542539 43506082 2075217878 9499715151 0 30528454 3268822531 75188 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 5757588256 27213830 918156272 6197669984 0 19706096 2952016046 36672 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 150614943 826167 28727161 158136393 0 1190083 57836683 1021 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 2230814428 10291724 435298892 1984320658 0 13955901 687359361 24794 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 5671688728 29372921 917943836 6451659779 0 20954704 2944762827 32701 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 7641457045 24962694 1435462129 4726628489 0 21440056 1370781358 58228 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 11744939249 45698463 2042565437 9650451596 0 31596567 3648974936 115803 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 150418507 846941 28703370 159617274 0 1205511 58229558 1020 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 5655757620 28164429 913146872 6245712086 0 19907347 2848963970 34583 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 5404618446 25702406 855084512 5877251403 0 16841944 2666956977 32799 
+org.apache.jackrabbit.oak.commons.jmx.AnnotatedStandardMBeanTest.test 191721473 1133411 36938395 223986261 0 1581921 73466441 1528 

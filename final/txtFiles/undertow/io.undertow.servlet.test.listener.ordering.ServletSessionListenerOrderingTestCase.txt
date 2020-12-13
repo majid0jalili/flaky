@@ -1,0 +1,11 @@
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 61689101054 224008867 8745529248 39197528099 0 34167581 40847120952 154995 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 18263708899 87806431 3736344540 12762024114 0 25274801 15809077652 43018 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 62309232179 218723462 8841665808 39207994501 0 44509688 39200779844 245911 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 58171963121 185242477 8587188997 34879251906 0 43818989 31264768245 418981 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 15924621430 84235906 3268374912 11286991385 0 23996323 15197620576 371429 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 21461552553 98916651 3666406849 14249934440 0 22389302 18003317856 398534 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 61567986726 189035950 8644221265 36494306287 0 46738269 32153905837 365869 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 24164009807 107893816 4231201503 16422996213 0 32847485 18948416687 158528 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 15509360967 84377772 3231253023 11191105278 0 20002009 15526227202 367877 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 55796049714 177980438 8010433881 32814672286 0 30852946 31705397180 387061 
+io.undertow.servlet.test.listener.ordering.ServletSessionListenerOrderingTestCase.testSimpleSessionUsage 6689449032 16453309 776922985 4082211198 0 15555086 1604488856 15965 

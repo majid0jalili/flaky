@@ -1,0 +1,11 @@
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 388931217 1979230 74874268 354898489 0 2841426 119052189 5074 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 25207671298 99526804 4434428384 16220079034 0 34695904 17063182054 43826 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 48766257719 124707507 6023679580 27891099812 0 39846847 18935674048 245866 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 752699737 4755066 143420769 745125859 0 5605684 323763381 6911 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 14970112097 79867180 3124259392 10474934942 0 19796106 14750377562 371243 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 20544997647 94077847 3482145062 13531839227 0 19868541 17419047912 394591 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 61700441170 189514130 8669761362 36591236379 0 47203721 32192552373 365912 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 628086881 3369319 123025234 595177413 0 4438615 226239010 7550 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 15395499816 83499564 3209133611 11082861045 0 19282691 15461381846 367822 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 63782870379 198401027 9137794630 37489645440 0 44607599 34029000615 393915 
+io.undertow.servlet.test.compat.rewrite.RewriteTestCase.testRewrite 7974242871 24951230 1026315775 5261284056 0 20155773 2595524220 18001 

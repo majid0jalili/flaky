@@ -1,0 +1,11 @@
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 855036968 4092707 167250006 802029384 0 6084437 251452368 11551 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 938669703 5055179 183025187 879172369 0 6804885 304091823 12204 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 858112970 4095087 167761640 780204968 0 5992221 246072842 11607 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 868159331 4029332 169613090 757170139 0 5932120 249811994 11706 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 863362137 4031244 168684955 751707459 0 6003462 247473143 11633 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 939287513 5197495 183180382 949154018 0 7014195 311176094 12185 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 864528203 4098741 169002924 754229642 0 5951923 250884243 11668 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 940100891 4953506 183258671 844675818 0 6702040 298611874 12235 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 939144826 5308974 183088665 930429478 0 6989196 316052531 12199 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 937539699 4993175 182760589 890452683 0 6817159 305710475 12231 
+org.wildfly.clustering.server.singleton.election.NamePreferenceTestCase.test 940446026 4960441 183283511 889778147 0 6763335 344718548 12282 

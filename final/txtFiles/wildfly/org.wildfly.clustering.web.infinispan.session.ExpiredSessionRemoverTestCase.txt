@@ -1,0 +1,11 @@
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 2506203367 16937473 503774463 2362998229 0 15644180 1099139954 41008 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 2459195391 17449576 494561413 2400000901 0 15522370 1126591056 40922 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 1993510010 11741493 400489858 1847413340 0 12430217 788581741 40179 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 2551983300 17515757 511045971 2429259511 0 15931097 1156856867 40396 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 1835312929 9954295 369415210 1600431078 0 11029274 638851548 40465 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 2322031863 16198747 465942895 2197191429 0 14472884 1045278343 40611 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 2526169065 17069818 507810249 2427668979 0 15718572 1149578957 40385 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 2491124714 17339126 500536366 2425299264 0 15573159 1136583745 40910 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 2515700064 17513138 504806776 2362906297 0 15670352 1122690403 41008 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 1957042951 11391547 393755480 1852293680 0 12301321 767092688 40098 
+org.wildfly.clustering.web.infinispan.session.ExpiredSessionRemoverTestCase.test 1610476540 9217282 325121322 1491648598 0 9876090 593744744 39495 

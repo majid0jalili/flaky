@@ -1,0 +1,8 @@
+org.apache.jackrabbit.oak.plugins.observation.filter.SelectorTest.selectDescendant 695440230359 1391043675 112687625821 380295390112 0 1199034339 131361484417 505625 
+org.apache.jackrabbit.oak.plugins.observation.filter.SelectorTest.selectDescendant 150531320841 324548345 24429790883 90186709260 0 311843341 34549271948 188671 
+org.apache.jackrabbit.oak.plugins.observation.filter.SelectorTest.selectDescendant 91600348739 182224775 14920784060 53742068259 0 157643241 20494829577 310055 
+org.apache.jackrabbit.oak.plugins.observation.filter.SelectorTest.selectDescendant 282057841428 702144118 44352116132 167606286905 0 511852186 64502856736 338687 
+org.apache.jackrabbit.oak.plugins.observation.filter.SelectorTest.selectDescendant 276479823284 674548757 43547838051 160743254722 0 499483502 62731799660 359335 
+org.apache.jackrabbit.oak.plugins.observation.filter.SelectorTest.selectDescendant 277605183723 669569543 43758243789 159152303671 0 504904622 61342657524 289084 
+org.apache.jackrabbit.oak.plugins.observation.filter.SelectorTest.selectDescendant 339151897291 801201957 53839585884 197027075038 0 570401160 72856185820 433780 
+org.apache.jackrabbit.oak.plugins.observation.filter.SelectorTest.selectDescendant 564899096988 1150423764 92211467295 309966969227 0 977228265 113324676181 457042 

@@ -1,0 +1,13 @@
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 3888908557 17875524 788751808 3282405616 0 21899745 1140836536 7852 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 3887671605 17538588 788370651 3180113257 0 21614300 1175637100 7855 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 3888738355 18214865 788425356 3317267943 0 21941800 1215027209 7818 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 6445182310 46437107 1247797234 6755521151 0 40523396 3530732351 14657 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 74939442 364793 15232624 71002309 0 508234 26837093 119 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 10388139683 66384096 2045118749 10574008218 0 61206449 5230490750 26166 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 4947938914 36268549 962723871 5339508585 0 31784506 2904974889 15128 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 8682031849 52496272 1730952616 8573230877 0 53985223 3795139244 20600 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 121981696 637425 24077418 160360966 0 798982 55015634 150 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 5477798356 38280741 1067440209 5813367399 0 33793273 3025779186 14433 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 11059548775 69877284 2177425566 10826114894 0 65637008 5450262811 22447 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 4945451892 37240050 961983185 5832981245 0 32478161 3177228793 5894 
+io.dropwizard.testing.junit.DropwizardAppRuleWithoutConfigTest.runWithoutConfigFile 274067542 1145485 55317864 228036199 0 1647078 86007072 558 
